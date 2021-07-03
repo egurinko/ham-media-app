@@ -9,6 +9,18 @@
   dependencies:
     ajv "^6.12.6"
 
+"@prisma/client@^2.26.0":
+  version "2.26.0"
+  resolved "https://registry.yarnpkg.com/@prisma/client/-/client-2.26.0.tgz#a23a83bc5c931243ee20b78d9ded423e158aa4c1"
+  integrity sha512-iwhjdUV/MEQZ7RzTEcZ/D+ewxx/pGExWJ2LypfHioJIvEMyK0saPiR0tjMvMT2I2SVzrIM5dXGhBHWi2JksWrQ==
+  dependencies:
+    "@prisma/engines-version" "2.26.0-23.9b816b3aa13cc270074f172f30d6eda8a8ce867d"
+
+"@prisma/engines-version@2.26.0-23.9b816b3aa13cc270074f172f30d6eda8a8ce867d":
+  version "2.26.0-23.9b816b3aa13cc270074f172f30d6eda8a8ce867d"
+  resolved "https://registry.yarnpkg.com/@prisma/engines-version/-/engines-version-2.26.0-23.9b816b3aa13cc270074f172f30d6eda8a8ce867d.tgz#aa707f4496ab92ef1eaf17758274f63b86d2ff9f"
+  integrity sha512-8tygPkPxag3myF5fgNQ60zwnNSZzFf4J+DXGKykXaBLLt9W2FLkaE5sVL8/OqAGhLAnVsKj83CqPms35bKrTKw==
+
 "@prisma/engines@2.26.0-23.9b816b3aa13cc270074f172f30d6eda8a8ce867d":
   version "2.26.0-23.9b816b3aa13cc270074f172f30d6eda8a8ce867d"
   resolved "https://registry.yarnpkg.com/@prisma/engines/-/engines-2.26.0-23.9b816b3aa13cc270074f172f30d6eda8a8ce867d.tgz#cfdacfad3acc0f3bf1d7710aa8f3852fd85ac6d9"
@@ -447,10 +459,26 @@ fastify-cli@^2.13.0:
     split2 "^3.1.1"
     yargs-parser "^20.0.0"
 
+fastify-cors@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/fastify-cors/-/fastify-cors-6.0.1.tgz#300e0f1cbeedda19d9de284e9cf05c65842c182b"
+  integrity sha512-eeNTdQNmBsqHL87we+X74n9+H0hTDX0cXGVdyZjGf9om2pZfigAZwuSxaUUE2pLP9tp5+rEd5kejKQ8+ZCvAoA==
+  dependencies:
+    fastify-plugin "^3.0.0"
+    vary "^1.1.2"
+
 fastify-error@^0.3.0:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/fastify-error/-/fastify-error-0.3.1.tgz#8eb993e15e3cf57f0357fc452af9290f1c1278d2"
   integrity sha512-oCfpcsDndgnDVgiI7bwFKAun2dO+4h84vBlkWsWnz/OUK9Reff5UFoFl241xTiLeHWX/vU9zkDVXqYUxjOwHcQ==
+
+fastify-helmet@^5.3.1:
+  version "5.3.1"
+  resolved "https://registry.yarnpkg.com/fastify-helmet/-/fastify-helmet-5.3.1.tgz#ff1d9bcd05bd0518cb57e57e91ccf25f101bddea"
+  integrity sha512-VXxsqfG+ay/zd2it4WKsJYpToAcmGjARdKt7+6OcrTF1C/3Bhx5ReM4BCq2GbQoU/2Mh2l0tF49djNjlUEogQQ==
+  dependencies:
+    fastify-plugin "^3.0.0"
+    helmet "^4.0.0"
 
 fastify-mongodb@^2.0.1:
   version "2.0.1"
@@ -607,6 +635,11 @@ has@^1.0.3:
   integrity sha512-f2dvO0VU6Oej7RkWJGrehjbzMAjFp5/VKPp5tTpWIV4JHHZK1/BxbFRtf/siA2SWTe09caDmVtYYzWEIbBS4zw==
   dependencies:
     function-bind "^1.1.1"
+
+helmet@^4.0.0:
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/helmet/-/helmet-4.6.0.tgz#579971196ba93c5978eb019e4e8ec0e50076b4df"
+  integrity sha512-HVqALKZlR95ROkrnesdhbbZJFi/rIVSoNq6f3jA/9u6MIbTsPh3xZwihjeI5+DO/2sOV6HMHooXcEOuwskHpTg==
 
 help-me@^2.0.0:
   version "2.0.1"
@@ -999,7 +1032,7 @@ pretty-ms@^5.0.0:
   dependencies:
     parse-ms "^2.1.0"
 
-prisma@^2.26.0:
+prisma@2.26.0:
   version "2.26.0"
   resolved "https://registry.yarnpkg.com/prisma/-/prisma-2.26.0.tgz#48f7b8fa166900ae20f2383da711ac8712a56b86"
   integrity sha512-MXTQlF8X9mabkdTRb9x5nF6jvo1kT85d9hqIpYjLLZy+5tlvEaCaLBj+ok8GINdfYBS7gwQERZ9MHx0tb5dCdg==
@@ -1369,6 +1402,11 @@ util-deprecate@^1.0.1, util-deprecate@~1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
   integrity sha1-RQ1Nyfpw3nMnYvvS1KKJgUGaDM8=
+
+vary@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
+  integrity sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
 
 walker@^1.0.6:
   version "1.0.7"
