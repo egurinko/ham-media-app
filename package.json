@@ -1,0 +1,23 @@
+{
+  "name": "fastify",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node server",
+    "dev": "ts-node-dev server"
+  },
+  "dependencies": {
+    "fastify": "^3.18.1",
+    "fastify-cli": "^2.13.0",
+    "fastify-mongodb": "^2.0.1",
+    "fastify-plugin": "^3.0.0",
+    "prisma": "^2.26.0"
+  },
+  "devDependencies": {
+    "@types/node": "^16.0.0",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.3.5"
+  }
+}
