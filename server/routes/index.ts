@@ -1,9 +1,8 @@
 import { FastifyPluginCallback } from 'fastify'
+import { controller } from "../controllers"
 
 const router: FastifyPluginCallback = async (app, options) => {
-  app.get("/", async (request, reply) => {
-    return { hello: "world" }
-  })
+  app.get("/", controller.home.get)
 }
 
 export { router }
