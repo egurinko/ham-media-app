@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Hospital {
+  id            BigInt   @id @default(autoincrement())
+  created_at    DateTime @default(now())
+  updated_at    DateTime
+  name          String   @db.VarChar(255)
+  url           String   @db.VarChar(255)
+  internal_memo String   @db.LongText
+  deleted       Boolean  @default(false)
+}
+
+model InternalUser {
+  id              BigInt   @id @default(autoincrement())
+  created_at      DateTime @default(now())
+  updated_at      DateTime
+  email           String   @unique
+  name            String
+  password_digest String
+}
