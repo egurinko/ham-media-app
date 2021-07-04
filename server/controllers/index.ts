@@ -1,5 +1,7 @@
-import { homeController } from "./home"
+import { publicApi } from "./publicApi"
+import { internalApi } from "./internalApi"
 
 export const controller = { 
-  home: homeController,
+  publicApi,
+  internalApi,
 }

@@ -1,8 +1,8 @@
 import { FastifyPluginCallback } from 'fastify'
-import { controller } from "../controllers"
+import { internalApiRouter } from "./internalApi"
 
-const router: FastifyPluginCallback = async (app, options) => {
-  app.get("/", controller.home.get)
+const router: FastifyPluginCallback = async (app, _options) => {
+  app.register(internalApiRouter)
 }
 
 export { router }
