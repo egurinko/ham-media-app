@@ -5,7 +5,9 @@ import { router } from "./routes"
 
 const app = fastify({ logger: true })
 
-app.register(helmet)
+app.register(helmet,{ 
+  contentSecurityPolicy: false 
+})
 app.register(cors)
 app.register(router)
 
