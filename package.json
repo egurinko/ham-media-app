@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "start": "node server",
-    "dev": "ts-node-dev server",
+    "dev": "ts-node-dev server --transpile-only",
     "db:format": "prisma format",
     "db:push": "prisma db push",
     "db:refrect": "prisma generate"
@@ -22,6 +22,7 @@
     "graphql": "^15.5.1",
     "mercurius": "^8.0.0",
     "nexus": "^1.1.0",
+    "nexus-prisma": "^0.29.1",
     "prisma": "2.26.0"
   },
   "devDependencies": {
