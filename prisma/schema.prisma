@@ -7,6 +7,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+generator nexusPrisma {
+   provider = "nexus-prisma"
+}
+
+/// A hospital
 model Hospital {
   id            BigInt   @id @default(autoincrement())
   created_at    DateTime @default(now())
@@ -17,6 +22,7 @@ model Hospital {
   deleted       Boolean  @default(false)
 }
 
+/// A internal user
 model InternalUser {
   id              BigInt   @id @default(autoincrement())
   created_at      DateTime @default(now())
