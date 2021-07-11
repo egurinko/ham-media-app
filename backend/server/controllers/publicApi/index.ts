@@ -1,5 +1,5 @@
-import { hospitals } from "./hospitals"
+import { hospitals } from './hospitals';
 
-export const publicApi = { 
-  hospitals 
-}
+export const publicApi = {
+  hospitals,
+};

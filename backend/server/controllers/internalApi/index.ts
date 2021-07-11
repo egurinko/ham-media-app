@@ -1,7 +1,7 @@
-import { hospitals } from "./hospitals"
-import { internalUsers } from "./internalUsers"
+import { hospitals } from './hospitals';
+import { internalUsers } from './internalUsers';
 
-export const internalApi = { 
+export const internalApi = {
   hospitals,
-  internalUsers
-}
+  internalUsers,
+};

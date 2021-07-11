@@ -1,7 +1,7 @@
-import { publicApi } from "./publicApi"
-import { internalApi } from "./internalApi"
+import { publicApi } from './publicApi';
+import { internalApi } from './internalApi';
 
-export const controller = { 
+export const controller = {
   publicApi,
   internalApi,
-}
+};

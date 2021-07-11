@@ -1,1 +1,1 @@
-export * from "./internalUser";
+export * from './internalUser';

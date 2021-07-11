@@ -1,6 +1,6 @@
-import type { AppProps } from 'next/app'
-import { ChakraProvider, ColorModeProvider } from '@chakra-ui/react'
-import { theme } from "../utils/theme"
+import type { AppProps } from 'next/app';
+import { ChakraProvider, ColorModeProvider } from '@chakra-ui/react';
+import { theme } from '../utils/theme';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -13,6 +13,6 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Component {...pageProps} />
       </ColorModeProvider>
     </ChakraProvider>
-  )
+  );
 }
-export default MyApp
+export default MyApp;
