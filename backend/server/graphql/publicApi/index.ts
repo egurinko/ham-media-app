@@ -7,8 +7,8 @@ import { makeSchema } from "nexus"
 const schema = makeSchema({
   types: [],
   outputs: {
-    typegen: join(__dirname, "../../../graphql/publicApi", "types.d.ts"),
-    schema: join(__dirname, "../../../graphql/publicApi", "schema.graphql"),
+    typegen: join(__dirname, "../../../../graphql/publicApi", "types.d.ts"),
+    schema: join(__dirname, "../../../../graphql/publicApi", "schema.graphql"),
   }
 })
 

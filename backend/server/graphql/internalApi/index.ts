@@ -10,8 +10,8 @@ import { Query } from "./query"
 const schema = makeSchema({
   types: [types, Query],
   outputs: {
-    typegen: join(__dirname, "../../../graphql/internalApi", "types.d.ts"),
-    schema: join(__dirname, "../../../graphql/internalApi", "schema.graphql"),
+    typegen: join(__dirname, "../../../../graphql/internalApi", "types.d.ts"),
+    schema: join(__dirname, "../../../../graphql/internalApi", "schema.graphql"),
   },
 })
 
