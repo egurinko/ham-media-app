@@ -28,6 +28,11 @@ export interface NexusGenScalars {
 }
 
 export interface NexusGenObjects {
+  InternalUser: { // root type
+    email: string; // String!
+    id: string; // String!
+    name: string; // String!
+  }
   Query: {};
 }
 
@@ -42,14 +47,24 @@ export type NexusGenRootTypes = NexusGenObjects
 export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
+  InternalUser: { // field return type
+    email: string; // String!
+    id: string; // String!
+    name: string; // String!
+  }
   Query: { // field return type
-    ok: boolean; // Boolean!
+    internalUsers: NexusGenRootTypes['InternalUser'][]; // [InternalUser!]!
   }
 }
 
 export interface NexusGenFieldTypeNames {
+  InternalUser: { // field return type name
+    email: 'String'
+    id: 'String'
+    name: 'String'
+  }
   Query: { // field return type name
-    ok: 'Boolean'
+    internalUsers: 'InternalUser'
   }
 }
 

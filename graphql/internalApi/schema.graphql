@@ -2,6 +2,13 @@
 ### Do not make changes to this file directly
 
 
+"""A internal user"""
+type InternalUser {
+  email: String!
+  id: String!
+  name: String!
+}
+
 type Query {
-  ok: Boolean!
+  internalUsers: [InternalUser!]!
 }
