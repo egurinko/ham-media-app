@@ -38,11 +38,15 @@ const Login: React.VFC<{}> = () => (
           <Stack spacing={4}>
             <FormControl id="email">
               <FormLabel>メールアドレス</FormLabel>
-              <Input type="email" />
+              <Input type="email" autoComplete="email" autoCapitalize="off" />
             </FormControl>
             <FormControl id="email">
               <FormLabel>パスワード</FormLabel>
-              <Input type="password" />
+              <Input
+                type="password"
+                autoComplete="current-password"
+                autoCapitalize="off"
+              />
             </FormControl>
           </Stack>
           <Box d="grid" justifyContent="center">
