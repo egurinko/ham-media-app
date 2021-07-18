@@ -5,10 +5,10 @@ import { makeSchema } from 'nexus';
 import { $settings } from 'nexus-prisma';
 import { client } from '../../services/prisma';
 import * as types from './types';
-import { Query } from './query';
+import * as queryTypes from './queries';
 
 const schema = makeSchema({
-  types: [types, Query],
+  types: [types, queryTypes],
   outputs: {
     typegen: join(__dirname, '../../../../graphql/internalApi', 'types.d.ts'),
     schema: join(
