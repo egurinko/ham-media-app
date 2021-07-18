@@ -15,7 +15,7 @@ generator nexusPrisma {
 model Hospital {
   id            BigInt   @id @default(autoincrement())
   created_at    DateTime @default(now())
-  updated_at    DateTime
+  updated_at    DateTime @default(now())
   name          String   @db.VarChar(255)
   url           String   @db.VarChar(255)
   internal_memo String   @db.LongText
@@ -26,7 +26,7 @@ model Hospital {
 model InternalUser {
   id              BigInt   @id @default(autoincrement())
   created_at      DateTime @default(now())
-  updated_at      DateTime
+  updated_at      DateTime @default(now())
   email           String   @unique
   name            String
   password_digest String
