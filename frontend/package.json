@@ -5,7 +5,10 @@
   "scripts": {
     "dev": "next dev -p 8080",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "codegen": "yarn codegen:internal",
+    "codegen:internal": "yarn apollo codegen:generate --localSchemaFile='../graphql/internalApi/schema.graphql' --target=typescript --tagName=gql --includes='./api/internal_api/**.ts'",
+    "codegen:public": "yarn apollo codegen:generate --localSchemaFile='../graphql/publicApi/schema.graphql' --target=typescript --tagName=gql --includes='./api/public_api/**.ts'"
   },
   "dependencies": {
     "@apollo/client": "^3.3.21",
@@ -20,6 +23,7 @@
   },
   "devDependencies": {
     "@types/react": "17.0.14",
+    "apollo": "^2.33.4",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0"
