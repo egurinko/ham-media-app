@@ -7,7 +7,7 @@ import {
   FormLabel,
 } from '@chakra-ui/react';
 import Image from 'next/image';
-import Layout from '../../components/admin/Layout';
+import Layout from '@/components/admin/Layout';
 
 const Login: React.VFC<{}> = () => (
   <Layout>

@@ -1,4 +1,4 @@
-import Layout from '../components/consumer/Layout';
+import Layout from '@/components/consumer/Layout';
 
 const Home: React.VFC<{}> = () => <Layout>Home</Layout>;
 
