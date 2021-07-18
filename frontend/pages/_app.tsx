@@ -1,17 +1,21 @@
 import type { AppProps } from 'next/app';
 import { ChakraProvider, ColorModeProvider } from '@chakra-ui/react';
-import { theme } from '../utils/theme';
+import { ApolloProvider } from '@apollo/client';
+import { internalApiClient } from '@/utils/apollo';
+import { theme } from '@/utils/theme';
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => (
-  <ChakraProvider resetCSS theme={theme}>
-    <ColorModeProvider
-      options={{
-        useSystemColorMode: true,
-      }}
-    >
-      <Component {...pageProps} />
-    </ColorModeProvider>
-  </ChakraProvider>
+  <ApolloProvider client={internalApiClient}>
+    <ChakraProvider resetCSS theme={theme}>
+      <ColorModeProvider
+        options={{
+          useSystemColorMode: true,
+        }}
+      >
+        <Component {...pageProps} />
+      </ColorModeProvider>
+    </ChakraProvider>
+  </ApolloProvider>
 );
 
 export default App;
