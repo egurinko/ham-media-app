@@ -5,7 +5,7 @@
 """A internal user"""
 type InternalUser {
   email: String!
-  id: String!
+  id: Int!
   name: String!
 }
 
