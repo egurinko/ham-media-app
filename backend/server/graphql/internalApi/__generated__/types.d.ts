@@ -4,7 +4,7 @@
  */
 
 
-import type { Context } from "./../../backend/server/graphql/context"
+import type { Context } from "./../context"
 
 
 

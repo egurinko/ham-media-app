@@ -4,7 +4,7 @@
  */
 
 
-
+import type { Context } from "./../../backend/server/graphql/context"
 
 
 
@@ -28,6 +28,11 @@ export interface NexusGenScalars {
 }
 
 export interface NexusGenObjects {
+  InternalUserSession: { // root type
+    id: number; // Int!
+    token: string; // String!
+  }
+  Mutation: {};
   Query: {};
 }
 
@@ -42,18 +47,38 @@ export type NexusGenRootTypes = NexusGenObjects
 export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
+  InternalUserSession: { // field return type
+    id: number; // Int!
+    token: string; // String!
+  }
+  Mutation: { // field return type
+    createSession: NexusGenRootTypes['InternalUserSession']; // InternalUserSession!
+  }
   Query: { // field return type
     ok: boolean; // Boolean!
   }
 }
 
 export interface NexusGenFieldTypeNames {
+  InternalUserSession: { // field return type name
+    id: 'Int'
+    token: 'String'
+  }
+  Mutation: { // field return type name
+    createSession: 'InternalUserSession'
+  }
   Query: { // field return type name
     ok: 'Boolean'
   }
 }
 
 export interface NexusGenArgTypes {
+  Mutation: {
+    createSession: { // args
+      email: string; // String!
+      password: string; // String!
+    }
+  }
 }
 
 export interface NexusGenAbstractTypeMembers {
@@ -87,7 +112,7 @@ export type NexusGenFeaturesConfig = {
 }
 
 export interface NexusGenTypes {
-  context: any;
+  context: Context;
   inputTypes: NexusGenInputs;
   rootTypes: NexusGenRootTypes;
   inputTypeShapes: NexusGenInputs & NexusGenEnums & NexusGenScalars;
