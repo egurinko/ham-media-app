@@ -31,3 +31,12 @@ model InternalUser {
   name            String
   password_digest String
 }
+
+/// A internal user session
+model InternalUserSession {
+  id              Int   @id @default(autoincrement())
+  created_at      DateTime @default(now())
+  updated_at      DateTime @default(now())
+  token           String   @unique
+  expired_at      DateTime
+}
