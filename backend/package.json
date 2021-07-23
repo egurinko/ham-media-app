@@ -12,7 +12,7 @@
     "db:refrect": "prisma generate"
   },
   "dependencies": {
-    "@prisma/client": "^2.26.0",
+    "@prisma/client": "^2.27.0",
     "fastify": "^3.18.1",
     "fastify-cli": "^2.13.0",
     "fastify-cors": "^6.0.1",
@@ -22,10 +22,12 @@
     "mercurius": "^8.0.0",
     "nexus": "^1.1.0",
     "nexus-prisma": "^0.29.1",
-    "prisma": "2.26.0"
+    "prisma": "2.26.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@types/node": "^16.0.0",
+    "@types/uuid": "^8.3.1",
     "ts-node-dev": "^1.1.8"
   }
 }
