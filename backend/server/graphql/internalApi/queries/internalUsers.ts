@@ -1,9 +1,9 @@
 import { queryField } from 'nexus';
-import { InternalUser } from 'nexus-prisma';
+import { internalUser } from '../types/internalUser';
 
 export const internalUsers = queryField((t) => {
   t.nonNull.list.nonNull.field('internalUsers', {
-    type: InternalUser.$name,
+    type: internalUser,
     resolve(_root, _args, ctx) {
       return ctx.prisma.internalUser.findMany();
     },

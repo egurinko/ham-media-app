@@ -2,7 +2,6 @@ import { join } from 'path';
 import { FastifyPluginCallback } from 'fastify';
 import mercurius from 'mercurius';
 import { makeSchema } from 'nexus';
-import { $settings } from 'nexus-prisma';
 import * as types from './types';
 import * as queryTypes from './queries';
 import { context } from './context';
