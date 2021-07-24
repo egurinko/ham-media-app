@@ -1,1 +1,1 @@
-export * from './internalUserSession';
+export * from './createSessionType';
