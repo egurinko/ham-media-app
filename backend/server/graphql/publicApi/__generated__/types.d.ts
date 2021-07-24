@@ -28,8 +28,7 @@ export interface NexusGenScalars {
 }
 
 export interface NexusGenObjects {
-  InternalUserSession: { // root type
-    id: number; // Int!
+  CreateSessionType: { // root type
     token: string; // String!
   }
   Mutation: {};
@@ -47,12 +46,11 @@ export type NexusGenRootTypes = NexusGenObjects
 export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
-  InternalUserSession: { // field return type
-    id: number; // Int!
+  CreateSessionType: { // field return type
     token: string; // String!
   }
   Mutation: { // field return type
-    createSession: NexusGenRootTypes['InternalUserSession']; // InternalUserSession!
+    createSession: NexusGenRootTypes['CreateSessionType']; // CreateSessionType!
   }
   Query: { // field return type
     ok: boolean; // Boolean!
@@ -60,12 +58,11 @@ export interface NexusGenFieldTypes {
 }
 
 export interface NexusGenFieldTypeNames {
-  InternalUserSession: { // field return type name
-    id: 'Int'
+  CreateSessionType: { // field return type name
     token: 'String'
   }
   Mutation: { // field return type name
-    createSession: 'InternalUserSession'
+    createSession: 'CreateSessionType'
   }
   Query: { // field return type name
     ok: 'Boolean'

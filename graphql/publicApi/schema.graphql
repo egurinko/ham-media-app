@@ -2,6 +2,14 @@
 ### Do not make changes to this file directly
 
 
+type CreateSessionType {
+  token: String!
+}
+
+type Mutation {
+  createSession(email: String!, password: String!): CreateSessionType!
+}
+
 type Query {
   ok: Boolean!
 }
