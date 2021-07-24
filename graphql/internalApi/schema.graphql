@@ -9,6 +9,10 @@ type InternalUser {
   name: String!
 }
 
+type Mutation {
+  createInternalUser(email: String!, name: String!, password: String!): InternalUser!
+}
+
 type Query {
   internalUsers: [InternalUser!]!
 }
