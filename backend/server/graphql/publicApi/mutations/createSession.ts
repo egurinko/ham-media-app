@@ -1,5 +1,6 @@
 import { stringArg, nonNull, mutationField } from 'nexus';
 import { createSessionType } from '../types/createSessionType';
+import { sign } from '../../../services/authentication';
 import bcrypt from 'bcrypt';
 
 export const createSessionField = mutationField((t) => {
@@ -27,7 +28,7 @@ export const createSessionField = mutationField((t) => {
         throw new Error('Authentication Error');
       }
       return {
-        token: 'test token',
+        token: sign({ email: internalUser.email }),
       };
     },
   });
