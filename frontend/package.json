@@ -6,7 +6,7 @@
     "dev": "next dev -p 8080",
     "build": "next build",
     "start": "next start",
-    "codegen": "yarn codegen:internal",
+    "codegen": "yarn codegen:internal && yarn codegen:public",
     "codegen:internal": "yarn apollo codegen:generate --localSchemaFile='../graphql/internalApi/schema.graphql' --target=typescript --tagName=gql --includes='./api/internal_api/**.ts'",
     "codegen:public": "yarn apollo codegen:generate --localSchemaFile='../graphql/publicApi/schema.graphql' --target=typescript --tagName=gql --includes='./api/public_api/**.ts'"
   },
