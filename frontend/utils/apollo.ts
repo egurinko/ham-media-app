@@ -1,7 +1,21 @@
-import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+import { getCookie } from '@/utils/cookies';
 
-const getApiUrl = (): string =>
-  process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
+const getApiUrl = (apiTarget: API_TARGET_TYPE): string => {
+  const base = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
+  if (apiTarget === API_TARGET.INTERNAL) {
+    return `${base}/internal_api/graphql`;
+  } else {
+    return `${base}/public_api/graphql`;
+  }
+};
+
+const getHttpLink = (apiTarget: API_TARGET_TYPE) => {
+  return createHttpLink({
+    uri: getApiUrl(apiTarget),
+  });
+};
 
 const API_TARGET = {
   INTERNAL: 'internal',
@@ -10,15 +24,23 @@ const API_TARGET = {
 
 type API_TARGET_TYPE = typeof API_TARGET[keyof typeof API_TARGET];
 
+const authLink = setContext((_, { headers }) => {
+  const token = getCookie();
+
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+const getLink = (apiTarget: API_TARGET_TYPE) =>
+  authLink.concat(getHttpLink(apiTarget));
+
 const getClient = (apiTarget: API_TARGET_TYPE) => {
-  let uri = '';
-  if (apiTarget === API_TARGET.INTERNAL) {
-    uri = `${getApiUrl()}/internal_api/graphql`;
-  } else {
-    uri = `${getApiUrl()}/public_api/graphql`;
-  }
   return new ApolloClient({
-    uri,
+    link: getLink(apiTarget),
     cache: new InMemoryCache(),
   });
 };

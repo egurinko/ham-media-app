@@ -11,8 +11,9 @@ import Image from 'next/image';
 import { MutationResult } from '@apollo/client';
 import { Mutation } from '@apollo/client/react/components';
 import { createSession } from '@/api/public_api/createSession';
-import { publicApiClient } from '@/utils/apollo';
 import type { CreateSession } from '@/api/public_api/__generated__/CreateSession';
+import { publicApiClient } from '@/utils/apollo';
+import { setCookie } from '@/utils/cookies';
 import Layout from '@/components/admin/Layout';
 
 const LoginMutation: React.VFC<{}> = () => {
@@ -36,8 +37,7 @@ const Login: React.VFC<OwnProps> = ({ login, result }) => {
 
   useEffect(() => {
     if (result.data) {
-      // TODO: set cookie
-      console.log({ result });
+      setCookie(result.data.createSession.token);
     }
   }, [result.data, result.error]);
 
