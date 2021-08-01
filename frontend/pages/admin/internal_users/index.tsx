@@ -1,15 +1,15 @@
 import ClientOnly from '@/components/ClientOnly';
-import Layout from '@/components/admin/Layout';
+import InternalLayout from '@/components/admin/InternalLayout';
 import Table from '@/components/admin/internal_users/Table';
 
 const Index: React.VFC<{}> = () => {
   return (
-    <Layout>
+    <InternalLayout>
       <p>ユーザ一覧</p>
       <ClientOnly>
         <Table />
       </ClientOnly>
-    </Layout>
+    </InternalLayout>
   );
 };
 

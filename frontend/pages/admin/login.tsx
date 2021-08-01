@@ -17,7 +17,7 @@ import { getSession } from '@/api/internal_api/getSession';
 import type { GetSession } from '@/api/internal_api/__generated__/GetSession';
 import { publicApiClient } from '@/utils/apollo';
 import { setCookie } from '@/utils/cookies';
-import Layout from '@/components/admin/Layout';
+import PublicLayout from '@/components/admin/PublicLayout';
 import ClientOnly from '@/components/ClientOnly';
 
 const LoginMutation: React.VFC<{}> = () => {
@@ -56,7 +56,7 @@ const Login: React.VFC<OwnProps> = ({ login, result }) => {
   }, [result.data, result.error]);
 
   return (
-    <Layout>
+    <PublicLayout>
       <Box
         p="2"
         d="flex"
@@ -123,7 +123,7 @@ const Login: React.VFC<OwnProps> = ({ login, result }) => {
           </form>
         </Box>
       </Box>
-    </Layout>
+    </PublicLayout>
   );
 };
 
