@@ -9,6 +9,7 @@ import {
 } from '@chakra-ui/react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import Card from '@/components/base/Card';
 import { MutationResult, useQuery } from '@apollo/client';
 import { Mutation } from '@apollo/client/react/components';
 import { createSession } from '@/api/public_api/createSession';
@@ -72,14 +73,7 @@ const Login: React.VFC<OwnProps> = ({ login, result }) => {
             height={55}
           />
         </Box>
-        <Box
-          bgColor="white"
-          shadow="md"
-          borderWidth="1px"
-          maxWidth="400px"
-          width="full"
-          p="6"
-        >
+        <Card>
           <form
             onSubmit={async (e) => {
               e.preventDefault();
@@ -121,7 +115,7 @@ const Login: React.VFC<OwnProps> = ({ login, result }) => {
               </Button>
             </Box>
           </form>
-        </Box>
+        </Card>
       </Box>
     </PublicLayout>
   );

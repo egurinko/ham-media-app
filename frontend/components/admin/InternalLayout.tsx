@@ -11,9 +11,9 @@ const PublicLayout: React.FC<Props> = ({ title = 'Ham ω Media', children }) => 
 
   return (
     <BaseLayout title={title}>
-      <HStack minH="100vh" spacing="0" justify="flex-start" align="flex-start">
+      <HStack spacing="0" justify="flex-start" align="flex-start">
         <Box>{isMobile ? null : <Sidebar />}</Box>
-        <Box>
+        <Box w="100%" p={[4, 16]}>
           <Fade in={true}>
             <main>{children}</main>
           </Fade>
