@@ -1,10 +1,10 @@
 import { stringArg, nonNull, mutationField } from 'nexus';
-import { internalUser } from '../types/internalUser';
+import { internalUserType } from '../types/internalUserType';
 import { hash } from 'bcrypt';
 
 export const createInternalUserField = mutationField((t) => {
   t.nonNull.field('createInternalUser', {
-    type: internalUser,
+    type: internalUserType,
     args: {
       name: nonNull(stringArg()),
       email: nonNull(stringArg()),

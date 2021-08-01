@@ -1,2 +1,2 @@
-export * from './internalUser';
+export * from './internalUserType';
 export * from './sessionType';
