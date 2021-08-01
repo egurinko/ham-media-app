@@ -8,21 +8,27 @@ import {
   FormLabel,
 } from '@chakra-ui/react';
 import Image from 'next/image';
-import { MutationResult } from '@apollo/client';
+import { useRouter } from 'next/router';
+import { MutationResult, useQuery } from '@apollo/client';
 import { Mutation } from '@apollo/client/react/components';
 import { createSession } from '@/api/public_api/createSession';
 import type { CreateSession } from '@/api/public_api/__generated__/CreateSession';
+import { getSession } from '@/api/internal_api/getSession';
+import type { GetSession } from '@/api/internal_api/__generated__/GetSession';
 import { publicApiClient } from '@/utils/apollo';
 import { setCookie } from '@/utils/cookies';
 import Layout from '@/components/admin/Layout';
+import ClientOnly from '@/components/ClientOnly';
 
 const LoginMutation: React.VFC<{}> = () => {
   return (
-    <Mutation client={publicApiClient} mutation={createSession}>
-      {(login, result: MutationResult<CreateSession>) => (
-        <Login login={login} result={result} />
-      )}
-    </Mutation>
+    <ClientOnly>
+      <Mutation client={publicApiClient} mutation={createSession}>
+        {(login, result: MutationResult<CreateSession>) => (
+          <Login login={login} result={result} />
+        )}
+      </Mutation>
+    </ClientOnly>
   );
 };
 
@@ -32,6 +38,14 @@ type OwnProps = {
 };
 
 const Login: React.VFC<OwnProps> = ({ login, result }) => {
+  const { data } = useQuery<GetSession>(getSession);
+  const router = useRouter();
+
+  if (data?.session.token) {
+    setCookie(data.session.token);
+    router.push('/admin/internal_users');
+  }
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
