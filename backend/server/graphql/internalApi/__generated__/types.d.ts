@@ -60,6 +60,7 @@ export interface NexusGenFieldTypes {
     createInternalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
   }
   Query: { // field return type
+    internalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     internalUsers: NexusGenRootTypes['InternalUser'][]; // [InternalUser!]!
     session: NexusGenRootTypes['Session']; // Session!
   }
@@ -78,6 +79,7 @@ export interface NexusGenFieldTypeNames {
     createInternalUser: 'InternalUser'
   }
   Query: { // field return type name
+    internalUser: 'InternalUser'
     internalUsers: 'InternalUser'
     session: 'Session'
   }
@@ -92,6 +94,11 @@ export interface NexusGenArgTypes {
       email: string; // String!
       name: string; // String!
       password: string; // String!
+    }
+  }
+  Query: {
+    internalUser: { // args
+      id: number; // Int!
     }
   }
 }
