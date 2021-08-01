@@ -35,6 +35,9 @@ export interface NexusGenObjects {
   }
   Mutation: {};
   Query: {};
+  Session: { // root type
+    token: string; // String!
+  }
 }
 
 export interface NexusGenInterfaces {
@@ -58,6 +61,10 @@ export interface NexusGenFieldTypes {
   }
   Query: { // field return type
     internalUsers: NexusGenRootTypes['InternalUser'][]; // [InternalUser!]!
+    session: NexusGenRootTypes['Session']; // Session!
+  }
+  Session: { // field return type
+    token: string; // String!
   }
 }
 
@@ -72,6 +79,10 @@ export interface NexusGenFieldTypeNames {
   }
   Query: { // field return type name
     internalUsers: 'InternalUser'
+    session: 'Session'
+  }
+  Session: { // field return type name
+    token: 'String'
   }
 }
 

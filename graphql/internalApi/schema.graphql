@@ -15,4 +15,9 @@ type Mutation {
 
 type Query {
   internalUsers: [InternalUser!]!
+  session: Session!
+}
+
+type Session {
+  token: String!
 }
