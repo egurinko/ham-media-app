@@ -5,11 +5,11 @@ type Props = {
   title?: string;
 };
 
-const Layout: React.FC<Props> = ({ title = 'Ham ω Media', children }) => (
+const BaseLayout: React.FC<Props> = ({ title = 'Ham ω Media', children }) => (
   <Box bgColor="background.main" minH="100vh">
     <Head title={title} />
-    <main>{children}</main>
+    {children}
   </Box>
 );
 
-export default Layout;
+export default BaseLayout;
