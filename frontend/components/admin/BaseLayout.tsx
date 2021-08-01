@@ -6,7 +6,7 @@ type Props = {
 };
 
 const BaseLayout: React.FC<Props> = ({ title = 'Ham ω Media', children }) => (
-  <Box bgColor="background.main" minH="100vh">
+  <Box bgColor="background.main" minH="100vh" color="text.main">
     <Head title={title} />
     {children}
   </Box>

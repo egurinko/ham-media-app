@@ -11,6 +11,9 @@ const theme = extendTheme({
     background: {
       main: '#F9FAFB',
     },
+    text: {
+      main: '#6F6F6F',
+    },
   },
   fonts,
 });
