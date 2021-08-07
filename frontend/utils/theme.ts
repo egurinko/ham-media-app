@@ -10,6 +10,7 @@ const theme = extendTheme({
     },
     background: {
       main: '#F9FAFB',
+      hover: '#FFF0EE',
     },
     text: {
       main: '#6F6F6F',

@@ -1,4 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
+import { useRouter } from 'next/router';
 import { ParsedUrlQuery } from 'querystring';
 import {
   Heading,
@@ -43,28 +44,42 @@ const Edit: React.VFC<Props> = ({ internalUser }) => {
     trigger,
     formState: { errors },
   } = useForm<FormInput>({ mode: 'onTouched' });
-  const [update, { data, loading }] = useMutation<
+  const [update, { data, loading, error }] = useMutation<
     UpdateInternalUser,
     UpdateInternalUserVariables
   >(updateInternalUser);
+  const router = useRouter();
 
-  const onSubmit: SubmitHandler<FormInput> = ({ name, email, password }) => {
+  const onSubmit: SubmitHandler<FormInput> = async ({
+    name,
+    email,
+    password,
+  }) => {
     trigger();
-    update({
-      variables: { id: internalUser.id, name, email, password },
-    });
+
+    try {
+      await update({
+        variables: { id: internalUser.id, name, email, password },
+      });
+      setTimeout(() => {
+        router.push('/admin/internal_users');
+      }, 2000);
+    } catch (e) {}
   };
 
   return (
     <InternalLayout>
       <Heading mb="4">ユーザ編集</Heading>
       {data ? (
-        <>
-          <Alert my="4" status="success">
-            <AlertIcon />
-            更新に成功しました
-          </Alert>
-        </>
+        <Alert my="4" status="success">
+          <AlertIcon />
+          更新に成功しました
+        </Alert>
+      ) : error ? (
+        <Alert my="4" status="success">
+          <AlertIcon />
+          {error.message}
+        </Alert>
       ) : null}
       <Card>
         <form onSubmit={handleSubmit(onSubmit)}>
