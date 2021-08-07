@@ -7,6 +7,8 @@ import {
   Td,
   Text,
   Skeleton,
+  Box,
+  Button,
 } from '@chakra-ui/react';
 import { useCallback } from 'react';
 import { useRouter } from 'next/router';
@@ -30,6 +32,16 @@ const Index: React.VFC<{}> = () => {
 
   return (
     <Card>
+      <Box textAlign="right">
+        <Button
+          bgColor="primary.main"
+          color="white"
+          size="lg"
+          onClick={() => router.push('/admin/internal_users/new')}
+        >
+          新規登録
+        </Button>
+      </Box>
       <Skeleton isLoaded={!loading}>
         <Table>
           <Thead>
@@ -52,6 +64,7 @@ const Index: React.VFC<{}> = () => {
                 _hover={{
                   background: 'background.hover',
                   color: 'primary.main',
+                  cursor: 'pointer',
                 }}
                 onClick={() => handleClick(internalUser.id)}
               >

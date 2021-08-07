@@ -1,6 +1,4 @@
-import { GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
-import { ParsedUrlQuery } from 'querystring';
 import {
   Heading,
   Box,
@@ -17,19 +15,11 @@ import { useMutation } from '@apollo/client';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import InternalLayout from '@/components/admin/InternalLayout';
 import Card from '@/components/base/Card';
-import { getInternalUsers } from '@/api/internal_api/getInternalUsers';
-import type { GetInternalUsers } from '@/api/internal_api/__generated__/GetInternalUsers';
-import { getInternalUser } from '@/api/internal_api/getInternalUser';
 import type {
-  UpdateInternalUser,
-  UpdateInternalUserVariables,
-} from '@/api/internal_api/__generated__/UpdateInternalUser';
-import { updateInternalUser } from '@/api/internal_api/updateInternalUser';
-import type {
-  GetInternalUser,
-  GetInternalUserVariables,
-} from '@/api/internal_api/__generated__/GetInternalUser';
-import { internalApiClient } from '@/utils/apollo';
+  CreateInternalUser,
+  CreateInternalUserVariables,
+} from '@/api/internal_api/__generated__/CreateInternalUser';
+import { createInternalUser } from '@/api/internal_api/createInternalUser';
 
 interface FormInput {
   name: string;
@@ -37,18 +27,18 @@ interface FormInput {
   password: string;
 }
 
-const Edit: React.VFC<Props> = ({ internalUser }) => {
+const New: React.VFC<Record<string, never>> = () => {
+  const router = useRouter();
   const {
     control,
     handleSubmit,
     trigger,
     formState: { errors },
   } = useForm<FormInput>({ mode: 'onTouched' });
-  const [update, { data, loading, error }] = useMutation<
-    UpdateInternalUser,
-    UpdateInternalUserVariables
-  >(updateInternalUser);
-  const router = useRouter();
+  const [create, { data, loading, error }] = useMutation<
+    CreateInternalUser,
+    CreateInternalUserVariables
+  >(createInternalUser);
 
   const onSubmit: SubmitHandler<FormInput> = async ({
     name,
@@ -58,8 +48,8 @@ const Edit: React.VFC<Props> = ({ internalUser }) => {
     trigger();
 
     try {
-      await update({
-        variables: { id: internalUser.id, name, email, password },
+      await create({
+        variables: { name, email, password },
       });
       setTimeout(() => {
         router.push('/admin/internal_users');
@@ -69,11 +59,11 @@ const Edit: React.VFC<Props> = ({ internalUser }) => {
 
   return (
     <InternalLayout>
-      <Heading mb="4">ユーザ編集</Heading>
+      <Heading mb="4">ユーザ登録</Heading>
       {data ? (
         <Alert my="4" status="success">
           <AlertIcon />
-          更新に成功しました
+          登録に成功しました
         </Alert>
       ) : error ? (
         <Alert my="4" status="error">
@@ -89,7 +79,6 @@ const Edit: React.VFC<Props> = ({ internalUser }) => {
               <Controller
                 name="name"
                 control={control}
-                defaultValue={internalUser.name}
                 rules={{ required: 'ユーザ名を入力してください' }}
                 render={({ field }) => (
                   <Input type="text" isInvalid={!!errors.name} {...field} />
@@ -104,7 +93,6 @@ const Edit: React.VFC<Props> = ({ internalUser }) => {
               <Controller
                 name="email"
                 control={control}
-                defaultValue={internalUser.email}
                 rules={{
                   required: 'メールアドレスを入力してください',
                   pattern: {
@@ -166,7 +154,7 @@ const Edit: React.VFC<Props> = ({ internalUser }) => {
               isLoading={loading}
               disabled={!!errors.name || !!errors.email || !!errors.password}
             >
-              更新する
+              新規登録する
             </Button>
           </Box>
         </form>
@@ -175,40 +163,4 @@ const Edit: React.VFC<Props> = ({ internalUser }) => {
   );
 };
 
-interface Params extends ParsedUrlQuery {
-  id: string;
-}
-
-interface Props {
-  internalUser: GetInternalUser['internalUser'];
-}
-
-export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  const { data } = await internalApiClient.query<GetInternalUsers>({
-    query: getInternalUsers,
-  });
-
-  const paths = data.internalUsers.map((internalUser) => ({
-    params: { id: String(internalUser.id) },
-  }));
-
-  return { paths, fallback: false };
-};
-
-export const getStaticProps: GetStaticProps<Props, Params> = async ({
-  params,
-}) => {
-  const { data } = await internalApiClient.query<
-    GetInternalUser,
-    GetInternalUserVariables
-  >({
-    query: getInternalUser,
-    variables: {
-      id: Number(params!.id),
-    },
-  });
-
-  return { props: { internalUser: data.internalUser } };
-};
-
-export default Edit;
+export default New;
