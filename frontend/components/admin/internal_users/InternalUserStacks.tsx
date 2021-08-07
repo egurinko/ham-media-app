@@ -8,16 +8,17 @@ import {
   Text,
   Skeleton,
   Box,
-  Button,
+  VStack,
+  Divider,
 } from '@chakra-ui/react';
 import { useCallback } from 'react';
 import { useRouter } from 'next/router';
-import Card from '../../base/Card';
+import UserProfile from '../../../assets/user_profile.svg';
 import { useQuery } from '@apollo/client';
 import { getInternalUsers } from '@/api/internal_api/getInternalUsers';
 import { GetInternalUsers } from '@/api/internal_api/__generated__/GetInternalUsers';
 
-const Index: React.VFC<{}> = () => {
+const InternalUserStacks: React.VFC<{}> = () => {
   const { data, loading, error } = useQuery<GetInternalUsers>(getInternalUsers);
   const router = useRouter();
 
@@ -31,19 +32,40 @@ const Index: React.VFC<{}> = () => {
   if (error) return <Text>エラーです</Text>;
 
   return (
-    <Card>
-      <Box textAlign="right">
-        <Button
-          bgColor="primary.main"
-          color="white"
-          size="lg"
-          onClick={() => router.push('/admin/internal_users/new')}
-        >
-          新規登録
-        </Button>
-      </Box>
-      <Skeleton isLoaded={!loading}>
-        <Table>
+    <Skeleton isLoaded={!loading}>
+      <VStack spacing="0" mt="4" alignItems="flex-start">
+        <Divider />
+        {data?.internalUsers.map((internalUser) => (
+          <>
+            <Box
+              w="100%"
+              key={internalUser.name}
+              display="flex"
+              flexDirection="row"
+              alignItems="center"
+              _hover={{
+                background: 'background.hover',
+                color: 'primary.main',
+                cursor: 'pointer',
+              }}
+              p="2"
+              onClick={() => handleClick(internalUser.id)}
+            >
+              <Box mr="4" fill="primary.main">
+                <UserProfile width={35} height={35} />
+              </Box>
+              <Box flex="1">
+                <Text fontSize="xl" fontWeight="bold">
+                  {internalUser.name}
+                </Text>
+                <Text fontSize="md">{internalUser.email}</Text>
+              </Box>
+            </Box>
+            <Divider />
+          </>
+        ))}
+      </VStack>
+      {/* <Table>
           <Thead>
             <Tr>
               <Th>
@@ -74,10 +96,9 @@ const Index: React.VFC<{}> = () => {
               </Tr>
             ))}
           </Tbody>
-        </Table>
-      </Skeleton>
-    </Card>
+        </Table> */}
+    </Skeleton>
   );
 };
 
-export default Index;
+export default InternalUserStacks;
