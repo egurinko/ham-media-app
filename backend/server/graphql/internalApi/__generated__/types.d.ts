@@ -58,6 +58,7 @@ export interface NexusGenFieldTypes {
   }
   Mutation: { // field return type
     createInternalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
+    deleteInternalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     updateInternalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
   }
   Query: { // field return type
@@ -78,6 +79,7 @@ export interface NexusGenFieldTypeNames {
   }
   Mutation: { // field return type name
     createInternalUser: 'InternalUser'
+    deleteInternalUser: 'InternalUser'
     updateInternalUser: 'InternalUser'
   }
   Query: { // field return type name
@@ -96,6 +98,9 @@ export interface NexusGenArgTypes {
       email: string; // String!
       name: string; // String!
       password: string; // String!
+    }
+    deleteInternalUser: { // args
+      id: number; // Int!
     }
     updateInternalUser: { // args
       email: string; // String!
