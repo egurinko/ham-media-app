@@ -10,7 +10,9 @@ import {
   FormErrorMessage,
   Alert,
   AlertIcon,
+  IconButton,
 } from '@chakra-ui/react';
+import { ChevronRightIcon } from '@chakra-ui/icons';
 import { useMutation } from '@apollo/client';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import InternalLayout from '@/components/admin/InternalLayout';
@@ -20,6 +22,7 @@ import type {
   CreateInternalUserVariables,
 } from '@/api/internal_api/__generated__/CreateInternalUser';
 import { createInternalUser } from '@/api/internal_api/createInternalUser';
+import { goAdminInternalUsers } from '@/utils/routes';
 
 interface FormInput {
   name: string;
@@ -52,14 +55,22 @@ const New: React.VFC<Record<string, never>> = () => {
         variables: { name, email, password },
       });
       setTimeout(() => {
-        router.push('/admin/internal_users');
+        goAdminInternalUsers(router);
       }, 2000);
     } catch (e) {}
   };
 
   return (
     <InternalLayout>
-      <Heading mb="4">ユーザ登録</Heading>
+      <Box d="flex" mb="4">
+        <IconButton
+          aria-label="link"
+          variant="link"
+          onClick={() => goAdminInternalUsers(router)}
+          icon={<ChevronRightIcon />}
+        />
+        <Heading size="sm">ユーザ登録</Heading>
+      </Box>
       {data ? (
         <Alert my="4" status="success">
           <AlertIcon />
