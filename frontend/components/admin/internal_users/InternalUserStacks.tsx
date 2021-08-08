@@ -14,14 +14,21 @@ import {
   ModalBody,
   ModalCloseButton,
   useDisclosure,
+  Alert,
+  AlertIcon,
 } from '@chakra-ui/react';
 import { DeleteIcon } from '@chakra-ui/icons';
-import { useCallback, useState } from 'react';
+import { useCallback, useState, Fragment } from 'react';
 import { useRouter } from 'next/router';
 import UserProfile from '../../../assets/user_profile.svg';
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { getInternalUsers } from '@/api/internal_api/getInternalUsers';
 import type { GetInternalUsers } from '@/api/internal_api/__generated__/GetInternalUsers';
+import { deleteInternalUser } from '@/api/internal_api/deleteInternalUser';
+import type {
+  DeleteInternalUser,
+  DeleteInternalUserVariables,
+} from '@/api/internal_api/__generated__/DeleteInternalUser';
 
 const InternalUserStacks: React.VFC<Record<string, never>> = () => {
   const { data, loading, error } = useQuery<GetInternalUsers>(getInternalUsers);
@@ -31,6 +38,23 @@ const InternalUserStacks: React.VFC<Record<string, never>> = () => {
   const [selectedInternalUser, setSelectedInternalUser] = useState<
     null | GetInternalUsers['internalUsers'][number]
   >(null);
+  const [
+    remove,
+    { data: mutationData, loading: mutationLoading, error: mutationError },
+  ] = useMutation<DeleteInternalUser, DeleteInternalUserVariables>(
+    deleteInternalUser,
+    {
+      update(cache) {
+        cache.modify({
+          fields: {
+            internalUsers(_ = [], { DELETE }) {
+              return DELETE;
+            },
+          },
+        });
+      },
+    }
+  );
 
   const handleClick = useCallback(
     (id: number) => {
@@ -39,18 +63,33 @@ const InternalUserStacks: React.VFC<Record<string, never>> = () => {
     [router]
   );
 
+  const handleDelete = useCallback(() => {
+    remove({ variables: { id: selectedInternalUser!.id } });
+    onClose();
+  }, [remove, selectedInternalUser, onClose]);
+
   if (error) return <Text>エラーです</Text>;
 
   return (
     <>
       <Skeleton isLoaded={!loading}>
         <VStack spacing="0" mt="4" alignItems="flex-start">
+          {mutationData ? (
+            <Alert my="4" status="success">
+              <AlertIcon />
+              削除に成功しました
+            </Alert>
+          ) : mutationError ? (
+            <Alert my="4" status="error">
+              <AlertIcon />
+              {mutationError.message}
+            </Alert>
+          ) : null}
           <Divider />
           {data?.internalUsers.map((internalUser) => (
-            <>
+            <Fragment key={internalUser.name}>
               <Box
                 w="100%"
-                key={internalUser.name}
                 display="flex"
                 flexDirection="row"
                 alignItems="center"
@@ -85,7 +124,7 @@ const InternalUserStacks: React.VFC<Record<string, never>> = () => {
                 </Box>
               </Box>
               <Divider />
-            </>
+            </Fragment>
           ))}
         </VStack>
       </Skeleton>
@@ -99,7 +138,12 @@ const InternalUserStacks: React.VFC<Record<string, never>> = () => {
             <Button variant="ghost" mr={3} onClick={onClose}>
               キャンセル
             </Button>
-            <Button bgColor="primary.main" color="white">
+            <Button
+              bgColor="primary.main"
+              color="white"
+              isLoading={mutationLoading}
+              onClick={handleDelete}
+            >
               削除する
             </Button>
           </ModalFooter>
