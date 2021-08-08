@@ -1,6 +1,7 @@
 import { useMediaQuery, Fade, HStack, Box } from '@chakra-ui/react';
 import BaseLayout from './BaseLayout';
 import Sidebar from './Sidebar';
+import Header from './Header';
 
 type Props = {
   title?: string;
@@ -11,11 +12,20 @@ const PublicLayout: React.FC<Props> = ({ title = 'Ham ω Media', children }) => 
 
   return (
     <BaseLayout title={title}>
-      <HStack spacing="0" justify="flex-start" align="flex-start">
-        <Box>{isMobile ? null : <Sidebar />}</Box>
-        <Box w="100%" p={[4, 16]}>
+      {isMobile ? <Header /> : null}
+      <HStack
+        minH="100vh"
+        pt={[16, 0]}
+        spacing="0"
+        justify="flex-start"
+        align="flex-start"
+      >
+        {isMobile ? null : <Sidebar />}
+        <Box w="100%" pl={[0, 250]}>
           <Fade in={true}>
-            <main>{children}</main>
+            <Box as="main" p={[4, 16]}>
+              {children}
+            </Box>
           </Fade>
         </Box>
       </HStack>
