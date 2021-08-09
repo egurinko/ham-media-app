@@ -10,12 +10,11 @@ import {
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import Card from '@/components/base/Card';
-import { MutationResult, useQuery } from '@apollo/client';
+import { MutationResult } from '@apollo/client';
 import { Mutation } from '@apollo/client/react/components';
 import { createSession } from '@/api/public_api/createSession';
-import type { CreateSession } from '@/api/public_api/__generated__/CreateSession';
-import { getSession } from '@/api/internal_api/getSession';
-import type { GetSession } from '@/api/internal_api/__generated__/GetSession';
+import type { CreateSessionMutation } from '@/api/public_api/types';
+import { useGetSessionQuery } from '@/api/internal_api/types';
 import { publicApiClient } from '@/utils/apollo';
 import { setCookie } from '@/utils/cookies';
 import PublicLayout from '@/components/admin/PublicLayout';
@@ -25,7 +24,7 @@ const LoginMutation: React.VFC<{}> = () => {
   return (
     <ClientOnly>
       <Mutation client={publicApiClient} mutation={createSession}>
-        {(login, result: MutationResult<CreateSession>) => (
+        {(login, result: MutationResult<CreateSessionMutation>) => (
           <Login login={login} result={result} />
         )}
       </Mutation>
@@ -35,11 +34,11 @@ const LoginMutation: React.VFC<{}> = () => {
 
 type OwnProps = {
   login: any;
-  result: MutationResult<CreateSession>;
+  result: MutationResult<CreateSessionMutation>;
 };
 
 const Login: React.VFC<OwnProps> = ({ login, result }) => {
-  const { data } = useQuery<GetSession>(getSession);
+  const { data } = useGetSessionQuery();
   const router = useRouter();
 
   if (data?.session.token) {

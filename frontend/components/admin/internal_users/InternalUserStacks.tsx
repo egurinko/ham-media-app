@@ -21,43 +21,37 @@ import { DeleteIcon } from '@chakra-ui/icons';
 import { useCallback, useState, Fragment } from 'react';
 import { useRouter } from 'next/router';
 import UserProfile from '../../../assets/user_profile.svg';
-import { useQuery, useMutation } from '@apollo/client';
-import { getInternalUsers } from '@/api/internal_api/getInternalUsers';
-import type { GetInternalUsers } from '@/api/internal_api/__generated__/GetInternalUsers';
-import { deleteInternalUser } from '@/api/internal_api/deleteInternalUser';
-import type {
-  DeleteInternalUser,
-  DeleteInternalUserVariables,
-} from '@/api/internal_api/__generated__/DeleteInternalUser';
+import {
+  useGetInternalUsersQuery,
+  useDeleteInternalUserMutation,
+} from '@/api/internal_api/types';
+import type { GetInternalUsersQuery } from '@/api/internal_api/types';
 
 const InternalUserStacks: React.VFC<Record<string, never>> = () => {
-  const { data, loading, error } = useQuery<GetInternalUsers>(getInternalUsers);
+  const { data, loading, error } = useGetInternalUsersQuery();
   const router = useRouter();
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [selectedInternalUser, setSelectedInternalUser] = useState<
-    null | GetInternalUsers['internalUsers'][number]
+    null | GetInternalUsersQuery['internalUsers'][number]
   >(null);
   const [
     remove,
     { data: mutationData, loading: mutationLoading, error: mutationError },
-  ] = useMutation<DeleteInternalUser, DeleteInternalUserVariables>(
-    deleteInternalUser,
-    {
-      update(cache) {
-        cache.modify({
-          fields: {
-            internalUsers(_ = [], { DELETE }) {
-              return DELETE;
-            },
+  ] = useDeleteInternalUserMutation({
+    update(cache) {
+      cache.modify({
+        fields: {
+          internalUsers(_ = [], { DELETE }) {
+            return DELETE;
           },
-        });
-      },
-    }
-  );
+        },
+      });
+    },
+  });
 
   const handleClick = useCallback(
-    (id: number) => {
+    (id: bigint) => {
       router.push(`/admin/internal_users/${id}/edit`);
     },
     [router]

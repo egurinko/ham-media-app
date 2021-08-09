@@ -13,15 +13,10 @@ import {
   IconButton,
 } from '@chakra-ui/react';
 import { ChevronRightIcon } from '@chakra-ui/icons';
-import { useMutation } from '@apollo/client';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import InternalLayout from '@/components/admin/InternalLayout';
 import Card from '@/components/base/Card';
-import type {
-  CreateInternalUser,
-  CreateInternalUserVariables,
-} from '@/api/internal_api/__generated__/CreateInternalUser';
-import { createInternalUser } from '@/api/internal_api/createInternalUser';
+import { useCreateInternalUserMutation } from '@/api/internal_api/types';
 import { goAdminInternalUsers } from '@/utils/routes';
 
 interface FormInput {
@@ -38,10 +33,7 @@ const New: React.VFC<Record<string, never>> = () => {
     trigger,
     formState: { errors },
   } = useForm<FormInput>({ mode: 'onTouched' });
-  const [create, { data, loading, error }] = useMutation<
-    CreateInternalUser,
-    CreateInternalUserVariables
-  >(createInternalUser);
+  const [create, { data, loading, error }] = useCreateInternalUserMutation();
 
   const onSubmit: SubmitHandler<FormInput> = async ({
     name,

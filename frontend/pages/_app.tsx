@@ -1,6 +1,7 @@
 import type { AppProps } from 'next/app';
 import { ChakraProvider, ColorModeProvider } from '@chakra-ui/react';
 import { ApolloProvider } from '@apollo/client';
+import 'json-bigint-patch';
 import { internalApiClient } from '@/utils/apollo';
 import { theme } from '@/utils/theme';
 

@@ -15,22 +15,17 @@ import {
   IconButton,
 } from '@chakra-ui/react';
 import { ChevronRightIcon } from '@chakra-ui/icons';
-import { useMutation } from '@apollo/client';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import InternalLayout from '@/components/admin/InternalLayout';
 import Card from '@/components/base/Card';
 import { getInternalUsers } from '@/api/internal_api/getInternalUsers';
-import type { GetInternalUsers } from '@/api/internal_api/__generated__/GetInternalUsers';
+import type { GetInternalUsersQuery } from '@/api/internal_api/types';
 import { getInternalUser } from '@/api/internal_api/getInternalUser';
 import type {
-  UpdateInternalUser,
-  UpdateInternalUserVariables,
-} from '@/api/internal_api/__generated__/UpdateInternalUser';
-import { updateInternalUser } from '@/api/internal_api/updateInternalUser';
-import type {
-  GetInternalUser,
-  GetInternalUserVariables,
-} from '@/api/internal_api/__generated__/GetInternalUser';
+  GetInternalUserQuery,
+  GetInternalUserQueryVariables,
+} from '@/api/internal_api/types';
+import { useUpdateInternalUserMutation } from '@/api/internal_api/types';
 import { internalApiClient } from '@/utils/apollo';
 import { goAdminInternalUsers } from '@/utils/routes';
 
@@ -47,10 +42,7 @@ const Edit: React.VFC<Props> = ({ internalUser }) => {
     trigger,
     formState: { errors },
   } = useForm<FormInput>({ mode: 'onTouched' });
-  const [update, { data, loading, error }] = useMutation<
-    UpdateInternalUser,
-    UpdateInternalUserVariables
-  >(updateInternalUser);
+  const [update, { data, loading, error }] = useUpdateInternalUserMutation();
   const router = useRouter();
 
   const onSubmit: SubmitHandler<FormInput> = async ({
@@ -191,11 +183,11 @@ interface Params extends ParsedUrlQuery {
 }
 
 interface Props {
-  internalUser: GetInternalUser['internalUser'];
+  internalUser: GetInternalUserQuery['internalUser'];
 }
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  const { data } = await internalApiClient.query<GetInternalUsers>({
+  const { data } = await internalApiClient.query<GetInternalUsersQuery>({
     query: getInternalUsers,
   });
 
@@ -210,12 +202,12 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
   params,
 }) => {
   const { data } = await internalApiClient.query<
-    GetInternalUser,
-    GetInternalUserVariables
+    GetInternalUserQuery,
+    GetInternalUserQueryVariables
   >({
     query: getInternalUser,
     variables: {
-      id: Number(params!.id),
+      id: BigInt(params!.id),
     },
   });
 
