@@ -5,8 +5,25 @@
 
 
 import type { Context } from "./../context"
-
-
+import type { core } from "nexus"
+declare global {
+  interface NexusGenCustomInputMethods<TypeName extends string> {
+    /**
+     * The `BigInt` scalar type represents non-fractional signed whole numeric values.
+     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt
+     */
+    bigInt<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "BigInt";
+  }
+}
+declare global {
+  interface NexusGenCustomOutputMethods<TypeName extends string> {
+    /**
+     * The `BigInt` scalar type represents non-fractional signed whole numeric values.
+     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt
+     */
+    bigInt<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "BigInt";
+  }
+}
 
 
 declare global {
@@ -25,6 +42,7 @@ export interface NexusGenScalars {
   Float: number
   Boolean: boolean
   ID: string
+  BigInt: any
 }
 
 export interface NexusGenObjects {

@@ -1,4 +1,4 @@
-import { intArg, stringArg, nonNull, mutationField } from 'nexus';
+import { arg, stringArg, nonNull, mutationField } from 'nexus';
 import { internalUserType } from '../types/internalUserType';
 import { hash } from 'bcrypt';
 
@@ -6,7 +6,7 @@ export const updateInternalUserField = mutationField((t) => {
   t.nonNull.field('updateInternalUser', {
     type: internalUserType,
     args: {
-      id: nonNull(intArg()),
+      id: nonNull(arg({ type: 'BigInt' })),
       name: nonNull(stringArg()),
       email: nonNull(stringArg()),
       password: nonNull(stringArg()),

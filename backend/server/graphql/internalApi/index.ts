@@ -2,13 +2,14 @@ import { join } from 'path';
 import { FastifyPluginCallback } from 'fastify';
 import mercurius from 'mercurius';
 import { makeSchema } from 'nexus';
+import { BigInt } from 'nexus-prisma/scalars';
 import * as types from './types';
 import * as queryTypes from './queries';
 import * as mutationTypes from './mutations';
 import { context } from './context';
 
 const schema = makeSchema({
-  types: [types, queryTypes, mutationTypes],
+  types: [BigInt, types, queryTypes, mutationTypes],
   outputs: {
     typegen: join(__dirname, '__generated__', 'types.d.ts'),
     schema: join(

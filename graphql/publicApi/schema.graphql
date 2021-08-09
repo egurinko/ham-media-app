@@ -2,6 +2,12 @@
 ### Do not make changes to this file directly
 
 
+"""
+The `BigInt` scalar type represents non-fractional signed whole numeric values.
+@see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt
+"""
+scalar BigInt
+
 type CreateSessionType {
   token: String!
 }

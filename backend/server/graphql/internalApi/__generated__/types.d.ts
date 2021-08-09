@@ -5,8 +5,25 @@
 
 
 import type { Context } from "./../context"
-
-
+import type { core } from "nexus"
+declare global {
+  interface NexusGenCustomInputMethods<TypeName extends string> {
+    /**
+     * The `BigInt` scalar type represents non-fractional signed whole numeric values.
+     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt
+     */
+    bigInt<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "BigInt";
+  }
+}
+declare global {
+  interface NexusGenCustomOutputMethods<TypeName extends string> {
+    /**
+     * The `BigInt` scalar type represents non-fractional signed whole numeric values.
+     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt
+     */
+    bigInt<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "BigInt";
+  }
+}
 
 
 declare global {
@@ -25,12 +42,13 @@ export interface NexusGenScalars {
   Float: number
   Boolean: boolean
   ID: string
+  BigInt: any
 }
 
 export interface NexusGenObjects {
   InternalUser: { // root type
     email: string; // String!
-    id: number; // Int!
+    id: NexusGenScalars['BigInt']; // BigInt!
     name: string; // String!
   }
   Mutation: {};
@@ -53,7 +71,7 @@ export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 export interface NexusGenFieldTypes {
   InternalUser: { // field return type
     email: string; // String!
-    id: number; // Int!
+    id: NexusGenScalars['BigInt']; // BigInt!
     name: string; // String!
   }
   Mutation: { // field return type
@@ -74,7 +92,7 @@ export interface NexusGenFieldTypes {
 export interface NexusGenFieldTypeNames {
   InternalUser: { // field return type name
     email: 'String'
-    id: 'Int'
+    id: 'BigInt'
     name: 'String'
   }
   Mutation: { // field return type name
@@ -100,18 +118,18 @@ export interface NexusGenArgTypes {
       password: string; // String!
     }
     deleteInternalUser: { // args
-      id: number; // Int!
+      id: NexusGenScalars['BigInt']; // BigInt!
     }
     updateInternalUser: { // args
       email: string; // String!
-      id: number; // Int!
+      id: NexusGenScalars['BigInt']; // BigInt!
       name: string; // String!
       password: string; // String!
     }
   }
   Query: {
     internalUser: { // args
-      id: number; // Int!
+      id: NexusGenScalars['BigInt']; // BigInt!
     }
   }
 }
