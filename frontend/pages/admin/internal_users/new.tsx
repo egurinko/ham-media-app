@@ -13,6 +13,7 @@ import {
   IconButton,
 } from '@chakra-ui/react';
 import { ChevronRightIcon } from '@chakra-ui/icons';
+import { gql } from '@apollo/client';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import InternalLayout from '@/components/admin/InternalLayout';
 import Card from '@/components/base/Card';
@@ -45,6 +46,35 @@ const New: React.VFC<Record<string, never>> = () => {
     try {
       await create({
         variables: { name, email, password },
+        update(cache, { data }) {
+          cache.modify({
+            fields: {
+              internalUsers(currents = [], { readField }) {
+                const adding = cache.writeFragment({
+                  data: data?.createInternalUser,
+                  fragment: gql`
+                    fragment NewInternalUser on InternalUser {
+                      id
+                      name
+                      email
+                    }
+                  `,
+                });
+
+                if (
+                  currents.some(
+                    (ref) =>
+                      readField('id', ref) === data?.createInternalUser.id
+                  )
+                ) {
+                  return currents;
+                }
+
+                return [...currents, adding];
+              },
+            },
+          });
+        },
       });
       setTimeout(() => {
         goAdminInternalUsers(router);
