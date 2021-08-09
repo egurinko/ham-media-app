@@ -6,9 +6,7 @@
     "dev": "next dev -p 8080",
     "build": "next build",
     "start": "next start",
-    "codegen": "yarn codegen:internal && yarn codegen:public",
-    "codegen:internal": "yarn apollo codegen:generate --localSchemaFile='../graphql/internalApi/schema.graphql' --target=typescript --tagName=gql --includes='./api/internal_api/**.ts'",
-    "codegen:public": "yarn apollo codegen:generate --localSchemaFile='../graphql/publicApi/schema.graphql' --target=typescript --tagName=gql --includes='./api/public_api/**.ts'"
+    "generate": "graphql-codegen"
   },
   "dependencies": {
     "@apollo/client": "^3.3.21",
@@ -24,6 +22,10 @@
     "react-hook-form": "^7.12.2"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^2.0.1",
+    "@graphql-codegen/typescript": "^2.0.0",
+    "@graphql-codegen/typescript-operations": "^2.0.1",
+    "@graphql-codegen/typescript-react-apollo": "^3.0.0",
     "@types/js-cookie": "^2.2.7",
     "@types/react": "17.0.14",
     "apollo": "^2.33.4",
