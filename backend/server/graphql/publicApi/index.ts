@@ -1,7 +1,7 @@
 import { join } from 'path';
 import { FastifyPluginCallback } from 'fastify';
 import mercurius from 'mercurius';
-import { makeSchema } from 'nexus';
+import { makeSchema, connectionPlugin } from 'nexus';
 import { BigInt } from 'nexus-prisma/scalars';
 import * as mutationTypes from './mutations';
 import * as types from './types';
@@ -17,6 +17,7 @@ const schema = makeSchema({
     module: join(__dirname, 'context.ts'),
     export: 'Context',
   },
+  plugins: [connectionPlugin()],
 });
 
 const publicApi: FastifyPluginCallback = async (app, _options) => {
