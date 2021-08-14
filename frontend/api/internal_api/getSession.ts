@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const getSession = gql`
-  query GetSession {
+  query InternalGetSession {
     session {
       token
     }

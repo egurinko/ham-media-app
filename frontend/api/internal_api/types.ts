@@ -20,6 +20,108 @@ export type Scalars = {
 };
 
 
+/** A hospital */
+export type Hospital = {
+  __typename?: 'Hospital';
+  deleted: Scalars['Boolean'];
+  hospitalAddress?: Maybe<HospitalAddress>;
+  hospitalBusinessForm?: Maybe<HospitalBusinessForm>;
+  hospitalCertificationOption?: Maybe<HospitalCertificationOption>;
+  hospitalInternalReputation?: Maybe<HospitalInternalReputation>;
+  hospitalNightServiceOption?: Maybe<HospitalNightServiceOption>;
+  hospitalNightUrgentActionOption?: Maybe<HospitalNightUrgentActionOption>;
+  hospitalReservationStatus?: Maybe<HospitalReservationStatus>;
+  id: Scalars['BigInt'];
+  internal_memo: Scalars['String'];
+  name: Scalars['String'];
+  url: Scalars['String'];
+};
+
+/** A hospital address */
+export type HospitalAddress = {
+  __typename?: 'HospitalAddress';
+  address: Scalars['String'];
+  hospitalAddressGeoLocation?: Maybe<HospitalAddressGeoLocation>;
+  id: Scalars['BigInt'];
+  phone_number: Scalars['String'];
+  prefecture: Prefecture;
+};
+
+/** A hospital address geo location */
+export type HospitalAddressGeoLocation = {
+  __typename?: 'HospitalAddressGeoLocation';
+  id: Scalars['BigInt'];
+  latitude: Scalars['Float'];
+  longitude: Scalars['Float'];
+};
+
+/** A hospital business form */
+export type HospitalBusinessForm = {
+  __typename?: 'HospitalBusinessForm';
+  business_hour: Scalars['String'];
+  closed_day: Scalars['String'];
+  id: Scalars['BigInt'];
+  insurance_enabled: Scalars['String'];
+  remark: Scalars['String'];
+};
+
+/** A hospital certification option */
+export type HospitalCertificationOption = {
+  __typename?: 'HospitalCertificationOption';
+  id: Scalars['BigInt'];
+  jsava_registered: Scalars['String'];
+  nichiju_registered: Scalars['String'];
+};
+
+export type HospitalConnection = {
+  __typename?: 'HospitalConnection';
+  /** https://facebook.github.io/relay/graphql/connections.htm#sec-Edge-Types */
+  edges?: Maybe<Array<Maybe<HospitalEdge>>>;
+  /** https://facebook.github.io/relay/graphql/connections.htm#sec-undefined.PageInfo */
+  pageInfo: PageInfo;
+};
+
+export type HospitalEdge = {
+  __typename?: 'HospitalEdge';
+  /** https://facebook.github.io/relay/graphql/connections.htm#sec-Cursor */
+  cursor: Scalars['String'];
+  /** https://facebook.github.io/relay/graphql/connections.htm#sec-Node */
+  node?: Maybe<Hospital>;
+};
+
+/** A hospital internal reputation */
+export type HospitalInternalReputation = {
+  __typename?: 'HospitalInternalReputation';
+  id: Scalars['BigInt'];
+  remark: Scalars['String'];
+  star: Scalars['Int'];
+};
+
+/** A hospital night service option */
+export type HospitalNightServiceOption = {
+  __typename?: 'HospitalNightServiceOption';
+  id: Scalars['BigInt'];
+  remark: Scalars['String'];
+  status: Scalars['String'];
+};
+
+/** A hospital night urgent action option */
+export type HospitalNightUrgentActionOption = {
+  __typename?: 'HospitalNightUrgentActionOption';
+  id: Scalars['BigInt'];
+  status: Scalars['String'];
+};
+
+/** A hospital reservation status */
+export type HospitalReservationStatus = {
+  __typename?: 'HospitalReservationStatus';
+  id: Scalars['BigInt'];
+  remark: Scalars['String'];
+  required: Scalars['String'];
+  reservable: Scalars['String'];
+};
+
+/** A internal user */
 export type InternalUser = {
   __typename?: 'InternalUser';
   email: Scalars['String'];
@@ -54,11 +156,41 @@ export type MutationUpdateInternalUserArgs = {
   password: Scalars['String'];
 };
 
+/** PageInfo cursor, as defined in https://facebook.github.io/relay/graphql/connections.htm#sec-undefined.PageInfo */
+export type PageInfo = {
+  __typename?: 'PageInfo';
+  /** The cursor corresponding to the last nodes in edges. Null if the connection is empty. */
+  endCursor?: Maybe<Scalars['String']>;
+  /** Used to indicate whether more edges exist following the set defined by the clients arguments. */
+  hasNextPage: Scalars['Boolean'];
+  /** Used to indicate whether more edges exist prior to the set defined by the clients arguments. */
+  hasPreviousPage: Scalars['Boolean'];
+  /** The cursor corresponding to the first nodes in edges. Null if the connection is empty. */
+  startCursor?: Maybe<Scalars['String']>;
+};
+
+/** A prefecture */
+export type Prefecture = {
+  __typename?: 'Prefecture';
+  id: Scalars['BigInt'];
+  name: Scalars['String'];
+  region: Region;
+};
+
 export type Query = {
   __typename?: 'Query';
+  hospitalConnection?: Maybe<HospitalConnection>;
   internalUser: InternalUser;
   internalUsers: Array<InternalUser>;
   session: Session;
+};
+
+
+export type QueryHospitalConnectionArgs = {
+  after?: Maybe<Scalars['String']>;
+  before?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
 };
 
 
@@ -66,45 +198,60 @@ export type QueryInternalUserArgs = {
   id: Scalars['BigInt'];
 };
 
+/** A region */
+export type Region = {
+  __typename?: 'Region';
+  id: Scalars['BigInt'];
+  name: Scalars['String'];
+};
+
 export type Session = {
   __typename?: 'Session';
   token: Scalars['String'];
 };
 
-export type CreateInternalUserMutationVariables = Exact<{
+export type InternalCreateInternalUserMutationVariables = Exact<{
   name: Scalars['String'];
   email: Scalars['String'];
   password: Scalars['String'];
 }>;
 
 
-export type CreateInternalUserMutation = { __typename?: 'Mutation', createInternalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string } };
+export type InternalCreateInternalUserMutation = { __typename?: 'Mutation', createInternalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string } };
 
-export type DeleteInternalUserMutationVariables = Exact<{
+export type InternalDeleteInternalUserMutationVariables = Exact<{
   id: Scalars['BigInt'];
 }>;
 
 
-export type DeleteInternalUserMutation = { __typename?: 'Mutation', deleteInternalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string } };
+export type InternalDeleteInternalUserMutation = { __typename?: 'Mutation', deleteInternalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string } };
 
-export type GetInternalUserQueryVariables = Exact<{
+export type InternalGetHospitalConnectionQueryVariables = Exact<{
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+}>;
+
+
+export type InternalGetHospitalConnectionQuery = { __typename?: 'Query', hospitalConnection?: Maybe<{ __typename?: 'HospitalConnection', edges?: Maybe<Array<Maybe<{ __typename?: 'HospitalEdge', node?: Maybe<{ __typename?: 'Hospital', id: BigInt, name: string, url: string, deleted: boolean, hospitalAddress?: Maybe<{ __typename?: 'HospitalAddress', address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string } }>, hospitalInternalReputation?: Maybe<{ __typename?: 'HospitalInternalReputation', star: number }> }> }>>>, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, hasPreviousPage: boolean, startCursor?: Maybe<string>, endCursor?: Maybe<string> } }> };
+
+export type InternalGetInternalUserQueryVariables = Exact<{
   id: Scalars['BigInt'];
 }>;
 
 
-export type GetInternalUserQuery = { __typename?: 'Query', internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string } };
+export type InternalGetInternalUserQuery = { __typename?: 'Query', internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string } };
 
-export type GetInternalUsersQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GetInternalUsersQuery = { __typename?: 'Query', internalUsers: Array<{ __typename?: 'InternalUser', id: BigInt, email: string, name: string }> };
-
-export type GetSessionQueryVariables = Exact<{ [key: string]: never; }>;
+export type InternalGetInternalUsersQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetSessionQuery = { __typename?: 'Query', session: { __typename?: 'Session', token: string } };
+export type InternalGetInternalUsersQuery = { __typename?: 'Query', internalUsers: Array<{ __typename?: 'InternalUser', id: BigInt, email: string, name: string }> };
 
-export type UpdateInternalUserMutationVariables = Exact<{
+export type InternalGetSessionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type InternalGetSessionQuery = { __typename?: 'Query', session: { __typename?: 'Session', token: string } };
+
+export type InternalUpdateInternalUserMutationVariables = Exact<{
   id: Scalars['BigInt'];
   name: Scalars['String'];
   email: Scalars['String'];
@@ -112,11 +259,11 @@ export type UpdateInternalUserMutationVariables = Exact<{
 }>;
 
 
-export type UpdateInternalUserMutation = { __typename?: 'Mutation', updateInternalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string } };
+export type InternalUpdateInternalUserMutation = { __typename?: 'Mutation', updateInternalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string } };
 
 
-export const CreateInternalUserDocument = gql`
-    mutation CreateInternalUser($name: String!, $email: String!, $password: String!) {
+export const InternalCreateInternalUserDocument = gql`
+    mutation InternalCreateInternalUser($name: String!, $email: String!, $password: String!) {
   createInternalUser(name: $name, email: $email, password: $password) {
     id
     email
@@ -124,20 +271,20 @@ export const CreateInternalUserDocument = gql`
   }
 }
     `;
-export type CreateInternalUserMutationFn = Apollo.MutationFunction<CreateInternalUserMutation, CreateInternalUserMutationVariables>;
+export type InternalCreateInternalUserMutationFn = Apollo.MutationFunction<InternalCreateInternalUserMutation, InternalCreateInternalUserMutationVariables>;
 
 /**
- * __useCreateInternalUserMutation__
+ * __useInternalCreateInternalUserMutation__
  *
- * To run a mutation, you first call `useCreateInternalUserMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useCreateInternalUserMutation` returns a tuple that includes:
+ * To run a mutation, you first call `useInternalCreateInternalUserMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInternalCreateInternalUserMutation` returns a tuple that includes:
  * - A mutate function that you can call at any time to execute the mutation
  * - An object with fields that represent the current status of the mutation's execution
  *
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const [createInternalUserMutation, { data, loading, error }] = useCreateInternalUserMutation({
+ * const [internalCreateInternalUserMutation, { data, loading, error }] = useInternalCreateInternalUserMutation({
  *   variables: {
  *      name: // value for 'name'
  *      email: // value for 'email'
@@ -145,15 +292,15 @@ export type CreateInternalUserMutationFn = Apollo.MutationFunction<CreateInterna
  *   },
  * });
  */
-export function useCreateInternalUserMutation(baseOptions?: Apollo.MutationHookOptions<CreateInternalUserMutation, CreateInternalUserMutationVariables>) {
+export function useInternalCreateInternalUserMutation(baseOptions?: Apollo.MutationHookOptions<InternalCreateInternalUserMutation, InternalCreateInternalUserMutationVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<CreateInternalUserMutation, CreateInternalUserMutationVariables>(CreateInternalUserDocument, options);
+        return Apollo.useMutation<InternalCreateInternalUserMutation, InternalCreateInternalUserMutationVariables>(InternalCreateInternalUserDocument, options);
       }
-export type CreateInternalUserMutationHookResult = ReturnType<typeof useCreateInternalUserMutation>;
-export type CreateInternalUserMutationResult = Apollo.MutationResult<CreateInternalUserMutation>;
-export type CreateInternalUserMutationOptions = Apollo.BaseMutationOptions<CreateInternalUserMutation, CreateInternalUserMutationVariables>;
-export const DeleteInternalUserDocument = gql`
-    mutation DeleteInternalUser($id: BigInt!) {
+export type InternalCreateInternalUserMutationHookResult = ReturnType<typeof useInternalCreateInternalUserMutation>;
+export type InternalCreateInternalUserMutationResult = Apollo.MutationResult<InternalCreateInternalUserMutation>;
+export type InternalCreateInternalUserMutationOptions = Apollo.BaseMutationOptions<InternalCreateInternalUserMutation, InternalCreateInternalUserMutationVariables>;
+export const InternalDeleteInternalUserDocument = gql`
+    mutation InternalDeleteInternalUser($id: BigInt!) {
   deleteInternalUser(id: $id) {
     id
     email
@@ -161,34 +308,93 @@ export const DeleteInternalUserDocument = gql`
   }
 }
     `;
-export type DeleteInternalUserMutationFn = Apollo.MutationFunction<DeleteInternalUserMutation, DeleteInternalUserMutationVariables>;
+export type InternalDeleteInternalUserMutationFn = Apollo.MutationFunction<InternalDeleteInternalUserMutation, InternalDeleteInternalUserMutationVariables>;
 
 /**
- * __useDeleteInternalUserMutation__
+ * __useInternalDeleteInternalUserMutation__
  *
- * To run a mutation, you first call `useDeleteInternalUserMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useDeleteInternalUserMutation` returns a tuple that includes:
+ * To run a mutation, you first call `useInternalDeleteInternalUserMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInternalDeleteInternalUserMutation` returns a tuple that includes:
  * - A mutate function that you can call at any time to execute the mutation
  * - An object with fields that represent the current status of the mutation's execution
  *
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const [deleteInternalUserMutation, { data, loading, error }] = useDeleteInternalUserMutation({
+ * const [internalDeleteInternalUserMutation, { data, loading, error }] = useInternalDeleteInternalUserMutation({
  *   variables: {
  *      id: // value for 'id'
  *   },
  * });
  */
-export function useDeleteInternalUserMutation(baseOptions?: Apollo.MutationHookOptions<DeleteInternalUserMutation, DeleteInternalUserMutationVariables>) {
+export function useInternalDeleteInternalUserMutation(baseOptions?: Apollo.MutationHookOptions<InternalDeleteInternalUserMutation, InternalDeleteInternalUserMutationVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<DeleteInternalUserMutation, DeleteInternalUserMutationVariables>(DeleteInternalUserDocument, options);
+        return Apollo.useMutation<InternalDeleteInternalUserMutation, InternalDeleteInternalUserMutationVariables>(InternalDeleteInternalUserDocument, options);
       }
-export type DeleteInternalUserMutationHookResult = ReturnType<typeof useDeleteInternalUserMutation>;
-export type DeleteInternalUserMutationResult = Apollo.MutationResult<DeleteInternalUserMutation>;
-export type DeleteInternalUserMutationOptions = Apollo.BaseMutationOptions<DeleteInternalUserMutation, DeleteInternalUserMutationVariables>;
-export const GetInternalUserDocument = gql`
-    query GetInternalUser($id: BigInt!) {
+export type InternalDeleteInternalUserMutationHookResult = ReturnType<typeof useInternalDeleteInternalUserMutation>;
+export type InternalDeleteInternalUserMutationResult = Apollo.MutationResult<InternalDeleteInternalUserMutation>;
+export type InternalDeleteInternalUserMutationOptions = Apollo.BaseMutationOptions<InternalDeleteInternalUserMutation, InternalDeleteInternalUserMutationVariables>;
+export const InternalGetHospitalConnectionDocument = gql`
+    query InternalGetHospitalConnection($first: Int, $after: String) {
+  hospitalConnection(first: $first, after: $after) {
+    edges {
+      node {
+        id
+        name
+        url
+        deleted
+        hospitalAddress {
+          address
+          phone_number
+          prefecture {
+            name
+          }
+        }
+        hospitalInternalReputation {
+          star
+        }
+      }
+    }
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+  }
+}
+    `;
+
+/**
+ * __useInternalGetHospitalConnectionQuery__
+ *
+ * To run a query within a React component, call `useInternalGetHospitalConnectionQuery` and pass it any options that fit your needs.
+ * When your component renders, `useInternalGetHospitalConnectionQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useInternalGetHospitalConnectionQuery({
+ *   variables: {
+ *      first: // value for 'first'
+ *      after: // value for 'after'
+ *   },
+ * });
+ */
+export function useInternalGetHospitalConnectionQuery(baseOptions?: Apollo.QueryHookOptions<InternalGetHospitalConnectionQuery, InternalGetHospitalConnectionQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<InternalGetHospitalConnectionQuery, InternalGetHospitalConnectionQueryVariables>(InternalGetHospitalConnectionDocument, options);
+      }
+export function useInternalGetHospitalConnectionLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InternalGetHospitalConnectionQuery, InternalGetHospitalConnectionQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<InternalGetHospitalConnectionQuery, InternalGetHospitalConnectionQueryVariables>(InternalGetHospitalConnectionDocument, options);
+        }
+export type InternalGetHospitalConnectionQueryHookResult = ReturnType<typeof useInternalGetHospitalConnectionQuery>;
+export type InternalGetHospitalConnectionLazyQueryHookResult = ReturnType<typeof useInternalGetHospitalConnectionLazyQuery>;
+export type InternalGetHospitalConnectionQueryResult = Apollo.QueryResult<InternalGetHospitalConnectionQuery, InternalGetHospitalConnectionQueryVariables>;
+export const InternalGetInternalUserDocument = gql`
+    query InternalGetInternalUser($id: BigInt!) {
   internalUser(id: $id) {
     id
     email
@@ -198,34 +404,34 @@ export const GetInternalUserDocument = gql`
     `;
 
 /**
- * __useGetInternalUserQuery__
+ * __useInternalGetInternalUserQuery__
  *
- * To run a query within a React component, call `useGetInternalUserQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetInternalUserQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useInternalGetInternalUserQuery` and pass it any options that fit your needs.
+ * When your component renders, `useInternalGetInternalUserQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useGetInternalUserQuery({
+ * const { data, loading, error } = useInternalGetInternalUserQuery({
  *   variables: {
  *      id: // value for 'id'
  *   },
  * });
  */
-export function useGetInternalUserQuery(baseOptions: Apollo.QueryHookOptions<GetInternalUserQuery, GetInternalUserQueryVariables>) {
+export function useInternalGetInternalUserQuery(baseOptions: Apollo.QueryHookOptions<InternalGetInternalUserQuery, InternalGetInternalUserQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetInternalUserQuery, GetInternalUserQueryVariables>(GetInternalUserDocument, options);
+        return Apollo.useQuery<InternalGetInternalUserQuery, InternalGetInternalUserQueryVariables>(InternalGetInternalUserDocument, options);
       }
-export function useGetInternalUserLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetInternalUserQuery, GetInternalUserQueryVariables>) {
+export function useInternalGetInternalUserLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InternalGetInternalUserQuery, InternalGetInternalUserQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetInternalUserQuery, GetInternalUserQueryVariables>(GetInternalUserDocument, options);
+          return Apollo.useLazyQuery<InternalGetInternalUserQuery, InternalGetInternalUserQueryVariables>(InternalGetInternalUserDocument, options);
         }
-export type GetInternalUserQueryHookResult = ReturnType<typeof useGetInternalUserQuery>;
-export type GetInternalUserLazyQueryHookResult = ReturnType<typeof useGetInternalUserLazyQuery>;
-export type GetInternalUserQueryResult = Apollo.QueryResult<GetInternalUserQuery, GetInternalUserQueryVariables>;
-export const GetInternalUsersDocument = gql`
-    query GetInternalUsers {
+export type InternalGetInternalUserQueryHookResult = ReturnType<typeof useInternalGetInternalUserQuery>;
+export type InternalGetInternalUserLazyQueryHookResult = ReturnType<typeof useInternalGetInternalUserLazyQuery>;
+export type InternalGetInternalUserQueryResult = Apollo.QueryResult<InternalGetInternalUserQuery, InternalGetInternalUserQueryVariables>;
+export const InternalGetInternalUsersDocument = gql`
+    query InternalGetInternalUsers {
   internalUsers {
     id
     email
@@ -235,33 +441,33 @@ export const GetInternalUsersDocument = gql`
     `;
 
 /**
- * __useGetInternalUsersQuery__
+ * __useInternalGetInternalUsersQuery__
  *
- * To run a query within a React component, call `useGetInternalUsersQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetInternalUsersQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useInternalGetInternalUsersQuery` and pass it any options that fit your needs.
+ * When your component renders, `useInternalGetInternalUsersQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useGetInternalUsersQuery({
+ * const { data, loading, error } = useInternalGetInternalUsersQuery({
  *   variables: {
  *   },
  * });
  */
-export function useGetInternalUsersQuery(baseOptions?: Apollo.QueryHookOptions<GetInternalUsersQuery, GetInternalUsersQueryVariables>) {
+export function useInternalGetInternalUsersQuery(baseOptions?: Apollo.QueryHookOptions<InternalGetInternalUsersQuery, InternalGetInternalUsersQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetInternalUsersQuery, GetInternalUsersQueryVariables>(GetInternalUsersDocument, options);
+        return Apollo.useQuery<InternalGetInternalUsersQuery, InternalGetInternalUsersQueryVariables>(InternalGetInternalUsersDocument, options);
       }
-export function useGetInternalUsersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetInternalUsersQuery, GetInternalUsersQueryVariables>) {
+export function useInternalGetInternalUsersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InternalGetInternalUsersQuery, InternalGetInternalUsersQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetInternalUsersQuery, GetInternalUsersQueryVariables>(GetInternalUsersDocument, options);
+          return Apollo.useLazyQuery<InternalGetInternalUsersQuery, InternalGetInternalUsersQueryVariables>(InternalGetInternalUsersDocument, options);
         }
-export type GetInternalUsersQueryHookResult = ReturnType<typeof useGetInternalUsersQuery>;
-export type GetInternalUsersLazyQueryHookResult = ReturnType<typeof useGetInternalUsersLazyQuery>;
-export type GetInternalUsersQueryResult = Apollo.QueryResult<GetInternalUsersQuery, GetInternalUsersQueryVariables>;
-export const GetSessionDocument = gql`
-    query GetSession {
+export type InternalGetInternalUsersQueryHookResult = ReturnType<typeof useInternalGetInternalUsersQuery>;
+export type InternalGetInternalUsersLazyQueryHookResult = ReturnType<typeof useInternalGetInternalUsersLazyQuery>;
+export type InternalGetInternalUsersQueryResult = Apollo.QueryResult<InternalGetInternalUsersQuery, InternalGetInternalUsersQueryVariables>;
+export const InternalGetSessionDocument = gql`
+    query InternalGetSession {
   session {
     token
   }
@@ -269,33 +475,33 @@ export const GetSessionDocument = gql`
     `;
 
 /**
- * __useGetSessionQuery__
+ * __useInternalGetSessionQuery__
  *
- * To run a query within a React component, call `useGetSessionQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetSessionQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useInternalGetSessionQuery` and pass it any options that fit your needs.
+ * When your component renders, `useInternalGetSessionQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useGetSessionQuery({
+ * const { data, loading, error } = useInternalGetSessionQuery({
  *   variables: {
  *   },
  * });
  */
-export function useGetSessionQuery(baseOptions?: Apollo.QueryHookOptions<GetSessionQuery, GetSessionQueryVariables>) {
+export function useInternalGetSessionQuery(baseOptions?: Apollo.QueryHookOptions<InternalGetSessionQuery, InternalGetSessionQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetSessionQuery, GetSessionQueryVariables>(GetSessionDocument, options);
+        return Apollo.useQuery<InternalGetSessionQuery, InternalGetSessionQueryVariables>(InternalGetSessionDocument, options);
       }
-export function useGetSessionLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetSessionQuery, GetSessionQueryVariables>) {
+export function useInternalGetSessionLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InternalGetSessionQuery, InternalGetSessionQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetSessionQuery, GetSessionQueryVariables>(GetSessionDocument, options);
+          return Apollo.useLazyQuery<InternalGetSessionQuery, InternalGetSessionQueryVariables>(InternalGetSessionDocument, options);
         }
-export type GetSessionQueryHookResult = ReturnType<typeof useGetSessionQuery>;
-export type GetSessionLazyQueryHookResult = ReturnType<typeof useGetSessionLazyQuery>;
-export type GetSessionQueryResult = Apollo.QueryResult<GetSessionQuery, GetSessionQueryVariables>;
-export const UpdateInternalUserDocument = gql`
-    mutation UpdateInternalUser($id: BigInt!, $name: String!, $email: String!, $password: String!) {
+export type InternalGetSessionQueryHookResult = ReturnType<typeof useInternalGetSessionQuery>;
+export type InternalGetSessionLazyQueryHookResult = ReturnType<typeof useInternalGetSessionLazyQuery>;
+export type InternalGetSessionQueryResult = Apollo.QueryResult<InternalGetSessionQuery, InternalGetSessionQueryVariables>;
+export const InternalUpdateInternalUserDocument = gql`
+    mutation InternalUpdateInternalUser($id: BigInt!, $name: String!, $email: String!, $password: String!) {
   updateInternalUser(id: $id, name: $name, email: $email, password: $password) {
     id
     email
@@ -303,20 +509,20 @@ export const UpdateInternalUserDocument = gql`
   }
 }
     `;
-export type UpdateInternalUserMutationFn = Apollo.MutationFunction<UpdateInternalUserMutation, UpdateInternalUserMutationVariables>;
+export type InternalUpdateInternalUserMutationFn = Apollo.MutationFunction<InternalUpdateInternalUserMutation, InternalUpdateInternalUserMutationVariables>;
 
 /**
- * __useUpdateInternalUserMutation__
+ * __useInternalUpdateInternalUserMutation__
  *
- * To run a mutation, you first call `useUpdateInternalUserMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useUpdateInternalUserMutation` returns a tuple that includes:
+ * To run a mutation, you first call `useInternalUpdateInternalUserMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInternalUpdateInternalUserMutation` returns a tuple that includes:
  * - A mutate function that you can call at any time to execute the mutation
  * - An object with fields that represent the current status of the mutation's execution
  *
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const [updateInternalUserMutation, { data, loading, error }] = useUpdateInternalUserMutation({
+ * const [internalUpdateInternalUserMutation, { data, loading, error }] = useInternalUpdateInternalUserMutation({
  *   variables: {
  *      id: // value for 'id'
  *      name: // value for 'name'
@@ -325,10 +531,10 @@ export type UpdateInternalUserMutationFn = Apollo.MutationFunction<UpdateInterna
  *   },
  * });
  */
-export function useUpdateInternalUserMutation(baseOptions?: Apollo.MutationHookOptions<UpdateInternalUserMutation, UpdateInternalUserMutationVariables>) {
+export function useInternalUpdateInternalUserMutation(baseOptions?: Apollo.MutationHookOptions<InternalUpdateInternalUserMutation, InternalUpdateInternalUserMutationVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<UpdateInternalUserMutation, UpdateInternalUserMutationVariables>(UpdateInternalUserDocument, options);
+        return Apollo.useMutation<InternalUpdateInternalUserMutation, InternalUpdateInternalUserMutationVariables>(InternalUpdateInternalUserDocument, options);
       }
-export type UpdateInternalUserMutationHookResult = ReturnType<typeof useUpdateInternalUserMutation>;
-export type UpdateInternalUserMutationResult = Apollo.MutationResult<UpdateInternalUserMutation>;
-export type UpdateInternalUserMutationOptions = Apollo.BaseMutationOptions<UpdateInternalUserMutation, UpdateInternalUserMutationVariables>;
+export type InternalUpdateInternalUserMutationHookResult = ReturnType<typeof useInternalUpdateInternalUserMutation>;
+export type InternalUpdateInternalUserMutationResult = Apollo.MutationResult<InternalUpdateInternalUserMutation>;
+export type InternalUpdateInternalUserMutationOptions = Apollo.BaseMutationOptions<InternalUpdateInternalUserMutation, InternalUpdateInternalUserMutationVariables>;

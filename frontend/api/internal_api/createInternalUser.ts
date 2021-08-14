@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const createInternalUser = gql`
-  mutation CreateInternalUser(
+  mutation InternalCreateInternalUser(
     $name: String!
     $email: String!
     $password: String!

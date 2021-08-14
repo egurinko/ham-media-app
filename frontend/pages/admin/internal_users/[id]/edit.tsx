@@ -19,14 +19,14 @@ import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import InternalLayout from '@/components/admin/InternalLayout';
 import Card from '@/components/base/Card';
 import { getInternalUsers } from '@/api/internal_api/getInternalUsers';
-import type { GetInternalUsersQuery } from '@/api/internal_api/types';
+import type { InternalGetInternalUsersQuery } from '@/api/internal_api/types';
 import { getInternalUser } from '@/api/internal_api/getInternalUser';
 import type {
-  GetInternalUserQuery,
-  GetInternalUserQueryVariables,
+  InternalGetInternalUserQuery,
+  InternalGetInternalUserQueryVariables,
 } from '@/api/internal_api/types';
-import { useUpdateInternalUserMutation } from '@/api/internal_api/types';
-import { internalApiClient } from '@/utils/apollo';
+import { useInternalUpdateInternalUserMutation } from '@/api/internal_api/types';
+import { apiClient } from '@/utils/apollo';
 import { goAdminInternalUsers } from '@/utils/routes';
 
 interface FormInput {
@@ -42,7 +42,8 @@ const Edit: React.VFC<Props> = ({ internalUser }) => {
     trigger,
     formState: { errors },
   } = useForm<FormInput>({ mode: 'onTouched' });
-  const [update, { data, loading, error }] = useUpdateInternalUserMutation();
+  const [update, { data, loading, error }] =
+    useInternalUpdateInternalUserMutation();
   const router = useRouter();
 
   const onSubmit: SubmitHandler<FormInput> = async ({
@@ -183,11 +184,11 @@ interface Params extends ParsedUrlQuery {
 }
 
 interface Props {
-  internalUser: GetInternalUserQuery['internalUser'];
+  internalUser: InternalGetInternalUserQuery['internalUser'];
 }
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  const { data } = await internalApiClient.query<GetInternalUsersQuery>({
+  const { data } = await apiClient.query<InternalGetInternalUsersQuery>({
     query: getInternalUsers,
   });
 
@@ -201,9 +202,9 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 export const getStaticProps: GetStaticProps<Props, Params> = async ({
   params,
 }) => {
-  const { data } = await internalApiClient.query<
-    GetInternalUserQuery,
-    GetInternalUserQueryVariables
+  const { data } = await apiClient.query<
+    InternalGetInternalUserQuery,
+    InternalGetInternalUserQueryVariables
   >({
     query: getInternalUser,
     variables: {

@@ -22,23 +22,23 @@ import { useCallback, useState, Fragment } from 'react';
 import { useRouter } from 'next/router';
 import UserProfile from '../../../assets/user_profile.svg';
 import {
-  useGetInternalUsersQuery,
-  useDeleteInternalUserMutation,
+  useInternalGetInternalUsersQuery,
+  useInternalDeleteInternalUserMutation,
 } from '@/api/internal_api/types';
-import type { GetInternalUsersQuery } from '@/api/internal_api/types';
+import type { InternalGetInternalUsersQuery } from '@/api/internal_api/types';
 
 const InternalUserStacks: React.VFC<Record<string, never>> = () => {
-  const { data, loading, error } = useGetInternalUsersQuery();
+  const { data, loading, error } = useInternalGetInternalUsersQuery();
   const router = useRouter();
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [selectedInternalUser, setSelectedInternalUser] = useState<
-    null | GetInternalUsersQuery['internalUsers'][number]
+    null | InternalGetInternalUsersQuery['internalUsers'][number]
   >(null);
   const [
     remove,
     { data: mutationData, loading: mutationLoading, error: mutationError },
-  ] = useDeleteInternalUserMutation({
+  ] = useInternalDeleteInternalUserMutation({
     update(cache) {
       cache.modify({
         fields: {
@@ -51,7 +51,7 @@ const InternalUserStacks: React.VFC<Record<string, never>> = () => {
   });
 
   const handleClick = useCallback(
-    (id: bigint) => {
+    (id: BigInt) => {
       router.push(`/admin/internal_users/${id}/edit`);
     },
     [router]

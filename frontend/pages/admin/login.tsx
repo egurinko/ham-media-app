@@ -6,54 +6,47 @@ import {
   Button,
   FormControl,
   FormLabel,
+  Alert,
+  AlertIcon,
 } from '@chakra-ui/react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import Card from '@/components/base/Card';
-import { MutationResult } from '@apollo/client';
-import { Mutation } from '@apollo/client/react/components';
-import { createSession } from '@/api/public_api/createSession';
-import type { CreateSessionMutation } from '@/api/public_api/types';
-import { useGetSessionQuery } from '@/api/internal_api/types';
-import { publicApiClient } from '@/utils/apollo';
+import { useInternalGetSessionQuery } from '@/api/internal_api/types';
+import { usePublicCreateSessionMutation } from '@/api/public_api/types';
 import { setCookie } from '@/utils/cookies';
 import PublicLayout from '@/components/admin/PublicLayout';
 import ClientOnly from '@/components/ClientOnly';
+import { goAdminInternalUsers } from '@/utils/routes';
 
 const LoginMutation: React.VFC<{}> = () => {
   return (
     <ClientOnly>
-      <Mutation client={publicApiClient} mutation={createSession}>
-        {(login, result: MutationResult<CreateSessionMutation>) => (
-          <Login login={login} result={result} />
-        )}
-      </Mutation>
+      <Login />
     </ClientOnly>
   );
 };
 
-type OwnProps = {
-  login: any;
-  result: MutationResult<CreateSessionMutation>;
-};
-
-const Login: React.VFC<OwnProps> = ({ login, result }) => {
-  const { data } = useGetSessionQuery();
+const Login: React.VFC<Record<string, never>> = () => {
+  const { data } = useInternalGetSessionQuery();
+  const [login, { data: loginData, error: loginError }] =
+    usePublicCreateSessionMutation();
   const router = useRouter();
 
   if (data?.session.token) {
     setCookie(data.session.token);
-    router.push('/admin/internal_users');
+    goAdminInternalUsers(router);
   }
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   useEffect(() => {
-    if (result.data) {
-      setCookie(result.data.createSession.token);
+    if (loginData) {
+      setCookie(loginData.createSession.token);
+      goAdminInternalUsers(router);
     }
-  }, [result.data, result.error]);
+  }, [loginData, loginError]);
 
   return (
     <PublicLayout>
@@ -63,6 +56,8 @@ const Login: React.VFC<OwnProps> = ({ login, result }) => {
         flexDirection="column"
         alignItems="center"
         justifyContent="center"
+        maxW="400"
+        m="auto"
       >
         <Box m="12">
           <Image
@@ -72,6 +67,17 @@ const Login: React.VFC<OwnProps> = ({ login, result }) => {
             height={55}
           />
         </Box>
+        {loginData ? (
+          <Alert my="4" status="success">
+            <AlertIcon />
+            ログインに成功しました。
+          </Alert>
+        ) : loginError ? (
+          <Alert my="4" status="error">
+            <AlertIcon />
+            {loginError.message}
+          </Alert>
+        ) : null}
         <Card>
           <form
             onSubmit={async (e) => {

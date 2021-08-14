@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const deleteInternalUser = gql`
-  mutation DeleteInternalUser($id: BigInt!) {
+  mutation InternalDeleteInternalUser($id: BigInt!) {
     deleteInternalUser(id: $id) {
       id
       email

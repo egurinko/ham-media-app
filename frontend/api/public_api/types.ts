@@ -41,46 +41,46 @@ export type Query = {
   ok: Scalars['Boolean'];
 };
 
-export type CreateSessionMutationVariables = Exact<{
+export type PublicCreateSessionMutationVariables = Exact<{
   email: Scalars['String'];
   password: Scalars['String'];
 }>;
 
 
-export type CreateSessionMutation = { __typename?: 'Mutation', createSession: { __typename?: 'CreateSessionType', token: string } };
+export type PublicCreateSessionMutation = { __typename?: 'Mutation', createSession: { __typename?: 'CreateSessionType', token: string } };
 
 
-export const CreateSessionDocument = gql`
-    mutation CreateSession($email: String!, $password: String!) {
+export const PublicCreateSessionDocument = gql`
+    mutation PublicCreateSession($email: String!, $password: String!) {
   createSession(email: $email, password: $password) {
     token
   }
 }
     `;
-export type CreateSessionMutationFn = Apollo.MutationFunction<CreateSessionMutation, CreateSessionMutationVariables>;
+export type PublicCreateSessionMutationFn = Apollo.MutationFunction<PublicCreateSessionMutation, PublicCreateSessionMutationVariables>;
 
 /**
- * __useCreateSessionMutation__
+ * __usePublicCreateSessionMutation__
  *
- * To run a mutation, you first call `useCreateSessionMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useCreateSessionMutation` returns a tuple that includes:
+ * To run a mutation, you first call `usePublicCreateSessionMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `usePublicCreateSessionMutation` returns a tuple that includes:
  * - A mutate function that you can call at any time to execute the mutation
  * - An object with fields that represent the current status of the mutation's execution
  *
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const [createSessionMutation, { data, loading, error }] = useCreateSessionMutation({
+ * const [publicCreateSessionMutation, { data, loading, error }] = usePublicCreateSessionMutation({
  *   variables: {
  *      email: // value for 'email'
  *      password: // value for 'password'
  *   },
  * });
  */
-export function useCreateSessionMutation(baseOptions?: Apollo.MutationHookOptions<CreateSessionMutation, CreateSessionMutationVariables>) {
+export function usePublicCreateSessionMutation(baseOptions?: Apollo.MutationHookOptions<PublicCreateSessionMutation, PublicCreateSessionMutationVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<CreateSessionMutation, CreateSessionMutationVariables>(CreateSessionDocument, options);
+        return Apollo.useMutation<PublicCreateSessionMutation, PublicCreateSessionMutationVariables>(PublicCreateSessionDocument, options);
       }
-export type CreateSessionMutationHookResult = ReturnType<typeof useCreateSessionMutation>;
-export type CreateSessionMutationResult = Apollo.MutationResult<CreateSessionMutation>;
-export type CreateSessionMutationOptions = Apollo.BaseMutationOptions<CreateSessionMutation, CreateSessionMutationVariables>;
+export type PublicCreateSessionMutationHookResult = ReturnType<typeof usePublicCreateSessionMutation>;
+export type PublicCreateSessionMutationResult = Apollo.MutationResult<PublicCreateSessionMutation>;
+export type PublicCreateSessionMutationOptions = Apollo.BaseMutationOptions<PublicCreateSessionMutation, PublicCreateSessionMutationVariables>;
