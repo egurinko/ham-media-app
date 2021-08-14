@@ -9,3 +9,12 @@ export const goAdminInternalUserEdit = (
   router: NextRouter,
   { id }: { id: number }
 ) => router.push(`/admin/internal_users/${id}/edit`);
+
+export const goAdminHospitals = (router: NextRouter) =>
+  router.push('/admin/hospitals');
+export const goAdminHospitalsNew = (router: NextRouter) =>
+  router.push('/admin/hospitals/new');
+export const goAdminHospitalsEdit = (
+  router: NextRouter,
+  { id }: { id: number }
+) => router.push(`/admin/hospitals/${id}/edit`);

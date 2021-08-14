@@ -30,7 +30,7 @@ const Sidebar: React.VFC<Props> = ({}) => (
         </Link>
       </Box>
       <Box>
-        <Link href="/admin/internal_users">
+        <Link href="/admin/hospitals">
           <a>病院管理</a>
         </Link>
       </Box>
