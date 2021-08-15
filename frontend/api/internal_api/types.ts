@@ -55,6 +55,12 @@ export type HospitalAddressGeoLocation = {
   longitude: Scalars['Float'];
 };
 
+export type HospitalAddressInputType = {
+  address: Scalars['String'];
+  phone_number: Scalars['String'];
+  prefecture_id: Scalars['BigInt'];
+};
+
 /** A hospital business form */
 export type HospitalBusinessForm = {
   __typename?: 'HospitalBusinessForm';
@@ -65,10 +71,22 @@ export type HospitalBusinessForm = {
   remark: Scalars['String'];
 };
 
+export type HospitalBusinessFormInputType = {
+  business_hour: Scalars['String'];
+  closed_day: Scalars['String'];
+  insurance_enabled: Scalars['String'];
+  remark: Scalars['String'];
+};
+
 /** A hospital certification option */
 export type HospitalCertificationOption = {
   __typename?: 'HospitalCertificationOption';
   id: Scalars['BigInt'];
+  jsava_registered: Scalars['String'];
+  nichiju_registered: Scalars['String'];
+};
+
+export type HospitalCertificationOptionInputType = {
   jsava_registered: Scalars['String'];
   nichiju_registered: Scalars['String'];
 };
@@ -97,10 +115,20 @@ export type HospitalInternalReputation = {
   star: Scalars['Int'];
 };
 
+export type HospitalInternalReputationInputType = {
+  remark: Scalars['String'];
+  star: Scalars['Int'];
+};
+
 /** A hospital night service option */
 export type HospitalNightServiceOption = {
   __typename?: 'HospitalNightServiceOption';
   id: Scalars['BigInt'];
+  remark: Scalars['String'];
+  status: Scalars['String'];
+};
+
+export type HospitalNightServiceOptionInputType = {
   remark: Scalars['String'];
   status: Scalars['String'];
 };
@@ -112,10 +140,20 @@ export type HospitalNightUrgentActionOption = {
   status: Scalars['String'];
 };
 
+export type HospitalNightUrgentActionOptionInputType = {
+  status: Scalars['String'];
+};
+
 /** A hospital reservation status */
 export type HospitalReservationStatus = {
   __typename?: 'HospitalReservationStatus';
   id: Scalars['BigInt'];
+  remark: Scalars['String'];
+  required: Scalars['String'];
+  reservable: Scalars['String'];
+};
+
+export type HospitalReservationStatusInputType = {
   remark: Scalars['String'];
   required: Scalars['String'];
   reservable: Scalars['String'];
@@ -133,6 +171,7 @@ export type Mutation = {
   __typename?: 'Mutation';
   createInternalUser: InternalUser;
   deleteInternalUser: InternalUser;
+  updateHospital: Hospital;
   updateInternalUser: InternalUser;
 };
 
@@ -146,6 +185,22 @@ export type MutationCreateInternalUserArgs = {
 
 export type MutationDeleteInternalUserArgs = {
   id: Scalars['BigInt'];
+};
+
+
+export type MutationUpdateHospitalArgs = {
+  deleted: Scalars['Boolean'];
+  hospitalAddressInput: HospitalAddressInputType;
+  hospitalBusinessFormInput: HospitalBusinessFormInputType;
+  hospitalCertificationOptionInput: HospitalCertificationOptionInputType;
+  hospitalInternalReputationInput: HospitalInternalReputationInputType;
+  hospitalNightServiceOptionInput: HospitalNightServiceOptionInputType;
+  hospitalNightUrgentActionOptionInput: HospitalNightUrgentActionOptionInputType;
+  hospitalReservationStatusInput: HospitalReservationStatusInputType;
+  id: Scalars['BigInt'];
+  internal_memo: Scalars['String'];
+  name: Scalars['String'];
+  url: Scalars['String'];
 };
 
 
@@ -238,7 +293,7 @@ export type InternalGetHospitalQueryVariables = Exact<{
 }>;
 
 
-export type InternalGetHospitalQuery = { __typename?: 'Query', hospital: { __typename?: 'Hospital', id: BigInt, name: string, url: string, deleted: boolean, internal_memo: string, hospitalAddress?: Maybe<{ __typename?: 'HospitalAddress', address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string } }>, hospitalBusinessForm?: Maybe<{ __typename?: 'HospitalBusinessForm', business_hour: string, closed_day: string, insurance_enabled: string, remark: string }>, hospitalCertificationOption?: Maybe<{ __typename?: 'HospitalCertificationOption', nichiju_registered: string, jsava_registered: string }>, hospitalInternalReputation?: Maybe<{ __typename?: 'HospitalInternalReputation', star: number, remark: string }>, hospitalNightServiceOption?: Maybe<{ __typename?: 'HospitalNightServiceOption', status: string, remark: string }>, hospitalNightUrgentActionOption?: Maybe<{ __typename?: 'HospitalNightUrgentActionOption', status: string }>, hospitalReservationStatus?: Maybe<{ __typename?: 'HospitalReservationStatus', required: string, reservable: string, remark: string }> } };
+export type InternalGetHospitalQuery = { __typename?: 'Query', hospital: { __typename?: 'Hospital', id: BigInt, name: string, url: string, deleted: boolean, internal_memo: string, hospitalAddress?: Maybe<{ __typename?: 'HospitalAddress', address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: BigInt } }>, hospitalBusinessForm?: Maybe<{ __typename?: 'HospitalBusinessForm', business_hour: string, closed_day: string, insurance_enabled: string, remark: string }>, hospitalCertificationOption?: Maybe<{ __typename?: 'HospitalCertificationOption', nichiju_registered: string, jsava_registered: string }>, hospitalInternalReputation?: Maybe<{ __typename?: 'HospitalInternalReputation', star: number, remark: string }>, hospitalNightServiceOption?: Maybe<{ __typename?: 'HospitalNightServiceOption', status: string, remark: string }>, hospitalNightUrgentActionOption?: Maybe<{ __typename?: 'HospitalNightUrgentActionOption', status: string }>, hospitalReservationStatus?: Maybe<{ __typename?: 'HospitalReservationStatus', required: string, reservable: string, remark: string }> } };
 
 export type InternalGetHospitalConnectionQueryVariables = Exact<{
   first?: Maybe<Scalars['Int']>;
@@ -269,6 +324,24 @@ export type InternalGetSessionQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type InternalGetSessionQuery = { __typename?: 'Query', session: { __typename?: 'Session', token: string } };
+
+export type InternalUpdateHospitalMutationVariables = Exact<{
+  id: Scalars['BigInt'];
+  name: Scalars['String'];
+  url: Scalars['String'];
+  deleted: Scalars['Boolean'];
+  internal_memo: Scalars['String'];
+  hospitalAddressInput: HospitalAddressInputType;
+  hospitalBusinessFormInput: HospitalBusinessFormInputType;
+  hospitalCertificationOptionInput: HospitalCertificationOptionInputType;
+  hospitalInternalReputationInput: HospitalInternalReputationInputType;
+  hospitalNightServiceOptionInput: HospitalNightServiceOptionInputType;
+  hospitalNightUrgentActionOptionInput: HospitalNightUrgentActionOptionInputType;
+  hospitalReservationStatusInput: HospitalReservationStatusInputType;
+}>;
+
+
+export type InternalUpdateHospitalMutation = { __typename?: 'Mutation', updateHospital: { __typename?: 'Hospital', name: string } };
 
 export type InternalUpdateInternalUserMutationVariables = Exact<{
   id: Scalars['BigInt'];
@@ -366,6 +439,7 @@ export const InternalGetHospitalDocument = gql`
       phone_number
       prefecture {
         name
+        id
       }
     }
     hospitalBusinessForm {
@@ -625,6 +699,63 @@ export function useInternalGetSessionLazyQuery(baseOptions?: Apollo.LazyQueryHoo
 export type InternalGetSessionQueryHookResult = ReturnType<typeof useInternalGetSessionQuery>;
 export type InternalGetSessionLazyQueryHookResult = ReturnType<typeof useInternalGetSessionLazyQuery>;
 export type InternalGetSessionQueryResult = Apollo.QueryResult<InternalGetSessionQuery, InternalGetSessionQueryVariables>;
+export const InternalUpdateHospitalDocument = gql`
+    mutation InternalUpdateHospital($id: BigInt!, $name: String!, $url: String!, $deleted: Boolean!, $internal_memo: String!, $hospitalAddressInput: HospitalAddressInputType!, $hospitalBusinessFormInput: HospitalBusinessFormInputType!, $hospitalCertificationOptionInput: HospitalCertificationOptionInputType!, $hospitalInternalReputationInput: HospitalInternalReputationInputType!, $hospitalNightServiceOptionInput: HospitalNightServiceOptionInputType!, $hospitalNightUrgentActionOptionInput: HospitalNightUrgentActionOptionInputType!, $hospitalReservationStatusInput: HospitalReservationStatusInputType!) {
+  updateHospital(
+    id: $id
+    name: $name
+    url: $url
+    deleted: $deleted
+    internal_memo: $internal_memo
+    hospitalAddressInput: $hospitalAddressInput
+    hospitalBusinessFormInput: $hospitalBusinessFormInput
+    hospitalCertificationOptionInput: $hospitalCertificationOptionInput
+    hospitalInternalReputationInput: $hospitalInternalReputationInput
+    hospitalNightServiceOptionInput: $hospitalNightServiceOptionInput
+    hospitalNightUrgentActionOptionInput: $hospitalNightUrgentActionOptionInput
+    hospitalReservationStatusInput: $hospitalReservationStatusInput
+  ) {
+    name
+  }
+}
+    `;
+export type InternalUpdateHospitalMutationFn = Apollo.MutationFunction<InternalUpdateHospitalMutation, InternalUpdateHospitalMutationVariables>;
+
+/**
+ * __useInternalUpdateHospitalMutation__
+ *
+ * To run a mutation, you first call `useInternalUpdateHospitalMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInternalUpdateHospitalMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [internalUpdateHospitalMutation, { data, loading, error }] = useInternalUpdateHospitalMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      name: // value for 'name'
+ *      url: // value for 'url'
+ *      deleted: // value for 'deleted'
+ *      internal_memo: // value for 'internal_memo'
+ *      hospitalAddressInput: // value for 'hospitalAddressInput'
+ *      hospitalBusinessFormInput: // value for 'hospitalBusinessFormInput'
+ *      hospitalCertificationOptionInput: // value for 'hospitalCertificationOptionInput'
+ *      hospitalInternalReputationInput: // value for 'hospitalInternalReputationInput'
+ *      hospitalNightServiceOptionInput: // value for 'hospitalNightServiceOptionInput'
+ *      hospitalNightUrgentActionOptionInput: // value for 'hospitalNightUrgentActionOptionInput'
+ *      hospitalReservationStatusInput: // value for 'hospitalReservationStatusInput'
+ *   },
+ * });
+ */
+export function useInternalUpdateHospitalMutation(baseOptions?: Apollo.MutationHookOptions<InternalUpdateHospitalMutation, InternalUpdateHospitalMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<InternalUpdateHospitalMutation, InternalUpdateHospitalMutationVariables>(InternalUpdateHospitalDocument, options);
+      }
+export type InternalUpdateHospitalMutationHookResult = ReturnType<typeof useInternalUpdateHospitalMutation>;
+export type InternalUpdateHospitalMutationResult = Apollo.MutationResult<InternalUpdateHospitalMutation>;
+export type InternalUpdateHospitalMutationOptions = Apollo.BaseMutationOptions<InternalUpdateHospitalMutation, InternalUpdateHospitalMutationVariables>;
 export const InternalUpdateInternalUserDocument = gql`
     mutation InternalUpdateInternalUser($id: BigInt!, $name: String!, $email: String!, $password: String!) {
   updateInternalUser(id: $id, name: $name, email: $email, password: $password) {
