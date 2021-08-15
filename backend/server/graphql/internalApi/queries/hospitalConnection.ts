@@ -6,7 +6,7 @@ import { queryField } from 'nexus';
 import { connectionFromArray } from 'graphql-relay';
 import { hospitalType } from '../types';
 
-export const hospitals = queryField((t) => {
+export const hospitalConnection = queryField((t) => {
   t.connectionField('hospitalConnection', {
     type: hospitalType,
     resolve: async (_root, args, ctx) => {
