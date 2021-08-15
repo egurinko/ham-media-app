@@ -13,6 +13,7 @@ export const getHospital = gql`
         phone_number
         prefecture {
           name
+          id
         }
       }
       hospitalBusinessForm {

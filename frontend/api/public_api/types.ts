@@ -36,9 +36,24 @@ export type MutationCreateSessionArgs = {
   password: Scalars['String'];
 };
 
+/** A prefecture */
+export type Prefecture = {
+  __typename?: 'Prefecture';
+  id: Scalars['BigInt'];
+  name: Scalars['String'];
+  region: Region;
+};
+
 export type Query = {
   __typename?: 'Query';
-  ok: Scalars['Boolean'];
+  prefectures: Array<Prefecture>;
+};
+
+/** A region */
+export type Region = {
+  __typename?: 'Region';
+  id: Scalars['BigInt'];
+  name: Scalars['String'];
 };
 
 export type PublicCreateSessionMutationVariables = Exact<{
@@ -48,6 +63,11 @@ export type PublicCreateSessionMutationVariables = Exact<{
 
 
 export type PublicCreateSessionMutation = { __typename?: 'Mutation', createSession: { __typename?: 'CreateSessionType', token: string } };
+
+export type PublicGetPrefecturesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type PublicGetPrefecturesQuery = { __typename?: 'Query', prefectures: Array<{ __typename?: 'Prefecture', id: BigInt, name: string }> };
 
 
 export const PublicCreateSessionDocument = gql`
@@ -84,3 +104,38 @@ export function usePublicCreateSessionMutation(baseOptions?: Apollo.MutationHook
 export type PublicCreateSessionMutationHookResult = ReturnType<typeof usePublicCreateSessionMutation>;
 export type PublicCreateSessionMutationResult = Apollo.MutationResult<PublicCreateSessionMutation>;
 export type PublicCreateSessionMutationOptions = Apollo.BaseMutationOptions<PublicCreateSessionMutation, PublicCreateSessionMutationVariables>;
+export const PublicGetPrefecturesDocument = gql`
+    query PublicGetPrefectures {
+  prefectures {
+    id
+    name
+  }
+}
+    `;
+
+/**
+ * __usePublicGetPrefecturesQuery__
+ *
+ * To run a query within a React component, call `usePublicGetPrefecturesQuery` and pass it any options that fit your needs.
+ * When your component renders, `usePublicGetPrefecturesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = usePublicGetPrefecturesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function usePublicGetPrefecturesQuery(baseOptions?: Apollo.QueryHookOptions<PublicGetPrefecturesQuery, PublicGetPrefecturesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<PublicGetPrefecturesQuery, PublicGetPrefecturesQueryVariables>(PublicGetPrefecturesDocument, options);
+      }
+export function usePublicGetPrefecturesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PublicGetPrefecturesQuery, PublicGetPrefecturesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<PublicGetPrefecturesQuery, PublicGetPrefecturesQueryVariables>(PublicGetPrefecturesDocument, options);
+        }
+export type PublicGetPrefecturesQueryHookResult = ReturnType<typeof usePublicGetPrefecturesQuery>;
+export type PublicGetPrefecturesLazyQueryHookResult = ReturnType<typeof usePublicGetPrefecturesLazyQuery>;
+export type PublicGetPrefecturesQueryResult = Apollo.QueryResult<PublicGetPrefecturesQuery, PublicGetPrefecturesQueryVariables>;
