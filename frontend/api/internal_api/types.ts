@@ -179,10 +179,17 @@ export type Prefecture = {
 
 export type Query = {
   __typename?: 'Query';
+  hospital: Hospital;
   hospitalConnection?: Maybe<HospitalConnection>;
+  hospitals: Array<Hospital>;
   internalUser: InternalUser;
   internalUsers: Array<InternalUser>;
   session: Session;
+};
+
+
+export type QueryHospitalArgs = {
+  id: Scalars['BigInt'];
 };
 
 
@@ -226,6 +233,13 @@ export type InternalDeleteInternalUserMutationVariables = Exact<{
 
 export type InternalDeleteInternalUserMutation = { __typename?: 'Mutation', deleteInternalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string } };
 
+export type InternalGetHospitalQueryVariables = Exact<{
+  id: Scalars['BigInt'];
+}>;
+
+
+export type InternalGetHospitalQuery = { __typename?: 'Query', hospital: { __typename?: 'Hospital', id: BigInt, name: string, url: string, deleted: boolean, internal_memo: string, hospitalAddress?: Maybe<{ __typename?: 'HospitalAddress', address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string } }>, hospitalBusinessForm?: Maybe<{ __typename?: 'HospitalBusinessForm', business_hour: string, closed_day: string, insurance_enabled: string, remark: string }>, hospitalCertificationOption?: Maybe<{ __typename?: 'HospitalCertificationOption', nichiju_registered: string, jsava_registered: string }>, hospitalInternalReputation?: Maybe<{ __typename?: 'HospitalInternalReputation', star: number, remark: string }>, hospitalNightServiceOption?: Maybe<{ __typename?: 'HospitalNightServiceOption', status: string, remark: string }>, hospitalNightUrgentActionOption?: Maybe<{ __typename?: 'HospitalNightUrgentActionOption', status: string }>, hospitalReservationStatus?: Maybe<{ __typename?: 'HospitalReservationStatus', required: string, reservable: string, remark: string }> } };
+
 export type InternalGetHospitalConnectionQueryVariables = Exact<{
   first?: Maybe<Scalars['Int']>;
   after?: Maybe<Scalars['String']>;
@@ -233,6 +247,11 @@ export type InternalGetHospitalConnectionQueryVariables = Exact<{
 
 
 export type InternalGetHospitalConnectionQuery = { __typename?: 'Query', hospitalConnection?: Maybe<{ __typename?: 'HospitalConnection', edges?: Maybe<Array<Maybe<{ __typename?: 'HospitalEdge', node?: Maybe<{ __typename?: 'Hospital', id: BigInt, name: string, url: string, deleted: boolean, hospitalAddress?: Maybe<{ __typename?: 'HospitalAddress', address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string } }>, hospitalInternalReputation?: Maybe<{ __typename?: 'HospitalInternalReputation', star: number }> }> }>>>, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, hasPreviousPage: boolean, startCursor?: Maybe<string>, endCursor?: Maybe<string> } }> };
+
+export type InternalGetHospitalIdsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type InternalGetHospitalIdsQuery = { __typename?: 'Query', hospitals: Array<{ __typename?: 'Hospital', id: BigInt }> };
 
 export type InternalGetInternalUserQueryVariables = Exact<{
   id: Scalars['BigInt'];
@@ -334,6 +353,78 @@ export function useInternalDeleteInternalUserMutation(baseOptions?: Apollo.Mutat
 export type InternalDeleteInternalUserMutationHookResult = ReturnType<typeof useInternalDeleteInternalUserMutation>;
 export type InternalDeleteInternalUserMutationResult = Apollo.MutationResult<InternalDeleteInternalUserMutation>;
 export type InternalDeleteInternalUserMutationOptions = Apollo.BaseMutationOptions<InternalDeleteInternalUserMutation, InternalDeleteInternalUserMutationVariables>;
+export const InternalGetHospitalDocument = gql`
+    query InternalGetHospital($id: BigInt!) {
+  hospital(id: $id) {
+    id
+    name
+    url
+    deleted
+    internal_memo
+    hospitalAddress {
+      address
+      phone_number
+      prefecture {
+        name
+      }
+    }
+    hospitalBusinessForm {
+      business_hour
+      closed_day
+      insurance_enabled
+      remark
+    }
+    hospitalCertificationOption {
+      nichiju_registered
+      jsava_registered
+    }
+    hospitalInternalReputation {
+      star
+      remark
+    }
+    hospitalNightServiceOption {
+      status
+      remark
+    }
+    hospitalNightUrgentActionOption {
+      status
+    }
+    hospitalReservationStatus {
+      required
+      reservable
+      remark
+    }
+  }
+}
+    `;
+
+/**
+ * __useInternalGetHospitalQuery__
+ *
+ * To run a query within a React component, call `useInternalGetHospitalQuery` and pass it any options that fit your needs.
+ * When your component renders, `useInternalGetHospitalQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useInternalGetHospitalQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useInternalGetHospitalQuery(baseOptions: Apollo.QueryHookOptions<InternalGetHospitalQuery, InternalGetHospitalQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<InternalGetHospitalQuery, InternalGetHospitalQueryVariables>(InternalGetHospitalDocument, options);
+      }
+export function useInternalGetHospitalLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InternalGetHospitalQuery, InternalGetHospitalQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<InternalGetHospitalQuery, InternalGetHospitalQueryVariables>(InternalGetHospitalDocument, options);
+        }
+export type InternalGetHospitalQueryHookResult = ReturnType<typeof useInternalGetHospitalQuery>;
+export type InternalGetHospitalLazyQueryHookResult = ReturnType<typeof useInternalGetHospitalLazyQuery>;
+export type InternalGetHospitalQueryResult = Apollo.QueryResult<InternalGetHospitalQuery, InternalGetHospitalQueryVariables>;
 export const InternalGetHospitalConnectionDocument = gql`
     query InternalGetHospitalConnection($first: Int, $after: String) {
   hospitalConnection(first: $first, after: $after) {
@@ -393,6 +484,40 @@ export function useInternalGetHospitalConnectionLazyQuery(baseOptions?: Apollo.L
 export type InternalGetHospitalConnectionQueryHookResult = ReturnType<typeof useInternalGetHospitalConnectionQuery>;
 export type InternalGetHospitalConnectionLazyQueryHookResult = ReturnType<typeof useInternalGetHospitalConnectionLazyQuery>;
 export type InternalGetHospitalConnectionQueryResult = Apollo.QueryResult<InternalGetHospitalConnectionQuery, InternalGetHospitalConnectionQueryVariables>;
+export const InternalGetHospitalIdsDocument = gql`
+    query InternalGetHospitalIds {
+  hospitals {
+    id
+  }
+}
+    `;
+
+/**
+ * __useInternalGetHospitalIdsQuery__
+ *
+ * To run a query within a React component, call `useInternalGetHospitalIdsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useInternalGetHospitalIdsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useInternalGetHospitalIdsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useInternalGetHospitalIdsQuery(baseOptions?: Apollo.QueryHookOptions<InternalGetHospitalIdsQuery, InternalGetHospitalIdsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<InternalGetHospitalIdsQuery, InternalGetHospitalIdsQueryVariables>(InternalGetHospitalIdsDocument, options);
+      }
+export function useInternalGetHospitalIdsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InternalGetHospitalIdsQuery, InternalGetHospitalIdsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<InternalGetHospitalIdsQuery, InternalGetHospitalIdsQueryVariables>(InternalGetHospitalIdsDocument, options);
+        }
+export type InternalGetHospitalIdsQueryHookResult = ReturnType<typeof useInternalGetHospitalIdsQuery>;
+export type InternalGetHospitalIdsLazyQueryHookResult = ReturnType<typeof useInternalGetHospitalIdsLazyQuery>;
+export type InternalGetHospitalIdsQueryResult = Apollo.QueryResult<InternalGetHospitalIdsQuery, InternalGetHospitalIdsQueryVariables>;
 export const InternalGetInternalUserDocument = gql`
     query InternalGetInternalUser($id: BigInt!) {
   internalUser(id: $id) {
