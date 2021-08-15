@@ -40,6 +40,37 @@ declare global {
 }
 
 export interface NexusGenInputs {
+  HospitalAddressInputType: { // input type
+    address: string; // String!
+    phone_number: string; // String!
+    prefecture_id: NexusGenScalars['BigInt']; // BigInt!
+  }
+  HospitalBusinessFormInputType: { // input type
+    business_hour: string; // String!
+    closed_day: string; // String!
+    insurance_enabled: string; // String!
+    remark: string; // String!
+  }
+  HospitalCertificationOptionInputType: { // input type
+    jsava_registered: string; // String!
+    nichiju_registered: string; // String!
+  }
+  HospitalInternalReputationInputType: { // input type
+    remark: string; // String!
+    star: number; // Int!
+  }
+  HospitalNightServiceOptionInputType: { // input type
+    remark: string; // String!
+    status: string; // String!
+  }
+  HospitalNightUrgentActionOptionInputType: { // input type
+    status: string; // String!
+  }
+  HospitalReservationStatusInputType: { // input type
+    remark: string; // String!
+    required: string; // String!
+    reservable: string; // String!
+  }
 }
 
 export interface NexusGenEnums {
@@ -223,6 +254,7 @@ export interface NexusGenFieldTypes {
   Mutation: { // field return type
     createInternalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     deleteInternalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
+    updateHospital: NexusGenRootTypes['Hospital']; // Hospital!
     updateInternalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
   }
   PageInfo: { // field return type
@@ -328,6 +360,7 @@ export interface NexusGenFieldTypeNames {
   Mutation: { // field return type name
     createInternalUser: 'InternalUser'
     deleteInternalUser: 'InternalUser'
+    updateHospital: 'Hospital'
     updateInternalUser: 'InternalUser'
   }
   PageInfo: { // field return type name
@@ -368,6 +401,20 @@ export interface NexusGenArgTypes {
     deleteInternalUser: { // args
       id: NexusGenScalars['BigInt']; // BigInt!
     }
+    updateHospital: { // args
+      deleted: boolean; // Boolean!
+      hospitalAddressInput: NexusGenInputs['HospitalAddressInputType']; // HospitalAddressInputType!
+      hospitalBusinessFormInput: NexusGenInputs['HospitalBusinessFormInputType']; // HospitalBusinessFormInputType!
+      hospitalCertificationOptionInput: NexusGenInputs['HospitalCertificationOptionInputType']; // HospitalCertificationOptionInputType!
+      hospitalInternalReputationInput: NexusGenInputs['HospitalInternalReputationInputType']; // HospitalInternalReputationInputType!
+      hospitalNightServiceOptionInput: NexusGenInputs['HospitalNightServiceOptionInputType']; // HospitalNightServiceOptionInputType!
+      hospitalNightUrgentActionOptionInput: NexusGenInputs['HospitalNightUrgentActionOptionInputType']; // HospitalNightUrgentActionOptionInputType!
+      hospitalReservationStatusInput: NexusGenInputs['HospitalReservationStatusInputType']; // HospitalReservationStatusInputType!
+      id: NexusGenScalars['BigInt']; // BigInt!
+      internal_memo: string; // String!
+      name: string; // String!
+      url: string; // String!
+    }
     updateInternalUser: { // args
       email: string; // String!
       id: NexusGenScalars['BigInt']; // BigInt!
@@ -399,7 +446,7 @@ export interface NexusGenTypeInterfaces {
 
 export type NexusGenObjectNames = keyof NexusGenObjects;
 
-export type NexusGenInputNames = never;
+export type NexusGenInputNames = keyof NexusGenInputs;
 
 export type NexusGenEnumNames = never;
 

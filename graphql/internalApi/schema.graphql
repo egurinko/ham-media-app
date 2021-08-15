@@ -40,6 +40,12 @@ type HospitalAddressGeoLocation {
   longitude: Float!
 }
 
+input HospitalAddressInputType {
+  address: String!
+  phone_number: String!
+  prefecture_id: BigInt!
+}
+
 """A hospital business form"""
 type HospitalBusinessForm {
   business_hour: String!
@@ -49,9 +55,21 @@ type HospitalBusinessForm {
   remark: String!
 }
 
+input HospitalBusinessFormInputType {
+  business_hour: String!
+  closed_day: String!
+  insurance_enabled: String!
+  remark: String!
+}
+
 """A hospital certification option"""
 type HospitalCertificationOption {
   id: BigInt!
+  jsava_registered: String!
+  nichiju_registered: String!
+}
+
+input HospitalCertificationOptionInputType {
   jsava_registered: String!
   nichiju_registered: String!
 }
@@ -83,9 +101,19 @@ type HospitalInternalReputation {
   star: Int!
 }
 
+input HospitalInternalReputationInputType {
+  remark: String!
+  star: Int!
+}
+
 """A hospital night service option"""
 type HospitalNightServiceOption {
   id: BigInt!
+  remark: String!
+  status: String!
+}
+
+input HospitalNightServiceOptionInputType {
   remark: String!
   status: String!
 }
@@ -96,9 +124,19 @@ type HospitalNightUrgentActionOption {
   status: String!
 }
 
+input HospitalNightUrgentActionOptionInputType {
+  status: String!
+}
+
 """A hospital reservation status"""
 type HospitalReservationStatus {
   id: BigInt!
+  remark: String!
+  required: String!
+  reservable: String!
+}
+
+input HospitalReservationStatusInputType {
   remark: String!
   required: String!
   reservable: String!
@@ -114,6 +152,7 @@ type InternalUser {
 type Mutation {
   createInternalUser(email: String!, name: String!, password: String!): InternalUser!
   deleteInternalUser(id: BigInt!): InternalUser!
+  updateHospital(deleted: Boolean!, hospitalAddressInput: HospitalAddressInputType!, hospitalBusinessFormInput: HospitalBusinessFormInputType!, hospitalCertificationOptionInput: HospitalCertificationOptionInputType!, hospitalInternalReputationInput: HospitalInternalReputationInputType!, hospitalNightServiceOptionInput: HospitalNightServiceOptionInputType!, hospitalNightUrgentActionOptionInput: HospitalNightUrgentActionOptionInputType!, hospitalReservationStatusInput: HospitalReservationStatusInputType!, id: BigInt!, internal_memo: String!, name: String!, url: String!): Hospital!
   updateInternalUser(email: String!, id: BigInt!, name: String!, password: String!): InternalUser!
 }
 
