@@ -237,6 +237,7 @@ export interface NexusGenFieldTypes {
     region: NexusGenRootTypes['Region']; // Region!
   }
   Query: { // field return type
+    hospital: NexusGenRootTypes['Hospital']; // Hospital!
     hospitalConnection: NexusGenRootTypes['HospitalConnection'] | null; // HospitalConnection
     internalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     internalUsers: NexusGenRootTypes['InternalUser'][]; // [InternalUser!]!
@@ -340,6 +341,7 @@ export interface NexusGenFieldTypeNames {
     region: 'Region'
   }
   Query: { // field return type name
+    hospital: 'Hospital'
     hospitalConnection: 'HospitalConnection'
     internalUser: 'InternalUser'
     internalUsers: 'InternalUser'
@@ -372,6 +374,9 @@ export interface NexusGenArgTypes {
     }
   }
   Query: {
+    hospital: { // args
+      id: NexusGenScalars['BigInt']; // BigInt!
+    }
     hospitalConnection: { // args
       after?: string | null; // String
       before?: string | null; // String

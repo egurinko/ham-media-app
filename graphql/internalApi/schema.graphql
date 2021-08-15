@@ -150,6 +150,7 @@ type Prefecture {
 }
 
 type Query {
+  hospital(id: BigInt!): Hospital!
   hospitalConnection(
     """Returns the elements in the list that come after the specified cursor"""
     after: String
