@@ -59,7 +59,15 @@ export interface NexusGenObjects {
     token: string; // String!
   }
   Mutation: {};
+  Prefecture: { // root type
+    id: NexusGenScalars['BigInt']; // BigInt!
+    name: string; // String!
+  }
   Query: {};
+  Region: { // root type
+    id: NexusGenScalars['BigInt']; // BigInt!
+    name: string; // String!
+  }
 }
 
 export interface NexusGenInterfaces {
@@ -79,8 +87,17 @@ export interface NexusGenFieldTypes {
   Mutation: { // field return type
     createSession: NexusGenRootTypes['CreateSessionType']; // CreateSessionType!
   }
+  Prefecture: { // field return type
+    id: NexusGenScalars['BigInt']; // BigInt!
+    name: string; // String!
+    region: NexusGenRootTypes['Region']; // Region!
+  }
   Query: { // field return type
-    ok: boolean; // Boolean!
+    prefectures: NexusGenRootTypes['Prefecture'][]; // [Prefecture!]!
+  }
+  Region: { // field return type
+    id: NexusGenScalars['BigInt']; // BigInt!
+    name: string; // String!
   }
 }
 
@@ -91,8 +108,17 @@ export interface NexusGenFieldTypeNames {
   Mutation: { // field return type name
     createSession: 'CreateSessionType'
   }
+  Prefecture: { // field return type name
+    id: 'BigInt'
+    name: 'String'
+    region: 'Region'
+  }
   Query: { // field return type name
-    ok: 'Boolean'
+    prefectures: 'Prefecture'
+  }
+  Region: { // field return type name
+    id: 'BigInt'
+    name: 'String'
   }
 }
 

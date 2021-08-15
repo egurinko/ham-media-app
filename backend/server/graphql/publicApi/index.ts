@@ -3,12 +3,13 @@ import { FastifyPluginCallback } from 'fastify';
 import mercurius from 'mercurius';
 import { makeSchema, connectionPlugin } from 'nexus';
 import { BigInt } from 'nexus-prisma/scalars';
+import * as queryTypes from './queries';
 import * as mutationTypes from './mutations';
 import * as types from './types';
 import { context } from './context';
 
 const schema = makeSchema({
-  types: [BigInt, types, mutationTypes],
+  types: [BigInt, types, queryTypes, mutationTypes],
   outputs: {
     typegen: join(__dirname, '__generated__', 'types.d.ts'),
     schema: join(__dirname, '../../../../graphql/publicApi', 'schema.graphql'),

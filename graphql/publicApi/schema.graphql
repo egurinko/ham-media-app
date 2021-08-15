@@ -16,6 +16,19 @@ type Mutation {
   createSession(email: String!, password: String!): CreateSessionType!
 }
 
+"""A prefecture"""
+type Prefecture {
+  id: BigInt!
+  name: String!
+  region: Region!
+}
+
 type Query {
-  ok: Boolean!
+  prefectures: [Prefecture!]!
+}
+
+"""A region"""
+type Region {
+  id: BigInt!
+  name: String!
 }
