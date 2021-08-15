@@ -239,6 +239,7 @@ export interface NexusGenFieldTypes {
   Query: { // field return type
     hospital: NexusGenRootTypes['Hospital']; // Hospital!
     hospitalConnection: NexusGenRootTypes['HospitalConnection'] | null; // HospitalConnection
+    hospitals: NexusGenRootTypes['Hospital'][]; // [Hospital!]!
     internalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     internalUsers: NexusGenRootTypes['InternalUser'][]; // [InternalUser!]!
     session: NexusGenRootTypes['Session']; // Session!
@@ -343,6 +344,7 @@ export interface NexusGenFieldTypeNames {
   Query: { // field return type name
     hospital: 'Hospital'
     hospitalConnection: 'HospitalConnection'
+    hospitals: 'Hospital'
     internalUser: 'InternalUser'
     internalUsers: 'InternalUser'
     session: 'Session'
