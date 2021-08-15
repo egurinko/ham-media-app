@@ -1,15 +1,18 @@
 import { Text, Skeleton, Box, VStack, Divider, Badge } from '@chakra-ui/react';
-import { useCallback, useState, Fragment } from 'react';
+import { useCallback, useRef, Fragment, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useInternalGetHospitalConnectionQuery } from '@/api/internal_api/types';
+import { useIntersectionObserver } from '@/utils/hooks/useIntersectionObserver';
 import MapPin from '../../../assets/map_pin.svg';
 import Phone from '../../../assets/phone.svg';
 
 const HospitalsStack: React.VFC<Record<string, never>> = () => {
-  const { data, loading, error } = useInternalGetHospitalConnectionQuery({
-    variables: { first: 10 },
-  });
+  const { data, loading, error, fetchMore } =
+    useInternalGetHospitalConnectionQuery({
+      variables: { first: 10 },
+    });
   const nodes = data?.hospitalConnection?.edges?.map((edge) => edge?.node);
+  const pageInfo = data?.hospitalConnection?.pageInfo;
   const router = useRouter();
 
   const handleClick = useCallback(
@@ -18,6 +21,31 @@ const HospitalsStack: React.VFC<Record<string, never>> = () => {
     },
     [router]
   );
+
+  const infiniteScrollTarget = useRef<HTMLDivElement>(null);
+  const { startObserving, isIntersect } =
+    useIntersectionObserver(infiniteScrollTarget);
+
+  useEffect(() => {
+    startObserving(true);
+  }, [startObserving]);
+
+  useEffect(() => {
+    if (isIntersect) {
+      if (pageInfo?.hasNextPage) {
+        fetchMore({
+          variables: {
+            first: 10,
+            after: pageInfo?.endCursor,
+          },
+        });
+      }
+    }
+  }, [isIntersect, fetchMore, pageInfo?.hasNextPage, pageInfo?.endCursor]);
+
+  useEffect(() => {
+    console.log({ loading });
+  }, [loading]);
 
   if (error) return <Text>エラーです</Text>;
 
@@ -89,6 +117,7 @@ const HospitalsStack: React.VFC<Record<string, never>> = () => {
               </Fragment>
             ) : null;
           })}
+          <div ref={infiniteScrollTarget} />
         </VStack>
       </Skeleton>
     </>

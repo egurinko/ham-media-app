@@ -1,6 +1,7 @@
 import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { RetryLink } from '@apollo/client/link/retry';
+import { relayStylePagination } from '@apollo/client/utilities';
 import { getCookie } from '@/utils/cookies';
 
 const base = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
@@ -28,10 +29,20 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const getLink = () => authLink.concat(getHttpLink());
+const getCache = () =>
+  new InMemoryCache({
+    typePolicies: {
+      Query: {
+        fields: {
+          hospitalConnection: relayStylePagination(),
+        },
+      },
+    },
+  });
 
 const apiClient = new ApolloClient({
   link: getLink(),
-  cache: new InMemoryCache(),
+  cache: getCache(),
 });
 
 export { apiClient };
