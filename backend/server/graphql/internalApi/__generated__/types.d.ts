@@ -242,6 +242,7 @@ export interface NexusGenFieldTypes {
     hospitals: NexusGenRootTypes['Hospital'][]; // [Hospital!]!
     internalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     internalUsers: NexusGenRootTypes['InternalUser'][]; // [InternalUser!]!
+    prefectures: NexusGenRootTypes['Prefecture'][]; // [Prefecture!]!
     session: NexusGenRootTypes['Session']; // Session!
   }
   Region: { // field return type
@@ -347,6 +348,7 @@ export interface NexusGenFieldTypeNames {
     hospitals: 'Hospital'
     internalUser: 'InternalUser'
     internalUsers: 'InternalUser'
+    prefectures: 'Prefecture'
     session: 'Session'
   }
   Region: { // field return type name

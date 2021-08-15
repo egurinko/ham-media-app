@@ -167,6 +167,7 @@ type Query {
   hospitals: [Hospital!]!
   internalUser(id: BigInt!): InternalUser!
   internalUsers: [InternalUser!]!
+  prefectures: [Prefecture!]!
   session: Session!
 }
 
