@@ -164,6 +164,7 @@ type Query {
     """Returns the last n elements from the list."""
     last: Int
   ): HospitalConnection
+  hospitals: [Hospital!]!
   internalUser(id: BigInt!): InternalUser!
   internalUsers: [InternalUser!]!
   session: Session!
