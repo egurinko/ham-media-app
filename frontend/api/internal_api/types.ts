@@ -288,12 +288,14 @@ export type InternalDeleteInternalUserMutationVariables = Exact<{
 
 export type InternalDeleteInternalUserMutation = { __typename?: 'Mutation', deleteInternalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string } };
 
+export type HospitalFieldsFragment = { __typename?: 'Hospital', id: BigInt, name: string, url: string, deleted: boolean, internal_memo: string, hospitalAddress?: Maybe<{ __typename?: 'HospitalAddress', id: BigInt, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: BigInt } }>, hospitalBusinessForm?: Maybe<{ __typename?: 'HospitalBusinessForm', id: BigInt, business_hour: string, closed_day: string, insurance_enabled: string, remark: string }>, hospitalCertificationOption?: Maybe<{ __typename?: 'HospitalCertificationOption', id: BigInt, nichiju_registered: string, jsava_registered: string }>, hospitalInternalReputation?: Maybe<{ __typename?: 'HospitalInternalReputation', id: BigInt, star: number, remark: string }>, hospitalNightServiceOption?: Maybe<{ __typename?: 'HospitalNightServiceOption', id: BigInt, status: string, remark: string }>, hospitalNightUrgentActionOption?: Maybe<{ __typename?: 'HospitalNightUrgentActionOption', id: BigInt, status: string }>, hospitalReservationStatus?: Maybe<{ __typename?: 'HospitalReservationStatus', id: BigInt, required: string, reservable: string, remark: string }> };
+
 export type InternalGetHospitalQueryVariables = Exact<{
   id: Scalars['BigInt'];
 }>;
 
 
-export type InternalGetHospitalQuery = { __typename?: 'Query', hospital: { __typename?: 'Hospital', id: BigInt, name: string, url: string, deleted: boolean, internal_memo: string, hospitalAddress?: Maybe<{ __typename?: 'HospitalAddress', address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: BigInt } }>, hospitalBusinessForm?: Maybe<{ __typename?: 'HospitalBusinessForm', business_hour: string, closed_day: string, insurance_enabled: string, remark: string }>, hospitalCertificationOption?: Maybe<{ __typename?: 'HospitalCertificationOption', nichiju_registered: string, jsava_registered: string }>, hospitalInternalReputation?: Maybe<{ __typename?: 'HospitalInternalReputation', star: number, remark: string }>, hospitalNightServiceOption?: Maybe<{ __typename?: 'HospitalNightServiceOption', status: string, remark: string }>, hospitalNightUrgentActionOption?: Maybe<{ __typename?: 'HospitalNightUrgentActionOption', status: string }>, hospitalReservationStatus?: Maybe<{ __typename?: 'HospitalReservationStatus', required: string, reservable: string, remark: string }> } };
+export type InternalGetHospitalQuery = { __typename?: 'Query', hospital: { __typename?: 'Hospital', id: BigInt, name: string, url: string, deleted: boolean, internal_memo: string, hospitalAddress?: Maybe<{ __typename?: 'HospitalAddress', id: BigInt, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: BigInt } }>, hospitalBusinessForm?: Maybe<{ __typename?: 'HospitalBusinessForm', id: BigInt, business_hour: string, closed_day: string, insurance_enabled: string, remark: string }>, hospitalCertificationOption?: Maybe<{ __typename?: 'HospitalCertificationOption', id: BigInt, nichiju_registered: string, jsava_registered: string }>, hospitalInternalReputation?: Maybe<{ __typename?: 'HospitalInternalReputation', id: BigInt, star: number, remark: string }>, hospitalNightServiceOption?: Maybe<{ __typename?: 'HospitalNightServiceOption', id: BigInt, status: string, remark: string }>, hospitalNightUrgentActionOption?: Maybe<{ __typename?: 'HospitalNightUrgentActionOption', id: BigInt, status: string }>, hospitalReservationStatus?: Maybe<{ __typename?: 'HospitalReservationStatus', id: BigInt, required: string, reservable: string, remark: string }> } };
 
 export type InternalGetHospitalConnectionQueryVariables = Exact<{
   first?: Maybe<Scalars['Int']>;
@@ -301,7 +303,7 @@ export type InternalGetHospitalConnectionQueryVariables = Exact<{
 }>;
 
 
-export type InternalGetHospitalConnectionQuery = { __typename?: 'Query', hospitalConnection?: Maybe<{ __typename?: 'HospitalConnection', edges?: Maybe<Array<Maybe<{ __typename?: 'HospitalEdge', node?: Maybe<{ __typename?: 'Hospital', id: BigInt, name: string, url: string, deleted: boolean, hospitalAddress?: Maybe<{ __typename?: 'HospitalAddress', address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string } }>, hospitalInternalReputation?: Maybe<{ __typename?: 'HospitalInternalReputation', star: number }> }> }>>>, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, hasPreviousPage: boolean, startCursor?: Maybe<string>, endCursor?: Maybe<string> } }> };
+export type InternalGetHospitalConnectionQuery = { __typename?: 'Query', hospitalConnection?: Maybe<{ __typename?: 'HospitalConnection', edges?: Maybe<Array<Maybe<{ __typename?: 'HospitalEdge', node?: Maybe<{ __typename?: 'Hospital', id: BigInt, name: string, url: string, deleted: boolean, internal_memo: string, hospitalAddress?: Maybe<{ __typename?: 'HospitalAddress', id: BigInt, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: BigInt } }>, hospitalBusinessForm?: Maybe<{ __typename?: 'HospitalBusinessForm', id: BigInt, business_hour: string, closed_day: string, insurance_enabled: string, remark: string }>, hospitalCertificationOption?: Maybe<{ __typename?: 'HospitalCertificationOption', id: BigInt, nichiju_registered: string, jsava_registered: string }>, hospitalInternalReputation?: Maybe<{ __typename?: 'HospitalInternalReputation', id: BigInt, star: number, remark: string }>, hospitalNightServiceOption?: Maybe<{ __typename?: 'HospitalNightServiceOption', id: BigInt, status: string, remark: string }>, hospitalNightUrgentActionOption?: Maybe<{ __typename?: 'HospitalNightUrgentActionOption', id: BigInt, status: string }>, hospitalReservationStatus?: Maybe<{ __typename?: 'HospitalReservationStatus', id: BigInt, required: string, reservable: string, remark: string }> }> }>>>, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, hasPreviousPage: boolean, startCursor?: Maybe<string>, endCursor?: Maybe<string> } }> };
 
 export type InternalGetHospitalIdsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -353,7 +355,56 @@ export type InternalUpdateInternalUserMutationVariables = Exact<{
 
 export type InternalUpdateInternalUserMutation = { __typename?: 'Mutation', updateInternalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string } };
 
-
+export const HospitalFieldsFragmentDoc = gql`
+    fragment HospitalFields on Hospital {
+  id
+  name
+  url
+  deleted
+  internal_memo
+  hospitalAddress {
+    id
+    address
+    phone_number
+    prefecture {
+      name
+      id
+    }
+  }
+  hospitalBusinessForm {
+    id
+    business_hour
+    closed_day
+    insurance_enabled
+    remark
+  }
+  hospitalCertificationOption {
+    id
+    nichiju_registered
+    jsava_registered
+  }
+  hospitalInternalReputation {
+    id
+    star
+    remark
+  }
+  hospitalNightServiceOption {
+    id
+    status
+    remark
+  }
+  hospitalNightUrgentActionOption {
+    id
+    status
+  }
+  hospitalReservationStatus {
+    id
+    required
+    reservable
+    remark
+  }
+}
+    `;
 export const InternalCreateInternalUserDocument = gql`
     mutation InternalCreateInternalUser($name: String!, $email: String!, $password: String!) {
   createInternalUser(name: $name, email: $email, password: $password) {
@@ -429,48 +480,10 @@ export type InternalDeleteInternalUserMutationOptions = Apollo.BaseMutationOptio
 export const InternalGetHospitalDocument = gql`
     query InternalGetHospital($id: BigInt!) {
   hospital(id: $id) {
-    id
-    name
-    url
-    deleted
-    internal_memo
-    hospitalAddress {
-      address
-      phone_number
-      prefecture {
-        name
-        id
-      }
-    }
-    hospitalBusinessForm {
-      business_hour
-      closed_day
-      insurance_enabled
-      remark
-    }
-    hospitalCertificationOption {
-      nichiju_registered
-      jsava_registered
-    }
-    hospitalInternalReputation {
-      star
-      remark
-    }
-    hospitalNightServiceOption {
-      status
-      remark
-    }
-    hospitalNightUrgentActionOption {
-      status
-    }
-    hospitalReservationStatus {
-      required
-      reservable
-      remark
-    }
+    ...HospitalFields
   }
 }
-    `;
+    ${HospitalFieldsFragmentDoc}`;
 
 /**
  * __useInternalGetHospitalQuery__
@@ -504,20 +517,7 @@ export const InternalGetHospitalConnectionDocument = gql`
   hospitalConnection(first: $first, after: $after) {
     edges {
       node {
-        id
-        name
-        url
-        deleted
-        hospitalAddress {
-          address
-          phone_number
-          prefecture {
-            name
-          }
-        }
-        hospitalInternalReputation {
-          star
-        }
+        ...HospitalFields
       }
     }
     pageInfo {
@@ -528,7 +528,7 @@ export const InternalGetHospitalConnectionDocument = gql`
     }
   }
 }
-    `;
+    ${HospitalFieldsFragmentDoc}`;
 
 /**
  * __useInternalGetHospitalConnectionQuery__
