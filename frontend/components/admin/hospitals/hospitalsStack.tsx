@@ -43,10 +43,6 @@ const HospitalsStack: React.VFC<Record<string, never>> = () => {
     }
   }, [isIntersect, fetchMore, pageInfo?.hasNextPage, pageInfo?.endCursor]);
 
-  useEffect(() => {
-    console.log({ loading });
-  }, [loading]);
-
   if (error) return <Text>エラーです</Text>;
 
   return (
