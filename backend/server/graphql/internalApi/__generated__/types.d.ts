@@ -252,6 +252,7 @@ export interface NexusGenFieldTypes {
     name: string; // String!
   }
   Mutation: { // field return type
+    createHospital: NexusGenRootTypes['Hospital']; // Hospital!
     createInternalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     deleteInternalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     updateHospital: NexusGenRootTypes['Hospital']; // Hospital!
@@ -358,6 +359,7 @@ export interface NexusGenFieldTypeNames {
     name: 'String'
   }
   Mutation: { // field return type name
+    createHospital: 'Hospital'
     createInternalUser: 'InternalUser'
     deleteInternalUser: 'InternalUser'
     updateHospital: 'Hospital'
@@ -393,6 +395,12 @@ export interface NexusGenFieldTypeNames {
 
 export interface NexusGenArgTypes {
   Mutation: {
+    createHospital: { // args
+      deleted: boolean; // Boolean!
+      internal_memo: string; // String!
+      name: string; // String!
+      url: string; // String!
+    }
     createInternalUser: { // args
       email: string; // String!
       name: string; // String!
