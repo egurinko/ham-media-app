@@ -4,7 +4,11 @@ import helmet from 'fastify-helmet';
 import 'json-bigint-patch';
 import { router } from './routes';
 
-const app = fastify({ logger: true });
+const app = fastify({
+  logger: {
+    prettyPrint: true,
+  },
+});
 
 app.register(helmet, {
   contentSecurityPolicy: false,
