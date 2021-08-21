@@ -437,8 +437,11 @@ export interface NexusGenArgTypes {
     hospitalConnection: { // args
       after?: string | null; // String
       before?: string | null; // String
+      deleted?: boolean | null; // Boolean
       first?: number | null; // Int
       last?: number | null; // Int
+      name?: string | null; // String
+      prefectureId?: NexusGenScalars['BigInt'] | null; // BigInt
     }
     internalUser: { // args
       id: NexusGenScalars['BigInt']; // BigInt!
