@@ -15,7 +15,7 @@ import {
 import { ChevronRightIcon } from '@chakra-ui/icons';
 import { gql } from '@apollo/client';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
-import InternalLayout from '@/components/admin/InternalLayout';
+import InternalLayout from '@/components/admin/templates/InternalLayout';
 import Card from '@/components/base/Card';
 import { useInternalCreateInternalUserMutation } from '@/api/internal_api/types';
 import { goAdminInternalUsers } from '@/utils/routes';

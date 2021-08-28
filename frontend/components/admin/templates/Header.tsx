@@ -9,11 +9,10 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
-  VStack,
 } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import Image from 'next/image';
-import Link from 'next/link';
+import Navigation from './Navigation';
 
 const Header: React.VFC<Record<string, never>> = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -59,18 +58,7 @@ const Header: React.VFC<Record<string, never>> = () => {
           </DrawerHeader>
 
           <DrawerBody>
-            <VStack spacing="16" mt="8">
-              <Box>
-                <Link href="/admin/internal_users">
-                  <a>ユーザ管理</a>
-                </Link>
-              </Box>
-              <Box>
-                <Link href="/admin/internal_users">
-                  <a>病院管理</a>
-                </Link>
-              </Box>
-            </VStack>
+            <Navigation />
           </DrawerBody>
         </DrawerContent>
       </Drawer>

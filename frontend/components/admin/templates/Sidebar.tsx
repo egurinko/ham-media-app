@@ -1,6 +1,9 @@
 import { Box, VStack } from '@chakra-ui/react';
 import Link from 'next/link';
 import Image from 'next/image';
+import UserIcon from '../../assets/user_profile.svg';
+import HospitalIcon from '../../assets/hospital.svg';
+import Navigation from './Navigation';
 
 type Props = {};
 
@@ -23,18 +26,7 @@ const Sidebar: React.VFC<Props> = ({}) => (
         height={35}
       />
     </Box>
-    <VStack spacing="16" mt="8">
-      <Box>
-        <Link href="/admin/internal_users">
-          <a>ユーザ管理</a>
-        </Link>
-      </Box>
-      <Box>
-        <Link href="/admin/hospitals">
-          <a>病院管理</a>
-        </Link>
-      </Box>
-    </VStack>
+    <Navigation />
   </Box>
 );
 

@@ -16,7 +16,7 @@ import {
 } from '@chakra-ui/react';
 import { ChevronRightIcon } from '@chakra-ui/icons';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
-import InternalLayout from '@/components/admin/InternalLayout';
+import InternalLayout from '@/components/admin/templates/InternalLayout';
 import Card from '@/components/base/Card';
 import { getInternalUsers } from '@/api/internal_api/getInternalUsers';
 import type { InternalGetInternalUsersQuery } from '@/api/internal_api/types';

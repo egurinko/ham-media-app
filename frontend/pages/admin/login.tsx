@@ -15,7 +15,7 @@ import Card from '@/components/base/Card';
 import { useInternalGetSessionQuery } from '@/api/internal_api/types';
 import { usePublicCreateSessionMutation } from '@/api/public_api/types';
 import { setCookie } from '@/utils/cookies';
-import PublicLayout from '@/components/admin/PublicLayout';
+import PublicLayout from '@/components/admin/templates/PublicLayout';
 import ClientOnly from '@/components/ClientOnly';
 import { goAdminInternalUsers } from '@/utils/routes';
 
