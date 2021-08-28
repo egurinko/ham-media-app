@@ -48,8 +48,6 @@ const New: React.VFC<Record<string, never>> = () => {
   }) => {
     trigger();
 
-    console.log({ name, url, published, internalMemo });
-
     try {
       const result = await create({
         variables: {
@@ -58,35 +56,6 @@ const New: React.VFC<Record<string, never>> = () => {
           deleted: !published,
           internal_memo: internalMemo,
         },
-        // update(cache, { data }) {
-        //   cache.modify({
-        //     fields: {
-        //       internalUsers(currents = [], { readField }) {
-        //         const adding = cache.writeFragment({
-        //           data: data?.createInternalUser,
-        //           fragment: gql`
-        //             fragment NewInternalUser on InternalUser {
-        //               id
-        //               name
-        //               email
-        //             }
-        //           `,
-        //         });
-
-        //         if (
-        //           currents.some(
-        //             (ref) =>
-        //               readField('id', ref) === data?.createInternalUser.id
-        //           )
-        //         ) {
-        //           return currents;
-        //         }
-
-        //         return [...currents, adding];
-        //       },
-        //     },
-        //   });
-        // },
       });
       setTimeout(() => {
         goAdminHospitalsEdit(router, { id: result.data!.createHospital.id });
