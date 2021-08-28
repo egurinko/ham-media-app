@@ -4,7 +4,6 @@ export const useIntersectionObserver = (
   ref: RefObject<HTMLElement>,
   options?: IntersectionObserverInit
 ) => {
-  const [observing, setObserving] = useState(false);
   const [observer, setObserver] = useState<IntersectionObserver | null>(null);
   const [intersect, setIntersect] = useState(false);
 
@@ -28,16 +27,12 @@ export const useIntersectionObserver = (
   useEffect(() => {
     if (ref.current === null) return;
 
-    if (observing) {
-      const observer = new IntersectionObserver(callback, options);
-      observer.observe(ref.current);
-      setObserver(observer);
-    } else {
-      cleanup();
-    }
+    const iobserver = new IntersectionObserver(callback, options);
+    iobserver.observe(ref.current);
+    setObserver(iobserver);
 
     return cleanup;
-  }, [ref.current, observing]);
+  }, [ref, callback, options]);
 
-  return { startObserving: setObserving, isIntersect: intersect };
+  return { isIntersect: intersect };
 };
