@@ -312,6 +312,8 @@ export type InternalDeleteInternalUserMutation = { __typename?: 'Mutation', dele
 
 export type HospitalFieldsFragment = { __typename?: 'Hospital', id: BigInt, name: string, url: string, deleted: boolean, internal_memo: string, hospitalAddress?: Maybe<{ __typename?: 'HospitalAddress', id: BigInt, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: BigInt } }>, hospitalBusinessForm?: Maybe<{ __typename?: 'HospitalBusinessForm', id: BigInt, business_hour: string, closed_day: string, insurance_enabled: string, remark: string }>, hospitalCertificationOption?: Maybe<{ __typename?: 'HospitalCertificationOption', id: BigInt, nichiju_registered: string, jsava_registered: string }>, hospitalInternalReputation?: Maybe<{ __typename?: 'HospitalInternalReputation', id: BigInt, star: number, remark: string }>, hospitalNightServiceOption?: Maybe<{ __typename?: 'HospitalNightServiceOption', id: BigInt, status: string, remark: string }>, hospitalNightUrgentActionOption?: Maybe<{ __typename?: 'HospitalNightUrgentActionOption', id: BigInt, status: string }>, hospitalReservationStatus?: Maybe<{ __typename?: 'HospitalReservationStatus', id: BigInt, required: string, reservable: string, remark: string }> };
 
+export type InternalUserFieldsFragment = { __typename?: 'InternalUser', id: BigInt, email: string, name: string };
+
 export type InternalGetHospitalQueryVariables = Exact<{
   id: Scalars['BigInt'];
 }>;
@@ -428,6 +430,13 @@ export const HospitalFieldsFragmentDoc = gql`
     reservable
     remark
   }
+}
+    `;
+export const InternalUserFieldsFragmentDoc = gql`
+    fragment InternalUserFields on InternalUser {
+  id
+  email
+  name
 }
     `;
 export const InternalCreateHospitalDocument = gql`
@@ -670,12 +679,10 @@ export type InternalGetHospitalIdsQueryResult = Apollo.QueryResult<InternalGetHo
 export const InternalGetInternalUserDocument = gql`
     query InternalGetInternalUser($id: BigInt!) {
   internalUser(id: $id) {
-    id
-    email
-    name
+    ...InternalUserFields
   }
 }
-    `;
+    ${InternalUserFieldsFragmentDoc}`;
 
 /**
  * __useInternalGetInternalUserQuery__
@@ -707,12 +714,10 @@ export type InternalGetInternalUserQueryResult = Apollo.QueryResult<InternalGetI
 export const InternalGetInternalUsersDocument = gql`
     query InternalGetInternalUsers {
   internalUsers {
-    id
-    email
-    name
+    ...InternalUserFields
   }
 }
-    `;
+    ${InternalUserFieldsFragmentDoc}`;
 
 /**
  * __useInternalGetInternalUsersQuery__
@@ -834,12 +839,10 @@ export type InternalUpdateHospitalMutationOptions = Apollo.BaseMutationOptions<I
 export const InternalUpdateInternalUserDocument = gql`
     mutation InternalUpdateInternalUser($id: BigInt!, $name: String!, $email: String!, $password: String!) {
   updateInternalUser(id: $id, name: $name, email: $email, password: $password) {
-    id
-    email
-    name
+    ...InternalUserFields
   }
 }
-    `;
+    ${InternalUserFieldsFragmentDoc}`;
 export type InternalUpdateInternalUserMutationFn = Apollo.MutationFunction<InternalUpdateInternalUserMutation, InternalUpdateInternalUserMutationVariables>;
 
 /**

@@ -1,6 +1,8 @@
 import { gql } from '@apollo/client';
+import { INTERNAL_USER_FIELDS } from './fragments/internalUser';
 
 export const updateInternalUser = gql`
+  ${INTERNAL_USER_FIELDS}
   mutation InternalUpdateInternalUser(
     $id: BigInt!
     $name: String!
@@ -13,9 +15,7 @@ export const updateInternalUser = gql`
       email: $email
       password: $password
     ) {
-      id
-      email
-      name
+      ...InternalUserFields
     }
   }
 `;
