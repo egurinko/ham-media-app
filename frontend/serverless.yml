@@ -1,0 +1,4 @@
+ham-media-front-app:
+  component: '@sls-next/serverless-component@3.2.0'
+  inputs:
+    domain: 'ham-media-app.net'
