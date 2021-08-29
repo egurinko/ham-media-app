@@ -17,7 +17,10 @@ import { gql } from '@apollo/client';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import InternalLayout from '@/components/admin/templates/InternalLayout';
 import Card from '@/components/base/Card';
-import { useInternalCreateInternalUserMutation } from '@/api/internal_api/types';
+import {
+  useInternalCreateInternalUserMutation,
+  InternalUserFieldsFragment,
+} from '@/api/internal_api/types';
 import { goAdminInternalUsers } from '@/utils/routes';
 
 interface FormInput {
@@ -50,7 +53,10 @@ const New: React.VFC<Record<string, never>> = () => {
         update(cache, { data }) {
           cache.modify({
             fields: {
-              internalUsers(currents = [], { readField }) {
+              internalUsers(
+                currents: InternalUserFieldsFragment[] = [],
+                { readField }
+              ) {
                 const adding = cache.writeFragment({
                   data: data?.createInternalUser,
                   fragment: gql`
