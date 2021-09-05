@@ -4,6 +4,10 @@
     "frontend",
     "backend"
   ],
+  "scripts": {
+    "build": "yarn workspace backend build",
+    "start": "yarn workspace backend start"
+  },
   "devDependencies": {
     "@types/graphql": "^14.5.0",
     "@typescript-eslint/eslint-plugin": "^4.28.2",
