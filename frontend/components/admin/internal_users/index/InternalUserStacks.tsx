@@ -18,7 +18,7 @@ import {
 import { DeleteIcon } from '@chakra-ui/icons';
 import { useCallback, useState, Fragment } from 'react';
 import { useRouter } from 'next/router';
-import UserProfile from '../../../assets/user_profile.svg';
+import UserProfile from '../../../../assets/user_profile.svg';
 import {
   useInternalGetInternalUsersQuery,
   useInternalDeleteInternalUserMutation,
