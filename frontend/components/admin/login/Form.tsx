@@ -15,6 +15,7 @@ import FlashMessage from '@/components/base/FlashMessage';
 import { usePublicCreateSessionMutation } from '@/api/public_api/types';
 import { setCookie } from '@/utils/cookies';
 import { goAdminInternalUsers } from '@/utils/routes';
+import validators from '@/validators/index';
 
 interface FormInput {
   email: string;
@@ -63,14 +64,7 @@ const Form: React.VFC<Record<string, never>> = () => {
                 name="email"
                 control={control}
                 defaultValue=""
-                rules={{
-                  required: 'メールアドレスを入力してください',
-                  pattern: {
-                    value:
-                      /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                    message: '有効なメールアドレスを入力してください',
-                  },
-                }}
+                rules={validators.email.rules}
                 render={({ field }) => (
                   <Input
                     type="email"
@@ -91,13 +85,7 @@ const Form: React.VFC<Record<string, never>> = () => {
                 name="password"
                 control={control}
                 defaultValue=""
-                rules={{
-                  required: 'パスワードを入力してください',
-                  minLength: {
-                    value: 8,
-                    message: '8文字以上で入力してください',
-                  },
-                }}
+                rules={validators.password.rules}
                 render={({ field }) => (
                   <Input
                     type="password"

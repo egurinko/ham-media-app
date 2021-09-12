@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router';
 import {
-  Heading,
   Box,
   Input,
   Stack,
@@ -8,8 +7,6 @@ import {
   FormControl,
   FormLabel,
   FormErrorMessage,
-  Alert,
-  AlertIcon,
 } from '@chakra-ui/react';
 import { gql } from '@apollo/client';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
@@ -20,6 +17,7 @@ import {
   InternalUserFieldsFragment,
 } from '@/api/internal_api/types';
 import { goAdminInternalUsers } from '@/utils/routes';
+import validators from '@/validators/index';
 
 interface FormInput {
   name: string;
@@ -102,7 +100,7 @@ const Form: React.VFC<Record<string, never>> = () => {
               <Controller
                 name="name"
                 control={control}
-                rules={{ required: 'ユーザ名を入力してください' }}
+                rules={validators.username.rules}
                 render={({ field }) => (
                   <Input type="text" isInvalid={!!errors.name} {...field} />
                 )}
@@ -116,14 +114,7 @@ const Form: React.VFC<Record<string, never>> = () => {
               <Controller
                 name="email"
                 control={control}
-                rules={{
-                  required: 'メールアドレスを入力してください',
-                  pattern: {
-                    value:
-                      /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                    message: '有効なメールアドレスを入力してください',
-                  },
-                }}
+                rules={validators.email.rules}
                 render={({ field }) => (
                   <Input
                     type="email"
@@ -144,13 +135,7 @@ const Form: React.VFC<Record<string, never>> = () => {
                 name="password"
                 control={control}
                 defaultValue=""
-                rules={{
-                  required: 'パスワードを入力してください',
-                  minLength: {
-                    value: 8,
-                    message: '8文字以上で入力してください',
-                  },
-                }}
+                rules={validators.password.rules}
                 render={({ field }) => (
                   <Input
                     type="password"
