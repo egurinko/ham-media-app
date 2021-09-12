@@ -3,7 +3,7 @@ import { AddIcon } from '@chakra-ui/icons';
 import { useRouter } from 'next/router';
 import ClientOnly from '@/components/ClientOnly';
 import InternalLayout from '@/components/admin/templates/InternalLayout';
-import InternalUserStacks from '@/components/admin/internal_users/InternalUserStacks';
+import InternalUserStacks from '@/components/admin/internal_users/index/InternalUserStacks';
 import { goAdminInternalUserNew } from '@/utils/routes';
 
 const Index: React.VFC<{}> = () => {

@@ -14,8 +14,6 @@ import {
   ModalBody,
   ModalCloseButton,
   useDisclosure,
-  Alert,
-  AlertIcon,
 } from '@chakra-ui/react';
 import { DeleteIcon } from '@chakra-ui/icons';
 import { useCallback, useState, Fragment } from 'react';
@@ -26,6 +24,7 @@ import {
   useInternalDeleteInternalUserMutation,
 } from '@/api/internal_api/types';
 import type { InternalGetInternalUsersQuery } from '@/api/internal_api/types';
+import FlashMessage from '@/components/base/FlashMessage';
 
 const InternalUserStacks: React.VFC<Record<string, never>> = () => {
   const { data, loading, error } = useInternalGetInternalUsersQuery();
@@ -69,15 +68,9 @@ const InternalUserStacks: React.VFC<Record<string, never>> = () => {
       <Skeleton isLoaded={!loading}>
         <VStack spacing="0" mt="4" alignItems="flex-start">
           {mutationData ? (
-            <Alert my="4" status="success">
-              <AlertIcon />
-              削除に成功しました
-            </Alert>
+            <FlashMessage message="削除に成功しました" status="success" />
           ) : mutationError ? (
-            <Alert my="4" status="error">
-              <AlertIcon />
-              {mutationError.message}
-            </Alert>
+            <FlashMessage message={mutationError.message} status="error" />
           ) : null}
           <Divider />
           {data?.internalUsers.map((internalUser) => (
