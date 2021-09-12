@@ -1,22 +1,11 @@
-import { useState, useEffect } from 'react';
-import {
-  Box,
-  Input,
-  Stack,
-  Button,
-  FormControl,
-  FormLabel,
-  Alert,
-  AlertIcon,
-} from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import Card from '@/components/base/Card';
 import { useInternalGetSessionQuery } from '@/api/internal_api/types';
-import { usePublicCreateSessionMutation } from '@/api/public_api/types';
 import { setCookie } from '@/utils/cookies';
 import PublicLayout from '@/components/admin/templates/PublicLayout';
 import ClientOnly from '@/components/ClientOnly';
+import Form from '@/components/admin/login/Form';
 import { goAdminInternalUsers } from '@/utils/routes';
 
 const LoginMutation: React.VFC<{}> = () => {
@@ -29,24 +18,12 @@ const LoginMutation: React.VFC<{}> = () => {
 
 const Login: React.VFC<Record<string, never>> = () => {
   const { data } = useInternalGetSessionQuery();
-  const [login, { data: loginData, error: loginError }] =
-    usePublicCreateSessionMutation();
   const router = useRouter();
 
   if (data?.session.token) {
     setCookie(data.session.token);
     goAdminInternalUsers(router);
   }
-
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  useEffect(() => {
-    if (loginData) {
-      setCookie(loginData.createSession.token);
-      goAdminInternalUsers(router);
-    }
-  }, [loginData, loginError]);
 
   return (
     <PublicLayout>
@@ -67,60 +44,7 @@ const Login: React.VFC<Record<string, never>> = () => {
             height={55}
           />
         </Box>
-        {loginData ? (
-          <Alert my="4" status="success">
-            <AlertIcon />
-            ログインに成功しました。
-          </Alert>
-        ) : loginError ? (
-          <Alert my="4" status="error">
-            <AlertIcon />
-            {loginError.message}
-          </Alert>
-        ) : null}
-        <Card>
-          <form
-            onSubmit={async (e) => {
-              e.preventDefault();
-              login({ variables: { email, password } });
-            }}
-          >
-            <Stack spacing={4}>
-              <FormControl id="email">
-                <FormLabel>メールアドレス</FormLabel>
-                <Input
-                  type="email"
-                  autoComplete="email"
-                  autoCapitalize="off"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </FormControl>
-              <FormControl id="email">
-                <FormLabel>パスワード</FormLabel>
-                <Input
-                  type="password"
-                  autoComplete="current-password"
-                  autoCapitalize="off"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </FormControl>
-            </Stack>
-            <Box d="grid" justifyContent="center">
-              <Button
-                size="lg"
-                mt="16"
-                variant="solid"
-                bgColor="primary.main"
-                color="white"
-                type="submit"
-              >
-                ログイン
-              </Button>
-            </Box>
-          </form>
-        </Card>
+        <Form />
       </Box>
     </PublicLayout>
   );
