@@ -1,4 +1,4 @@
-import Head from './Head';
+import Head from '@/components/molecules/Head';
 import Footer from './Footer';
 
 type Props = {
