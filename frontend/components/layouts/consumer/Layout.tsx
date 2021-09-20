@@ -1,5 +1,5 @@
 import Head from '@/components/molecules/Head';
-import Footer from './Footer';
+import Footer from '@/components/organisms/consumer/Footer';
 
 type Props = {
   title?: string;

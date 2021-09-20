@@ -1,7 +1,7 @@
 import { useMediaQuery, Fade, HStack, Box } from '@chakra-ui/react';
 import BaseLayout from './BaseLayout';
-import Sidebar from '@/components/admin/templates/Sidebar';
-import Header from '@/components/admin/templates/Header';
+import Sidebar from '@/components/organisms/admin/Sidebar';
+import Header from '@/components/ecosystems/admin/Header';
 
 type Props = {
   title?: string;

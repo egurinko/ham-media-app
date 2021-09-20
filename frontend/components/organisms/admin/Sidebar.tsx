@@ -1,13 +1,10 @@
-import { Box, VStack } from '@chakra-ui/react';
-import Link from 'next/link';
+import { Box } from '@chakra-ui/react';
 import Image from 'next/image';
-import UserIcon from '../../assets/user_profile.svg';
-import HospitalIcon from '../../assets/hospital.svg';
-import Navigation from './Navigation';
+import Navigation from '@/components/ecosystems/admin/Navigation';
 
-type Props = {};
+type Props = Record<string, never>;
 
-const Sidebar: React.VFC<Props> = ({}) => (
+const Sidebar: React.VFC<Props> = () => (
   <Box
     w={250}
     bg="white"
