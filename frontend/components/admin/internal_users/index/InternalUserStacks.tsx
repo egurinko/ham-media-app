@@ -24,7 +24,7 @@ import {
   useInternalDeleteInternalUserMutation,
 } from '@/api/internal_api/types';
 import type { InternalGetInternalUsersQuery } from '@/api/internal_api/types';
-import FlashMessage from '@/components/base/FlashMessage';
+import FlashMessage from '@/components/atoms/FlashMessage';
 
 const InternalUserStacks: React.VFC<Record<string, never>> = () => {
   const { data, loading, error } = useInternalGetInternalUsersQuery();

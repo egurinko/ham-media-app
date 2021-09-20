@@ -9,8 +9,8 @@ import {
   FormErrorMessage,
 } from '@chakra-ui/react';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
-import Card from '@/components/base/Card';
-import FlashMessage from '@/components/base/FlashMessage';
+import Card from '@/components/atoms/Card';
+import FlashMessage from '@/components/atoms/FlashMessage';
 import { useInternalUpdateInternalUserMutation } from '@/api/internal_api/types';
 import type { InternalGetInternalUserQuery } from '@/api/internal_api/types';
 import { goAdminInternalUsers } from '@/utils/routes';

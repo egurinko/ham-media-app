@@ -10,8 +10,8 @@ import {
 } from '@chakra-ui/react';
 import { gql } from '@apollo/client';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
-import Card from '@/components/base/Card';
-import FlashMessage from '@/components/base/FlashMessage';
+import Card from '@/components/atoms/Card';
+import FlashMessage from '@/components/atoms/FlashMessage';
 import {
   useInternalCreateInternalUserMutation,
   InternalUserFieldsFragment,
