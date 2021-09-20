@@ -1,0 +1,13 @@
+ham-media-front-app-stg:
+  component: '../node_modules/@sls-next/serverless-component'
+  inputs:
+    domain: ham-media-stg-app.link
+    cloudfront:
+      distributionId: EYTDSF8G1RCR4
+    bucketName: ham-media-app-stg
+    name:
+      defaultLambda: default-ham-media-app-stg
+      apiLambda: api-ham-media-app-stg
+    build:
+      env:
+        NEXT_PUBLIC_API_URL: https://ham-media-app-stg.herokuapp.com/

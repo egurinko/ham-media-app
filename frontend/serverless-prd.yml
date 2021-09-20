@@ -1,0 +1,13 @@
+ham-media-front-app-prd:
+  component: '../node_modules/@sls-next/serverless-component'
+  inputs:
+    domain: ham-media-app.net
+    cloudfront:
+      distributionId: ES7131AFAPKZE
+    bucketName: ham-media-app-prd
+    name:
+      defaultLambda: default-ham-media-app-prd
+      apiLambda: api-ham-media-app-prd
+    build:
+      env:
+        NEXT_PUBLIC_API_URL: https://ham-media-app.herokuapp.com/
