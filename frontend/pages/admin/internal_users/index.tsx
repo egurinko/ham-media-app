@@ -1,7 +1,7 @@
 import { Heading, Box, Button } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
 import { useRouter } from 'next/router';
-import ClientOnly from '@/components/ClientOnly';
+import ClientOnly from '@/components/ecosystems/ClientOnly';
 import InternalLayout from '@/components/admin/templates/InternalLayout';
 import InternalUserStacks from '@/components/admin/internal_users/index/InternalUserStacks';
 import { goAdminInternalUserNew } from '@/utils/routes';

@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { useInternalGetSessionQuery } from '@/api/internal_api/types';
 import { setCookie } from '@/utils/cookies';
 import PublicLayout from '@/components/admin/templates/PublicLayout';
-import ClientOnly from '@/components/ClientOnly';
+import ClientOnly from '@/components/ecosystems/ClientOnly';
 import Form from '@/components/admin/login/Form';
 import { goAdminInternalUsers } from '@/utils/routes';
 
