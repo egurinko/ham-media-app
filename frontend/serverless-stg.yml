@@ -10,4 +10,4 @@ ham-media-front-app-stg:
       apiLambda: api-ham-media-app-stg
     build:
       env:
-        NEXT_PUBLIC_API_URL: https://ham-media-app-stg.herokuapp.com/
+        NEXT_PUBLIC_API_URL: https://ham-media-app-stg.herokuapp.com

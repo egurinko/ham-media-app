@@ -10,4 +10,4 @@ ham-media-front-app-prd:
       apiLambda: api-ham-media-app-prd
     build:
       env:
-        NEXT_PUBLIC_API_URL: https://ham-media-app.herokuapp.com/
+        NEXT_PUBLIC_API_URL: https://ham-media-app.herokuapp.com
