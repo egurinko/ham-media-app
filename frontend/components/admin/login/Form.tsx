@@ -11,7 +11,7 @@ import {
 import { useRouter } from 'next/router';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import Card from '@/components/atoms/Card';
-import FlashMessage from '@/components/atoms/FlashMessage';
+import FlashMessage from '@/components/molecules/FlashMessage';
 import { usePublicCreateSessionMutation } from '@/api/public_api/types';
 import { setCookie } from '@/utils/cookies';
 import { goAdminInternalUsers } from '@/utils/routes';
