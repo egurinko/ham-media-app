@@ -1,5 +1,5 @@
-import Head from './Head';
 import { Box } from '@chakra-ui/react';
+import Head from '@/components/admin/templates/Head';
 
 type Props = {
   title?: string;

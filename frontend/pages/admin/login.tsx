@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useInternalGetSessionQuery } from '@/api/internal_api/types';
 import { setCookie } from '@/utils/cookies';
-import PublicLayout from '@/components/admin/templates/PublicLayout';
+import PublicLayout from '@/components/layouts/admin/PublicLayout';
 import ClientOnly from '@/components/ecosystems/ClientOnly';
 import Form from '@/components/admin/login/Form';
 import { goAdminInternalUsers } from '@/utils/routes';

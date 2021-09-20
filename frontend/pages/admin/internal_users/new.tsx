@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { Heading, Box, IconButton } from '@chakra-ui/react';
 import { ChevronRightIcon } from '@chakra-ui/icons';
-import InternalLayout from '@/components/admin/templates/InternalLayout';
+import InternalLayout from '@/components/layouts/admin/InternalLayout';
 import Form from '@/components/admin/internal_users/new/Form';
 import { goAdminInternalUsers } from '@/utils/routes';
 

@@ -2,7 +2,7 @@ import { Heading, Box, Button } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
 import { useRouter } from 'next/router';
 import ClientOnly from '@/components/ecosystems/ClientOnly';
-import InternalLayout from '@/components/admin/templates/InternalLayout';
+import InternalLayout from '@/components/layouts/admin/InternalLayout';
 import HospitalsStack from '@/components/admin/hospitals/hospitalsStack';
 import { goAdminHospitalsNew } from '@/utils/routes';
 
