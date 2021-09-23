@@ -1,4 +1,6 @@
+import { Box } from '@chakra-ui/react';
 import Head from '@/components/molecules/Head';
+import Header from '@/components/organisms/consumer/Header';
 import Footer from '@/components/organisms/consumer/Footer';
 
 type Props = {
@@ -6,11 +8,14 @@ type Props = {
 };
 
 const Layout: React.FC<Props> = ({ title = 'Ham ω Media', children }) => (
-  <div>
+  <Box bgColor="background.main" minH="100vh" color="text.main">
     <Head title={title} />
-    <main>{children}</main>
-    <Footer />
-  </div>
+    <Header />
+    <Box p="2">
+      <main>{children}</main>
+      <Footer />
+    </Box>
+  </Box>
 );
 
 export default Layout;
