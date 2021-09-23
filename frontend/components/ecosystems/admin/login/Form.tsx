@@ -8,7 +8,7 @@ import { usePublicCreateSessionMutation } from '@/api/public_api/types';
 import { setCookie } from '@/utils/cookies';
 import { goAdminInternalUsers } from '@/utils/routes';
 
-const Form: React.VFC<Record<string, never>> = () => {
+const Form: React.VFC<NoProps> = () => {
   const router = useRouter();
   const {
     control: RHFControl,

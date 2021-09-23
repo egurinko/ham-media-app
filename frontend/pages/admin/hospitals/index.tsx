@@ -6,7 +6,7 @@ import InternalLayout from '@/components/layouts/admin/InternalLayout';
 import HospitalsStack from '@/components/ecosystems/admin/hospitals/index/hospitalsStack';
 import { goAdminHospitalsNew } from '@/utils/routes';
 
-const Index: React.VFC<{}> = () => {
+const Index: React.VFC<NoProps> = () => {
   const router = useRouter();
   return (
     <InternalLayout>

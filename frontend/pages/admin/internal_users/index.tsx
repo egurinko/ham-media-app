@@ -6,7 +6,7 @@ import InternalLayout from '@/components/layouts/admin/InternalLayout';
 import InternalUserStacks from '@/components/ecosystems/admin/internal_users/index/InternalUserStacks';
 import { goAdminInternalUserNew } from '@/utils/routes';
 
-const Index: React.VFC<{}> = () => {
+const Index: React.VFC<NoProps> = () => {
   const router = useRouter();
   return (
     <InternalLayout>

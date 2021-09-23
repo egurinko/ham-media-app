@@ -8,7 +8,7 @@ import ClientOnly from '@/components/ecosystems/ClientOnly';
 import Form from '@/components/ecosystems/admin/login/Form';
 import { goAdminInternalUsers } from '@/utils/routes';
 
-const LoginMutation: React.VFC<{}> = () => {
+const LoginMutation: React.VFC<NoProps> = () => {
   return (
     <ClientOnly>
       <Login />
@@ -16,7 +16,7 @@ const LoginMutation: React.VFC<{}> = () => {
   );
 };
 
-const Login: React.VFC<Record<string, never>> = () => {
+const Login: React.VFC<NoProps> = () => {
   const { data } = useInternalGetSessionQuery();
   const router = useRouter();
 

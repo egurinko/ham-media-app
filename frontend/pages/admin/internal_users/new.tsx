@@ -5,7 +5,7 @@ import InternalLayout from '@/components/layouts/admin/InternalLayout';
 import Form from '@/components/admin/internal_users/new/Form';
 import { goAdminInternalUsers } from '@/utils/routes';
 
-const New: React.VFC<Record<string, never>> = () => {
+const New: React.VFC<NoProps> = () => {
   const router = useRouter();
 
   return (

@@ -29,7 +29,7 @@ interface FormInput {
   internalMemo: string;
 }
 
-const New: React.VFC<Record<string, never>> = () => {
+const New: React.VFC<NoProps> = () => {
   const router = useRouter();
   const {
     control,

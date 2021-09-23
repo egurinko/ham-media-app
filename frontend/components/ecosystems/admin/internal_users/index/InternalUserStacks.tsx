@@ -26,7 +26,7 @@ import {
 import type { InternalGetInternalUsersQuery } from '@/api/internal_api/types';
 import FlashMessage from '@/components/molecules/FlashMessage';
 
-const InternalUserStacks: React.VFC<Record<string, never>> = () => {
+const InternalUserStacks: React.VFC<NoProps> = () => {
   const { data, loading, error } = useInternalGetInternalUsersQuery();
   const router = useRouter();
 

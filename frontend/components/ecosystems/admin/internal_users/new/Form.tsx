@@ -25,7 +25,7 @@ interface FormInput {
   password: string;
 }
 
-const Form: React.VFC<Record<string, never>> = () => {
+const Form: React.VFC<NoProps> = () => {
   const router = useRouter();
   const {
     control,

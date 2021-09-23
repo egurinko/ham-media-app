@@ -18,7 +18,7 @@ import { useIntersectionObserver } from '@/utils/hooks/useIntersectionObserver';
 import MapPinIcon from '@/components/atoms/assets/MapPinIcon';
 import PhoneIcon from '@/components/atoms/assets/PhoneIcon';
 
-const HospitalsStack: React.VFC<Record<string, never>> = () => {
+const HospitalsStack: React.VFC<NoProps> = () => {
   const router = useRouter();
   const [name, setName] = useState('');
   const [deleted, setDeleted] = useState(false);

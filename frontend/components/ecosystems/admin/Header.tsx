@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { useDisclosure } from '@chakra-ui/react';
 import OrganismHeader from '@/components/organisms/admin/Header';
 
-const Header: React.VFC<Record<string, never>> = () => {
+const Header: React.VFC<NoProps> = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const handleToggle = useCallback(
     () => (isOpen ? onClose() : onOpen()),
