@@ -3,7 +3,7 @@ import { AddIcon } from '@chakra-ui/icons';
 import { useRouter } from 'next/router';
 import ClientOnly from '@/components/ecosystems/ClientOnly';
 import InternalLayout from '@/components/layouts/admin/InternalLayout';
-import HospitalsStack from '@/components/admin/hospitals/hospitalsStack';
+import HospitalsStack from '@/components/ecosystems/admin/hospitals/index/hospitalsStack';
 import { goAdminHospitalsNew } from '@/utils/routes';
 
 const Index: React.VFC<{}> = () => {

@@ -5,7 +5,7 @@ import { useInternalGetSessionQuery } from '@/api/internal_api/types';
 import { setCookie } from '@/utils/cookies';
 import PublicLayout from '@/components/layouts/admin/PublicLayout';
 import ClientOnly from '@/components/ecosystems/ClientOnly';
-import Form from '@/components/admin/login/Form';
+import Form from '@/components/ecosystems/admin/login/Form';
 import { goAdminInternalUsers } from '@/utils/routes';
 
 const LoginMutation: React.VFC<{}> = () => {

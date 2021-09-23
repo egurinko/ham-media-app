@@ -15,8 +15,8 @@ import { useRouter } from 'next/router';
 import { useInternalGetHospitalConnectionLazyQuery } from '@/api/internal_api/types';
 import { usePublicGetPrefecturesQuery } from '@/api/public_api/types';
 import { useIntersectionObserver } from '@/utils/hooks/useIntersectionObserver';
-import MapPin from '../../../assets/map_pin.svg';
-import Phone from '../../../assets/phone.svg';
+import MapPinIcon from '@/components/atoms/assets/MapPinIcon';
+import PhoneIcon from '@/components/atoms/assets/PhoneIcon';
 
 const HospitalsStack: React.VFC<Record<string, never>> = () => {
   const router = useRouter();
@@ -173,7 +173,7 @@ const HospitalsStack: React.VFC<Record<string, never>> = () => {
                 <Box flexShrink={0}>
                   <Box flexShrink={0} display="flex" alignItems="center">
                     <Box fill="primary.main" mr="1">
-                      <MapPin width={15} height={15} />
+                      <MapPinIcon width={15} height={15} />
                     </Box>
                     <Text fontSize="sm">
                       {node.hospitalAddress?.prefecture.name}
@@ -182,7 +182,7 @@ const HospitalsStack: React.VFC<Record<string, never>> = () => {
                   </Box>
                   <Box flexShrink={0} display="flex" alignItems="center">
                     <Box fill="primary.main" mr="1">
-                      <Phone width={15} height={15} />
+                      <PhoneIcon width={15} height={15} />
                     </Box>
                     <Text fontSize="sm">
                       {node.hospitalAddress?.phone_number}

@@ -18,7 +18,7 @@ import {
 import { DeleteIcon } from '@chakra-ui/icons';
 import { useCallback, useState, Fragment } from 'react';
 import { useRouter } from 'next/router';
-import UserProfile from '../../../../assets/user_profile.svg';
+import UserProfileIcon from '@/components/atoms/assets/UserProfileIcon';
 import {
   useInternalGetInternalUsersQuery,
   useInternalDeleteInternalUserMutation,
@@ -89,7 +89,7 @@ const InternalUserStacks: React.VFC<Record<string, never>> = () => {
                 onClick={() => handleClick(internalUser.id)}
               >
                 <Box mr="4" fill="primary.main">
-                  <UserProfile width={35} height={35} />
+                  <UserProfileIcon width={35} height={35} />
                 </Box>
                 <Box flex="1">
                   <Text fontSize="xl" fontWeight="bold">

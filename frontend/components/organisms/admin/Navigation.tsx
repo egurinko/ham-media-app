@@ -1,7 +1,7 @@
 import { Box, VStack } from '@chakra-ui/react';
 import Link from 'next/link';
-import UserIcon from '../../../assets/user_profile.svg';
-import HospitalIcon from '../../../assets/hospital.svg';
+import UserProfileIcon from '@/components/atoms/assets/UserProfileIcon';
+import HospitalIcon from '@/components/atoms/assets/HospitalIcon';
 
 type Props = {
   isAdminInternalUsersPath: boolean;
@@ -27,7 +27,7 @@ const Navigation: React.VFC<Props> = ({
             }}
           >
             <Box mr="2">
-              <UserIcon width={20} height={20} />
+              <UserProfileIcon width={20} height={20} />
             </Box>
             ユーザ管理
           </Box>
