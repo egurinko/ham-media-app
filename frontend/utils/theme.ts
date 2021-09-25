@@ -6,6 +6,7 @@ const theme = extendTheme({
   colors: {
     primary: {
       main: '#FF6C4A',
+      500: '#FF6C4A',
       light: '#FFF0EE',
     },
     background: {
