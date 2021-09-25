@@ -43,6 +43,7 @@ export interface NexusGenInputs {
 }
 
 export interface NexusGenEnums {
+  PlaceAutocompleteStatus: "INVALID_REQUEST" | "OK" | "OVER_QUERY_LIMIT" | "REQUEST_DENIED" | "UNKNOWN_ERROR" | "ZERO_RESULTS"
 }
 
 export interface NexusGenScalars {
@@ -59,6 +60,34 @@ export interface NexusGenObjects {
     token: string; // String!
   }
   Mutation: {};
+  PlaceAutocomplete: { // root type
+    error_message?: string | null; // String
+    info_messages?: string[] | null; // [String!]
+    predictions: NexusGenRootTypes['PlaceAutocompletePrediction'][]; // [PlaceAutocompletePrediction!]!
+    status: NexusGenEnums['PlaceAutocompleteStatus']; // PlaceAutocompleteStatus!
+  }
+  PlaceAutocompletePrediction: { // root type
+    description: string; // String!
+    matched_substrings: NexusGenRootTypes['PlaceAutocompletePredictionMatchedSubstring'][]; // [PlaceAutocompletePredictionMatchedSubstring!]!
+    place_id: string; // String!
+    reference: string; // String!
+    structured_formatting: NexusGenRootTypes['PlaceAutocompletePredictionStructuredFormatting']; // PlaceAutocompletePredictionStructuredFormatting!
+    terms: NexusGenRootTypes['PlaceAutocompletePredictionTerm'][]; // [PlaceAutocompletePredictionTerm!]!
+    types: string[]; // [String!]!
+  }
+  PlaceAutocompletePredictionMatchedSubstring: { // root type
+    length: number; // Int!
+    offset: number; // Int!
+  }
+  PlaceAutocompletePredictionStructuredFormatting: { // root type
+    main_text: string; // String!
+    main_text_matched_substrings: NexusGenRootTypes['PlaceAutocompletePredictionMatchedSubstring'][]; // [PlaceAutocompletePredictionMatchedSubstring!]!
+    secondary_text: string; // String!
+  }
+  PlaceAutocompletePredictionTerm: { // root type
+    offset: number; // Int!
+    value: string; // String!
+  }
   Prefecture: { // root type
     id: NexusGenScalars['BigInt']; // BigInt!
     name: string; // String!
@@ -78,7 +107,7 @@ export interface NexusGenUnions {
 
 export type NexusGenRootTypes = NexusGenObjects
 
-export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
+export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars & NexusGenEnums
 
 export interface NexusGenFieldTypes {
   CreateSessionType: { // field return type
@@ -87,12 +116,41 @@ export interface NexusGenFieldTypes {
   Mutation: { // field return type
     createSession: NexusGenRootTypes['CreateSessionType']; // CreateSessionType!
   }
+  PlaceAutocomplete: { // field return type
+    error_message: string | null; // String
+    info_messages: string[] | null; // [String!]
+    predictions: NexusGenRootTypes['PlaceAutocompletePrediction'][]; // [PlaceAutocompletePrediction!]!
+    status: NexusGenEnums['PlaceAutocompleteStatus']; // PlaceAutocompleteStatus!
+  }
+  PlaceAutocompletePrediction: { // field return type
+    description: string; // String!
+    matched_substrings: NexusGenRootTypes['PlaceAutocompletePredictionMatchedSubstring'][]; // [PlaceAutocompletePredictionMatchedSubstring!]!
+    place_id: string; // String!
+    reference: string; // String!
+    structured_formatting: NexusGenRootTypes['PlaceAutocompletePredictionStructuredFormatting']; // PlaceAutocompletePredictionStructuredFormatting!
+    terms: NexusGenRootTypes['PlaceAutocompletePredictionTerm'][]; // [PlaceAutocompletePredictionTerm!]!
+    types: string[]; // [String!]!
+  }
+  PlaceAutocompletePredictionMatchedSubstring: { // field return type
+    length: number; // Int!
+    offset: number; // Int!
+  }
+  PlaceAutocompletePredictionStructuredFormatting: { // field return type
+    main_text: string; // String!
+    main_text_matched_substrings: NexusGenRootTypes['PlaceAutocompletePredictionMatchedSubstring'][]; // [PlaceAutocompletePredictionMatchedSubstring!]!
+    secondary_text: string; // String!
+  }
+  PlaceAutocompletePredictionTerm: { // field return type
+    offset: number; // Int!
+    value: string; // String!
+  }
   Prefecture: { // field return type
     id: NexusGenScalars['BigInt']; // BigInt!
     name: string; // String!
     region: NexusGenRootTypes['Region']; // Region!
   }
   Query: { // field return type
+    placeAutocomplete: NexusGenRootTypes['PlaceAutocomplete']; // PlaceAutocomplete!
     prefectures: NexusGenRootTypes['Prefecture'][]; // [Prefecture!]!
   }
   Region: { // field return type
@@ -108,12 +166,41 @@ export interface NexusGenFieldTypeNames {
   Mutation: { // field return type name
     createSession: 'CreateSessionType'
   }
+  PlaceAutocomplete: { // field return type name
+    error_message: 'String'
+    info_messages: 'String'
+    predictions: 'PlaceAutocompletePrediction'
+    status: 'PlaceAutocompleteStatus'
+  }
+  PlaceAutocompletePrediction: { // field return type name
+    description: 'String'
+    matched_substrings: 'PlaceAutocompletePredictionMatchedSubstring'
+    place_id: 'String'
+    reference: 'String'
+    structured_formatting: 'PlaceAutocompletePredictionStructuredFormatting'
+    terms: 'PlaceAutocompletePredictionTerm'
+    types: 'String'
+  }
+  PlaceAutocompletePredictionMatchedSubstring: { // field return type name
+    length: 'Int'
+    offset: 'Int'
+  }
+  PlaceAutocompletePredictionStructuredFormatting: { // field return type name
+    main_text: 'String'
+    main_text_matched_substrings: 'PlaceAutocompletePredictionMatchedSubstring'
+    secondary_text: 'String'
+  }
+  PlaceAutocompletePredictionTerm: { // field return type name
+    offset: 'Int'
+    value: 'String'
+  }
   Prefecture: { // field return type name
     id: 'BigInt'
     name: 'String'
     region: 'Region'
   }
   Query: { // field return type name
+    placeAutocomplete: 'PlaceAutocomplete'
     prefectures: 'Prefecture'
   }
   Region: { // field return type name
@@ -129,6 +216,11 @@ export interface NexusGenArgTypes {
       password: string; // String!
     }
   }
+  Query: {
+    placeAutocomplete: { // args
+      searchText: string; // String!
+    }
+  }
 }
 
 export interface NexusGenAbstractTypeMembers {
@@ -141,7 +233,7 @@ export type NexusGenObjectNames = keyof NexusGenObjects;
 
 export type NexusGenInputNames = never;
 
-export type NexusGenEnumNames = never;
+export type NexusGenEnumNames = keyof NexusGenEnums;
 
 export type NexusGenInterfaceNames = never;
 

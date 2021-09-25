@@ -16,6 +16,56 @@ type Mutation {
   createSession(email: String!, password: String!): CreateSessionType!
 }
 
+"""Google Place Autocomplete api response"""
+type PlaceAutocomplete {
+  error_message: String
+  info_messages: [String!]
+  predictions: [PlaceAutocompletePrediction!]!
+  status: PlaceAutocompleteStatus!
+}
+
+"""Google Place Autocomplete api response prediction"""
+type PlaceAutocompletePrediction {
+  description: String!
+  matched_substrings: [PlaceAutocompletePredictionMatchedSubstring!]!
+  place_id: String!
+  reference: String!
+  structured_formatting: PlaceAutocompletePredictionStructuredFormatting!
+  terms: [PlaceAutocompletePredictionTerm!]!
+  types: [String!]!
+}
+
+"""Google Place Autocomplete api response prediction matched substring"""
+type PlaceAutocompletePredictionMatchedSubstring {
+  length: Int!
+  offset: Int!
+}
+
+"""
+Google Place Autocomplete api response prediction structured formatting
+"""
+type PlaceAutocompletePredictionStructuredFormatting {
+  main_text: String!
+  main_text_matched_substrings: [PlaceAutocompletePredictionMatchedSubstring!]!
+  secondary_text: String!
+}
+
+"""Google Place Autocomplete api response prediction term"""
+type PlaceAutocompletePredictionTerm {
+  offset: Int!
+  value: String!
+}
+
+"""Google Place Autocomplete api response status"""
+enum PlaceAutocompleteStatus {
+  INVALID_REQUEST
+  OK
+  OVER_QUERY_LIMIT
+  REQUEST_DENIED
+  UNKNOWN_ERROR
+  ZERO_RESULTS
+}
+
 """A prefecture"""
 type Prefecture {
   id: BigInt!
@@ -24,6 +74,7 @@ type Prefecture {
 }
 
 type Query {
+  placeAutocomplete(searchText: String!): PlaceAutocomplete!
   prefectures: [Prefecture!]!
 }
 
