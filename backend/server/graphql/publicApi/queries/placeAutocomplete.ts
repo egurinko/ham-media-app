@@ -8,9 +8,9 @@ export const placeAutocompletes = queryField((t) => {
     args: {
       searchText: nonNull(stringArg()),
     },
-    resolve: async (_root, _args, _ctx) => {
+    resolve: async (_root, args, _ctx) => {
       try {
-        const result = await getPlaceAutoComplete('sa');
+        const result = await getPlaceAutoComplete(args.searchText);
         return result.data;
       } catch (e) {
         console.error('fail google api request', e);
