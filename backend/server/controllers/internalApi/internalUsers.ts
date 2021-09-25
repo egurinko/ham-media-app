@@ -1,5 +1,5 @@
 import { FastifyRequest, FastifyReply } from 'fastify';
-import { client } from '../../services/prisma';
+import { client } from '@/services/prisma';
 
 const list = async (_request: FastifyRequest, reply: FastifyReply) => {
   try {

@@ -1,5 +1,5 @@
 import { enumType } from 'nexus';
-import { STATUS } from '../../../../services/api/googleApi/types';
+import { STATUS } from '@/services/api/googleApi/types';
 
 export const placeAutocompleteStatusType = enumType({
   name: 'PlaceAutocompleteStatus',

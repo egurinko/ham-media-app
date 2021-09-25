@@ -1,6 +1,6 @@
 import { queryField, nonNull, stringArg } from 'nexus';
 import { placeAutocompleteType } from '../types';
-import { getPlaceAutoComplete } from '../../../services/api/googleApi';
+import { getPlaceAutoComplete } from '@/services/api/googleApi';
 
 export const placeAutocompletes = queryField((t) => {
   t.nonNull.field('placeAutocomplete', {

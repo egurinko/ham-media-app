@@ -1,6 +1,6 @@
 import { stringArg, nonNull, mutationField } from 'nexus';
 import { createSessionType } from '../types/createSessionType';
-import { sign } from '../../../services/authentication';
+import { sign } from '@/services/authentication';
 import bcrypt from 'bcrypt';
 
 export const createSessionField = mutationField((t) => {

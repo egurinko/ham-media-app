@@ -1,6 +1,6 @@
 import { queryField } from 'nexus';
 import { sessionType } from '../types/sessionType';
-import { sign } from '../../../services/authentication';
+import { sign } from '@/services/authentication';
 
 export const sessionField = queryField((t) => {
   t.nonNull.field('session', {
