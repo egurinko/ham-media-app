@@ -12,7 +12,7 @@ import {
 } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import Image from 'next/image';
-import Navigation from './Navigation';
+import Navigation from '@/components/ecosystems/admin/Navigation';
 
 type Props = {
   isOpen: UseDisclosureReturn['isOpen'];
