@@ -57,6 +57,7 @@ const TextSearch: React.FC<Props> = ({
             onFocus={handleSearchTextFocus}
             onBlur={handleSearchTextBlur}
             borderRightRadius={0}
+            placeholder="エリア・駅から探す"
           />
           {isCandidatesWindowOpen &&
           !!data &&
@@ -71,7 +72,7 @@ const TextSearch: React.FC<Props> = ({
                 <Button
                   key={prediction.place_id}
                   m="2"
-                  onClick={() =>
+                  onMouseDown={() =>
                     handleAutocompleteClick(
                       prediction.structured_formatting.main_text
                     )
@@ -90,6 +91,7 @@ const TextSearch: React.FC<Props> = ({
           onClick={handleSearchClick}
           icon={<SearchIcon />}
           borderLeftRadius={0}
+          disabled={searchText.length === 0}
         />
       </Box>
     </Card>
