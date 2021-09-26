@@ -10,7 +10,6 @@
     "db:format": "prisma format",
     "db:push": "prisma db push",
     "db:reflect": "prisma generate",
-    "generate:nexus": "ts-node --transpile-only server/graphql/internalApi && ts-node --transpile-only server/graphql/publicApi",
     "tsc": "tsc"
   },
   "dependencies": {
