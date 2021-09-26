@@ -73,5 +73,8 @@
     "skipLibCheck": true /* Skip type checking of declaration files. */,
     "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */
   },
-  "exclude": ["server/graphql/internalApi/__generated__/**"]
+  "exclude": [
+    "server/graphql/internalApi/__generated__/**",
+    "server/graphql/publicApi/__generated__/**"
+  ]
 }

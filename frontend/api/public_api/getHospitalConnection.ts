@@ -13,7 +13,7 @@ export const getHospitalConnection = gql`
     $jsavaOption: Boolean!
     $nichijuOption: Boolean!
   ) {
-    hospitalConnection(
+    publicHospitalConnection(
       first: $first
       after: $after
       searchText: $searchText

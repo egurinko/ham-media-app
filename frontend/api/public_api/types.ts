@@ -202,13 +202,18 @@ export type Prefecture = {
 
 export type Query = {
   __typename?: 'Query';
-  hospitalConnection?: Maybe<HospitalConnection>;
   placeAutocomplete: PlaceAutocomplete;
   prefectures: Array<Prefecture>;
+  publicHospitalConnection?: Maybe<HospitalConnection>;
 };
 
 
-export type QueryHospitalConnectionArgs = {
+export type QueryPlaceAutocompleteArgs = {
+  searchText: Scalars['String'];
+};
+
+
+export type QueryPublicHospitalConnectionArgs = {
   after?: Maybe<Scalars['String']>;
   before?: Maybe<Scalars['String']>;
   first?: Maybe<Scalars['Int']>;
@@ -218,11 +223,6 @@ export type QueryHospitalConnectionArgs = {
   nichijuOption: Scalars['Boolean'];
   nightServiceOption: Scalars['Boolean'];
   reservable: Scalars['Boolean'];
-  searchText: Scalars['String'];
-};
-
-
-export type QueryPlaceAutocompleteArgs = {
   searchText: Scalars['String'];
 };
 
@@ -255,7 +255,7 @@ export type PublicGetHospitalConnectionQueryVariables = Exact<{
 }>;
 
 
-export type PublicGetHospitalConnectionQuery = { __typename?: 'Query', hospitalConnection?: Maybe<{ __typename?: 'HospitalConnection', edges?: Maybe<Array<Maybe<{ __typename?: 'HospitalEdge', node?: Maybe<{ __typename?: 'Hospital', id: BigInt, name: string, url: string, hospitalAddress?: Maybe<{ __typename?: 'HospitalAddress', id: BigInt, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: BigInt }, hospitalAddressGeoLocation?: Maybe<{ __typename?: 'HospitalAddressGeoLocation', latitude: number, longitude: number }> }>, hospitalBusinessForm?: Maybe<{ __typename?: 'HospitalBusinessForm', id: BigInt, business_hour: string, closed_day: string, insurance_enabled: string, remark: string }>, hospitalCertificationOption?: Maybe<{ __typename?: 'HospitalCertificationOption', id: BigInt, nichiju_registered: string, jsava_registered: string }>, hospitalNightServiceOption?: Maybe<{ __typename?: 'HospitalNightServiceOption', id: BigInt, status: string, remark: string }>, hospitalNightUrgentActionOption?: Maybe<{ __typename?: 'HospitalNightUrgentActionOption', id: BigInt, status: string }>, hospitalReservationStatus?: Maybe<{ __typename?: 'HospitalReservationStatus', id: BigInt, required: string, reservable: string, remark: string }> }> }>>>, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, hasPreviousPage: boolean, startCursor?: Maybe<string>, endCursor?: Maybe<string> } }> };
+export type PublicGetHospitalConnectionQuery = { __typename?: 'Query', publicHospitalConnection?: Maybe<{ __typename?: 'HospitalConnection', edges?: Maybe<Array<Maybe<{ __typename?: 'HospitalEdge', node?: Maybe<{ __typename?: 'Hospital', id: BigInt, name: string, url: string, hospitalAddress?: Maybe<{ __typename?: 'HospitalAddress', id: BigInt, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: BigInt }, hospitalAddressGeoLocation?: Maybe<{ __typename?: 'HospitalAddressGeoLocation', latitude: number, longitude: number }> }>, hospitalBusinessForm?: Maybe<{ __typename?: 'HospitalBusinessForm', id: BigInt, business_hour: string, closed_day: string, insurance_enabled: string, remark: string }>, hospitalCertificationOption?: Maybe<{ __typename?: 'HospitalCertificationOption', id: BigInt, nichiju_registered: string, jsava_registered: string }>, hospitalNightServiceOption?: Maybe<{ __typename?: 'HospitalNightServiceOption', id: BigInt, status: string, remark: string }>, hospitalNightUrgentActionOption?: Maybe<{ __typename?: 'HospitalNightUrgentActionOption', id: BigInt, status: string }>, hospitalReservationStatus?: Maybe<{ __typename?: 'HospitalReservationStatus', id: BigInt, required: string, reservable: string, remark: string }> }> }>>>, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, hasPreviousPage: boolean, startCursor?: Maybe<string>, endCursor?: Maybe<string> } }> };
 
 export type PublicGetPlaceAutocompleteQueryVariables = Exact<{
   searchText: Scalars['String'];
@@ -352,7 +352,7 @@ export type PublicCreateSessionMutationResult = Apollo.MutationResult<PublicCrea
 export type PublicCreateSessionMutationOptions = Apollo.BaseMutationOptions<PublicCreateSessionMutation, PublicCreateSessionMutationVariables>;
 export const PublicGetHospitalConnectionDocument = gql`
     query PublicGetHospitalConnection($first: Int, $after: String, $searchText: String!, $reservable: Boolean!, $nightServiceOption: Boolean!, $insuranceEnabled: Boolean!, $jsavaOption: Boolean!, $nichijuOption: Boolean!) {
-  hospitalConnection(
+  publicHospitalConnection(
     first: $first
     after: $after
     searchText: $searchText

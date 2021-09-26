@@ -1,4 +1,4 @@
-// / <reference types="../__generated__/publicApiTypes" />
+/// <reference types="../__generated__/public_api_types" />
 // ref: https://github.com/prisma-labs/graphql-framework-experiment/issues/952#issuecomment-647865021
 // because ts-node-dev does not know nexus generated types, type injection is needed
 
@@ -7,7 +7,7 @@ import { connectionFromArray } from 'graphql-relay';
 import { hospitalType } from '../types';
 
 export const hospitalConnection = queryField((t) => {
-  t.connectionField('hospitalConnection', {
+  t.connectionField('publicHospitalConnection', {
     type: hospitalType,
     additionalArgs: {
       searchText: nonNull(stringArg()),
@@ -22,6 +22,9 @@ export const hospitalConnection = queryField((t) => {
         await ctx.prisma.hospital.findMany({
           where: {
             deleted: false,
+            hospitalReservationStatus: {
+              reservable: args.reservable ? '○' : undefined,
+            },
           },
         }),
         args

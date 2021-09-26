@@ -185,7 +185,9 @@ type Prefecture {
 }
 
 type Query {
-  hospitalConnection(
+  placeAutocomplete(searchText: String!): PlaceAutocomplete!
+  prefectures: [Prefecture!]!
+  publicHospitalConnection(
     """Returns the elements in the list that come after the specified cursor"""
     after: String
 
@@ -204,8 +206,6 @@ type Query {
     reservable: Boolean!
     searchText: String!
   ): HospitalConnection
-  placeAutocomplete(searchText: String!): PlaceAutocomplete!
-  prefectures: [Prefecture!]!
 }
 
 """A region"""

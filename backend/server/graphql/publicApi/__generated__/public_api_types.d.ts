@@ -270,9 +270,9 @@ export interface NexusGenFieldTypes {
     region: NexusGenRootTypes['Region']; // Region!
   }
   Query: { // field return type
-    hospitalConnection: NexusGenRootTypes['HospitalConnection'] | null; // HospitalConnection
     placeAutocomplete: NexusGenRootTypes['PlaceAutocomplete']; // PlaceAutocomplete!
     prefectures: NexusGenRootTypes['Prefecture'][]; // [Prefecture!]!
+    publicHospitalConnection: NexusGenRootTypes['HospitalConnection'] | null; // HospitalConnection
   }
   Region: { // field return type
     id: NexusGenScalars['BigInt']; // BigInt!
@@ -385,9 +385,9 @@ export interface NexusGenFieldTypeNames {
     region: 'Region'
   }
   Query: { // field return type name
-    hospitalConnection: 'HospitalConnection'
     placeAutocomplete: 'PlaceAutocomplete'
     prefectures: 'Prefecture'
+    publicHospitalConnection: 'HospitalConnection'
   }
   Region: { // field return type name
     id: 'BigInt'
@@ -403,7 +403,10 @@ export interface NexusGenArgTypes {
     }
   }
   Query: {
-    hospitalConnection: { // args
+    placeAutocomplete: { // args
+      searchText: string; // String!
+    }
+    publicHospitalConnection: { // args
       after?: string | null; // String
       before?: string | null; // String
       first?: number | null; // Int
@@ -413,9 +416,6 @@ export interface NexusGenArgTypes {
       nichijuOption: boolean; // Boolean!
       nightServiceOption: boolean; // Boolean!
       reservable: boolean; // Boolean!
-      searchText: string; // String!
-    }
-    placeAutocomplete: { // args
       searchText: string; // String!
     }
   }

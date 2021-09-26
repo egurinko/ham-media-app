@@ -49,7 +49,9 @@ const HospitalSearch: React.FC<NoProps> = () => {
       <Box>map search{`${reservable}`}</Box>
       <Box>search conditions</Box>
       <Box>
-        <Hospitals hospitalConnection={hospitalData?.hospitalConnection} />
+        <Hospitals
+          hospitalConnection={hospitalData?.publicHospitalConnection}
+        />
       </Box>
       <Filter
         reservable={reservable}
