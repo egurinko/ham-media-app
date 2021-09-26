@@ -1,11 +1,26 @@
-import { useState } from 'react';
+import { useState, Dispatch, SetStateAction } from 'react';
 import { IconButton, Input, Box, Button } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
+import { QueryLazyOptions } from '@apollo/client';
 import Card from '@/components/atoms/Card';
-import { usePublicGetPlaceAutocompleteLazyQuery } from '@/api/public_api/types';
+import {
+  usePublicGetPlaceAutocompleteLazyQuery,
+  PublicGetHospitalConnectionQueryVariables,
+} from '@/api/public_api/types';
 
-const TextSearch: React.FC<NoProps> = () => {
-  const [searchText, setSearchText] = useState('');
+type Props = {
+  searchText: string;
+  setSearchText: Dispatch<SetStateAction<string>>;
+  getHospitalConnection: (
+    options?: QueryLazyOptions<PublicGetHospitalConnectionQueryVariables>
+  ) => void;
+};
+
+const TextSearch: React.FC<Props> = ({
+  searchText,
+  setSearchText,
+  getHospitalConnection,
+}) => {
   const [isCandidatesWindowOpen, setIsCandidatesWindowOpen] = useState(false);
   const [getPlaceAutocomplete, { data }] =
     usePublicGetPlaceAutocompleteLazyQuery();
@@ -25,6 +40,20 @@ const TextSearch: React.FC<NoProps> = () => {
 
   const handleAutocompleteClick = (autocomplete: string): void => {
     setSearchText(autocomplete);
+  };
+
+  const handleSearchClick = () => {
+    getHospitalConnection({
+      variables: {
+        first: 10,
+        searchText,
+        reservable: false,
+        nightServiceOption: false,
+        insuranceEnabled: false,
+        jsavaOption: false,
+        nichijuOption: false,
+      },
+    });
   };
 
   return (
@@ -67,7 +96,7 @@ const TextSearch: React.FC<NoProps> = () => {
           aria-label="link"
           variant="solid"
           colorScheme="primary"
-          onClick={() => {}}
+          onClick={handleSearchClick}
           icon={<SearchIcon />}
           borderLeftRadius={0}
         />

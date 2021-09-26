@@ -11,7 +11,7 @@ const Layout: React.FC<Props> = ({ title = 'Ham ω Media', children }) => (
   <Box bgColor="background.main" minH="100vh" color="text.main">
     <Head title={title} />
     <Header />
-    <Box p="2">
+    <Box p="2" maxW="800" mx="auto">
       <main>{children}</main>
       <Footer />
     </Box>
