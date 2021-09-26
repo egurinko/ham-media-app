@@ -1,7 +1,6 @@
 import { useState, Dispatch, SetStateAction } from 'react';
 import { IconButton, Input, Box, Button } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
-import { QueryLazyOptions } from '@apollo/client';
 import Card from '@/components/atoms/Card';
 import {
   usePublicGetPlaceAutocompleteLazyQuery,
@@ -11,15 +10,15 @@ import {
 type Props = {
   searchText: string;
   setSearchText: Dispatch<SetStateAction<string>>;
-  getHospitalConnection: (
-    options?: QueryLazyOptions<PublicGetHospitalConnectionQueryVariables>
+  getInitialHospitalConnection: (
+    variables: Partial<PublicGetHospitalConnectionQueryVariables>
   ) => void;
 };
 
 const TextSearch: React.FC<Props> = ({
   searchText,
   setSearchText,
-  getHospitalConnection,
+  getInitialHospitalConnection,
 }) => {
   const [isCandidatesWindowOpen, setIsCandidatesWindowOpen] = useState(false);
   const [getPlaceAutocomplete, { data }] =
@@ -43,16 +42,8 @@ const TextSearch: React.FC<Props> = ({
   };
 
   const handleSearchClick = () => {
-    getHospitalConnection({
-      variables: {
-        first: 10,
-        searchText,
-        reservable: false,
-        nightServiceOption: false,
-        insuranceEnabled: false,
-        jsavaOption: false,
-        nichijuOption: false,
-      },
+    getInitialHospitalConnection({
+      searchText,
     });
   };
 
