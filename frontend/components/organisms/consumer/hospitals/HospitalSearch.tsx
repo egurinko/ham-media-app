@@ -43,7 +43,6 @@ const HospitalSearch: React.FC<NoProps> = () => {
         <TextSearch
           searchText={searchText}
           setSearchText={setSearchText}
-          getHospitalConnection={getHospitalConnection}
           getInitialHospitalConnection={getInitialHospitalConnection}
         />
       </Box>
