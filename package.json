@@ -6,7 +6,7 @@
   ],
   "scripts": {
     "postinstall": "NODE_ENV=development yarn workspace backend install",
-    "build": "yarn workspace backend generate:nexus && yarn workspace backend build",
+    "build": "yarn workspace backend db:reflect && yarn workspace backend build",
     "start": "yarn workspace backend db:reflect && yarn workspace backend start"
   },
   "devDependencies": {

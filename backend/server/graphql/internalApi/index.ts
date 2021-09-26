@@ -11,7 +11,7 @@ import { context } from './context';
 const schema = makeSchema({
   types: [BigInt, types, queryTypes, mutationTypes],
   outputs: {
-    typegen: join(__dirname, '__generated__', 'internalApiTypes.d.ts'),
+    typegen: join(__dirname, '__generated__', 'internal_api_types.d.ts'),
     schema: join(
       __dirname,
       '../../../../graphql/internalApi',

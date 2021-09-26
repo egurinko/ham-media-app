@@ -1,4 +1,4 @@
-/// <reference types="../__generated__/types" />
+/// <reference types="../__generated__/internal_api_types" />
 
 import {
   arg,

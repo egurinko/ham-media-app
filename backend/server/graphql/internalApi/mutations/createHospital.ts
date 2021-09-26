@@ -1,4 +1,4 @@
-/// <reference types="../__generated__/types" />
+/// <reference types="../__generated__/internal_api_types" />
 
 import { stringArg, booleanArg, nonNull, mutationField } from 'nexus';
 import { hospitalType } from '../types/hospitalType';
