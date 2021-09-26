@@ -15,6 +15,7 @@ const theme = extendTheme({
     },
     text: {
       main: '#6F6F6F',
+      secondary: '#979DAA',
     },
   },
   fonts,
