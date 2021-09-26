@@ -1,11 +1,13 @@
-import { Box } from '@chakra-ui/react';
+import { Box, CSSObject } from '@chakra-ui/react';
 
-const Card: React.FC<{}> = ({ children }) => {
-  return (
-    <Box bg="white" shadow="md" width="full" p="6">
-      {children}
-    </Box>
-  );
+type Props = {
+  _hover?: CSSObject;
 };
+
+const Card: React.FC<Props> = ({ children, _hover }) => (
+  <Box bg="white" shadow="md" width="full" p="6" _hover={_hover}>
+    {children}
+  </Box>
+);
 
 export default Card;
