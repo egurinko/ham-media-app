@@ -25,6 +25,16 @@ export const hospitalConnection = queryField((t) => {
             hospitalReservationStatus: {
               reservable: args.reservable ? '○' : undefined,
             },
+            hospitalNightServiceOption: {
+              status: args.nightServiceOption ? '○' : undefined,
+            },
+            hospitalBusinessForm: {
+              insurance_enabled: args.insuranceEnabled ? '○' : undefined,
+            },
+            hospitalCertificationOption: {
+              jsava_registered: args.jsavaOption ? '○' : undefined,
+              nichiju_registered: args.nichijuOption ? '○' : undefined,
+            },
           },
         }),
         args
