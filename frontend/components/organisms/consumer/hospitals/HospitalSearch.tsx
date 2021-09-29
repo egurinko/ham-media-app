@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Box } from '@chakra-ui/react';
 import TextSearch from './hospitalSearch/TextSearch';
+import SearchConditions from './hospitalSearch/SearchConditions';
 import Hospitals from './hospitalSearch/Hospitals';
 import Filter from './hospitalSearch/Filter';
 import {
@@ -47,7 +48,15 @@ const HospitalSearch: React.FC<NoProps> = () => {
         />
       </Box>
       <Box>map search{`${reservable}`}</Box>
-      <Box>search conditions</Box>
+      <Box>
+        <SearchConditions
+          reservable={reservable}
+          nightServiceOption={nightServiceOption}
+          insuranceEnabled={insuranceEnabled}
+          jsavaOption={jsavaOption}
+          nichijuOption={nichijuOption}
+        />
+      </Box>
       <Box>
         <Hospitals
           hospitalConnection={hospitalData?.publicHospitalConnection}
