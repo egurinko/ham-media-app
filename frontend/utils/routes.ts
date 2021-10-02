@@ -18,3 +18,7 @@ export const goAdminHospitalsEdit = (
   router: NextRouter,
   { id }: { id: BigInt }
 ) => router.push(`/admin/hospitals/${id}/edit`);
+
+export const goHospitals = (router: NextRouter) => router.push('/hospitals');
+export const goHospitalDetail = (router: NextRouter, { id }: { id: BigInt }) =>
+  router.push(`/hospitals/${id}`);

@@ -1,9 +1,11 @@
+import { useRouter } from 'next/router';
 import { Box, Text, SkeletonCircle, SkeletonText } from '@chakra-ui/react';
 import Card from '@/components/atoms/Card';
 import MapPinIcon from '@/components/atoms/assets/MapPinIcon';
 import PhoneIcon from '@/components/atoms/assets/PhoneIcon';
 import HospitalTags from '../HospitalTags';
 import { PublicGetHospitalConnectionQuery } from '@/api/public_api/types';
+import { goHospitalDetail } from '@/utils/routes';
 
 type Props = {
   hospitalConnection?: PublicGetHospitalConnectionQuery['publicHospitalConnection'];
@@ -11,6 +13,8 @@ type Props = {
 };
 
 const Hospitals: React.FC<Props> = ({ hospitalConnection, loading }) => {
+  const router = useRouter();
+
   return (
     <>
       {loading
@@ -28,7 +32,11 @@ const Hospitals: React.FC<Props> = ({ hospitalConnection, loading }) => {
             if (!edge?.node) return null;
             const { node: hospital } = edge;
             return (
-              <Box key={edgeIndex} my="2">
+              <Box
+                key={edgeIndex}
+                my="2"
+                onClick={() => goHospitalDetail(router, { id: hospital.id })}
+              >
                 <Card
                   _hover={{
                     opacity: 0.7,
