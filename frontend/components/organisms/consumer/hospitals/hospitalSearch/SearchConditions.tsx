@@ -84,25 +84,24 @@ const SearchConditions: React.FC<Props> = ({
 
   return (
     <HStack spacing={2} wrap="wrap">
-      <Button
-        onClick={clearAll}
-        borderRadius={100}
-        p="2"
-        my="2"
-        colorScheme="primary"
-        boxShadow="sm"
-        disabled={
-          !reservable &&
-          !nightServiceOption &&
-          !insuranceEnabled &&
-          !jsavaOption &&
-          !nichijuOption
-        }
-        size="sm"
-        rightIcon={<CloseIcon fontSize="xs" ml="1" />}
-      >
-        <Text fontSize="sm">全条件クリア</Text>
-      </Button>
+      {!reservable &&
+      !nightServiceOption &&
+      !insuranceEnabled &&
+      !jsavaOption &&
+      !nichijuOption ? null : (
+        <Button
+          onClick={clearAll}
+          borderRadius={100}
+          p="2"
+          my="2"
+          colorScheme="primary"
+          boxShadow="sm"
+          size="sm"
+          rightIcon={<CloseIcon fontSize="xs" ml="1" />}
+        >
+          <Text fontSize="sm">全条件クリア</Text>
+        </Button>
+      )}
 
       {!reservable || (
         <Button
