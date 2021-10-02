@@ -185,6 +185,7 @@ type Prefecture {
 }
 
 type Query {
+  hospitals: [Hospital!]!
   placeAutocomplete(searchText: String!): PlaceAutocomplete!
   prefectures: [Prefecture!]!
   publicHospitalConnection(

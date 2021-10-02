@@ -270,6 +270,7 @@ export interface NexusGenFieldTypes {
     region: NexusGenRootTypes['Region']; // Region!
   }
   Query: { // field return type
+    hospitals: NexusGenRootTypes['Hospital'][]; // [Hospital!]!
     placeAutocomplete: NexusGenRootTypes['PlaceAutocomplete']; // PlaceAutocomplete!
     prefectures: NexusGenRootTypes['Prefecture'][]; // [Prefecture!]!
     publicHospitalConnection: NexusGenRootTypes['HospitalConnection'] | null; // HospitalConnection
@@ -385,6 +386,7 @@ export interface NexusGenFieldTypeNames {
     region: 'Region'
   }
   Query: { // field return type name
+    hospitals: 'Hospital'
     placeAutocomplete: 'PlaceAutocomplete'
     prefectures: 'Prefecture'
     publicHospitalConnection: 'HospitalConnection'
