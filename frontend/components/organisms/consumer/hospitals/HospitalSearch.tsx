@@ -51,10 +51,16 @@ const HospitalSearch: React.FC<NoProps> = () => {
       <Box>
         <SearchConditions
           reservable={reservable}
+          setReservable={setReservable}
           nightServiceOption={nightServiceOption}
+          setNightServiceOption={setNightServiceOption}
           insuranceEnabled={insuranceEnabled}
+          setInsuranceEnabled={setInsuranceEnabled}
           jsavaOption={jsavaOption}
+          setJsavaOption={setJsavaOption}
           nichijuOption={nichijuOption}
+          setNichijuOption={setNichijuOption}
+          getInitialHospitalConnection={getInitialHospitalConnection}
         />
       </Box>
       <Box>
