@@ -202,10 +202,16 @@ export type Prefecture = {
 
 export type Query = {
   __typename?: 'Query';
+  hospital: Hospital;
   hospitals: Array<Hospital>;
   placeAutocomplete: PlaceAutocomplete;
   prefectures: Array<Prefecture>;
   publicHospitalConnection?: Maybe<HospitalConnection>;
+};
+
+
+export type QueryHospitalArgs = {
+  id: Scalars['BigInt'];
 };
 
 
@@ -243,6 +249,13 @@ export type PublicCreateSessionMutationVariables = Exact<{
 export type PublicCreateSessionMutation = { __typename?: 'Mutation', createSession: { __typename?: 'CreateSessionType', token: string } };
 
 export type HospitalFieldsFragment = { __typename?: 'Hospital', id: BigInt, name: string, url: string, hospitalAddress?: Maybe<{ __typename?: 'HospitalAddress', id: BigInt, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: BigInt }, hospitalAddressGeoLocation?: Maybe<{ __typename?: 'HospitalAddressGeoLocation', latitude: number, longitude: number }> }>, hospitalBusinessForm?: Maybe<{ __typename?: 'HospitalBusinessForm', id: BigInt, business_hour: string, closed_day: string, insurance_enabled: string, remark: string }>, hospitalCertificationOption?: Maybe<{ __typename?: 'HospitalCertificationOption', id: BigInt, nichiju_registered: string, jsava_registered: string }>, hospitalNightServiceOption?: Maybe<{ __typename?: 'HospitalNightServiceOption', id: BigInt, status: string, remark: string }>, hospitalNightUrgentActionOption?: Maybe<{ __typename?: 'HospitalNightUrgentActionOption', id: BigInt, status: string }>, hospitalReservationStatus?: Maybe<{ __typename?: 'HospitalReservationStatus', id: BigInt, required: string, reservable: string, remark: string }> };
+
+export type PublicGetHospitalQueryVariables = Exact<{
+  id: Scalars['BigInt'];
+}>;
+
+
+export type PublicGetHospitalQuery = { __typename?: 'Query', hospital: { __typename?: 'Hospital', id: BigInt, name: string, url: string, hospitalAddress?: Maybe<{ __typename?: 'HospitalAddress', id: BigInt, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: BigInt }, hospitalAddressGeoLocation?: Maybe<{ __typename?: 'HospitalAddressGeoLocation', latitude: number, longitude: number }> }>, hospitalBusinessForm?: Maybe<{ __typename?: 'HospitalBusinessForm', id: BigInt, business_hour: string, closed_day: string, insurance_enabled: string, remark: string }>, hospitalCertificationOption?: Maybe<{ __typename?: 'HospitalCertificationOption', id: BigInt, nichiju_registered: string, jsava_registered: string }>, hospitalNightServiceOption?: Maybe<{ __typename?: 'HospitalNightServiceOption', id: BigInt, status: string, remark: string }>, hospitalNightUrgentActionOption?: Maybe<{ __typename?: 'HospitalNightUrgentActionOption', id: BigInt, status: string }>, hospitalReservationStatus?: Maybe<{ __typename?: 'HospitalReservationStatus', id: BigInt, required: string, reservable: string, remark: string }> } };
 
 export type PublicGetHospitalConnectionQueryVariables = Exact<{
   first?: Maybe<Scalars['Int']>;
@@ -356,6 +369,41 @@ export function usePublicCreateSessionMutation(baseOptions?: Apollo.MutationHook
 export type PublicCreateSessionMutationHookResult = ReturnType<typeof usePublicCreateSessionMutation>;
 export type PublicCreateSessionMutationResult = Apollo.MutationResult<PublicCreateSessionMutation>;
 export type PublicCreateSessionMutationOptions = Apollo.BaseMutationOptions<PublicCreateSessionMutation, PublicCreateSessionMutationVariables>;
+export const PublicGetHospitalDocument = gql`
+    query PublicGetHospital($id: BigInt!) {
+  hospital(id: $id) {
+    ...HospitalFields
+  }
+}
+    ${HospitalFieldsFragmentDoc}`;
+
+/**
+ * __usePublicGetHospitalQuery__
+ *
+ * To run a query within a React component, call `usePublicGetHospitalQuery` and pass it any options that fit your needs.
+ * When your component renders, `usePublicGetHospitalQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = usePublicGetHospitalQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function usePublicGetHospitalQuery(baseOptions: Apollo.QueryHookOptions<PublicGetHospitalQuery, PublicGetHospitalQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<PublicGetHospitalQuery, PublicGetHospitalQueryVariables>(PublicGetHospitalDocument, options);
+      }
+export function usePublicGetHospitalLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PublicGetHospitalQuery, PublicGetHospitalQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<PublicGetHospitalQuery, PublicGetHospitalQueryVariables>(PublicGetHospitalDocument, options);
+        }
+export type PublicGetHospitalQueryHookResult = ReturnType<typeof usePublicGetHospitalQuery>;
+export type PublicGetHospitalLazyQueryHookResult = ReturnType<typeof usePublicGetHospitalLazyQuery>;
+export type PublicGetHospitalQueryResult = Apollo.QueryResult<PublicGetHospitalQuery, PublicGetHospitalQueryVariables>;
 export const PublicGetHospitalConnectionDocument = gql`
     query PublicGetHospitalConnection($first: Int, $after: String, $searchText: String!, $reservable: Boolean!, $nightServiceOption: Boolean!, $insuranceEnabled: Boolean!, $jsavaOption: Boolean!, $nichijuOption: Boolean!) {
   publicHospitalConnection(
