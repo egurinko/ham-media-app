@@ -270,6 +270,7 @@ export interface NexusGenFieldTypes {
     region: NexusGenRootTypes['Region']; // Region!
   }
   Query: { // field return type
+    hospital: NexusGenRootTypes['Hospital']; // Hospital!
     hospitals: NexusGenRootTypes['Hospital'][]; // [Hospital!]!
     placeAutocomplete: NexusGenRootTypes['PlaceAutocomplete']; // PlaceAutocomplete!
     prefectures: NexusGenRootTypes['Prefecture'][]; // [Prefecture!]!
@@ -386,6 +387,7 @@ export interface NexusGenFieldTypeNames {
     region: 'Region'
   }
   Query: { // field return type name
+    hospital: 'Hospital'
     hospitals: 'Hospital'
     placeAutocomplete: 'PlaceAutocomplete'
     prefectures: 'Prefecture'
@@ -405,6 +407,9 @@ export interface NexusGenArgTypes {
     }
   }
   Query: {
+    hospital: { // args
+      id: NexusGenScalars['BigInt']; // BigInt!
+    }
     placeAutocomplete: { // args
       searchText: string; // String!
     }

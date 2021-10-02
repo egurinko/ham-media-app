@@ -185,6 +185,7 @@ type Prefecture {
 }
 
 type Query {
+  hospital(id: BigInt!): Hospital!
   hospitals: [Hospital!]!
   placeAutocomplete(searchText: String!): PlaceAutocomplete!
   prefectures: [Prefecture!]!
