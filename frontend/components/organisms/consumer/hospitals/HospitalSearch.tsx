@@ -16,7 +16,7 @@ const HospitalSearch: React.FC<NoProps> = () => {
   const [insuranceEnabled, setInsuranceEnabled] = useState(false);
   const [jsavaOption, setJsavaOption] = useState(false);
   const [nichijuOption, setNichijuOption] = useState(false);
-  const [getHospitalConnection, { data: hospitalData }] =
+  const [getHospitalConnection, { data: hospitalData, loading }] =
     usePublicGetHospitalConnectionLazyQuery({
       fetchPolicy: 'cache-and-network',
     });
@@ -66,6 +66,7 @@ const HospitalSearch: React.FC<NoProps> = () => {
       <Box>
         <Hospitals
           hospitalConnection={hospitalData?.publicHospitalConnection}
+          loading={loading}
         />
       </Box>
       <Filter
