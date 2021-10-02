@@ -202,6 +202,7 @@ export type Prefecture = {
 
 export type Query = {
   __typename?: 'Query';
+  hospitals: Array<Hospital>;
   placeAutocomplete: PlaceAutocomplete;
   prefectures: Array<Prefecture>;
   publicHospitalConnection?: Maybe<HospitalConnection>;
@@ -256,6 +257,11 @@ export type PublicGetHospitalConnectionQueryVariables = Exact<{
 
 
 export type PublicGetHospitalConnectionQuery = { __typename?: 'Query', publicHospitalConnection?: Maybe<{ __typename?: 'HospitalConnection', edges?: Maybe<Array<Maybe<{ __typename?: 'HospitalEdge', node?: Maybe<{ __typename?: 'Hospital', id: BigInt, name: string, url: string, hospitalAddress?: Maybe<{ __typename?: 'HospitalAddress', id: BigInt, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: BigInt }, hospitalAddressGeoLocation?: Maybe<{ __typename?: 'HospitalAddressGeoLocation', latitude: number, longitude: number }> }>, hospitalBusinessForm?: Maybe<{ __typename?: 'HospitalBusinessForm', id: BigInt, business_hour: string, closed_day: string, insurance_enabled: string, remark: string }>, hospitalCertificationOption?: Maybe<{ __typename?: 'HospitalCertificationOption', id: BigInt, nichiju_registered: string, jsava_registered: string }>, hospitalNightServiceOption?: Maybe<{ __typename?: 'HospitalNightServiceOption', id: BigInt, status: string, remark: string }>, hospitalNightUrgentActionOption?: Maybe<{ __typename?: 'HospitalNightUrgentActionOption', id: BigInt, status: string }>, hospitalReservationStatus?: Maybe<{ __typename?: 'HospitalReservationStatus', id: BigInt, required: string, reservable: string, remark: string }> }> }>>>, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, hasPreviousPage: boolean, startCursor?: Maybe<string>, endCursor?: Maybe<string> } }> };
+
+export type PublicGetHospitalIdsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type PublicGetHospitalIdsQuery = { __typename?: 'Query', hospitals: Array<{ __typename?: 'Hospital', id: BigInt }> };
 
 export type PublicGetPlaceAutocompleteQueryVariables = Exact<{
   searchText: Scalars['String'];
@@ -411,6 +417,40 @@ export function usePublicGetHospitalConnectionLazyQuery(baseOptions?: Apollo.Laz
 export type PublicGetHospitalConnectionQueryHookResult = ReturnType<typeof usePublicGetHospitalConnectionQuery>;
 export type PublicGetHospitalConnectionLazyQueryHookResult = ReturnType<typeof usePublicGetHospitalConnectionLazyQuery>;
 export type PublicGetHospitalConnectionQueryResult = Apollo.QueryResult<PublicGetHospitalConnectionQuery, PublicGetHospitalConnectionQueryVariables>;
+export const PublicGetHospitalIdsDocument = gql`
+    query PublicGetHospitalIds {
+  hospitals {
+    id
+  }
+}
+    `;
+
+/**
+ * __usePublicGetHospitalIdsQuery__
+ *
+ * To run a query within a React component, call `usePublicGetHospitalIdsQuery` and pass it any options that fit your needs.
+ * When your component renders, `usePublicGetHospitalIdsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = usePublicGetHospitalIdsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function usePublicGetHospitalIdsQuery(baseOptions?: Apollo.QueryHookOptions<PublicGetHospitalIdsQuery, PublicGetHospitalIdsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<PublicGetHospitalIdsQuery, PublicGetHospitalIdsQueryVariables>(PublicGetHospitalIdsDocument, options);
+      }
+export function usePublicGetHospitalIdsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PublicGetHospitalIdsQuery, PublicGetHospitalIdsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<PublicGetHospitalIdsQuery, PublicGetHospitalIdsQueryVariables>(PublicGetHospitalIdsDocument, options);
+        }
+export type PublicGetHospitalIdsQueryHookResult = ReturnType<typeof usePublicGetHospitalIdsQuery>;
+export type PublicGetHospitalIdsLazyQueryHookResult = ReturnType<typeof usePublicGetHospitalIdsLazyQuery>;
+export type PublicGetHospitalIdsQueryResult = Apollo.QueryResult<PublicGetHospitalIdsQuery, PublicGetHospitalIdsQueryVariables>;
 export const PublicGetPlaceAutocompleteDocument = gql`
     query PublicGetPlaceAutocomplete($searchText: String!) {
   placeAutocomplete(searchText: $searchText) {
