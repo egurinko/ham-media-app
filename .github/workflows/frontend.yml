@@ -42,5 +42,5 @@ jobs:
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('./frontend/yarn.lock') }}
       - name: Deploy
-        run: ENV=stg sh deploy.sh
+        run: ENV=stg /bin/bash deploy.sh -y
         working-directory: ./frontend
