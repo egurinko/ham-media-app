@@ -5,7 +5,7 @@ export const hospitals = queryField((t) => {
   t.nonNull.list.nonNull.field('hospitals', {
     type: hospitalType,
     resolve(_root, _args, ctx) {
-      return ctx.prisma.hospital.findMany();
+      return ctx.prisma.hospital.findMany({ where: { deleted: false } });
     },
   });
 });
