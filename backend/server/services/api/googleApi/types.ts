@@ -58,8 +58,8 @@ type Geometry = {
 };
 
 type Location = {
-  lat: string;
-  lng: string;
+  lat: number;
+  lng: number;
 };
 
 type Viewport = {
