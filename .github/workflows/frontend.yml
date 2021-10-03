@@ -6,6 +6,11 @@ on:
       - frontend/**
       - .github/workflows/frontend.yml
 
+defaults:
+  run:
+    shell: bash
+    working-directory: ./frontend
+
 jobs:
   tscheck:
     runs-on: ubuntu-latest
@@ -20,6 +25,5 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('./frontend/yarn.lock') }}
       - name: Install dependencies
         run: yarn install
-        working-directory: ./frontend
       - name: Type Check
         run: yarn tscheck
