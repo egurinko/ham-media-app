@@ -71,7 +71,9 @@ const HospitalDetail: React.FC<Props> = ({ hospital }) => (
             </Box>
             <Box my="2">
               <Text>■ 備考</Text>
-              <Text>{hospital.hospitalBusinessForm?.remark}</Text>
+              <Text whiteSpace="pre-line">
+                {hospital.hospitalBusinessForm?.remark}
+              </Text>
             </Box>
           </Box>
 
@@ -95,7 +97,9 @@ const HospitalDetail: React.FC<Props> = ({ hospital }) => (
               ) : null}
               <Box my="2">
                 <Text>■ 備考</Text>
-                <Text>{hospital.hospitalReservationStatus?.remark}</Text>
+                <Text whiteSpace="pre-line">
+                  {hospital.hospitalReservationStatus?.remark}
+                </Text>
               </Box>
             </Box>
           </Box>
