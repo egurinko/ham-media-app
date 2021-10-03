@@ -1,0 +1,25 @@
+name: Ham-Media front app
+
+on:
+  push:
+    paths:
+      - frontend/**
+      - .github/workflows/frontend.yml
+
+jobs:
+  tscheck:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('./frontend/yarn.lock') }}
+      - name: Install dependencies
+        run: yarn install
+        working-directory: ./frontend
+      - name: Type Check
+        run: yarn tscheck
