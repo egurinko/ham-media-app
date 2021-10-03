@@ -11,7 +11,7 @@ type Prediction = {
   place_id: string;
   structured_formatting: StructuredFormatting;
   terms: Term[];
-  types: string[];
+  types: Types;
   reference: string;
 };
 
@@ -31,6 +31,49 @@ type Term = {
   value: string;
 };
 
+type GeocodeResponse = {
+  results: Result[];
+  status: Status;
+};
+
+type Result = {
+  address_components: AddressComponent[];
+  formatted_address: string;
+  geometry: Geometry;
+  place_id: string;
+  plus_code: PlusCode;
+  types: Types;
+};
+
+type AddressComponent = {
+  long_name: string;
+  short_name: string;
+  types: Types;
+};
+
+type Geometry = {
+  location: Location;
+  location_type: string;
+  viewport: Viewport;
+};
+
+type Location = {
+  lat: string;
+  lng: string;
+};
+
+type Viewport = {
+  northeast: Location;
+  southwest: Location;
+};
+
+type PlusCode = {
+  compound_code: string;
+  global_code: string;
+};
+
+type Types = string[];
+
 const STATUS = {
   OK: 'OK',
   ZERO_RESULTS: 'ZERO_RESULTS',
@@ -43,4 +86,4 @@ const STATUS = {
 type Status = typeof STATUS[keyof typeof STATUS];
 
 export { STATUS };
-export type { PlacesAutocompleteResponse };
+export type { PlacesAutocompleteResponse, GeocodeResponse };
