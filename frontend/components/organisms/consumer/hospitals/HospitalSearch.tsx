@@ -8,6 +8,7 @@ import {
   usePublicGetHospitalConnectionLazyQuery,
   PublicGetHospitalConnectionQueryVariables,
 } from '@/api/public_api/types';
+import { scrollToTop } from '@/utils/scroll';
 
 const HospitalSearch: React.FC<NoProps> = () => {
   const [searchText, setSearchText] = useState('');
@@ -16,10 +17,8 @@ const HospitalSearch: React.FC<NoProps> = () => {
   const [insuranceEnabled, setInsuranceEnabled] = useState(false);
   const [jsavaOption, setJsavaOption] = useState(false);
   const [nichijuOption, setNichijuOption] = useState(false);
-  const [getHospitalConnection, { data: hospitalData, loading }] =
-    usePublicGetHospitalConnectionLazyQuery({
-      fetchPolicy: 'cache-and-network',
-    });
+  const [getHospitalConnection, { data: hospitalData, loading, fetchMore }] =
+    usePublicGetHospitalConnectionLazyQuery();
 
   const getInitialHospitalConnection = (
     variables: Partial<PublicGetHospitalConnectionQueryVariables>
@@ -36,6 +35,27 @@ const HospitalSearch: React.FC<NoProps> = () => {
         ...variables,
       },
     });
+    scrollToTop();
+  };
+
+  const getContinuousHospitalConnection = () => {
+    if (fetchMore) {
+      const pageInfo = hospitalData?.publicHospitalConnection?.pageInfo;
+      if (pageInfo?.hasNextPage && !loading) {
+        fetchMore({
+          variables: {
+            first: 10,
+            after: pageInfo.endCursor,
+            searchText,
+            reservable,
+            nightServiceOption,
+            insuranceEnabled,
+            jsavaOption,
+            nichijuOption,
+          },
+        });
+      }
+    }
   };
 
   return (
@@ -67,6 +87,7 @@ const HospitalSearch: React.FC<NoProps> = () => {
         <Hospitals
           hospitalConnection={hospitalData?.publicHospitalConnection}
           loading={loading}
+          getContinuousHospitalConnection={getContinuousHospitalConnection}
         />
       </Box>
       <Filter
