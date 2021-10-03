@@ -1,0 +1,33 @@
+name: Ham-Media front app Deploy
+
+on:
+  pull_request:
+    paths:
+      - frontend/**
+      - .github/workflows/frontend.yml
+    branches:
+      - master
+    types: ['closed']
+
+jobs:
+  deploy_prd:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: 'ap-northeast-1'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('./frontend/yarn.lock') }}
+      - name: Install sls
+        run: yarn global add serverless
+      - name: Deploy
+        run: ENV=prd /bin/bash deploy.sh -y
+        working-directory: ./frontend

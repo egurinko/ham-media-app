@@ -1,11 +1,23 @@
+while getopts :y OPT
+do
+  case $OPT in
+     y ) SKIP_DEPLOY_CHECK=true ;;
+     * ) echo "$OPTARGは定義されていません（OPT=$OPT）" ;;
+  esac
+done
+
+
 AWS_PROFILE=private
 
 echo "aws profile: ${AWS_PROFILE}"
 echo "environment: ${ENV}"
-read -p "Deploy start?[y/n]:" YN
-if [ "${YN}" != "y" ]; then
-  echo "exit!"
-  exit 1
+
+if [ -z "$SKIP_DEPLOY_CHECK" ]; then
+  read -p "Deploy start?[y/n]:" YN
+  if [ "${YN}" != "y" ]; then
+    echo "exit!"
+    exit 1
+  fi
 fi
 
 echo "copy serverless-${ENV}.yml"

@@ -6,6 +6,7 @@
     "dev": "next dev -p 8080",
     "build": "next build",
     "start": "next start",
+    "tscheck": "yarn tsc -p ./tsconfig.json --noEmit",
     "generate": "graphql-codegen",
     "deploy:prd": "sls --stage=prd",
     "deploy:stg": "sls --stage=stg",

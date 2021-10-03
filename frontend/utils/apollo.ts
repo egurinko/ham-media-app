@@ -35,6 +35,14 @@ const getCache = () =>
       Query: {
         fields: {
           hospitalConnection: relayStylePagination(),
+          publicHospitalConnection: relayStylePagination([
+            'searchText',
+            'reservable',
+            'nightServiceOption',
+            'insuranceEnabled',
+            'jsavaOption',
+            'nichijuOption',
+          ]),
         },
       },
     },
