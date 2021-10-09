@@ -13,7 +13,7 @@
     "tsc": "tsc"
   },
   "dependencies": {
-    "@prisma/client": "^3.0.2",
+    "@prisma/client": "^3.2.1",
     "axios": "^0.21.4",
     "bcrypt": "^5.0.1",
     "fastify": "^3.21.0",
@@ -28,7 +28,7 @@
     "nexus": "^1.1.0",
     "nexus-prisma": "^0.33.0",
     "pino-pretty": "^6.0.0",
-    "prisma": "^3.0.2",
+    "prisma": "^3.2.1",
     "ts-node-dev": "^1.1.8",
     "uuid": "^8.3.2"
   },
