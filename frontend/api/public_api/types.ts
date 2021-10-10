@@ -276,6 +276,11 @@ export type PublicGetHospitalIdsQueryVariables = Exact<{ [key: string]: never; }
 
 export type PublicGetHospitalIdsQuery = { __typename?: 'Query', hospitals: Array<{ __typename?: 'Hospital', id: BigInt }> };
 
+export type PublicGetHospitalLocationsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type PublicGetHospitalLocationsQuery = { __typename?: 'Query', hospitals: Array<{ __typename?: 'Hospital', id: BigInt, name: string, url: string, hospitalAddress?: Maybe<{ __typename?: 'HospitalAddress', id: BigInt, address: string, phone_number: string, hospitalAddressGeoLocation?: Maybe<{ __typename?: 'HospitalAddressGeoLocation', latitude: number, longitude: number }> }> }> };
+
 export type PublicGetPlaceAutocompleteQueryVariables = Exact<{
   searchText: Scalars['String'];
 }>;
@@ -499,6 +504,51 @@ export function usePublicGetHospitalIdsLazyQuery(baseOptions?: Apollo.LazyQueryH
 export type PublicGetHospitalIdsQueryHookResult = ReturnType<typeof usePublicGetHospitalIdsQuery>;
 export type PublicGetHospitalIdsLazyQueryHookResult = ReturnType<typeof usePublicGetHospitalIdsLazyQuery>;
 export type PublicGetHospitalIdsQueryResult = Apollo.QueryResult<PublicGetHospitalIdsQuery, PublicGetHospitalIdsQueryVariables>;
+export const PublicGetHospitalLocationsDocument = gql`
+    query PublicGetHospitalLocations {
+  hospitals {
+    id
+    name
+    url
+    hospitalAddress {
+      id
+      address
+      phone_number
+      hospitalAddressGeoLocation {
+        latitude
+        longitude
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __usePublicGetHospitalLocationsQuery__
+ *
+ * To run a query within a React component, call `usePublicGetHospitalLocationsQuery` and pass it any options that fit your needs.
+ * When your component renders, `usePublicGetHospitalLocationsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = usePublicGetHospitalLocationsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function usePublicGetHospitalLocationsQuery(baseOptions?: Apollo.QueryHookOptions<PublicGetHospitalLocationsQuery, PublicGetHospitalLocationsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<PublicGetHospitalLocationsQuery, PublicGetHospitalLocationsQueryVariables>(PublicGetHospitalLocationsDocument, options);
+      }
+export function usePublicGetHospitalLocationsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PublicGetHospitalLocationsQuery, PublicGetHospitalLocationsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<PublicGetHospitalLocationsQuery, PublicGetHospitalLocationsQueryVariables>(PublicGetHospitalLocationsDocument, options);
+        }
+export type PublicGetHospitalLocationsQueryHookResult = ReturnType<typeof usePublicGetHospitalLocationsQuery>;
+export type PublicGetHospitalLocationsLazyQueryHookResult = ReturnType<typeof usePublicGetHospitalLocationsLazyQuery>;
+export type PublicGetHospitalLocationsQueryResult = Apollo.QueryResult<PublicGetHospitalLocationsQuery, PublicGetHospitalLocationsQueryVariables>;
 export const PublicGetPlaceAutocompleteDocument = gql`
     query PublicGetPlaceAutocomplete($searchText: String!) {
   placeAutocomplete(searchText: $searchText) {
