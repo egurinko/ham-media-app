@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import { Spinner, Box } from '@chakra-ui/react';
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
+import FlashMessage from '@/components/molecules/FlashMessage';
 import {
   PublicGetHospitalLocationsQuery,
   usePublicGetHospitalLocationsQuery,
@@ -50,7 +51,12 @@ const GoogleMapComponent: React.FC<Props> = ({
   };
 
   if (loadError) {
-    return <div>Map cannot be loaded right now, sorry.</div>;
+    return (
+      <FlashMessage
+        status="error"
+        message="Google Map の読み込みに失敗しました。お手数ですがしばらく時間を置いてから再度お試しください。"
+      />
+    );
   }
 
   return isLoaded ? (
