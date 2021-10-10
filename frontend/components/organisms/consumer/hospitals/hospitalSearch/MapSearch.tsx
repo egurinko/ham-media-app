@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { Button, Text, Box } from '@chakra-ui/react';
 import Card from '@/components/atoms/Card';
 import GoogleMap from '@/components/ecosystems/GoogleMap';
 import MapPinIcon from '@/components/atoms/assets/MapPinIcon';
+import FlashMessage from '@/components/molecules/FlashMessage';
 import { PublicGetHospitalConnectionQueryVariables } from '@/api/public_api/types';
 
 type Props = {
@@ -13,9 +14,29 @@ type Props = {
 
 const MapSearch: React.FC<Props> = ({ getInitialHospitalConnection }) => {
   const [open, setOpen] = useState(false);
-  const handleMapSearch = () => {
+  const [currentLocationError, setCurrentLocationError] =
+    useState<null | GeolocationPositionError>(null);
+  const [currentLat, setCurrentLat] = useState(35.6602384);
+  const [currentLng, setCurrentLng] = useState(139.727888);
+
+  const handleMapSearch = useCallback(() => {
+    navigator.geolocation.getCurrentPosition(success, error, {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0,
+    });
+  }, []);
+
+  const success = useCallback((position: GeolocationPosition) => {
+    setCurrentLat(position.coords.latitude);
+    setCurrentLng(position.coords.longitude);
     setOpen(true);
-  };
+  }, []);
+
+  const error = useCallback((error: GeolocationPositionError) => {
+    setCurrentLocationError(error);
+  }, []);
+
   return (
     <>
       <Card>
@@ -37,8 +58,18 @@ const MapSearch: React.FC<Props> = ({ getInitialHospitalConnection }) => {
       </Card>
       {open ? (
         <Box my="2">
-          <GoogleMap height={200} />
+          <GoogleMap
+            height={200}
+            currentLat={currentLat}
+            currentLng={currentLng}
+          />
         </Box>
+      ) : null}
+      {currentLocationError ? (
+        <FlashMessage
+          status="error"
+          message="現在地の取得に失敗しました。もう一度お試しください。"
+        />
       ) : null}
     </>
   );
