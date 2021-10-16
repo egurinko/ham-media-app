@@ -223,6 +223,7 @@ export type QueryPlaceAutocompleteArgs = {
 export type QueryPublicHospitalConnectionArgs = {
   after?: Maybe<Scalars['String']>;
   before?: Maybe<Scalars['String']>;
+  currentLocation?: Maybe<CurrentLocation>;
   first?: Maybe<Scalars['Int']>;
   insuranceEnabled: Scalars['Boolean'];
   jsavaOption: Scalars['Boolean'];
@@ -238,6 +239,11 @@ export type Region = {
   __typename?: 'Region';
   id: Scalars['BigInt'];
   name: Scalars['String'];
+};
+
+export type CurrentLocation = {
+  latitude: Scalars['Float'];
+  longitude: Scalars['Float'];
 };
 
 export type PublicCreateSessionMutationVariables = Exact<{
@@ -261,6 +267,7 @@ export type PublicGetHospitalConnectionQueryVariables = Exact<{
   first?: Maybe<Scalars['Int']>;
   after?: Maybe<Scalars['String']>;
   searchText: Scalars['String'];
+  currentLocation?: Maybe<CurrentLocation>;
   reservable: Scalars['Boolean'];
   nightServiceOption: Scalars['Boolean'];
   insuranceEnabled: Scalars['Boolean'];
@@ -410,11 +417,12 @@ export type PublicGetHospitalQueryHookResult = ReturnType<typeof usePublicGetHos
 export type PublicGetHospitalLazyQueryHookResult = ReturnType<typeof usePublicGetHospitalLazyQuery>;
 export type PublicGetHospitalQueryResult = Apollo.QueryResult<PublicGetHospitalQuery, PublicGetHospitalQueryVariables>;
 export const PublicGetHospitalConnectionDocument = gql`
-    query PublicGetHospitalConnection($first: Int, $after: String, $searchText: String!, $reservable: Boolean!, $nightServiceOption: Boolean!, $insuranceEnabled: Boolean!, $jsavaOption: Boolean!, $nichijuOption: Boolean!) {
+    query PublicGetHospitalConnection($first: Int, $after: String, $searchText: String!, $currentLocation: currentLocation, $reservable: Boolean!, $nightServiceOption: Boolean!, $insuranceEnabled: Boolean!, $jsavaOption: Boolean!, $nichijuOption: Boolean!) {
   publicHospitalConnection(
     first: $first
     after: $after
     searchText: $searchText
+    currentLocation: $currentLocation
     reservable: $reservable
     nightServiceOption: $nightServiceOption
     insuranceEnabled: $insuranceEnabled
@@ -451,6 +459,7 @@ export const PublicGetHospitalConnectionDocument = gql`
  *      first: // value for 'first'
  *      after: // value for 'after'
  *      searchText: // value for 'searchText'
+ *      currentLocation: // value for 'currentLocation'
  *      reservable: // value for 'reservable'
  *      nightServiceOption: // value for 'nightServiceOption'
  *      insuranceEnabled: // value for 'insuranceEnabled'
