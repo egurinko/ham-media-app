@@ -19,6 +19,7 @@
     "@chakra-ui/react": "^1.6.5",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
+    "@react-google-maps/api": "^2.4.1",
     "@reduxjs/toolkit": "^1.6.1",
     "framer-motion": "^4.1.17",
     "js-cookie": "^2.2.1",

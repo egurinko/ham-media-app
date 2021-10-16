@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction, useCallback } from 'react';
-import { Tag, Text, HStack, Button } from '@chakra-ui/react';
+import { Text, HStack, Button } from '@chakra-ui/react';
 import { CloseIcon } from '@chakra-ui/icons';
 import { PublicGetHospitalConnectionQueryVariables } from '@/api/public_api/types';
 
@@ -109,7 +109,10 @@ const SearchConditions: React.FC<Props> = ({
           borderRadius={100}
           p="2"
           my="2"
-          colorScheme="primary"
+          variant="outline"
+          borderColor="primary.main"
+          bgColor="primary.light"
+          color="primary.main"
           boxShadow="sm"
           size="sm"
           rightIcon={<CloseIcon fontSize="xs" ml="1" />}
@@ -123,7 +126,10 @@ const SearchConditions: React.FC<Props> = ({
           borderRadius={100}
           p="2"
           my="2"
-          colorScheme="primary"
+          variant="outline"
+          borderColor="primary.main"
+          bgColor="primary.light"
+          color="primary.main"
           boxShadow="sm"
           size="sm"
           rightIcon={<CloseIcon fontSize="xs" ml="1" />}
@@ -137,7 +143,10 @@ const SearchConditions: React.FC<Props> = ({
           borderRadius={100}
           p="2"
           my="2"
-          colorScheme="primary"
+          variant="outline"
+          borderColor="primary.main"
+          bgColor="primary.light"
+          color="primary.main"
           boxShadow="sm"
           size="sm"
           rightIcon={<CloseIcon fontSize="xs" ml="1" />}
@@ -151,7 +160,10 @@ const SearchConditions: React.FC<Props> = ({
           borderRadius={100}
           p="2"
           my="2"
-          colorScheme="primary"
+          variant="outline"
+          borderColor="primary.main"
+          bgColor="primary.light"
+          color="primary.main"
           boxShadow="sm"
           size="sm"
           rightIcon={<CloseIcon fontSize="xs" ml="1" />}
@@ -165,7 +177,10 @@ const SearchConditions: React.FC<Props> = ({
           borderRadius={100}
           p="2"
           my="2"
-          colorScheme="primary"
+          variant="outline"
+          borderColor="primary.main"
+          bgColor="primary.light"
+          color="primary.main"
           boxShadow="sm"
           size="sm"
           rightIcon={<CloseIcon fontSize="xs" ml="1" />}

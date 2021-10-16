@@ -44,6 +44,7 @@ const TextSearch: React.FC<Props> = ({
   const handleSearchClick = () => {
     getInitialHospitalConnection({
       searchText,
+      currentLocation: null,
     });
   };
 

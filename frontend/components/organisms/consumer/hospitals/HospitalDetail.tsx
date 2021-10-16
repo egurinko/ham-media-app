@@ -1,10 +1,12 @@
 import { Box, Text, Divider } from '@chakra-ui/react';
+import { Marker, InfoWindow } from '@react-google-maps/api';
 import Card from '@/components/atoms/Card';
 import MapPinIcon from '@/components/atoms/assets/MapPinIcon';
 import PhoneIcon from '@/components/atoms/assets/PhoneIcon';
 import LinkIcon from '@/components/atoms/assets/LinkIcon';
 import NightIcon from '@/components/atoms/assets/NightIcon';
 import InsuranceIcon from '@/components/atoms/assets/InsuranceIcon';
+import GoogleMap from '@/components/ecosystems/GoogleMap';
 import HospitalTags from './HospitalTags';
 import type { HospitalFieldsFragment } from '@/api/public_api/types';
 
@@ -169,6 +171,51 @@ const HospitalDetail: React.FC<Props> = ({ hospital }) => (
         </Box>
       </Box>
     </Card>
+    {hospital.hospitalAddress?.hospitalAddressGeoLocation ? (
+      <Box my="4">
+        <Card>
+          <GoogleMap
+            height={400}
+            currentLat={
+              hospital.hospitalAddress.hospitalAddressGeoLocation.latitude
+            }
+            currentLng={
+              hospital.hospitalAddress.hospitalAddressGeoLocation.longitude
+            }
+          >
+            <Marker
+              position={{
+                lat: hospital.hospitalAddress.hospitalAddressGeoLocation
+                  .latitude,
+                lng: hospital.hospitalAddress.hospitalAddressGeoLocation
+                  .longitude,
+              }}
+            />
+            <InfoWindow
+              position={{
+                lat:
+                  hospital.hospitalAddress.hospitalAddressGeoLocation.latitude +
+                  0.012,
+                lng: hospital.hospitalAddress.hospitalAddressGeoLocation
+                  .longitude,
+              }}
+            >
+              <Box display="flex" flexDirection="column">
+                <a href={hospital.url}>
+                  <Text fontSize="md" textDecoration="underline">
+                    {hospital.name}
+                  </Text>
+                </a>
+                <Text fontSize="xs">
+                  {hospital.hospitalAddress.phone_number}
+                </Text>
+                <Text fontSize="xs">{hospital.hospitalAddress.address}</Text>
+              </Box>
+            </InfoWindow>
+          </GoogleMap>
+        </Card>
+      </Box>
+    ) : null}
   </Box>
 );
 

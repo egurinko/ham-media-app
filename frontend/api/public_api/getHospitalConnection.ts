@@ -7,6 +7,7 @@ export const getHospitalConnection = gql`
     $first: Int
     $after: String
     $searchText: String!
+    $currentLocation: currentLocation
     $reservable: Boolean!
     $nightServiceOption: Boolean!
     $insuranceEnabled: Boolean!
@@ -17,6 +18,7 @@ export const getHospitalConnection = gql`
       first: $first
       after: $after
       searchText: $searchText
+      currentLocation: $currentLocation
       reservable: $reservable
       nightServiceOption: $nightServiceOption
       insuranceEnabled: $insuranceEnabled
