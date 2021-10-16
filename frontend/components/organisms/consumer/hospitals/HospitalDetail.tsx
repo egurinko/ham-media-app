@@ -201,7 +201,7 @@ const HospitalDetail: React.FC<Props> = ({ hospital }) => (
               }}
             >
               <Box display="flex" flexDirection="column">
-                <a href={hospital.url}>
+                <a href={hospital.url} target="_blank" rel="noreferrer">
                   <Text fontSize="md" textDecoration="underline">
                     {hospital.name}
                   </Text>

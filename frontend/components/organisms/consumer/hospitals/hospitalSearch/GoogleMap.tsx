@@ -70,7 +70,7 @@ const GoogleMapComponent: React.FC<Props> = ({
           onCloseClick={handleInfoWindoClose}
         >
           <Box display="flex" flexDirection="column">
-            <a href={currentHospital.url}>
+            <a href={currentHospital.url} target="_blank" rel="noreferrer">
               <Text fontSize="md" textDecoration="underline">
                 {currentHospital.name}
               </Text>
