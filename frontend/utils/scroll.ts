@@ -1,7 +1,7 @@
-export const scrollToTop = (): void => {
+export const scrollTo = (top = 0, left = 0): void => {
   window.scrollTo({
-    top: 0,
-    left: 0,
+    top,
+    left,
     behavior: 'smooth',
   });
 };
