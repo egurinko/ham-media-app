@@ -43,6 +43,7 @@ const MapSearch: React.FC<Props> = ({
         currentLocation: { latitude, longitude },
         searchText: '',
       });
+      setCurrentLocationError(null);
       setOpen(true);
     },
     [setCurrentLocation, getInitialHospitalConnection]
