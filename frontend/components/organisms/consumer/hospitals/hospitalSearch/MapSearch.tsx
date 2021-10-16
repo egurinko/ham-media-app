@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, Dispatch, SetStateAction } from 'react';
 import { Button, Text, Box } from '@chakra-ui/react';
 import Card from '@/components/atoms/Card';
 import GoogleMap from '@/components/ecosystems/GoogleMap';
@@ -10,9 +10,15 @@ type Props = {
   getInitialHospitalConnection: (
     variables: Partial<PublicGetHospitalConnectionQueryVariables>
   ) => void;
+  setCurrentLocation: Dispatch<
+    SetStateAction<PublicGetHospitalConnectionQueryVariables['currentLocation']>
+  >;
 };
 
-const MapSearch: React.FC<Props> = ({ getInitialHospitalConnection }) => {
+const MapSearch: React.FC<Props> = ({
+  getInitialHospitalConnection,
+  setCurrentLocation,
+}) => {
   const [open, setOpen] = useState(false);
   const [currentLocationError, setCurrentLocationError] =
     useState<null | GeolocationPositionError>(null);
@@ -27,11 +33,20 @@ const MapSearch: React.FC<Props> = ({ getInitialHospitalConnection }) => {
     });
   }, []);
 
-  const success = useCallback((position: GeolocationPosition) => {
-    setCurrentLat(position.coords.latitude);
-    setCurrentLng(position.coords.longitude);
-    setOpen(true);
-  }, []);
+  const success = useCallback(
+    (position: GeolocationPosition) => {
+      const { latitude, longitude } = position.coords;
+      setCurrentLat(latitude);
+      setCurrentLng(longitude);
+      setCurrentLocation({ latitude, longitude });
+      getInitialHospitalConnection({
+        currentLocation: { latitude, longitude },
+        searchText: '',
+      });
+      setOpen(true);
+    },
+    [setCurrentLocation, getInitialHospitalConnection]
+  );
 
   const error = useCallback((error: GeolocationPositionError) => {
     setCurrentLocationError(error);

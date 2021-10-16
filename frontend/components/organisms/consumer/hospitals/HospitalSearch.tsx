@@ -13,6 +13,10 @@ import { scrollToTop } from '@/utils/scroll';
 
 const HospitalSearch: React.FC<NoProps> = () => {
   const [searchText, setSearchText] = useState('');
+  const [currentLocation, setCurrentLocation] =
+    useState<PublicGetHospitalConnectionQueryVariables['currentLocation']>(
+      null
+    );
   const [reservable, setReservable] = useState(false);
   const [nightServiceOption, setNightServiceOption] = useState(false);
   const [insuranceEnabled, setInsuranceEnabled] = useState(false);
@@ -28,6 +32,7 @@ const HospitalSearch: React.FC<NoProps> = () => {
       variables: {
         first: 20,
         searchText,
+        currentLocation,
         reservable,
         nightServiceOption,
         insuranceEnabled,
@@ -48,6 +53,7 @@ const HospitalSearch: React.FC<NoProps> = () => {
             first: 10,
             after: pageInfo.endCursor,
             searchText,
+            currentLocation,
             reservable,
             nightServiceOption,
             insuranceEnabled,
@@ -71,6 +77,7 @@ const HospitalSearch: React.FC<NoProps> = () => {
       <Box my="2">
         <MapSearch
           getInitialHospitalConnection={getInitialHospitalConnection}
+          setCurrentLocation={setCurrentLocation}
         />
       </Box>
       <Box>
