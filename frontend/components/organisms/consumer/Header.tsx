@@ -10,15 +10,15 @@ const Header: React.VFC<Props> = () => (
       align="center"
       justify="center"
       wrap="wrap"
-      padding={4}
+      padding={3}
       bg="white"
     >
       <Flex align="center" mr={5}>
         <Image
           src="/ham_media_logo.png"
           alt="ハムメディアロゴ"
-          width={200}
-          height={45}
+          width={160}
+          height={35}
         />
       </Flex>
     </Flex>
