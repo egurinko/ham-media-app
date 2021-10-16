@@ -13,6 +13,7 @@
     "tsc": "tsc"
   },
   "dependencies": {
+    "@line/bot-sdk": "^7.4.0",
     "@prisma/client": "^3.2.1",
     "axios": "^0.22.0",
     "bcrypt": "^5.0.1",
