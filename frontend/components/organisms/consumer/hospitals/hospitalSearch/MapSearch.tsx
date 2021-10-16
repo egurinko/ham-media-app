@@ -1,7 +1,7 @@
 import { useState, useCallback, Dispatch, SetStateAction } from 'react';
 import { Button, Text, Box } from '@chakra-ui/react';
 import Card from '@/components/atoms/Card';
-import GoogleMap from '@/components/ecosystems/GoogleMap';
+import GoogleMap from './GoogleMap';
 import MapPinIcon from '@/components/atoms/assets/MapPinIcon';
 import FlashMessage from '@/components/molecules/FlashMessage';
 import { PublicGetHospitalConnectionQueryVariables } from '@/api/public_api/types';
