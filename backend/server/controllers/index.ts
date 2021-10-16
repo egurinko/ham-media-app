@@ -1,7 +1,5 @@
-import { publicApi } from './publicApi';
-import { internalApi } from './internalApi';
+import { webhook } from './webhook';
 
 export const controller = {
-  publicApi,
-  internalApi,
+  webhook,
 };
