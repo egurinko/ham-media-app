@@ -40,6 +40,10 @@ declare global {
 }
 
 export interface NexusGenInputs {
+  currentLocation: { // input type
+    latitude: number; // Float!
+    longitude: number; // Float!
+  }
 }
 
 export interface NexusGenEnums {
@@ -416,6 +420,7 @@ export interface NexusGenArgTypes {
     publicHospitalConnection: { // args
       after?: string | null; // String
       before?: string | null; // String
+      currentLocation?: NexusGenInputs['currentLocation'] | null; // currentLocation
       first?: number | null; // Int
       insuranceEnabled: boolean; // Boolean!
       jsavaOption: boolean; // Boolean!
@@ -436,7 +441,7 @@ export interface NexusGenTypeInterfaces {
 
 export type NexusGenObjectNames = keyof NexusGenObjects;
 
-export type NexusGenInputNames = never;
+export type NexusGenInputNames = keyof NexusGenInputs;
 
 export type NexusGenEnumNames = keyof NexusGenEnums;
 
