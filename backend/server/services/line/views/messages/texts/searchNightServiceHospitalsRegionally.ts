@@ -42,7 +42,9 @@ export const createSearchNightServiceHospitalsRegionallyReplyMessage = (
   },
 });
 
-const createCarouselContent = (hospital: RegionalHospital): FlexBubble => ({
+export const createCarouselContent = (
+  hospital: RegionalHospital
+): FlexBubble => ({
   type: 'bubble',
   header: createHeader(hospital),
   body: createBody(hospital),
