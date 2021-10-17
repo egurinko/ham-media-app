@@ -12,6 +12,7 @@ import type {
   GetOfferingHamstersResponse,
   GetOfferingHamsterResponse,
 } from '@/services/api';
+import { sanitizeHtml } from '@/services/htmlSanitizer';
 
 export const getListOfferingHamstersReplyMessage = async (): Promise<
   TextMessage | FlexMessage
@@ -76,7 +77,10 @@ const getHeroAction = (link: string): URIAction => ({
 });
 
 const getBody = (post: GetOfferingHamsterResponse): FlexBox => {
-  const content = post.content.rendered;
+  const content = sanitizeHtml(post.content.rendered, {
+    allowedTags: [],
+    allowedAttributes: {},
+  });
 
   return {
     type: 'box',
