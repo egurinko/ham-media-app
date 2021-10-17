@@ -2,6 +2,7 @@ import type { TextEventMessage, Message } from '@line/bot-sdk';
 import {
   getListOfferingHamstersReplyMessage,
   SEARCH_HOSPITALS_REPLAY_MESSAGE,
+  getSearchNightServiceHospitalsReplyMessage,
 } from './texts';
 
 const TEXT_TYPES = {
@@ -19,6 +20,8 @@ export const getTextEventReplyMessage = async (
     }
     case TEXT_TYPES.SEARCH_HOSPITALS:
       return SEARCH_HOSPITALS_REPLAY_MESSAGE;
+    case TEXT_TYPES.SEARCH_NIGHT_HOSPITALS:
+      return getSearchNightServiceHospitalsReplyMessage();
     default:
       return {
         type: 'text',
