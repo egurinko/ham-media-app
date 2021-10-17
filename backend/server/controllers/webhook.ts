@@ -4,8 +4,8 @@ import {
   RawRequestDefaultExpression,
   RawReplyDefaultExpression,
 } from 'fastify';
-import { lineClient } from '@/services/line';
-import type { WebhookRequestBody, WebhookEvent } from '@line/bot-sdk';
+import { handleEvent } from '@/services/line';
+import type { WebhookRequestBody } from '@line/bot-sdk';
 
 const post: RouteHandlerMethod<
   RawServerDefault,
@@ -16,17 +16,6 @@ const post: RouteHandlerMethod<
   Promise.all(request.body.events.map(handleEvent)).then((result) =>
     reply.send(result)
   );
-};
-
-const handleEvent = (event: WebhookEvent) => {
-  if (event.type !== 'message' || event.message.type !== 'text') {
-    return Promise.resolve(null);
-  }
-
-  return lineClient.replyMessage(event.replyToken, {
-    type: 'text',
-    text: event.message.text,
-  });
 };
 
 export const webhook = {
