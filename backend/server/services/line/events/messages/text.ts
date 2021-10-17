@@ -1,28 +1,29 @@
 import type { TextEventMessage, Message } from '@line/bot-sdk';
 import { client } from '@/services/prisma';
+import { createUnprocessableReplyMessage } from '@/services/line/views';
 import {
   getListOfferingHamstersReplyMessage,
-  SEARCH_HOSPITALS_REPLAY_MESSAGE,
+  getSearchHospitalsReplyMessage,
   getSearchNightServiceHospitalsReplyMessage,
   getSearchNightServiceHospitalsRegionallyReplyMessage,
 } from './texts';
 
 const TEXT_TYPES = {
-  LIST_FOSTERED_HAMSTERS: '里親募集一覧',
+  LIST_OFFERING_HAMSTERS: '里親募集一覧',
   SEARCH_HOSPITALS: '受付病院検索',
-  SEARCH_NIGHT_HOSPITALS: '夜間営業病院を検索',
+  SEARCH_NIGHT_SERVICE_HOSPITALS: '夜間営業病院を検索',
 } as const;
 
 export const getTextEventReplyMessage = async (
   message: TextEventMessage
 ): Promise<Message | Message[]> => {
-  if (message.text === TEXT_TYPES.LIST_FOSTERED_HAMSTERS) {
+  if (message.text === TEXT_TYPES.LIST_OFFERING_HAMSTERS) {
     return getListOfferingHamstersReplyMessage();
   }
   if (message.text === TEXT_TYPES.SEARCH_HOSPITALS) {
-    return SEARCH_HOSPITALS_REPLAY_MESSAGE;
+    return getSearchHospitalsReplyMessage;
   }
-  if (message.text === TEXT_TYPES.SEARCH_NIGHT_HOSPITALS) {
+  if (message.text === TEXT_TYPES.SEARCH_NIGHT_SERVICE_HOSPITALS) {
     return getSearchNightServiceHospitalsReplyMessage();
   }
 
@@ -30,10 +31,7 @@ export const getTextEventReplyMessage = async (
     return getSearchNightServiceHospitalsRegionallyReplyMessage(message.text);
   }
 
-  return {
-    type: 'text',
-    text: message.text,
-  };
+  return createUnprocessableReplyMessage;
 };
 
 const getIsNightRegionalHospitalText = async (

@@ -1,6 +1,7 @@
 import type { MessageEvent } from '@line/bot-sdk';
 import { client } from '../client';
 import { getTextEventReplyMessage } from './messages';
+import { createUnprocessableReplyMessage } from '@/services/line/views';
 
 const MESSAGE_TYPES = {
   TEXT: 'text',
@@ -19,9 +20,9 @@ export const handleMessageEvent = async (event: MessageEvent) => {
       return client.replyMessage(event.replyToken, reply);
     }
     default:
-      return client.replyMessage(event.replyToken, {
-        type: 'text',
-        text: '大変申し訳ありません。入力内容を処理できませんでした。\n\nメニューから「受付病院検索」や「里親募集中一覧」、「お問い合わせ」をタップしてください！',
-      });
+      return client.replyMessage(
+        event.replyToken,
+        createUnprocessableReplyMessage
+      );
   }
 };
