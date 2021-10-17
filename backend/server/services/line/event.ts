@@ -18,7 +18,6 @@ const EVENT_TYPES = {
 } as const;
 
 export const handleEvent = (event: WebhookEvent) => {
-  console.log({ event });
   switch (event.type) {
     case EVENT_TYPES.MESSAGE:
       return handleMessageEvent(event);
