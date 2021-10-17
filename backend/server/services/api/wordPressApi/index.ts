@@ -1,5 +1,8 @@
 import axios, { AxiosResponse } from 'axios';
-import type { GetOfferingHamstersResponse } from './types';
+import type {
+  GetOfferingHamstersResponse,
+  GetOfferingHamsterResponse,
+} from './types';
 
 const instance = axios.create({
   baseURL: 'https://ham-media.net/wp-json/wp/v2/',
@@ -19,3 +22,4 @@ const getOfferingHamsters = (): Promise<
   });
 
 export { getOfferingHamsters };
+export type { GetOfferingHamstersResponse, GetOfferingHamsterResponse };

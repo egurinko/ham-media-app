@@ -79,4 +79,4 @@ type GetOfferingHamsterResponse = {
   };
 };
 
-export type { GetOfferingHamstersResponse };
+export type { GetOfferingHamstersResponse, GetOfferingHamsterResponse };
