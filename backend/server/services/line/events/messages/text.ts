@@ -1,5 +1,8 @@
 import type { TextEventMessage, Message } from '@line/bot-sdk';
-import { getListOfferingHamstersReplyMessage } from './texts';
+import {
+  getListOfferingHamstersReplyMessage,
+  SEARCH_HOSPITALS_REPLAY_MESSAGE,
+} from './texts';
 
 const TEXT_TYPES = {
   LIST_FOSTERED_HAMSTERS: '里親募集一覧',
@@ -14,6 +17,8 @@ export const getTextEventReplyMessage = async (
     case TEXT_TYPES.LIST_FOSTERED_HAMSTERS: {
       return getListOfferingHamstersReplyMessage();
     }
+    case TEXT_TYPES.SEARCH_HOSPITALS:
+      return SEARCH_HOSPITALS_REPLAY_MESSAGE;
     default:
       return {
         type: 'text',
