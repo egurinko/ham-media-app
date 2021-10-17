@@ -6,6 +6,6 @@ const config = {
 };
 
 const client = new line.Client(config);
-const middleware = line.middleware(config);
+// const middleware = line.middleware(config);
 
-export { client as lineClient, middleware as lineMiddleware };
+export { client };
