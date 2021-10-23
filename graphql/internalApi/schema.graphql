@@ -220,5 +220,6 @@ type Region {
 }
 
 type Session {
+  internalUser: InternalUser!
   token: String!
 }

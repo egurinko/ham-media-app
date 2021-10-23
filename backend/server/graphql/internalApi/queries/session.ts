@@ -11,6 +11,11 @@ export const sessionField = queryField((t) => {
       }
       return {
         token: sign({ email: ctx.currentInternalUser.email }),
+        internalUser: {
+          id: ctx.currentInternalUser.id,
+          name: ctx.currentInternalUser.name,
+          email: ctx.currentInternalUser.email,
+        },
       };
     },
   });
