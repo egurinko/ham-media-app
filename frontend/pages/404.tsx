@@ -3,7 +3,10 @@ import { Box, Text } from '@chakra-ui/react';
 import ConsumerLayout from '@/components/layouts/consumer/Layout';
 
 const NotFound: React.FC<{}> = () => (
-  <ConsumerLayout>
+  <ConsumerLayout
+    title="ページが見つかりませんでした - Ham ω Media"
+    description=""
+  >
     <Box
       display="flex"
       flexWrap="wrap"

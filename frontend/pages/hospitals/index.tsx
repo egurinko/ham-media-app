@@ -10,7 +10,7 @@ const Index: React.VFC<NoProps> = () => {
   const imageHeight = useBreakpointValue({ base: 60, md: 120 });
 
   return (
-    <ConsumerLayout>
+    <ConsumerLayout title="病院検索 - Ham ω Media">
       <Box
         display="flex"
         justifyContent="center"

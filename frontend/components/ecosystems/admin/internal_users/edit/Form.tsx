@@ -11,7 +11,10 @@ import {
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import Card from '@/components/atoms/Card';
 import FlashMessage from '@/components/molecules/FlashMessage';
-import { useInternalUpdateInternalUserMutation } from '@/api/internal_api/types';
+import {
+  useInternalUpdateInternalUserMutation,
+  useInternalGetInternalUserQuery,
+} from '@/api/internal_api/types';
 import type { InternalGetInternalUserQuery } from '@/api/internal_api/types';
 import { goAdminInternalUsers } from '@/utils/routes';
 import validators from '@/validators/index';
@@ -23,10 +26,15 @@ interface FormInput {
 }
 
 interface Props {
-  internalUser: InternalGetInternalUserQuery['internalUser'];
+  internalUserId: InternalGetInternalUserQuery['internalUser']['id'];
 }
 
-const Edit: React.VFC<Props> = ({ internalUser }) => {
+const Edit: React.VFC<Props> = ({ internalUserId }) => {
+  const { data: internalUserData, error: internalUserError } =
+    useInternalGetInternalUserQuery({
+      variables: { id: internalUserId },
+    });
+  const internalUser = internalUserData?.internalUser;
   const {
     control,
     handleSubmit,
@@ -42,19 +50,23 @@ const Edit: React.VFC<Props> = ({ internalUser }) => {
     email,
     password,
   }) => {
-    trigger();
+    if (internalUser) {
+      trigger();
 
-    try {
-      await update({
-        variables: { id: internalUser.id, name, email, password },
-      });
-      setTimeout(() => {
-        goAdminInternalUsers(router);
-      }, 2000);
-    } catch (e) {}
+      try {
+        await update({
+          variables: { id: internalUser.id, name, email, password },
+        });
+        setTimeout(() => {
+          goAdminInternalUsers(router);
+        }, 2000);
+      } catch (e) {}
+    }
   };
 
-  return (
+  return internalUserError ? (
+    <FlashMessage message={internalUserError.message} status="error" />
+  ) : internalUser ? (
     <>
       {data ? (
         <FlashMessage message="更新に成功しました" status="success" />
@@ -139,7 +151,7 @@ const Edit: React.VFC<Props> = ({ internalUser }) => {
         </form>
       </Card>
     </>
-  );
+  ) : null;
 };
 
 export default Edit;
