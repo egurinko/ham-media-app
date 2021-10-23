@@ -5,18 +5,15 @@ import { Heading, Box, IconButton } from '@chakra-ui/react';
 import { ChevronRightIcon } from '@chakra-ui/icons';
 import Form from '@/components/ecosystems/admin/internal_users/edit/Form';
 import InternalLayout from '@/components/layouts/admin/InternalLayout';
+import ClientOnly from '@/components/ecosystems/ClientOnly';
 import { getInternalUsers } from '@/api/internal_api/getInternalUsers';
 import type { InternalGetInternalUsersQuery } from '@/api/internal_api/types';
-import { getInternalUser } from '@/api/internal_api/getInternalUser';
-import type {
-  InternalGetInternalUserQuery,
-  InternalGetInternalUserQueryVariables,
-} from '@/api/internal_api/types';
 import { apiClient } from '@/utils/apollo';
 import { goAdminInternalUsers } from '@/utils/routes';
 
-const Edit: React.VFC<Props> = ({ internalUser }) => {
+const Edit: React.VFC<Props> = () => {
   const router = useRouter();
+  const { id: internalUserId } = router.query;
 
   return (
     <InternalLayout>
@@ -29,7 +26,11 @@ const Edit: React.VFC<Props> = ({ internalUser }) => {
         />
         <Heading size="sm">ユーザ編集</Heading>
       </Box>
-      <Form internalUser={internalUser} />
+      <ClientOnly>
+        {typeof internalUserId === 'string' ? (
+          <Form internalUserId={BigInt(internalUserId)} />
+        ) : null}
+      </ClientOnly>
     </InternalLayout>
   );
 };
@@ -38,9 +39,7 @@ interface Params extends ParsedUrlQuery {
   id: string;
 }
 
-interface Props {
-  internalUser: InternalGetInternalUserQuery['internalUser'];
-}
+interface Props {}
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
   const { data } = await apiClient.query<InternalGetInternalUsersQuery>({
@@ -51,23 +50,11 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
     params: { id: String(internalUser.id) },
   }));
 
-  return { paths, fallback: false };
+  return { paths, fallback: 'blocking' };
 };
 
-export const getStaticProps: GetStaticProps<Props, Params> = async ({
-  params,
-}) => {
-  const { data } = await apiClient.query<
-    InternalGetInternalUserQuery,
-    InternalGetInternalUserQueryVariables
-  >({
-    query: getInternalUser,
-    variables: {
-      id: BigInt(params!.id),
-    },
-  });
-
-  return { props: { internalUser: data.internalUser } };
+export const getStaticProps: GetStaticProps<Props, Params> = async () => {
+  return { props: {} };
 };
 
 export default Edit;
