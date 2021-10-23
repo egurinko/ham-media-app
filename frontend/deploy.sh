@@ -32,3 +32,7 @@ sls --stage ${ENV}
 AWS_PROFILE=${AWS_PROFILE} aws s3 sync .serverless s3://ham-media-app-serverless-state/${ENV}/.serverless --delete
 
 rm serverless.yml
+
+curl -X POST -H 'Content-type: application/json' \
+             --data "{\"text\":\"$ENV のハムメディアアプリのデプロイが終わったよ！！\", \"mrkdwn\": true }" \
+             ${FRONT_DEPLOY_NOTIFICATION_URL}
