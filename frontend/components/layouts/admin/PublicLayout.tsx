@@ -1,4 +1,5 @@
 import BaseLayout from './BaseLayout';
+import ClientOnly from '@/components/ecosystems/ClientOnly';
 
 type Props = {
   title?: string;
@@ -6,7 +7,9 @@ type Props = {
 
 const PublicLayout: React.FC<Props> = ({ title = 'Ham ω Media', children }) => (
   <BaseLayout title={title}>
-    <main>{children}</main>
+    <ClientOnly>
+      <main>{children}</main>
+    </ClientOnly>
   </BaseLayout>
 );
 
