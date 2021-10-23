@@ -6841,14 +6841,15 @@ fastify-plugin@^3.0.0:
   integrity sha512-ZdCvKEEd92DNLps5n0v231Bha8bkz1DjnPP/aEz37rz/q42Z5JVLmgnqR4DYuNn3NXAO3IDCPyRvgvxtJ4Ym4w==
 
 fastify-static@^4.2.2:
-  version "4.2.2"
-  resolved "https://registry.yarnpkg.com/fastify-static/-/fastify-static-4.2.2.tgz#48bd75bf23f2fb983395ce992a92448d78fe88bb"
-  integrity sha512-C631EuGdMlUzFXuuP4SqXBoQEiit9S0uYRd97cF2mFhgStvZvQKIjtzUk/GMQu6EfEdm0ddj3UAc0C6dVeNyKA==
+  version "4.4.2"
+  resolved "https://registry.yarnpkg.com/fastify-static/-/fastify-static-4.4.2.tgz#ff00437d6f8197170365b53b4bab4dbd01777920"
+  integrity sha512-qgMR7VZjZjo8iRs3Ea4YuStEii2MkgKVQDz3JFfd73i+rbgKHEsPaJcWAX2O/oHC6EI9vqOuSA6ziTYsuf79fQ==
   dependencies:
     content-disposition "^0.5.3"
     encoding-negotiator "^2.0.1"
     fastify-plugin "^3.0.0"
     glob "^7.1.4"
+    p-limit "^3.1.0"
     readable-stream "^3.4.0"
     send "^0.17.1"
 
@@ -7430,7 +7431,19 @@ glob@7.1.5:
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
-glob@^7.0.0, glob@^7.1.1, glob@^7.1.3, glob@^7.1.4, glob@^7.1.6, glob@~7.1.1:
+glob@^7.0.0, glob@^7.1.1, glob@^7.1.3, glob@^7.1.4, glob@^7.1.6:
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/glob/-/glob-7.2.0.tgz#d15535af7732e02e948f4c41628bd910293f6023"
+  integrity sha512-lmLf6gtyrPq8tTjSmrO94wBeQbFR3HbLHbuyD69wuyQkImp2hWqMGB47OX65FBkPffO641IP9jWa1z4ivqG26Q==
+  dependencies:
+    fs.realpath "^1.0.0"
+    inflight "^1.0.4"
+    inherits "2"
+    minimatch "^3.0.4"
+    once "^1.3.0"
+    path-is-absolute "^1.0.0"
+
+glob@~7.1.1:
   version "7.1.7"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.7.tgz#3b193e9233f01d42d0b3f78294bbeeb418f94a90"
   integrity sha512-OvD9ENzPLbegENnYP5UUfJIirTg4+XwMWGaQfQTY0JenxNvvIKP3U3/tAQSPIu/lHxXYSZmpXlUHeqAIdKzBLQ==
