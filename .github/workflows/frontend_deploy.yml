@@ -32,5 +32,5 @@ jobs:
       - name: Install sls
         run: yarn global add serverless
       - name: Deploy
-        run: ENV=prd /bin/bash deploy.sh -y
+        run: ENV=prd FRONT_DEPLOY_NOTIFICATION_URL=${{ secrets.FRONT_DEPLOY_NOTIFICATION_URL }} /bin/bash deploy.sh -y
         working-directory: ./frontend

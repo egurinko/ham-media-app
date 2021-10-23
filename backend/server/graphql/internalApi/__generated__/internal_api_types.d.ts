@@ -165,6 +165,7 @@ export interface NexusGenObjects {
     name: string; // String!
   }
   Session: { // root type
+    internalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     token: string; // String!
   }
 }
@@ -282,6 +283,7 @@ export interface NexusGenFieldTypes {
     name: string; // String!
   }
   Session: { // field return type
+    internalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     token: string; // String!
   }
 }
@@ -389,6 +391,7 @@ export interface NexusGenFieldTypeNames {
     name: 'String'
   }
   Session: { // field return type name
+    internalUser: 'InternalUser'
     token: 'String'
   }
 }

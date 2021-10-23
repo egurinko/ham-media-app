@@ -1,10 +1,15 @@
-import { Box } from '@chakra-ui/react';
+import { Box, Divider, Button } from '@chakra-ui/react';
 import Image from 'next/image';
 import Navigation from '@/components/ecosystems/admin/Navigation';
+import UserCard from '@/components/molecules/UserCard';
+import type { InternalGetSessionQuery } from '@/api/internal_api/types';
 
-type Props = Record<string, never>;
+type Props = {
+  internalUser: InternalGetSessionQuery['session']['internalUser'];
+  handleLogout: () => void;
+};
 
-const Sidebar: React.VFC<Props> = () => (
+const Sidebar: React.VFC<Props> = ({ internalUser, handleLogout }) => (
   <Box
     w={250}
     bg="white"
@@ -24,6 +29,9 @@ const Sidebar: React.VFC<Props> = () => (
       />
     </Box>
     <Navigation />
+    <Divider mt="16" />
+    <UserCard name={internalUser.name} email={internalUser.email} />
+    <Button onClick={handleLogout}>ログアウト</Button>
   </Box>
 );
 
