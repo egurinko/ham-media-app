@@ -9,18 +9,29 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
+  Button,
 } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import Image from 'next/image';
 import Navigation from '@/components/ecosystems/admin/Navigation';
+import UserCard from '@/components/molecules/UserCard';
+import type { InternalGetSessionQuery } from '@/api/internal_api/types';
 
 type Props = {
   isOpen: UseDisclosureReturn['isOpen'];
   onClose: UseDisclosureReturn['onClose'];
   handleToggle: () => void;
+  internalUser: InternalGetSessionQuery['session']['internalUser'];
+  handleLogout: () => void;
 };
 
-const Header: React.VFC<Props> = ({ isOpen, onClose, handleToggle }) => (
+const Header: React.VFC<Props> = ({
+  isOpen,
+  onClose,
+  handleToggle,
+  internalUser,
+  handleLogout,
+}) => (
   <Flex
     as="nav"
     align="center"
@@ -61,6 +72,11 @@ const Header: React.VFC<Props> = ({ isOpen, onClose, handleToggle }) => (
 
         <DrawerBody>
           <Navigation />
+          <Divider mt="16" />
+          <Box display="flex" flexDir="column" alignItems="center">
+            <UserCard name={internalUser.name} email={internalUser.email} />
+            <Button onClick={handleLogout}>ログアウト</Button>
+          </Box>
         </DrawerBody>
       </DrawerContent>
     </Drawer>
