@@ -8,7 +8,7 @@ import Form from '@/components/ecosystems/admin/login/Form';
 import { goAdminInternalUsers } from '@/utils/routes';
 
 const Login: React.VFC<NoProps> = () => {
-  const { data } = useInternalGetSessionQuery();
+  const { data } = useInternalGetSessionQuery({ fetchPolicy: 'no-cache' });
   const router = useRouter();
 
   if (data?.session.token) {
