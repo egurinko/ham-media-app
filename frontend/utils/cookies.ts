@@ -9,3 +9,7 @@ export const setCookie = (value: string, name = HAMEDIA_SESSION): void => {
 export const getCookie = (name = HAMEDIA_SESSION): string | undefined => {
   return Cookies.get(name);
 };
+
+export const removeCookie = (name = HAMEDIA_SESSION): void => {
+  Cookies.remove(name);
+};
