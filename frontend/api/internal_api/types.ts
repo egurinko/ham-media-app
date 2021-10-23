@@ -281,6 +281,7 @@ export type Region = {
 
 export type Session = {
   __typename?: 'Session';
+  internalUser: InternalUser;
   token: Scalars['String'];
 };
 
@@ -352,7 +353,7 @@ export type InternalGetInternalUsersQuery = { __typename?: 'Query', internalUser
 export type InternalGetSessionQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type InternalGetSessionQuery = { __typename?: 'Query', session: { __typename?: 'Session', token: string } };
+export type InternalGetSessionQuery = { __typename?: 'Query', session: { __typename?: 'Session', token: string, internalUser: { __typename?: 'InternalUser', id: BigInt, name: string, email: string } } };
 
 export type InternalUpdateHospitalMutationVariables = Exact<{
   id: Scalars['BigInt'];
@@ -749,6 +750,11 @@ export const InternalGetSessionDocument = gql`
     query InternalGetSession {
   session {
     token
+    internalUser {
+      id
+      name
+      email
+    }
   }
 }
     `;
