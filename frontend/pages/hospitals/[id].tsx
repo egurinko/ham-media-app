@@ -60,7 +60,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
     console.log({ e });
   }
 
-  return { paths: [], fallback: false };
+  return { paths: [], fallback: 'blocking' };
 };
 
 export const getStaticProps: GetStaticProps<Props, Params> = async ({
@@ -76,7 +76,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
     },
   });
 
-  return { props: { hospital: data.hospital } };
+  return { props: { hospital: data.hospital, revalidate: 300 } };
 };
 
 export default Show;
