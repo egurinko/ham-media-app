@@ -55,12 +55,12 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
       params: { id: String(hospital.id) },
     }));
 
-    return { paths, fallback: false };
+    return { paths, fallback: 'blocking' };
   } catch (e) {
     console.log({ e });
   }
 
-  return { paths: [], fallback: 'blocking' };
+  return { paths: [], fallback: false };
 };
 
 export const getStaticProps: GetStaticProps<Props, Params> = async ({
@@ -74,7 +74,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
     variables: {
       id: BigInt(params!.id),
     },
-    fetchPolicy: 'network-only',
+    fetchPolicy: 'no-cache',
   });
 
   return { props: { hospital: data.hospital, revalidate: 300 } };
