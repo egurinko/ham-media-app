@@ -27,7 +27,7 @@ model HospitalAddressGeoLocation {
   longitude           Float           @db.Float
   created_at          DateTime        @default(now()) @db.DateTime(0)
   updated_at          DateTime        @default(now()) @db.DateTime(0)
-  hospitalAddress     HospitalAddress @relation(fields: [hospital_address_id], references: [id])
+  hospitalAddress     HospitalAddress @relation(fields: [hospital_address_id], references: [id], onDelete: Cascade)
   @@map(name: "hospital_address_geo_locations")
 }
 
@@ -41,7 +41,7 @@ model HospitalAddress {
   phone_number               String                      @db.VarChar(255)
   created_at                 DateTime                    @default(now()) @db.DateTime(0)
   updated_at                 DateTime                    @default(now()) @db.DateTime(0)
-  hospital                   Hospital                    @relation(fields: [hospital_id], references: [id])
+  hospital                   Hospital                    @relation(fields: [hospital_id], references: [id], onDelete: Cascade)
   prefecture                 Prefecture                  @relation(fields: [prefecture_id], references: [id])
   hospitalAddressGeoLocation HospitalAddressGeoLocation?
 
@@ -62,7 +62,7 @@ model HospitalBusinessForm {
   remark            String   @db.Text
   created_at        DateTime @default(now()) @db.DateTime(0)
   updated_at        DateTime @default(now()) @db.DateTime(0)
-  hospital          Hospital @relation(fields: [hospital_id], references: [id])
+  hospital          Hospital @relation(fields: [hospital_id], references: [id], onDelete: Cascade)
 
   @@index([business_hour], name: "idx_hospital_business_forms_2")
   @@index([closed_day], name: "idx_hospital_business_forms_4")
@@ -79,7 +79,7 @@ model HospitalCertificationOption {
   jsava_registered   String   @db.VarChar(255)
   created_at         DateTime @default(now()) @db.DateTime(0)
   updated_at         DateTime @default(now()) @db.DateTime(0)
-  hospital           Hospital @relation(fields: [hospital_id], references: [id])
+  hospital           Hospital @relation(fields: [hospital_id], references: [id], onDelete: Cascade)
 
   @@index([nichiju_registered], name: "idx_hospital_certification_options_2")
   @@index([jsava_registered], name: "idx_hospital_certification_options_3")
@@ -95,7 +95,7 @@ model HospitalInternalReputation {
   remark      String   @db.Text
   created_at  DateTime @default(now()) @db.DateTime(0)
   updated_at  DateTime @default(now()) @db.DateTime(0)
-  hospital    Hospital @relation(fields: [hospital_id], references: [id])
+  hospital    Hospital @relation(fields: [hospital_id], references: [id], onDelete: Cascade)
 
   @@index([star], name: "idx_hospital_internal_reputations_2")
   @@map(name: "hospital_internal_reputations")
@@ -110,7 +110,7 @@ model HospitalNightServiceOption {
   remark      String   @db.Text
   created_at  DateTime @default(now()) @db.DateTime(0)
   updated_at  DateTime @default(now()) @db.DateTime(0)
-  hospital    Hospital @relation(fields: [hospital_id], references: [id])
+  hospital    Hospital @relation(fields: [hospital_id], references: [id], onDelete: Cascade)
 
   @@index([status], name: "idx_hospital_night_service_option_2")
   @@map(name: "hospital_night_service_options")
@@ -124,7 +124,7 @@ model HospitalNightUrgentActionOption {
   status      String   @db.VarChar(255)
   created_at  DateTime @default(now()) @db.DateTime(0)
   updated_at  DateTime @default(now()) @db.DateTime(0)
-  hospital    Hospital @relation(fields: [hospital_id], references: [id])
+  hospital    Hospital @relation(fields: [hospital_id], references: [id], onDelete: Cascade)
 
   @@index([status], name: "idx_hospital_night_urgent_action_options_2")
   @@map(name: "hospital_night_urgent_action_options")
@@ -140,7 +140,7 @@ model HospitalReservationStatus {
   remark      String   @db.Text
   created_at  DateTime @default(now()) @db.DateTime(0)
   updated_at  DateTime @default(now()) @db.DateTime(0)
-  hospital    Hospital @relation(fields: [hospital_id], references: [id])
+  hospital    Hospital @relation(fields: [hospital_id], references: [id], onDelete: Cascade)
 
   @@index([required], name: "idx_hospital_reservation_statuses_2")
   @@index([reservable], name: "idx_hospital_reservation_statuses_3")
