@@ -70,35 +70,35 @@ const SearchConditions: React.FC<Props> = ({
     getInitialHospitalConnection({
       reservable: false,
     });
-  }, []);
+  }, [getInitialHospitalConnection, setReservable]);
 
   const clearNightServiceOption = useCallback(() => {
     setNightServiceOption(false);
     getInitialHospitalConnection({
       nightServiceOption: false,
     });
-  }, []);
+  }, [getInitialHospitalConnection, setNightServiceOption]);
 
   const clearInsuranceEnabled = useCallback(() => {
     setInsuranceEnabled(false);
     getInitialHospitalConnection({
       insuranceEnabled: false,
     });
-  }, []);
+  }, [getInitialHospitalConnection, setInsuranceEnabled]);
 
   const clearJsavaOption = useCallback(() => {
     setJsavaOption(false);
     getInitialHospitalConnection({
       jsavaOption: false,
     });
-  }, []);
+  }, [getInitialHospitalConnection, setJsavaOption]);
 
   const clearNichijuOption = useCallback(() => {
     setNichijuOption(false);
     getInitialHospitalConnection({
       nichijuOption: false,
     });
-  }, []);
+  }, [getInitialHospitalConnection, setNichijuOption]);
 
   return (
     <HStack spacing={2} wrap="wrap">
