@@ -3260,6 +3260,14 @@
   dependencies:
     "@types/node" "*"
 
+"@types/cron@^1.7.2":
+  version "1.7.3"
+  resolved "https://registry.yarnpkg.com/@types/cron/-/cron-1.7.3.tgz#993db7d54646f61128c851607b64ba4495deae93"
+  integrity sha512-iPmUXyIJG1Js+ldPYhOQcYU3kCAQ2FWrSkm1FJPoii2eYSn6wEW6onPukNTT0bfiflexNSRPl6KWmAIqS+36YA==
+  dependencies:
+    "@types/node" "*"
+    moment ">=2.14.0"
+
 "@types/cross-spawn@6.0.2":
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/@types/cross-spawn/-/cross-spawn-6.0.2.tgz#168309de311cd30a2b8ae720de6475c2fbf33ac7"
@@ -5680,6 +5688,13 @@ create-require@^1.1.0:
   resolved "https://registry.yarnpkg.com/create-require/-/create-require-1.1.1.tgz#c1d7e8f1e5f6cfc9ff65f9cd352d37348756c333"
   integrity sha512-dcKFX3jn0MpIaXjisoRvexIJVEKzaq7z2rZKxf+MSr9TkdmHmsU4m2lcLojrj/FHl8mk5VxMmYA+ftRkP/3oKQ==
 
+cron@^1.8.2:
+  version "1.8.2"
+  resolved "https://registry.yarnpkg.com/cron/-/cron-1.8.2.tgz#4ac5e3c55ba8c163d84f3407bde94632da8370ce"
+  integrity sha512-Gk2c4y6xKEO8FSAUTklqtfSr7oTq0CiPQeLBG5Fl0qoXpZyMcj1SG59YL+hqq04bu6/IuEA7lMkYDAplQNKkyg==
+  dependencies:
+    moment-timezone "^0.5.x"
+
 cross-fetch@3.1.4, cross-fetch@^3.0.4, cross-fetch@^3.0.6:
   version "3.1.4"
   resolved "https://registry.yarnpkg.com/cross-fetch/-/cross-fetch-3.1.4.tgz#9723f3a3a247bf8b89039f3a380a9244e8fa2f39"
@@ -6765,6 +6780,15 @@ fastify-cors@^6.0.2:
   dependencies:
     fastify-plugin "^3.0.0"
     vary "^1.1.2"
+
+fastify-cron@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/fastify-cron/-/fastify-cron-1.1.2.tgz#daae7441a927830ffb53f157cec962efb869e47e"
+  integrity sha512-FHWtGxySwqxlqSdZDXIwXqah+I8+/77Xu4xQLzWEdclXM94TRW/iJbomVq+ISM1dSwCdNbkBIcQXwkx3COreHw==
+  dependencies:
+    "@types/cron" "^1.7.2"
+    cron "^1.8.2"
+    fastify-plugin "^3.0.0"
 
 fastify-error@^0.3.0, fastify-error@^0.3.1:
   version "0.3.1"
@@ -9342,7 +9366,14 @@ mkdirp@^0.5.1, mkdirp@^0.5.5:
   dependencies:
     minimist "^1.2.5"
 
-moment@2.29.1, moment@^2.22.1:
+moment-timezone@^0.5.x:
+  version "0.5.33"
+  resolved "https://registry.yarnpkg.com/moment-timezone/-/moment-timezone-0.5.33.tgz#b252fd6bb57f341c9b59a5ab61a8e51a73bbd22c"
+  integrity sha512-PTc2vcT8K9J5/9rDEPe5czSIKgLoGsH8UNpA4qZTVw0Vd/Uz19geE9abbIOQKaAQFcnQ3v5YEXrbSc5BpshH+w==
+  dependencies:
+    moment ">= 2.9.0"
+
+moment@2.29.1, "moment@>= 2.9.0", moment@>=2.14.0, moment@^2.22.1:
   version "2.29.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.1.tgz#b2be769fa31940be9eeea6469c075e35006fa3d3"
   integrity sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==
