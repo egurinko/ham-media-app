@@ -74,6 +74,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
     variables: {
       id: BigInt(params!.id),
     },
+    fetchPolicy: 'network-only',
   });
 
   return { props: { hospital: data.hospital, revalidate: 300 } };
