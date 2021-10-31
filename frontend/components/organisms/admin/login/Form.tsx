@@ -8,7 +8,7 @@ import {
   FormLabel,
   FormErrorMessage,
 } from '@chakra-ui/react';
-import { Controller, Control, DeepMap, FieldError } from 'react-hook-form';
+import { Controller, Control, FieldErrors } from 'react-hook-form';
 import Card from '@/components/atoms/Card';
 import FlashMessage from '@/components/molecules/FlashMessage';
 import validators from '@/validators/index';
@@ -19,7 +19,7 @@ type Props = {
   loginErrorMessage?: string;
   onSubmit: FormEventHandler<HTMLFormElement>;
   control: Control<FormInput>;
-  formErrors: DeepMap<FormInput, FieldError>;
+  formErrors: FieldErrors<FormInput>;
 };
 
 export interface FormInput {
