@@ -2,24 +2,47 @@ import { Dispatch, SetStateAction, useCallback } from 'react';
 import { Text, HStack, Button } from '@chakra-ui/react';
 import { CloseIcon } from '@chakra-ui/icons';
 import { PublicGetHospitalConnectionQueryVariables } from '@/api/public_api/types';
+import { apiClient } from '@/utils/apollo';
 
 type Props = {
-  reservable: boolean;
-  setReservable: Dispatch<SetStateAction<boolean>>;
-  nightServiceOption: boolean;
-  setNightServiceOption: Dispatch<SetStateAction<boolean>>;
-  insuranceEnabled: boolean;
-  setInsuranceEnabled: Dispatch<SetStateAction<boolean>>;
-  jsavaOption: boolean;
-  setJsavaOption: Dispatch<SetStateAction<boolean>>;
-  nichijuOption: boolean;
-  setNichijuOption: Dispatch<SetStateAction<boolean>>;
+  setSearchText: Dispatch<
+    SetStateAction<PublicGetHospitalConnectionQueryVariables['searchText']>
+  >;
+  setCurrentLocation: Dispatch<
+    SetStateAction<PublicGetHospitalConnectionQueryVariables['currentLocation']>
+  >;
+  reservable: PublicGetHospitalConnectionQueryVariables['reservable'];
+  setReservable: Dispatch<
+    SetStateAction<PublicGetHospitalConnectionQueryVariables['reservable']>
+  >;
+  nightServiceOption: PublicGetHospitalConnectionQueryVariables['nightServiceOption'];
+  setNightServiceOption: Dispatch<
+    SetStateAction<
+      PublicGetHospitalConnectionQueryVariables['nightServiceOption']
+    >
+  >;
+  insuranceEnabled: PublicGetHospitalConnectionQueryVariables['insuranceEnabled'];
+  setInsuranceEnabled: Dispatch<
+    SetStateAction<
+      PublicGetHospitalConnectionQueryVariables['insuranceEnabled']
+    >
+  >;
+  jsavaOption: PublicGetHospitalConnectionQueryVariables['jsavaOption'];
+  setJsavaOption: Dispatch<
+    SetStateAction<PublicGetHospitalConnectionQueryVariables['jsavaOption']>
+  >;
+  nichijuOption: PublicGetHospitalConnectionQueryVariables['nichijuOption'];
+  setNichijuOption: Dispatch<
+    SetStateAction<PublicGetHospitalConnectionQueryVariables['nichijuOption']>
+  >;
   getInitialHospitalConnection: (
     variables: Partial<PublicGetHospitalConnectionQueryVariables>
   ) => void;
 };
 
 const SearchConditions: React.FC<Props> = ({
+  setSearchText,
+  setCurrentLocation,
   reservable,
   setReservable,
   nightServiceOption,
@@ -33,18 +56,13 @@ const SearchConditions: React.FC<Props> = ({
   getInitialHospitalConnection,
 }) => {
   const clearAll = useCallback(() => {
+    setSearchText('');
+    setCurrentLocation(null);
     setReservable(false);
     setNightServiceOption(false);
     setInsuranceEnabled(false);
     setJsavaOption(false);
     setNichijuOption(false);
-    getInitialHospitalConnection({
-      reservable: false,
-      nightServiceOption: false,
-      insuranceEnabled: false,
-      jsavaOption: false,
-      nichijuOption: false,
-    });
   }, []);
 
   const clearReservable = useCallback(() => {
@@ -52,56 +70,50 @@ const SearchConditions: React.FC<Props> = ({
     getInitialHospitalConnection({
       reservable: false,
     });
-  }, []);
+  }, [getInitialHospitalConnection, setReservable]);
 
   const clearNightServiceOption = useCallback(() => {
     setNightServiceOption(false);
     getInitialHospitalConnection({
       nightServiceOption: false,
     });
-  }, []);
+  }, [getInitialHospitalConnection, setNightServiceOption]);
 
   const clearInsuranceEnabled = useCallback(() => {
     setInsuranceEnabled(false);
     getInitialHospitalConnection({
       insuranceEnabled: false,
     });
-  }, []);
+  }, [getInitialHospitalConnection, setInsuranceEnabled]);
 
   const clearJsavaOption = useCallback(() => {
     setJsavaOption(false);
     getInitialHospitalConnection({
       jsavaOption: false,
     });
-  }, []);
+  }, [getInitialHospitalConnection, setJsavaOption]);
 
   const clearNichijuOption = useCallback(() => {
     setNichijuOption(false);
     getInitialHospitalConnection({
       nichijuOption: false,
     });
-  }, []);
+  }, [getInitialHospitalConnection, setNichijuOption]);
 
   return (
     <HStack spacing={2} wrap="wrap">
-      {!reservable &&
-      !nightServiceOption &&
-      !insuranceEnabled &&
-      !jsavaOption &&
-      !nichijuOption ? null : (
-        <Button
-          onClick={clearAll}
-          borderRadius={100}
-          p="2"
-          my="2"
-          colorScheme="primary"
-          boxShadow="sm"
-          size="sm"
-          rightIcon={<CloseIcon fontSize="xs" ml="1" />}
-        >
-          <Text fontSize="sm">全条件クリア</Text>
-        </Button>
-      )}
+      <Button
+        onClick={clearAll}
+        borderRadius={100}
+        p="2"
+        my="2"
+        colorScheme="primary"
+        boxShadow="sm"
+        size="sm"
+        rightIcon={<CloseIcon fontSize="xs" ml="1" />}
+      >
+        <Text fontSize="sm">全条件クリア</Text>
+      </Button>
 
       {!reservable || (
         <Button

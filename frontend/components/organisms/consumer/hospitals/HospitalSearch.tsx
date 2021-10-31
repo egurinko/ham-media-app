@@ -151,6 +151,8 @@ const HospitalSearch: React.FC<NoProps> = () => {
       </Box>
       <Box>
         <SearchConditions
+          setSearchText={setSearchText}
+          setCurrentLocation={setCurrentLocation}
           reservable={reservable}
           setReservable={setReservable}
           nightServiceOption={nightServiceOption}

@@ -13,8 +13,10 @@ import {
   useDisclosure,
   Text,
 } from '@chakra-ui/react';
+import { ArrowUpIcon } from '@chakra-ui/icons';
 import FilterIcon from '@/components/atoms/assets/FilterIcon';
 import { PublicGetHospitalConnectionQueryVariables } from '@/api/public_api/types';
+import { scrollTo } from '@/utils/scroll';
 
 type Props = {
   reservable: boolean;
@@ -89,7 +91,24 @@ const Filter: React.FC<Props> = ({
 
   return (
     <>
-      <Box position="fixed" right="3%" bottom="3%">
+      <Box
+        position="fixed"
+        right="3%"
+        bottom="3%"
+        display="flex"
+        flexDir="column"
+        alignItems="flex-end"
+      >
+        <Button
+          onClick={() => scrollTo()}
+          bgColor="primary.light"
+          borderRadius="50%"
+          boxShadow="lg"
+          p="0"
+          mb="4"
+        >
+          <ArrowUpIcon fontWeight="bold" fontSize="2xl" color="primary.main" />
+        </Button>
         <Button
           onClick={onOpen}
           leftIcon={
