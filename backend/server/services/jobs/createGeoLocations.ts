@@ -3,7 +3,7 @@ import { client } from '@/services/prisma';
 import { googleApi } from '@/services/api';
 
 export const createGeoLocationJob: Params = {
-  cronTime: '*/1 * * * *',
+  cronTime: '0 */1 * * *',
   onTick: async () => {
     const geoLocationLessHospitalAddresses =
       await client.hospitalAddress.findMany({
