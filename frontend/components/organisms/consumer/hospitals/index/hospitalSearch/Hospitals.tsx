@@ -4,15 +4,16 @@ import { Box, Text, SkeletonCircle, SkeletonText } from '@chakra-ui/react';
 import Card from '@/components/atoms/Card';
 import MapPinIcon from '@/components/atoms/assets/MapPinIcon';
 import PhoneIcon from '@/components/atoms/assets/PhoneIcon';
-import HospitalTags from '../HospitalTags';
-import { PublicGetHospitalConnectionQuery } from '@/api/public_api/types';
+import { HospitalTags } from '../../HospitalTags';
+import type { PublicGetHospitalConnectionQuery } from '@/api/public_api/types';
 import { goHospitalDetail } from '@/utils/routes';
 import { useIntersectionObserver } from '@/utils/hooks/useIntersectionObserver';
+import type { GetContinuousHospitalConnection } from '../types';
 
 type Props = {
   hospitalConnection?: PublicGetHospitalConnectionQuery['publicHospitalConnection'];
   loading: boolean;
-  getContinuousHospitalConnection: () => void;
+  getContinuousHospitalConnection: GetContinuousHospitalConnection;
 };
 
 const Hospitals: React.FC<Props> = ({
@@ -124,4 +125,4 @@ const Hospitals: React.FC<Props> = ({
   );
 };
 
-export default Hospitals;
+export { Hospitals };

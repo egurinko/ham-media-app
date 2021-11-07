@@ -1,18 +1,18 @@
-import { useState, Dispatch, SetStateAction } from 'react';
+import { useState } from 'react';
 import { IconButton, Input, Box, Button } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 import Card from '@/components/atoms/Card';
-import {
-  usePublicGetPlaceAutocompleteLazyQuery,
-  PublicGetHospitalConnectionQueryVariables,
-} from '@/api/public_api/types';
+import { usePublicGetPlaceAutocompleteLazyQuery } from '@/api/public_api/types';
+import type {
+  SearchText,
+  SetSearchText,
+  GetInitialHospitalConnection,
+} from '../types';
 
 type Props = {
-  searchText: string;
-  setSearchText: Dispatch<SetStateAction<string>>;
-  getInitialHospitalConnection: (
-    variables: Partial<PublicGetHospitalConnectionQueryVariables>
-  ) => void;
+  searchText: SearchText;
+  setSearchText: SetSearchText;
+  getInitialHospitalConnection: GetInitialHospitalConnection;
 };
 
 const TextSearch: React.FC<Props> = ({
@@ -92,11 +92,11 @@ const TextSearch: React.FC<Props> = ({
           onClick={handleSearchClick}
           icon={<SearchIcon />}
           borderLeftRadius={0}
-          disabled={searchText.length === 0}
+          disabled={searchText?.length === 0}
         />
       </Box>
     </Card>
   );
 };
 
-export default TextSearch;
+export { TextSearch };

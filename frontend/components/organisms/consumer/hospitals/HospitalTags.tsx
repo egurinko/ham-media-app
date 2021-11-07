@@ -31,4 +31,4 @@ const HospitalTags: React.FC<Props> = ({ hospital, spacing }) => (
   </HStack>
 );
 
-export default HospitalTags;
+export { HospitalTags };

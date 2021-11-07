@@ -7,7 +7,7 @@ import LinkIcon from '@/components/atoms/assets/LinkIcon';
 import NightIcon from '@/components/atoms/assets/NightIcon';
 import InsuranceIcon from '@/components/atoms/assets/InsuranceIcon';
 import GoogleMap from '@/components/ecosystems/GoogleMap';
-import HospitalTags from '../HospitalTags';
+import { HospitalTags } from '../HospitalTags';
 import type { HospitalFieldsFragment } from '@/api/public_api/types';
 
 type Props = {

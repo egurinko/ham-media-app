@@ -1,10 +1,8 @@
 import { memo, useState, useCallback } from 'react';
 import { Box, Text } from '@chakra-ui/react';
 import { Marker, InfoWindow } from '@react-google-maps/api';
-import {
-  PublicGetHospitalLocationsQuery,
-  usePublicGetHospitalLocationsQuery,
-} from '@/api/public_api/types';
+import { usePublicGetHospitalLocationsQuery } from '@/api/public_api/types';
+import type { PublicGetHospitalLocationsQuery } from '@/api/public_api/types';
 import GoogleMap from '@/components/ecosystems/GoogleMap';
 
 type HospitalLocation = PublicGetHospitalLocationsQuery['hospitals'][number];
@@ -16,7 +14,7 @@ type Props = {
   currentLng: number;
 };
 
-const GoogleMapComponent: React.FC<Props> = ({
+const HospitalGoogleMapComponent: React.FC<Props> = ({
   height,
   width,
   currentLat,
@@ -90,4 +88,5 @@ const GoogleMapComponent: React.FC<Props> = ({
   );
 };
 
-export default memo(GoogleMapComponent);
+const HospitalGoogleMap = memo(HospitalGoogleMapComponent);
+export { HospitalGoogleMap };

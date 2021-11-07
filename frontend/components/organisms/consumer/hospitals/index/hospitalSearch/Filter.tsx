@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState } from 'react';
+import { useState } from 'react';
 import {
   Button,
   Box,
@@ -15,23 +15,33 @@ import {
 } from '@chakra-ui/react';
 import { ArrowUpIcon } from '@chakra-ui/icons';
 import FilterIcon from '@/components/atoms/assets/FilterIcon';
-import { PublicGetHospitalConnectionQueryVariables } from '@/api/public_api/types';
 import { scrollTo } from '@/utils/scroll';
+import type {
+  Reservable,
+  SetReservable,
+  NightServiceOption,
+  SetNightServiceOption,
+  InsuranceEnabled,
+  SetInsuranceEnabled,
+  JsavaOption,
+  SetJsavaOption,
+  NichijuOption,
+  SetNichijuOption,
+  GetInitialHospitalConnection,
+} from '../types';
 
 type Props = {
-  reservable: boolean;
-  setReservable: Dispatch<SetStateAction<boolean>>;
-  nightServiceOption: boolean;
-  setNightServiceOption: Dispatch<SetStateAction<boolean>>;
-  insuranceEnabled: boolean;
-  setInsuranceEnabled: Dispatch<SetStateAction<boolean>>;
-  jsavaOption: boolean;
-  setJsavaOption: Dispatch<SetStateAction<boolean>>;
-  nichijuOption: boolean;
-  setNichijuOption: Dispatch<SetStateAction<boolean>>;
-  getInitialHospitalConnection: (
-    variables: Partial<PublicGetHospitalConnectionQueryVariables>
-  ) => void;
+  reservable: Reservable;
+  setReservable: SetReservable;
+  nightServiceOption: NightServiceOption;
+  setNightServiceOption: SetNightServiceOption;
+  insuranceEnabled: InsuranceEnabled;
+  setInsuranceEnabled: SetInsuranceEnabled;
+  jsavaOption: JsavaOption;
+  setJsavaOption: SetJsavaOption;
+  nichijuOption: NichijuOption;
+  setNichijuOption: SetNichijuOption;
+  getInitialHospitalConnection: GetInitialHospitalConnection;
 };
 
 const Filter: React.FC<Props> = ({
@@ -240,4 +250,4 @@ const Filter: React.FC<Props> = ({
   );
 };
 
-export default Filter;
+export { Filter };
