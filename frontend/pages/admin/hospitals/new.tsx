@@ -52,7 +52,7 @@ const New: React.VFC<NoProps> = () => {
       const result = await create({
         variables: {
           name,
-          url,
+          url: url,
           deleted: !published,
           internal_memo: internalMemo,
         },
@@ -102,12 +102,11 @@ const New: React.VFC<NoProps> = () => {
                 <FormErrorMessage>{errors.name.message}</FormErrorMessage>
               )}
             </FormControl>
-            <FormControl id="url" isRequired isInvalid={!!errors.url}>
+            <FormControl id="url" isInvalid={!!errors.url}>
               <FormLabel>URL</FormLabel>
               <Controller
                 name="url"
                 control={control}
-                rules={{ required: 'URLを入力してください' }}
                 render={({ field }) => (
                   <Input
                     type="url"

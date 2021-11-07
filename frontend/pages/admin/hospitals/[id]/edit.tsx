@@ -33,6 +33,7 @@ import type { PublicGetPrefecturesQuery } from '@/api/public_api/types';
 import { useInternalUpdateHospitalMutation } from '@/api/internal_api/types';
 import { apiClient } from '@/utils/apollo';
 import { goAdminHospitals } from '@/utils/routes';
+import { scrollTo } from '@/utils/scroll';
 
 interface FormInput {
   name: string;
@@ -121,6 +122,7 @@ const Edit: React.VFC<Props> = ({ hospital, prefectures }) => {
         goAdminHospitals(router);
       }, 2000);
     } catch (e) {}
+    scrollTo();
   };
 
   return (

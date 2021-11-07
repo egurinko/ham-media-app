@@ -8,7 +8,7 @@ export const createHospitalField = mutationField((t) => {
     type: hospitalType,
     args: {
       name: nonNull(stringArg()),
-      url: nonNull(stringArg()),
+      url: stringArg(),
       deleted: nonNull(booleanArg()),
       internal_memo: nonNull(stringArg()),
     },
@@ -18,7 +18,7 @@ export const createHospitalField = mutationField((t) => {
       return ctx.prisma.hospital.create({
         data: {
           name: args.name,
-          url: args.url,
+          url: args.url || '',
           deleted: args.deleted,
           internal_memo: args.internal_memo,
           hospitalAddress: {

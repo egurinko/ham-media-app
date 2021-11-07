@@ -150,7 +150,7 @@ type InternalUser {
 }
 
 type Mutation {
-  createHospital(deleted: Boolean!, internal_memo: String!, name: String!, url: String!): Hospital!
+  createHospital(deleted: Boolean!, internal_memo: String!, name: String!, url: String): Hospital!
   createInternalUser(email: String!, name: String!, password: String!): InternalUser!
   deleteInternalUser(id: BigInt!): InternalUser!
   updateHospital(deleted: Boolean!, hospitalAddressInput: HospitalAddressInputType!, hospitalBusinessFormInput: HospitalBusinessFormInputType!, hospitalCertificationOptionInput: HospitalCertificationOptionInputType!, hospitalInternalReputationInput: HospitalInternalReputationInputType!, hospitalNightServiceOptionInput: HospitalNightServiceOptionInputType!, hospitalNightUrgentActionOptionInput: HospitalNightUrgentActionOptionInputType!, hospitalReservationStatusInput: HospitalReservationStatusInputType!, id: BigInt!, internal_memo: String!, name: String!, url: String!): Hospital!
