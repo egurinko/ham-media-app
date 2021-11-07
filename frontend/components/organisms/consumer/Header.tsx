@@ -16,12 +16,14 @@ const Header: React.VFC<Props> = () => (
     >
       <Flex align="center" mr={5} cursor="pointer">
         <Link href="/hospitals">
-          <Image
-            src="/ham_media_logo.png"
-            alt="ハムメディアロゴ"
-            width={160}
-            height={35}
-          />
+          <a>
+            <Image
+              src="/ham_media_logo.png"
+              alt="ハムメディアロゴ"
+              width={160}
+              height={35}
+            />
+          </a>
         </Link>
       </Flex>
     </Flex>
