@@ -5,7 +5,7 @@ export const createHospital = gql`
   ${HOSPITAL_FIELDS}
   mutation InternalCreateHospital(
     $name: String!
-    $url: String!
+    $url: String
     $deleted: Boolean!
     $internal_memo: String!
   ) {

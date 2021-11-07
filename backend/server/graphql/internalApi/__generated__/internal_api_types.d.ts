@@ -402,7 +402,7 @@ export interface NexusGenArgTypes {
       deleted: boolean; // Boolean!
       internal_memo: string; // String!
       name: string; // String!
-      url: string; // String!
+      url?: string | null; // String
     }
     createInternalUser: { // args
       email: string; // String!
