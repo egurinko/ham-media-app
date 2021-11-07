@@ -23,13 +23,13 @@ import type {
 
 const PAGE_STORED_KEY = 'hospitalsPage';
 type PERSISTED = {
-  searchText: SearchText;
-  currentLocation: CurrentLocation;
-  reservable: Reservable;
-  nightServiceOption: NightServiceOption;
-  insuranceEnabled: InsuranceEnabled;
-  jsavaOption: JsavaOption;
-  nichijuOption: NichijuOption;
+  searchText?: SearchText;
+  currentLocation?: CurrentLocation;
+  reservable?: Reservable;
+  nightServiceOption?: NightServiceOption;
+  insuranceEnabled?: InsuranceEnabled;
+  jsavaOption?: JsavaOption;
+  nichijuOption?: NichijuOption;
 };
 
 const HospitalSearch: React.FC<NoProps> = () => {
@@ -60,19 +60,19 @@ const HospitalSearch: React.FC<NoProps> = () => {
         jsavaOption,
         nichijuOption,
       } = persisted;
-      setSearchText(searchText);
+      setSearchText(searchText || '');
       setCurrentLocation(currentLocation);
-      setReservable(reservable);
-      setNightServiceOption(nightServiceOption);
-      setJsavaOption(jsavaOption);
-      setNichijuOption(nichijuOption);
+      setReservable(reservable || false);
+      setNightServiceOption(nightServiceOption || false);
+      setJsavaOption(jsavaOption || false);
+      setNichijuOption(nichijuOption || false);
       getInitialHospitalConnection({
-        searchText,
+        searchText: searchText || '',
         currentLocation,
-        reservable,
-        nightServiceOption,
-        jsavaOption,
-        nichijuOption,
+        reservable: reservable || false,
+        nightServiceOption: nightServiceOption || false,
+        jsavaOption: jsavaOption || false,
+        nichijuOption: nichijuOption || false,
       });
     }
   };
