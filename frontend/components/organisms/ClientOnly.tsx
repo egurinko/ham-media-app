@@ -16,4 +16,4 @@ const ClientOnly: React.FC<{}> = ({ children, ...delegated }) => {
   return <div {...delegated}>{children}</div>;
 };
 
-export default ClientOnly;
+export { ClientOnly };

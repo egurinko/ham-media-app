@@ -1,10 +1,10 @@
 import { useEffect, useCallback } from 'react';
 import { useRouter } from 'next/router';
 import { useMediaQuery, Fade, HStack, Box } from '@chakra-ui/react';
-import BaseLayout from './BaseLayout';
-import Sidebar from '@/components/organisms/admin/Sidebar';
-import Header from '@/components/ecosystems/admin/Header';
-import ClientOnly from '@/components/ecosystems/ClientOnly';
+import { BaseLayout } from './BaseLayout';
+import { Sidebar } from '@/components/organisms/admin/Sidebar';
+import { Header } from '@/components/organisms/admin/Header';
+import { ClientOnly } from '@/components/organisms/ClientOnly';
 import { useInternalGetSessionQuery } from '@/api/internal_api/types';
 import { goAdminLogin } from '@/utils/routes';
 import { removeCookie } from '@/utils/cookies';
@@ -13,7 +13,10 @@ type Props = {
   title?: string;
 };
 
-const PublicLayout: React.FC<Props> = ({ title = 'Ham ω Media', children }) => {
+const InternalLayout: React.FC<Props> = ({
+  title = 'Ham ω Media',
+  children,
+}) => {
   const [isMobile] = useMediaQuery('(max-width: 30em)');
   const router = useRouter();
   const { data, error } = useInternalGetSessionQuery();
@@ -64,4 +67,4 @@ const PublicLayout: React.FC<Props> = ({ title = 'Ham ω Media', children }) => 
   );
 };
 
-export default PublicLayout;
+export { InternalLayout };

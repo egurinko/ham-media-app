@@ -21,7 +21,7 @@ import {
 } from '@chakra-ui/react';
 import { ChevronRightIcon } from '@chakra-ui/icons';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
-import InternalLayout from '@/components/layouts/admin/InternalLayout';
+import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
 import Card from '@/components/atoms/Card';
 import { getHospital } from '@/api/internal_api/getHospital';
 import type {

@@ -14,4 +14,4 @@ const FlashMessage: React.FC<Props> = ({ message, status }) => {
   );
 };
 
-export default FlashMessage;
+export { FlashMessage };

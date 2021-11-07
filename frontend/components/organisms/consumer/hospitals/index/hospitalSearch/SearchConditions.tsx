@@ -1,43 +1,36 @@
-import { Dispatch, SetStateAction, useCallback } from 'react';
+import { useCallback } from 'react';
 import { Text, HStack, Button } from '@chakra-ui/react';
 import { CloseIcon } from '@chakra-ui/icons';
-import { PublicGetHospitalConnectionQueryVariables } from '@/api/public_api/types';
-import { apiClient } from '@/utils/apollo';
+import type {
+  SetSearchText,
+  SetCurrentLocation,
+  Reservable,
+  SetReservable,
+  NightServiceOption,
+  SetNightServiceOption,
+  InsuranceEnabled,
+  SetInsuranceEnabled,
+  NichijuOption,
+  SetNichijuOption,
+  JsavaOption,
+  SetJsavaOption,
+  GetInitialHospitalConnection,
+} from '../types';
 
 type Props = {
-  setSearchText: Dispatch<
-    SetStateAction<PublicGetHospitalConnectionQueryVariables['searchText']>
-  >;
-  setCurrentLocation: Dispatch<
-    SetStateAction<PublicGetHospitalConnectionQueryVariables['currentLocation']>
-  >;
-  reservable: PublicGetHospitalConnectionQueryVariables['reservable'];
-  setReservable: Dispatch<
-    SetStateAction<PublicGetHospitalConnectionQueryVariables['reservable']>
-  >;
-  nightServiceOption: PublicGetHospitalConnectionQueryVariables['nightServiceOption'];
-  setNightServiceOption: Dispatch<
-    SetStateAction<
-      PublicGetHospitalConnectionQueryVariables['nightServiceOption']
-    >
-  >;
-  insuranceEnabled: PublicGetHospitalConnectionQueryVariables['insuranceEnabled'];
-  setInsuranceEnabled: Dispatch<
-    SetStateAction<
-      PublicGetHospitalConnectionQueryVariables['insuranceEnabled']
-    >
-  >;
-  jsavaOption: PublicGetHospitalConnectionQueryVariables['jsavaOption'];
-  setJsavaOption: Dispatch<
-    SetStateAction<PublicGetHospitalConnectionQueryVariables['jsavaOption']>
-  >;
-  nichijuOption: PublicGetHospitalConnectionQueryVariables['nichijuOption'];
-  setNichijuOption: Dispatch<
-    SetStateAction<PublicGetHospitalConnectionQueryVariables['nichijuOption']>
-  >;
-  getInitialHospitalConnection: (
-    variables: Partial<PublicGetHospitalConnectionQueryVariables>
-  ) => void;
+  setSearchText: SetSearchText;
+  setCurrentLocation: SetCurrentLocation;
+  reservable: Reservable;
+  setReservable: SetReservable;
+  nightServiceOption: NightServiceOption;
+  setNightServiceOption: SetNightServiceOption;
+  insuranceEnabled: InsuranceEnabled;
+  setInsuranceEnabled: SetInsuranceEnabled;
+  jsavaOption: JsavaOption;
+  setJsavaOption: SetJsavaOption;
+  nichijuOption: NichijuOption;
+  setNichijuOption: SetNichijuOption;
+  getInitialHospitalConnection: GetInitialHospitalConnection;
 };
 
 const SearchConditions: React.FC<Props> = ({
@@ -204,4 +197,4 @@ const SearchConditions: React.FC<Props> = ({
   );
 };
 
-export default SearchConditions;
+export { SearchConditions };

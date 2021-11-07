@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react';
 import { Controller, Control, FieldErrors } from 'react-hook-form';
 import Card from '@/components/atoms/Card';
-import FlashMessage from '@/components/molecules/FlashMessage';
+import { FlashMessage } from '@/components/molecules/FlashMessage';
 import validators from '@/validators/index';
 
 type Props = {
@@ -108,4 +108,4 @@ const Form: React.VFC<Props> = ({
   </>
 );
 
-export default Form;
+export { Form };

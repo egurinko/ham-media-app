@@ -1,7 +1,9 @@
-import { memo } from 'react';
 import { Spinner, Box } from '@chakra-ui/react';
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
-import FlashMessage from '@/components/molecules/FlashMessage';
+import {
+  GoogleMap as ReactGoogleMap,
+  useJsApiLoader,
+} from '@react-google-maps/api';
+import { FlashMessage } from '@/components/molecules/FlashMessage';
 
 type Props = {
   width?: number;
@@ -10,7 +12,7 @@ type Props = {
   currentLng: number;
 };
 
-const GoogleMapComponent: React.FC<Props> = ({
+const GoogleMap: React.FC<Props> = ({
   height,
   width,
   currentLat,
@@ -60,7 +62,7 @@ const Map: React.FC<Props> = ({
   children,
 }) => {
   return (
-    <GoogleMap
+    <ReactGoogleMap
       mapContainerStyle={{
         width: width ? `${width}px` : '100%',
         height: height ? `${height}px` : '100%',
@@ -72,8 +74,8 @@ const Map: React.FC<Props> = ({
       zoom={12}
     >
       {children}
-    </GoogleMap>
+    </ReactGoogleMap>
   );
 };
 
-export default GoogleMapComponent;
+export { GoogleMap };

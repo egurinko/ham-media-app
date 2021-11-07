@@ -1,18 +1,17 @@
-import { useState, useCallback, Dispatch, SetStateAction } from 'react';
+import { useState, useCallback } from 'react';
 import { Button, Text, Box } from '@chakra-ui/react';
 import Card from '@/components/atoms/Card';
-import GoogleMap from './GoogleMap';
+import { HospitalGoogleMap } from './HospitalGoogleMap';
 import MapPinIcon from '@/components/atoms/assets/MapPinIcon';
-import FlashMessage from '@/components/molecules/FlashMessage';
-import { PublicGetHospitalConnectionQueryVariables } from '@/api/public_api/types';
+import { FlashMessage } from '@/components/molecules/FlashMessage';
+import type {
+  GetInitialHospitalConnection,
+  SetCurrentLocation,
+} from '../types';
 
 type Props = {
-  getInitialHospitalConnection: (
-    variables: Partial<PublicGetHospitalConnectionQueryVariables>
-  ) => void;
-  setCurrentLocation: Dispatch<
-    SetStateAction<PublicGetHospitalConnectionQueryVariables['currentLocation']>
-  >;
+  getInitialHospitalConnection: GetInitialHospitalConnection;
+  setCurrentLocation: SetCurrentLocation;
 };
 
 const MapSearch: React.FC<Props> = ({
@@ -74,7 +73,7 @@ const MapSearch: React.FC<Props> = ({
       </Card>
       {open ? (
         <Box my="2">
-          <GoogleMap
+          <HospitalGoogleMap
             height={200}
             currentLat={currentLat}
             currentLng={currentLng}
@@ -91,4 +90,4 @@ const MapSearch: React.FC<Props> = ({
   );
 };
 
-export default MapSearch;
+export { MapSearch };

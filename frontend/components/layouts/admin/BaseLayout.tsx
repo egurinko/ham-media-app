@@ -1,5 +1,5 @@
 import { Box } from '@chakra-ui/react';
-import Head from '@/components/molecules/Head';
+import { Head } from '@/components/molecules/Head';
 
 type Props = {
   title?: string;
@@ -26,4 +26,4 @@ const BaseLayout: React.FC<Props> = ({
   </Box>
 );
 
-export default BaseLayout;
+export { BaseLayout };

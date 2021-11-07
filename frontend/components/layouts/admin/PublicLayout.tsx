@@ -1,5 +1,5 @@
-import BaseLayout from './BaseLayout';
-import ClientOnly from '@/components/ecosystems/ClientOnly';
+import { BaseLayout } from './BaseLayout';
+import { ClientOnly } from '@/components/organisms/ClientOnly';
 
 type Props = {
   title?: string;
@@ -13,4 +13,4 @@ const PublicLayout: React.FC<Props> = ({ title = 'Ham ω Media', children }) => 
   </BaseLayout>
 );
 
-export default PublicLayout;
+export { PublicLayout };

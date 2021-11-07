@@ -20,4 +20,4 @@ const UserCard: React.VFC<Props> = ({ name, email }) => (
   </Box>
 );
 
-export default UserCard;
+export { UserCard };

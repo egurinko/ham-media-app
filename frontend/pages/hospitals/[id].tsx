@@ -3,8 +3,8 @@ import { useRouter } from 'next/router';
 import { ParsedUrlQuery } from 'querystring';
 import { Heading, Box, Button } from '@chakra-ui/react';
 import { ChevronRightIcon } from '@chakra-ui/icons';
-import Layout from '@/components/layouts/consumer/Layout';
-import HospitalDetail from '@/components/organisms/consumer/hospitals/HospitalDetail';
+import { Layout } from '@/components/layouts/consumer/Layout';
+import { DetailCard } from '@/components/organisms/consumer/hospitals/detail/DetailCard';
 import type {
   PublicGetHospitalIdsQuery,
   PublicGetHospitalQuery,
@@ -31,7 +31,7 @@ const Show: React.VFC<Props> = ({ hospital }) => {
         </Button>
       </Box>
       <Box>
-        <HospitalDetail hospital={hospital} />
+        <DetailCard hospital={hospital} />
       </Box>
     </Layout>
   );

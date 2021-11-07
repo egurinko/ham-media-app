@@ -6,15 +6,15 @@ import PhoneIcon from '@/components/atoms/assets/PhoneIcon';
 import LinkIcon from '@/components/atoms/assets/LinkIcon';
 import NightIcon from '@/components/atoms/assets/NightIcon';
 import InsuranceIcon from '@/components/atoms/assets/InsuranceIcon';
-import GoogleMap from '@/components/ecosystems/GoogleMap';
-import HospitalTags from './HospitalTags';
+import { GoogleMap } from '@/components/organisms/GoogleMap';
+import { HospitalTags } from '../HospitalTags';
 import type { HospitalFieldsFragment } from '@/api/public_api/types';
 
 type Props = {
   hospital: HospitalFieldsFragment;
 };
 
-const HospitalDetail: React.FC<Props> = ({ hospital }) => (
+const DetailCard: React.FC<Props> = ({ hospital }) => (
   <Box my="4">
     <Card>
       <Box my="2">
@@ -219,4 +219,4 @@ const HospitalDetail: React.FC<Props> = ({ hospital }) => (
   </Box>
 );
 
-export default HospitalDetail;
+export { DetailCard };

@@ -28,4 +28,4 @@ const Header: React.VFC<Props> = () => (
   </header>
 );
 
-export default Header;
+export { Header };

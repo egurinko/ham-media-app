@@ -18,4 +18,4 @@ const TitleCard: React.FC<Props> = ({ title, children }) => {
   );
 };
 
-export default TitleCard;
+export { TitleCard };
