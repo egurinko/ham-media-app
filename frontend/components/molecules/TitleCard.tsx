@@ -1,5 +1,5 @@
 import { Text, Box } from '@chakra-ui/react';
-import Card from '@/components/atoms/Card';
+import { Card } from '@/components/atoms/Card';
 
 type Props = {
   title: string;

@@ -9,4 +9,4 @@ const NightIcon: React.VFC<Props> = ({ width, height }) => (
   <NightSvg width={width} height={height} />
 );
 
-export default NightIcon;
+export { NightIcon };

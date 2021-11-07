@@ -15,8 +15,8 @@ import { useRouter } from 'next/router';
 import { useInternalGetHospitalConnectionLazyQuery } from '@/api/internal_api/types';
 import { usePublicGetPrefecturesQuery } from '@/api/public_api/types';
 import { useIntersectionObserver } from '@/utils/hooks/useIntersectionObserver';
-import MapPinIcon from '@/components/atoms/assets/MapPinIcon';
-import PhoneIcon from '@/components/atoms/assets/PhoneIcon';
+import { MapPinIcon } from '@/components/atoms/assets/MapPinIcon';
+import { PhoneIcon } from '@/components/atoms/assets/PhoneIcon';
 
 const HospitalsStack: React.VFC<NoProps> = () => {
   const router = useRouter();
@@ -203,4 +203,4 @@ const HospitalsStack: React.VFC<NoProps> = () => {
   );
 };
 
-export default HospitalsStack;
+export { HospitalsStack };

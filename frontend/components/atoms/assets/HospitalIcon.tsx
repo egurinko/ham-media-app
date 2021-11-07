@@ -9,4 +9,4 @@ const HospitalIcon: React.VFC<Props> = ({ width, height }) => (
   <HospitalSvg width={width} height={height} />
 );
 
-export default HospitalIcon;
+export { HospitalIcon };

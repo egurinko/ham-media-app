@@ -1,5 +1,5 @@
 import { Text, Box } from '@chakra-ui/react';
-import RedirectIcon from '@/components/atoms/assets/RedirectIcon';
+import { RedirectIcon } from '@/components/atoms/assets/RedirectIcon';
 import { AbountInformationProvide } from './footer/AboutInformationProvide';
 import { AboutOfficialSNS } from './footer/AboutOfficialSNS';
 

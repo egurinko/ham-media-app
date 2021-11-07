@@ -9,4 +9,4 @@ const UserProfileIcon: React.VFC<Props> = ({ width, height }) => (
   <UserProfileSvg width={width} height={height} />
 );
 
-export default UserProfileIcon;
+export { UserProfileIcon };

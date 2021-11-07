@@ -10,4 +10,4 @@ const Card: React.FC<Props> = ({ children, _hover }) => (
   </Box>
 );
 
-export default Card;
+export { Card };

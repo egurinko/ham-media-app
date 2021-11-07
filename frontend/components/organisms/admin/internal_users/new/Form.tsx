@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react';
 import { gql } from '@apollo/client';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
-import Card from '@/components/atoms/Card';
+import { Card } from '@/components/atoms/Card';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
 import {
   useInternalCreateInternalUserMutation,
@@ -171,4 +171,4 @@ const Form: React.VFC<NoProps> = () => {
   );
 };
 
-export default Form;
+export { Form };

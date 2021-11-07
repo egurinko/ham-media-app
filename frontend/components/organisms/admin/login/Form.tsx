@@ -1,4 +1,6 @@
-import { FormEventHandler } from 'react';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import {
   Box,
   Input,
@@ -8,104 +10,119 @@ import {
   FormLabel,
   FormErrorMessage,
 } from '@chakra-ui/react';
-import { Controller, Control, FieldErrors } from 'react-hook-form';
-import Card from '@/components/atoms/Card';
+import { usePublicCreateSessionMutation } from '@/api/public_api/types';
+import { Card } from '@/components/atoms/Card';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
 import validators from '@/validators/index';
-
-type Props = {
-  isLoginSucceeded: boolean;
-  isLoginFailure: boolean;
-  loginErrorMessage?: string;
-  onSubmit: FormEventHandler<HTMLFormElement>;
-  control: Control<FormInput>;
-  formErrors: FieldErrors<FormInput>;
-};
+import { setCookie } from '@/utils/cookies';
+import { goAdminInternalUsers } from '@/utils/routes';
 
 export interface FormInput {
   email: string;
   password: string;
 }
 
-const Form: React.VFC<Props> = ({
-  isLoginSucceeded,
-  isLoginFailure,
-  loginErrorMessage,
-  onSubmit,
-  control,
-  formErrors,
-}) => (
-  <>
-    {isLoginSucceeded ? (
-      <FlashMessage message="ログインに成功しました。" status="success" />
-    ) : isLoginFailure ? (
-      <FlashMessage message={loginErrorMessage || ''} status="error" />
-    ) : null}
-    <Card>
-      <form onSubmit={onSubmit}>
-        <Stack spacing={4}>
-          <FormControl id="email" isRequired isInvalid={!!formErrors.email}>
-            <FormLabel>メールアドレス</FormLabel>
-            <Controller
-              name="email"
-              control={control}
-              defaultValue=""
-              rules={validators.email.rules}
-              render={({ field }) => (
-                <Input
-                  type="email"
-                  autoComplete="email"
-                  autoCapitalize="off"
-                  isInvalid={!!formErrors.email}
-                  {...field}
-                />
+const Form: React.VFC<NoProps> = () => {
+  const router = useRouter();
+  const {
+    control,
+    handleSubmit,
+    trigger,
+    formState: { errors: RHFErrors },
+  } = useForm<FormInput>({ mode: 'onTouched' });
+  const [login, { data: loginData, error: loginError }] =
+    usePublicCreateSessionMutation();
+
+  const onSubmit: SubmitHandler<FormInput> = async ({ email, password }) => {
+    trigger();
+
+    try {
+      await login({ variables: { email, password } });
+    } catch (e) {}
+  };
+
+  useEffect(() => {
+    if (loginData) {
+      setCookie(loginData.createSession.token);
+      goAdminInternalUsers(router);
+    }
+  }, [loginData, loginError]);
+
+  return (
+    <>
+      {!!loginData ? (
+        <FlashMessage message="ログインに成功しました。" status="success" />
+      ) : !!loginError ? (
+        <FlashMessage message={loginError?.message || ''} status="error" />
+      ) : null}
+      <Card>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Stack spacing={4}>
+            <FormControl id="email" isRequired isInvalid={!!RHFErrors.email}>
+              <FormLabel>メールアドレス</FormLabel>
+              <Controller
+                name="email"
+                control={control}
+                defaultValue=""
+                rules={validators.email.rules}
+                render={({ field }) => (
+                  <Input
+                    type="email"
+                    autoComplete="email"
+                    autoCapitalize="off"
+                    isInvalid={!!RHFErrors.email}
+                    {...field}
+                  />
+                )}
+              />
+              {RHFErrors.email && (
+                <FormErrorMessage>{RHFErrors.email.message}</FormErrorMessage>
               )}
-            />
-            {formErrors.email && (
-              <FormErrorMessage>{formErrors.email.message}</FormErrorMessage>
-            )}
-          </FormControl>
-          <FormControl
-            id="password"
-            isRequired
-            isInvalid={!!formErrors.password}
-          >
-            <FormLabel>パスワード</FormLabel>
-            <Controller
-              name="password"
-              control={control}
-              defaultValue=""
-              rules={validators.password.rules}
-              render={({ field }) => (
-                <Input
-                  type="password"
-                  autoComplete="current-password"
-                  autoCapitalize="off"
-                  isInvalid={!!formErrors.password}
-                  {...field}
-                />
+            </FormControl>
+            <FormControl
+              id="password"
+              isRequired
+              isInvalid={!!RHFErrors.password}
+            >
+              <FormLabel>パスワード</FormLabel>
+              <Controller
+                name="password"
+                control={control}
+                defaultValue=""
+                rules={validators.password.rules}
+                render={({ field }) => (
+                  <Input
+                    type="password"
+                    autoComplete="current-password"
+                    autoCapitalize="off"
+                    isInvalid={!!RHFErrors.password}
+                    {...field}
+                  />
+                )}
+              />
+              {RHFErrors.password && (
+                <FormErrorMessage>
+                  {RHFErrors.password.message}
+                </FormErrorMessage>
               )}
-            />
-            {formErrors.password && (
-              <FormErrorMessage>{formErrors.password.message}</FormErrorMessage>
-            )}
-          </FormControl>
-        </Stack>
-        <Box d="grid" justifyContent="center">
-          <Button
-            size="lg"
-            mt="16"
-            variant="solid"
-            bgColor="primary.main"
-            color="white"
-            type="submit"
-          >
-            ログイン
-          </Button>
-        </Box>
-      </form>
-    </Card>
-  </>
-);
+            </FormControl>
+          </Stack>
+          <Box d="grid" justifyContent="center">
+            <Button
+              size="lg"
+              mt="16"
+              variant="solid"
+              bgColor="primary.main"
+              color="white"
+              type="submit"
+            >
+              ログイン
+            </Button>
+          </Box>
+        </form>
+      </Card>
+    </>
+  );
+};
 
 export { Form };

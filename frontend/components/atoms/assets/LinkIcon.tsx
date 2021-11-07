@@ -9,4 +9,4 @@ const LinkIcon: React.VFC<Props> = ({ width, height }) => (
   <LinkSvg width={width} height={height} />
 );
 
-export default LinkIcon;
+export { LinkIcon };

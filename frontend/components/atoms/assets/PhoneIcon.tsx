@@ -9,4 +9,4 @@ const PhoneIcon: React.VFC<Props> = ({ width, height }) => (
   <PhoneSvg width={width} height={height} />
 );
 
-export default PhoneIcon;
+export { PhoneIcon };

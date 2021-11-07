@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { useInternalGetSessionQuery } from '@/api/internal_api/types';
 import { setCookie } from '@/utils/cookies';
 import { PublicLayout } from '@/components/layouts/admin/PublicLayout';
-import Form from '@/components/ecosystems/admin/login/Form';
+import { Form } from '@/components/organisms/admin/login/Form';
 import { goAdminInternalUsers } from '@/utils/routes';
 
 const Login: React.VFC<NoProps> = () => {

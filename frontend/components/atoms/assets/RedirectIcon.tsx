@@ -9,4 +9,4 @@ const RedirectIcon: React.VFC<Props> = ({ width, height }) => (
   <RedirectSvg width={width} height={height} />
 );
 
-export default RedirectIcon;
+export { RedirectIcon };

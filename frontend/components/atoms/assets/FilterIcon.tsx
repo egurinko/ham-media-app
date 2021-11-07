@@ -9,4 +9,4 @@ const FilterIcon: React.VFC<Props> = ({ width, height }) => (
   <FilterSvg width={width} height={height} />
 );
 
-export default FilterIcon;
+export { FilterIcon };
