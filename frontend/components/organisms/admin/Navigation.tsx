@@ -1,8 +1,8 @@
 import { Box, VStack } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import UserProfileIcon from '@/components/atoms/assets/UserProfileIcon';
-import HospitalIcon from '@/components/atoms/assets/HospitalIcon';
+import { UserProfileIcon } from '@/components/atoms/assets/UserProfileIcon';
+import { HospitalIcon } from '@/components/atoms/assets/HospitalIcon';
 
 const Navigation: React.VFC<NoProps> = () => {
   const router = useRouter();

@@ -9,4 +9,4 @@ const InsuranceIcon: React.VFC<Props> = ({ width, height }) => (
   <InsuranceSvg width={width} height={height} />
 );
 
-export default InsuranceIcon;
+export { InsuranceIcon };

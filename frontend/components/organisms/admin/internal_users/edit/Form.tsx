@@ -9,7 +9,7 @@ import {
   FormErrorMessage,
 } from '@chakra-ui/react';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
-import Card from '@/components/atoms/Card';
+import { Card } from '@/components/atoms/Card';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
 import {
   useInternalUpdateInternalUserMutation,
@@ -29,7 +29,7 @@ interface Props {
   internalUserId: InternalGetInternalUserQuery['internalUser']['id'];
 }
 
-const Edit: React.VFC<Props> = ({ internalUserId }) => {
+const Form: React.VFC<Props> = ({ internalUserId }) => {
   const { data: internalUserData, error: internalUserError } =
     useInternalGetInternalUserQuery({
       variables: { id: internalUserId },
@@ -154,4 +154,4 @@ const Edit: React.VFC<Props> = ({ internalUserId }) => {
   ) : null;
 };
 
-export default Edit;
+export { Form };

@@ -14,7 +14,7 @@ import {
   Text,
 } from '@chakra-ui/react';
 import { ArrowUpIcon } from '@chakra-ui/icons';
-import FilterIcon from '@/components/atoms/assets/FilterIcon';
+import { FilterIcon } from '@/components/atoms/assets/FilterIcon';
 import { scrollTo } from '@/utils/scroll';
 import type {
   Reservable,

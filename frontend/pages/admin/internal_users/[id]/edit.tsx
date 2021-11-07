@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { ParsedUrlQuery } from 'querystring';
 import { Heading, Box, IconButton } from '@chakra-ui/react';
 import { ChevronRightIcon } from '@chakra-ui/icons';
-import Form from '@/components/ecosystems/admin/internal_users/edit/Form';
+import { Form } from '@/components/organisms/admin/internal_users/edit/Form';
 import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
 import { getInternalUsers } from '@/api/internal_api/getInternalUsers';
 import type { InternalGetInternalUsersQuery } from '@/api/internal_api/types';

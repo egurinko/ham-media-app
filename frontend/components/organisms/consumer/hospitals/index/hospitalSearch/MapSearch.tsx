@@ -1,8 +1,8 @@
 import { useState, useCallback } from 'react';
 import { Button, Text, Box } from '@chakra-ui/react';
-import Card from '@/components/atoms/Card';
+import { Card } from '@/components/atoms/Card';
 import { HospitalGoogleMap } from './HospitalGoogleMap';
-import MapPinIcon from '@/components/atoms/assets/MapPinIcon';
+import { MapPinIcon } from '@/components/atoms/assets/MapPinIcon';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
 import type {
   GetInitialHospitalConnection,

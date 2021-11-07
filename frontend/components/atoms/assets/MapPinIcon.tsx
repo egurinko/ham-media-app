@@ -9,4 +9,4 @@ const MapPinIcon: React.VFC<Props> = ({ width, height }) => (
   <MapPinSvg width={width} height={height} />
 );
 
-export default MapPinIcon;
+export { MapPinIcon };

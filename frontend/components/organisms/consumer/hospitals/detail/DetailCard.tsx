@@ -1,11 +1,11 @@
 import { Box, Text, Divider } from '@chakra-ui/react';
 import { Marker, InfoWindow } from '@react-google-maps/api';
-import Card from '@/components/atoms/Card';
-import MapPinIcon from '@/components/atoms/assets/MapPinIcon';
-import PhoneIcon from '@/components/atoms/assets/PhoneIcon';
-import LinkIcon from '@/components/atoms/assets/LinkIcon';
-import NightIcon from '@/components/atoms/assets/NightIcon';
-import InsuranceIcon from '@/components/atoms/assets/InsuranceIcon';
+import { Card } from '@/components/atoms/Card';
+import { MapPinIcon } from '@/components/atoms/assets/MapPinIcon';
+import { PhoneIcon } from '@/components/atoms/assets/PhoneIcon';
+import { LinkIcon } from '@/components/atoms/assets/LinkIcon';
+import { NightIcon } from '@/components/atoms/assets/NightIcon';
+import { InsuranceIcon } from '@/components/atoms/assets/InsuranceIcon';
 import { GoogleMap } from '@/components/organisms/GoogleMap';
 import { HospitalTags } from '../HospitalTags';
 import type { HospitalFieldsFragment } from '@/api/public_api/types';

@@ -18,7 +18,7 @@ import {
 import { DeleteIcon } from '@chakra-ui/icons';
 import { useCallback, useState, Fragment } from 'react';
 import { useRouter } from 'next/router';
-import UserProfileIcon from '@/components/atoms/assets/UserProfileIcon';
+import { UserProfileIcon } from '@/components/atoms/assets/UserProfileIcon';
 import {
   useInternalGetInternalUsersQuery,
   useInternalDeleteInternalUserMutation,
@@ -140,4 +140,4 @@ const InternalUserStacks: React.VFC<NoProps> = () => {
   );
 };
 
-export default InternalUserStacks;
+export { InternalUserStacks };
