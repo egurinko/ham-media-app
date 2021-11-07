@@ -1,0 +1,11 @@
+import type { Hospital } from '@/api/internal_api/types';
+
+export type Name = string;
+export type Deleted = boolean;
+export type PrefectureId = string;
+export type Hospitals = Hospital[] | undefined;
+
+export type SetName = UseStateAction<Name>;
+export type SetDeleted = UseStateAction<Deleted>;
+export type SetPrefectureId = UseStateAction<PrefectureId>;
+export type SearchHospitals = () => void;

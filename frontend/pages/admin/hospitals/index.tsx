@@ -2,7 +2,7 @@ import { Heading, Box, Button } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
 import { useRouter } from 'next/router';
 import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
-import { HospitalsSearch } from '@/components/organisms/admin/hospitals/index/hospitalsSearch';
+import { HospitalsSearch } from '@/components/organisms/admin/hospitals/index/HospitalsSearch';
 import { goAdminHospitalsNew } from '@/utils/routes';
 
 const Index: React.VFC<NoProps> = () => {
