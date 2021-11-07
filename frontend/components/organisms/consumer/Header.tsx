@@ -1,16 +1,18 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Flex } from '@chakra-ui/react';
+import { Flex, Box, Text } from '@chakra-ui/react';
+import { RedirectIcon } from '@/components/atoms/assets/RedirectIcon';
 
 type Props = Record<string, never>;
 
 const Header: React.VFC<Props> = () => (
   <header>
-    <Flex
+    <Box
       as="nav"
-      align="center"
-      justify="center"
-      wrap="wrap"
+      display="flex"
+      position="relative"
+      justifyContent="center"
+      alignContent="center"
       padding={3}
       bg="white"
     >
@@ -26,7 +28,25 @@ const Header: React.VFC<Props> = () => (
           </a>
         </Link>
       </Flex>
-    </Flex>
+      <Box position="absolute" right="0">
+        <Link href="https://ham-media.net">
+          <a>
+            <Box
+              display="flex"
+              flexDir="column"
+              alignItems="center"
+              fill="primary.main"
+              p="1"
+              mr="2"
+              textAlign="center"
+            >
+              <RedirectIcon width={20} height={20} />
+              <Text fontSize="xs">HPへ</Text>
+            </Box>
+          </a>
+        </Link>
+      </Box>
+    </Box>
   </header>
 );
 
