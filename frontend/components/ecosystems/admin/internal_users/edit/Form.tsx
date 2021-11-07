@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import Card from '@/components/atoms/Card';
-import FlashMessage from '@/components/molecules/FlashMessage';
+import { FlashMessage } from '@/components/molecules/FlashMessage';
 import {
   useInternalUpdateInternalUserMutation,
   useInternalGetInternalUserQuery,

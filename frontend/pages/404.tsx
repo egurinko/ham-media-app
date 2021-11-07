@@ -1,12 +1,9 @@
 import Image from 'next/image';
 import { Box, Text } from '@chakra-ui/react';
-import ConsumerLayout from '@/components/layouts/consumer/Layout';
+import { Layout } from '@/components/layouts/consumer/Layout';
 
 const NotFound: React.FC<{}> = () => (
-  <ConsumerLayout
-    title="ページが見つかりませんでした - Ham ω Media"
-    description=""
-  >
+  <Layout title="ページが見つかりませんでした - Ham ω Media" description="">
     <Box
       display="flex"
       flexWrap="wrap"
@@ -38,7 +35,7 @@ const NotFound: React.FC<{}> = () => (
         />
       </Box>
     </Box>
-  </ConsumerLayout>
+  </Layout>
 );
 
 export default NotFound;

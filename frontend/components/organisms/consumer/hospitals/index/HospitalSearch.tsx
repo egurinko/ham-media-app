@@ -97,19 +97,6 @@ const HospitalSearch: React.FC<NoProps> = () => {
   const getInitialHospitalConnection: GetInitialHospitalConnection = (
     variables
   ) => {
-    console.log({
-      variables: {
-        first: 20,
-        searchText,
-        currentLocation,
-        reservable,
-        nightServiceOption,
-        insuranceEnabled,
-        jsavaOption,
-        nichijuOption,
-        ...variables,
-      },
-    });
     getHospitalConnection({
       variables: {
         first: 20,

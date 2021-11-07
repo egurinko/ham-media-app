@@ -1,7 +1,7 @@
 import { Box, Divider, Button } from '@chakra-ui/react';
 import Image from 'next/image';
-import Navigation from '@/components/ecosystems/admin/Navigation';
-import UserCard from '@/components/molecules/UserCard';
+import { Navigation } from './Navigation';
+import { UserCard } from '@/components/molecules/UserCard';
 import type { InternalGetSessionQuery } from '@/api/internal_api/types';
 
 type Props = {
@@ -35,4 +35,4 @@ const Sidebar: React.VFC<Props> = ({ internalUser, handleLogout }) => (
   </Box>
 );
 
-export default Sidebar;
+export { Sidebar };

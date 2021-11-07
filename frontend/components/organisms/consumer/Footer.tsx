@@ -1,7 +1,7 @@
 import { Text, Box } from '@chakra-ui/react';
 import RedirectIcon from '@/components/atoms/assets/RedirectIcon';
-import AbountInformationProvide from './footer/AboutInformationProvide';
-import AboutOfficialSNS from './footer/AboutOfficialSNS';
+import { AbountInformationProvide } from './footer/AboutInformationProvide';
+import { AboutOfficialSNS } from './footer/AboutOfficialSNS';
 
 type Props = Record<string, never>;
 
@@ -31,4 +31,4 @@ const Footer: React.VFC<Props> = () => (
   </footer>
 );
 
-export default Footer;
+export { Footer };

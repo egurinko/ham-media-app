@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { ParsedUrlQuery } from 'querystring';
 import { Heading, Box, Button } from '@chakra-ui/react';
 import { ChevronRightIcon } from '@chakra-ui/icons';
-import Layout from '@/components/layouts/consumer/Layout';
+import { Layout } from '@/components/layouts/consumer/Layout';
 import { DetailCard } from '@/components/organisms/consumer/hospitals/detail/DetailCard';
 import type {
   PublicGetHospitalIdsQuery,

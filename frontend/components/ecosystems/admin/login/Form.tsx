@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import OrganismForm, {
+import {
+  Form as OrganismForm,
   FormInput,
 } from '@/components/organisms/admin/login/Form';
 import { usePublicCreateSessionMutation } from '@/api/public_api/types';

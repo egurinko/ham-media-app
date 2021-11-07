@@ -3,7 +3,7 @@ import { Box, Text } from '@chakra-ui/react';
 import { Marker, InfoWindow } from '@react-google-maps/api';
 import { usePublicGetHospitalLocationsQuery } from '@/api/public_api/types';
 import type { PublicGetHospitalLocationsQuery } from '@/api/public_api/types';
-import GoogleMap from '@/components/ecosystems/GoogleMap';
+import { GoogleMap } from '@/components/organisms/GoogleMap';
 
 type HospitalLocation = PublicGetHospitalLocationsQuery['hospitals'][number];
 

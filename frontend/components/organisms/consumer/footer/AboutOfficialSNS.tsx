@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { Box } from '@chakra-ui/react';
-import TitleCard from '@/components/molecules/TitleCard';
+import { TitleCard } from '@/components/molecules/TitleCard';
 
 type Props = Record<string, never>;
 
@@ -46,4 +46,4 @@ const AboutOfficialSNS: React.VFC<Props> = () => (
   </TitleCard>
 );
 
-export default AboutOfficialSNS;
+export { AboutOfficialSNS };

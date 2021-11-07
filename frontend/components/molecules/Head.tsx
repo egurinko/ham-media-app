@@ -1,4 +1,4 @@
-import Head from 'next/head';
+import NextHead from 'next/head';
 
 type Props = {
   title: string;
@@ -7,13 +7,13 @@ type Props = {
   ogpImageUrl: string;
 };
 
-const HeadComponent: React.VFC<Props> = ({
+const Head: React.VFC<Props> = ({
   title,
   description,
   ogpImageUrl,
   ogpUrl,
 }) => (
-  <Head>
+  <NextHead>
     <title>{title}</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <meta name="description" content={description} />
@@ -24,7 +24,7 @@ const HeadComponent: React.VFC<Props> = ({
     <meta property="og:type" content="website" />
     <meta property="og:image" content={ogpImageUrl} />
     <link rel="icon" href="/favicon.png" />
-  </Head>
+  </NextHead>
 );
 
-export default HeadComponent;
+export { Head };
