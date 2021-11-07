@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { Flex } from '@chakra-ui/react';
 
 type Props = Record<string, never>;
@@ -13,13 +14,15 @@ const Header: React.VFC<Props> = () => (
       padding={3}
       bg="white"
     >
-      <Flex align="center" mr={5}>
-        <Image
-          src="/ham_media_logo.png"
-          alt="ハムメディアロゴ"
-          width={160}
-          height={35}
-        />
+      <Flex align="center" mr={5} cursor="pointer">
+        <Link href="/hospitals">
+          <Image
+            src="/ham_media_logo.png"
+            alt="ハムメディアロゴ"
+            width={160}
+            height={35}
+          />
+        </Link>
       </Flex>
     </Flex>
   </header>
