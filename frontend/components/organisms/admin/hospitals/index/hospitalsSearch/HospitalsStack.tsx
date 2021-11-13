@@ -24,7 +24,7 @@ const HospitalsStack: React.VFC<Props> = ({ hospitals }) => {
       <Divider />
       {hospitals?.map((hospital) => {
         return hospital ? (
-          <Fragment key={hospital.name}>
+          <Fragment key={Number(hospital.id)}>
             <Box
               w="100%"
               display="flex"
