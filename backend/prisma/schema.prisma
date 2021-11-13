@@ -208,7 +208,6 @@ model Maker {
   products   Product[]
   created_at DateTime  @default(now()) @db.DateTime(0)
 
-  @@index([name], name: "idx_makers_1")
   @@map(name: "makers")
 }
 
@@ -223,7 +222,6 @@ model Product {
   stocks     Stock[]
   created_at DateTime @default(now()) @db.DateTime(0)
 
-  @@index([name], name: "idx_products_1")
   @@map(name: "products")
 }
 
