@@ -36,7 +36,7 @@ model HospitalAddress {
 
   id                         BigInt                      @id @default(autoincrement())
   hospital_id                BigInt                      @unique
-  prefecture_id              BigInt                      
+  prefecture_id              BigInt
   address                    String                      @db.VarChar(255)
   phone_number               String                      @db.VarChar(255)
   created_at                 DateTime                    @default(now()) @db.DateTime(0)
@@ -171,30 +171,97 @@ model Hospital {
   @@map(name: "hospitals")
 }
 
+/// A role
+model Role {
+
+  id            Int            @id @default(autoincrement())
+  name          String         @unique @db.VarChar(255)
+  internalUsers InternalUser[]
+  created_at    DateTime       @default(now()) @db.DateTime(0)
+
+  @@map(name: "roles")
+}
+
 /// A internal user
 model InternalUser {
 
-  id              BigInt   @id @default(autoincrement())
-  name            String   @db.VarChar(255)
-  email           String   @unique @db.VarChar(255)
-  password_digest String   @db.VarChar(255)
-  created_at      DateTime @default(now()) @db.DateTime(0)
-  updated_at      DateTime @default(now()) @db.DateTime(0)
+  id               BigInt            @id @default(autoincrement())
+  name             String            @db.VarChar(255)
+  email            String            @unique @db.VarChar(255)
+  password_digest  String            @db.VarChar(255)
+  role_id          Int?
+  role             Role?             @relation(fields: [role_id], references: [id])
+  stockAllocations StockAllocation[]
+  created_at       DateTime          @default(now()) @db.DateTime(0)
+  updated_at       DateTime          @default(now()) @db.DateTime(0)
 
   @@index([name], name: "idx_internal_users_1")
   @@index([password_digest], name: "idx_internal_users_3")
   @@map(name: "internal_users")
 }
 
+/// A maker
+model Maker {
+
+  id         Int       @id @default(autoincrement())
+  name       String    @unique @db.VarChar(255)
+  products   Product[]
+  created_at DateTime  @default(now()) @db.DateTime(0)
+
+  @@index([name], name: "idx_makers_1")
+  @@map(name: "makers")
+}
+
+/// A product
+model Product {
+
+  id         Int      @id @default(autoincrement())
+  name       String   @unique @db.VarChar(255)
+  remark     String   @db.Text
+  maker_id   Int
+  maker      Maker    @relation(fields: [maker_id], references: [id])
+  stocks     Stock[]
+  created_at DateTime @default(now()) @db.DateTime(0)
+
+  @@index([name], name: "idx_products_1")
+  @@map(name: "products")
+}
+
+/// A stock
+model Stock {
+
+  id              Int              @id @default(autoincrement())
+  product_id      Int
+  product         Product          @relation(fields: [product_id], references: [id])
+  stockAllocation StockAllocation?
+  expired_at      DateTime         @db.DateTime(0)
+  created_at      DateTime         @default(now()) @db.DateTime(0)
+
+  @@map(name: "stocks")
+}
+
+/// A stock allocation
+model StockAllocation {
+
+  id               Int          @id @default(autoincrement())
+  stock_id         Int          @unique
+  stock            Stock        @relation(fields: [stock_id], references: [id])
+  internal_user_id BigInt
+  internalUser     InternalUser @relation(fields: [internal_user_id], references: [id])
+  created_at       DateTime     @default(now()) @db.DateTime(0)
+
+  @@map(name: "stock_allocations")
+}
+
 /// A prefecture
 model Prefecture {
 
-  id         BigInt   @id @default(autoincrement())
-  region_id  BigInt
-  name       String   @unique @db.VarChar(255)
-  created_at DateTime @default(now()) @db.DateTime(0)
-  updated_at DateTime @default(now()) @db.DateTime(0)
-  region    Region   @relation(fields: [region_id], references: [id])
+  id              BigInt            @id @default(autoincrement())
+  region_id       BigInt
+  name            String            @unique @db.VarChar(255)
+  created_at      DateTime          @default(now()) @db.DateTime(0)
+  updated_at      DateTime          @default(now()) @db.DateTime(0)
+  region          Region            @relation(fields: [region_id], references: [id])
   hospitalAddress HospitalAddress[]
 
   @@index([region_id], name: "idx_prefectures_2")
