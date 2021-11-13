@@ -171,6 +171,17 @@ model Hospital {
   @@map(name: "hospitals")
 }
 
+/// A role
+model Role {
+
+  id              Int      @id @default(autoincrement())
+  name            String
+  internalUsers   InternalUser[]
+  created_at      DateTime @default(now()) @db.DateTime(0)
+
+  @@map(name: "roles")
+}
+
 /// A internal user
 model InternalUser {
 
@@ -178,6 +189,8 @@ model InternalUser {
   name            String   @db.VarChar(255)
   email           String   @unique @db.VarChar(255)
   password_digest String   @db.VarChar(255)
+  role_id         Int?
+  role            Role?    @relation(fields: [role_id], references: [id])
   created_at      DateTime @default(now()) @db.DateTime(0)
   updated_at      DateTime @default(now()) @db.DateTime(0)
 
