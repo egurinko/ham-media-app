@@ -74,7 +74,7 @@ const InternalUserStacks: React.VFC<NoProps> = () => {
           ) : null}
           <Divider />
           {data?.internalUsers.map((internalUser) => (
-            <Fragment key={internalUser.name}>
+            <Fragment key={internalUser.email}>
               <Box
                 w="100%"
                 display="flex"
