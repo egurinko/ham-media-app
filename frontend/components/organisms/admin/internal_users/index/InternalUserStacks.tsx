@@ -15,7 +15,7 @@ import {
   ModalCloseButton,
   useDisclosure,
 } from '@chakra-ui/react';
-import { DeleteIcon } from '@chakra-ui/icons';
+import { DeleteIcon, StarIcon } from '@chakra-ui/icons';
 import { useCallback, useState, Fragment } from 'react';
 import { useRouter } from 'next/router';
 import { UserProfileIcon } from '@/components/atoms/assets/UserProfileIcon';
@@ -92,9 +92,16 @@ const InternalUserStacks: React.VFC<NoProps> = () => {
                   <UserProfileIcon width={35} height={35} />
                 </Box>
                 <Box flex="1">
-                  <Text fontSize="xl" fontWeight="bold">
-                    {internalUser.name}
-                  </Text>
+                  <Box display="flex" alignItems="center">
+                    <Text fontSize="xl" fontWeight="bold">
+                      {internalUser.name}
+                    </Text>
+                    <Box p="0" ml="2">
+                      {internalUser.role?.name === 'admin' ? (
+                        <StarIcon color="primary.main" />
+                      ) : null}
+                    </Box>
+                  </Box>
                   <Text fontSize="md">{internalUser.email}</Text>
                 </Box>
                 <Box>

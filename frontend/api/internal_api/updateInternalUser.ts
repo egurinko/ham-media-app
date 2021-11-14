@@ -15,7 +15,9 @@ export const updateInternalUser = gql`
       email: $email
       password: $password
     ) {
-      ...InternalUserFields
+      id
+      email
+      name
     }
   }
 `;
