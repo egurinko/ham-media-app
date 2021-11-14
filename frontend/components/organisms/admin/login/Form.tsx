@@ -53,7 +53,10 @@ const Form: React.VFC<NoProps> = () => {
       {!!loginData ? (
         <FlashMessage message="ログインに成功しました。" status="success" />
       ) : !!loginError ? (
-        <FlashMessage message={loginError?.message || ''} status="error" />
+        <FlashMessage
+          message="メールアドレスかパスワードが間違っています。"
+          status="error"
+        />
       ) : null}
       <Card>
         <form onSubmit={handleSubmit(onSubmit)}>
