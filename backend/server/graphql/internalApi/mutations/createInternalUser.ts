@@ -20,6 +20,7 @@ export const createInternalUserField = mutationField((t) => {
           password_digest: hashedPassword,
           role_id: args.roleId,
         },
+        include: { role: true },
       });
     },
   });

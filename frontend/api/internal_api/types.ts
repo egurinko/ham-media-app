@@ -189,6 +189,7 @@ export type MutationCreateInternalUserArgs = {
   email: Scalars['String'];
   name: Scalars['String'];
   password: Scalars['String'];
+  roleId: Scalars['Int'];
 };
 
 
@@ -248,6 +249,7 @@ export type Query = {
   hospitals: Array<Hospital>;
   internalUser: InternalUser;
   internalUsers: Array<InternalUser>;
+  roles: Array<Role>;
   session: Session;
 };
 
@@ -306,10 +308,11 @@ export type InternalCreateInternalUserMutationVariables = Exact<{
   name: Scalars['String'];
   email: Scalars['String'];
   password: Scalars['String'];
+  roleId: Scalars['Int'];
 }>;
 
 
-export type InternalCreateInternalUserMutation = { __typename?: 'Mutation', createInternalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string } };
+export type InternalCreateInternalUserMutation = { __typename?: 'Mutation', createInternalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } };
 
 export type InternalDeleteInternalUserMutationVariables = Exact<{
   id: Scalars['BigInt'];
@@ -358,6 +361,11 @@ export type InternalGetInternalUsersQueryVariables = Exact<{ [key: string]: neve
 
 
 export type InternalGetInternalUsersQuery = { __typename?: 'Query', internalUsers: Array<{ __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }> };
+
+export type InternalGetRolesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type InternalGetRolesQuery = { __typename?: 'Query', roles: Array<{ __typename?: 'Role', id: number, name: string }> };
 
 export type InternalGetSessionQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -500,14 +508,17 @@ export type InternalCreateHospitalMutationHookResult = ReturnType<typeof useInte
 export type InternalCreateHospitalMutationResult = Apollo.MutationResult<InternalCreateHospitalMutation>;
 export type InternalCreateHospitalMutationOptions = Apollo.BaseMutationOptions<InternalCreateHospitalMutation, InternalCreateHospitalMutationVariables>;
 export const InternalCreateInternalUserDocument = gql`
-    mutation InternalCreateInternalUser($name: String!, $email: String!, $password: String!) {
-  createInternalUser(name: $name, email: $email, password: $password) {
-    id
-    email
-    name
+    mutation InternalCreateInternalUser($name: String!, $email: String!, $password: String!, $roleId: Int!) {
+  createInternalUser(
+    name: $name
+    email: $email
+    password: $password
+    roleId: $roleId
+  ) {
+    ...InternalUserFields
   }
 }
-    `;
+    ${InternalUserFieldsFragmentDoc}`;
 export type InternalCreateInternalUserMutationFn = Apollo.MutationFunction<InternalCreateInternalUserMutation, InternalCreateInternalUserMutationVariables>;
 
 /**
@@ -526,6 +537,7 @@ export type InternalCreateInternalUserMutationFn = Apollo.MutationFunction<Inter
  *      name: // value for 'name'
  *      email: // value for 'email'
  *      password: // value for 'password'
+ *      roleId: // value for 'roleId'
  *   },
  * });
  */
@@ -764,6 +776,40 @@ export function useInternalGetInternalUsersLazyQuery(baseOptions?: Apollo.LazyQu
 export type InternalGetInternalUsersQueryHookResult = ReturnType<typeof useInternalGetInternalUsersQuery>;
 export type InternalGetInternalUsersLazyQueryHookResult = ReturnType<typeof useInternalGetInternalUsersLazyQuery>;
 export type InternalGetInternalUsersQueryResult = Apollo.QueryResult<InternalGetInternalUsersQuery, InternalGetInternalUsersQueryVariables>;
+export const InternalGetRolesDocument = gql`
+    query InternalGetRoles {
+  roles {
+    ...RoleFields
+  }
+}
+    ${RoleFieldsFragmentDoc}`;
+
+/**
+ * __useInternalGetRolesQuery__
+ *
+ * To run a query within a React component, call `useInternalGetRolesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useInternalGetRolesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useInternalGetRolesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useInternalGetRolesQuery(baseOptions?: Apollo.QueryHookOptions<InternalGetRolesQuery, InternalGetRolesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<InternalGetRolesQuery, InternalGetRolesQueryVariables>(InternalGetRolesDocument, options);
+      }
+export function useInternalGetRolesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InternalGetRolesQuery, InternalGetRolesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<InternalGetRolesQuery, InternalGetRolesQueryVariables>(InternalGetRolesDocument, options);
+        }
+export type InternalGetRolesQueryHookResult = ReturnType<typeof useInternalGetRolesQuery>;
+export type InternalGetRolesLazyQueryHookResult = ReturnType<typeof useInternalGetRolesLazyQuery>;
+export type InternalGetRolesQueryResult = Apollo.QueryResult<InternalGetRolesQuery, InternalGetRolesQueryVariables>;
 export const InternalGetSessionDocument = gql`
     query InternalGetSession {
   session {
