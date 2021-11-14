@@ -424,7 +424,7 @@ export interface NexusGenArgTypes {
       email: string; // String!
       name: string; // String!
       password: string; // String!
-      roleId?: number | null; // Int
+      roleId: number; // Int!
     }
     deleteInternalUser: { // args
       id: NexusGenScalars['BigInt']; // BigInt!
@@ -448,7 +448,7 @@ export interface NexusGenArgTypes {
       id: NexusGenScalars['BigInt']; // BigInt!
       name: string; // String!
       password: string; // String!
-      roleId?: number | null; // Int
+      roleId: number; // Int!
     }
   }
   Query: {

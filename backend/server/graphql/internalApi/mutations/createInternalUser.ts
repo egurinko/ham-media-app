@@ -9,7 +9,7 @@ export const createInternalUserField = mutationField((t) => {
       name: nonNull(stringArg()),
       email: nonNull(stringArg()),
       password: nonNull(stringArg()),
-      roleId: intArg(),
+      roleId: nonNull(intArg()),
     },
     resolve: async (_, args, ctx) => {
       const hashedPassword = await hash(args.password, 8);
