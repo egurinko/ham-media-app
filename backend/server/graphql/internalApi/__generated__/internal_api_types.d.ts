@@ -13,6 +13,10 @@ declare global {
      * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt
      */
     bigInt<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "BigInt";
+    /**
+     * A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+     */
+    dateTime<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "DateTime";
   }
 }
 declare global {
@@ -22,6 +26,10 @@ declare global {
      * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt
      */
     bigInt<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "BigInt";
+    /**
+     * A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+     */
+    dateTime<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "DateTime";
     /**
      * Adds a Relay-style connection to the type, with numerous options for configuration
      *
@@ -83,6 +91,7 @@ export interface NexusGenScalars {
   Boolean: boolean
   ID: string
   BigInt: any
+  DateTime: any
 }
 
 export interface NexusGenObjects {
@@ -163,6 +172,19 @@ export interface NexusGenObjects {
     id: NexusGenScalars['BigInt']; // BigInt!
     name: string; // String!
   }
+  Product: { // root type
+    id: number; // Int!
+    name: string; // String!
+    remark: string; // String!
+  }
+  ProductConnection: { // root type
+    edges?: Array<NexusGenRootTypes['ProductEdge'] | null> | null; // [ProductEdge]
+    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
+  }
+  ProductEdge: { // root type
+    cursor: string; // String!
+    node?: NexusGenRootTypes['Product'] | null; // Product
+  }
   Query: {};
   Region: { // root type
     id: NexusGenScalars['BigInt']; // BigInt!
@@ -175,6 +197,10 @@ export interface NexusGenObjects {
   Session: { // root type
     internalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     token: string; // String!
+  }
+  Stock: { // root type
+    expired_at: NexusGenScalars['DateTime']; // DateTime!
+    id: number; // Int!
   }
 }
 
@@ -286,6 +312,21 @@ export interface NexusGenFieldTypes {
     name: string; // String!
     region: NexusGenRootTypes['Region']; // Region!
   }
+  Product: { // field return type
+    id: number; // Int!
+    maker: NexusGenRootTypes['Maker']; // Maker!
+    name: string; // String!
+    remark: string; // String!
+    stocks: NexusGenRootTypes['Stock'][][]; // [[Stock!]!]!
+  }
+  ProductConnection: { // field return type
+    edges: Array<NexusGenRootTypes['ProductEdge'] | null> | null; // [ProductEdge]
+    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
+  }
+  ProductEdge: { // field return type
+    cursor: string; // String!
+    node: NexusGenRootTypes['Product'] | null; // Product
+  }
   Query: { // field return type
     hospital: NexusGenRootTypes['Hospital']; // Hospital!
     hospitalConnection: NexusGenRootTypes['HospitalConnection'] | null; // HospitalConnection
@@ -294,6 +335,9 @@ export interface NexusGenFieldTypes {
     internalUsers: NexusGenRootTypes['InternalUser'][]; // [InternalUser!]!
     maker: NexusGenRootTypes['Maker']; // Maker!
     makers: NexusGenRootTypes['Maker'][]; // [Maker!]!
+    product: NexusGenRootTypes['Product']; // Product!
+    productConnection: NexusGenRootTypes['ProductConnection'] | null; // ProductConnection
+    products: NexusGenRootTypes['Product'][]; // [Product!]!
     roles: NexusGenRootTypes['Role'][]; // [Role!]!
     session: NexusGenRootTypes['Session']; // Session!
   }
@@ -308,6 +352,10 @@ export interface NexusGenFieldTypes {
   Session: { // field return type
     internalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     token: string; // String!
+  }
+  Stock: { // field return type
+    expired_at: NexusGenScalars['DateTime']; // DateTime!
+    id: number; // Int!
   }
 }
 
@@ -409,6 +457,21 @@ export interface NexusGenFieldTypeNames {
     name: 'String'
     region: 'Region'
   }
+  Product: { // field return type name
+    id: 'Int'
+    maker: 'Maker'
+    name: 'String'
+    remark: 'String'
+    stocks: 'Stock'
+  }
+  ProductConnection: { // field return type name
+    edges: 'ProductEdge'
+    pageInfo: 'PageInfo'
+  }
+  ProductEdge: { // field return type name
+    cursor: 'String'
+    node: 'Product'
+  }
   Query: { // field return type name
     hospital: 'Hospital'
     hospitalConnection: 'HospitalConnection'
@@ -417,6 +480,9 @@ export interface NexusGenFieldTypeNames {
     internalUsers: 'InternalUser'
     maker: 'Maker'
     makers: 'Maker'
+    product: 'Product'
+    productConnection: 'ProductConnection'
+    products: 'Product'
     roles: 'Role'
     session: 'Session'
   }
@@ -431,6 +497,10 @@ export interface NexusGenFieldTypeNames {
   Session: { // field return type name
     internalUser: 'InternalUser'
     token: 'String'
+  }
+  Stock: { // field return type name
+    expired_at: 'DateTime'
+    id: 'Int'
   }
 }
 
@@ -501,6 +571,15 @@ export interface NexusGenArgTypes {
     }
     maker: { // args
       id: number; // Int!
+    }
+    product: { // args
+      id: number; // Int!
+    }
+    productConnection: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
     }
   }
 }
