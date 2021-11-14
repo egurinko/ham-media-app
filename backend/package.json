@@ -6,12 +6,17 @@
   "scripts": {
     "console": "yarn --cwd ../ prisma-repl",
     "build": "yarn tsc -p tsconfig.json && tsc-alias -p tsconfig.json",
-    "start": "NO_PEER_DEPENDENCY_CHECK=true node dist",
+    "start": "NO_PEER_DEPENDENCY_CHECK=true node dist/server",
     "dev": "ts-node-dev -r tsconfig-paths/register server --transpile-only",
     "db:format": "prisma format",
     "db:push": "prisma db push",
     "db:reflect": "prisma generate",
+    "db:seed:prd": "NODE_ENV=production prisma db seed",
+    "db:seed:dev": "NODE_ENV=development prisma db seed",
     "tsc": "tsc"
+  },
+  "prisma": {
+    "seed": "ts-node-dev prisma/seed.ts"
   },
   "dependencies": {
     "@line/bot-sdk": "^7.4.0",
