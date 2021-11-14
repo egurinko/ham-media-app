@@ -23,7 +23,7 @@ interface FormInput {
   name: string;
   email: string;
   password: string;
-  roleId: number;
+  roleId: string;
 }
 
 const Form: React.VFC<NoProps> = () => {
@@ -49,7 +49,7 @@ const Form: React.VFC<NoProps> = () => {
 
     try {
       await create({
-        variables: { name, email, password, roleId },
+        variables: { name, email, password, roleId: Number(roleId) },
       });
       setTimeout(() => {
         goAdminInternalUsers(router);
@@ -127,7 +127,7 @@ const Form: React.VFC<NoProps> = () => {
                 <FormLabel>ロール</FormLabel>
                 <Controller
                   name="roleId"
-                  defaultValue={adminRole.id}
+                  defaultValue={String(adminRole.id)}
                   control={control}
                   rules={{ required: 'ロールを入力してください' }}
                   render={({ field }) => (

@@ -219,6 +219,7 @@ export type MutationUpdateInternalUserArgs = {
   id: Scalars['BigInt'];
   name: Scalars['String'];
   password: Scalars['String'];
+  roleId: Scalars['Int'];
 };
 
 /** PageInfo cursor, as defined in https://facebook.github.io/relay/graphql/connections.htm#sec-undefined.PageInfo */
@@ -395,10 +396,11 @@ export type InternalUpdateInternalUserMutationVariables = Exact<{
   name: Scalars['String'];
   email: Scalars['String'];
   password: Scalars['String'];
+  roleId: Scalars['Int'];
 }>;
 
 
-export type InternalUpdateInternalUserMutation = { __typename?: 'Mutation', updateInternalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string } };
+export type InternalUpdateInternalUserMutation = { __typename?: 'Mutation', updateInternalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } };
 
 export const HospitalFieldsFragmentDoc = gql`
     fragment HospitalFields on Hospital {
@@ -907,14 +909,18 @@ export type InternalUpdateHospitalMutationHookResult = ReturnType<typeof useInte
 export type InternalUpdateHospitalMutationResult = Apollo.MutationResult<InternalUpdateHospitalMutation>;
 export type InternalUpdateHospitalMutationOptions = Apollo.BaseMutationOptions<InternalUpdateHospitalMutation, InternalUpdateHospitalMutationVariables>;
 export const InternalUpdateInternalUserDocument = gql`
-    mutation InternalUpdateInternalUser($id: BigInt!, $name: String!, $email: String!, $password: String!) {
-  updateInternalUser(id: $id, name: $name, email: $email, password: $password) {
-    id
-    email
-    name
+    mutation InternalUpdateInternalUser($id: BigInt!, $name: String!, $email: String!, $password: String!, $roleId: Int!) {
+  updateInternalUser(
+    id: $id
+    name: $name
+    email: $email
+    password: $password
+    roleId: $roleId
+  ) {
+    ...InternalUserFields
   }
 }
-    `;
+    ${InternalUserFieldsFragmentDoc}`;
 export type InternalUpdateInternalUserMutationFn = Apollo.MutationFunction<InternalUpdateInternalUserMutation, InternalUpdateInternalUserMutationVariables>;
 
 /**
@@ -934,6 +940,7 @@ export type InternalUpdateInternalUserMutationFn = Apollo.MutationFunction<Inter
  *      name: // value for 'name'
  *      email: // value for 'email'
  *      password: // value for 'password'
+ *      roleId: // value for 'roleId'
  *   },
  * });
  */
