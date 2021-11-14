@@ -7,3 +7,6 @@ export * from './roles';
 export * from './session';
 export * from './makers';
 export * from './maker';
+export * from './productConnection';
+export * from './products';
+export * from './product';

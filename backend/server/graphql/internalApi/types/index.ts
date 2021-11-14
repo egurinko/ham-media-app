@@ -13,3 +13,5 @@ export * from './hospitalType';
 export * from './regionType';
 export * from './prefectureType';
 export * from './makerType';
+export * from './productType';
+export * from './product/stockType';
