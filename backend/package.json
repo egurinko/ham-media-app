@@ -11,7 +11,12 @@
     "db:format": "prisma format",
     "db:push": "prisma db push",
     "db:reflect": "prisma generate",
+    "db:seed:prd": "NODE_ENV=production prisma db seed",
+    "db:seed:dev": "NODE_ENV=development prisma db seed",
     "tsc": "tsc"
+  },
+  "prisma": {
+    "seed": "ts-node-dev prisma/seed.ts"
   },
   "dependencies": {
     "@line/bot-sdk": "^7.4.0",
