@@ -292,6 +292,7 @@ export interface NexusGenFieldTypes {
     hospitals: NexusGenRootTypes['Hospital'][]; // [Hospital!]!
     internalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     internalUsers: NexusGenRootTypes['InternalUser'][]; // [InternalUser!]!
+    maker: NexusGenRootTypes['Maker']; // Maker!
     makers: NexusGenRootTypes['Maker'][]; // [Maker!]!
     roles: NexusGenRootTypes['Role'][]; // [Role!]!
     session: NexusGenRootTypes['Session']; // Session!
@@ -414,6 +415,7 @@ export interface NexusGenFieldTypeNames {
     hospitals: 'Hospital'
     internalUser: 'InternalUser'
     internalUsers: 'InternalUser'
+    maker: 'Maker'
     makers: 'Maker'
     roles: 'Role'
     session: 'Session'
@@ -496,6 +498,9 @@ export interface NexusGenArgTypes {
     }
     internalUser: { // args
       id: NexusGenScalars['BigInt']; // BigInt!
+    }
+    maker: { // args
+      id: number; // Int!
     }
   }
 }

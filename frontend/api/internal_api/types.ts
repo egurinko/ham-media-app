@@ -276,6 +276,7 @@ export type Query = {
   hospitals: Array<Hospital>;
   internalUser: InternalUser;
   internalUsers: Array<InternalUser>;
+  maker: Maker;
   makers: Array<Maker>;
   roles: Array<Role>;
   session: Session;
@@ -300,6 +301,11 @@ export type QueryHospitalConnectionArgs = {
 
 export type QueryInternalUserArgs = {
   id: Scalars['BigInt'];
+};
+
+
+export type QueryMakerArgs = {
+  id: Scalars['Int'];
 };
 
 /** A region */
@@ -341,6 +347,13 @@ export type InternalCreateInternalUserMutationVariables = Exact<{
 
 
 export type InternalCreateInternalUserMutation = { __typename?: 'Mutation', createInternalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } };
+
+export type InternalCreateMakerMutationVariables = Exact<{
+  name: Scalars['String'];
+}>;
+
+
+export type InternalCreateMakerMutation = { __typename?: 'Mutation', createMaker: { __typename?: 'Maker', id: number, name: string } };
 
 export type InternalDeleteInternalUserMutationVariables = Exact<{
   id: Scalars['BigInt'];
@@ -399,6 +412,13 @@ export type InternalGetInternalUsersQueryVariables = Exact<{ [key: string]: neve
 
 export type InternalGetInternalUsersQuery = { __typename?: 'Query', internalUsers: Array<{ __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }> };
 
+export type InternalGetMakerQueryVariables = Exact<{
+  id: Scalars['Int'];
+}>;
+
+
+export type InternalGetMakerQuery = { __typename?: 'Query', maker: { __typename?: 'Maker', id: number, name: string } };
+
 export type InternalGetMakersQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -442,6 +462,14 @@ export type InternalUpdateInternalUserMutationVariables = Exact<{
 
 
 export type InternalUpdateInternalUserMutation = { __typename?: 'Mutation', updateInternalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } };
+
+export type InternalUpdateMakerMutationVariables = Exact<{
+  id: Scalars['Int'];
+  name: Scalars['String'];
+}>;
+
+
+export type InternalUpdateMakerMutation = { __typename?: 'Mutation', updateMaker: { __typename?: 'Maker', id: number, name: string } };
 
 export const HospitalFieldsFragmentDoc = gql`
     fragment HospitalFields on Hospital {
@@ -597,6 +625,39 @@ export function useInternalCreateInternalUserMutation(baseOptions?: Apollo.Mutat
 export type InternalCreateInternalUserMutationHookResult = ReturnType<typeof useInternalCreateInternalUserMutation>;
 export type InternalCreateInternalUserMutationResult = Apollo.MutationResult<InternalCreateInternalUserMutation>;
 export type InternalCreateInternalUserMutationOptions = Apollo.BaseMutationOptions<InternalCreateInternalUserMutation, InternalCreateInternalUserMutationVariables>;
+export const InternalCreateMakerDocument = gql`
+    mutation InternalCreateMaker($name: String!) {
+  createMaker(name: $name) {
+    ...MakerFields
+  }
+}
+    ${MakerFieldsFragmentDoc}`;
+export type InternalCreateMakerMutationFn = Apollo.MutationFunction<InternalCreateMakerMutation, InternalCreateMakerMutationVariables>;
+
+/**
+ * __useInternalCreateMakerMutation__
+ *
+ * To run a mutation, you first call `useInternalCreateMakerMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInternalCreateMakerMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [internalCreateMakerMutation, { data, loading, error }] = useInternalCreateMakerMutation({
+ *   variables: {
+ *      name: // value for 'name'
+ *   },
+ * });
+ */
+export function useInternalCreateMakerMutation(baseOptions?: Apollo.MutationHookOptions<InternalCreateMakerMutation, InternalCreateMakerMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<InternalCreateMakerMutation, InternalCreateMakerMutationVariables>(InternalCreateMakerDocument, options);
+      }
+export type InternalCreateMakerMutationHookResult = ReturnType<typeof useInternalCreateMakerMutation>;
+export type InternalCreateMakerMutationResult = Apollo.MutationResult<InternalCreateMakerMutation>;
+export type InternalCreateMakerMutationOptions = Apollo.BaseMutationOptions<InternalCreateMakerMutation, InternalCreateMakerMutationVariables>;
 export const InternalDeleteInternalUserDocument = gql`
     mutation InternalDeleteInternalUser($id: BigInt!) {
   deleteInternalUser(id: $id) {
@@ -859,6 +920,41 @@ export function useInternalGetInternalUsersLazyQuery(baseOptions?: Apollo.LazyQu
 export type InternalGetInternalUsersQueryHookResult = ReturnType<typeof useInternalGetInternalUsersQuery>;
 export type InternalGetInternalUsersLazyQueryHookResult = ReturnType<typeof useInternalGetInternalUsersLazyQuery>;
 export type InternalGetInternalUsersQueryResult = Apollo.QueryResult<InternalGetInternalUsersQuery, InternalGetInternalUsersQueryVariables>;
+export const InternalGetMakerDocument = gql`
+    query InternalGetMaker($id: Int!) {
+  maker(id: $id) {
+    ...MakerFields
+  }
+}
+    ${MakerFieldsFragmentDoc}`;
+
+/**
+ * __useInternalGetMakerQuery__
+ *
+ * To run a query within a React component, call `useInternalGetMakerQuery` and pass it any options that fit your needs.
+ * When your component renders, `useInternalGetMakerQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useInternalGetMakerQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useInternalGetMakerQuery(baseOptions: Apollo.QueryHookOptions<InternalGetMakerQuery, InternalGetMakerQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<InternalGetMakerQuery, InternalGetMakerQueryVariables>(InternalGetMakerDocument, options);
+      }
+export function useInternalGetMakerLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InternalGetMakerQuery, InternalGetMakerQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<InternalGetMakerQuery, InternalGetMakerQueryVariables>(InternalGetMakerDocument, options);
+        }
+export type InternalGetMakerQueryHookResult = ReturnType<typeof useInternalGetMakerQuery>;
+export type InternalGetMakerLazyQueryHookResult = ReturnType<typeof useInternalGetMakerLazyQuery>;
+export type InternalGetMakerQueryResult = Apollo.QueryResult<InternalGetMakerQuery, InternalGetMakerQueryVariables>;
 export const InternalGetMakersDocument = gql`
     query InternalGetMakers {
   makers {
@@ -1066,3 +1162,37 @@ export function useInternalUpdateInternalUserMutation(baseOptions?: Apollo.Mutat
 export type InternalUpdateInternalUserMutationHookResult = ReturnType<typeof useInternalUpdateInternalUserMutation>;
 export type InternalUpdateInternalUserMutationResult = Apollo.MutationResult<InternalUpdateInternalUserMutation>;
 export type InternalUpdateInternalUserMutationOptions = Apollo.BaseMutationOptions<InternalUpdateInternalUserMutation, InternalUpdateInternalUserMutationVariables>;
+export const InternalUpdateMakerDocument = gql`
+    mutation InternalUpdateMaker($id: Int!, $name: String!) {
+  updateMaker(id: $id, name: $name) {
+    ...MakerFields
+  }
+}
+    ${MakerFieldsFragmentDoc}`;
+export type InternalUpdateMakerMutationFn = Apollo.MutationFunction<InternalUpdateMakerMutation, InternalUpdateMakerMutationVariables>;
+
+/**
+ * __useInternalUpdateMakerMutation__
+ *
+ * To run a mutation, you first call `useInternalUpdateMakerMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInternalUpdateMakerMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [internalUpdateMakerMutation, { data, loading, error }] = useInternalUpdateMakerMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      name: // value for 'name'
+ *   },
+ * });
+ */
+export function useInternalUpdateMakerMutation(baseOptions?: Apollo.MutationHookOptions<InternalUpdateMakerMutation, InternalUpdateMakerMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<InternalUpdateMakerMutation, InternalUpdateMakerMutationVariables>(InternalUpdateMakerDocument, options);
+      }
+export type InternalUpdateMakerMutationHookResult = ReturnType<typeof useInternalUpdateMakerMutation>;
+export type InternalUpdateMakerMutationResult = Apollo.MutationResult<InternalUpdateMakerMutation>;
+export type InternalUpdateMakerMutationOptions = Apollo.BaseMutationOptions<InternalUpdateMakerMutation, InternalUpdateMakerMutationVariables>;
