@@ -164,6 +164,10 @@ export interface NexusGenObjects {
     id: NexusGenScalars['BigInt']; // BigInt!
     name: string; // String!
   }
+  Role: { // root type
+    id: number; // Int!
+    name: string; // String!
+  }
   Session: { // root type
     internalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     token: string; // String!
@@ -251,6 +255,7 @@ export interface NexusGenFieldTypes {
     email: string; // String!
     id: NexusGenScalars['BigInt']; // BigInt!
     name: string; // String!
+    role: NexusGenRootTypes['Role'] | null; // Role
   }
   Mutation: { // field return type
     createHospital: NexusGenRootTypes['Hospital']; // Hospital!
@@ -280,6 +285,10 @@ export interface NexusGenFieldTypes {
   }
   Region: { // field return type
     id: NexusGenScalars['BigInt']; // BigInt!
+    name: string; // String!
+  }
+  Role: { // field return type
+    id: number; // Int!
     name: string; // String!
   }
   Session: { // field return type
@@ -359,6 +368,7 @@ export interface NexusGenFieldTypeNames {
     email: 'String'
     id: 'BigInt'
     name: 'String'
+    role: 'Role'
   }
   Mutation: { // field return type name
     createHospital: 'Hospital'
@@ -388,6 +398,10 @@ export interface NexusGenFieldTypeNames {
   }
   Region: { // field return type name
     id: 'BigInt'
+    name: 'String'
+  }
+  Role: { // field return type name
+    id: 'Int'
     name: 'String'
   }
   Session: { // field return type name

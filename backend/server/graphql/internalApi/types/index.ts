@@ -1,3 +1,4 @@
+export * from './roleType';
 export * from './internalUserType';
 export * from './sessionType';
 export * from './hospital/address/geoLocationType';

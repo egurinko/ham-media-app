@@ -147,6 +147,7 @@ type InternalUser {
   email: String!
   id: BigInt!
   name: String!
+  role: Role
 }
 
 type Mutation {
@@ -216,6 +217,12 @@ type Query {
 """A region"""
 type Region {
   id: BigInt!
+  name: String!
+}
+
+"""A role"""
+type Role {
+  id: Int!
   name: String!
 }
 

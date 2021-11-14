@@ -8,5 +8,6 @@ export const internalUserType = objectType({
     t.field(InternalUser.id);
     t.field(InternalUser.name);
     t.field(InternalUser.email);
+    t.field(InternalUser.role);
   },
 });
