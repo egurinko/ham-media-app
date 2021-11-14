@@ -281,6 +281,7 @@ export interface NexusGenFieldTypes {
     hospitals: NexusGenRootTypes['Hospital'][]; // [Hospital!]!
     internalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     internalUsers: NexusGenRootTypes['InternalUser'][]; // [InternalUser!]!
+    roles: NexusGenRootTypes['Role'][]; // [Role!]!
     session: NexusGenRootTypes['Session']; // Session!
   }
   Region: { // field return type
@@ -394,6 +395,7 @@ export interface NexusGenFieldTypeNames {
     hospitals: 'Hospital'
     internalUser: 'InternalUser'
     internalUsers: 'InternalUser'
+    roles: 'Role'
     session: 'Session'
   }
   Region: { // field return type name
@@ -422,6 +424,7 @@ export interface NexusGenArgTypes {
       email: string; // String!
       name: string; // String!
       password: string; // String!
+      roleId: number; // Int!
     }
     deleteInternalUser: { // args
       id: NexusGenScalars['BigInt']; // BigInt!
