@@ -3,7 +3,7 @@ import { Box, Text, useBreakpointValue } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 
 const TitleSection: React.FC<NoProps> = () => {
-  const imageWidth = useBreakpointValue({ base: 80, md: 160 });
+  const imageWidth = useBreakpointValue({ base: 105, md: 210 });
   const imageHeight = useBreakpointValue({ base: 60, md: 120 });
 
   return (
