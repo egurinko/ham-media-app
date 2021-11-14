@@ -27,7 +27,9 @@ import { FlashMessage } from '@/components/molecules/FlashMessage';
 import { goAdminMakersEdit } from '@/utils/routes';
 
 const MakerStacks: React.VFC<NoProps> = () => {
-  const { data, loading, error } = useInternalGetMakersQuery();
+  const { data, loading, error } = useInternalGetMakersQuery({
+    fetchPolicy: 'network-only',
+  });
   const router = useRouter();
 
   const { isOpen, onOpen, onClose } = useDisclosure();

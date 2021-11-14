@@ -7,11 +7,16 @@ import {
   FormControl,
   FormLabel,
   FormErrorMessage,
+  Select,
 } from '@chakra-ui/react';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import { Card } from '@/components/atoms/Card';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
-import { useInternalCreateMakerMutation } from '@/api/internal_api/types';
+import {
+  useInternalUpdateMakerMutation,
+  useInternalGetMakerQuery,
+} from '@/api/internal_api/types';
+import type { InternalUpdateMakerMutation } from '@/api/internal_api/types';
 import { goAdminMakers } from '@/utils/routes';
 import validators from '@/validators/index';
 
@@ -19,33 +24,48 @@ interface FormInput {
   name: string;
 }
 
-const Form: React.VFC<NoProps> = () => {
-  const router = useRouter();
+interface Props {
+  makerId: InternalUpdateMakerMutation['updateMaker']['id'];
+}
+
+const Form: React.VFC<Props> = ({ makerId }) => {
+  const { data: makerData, error: makerError } = useInternalGetMakerQuery({
+    variables: { id: makerId },
+  });
+  const maker = makerData?.maker;
   const {
     control,
     handleSubmit,
     trigger,
     formState: { errors },
   } = useForm<FormInput>({ mode: 'onTouched' });
-  const [create, { data, loading, error }] = useInternalCreateMakerMutation();
+  const [update, { data, loading, error }] = useInternalUpdateMakerMutation();
+  const router = useRouter();
 
   const onSubmit: SubmitHandler<FormInput> = async ({ name }) => {
-    trigger();
+    if (maker) {
+      trigger();
 
-    try {
-      await create({
-        variables: { name },
-      });
-      setTimeout(() => {
-        goAdminMakers(router);
-      }, 2000);
-    } catch (e) {}
+      try {
+        await update({
+          variables: {
+            id: makerId,
+            name,
+          },
+        });
+        setTimeout(() => {
+          goAdminMakers(router);
+        }, 2000);
+      } catch (e) {}
+    }
   };
 
-  return (
+  return makerError ? (
+    <FlashMessage message={makerError.message} status="error" />
+  ) : maker ? (
     <>
       {data ? (
-        <FlashMessage message="登録に成功しました。" status="success" />
+        <FlashMessage message="更新に成功しました" status="success" />
       ) : error ? (
         <FlashMessage message={error.message} status="error" />
       ) : null}
@@ -57,6 +77,7 @@ const Form: React.VFC<NoProps> = () => {
               <Controller
                 name="name"
                 control={control}
+                defaultValue={maker.name}
                 rules={validators.maker.rules}
                 render={({ field }) => (
                   <Input type="text" isInvalid={!!errors.name} {...field} />
@@ -78,13 +99,13 @@ const Form: React.VFC<NoProps> = () => {
               isLoading={loading}
               disabled={!!errors.name}
             >
-              新規登録する
+              更新する
             </Button>
           </Box>
         </form>
       </Card>
     </>
-  );
+  ) : null;
 };
 
 export { Form };
