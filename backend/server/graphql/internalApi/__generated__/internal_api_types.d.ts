@@ -255,7 +255,7 @@ export interface NexusGenFieldTypes {
     email: string; // String!
     id: NexusGenScalars['BigInt']; // BigInt!
     name: string; // String!
-    role: NexusGenRootTypes['Role'] | null; // Role
+    role: NexusGenRootTypes['Role']; // Role!
   }
   Mutation: { // field return type
     createHospital: NexusGenRootTypes['Hospital']; // Hospital!

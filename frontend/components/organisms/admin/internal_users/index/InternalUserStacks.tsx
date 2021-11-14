@@ -97,7 +97,7 @@ const InternalUserStacks: React.VFC<NoProps> = () => {
                       {internalUser.name}
                     </Text>
                     <Box p="0" ml="2">
-                      {internalUser.role?.name === 'admin' ? (
+                      {internalUser.role.name === 'admin' ? (
                         <StarIcon color="primary.main" />
                       ) : null}
                     </Box>

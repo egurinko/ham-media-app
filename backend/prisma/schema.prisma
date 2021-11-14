@@ -190,8 +190,8 @@ model InternalUser {
   name             String            @db.VarChar(255)
   email            String            @unique @db.VarChar(255)
   password_digest  String            @db.VarChar(255)
-  role_id          Int?
-  role             Role?             @relation(fields: [role_id], references: [id])
+  role_id          Int
+  role             Role              @relation(fields: [role_id], references: [id])
   stockAllocations StockAllocation[]
   created_at       DateTime          @default(now()) @db.DateTime(0)
   updated_at       DateTime          @default(now()) @db.DateTime(0)

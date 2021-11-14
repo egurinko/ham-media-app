@@ -147,7 +147,7 @@ type InternalUser {
   email: String!
   id: BigInt!
   name: String!
-  role: Role
+  role: Role!
 }
 
 type Mutation {
