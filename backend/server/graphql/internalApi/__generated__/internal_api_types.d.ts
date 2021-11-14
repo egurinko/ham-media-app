@@ -164,6 +164,10 @@ export interface NexusGenObjects {
     id: NexusGenScalars['BigInt']; // BigInt!
     name: string; // String!
   }
+  Role: { // root type
+    id: number; // Int!
+    name: string; // String!
+  }
   Session: { // root type
     internalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     token: string; // String!
@@ -251,6 +255,7 @@ export interface NexusGenFieldTypes {
     email: string; // String!
     id: NexusGenScalars['BigInt']; // BigInt!
     name: string; // String!
+    role: NexusGenRootTypes['Role']; // Role!
   }
   Mutation: { // field return type
     createHospital: NexusGenRootTypes['Hospital']; // Hospital!
@@ -276,10 +281,15 @@ export interface NexusGenFieldTypes {
     hospitals: NexusGenRootTypes['Hospital'][]; // [Hospital!]!
     internalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     internalUsers: NexusGenRootTypes['InternalUser'][]; // [InternalUser!]!
+    roles: NexusGenRootTypes['Role'][]; // [Role!]!
     session: NexusGenRootTypes['Session']; // Session!
   }
   Region: { // field return type
     id: NexusGenScalars['BigInt']; // BigInt!
+    name: string; // String!
+  }
+  Role: { // field return type
+    id: number; // Int!
     name: string; // String!
   }
   Session: { // field return type
@@ -359,6 +369,7 @@ export interface NexusGenFieldTypeNames {
     email: 'String'
     id: 'BigInt'
     name: 'String'
+    role: 'Role'
   }
   Mutation: { // field return type name
     createHospital: 'Hospital'
@@ -384,10 +395,15 @@ export interface NexusGenFieldTypeNames {
     hospitals: 'Hospital'
     internalUser: 'InternalUser'
     internalUsers: 'InternalUser'
+    roles: 'Role'
     session: 'Session'
   }
   Region: { // field return type name
     id: 'BigInt'
+    name: 'String'
+  }
+  Role: { // field return type name
+    id: 'Int'
     name: 'String'
   }
   Session: { // field return type name
@@ -408,6 +424,7 @@ export interface NexusGenArgTypes {
       email: string; // String!
       name: string; // String!
       password: string; // String!
+      roleId: number; // Int!
     }
     deleteInternalUser: { // args
       id: NexusGenScalars['BigInt']; // BigInt!
@@ -431,6 +448,7 @@ export interface NexusGenArgTypes {
       id: NexusGenScalars['BigInt']; // BigInt!
       name: string; // String!
       password: string; // String!
+      roleId: number; // Int!
     }
   }
   Query: {

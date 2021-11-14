@@ -8,12 +8,14 @@ export const updateInternalUser = gql`
     $name: String!
     $email: String!
     $password: String!
+    $roleId: Int!
   ) {
     updateInternalUser(
       id: $id
       name: $name
       email: $email
       password: $password
+      roleId: $roleId
     ) {
       ...InternalUserFields
     }
