@@ -167,6 +167,13 @@ export type InternalUser = {
   role: Role;
 };
 
+/** A maker */
+export type Maker = {
+  __typename?: 'Maker';
+  id: Scalars['Int'];
+  name: Scalars['String'];
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   createHospital: Hospital;
@@ -250,6 +257,7 @@ export type Query = {
   hospitals: Array<Hospital>;
   internalUser: InternalUser;
   internalUsers: Array<InternalUser>;
+  makers: Array<Maker>;
   roles: Array<Role>;
   session: Session;
 };
@@ -326,6 +334,8 @@ export type HospitalFieldsFragment = { __typename?: 'Hospital', id: BigInt, name
 
 export type InternalUserFieldsFragment = { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } };
 
+export type MakerFieldsFragment = { __typename?: 'Maker', id: number, name: string };
+
 export type RoleFieldsFragment = { __typename?: 'Role', id: number, name: string };
 
 export type InternalGetHospitalQueryVariables = Exact<{
@@ -362,6 +372,11 @@ export type InternalGetInternalUsersQueryVariables = Exact<{ [key: string]: neve
 
 
 export type InternalGetInternalUsersQuery = { __typename?: 'Query', internalUsers: Array<{ __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }> };
+
+export type InternalGetMakersQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type InternalGetMakersQuery = { __typename?: 'Query', makers: Array<{ __typename?: 'Maker', id: number, name: string }> };
 
 export type InternalGetRolesQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -468,6 +483,12 @@ export const InternalUserFieldsFragmentDoc = gql`
   }
 }
     ${RoleFieldsFragmentDoc}`;
+export const MakerFieldsFragmentDoc = gql`
+    fragment MakerFields on Maker {
+  id
+  name
+}
+    `;
 export const InternalCreateHospitalDocument = gql`
     mutation InternalCreateHospital($name: String!, $url: String, $deleted: Boolean!, $internal_memo: String!) {
   createHospital(
@@ -778,6 +799,40 @@ export function useInternalGetInternalUsersLazyQuery(baseOptions?: Apollo.LazyQu
 export type InternalGetInternalUsersQueryHookResult = ReturnType<typeof useInternalGetInternalUsersQuery>;
 export type InternalGetInternalUsersLazyQueryHookResult = ReturnType<typeof useInternalGetInternalUsersLazyQuery>;
 export type InternalGetInternalUsersQueryResult = Apollo.QueryResult<InternalGetInternalUsersQuery, InternalGetInternalUsersQueryVariables>;
+export const InternalGetMakersDocument = gql`
+    query InternalGetMakers {
+  makers {
+    ...MakerFields
+  }
+}
+    ${MakerFieldsFragmentDoc}`;
+
+/**
+ * __useInternalGetMakersQuery__
+ *
+ * To run a query within a React component, call `useInternalGetMakersQuery` and pass it any options that fit your needs.
+ * When your component renders, `useInternalGetMakersQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useInternalGetMakersQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useInternalGetMakersQuery(baseOptions?: Apollo.QueryHookOptions<InternalGetMakersQuery, InternalGetMakersQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<InternalGetMakersQuery, InternalGetMakersQueryVariables>(InternalGetMakersDocument, options);
+      }
+export function useInternalGetMakersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InternalGetMakersQuery, InternalGetMakersQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<InternalGetMakersQuery, InternalGetMakersQueryVariables>(InternalGetMakersDocument, options);
+        }
+export type InternalGetMakersQueryHookResult = ReturnType<typeof useInternalGetMakersQuery>;
+export type InternalGetMakersLazyQueryHookResult = ReturnType<typeof useInternalGetMakersLazyQuery>;
+export type InternalGetMakersQueryResult = Apollo.QueryResult<InternalGetMakersQuery, InternalGetMakersQueryVariables>;
 export const InternalGetRolesDocument = gql`
     query InternalGetRoles {
   roles {

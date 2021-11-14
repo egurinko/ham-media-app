@@ -12,3 +12,4 @@ export * from './hospital/reservationStatusType';
 export * from './hospitalType';
 export * from './regionType';
 export * from './prefectureType';
+export * from './makerType';

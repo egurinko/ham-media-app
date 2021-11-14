@@ -150,12 +150,21 @@ type InternalUser {
   role: Role!
 }
 
+"""A maker"""
+type Maker {
+  id: Int!
+  name: String!
+}
+
 type Mutation {
   createHospital(deleted: Boolean!, internal_memo: String!, name: String!, url: String): Hospital!
-  createInternalUser(email: String!, name: String!, password: String!, roleId: Int): InternalUser!
+  createInternalUser(email: String!, name: String!, password: String!, roleId: Int!): InternalUser!
+  createMaker(name: String!): Maker!
   deleteInternalUser(id: BigInt!): InternalUser!
+  deleteMaker(id: Int!): Maker!
   updateHospital(deleted: Boolean!, hospitalAddressInput: HospitalAddressInputType!, hospitalBusinessFormInput: HospitalBusinessFormInputType!, hospitalCertificationOptionInput: HospitalCertificationOptionInputType!, hospitalInternalReputationInput: HospitalInternalReputationInputType!, hospitalNightServiceOptionInput: HospitalNightServiceOptionInputType!, hospitalNightUrgentActionOptionInput: HospitalNightUrgentActionOptionInputType!, hospitalReservationStatusInput: HospitalReservationStatusInputType!, id: BigInt!, internal_memo: String!, name: String!, url: String!): Hospital!
-  updateInternalUser(email: String!, id: BigInt!, name: String!, password: String!, roleId: Int): InternalUser!
+  updateInternalUser(email: String!, id: BigInt!, name: String!, password: String!, roleId: Int!): InternalUser!
+  updateMaker(id: Int!, name: String!): Maker!
 }
 
 """
@@ -211,6 +220,7 @@ type Query {
   hospitals: [Hospital!]!
   internalUser(id: BigInt!): InternalUser!
   internalUsers: [InternalUser!]!
+  makers: [Maker!]!
   roles: [Role!]!
   session: Session!
 }

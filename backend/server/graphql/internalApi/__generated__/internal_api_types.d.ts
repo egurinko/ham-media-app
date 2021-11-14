@@ -148,6 +148,10 @@ export interface NexusGenObjects {
     id: NexusGenScalars['BigInt']; // BigInt!
     name: string; // String!
   }
+  Maker: { // root type
+    id: number; // Int!
+    name: string; // String!
+  }
   Mutation: {};
   PageInfo: { // root type
     endCursor?: string | null; // String
@@ -257,12 +261,19 @@ export interface NexusGenFieldTypes {
     name: string; // String!
     role: NexusGenRootTypes['Role']; // Role!
   }
+  Maker: { // field return type
+    id: number; // Int!
+    name: string; // String!
+  }
   Mutation: { // field return type
     createHospital: NexusGenRootTypes['Hospital']; // Hospital!
     createInternalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
+    createMaker: NexusGenRootTypes['Maker']; // Maker!
     deleteInternalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
+    deleteMaker: NexusGenRootTypes['Maker']; // Maker!
     updateHospital: NexusGenRootTypes['Hospital']; // Hospital!
     updateInternalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
+    updateMaker: NexusGenRootTypes['Maker']; // Maker!
   }
   PageInfo: { // field return type
     endCursor: string | null; // String
@@ -281,6 +292,7 @@ export interface NexusGenFieldTypes {
     hospitals: NexusGenRootTypes['Hospital'][]; // [Hospital!]!
     internalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     internalUsers: NexusGenRootTypes['InternalUser'][]; // [InternalUser!]!
+    makers: NexusGenRootTypes['Maker'][]; // [Maker!]!
     roles: NexusGenRootTypes['Role'][]; // [Role!]!
     session: NexusGenRootTypes['Session']; // Session!
   }
@@ -371,12 +383,19 @@ export interface NexusGenFieldTypeNames {
     name: 'String'
     role: 'Role'
   }
+  Maker: { // field return type name
+    id: 'Int'
+    name: 'String'
+  }
   Mutation: { // field return type name
     createHospital: 'Hospital'
     createInternalUser: 'InternalUser'
+    createMaker: 'Maker'
     deleteInternalUser: 'InternalUser'
+    deleteMaker: 'Maker'
     updateHospital: 'Hospital'
     updateInternalUser: 'InternalUser'
+    updateMaker: 'Maker'
   }
   PageInfo: { // field return type name
     endCursor: 'String'
@@ -395,6 +414,7 @@ export interface NexusGenFieldTypeNames {
     hospitals: 'Hospital'
     internalUser: 'InternalUser'
     internalUsers: 'InternalUser'
+    makers: 'Maker'
     roles: 'Role'
     session: 'Session'
   }
@@ -424,10 +444,16 @@ export interface NexusGenArgTypes {
       email: string; // String!
       name: string; // String!
       password: string; // String!
-      roleId?: number | null; // Int
+      roleId: number; // Int!
+    }
+    createMaker: { // args
+      name: string; // String!
     }
     deleteInternalUser: { // args
       id: NexusGenScalars['BigInt']; // BigInt!
+    }
+    deleteMaker: { // args
+      id: number; // Int!
     }
     updateHospital: { // args
       deleted: boolean; // Boolean!
@@ -448,7 +474,11 @@ export interface NexusGenArgTypes {
       id: NexusGenScalars['BigInt']; // BigInt!
       name: string; // String!
       password: string; // String!
-      roleId?: number | null; // Int
+      roleId: number; // Int!
+    }
+    updateMaker: { // args
+      id: number; // Int!
+      name: string; // String!
     }
   }
   Query: {
