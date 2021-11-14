@@ -448,6 +448,7 @@ export interface NexusGenArgTypes {
       id: NexusGenScalars['BigInt']; // BigInt!
       name: string; // String!
       password: string; // String!
+      roleId: number; // Int!
     }
   }
   Query: {

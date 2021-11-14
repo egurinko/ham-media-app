@@ -7,6 +7,7 @@ import {
   FormControl,
   FormLabel,
   FormErrorMessage,
+  Select,
 } from '@chakra-ui/react';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import { Card } from '@/components/atoms/Card';
@@ -14,6 +15,7 @@ import { FlashMessage } from '@/components/molecules/FlashMessage';
 import {
   useInternalUpdateInternalUserMutation,
   useInternalGetInternalUserQuery,
+  useInternalGetRolesQuery,
 } from '@/api/internal_api/types';
 import type { InternalGetInternalUserQuery } from '@/api/internal_api/types';
 import { goAdminInternalUsers } from '@/utils/routes';
@@ -23,6 +25,7 @@ interface FormInput {
   name: string;
   email: string;
   password: string;
+  roleId: string;
 }
 
 interface Props {
@@ -35,6 +38,7 @@ const Form: React.VFC<Props> = ({ internalUserId }) => {
       variables: { id: internalUserId },
     });
   const internalUser = internalUserData?.internalUser;
+  const { data: rolesData } = useInternalGetRolesQuery();
   const {
     control,
     handleSubmit,
@@ -49,13 +53,20 @@ const Form: React.VFC<Props> = ({ internalUserId }) => {
     name,
     email,
     password,
+    roleId,
   }) => {
     if (internalUser) {
       trigger();
 
       try {
         await update({
-          variables: { id: internalUser.id, name, email, password },
+          variables: {
+            id: internalUser.id,
+            name,
+            email,
+            password,
+            roleId: Number(roleId),
+          },
         });
         setTimeout(() => {
           goAdminInternalUsers(router);
@@ -131,6 +142,27 @@ const Form: React.VFC<Props> = ({ internalUserId }) => {
               />
               {errors.password && (
                 <FormErrorMessage>{errors.password.message}</FormErrorMessage>
+              )}
+            </FormControl>
+            <FormControl id="roleId" isRequired isInvalid={!!errors.roleId}>
+              <FormLabel>ロール</FormLabel>
+              <Controller
+                name="roleId"
+                defaultValue={String(internalUser.role.id)}
+                control={control}
+                rules={{ required: 'ロールを入力してください' }}
+                render={({ field }) => (
+                  <Select isInvalid={!!errors.roleId} {...field}>
+                    {rolesData?.roles.map((role) => (
+                      <option key={String(role.id)} value={role.id}>
+                        {role.name}
+                      </option>
+                    ))}
+                  </Select>
+                )}
+              />
+              {errors.roleId && (
+                <FormErrorMessage>{errors.roleId.message}</FormErrorMessage>
               )}
             </FormControl>
           </Stack>

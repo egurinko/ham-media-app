@@ -13,7 +13,7 @@ export const executeDevelopment = async () => {
         name: 'admin',
         password_digest:
           '$2b$08$nOByk5csZtvw62zGlLZLne63t/jDGqGEoofMWyZ8egaNkcdC1HDra', // password
-        role_id: admin?.id,
+        role_id: admin!.id,
       },
     });
 
@@ -25,7 +25,7 @@ export const executeDevelopment = async () => {
         name: 'user',
         password_digest:
           '$2b$08$nOByk5csZtvw62zGlLZLne63t/jDGqGEoofMWyZ8egaNkcdC1HDra', // password
-        role_id: user?.id,
+        role_id: user!.id,
       },
     });
 
