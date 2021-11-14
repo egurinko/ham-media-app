@@ -10,6 +10,7 @@ export const internalUser = queryField((t) => {
     resolve: async (_root, args, ctx) => {
       const internalUser = await ctx.prisma.internalUser.findUnique({
         where: { id: args.id },
+        include: { role: true },
       });
 
       if (!internalUser) {
