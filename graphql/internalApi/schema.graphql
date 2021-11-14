@@ -220,6 +220,7 @@ type Query {
   hospitals: [Hospital!]!
   internalUser(id: BigInt!): InternalUser!
   internalUsers: [InternalUser!]!
+  maker(id: Int!): Maker!
   makers: [Maker!]!
   roles: [Role!]!
   session: Session!
