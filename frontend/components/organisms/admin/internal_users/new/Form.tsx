@@ -7,14 +7,14 @@ import {
   FormControl,
   FormLabel,
   FormErrorMessage,
+  Select,
 } from '@chakra-ui/react';
-import { gql } from '@apollo/client';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import { Card } from '@/components/atoms/Card';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
 import {
   useInternalCreateInternalUserMutation,
-  InternalUserFieldsFragment,
+  useInternalGetRolesQuery,
 } from '@/api/internal_api/types';
 import { goAdminInternalUsers } from '@/utils/routes';
 import validators from '@/validators/index';
@@ -23,6 +23,7 @@ interface FormInput {
   name: string;
   email: string;
   password: string;
+  roleId: number;
 }
 
 const Form: React.VFC<NoProps> = () => {
@@ -33,6 +34,8 @@ const Form: React.VFC<NoProps> = () => {
     trigger,
     formState: { errors },
   } = useForm<FormInput>({ mode: 'onTouched' });
+  const { data: rolesData } = useInternalGetRolesQuery();
+  const adminRole = rolesData?.roles.find((role) => role.name === 'admin');
   const [create, { data, loading, error }] =
     useInternalCreateInternalUserMutation();
 
@@ -40,44 +43,13 @@ const Form: React.VFC<NoProps> = () => {
     name,
     email,
     password,
+    roleId,
   }) => {
     trigger();
 
     try {
       await create({
-        variables: { name, email, password },
-        update(cache, { data }) {
-          cache.modify({
-            fields: {
-              internalUsers(
-                currents: InternalUserFieldsFragment[] = [],
-                { readField }
-              ) {
-                const adding = cache.writeFragment({
-                  data: data?.createInternalUser,
-                  fragment: gql`
-                    fragment NewInternalUser on InternalUser {
-                      id
-                      name
-                      email
-                    }
-                  `,
-                });
-
-                if (
-                  currents.some(
-                    (ref) =>
-                      readField('id', ref) === data?.createInternalUser.id
-                  )
-                ) {
-                  return currents;
-                }
-
-                return [...currents, adding];
-              },
-            },
-          });
-        },
+        variables: { name, email, password, roleId },
       });
       setTimeout(() => {
         goAdminInternalUsers(router);
@@ -150,6 +122,29 @@ const Form: React.VFC<NoProps> = () => {
                 <FormErrorMessage>{errors.password.message}</FormErrorMessage>
               )}
             </FormControl>
+            {adminRole ? (
+              <FormControl id="roleId" isRequired isInvalid={!!errors.roleId}>
+                <FormLabel>ロール</FormLabel>
+                <Controller
+                  name="roleId"
+                  defaultValue={adminRole.id}
+                  control={control}
+                  rules={{ required: 'ロールを入力してください' }}
+                  render={({ field }) => (
+                    <Select isInvalid={!!errors.roleId} {...field}>
+                      {rolesData?.roles.map((role) => (
+                        <option key={String(role.id)} value={role.id}>
+                          {role.name}
+                        </option>
+                      ))}
+                    </Select>
+                  )}
+                />
+                {errors.roleId && (
+                  <FormErrorMessage>{errors.roleId.message}</FormErrorMessage>
+                )}
+              </FormControl>
+            ) : null}
           </Stack>
           <Box d="grid" justifyContent="center">
             <Button
