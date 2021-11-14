@@ -1,4 +1,4 @@
-import { arg, stringArg, nonNull, mutationField } from 'nexus';
+import { arg, stringArg, intArg, nonNull, mutationField } from 'nexus';
 import { internalUserType } from '../types/internalUserType';
 import { hash } from 'bcrypt';
 
@@ -10,6 +10,7 @@ export const updateInternalUserField = mutationField((t) => {
       name: nonNull(stringArg()),
       email: nonNull(stringArg()),
       password: nonNull(stringArg()),
+      roleId: nonNull(intArg()),
     },
     resolve: async (_, args, ctx) => {
       const hashedPassword = await hash(args.password, 8);
@@ -18,6 +19,7 @@ export const updateInternalUserField = mutationField((t) => {
           name: args.name,
           email: args.email,
           password_digest: hashedPassword,
+          role_id: args.roleId,
         },
         where: {
           id: args.id,
