@@ -178,9 +178,12 @@ export type Mutation = {
   __typename?: 'Mutation';
   createHospital: Hospital;
   createInternalUser: InternalUser;
+  createMaker: Maker;
   deleteInternalUser: InternalUser;
+  deleteMaker: Maker;
   updateHospital: Hospital;
   updateInternalUser: InternalUser;
+  updateMaker: Maker;
 };
 
 
@@ -200,8 +203,18 @@ export type MutationCreateInternalUserArgs = {
 };
 
 
+export type MutationCreateMakerArgs = {
+  name: Scalars['String'];
+};
+
+
 export type MutationDeleteInternalUserArgs = {
   id: Scalars['BigInt'];
+};
+
+
+export type MutationDeleteMakerArgs = {
+  id: Scalars['Int'];
 };
 
 
@@ -227,6 +240,12 @@ export type MutationUpdateInternalUserArgs = {
   name: Scalars['String'];
   password: Scalars['String'];
   roleId: Scalars['Int'];
+};
+
+
+export type MutationUpdateMakerArgs = {
+  id: Scalars['Int'];
+  name: Scalars['String'];
 };
 
 /** PageInfo cursor, as defined in https://facebook.github.io/relay/graphql/connections.htm#sec-undefined.PageInfo */
@@ -329,6 +348,13 @@ export type InternalDeleteInternalUserMutationVariables = Exact<{
 
 
 export type InternalDeleteInternalUserMutation = { __typename?: 'Mutation', deleteInternalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string } };
+
+export type InternalDeleteMakerMutationVariables = Exact<{
+  id: Scalars['Int'];
+}>;
+
+
+export type InternalDeleteMakerMutation = { __typename?: 'Mutation', deleteMaker: { __typename?: 'Maker', id: number, name: string } };
 
 export type HospitalFieldsFragment = { __typename?: 'Hospital', id: BigInt, name: string, url: string, deleted: boolean, internal_memo: string, hospitalAddress?: { __typename?: 'HospitalAddress', id: BigInt, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: BigInt } } | null | undefined, hospitalBusinessForm?: { __typename?: 'HospitalBusinessForm', id: BigInt, business_hour: string, closed_day: string, insurance_enabled: string, remark: string } | null | undefined, hospitalCertificationOption?: { __typename?: 'HospitalCertificationOption', id: BigInt, nichiju_registered: string, jsava_registered: string } | null | undefined, hospitalInternalReputation?: { __typename?: 'HospitalInternalReputation', id: BigInt, star: number, remark: string } | null | undefined, hospitalNightServiceOption?: { __typename?: 'HospitalNightServiceOption', id: BigInt, status: string, remark: string } | null | undefined, hospitalNightUrgentActionOption?: { __typename?: 'HospitalNightUrgentActionOption', id: BigInt, status: string } | null | undefined, hospitalReservationStatus?: { __typename?: 'HospitalReservationStatus', id: BigInt, required: string, reservable: string, remark: string } | null | undefined };
 
@@ -606,6 +632,40 @@ export function useInternalDeleteInternalUserMutation(baseOptions?: Apollo.Mutat
 export type InternalDeleteInternalUserMutationHookResult = ReturnType<typeof useInternalDeleteInternalUserMutation>;
 export type InternalDeleteInternalUserMutationResult = Apollo.MutationResult<InternalDeleteInternalUserMutation>;
 export type InternalDeleteInternalUserMutationOptions = Apollo.BaseMutationOptions<InternalDeleteInternalUserMutation, InternalDeleteInternalUserMutationVariables>;
+export const InternalDeleteMakerDocument = gql`
+    mutation InternalDeleteMaker($id: Int!) {
+  deleteMaker(id: $id) {
+    id
+    name
+  }
+}
+    `;
+export type InternalDeleteMakerMutationFn = Apollo.MutationFunction<InternalDeleteMakerMutation, InternalDeleteMakerMutationVariables>;
+
+/**
+ * __useInternalDeleteMakerMutation__
+ *
+ * To run a mutation, you first call `useInternalDeleteMakerMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInternalDeleteMakerMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [internalDeleteMakerMutation, { data, loading, error }] = useInternalDeleteMakerMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useInternalDeleteMakerMutation(baseOptions?: Apollo.MutationHookOptions<InternalDeleteMakerMutation, InternalDeleteMakerMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<InternalDeleteMakerMutation, InternalDeleteMakerMutationVariables>(InternalDeleteMakerDocument, options);
+      }
+export type InternalDeleteMakerMutationHookResult = ReturnType<typeof useInternalDeleteMakerMutation>;
+export type InternalDeleteMakerMutationResult = Apollo.MutationResult<InternalDeleteMakerMutation>;
+export type InternalDeleteMakerMutationOptions = Apollo.BaseMutationOptions<InternalDeleteMakerMutation, InternalDeleteMakerMutationVariables>;
 export const InternalGetHospitalDocument = gql`
     query InternalGetHospital($id: BigInt!) {
   hospital(id: $id) {
