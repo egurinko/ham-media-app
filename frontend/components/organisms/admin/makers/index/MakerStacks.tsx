@@ -59,7 +59,6 @@ const MakerStacks: React.VFC<NoProps> = () => {
   );
 
   const handleDelete = useCallback(() => {
-    console.log({ selectedMaker });
     if (selectedMaker) {
       remove({ variables: { id: selectedMaker.id } });
       onClose();
