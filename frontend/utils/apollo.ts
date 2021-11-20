@@ -43,6 +43,7 @@ const getCache = () =>
             'jsavaOption',
             'nichijuOption',
           ]),
+          productConnection: relayStylePagination(),
         },
       },
     },

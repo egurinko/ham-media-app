@@ -17,6 +17,8 @@ export type Scalars = {
    * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt
    */
   BigInt: BigInt;
+  /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
+  DateTime: any;
 };
 
 /** A hospital */
@@ -179,11 +181,13 @@ export type Mutation = {
   createHospital: Hospital;
   createInternalUser: InternalUser;
   createMaker: Maker;
+  createProduct: Product;
   deleteInternalUser: InternalUser;
   deleteMaker: Maker;
   updateHospital: Hospital;
   updateInternalUser: InternalUser;
   updateMaker: Maker;
+  updateProduct: Product;
 };
 
 
@@ -205,6 +209,13 @@ export type MutationCreateInternalUserArgs = {
 
 export type MutationCreateMakerArgs = {
   name: Scalars['String'];
+};
+
+
+export type MutationCreateProductArgs = {
+  makerId: Scalars['Int'];
+  name: Scalars['String'];
+  remark: Scalars['String'];
 };
 
 
@@ -248,6 +259,14 @@ export type MutationUpdateMakerArgs = {
   name: Scalars['String'];
 };
 
+
+export type MutationUpdateProductArgs = {
+  id: Scalars['Int'];
+  makerId: Scalars['Int'];
+  name: Scalars['String'];
+  remark: Scalars['String'];
+};
+
 /** PageInfo cursor, as defined in https://facebook.github.io/relay/graphql/connections.htm#sec-undefined.PageInfo */
 export type PageInfo = {
   __typename?: 'PageInfo';
@@ -269,6 +288,32 @@ export type Prefecture = {
   region: Region;
 };
 
+/** A product */
+export type Product = {
+  __typename?: 'Product';
+  id: Scalars['Int'];
+  maker: Maker;
+  name: Scalars['String'];
+  remark: Scalars['String'];
+  stocks: Array<Stock>;
+};
+
+export type ProductConnection = {
+  __typename?: 'ProductConnection';
+  /** https://facebook.github.io/relay/graphql/connections.htm#sec-Edge-Types */
+  edges?: Maybe<Array<Maybe<ProductEdge>>>;
+  /** https://facebook.github.io/relay/graphql/connections.htm#sec-undefined.PageInfo */
+  pageInfo: PageInfo;
+};
+
+export type ProductEdge = {
+  __typename?: 'ProductEdge';
+  /** https://facebook.github.io/relay/graphql/connections.htm#sec-Cursor */
+  cursor: Scalars['String'];
+  /** https://facebook.github.io/relay/graphql/connections.htm#sec-Node */
+  node?: Maybe<Product>;
+};
+
 export type Query = {
   __typename?: 'Query';
   hospital: Hospital;
@@ -278,6 +323,9 @@ export type Query = {
   internalUsers: Array<InternalUser>;
   maker: Maker;
   makers: Array<Maker>;
+  product: Product;
+  productConnection?: Maybe<ProductConnection>;
+  products: Array<Product>;
   roles: Array<Role>;
   session: Session;
 };
@@ -308,6 +356,19 @@ export type QueryMakerArgs = {
   id: Scalars['Int'];
 };
 
+
+export type QueryProductArgs = {
+  id: Scalars['Int'];
+};
+
+
+export type QueryProductConnectionArgs = {
+  after?: Maybe<Scalars['String']>;
+  before?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+};
+
 /** A region */
 export type Region = {
   __typename?: 'Region';
@@ -326,6 +387,13 @@ export type Session = {
   __typename?: 'Session';
   internalUser: InternalUser;
   token: Scalars['String'];
+};
+
+/** A stock */
+export type Stock = {
+  __typename?: 'Stock';
+  expired_at: Scalars['DateTime'];
+  id: Scalars['Int'];
 };
 
 export type InternalCreateHospitalMutationVariables = Exact<{
@@ -355,6 +423,15 @@ export type InternalCreateMakerMutationVariables = Exact<{
 
 export type InternalCreateMakerMutation = { __typename?: 'Mutation', createMaker: { __typename?: 'Maker', id: number, name: string } };
 
+export type InternalCreateProductMutationVariables = Exact<{
+  makerId: Scalars['Int'];
+  name: Scalars['String'];
+  remark: Scalars['String'];
+}>;
+
+
+export type InternalCreateProductMutation = { __typename?: 'Mutation', createProduct: { __typename?: 'Product', id: number, name: string, remark: string, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any }> } };
+
 export type InternalDeleteInternalUserMutationVariables = Exact<{
   id: Scalars['BigInt'];
 }>;
@@ -374,6 +451,10 @@ export type HospitalFieldsFragment = { __typename?: 'Hospital', id: BigInt, name
 export type InternalUserFieldsFragment = { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } };
 
 export type MakerFieldsFragment = { __typename?: 'Maker', id: number, name: string };
+
+export type ProductFieldsFragment = { __typename?: 'Product', id: number, name: string, remark: string, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any }> };
+
+export type StockFieldsFragment = { __typename?: 'Stock', id: number, expired_at: any };
 
 export type RoleFieldsFragment = { __typename?: 'Role', id: number, name: string };
 
@@ -424,6 +505,26 @@ export type InternalGetMakersQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type InternalGetMakersQuery = { __typename?: 'Query', makers: Array<{ __typename?: 'Maker', id: number, name: string }> };
 
+export type InternalGetProductQueryVariables = Exact<{
+  id: Scalars['Int'];
+}>;
+
+
+export type InternalGetProductQuery = { __typename?: 'Query', product: { __typename?: 'Product', id: number, name: string, remark: string, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any }> } };
+
+export type InternalGetProductConnectionQueryVariables = Exact<{
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+}>;
+
+
+export type InternalGetProductConnectionQuery = { __typename?: 'Query', productConnection?: { __typename?: 'ProductConnection', edges?: Array<{ __typename?: 'ProductEdge', node?: { __typename?: 'Product', id: number, name: string, remark: string, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any }> } | null | undefined } | null | undefined> | null | undefined, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, hasPreviousPage: boolean, startCursor?: string | null | undefined, endCursor?: string | null | undefined } } | null | undefined };
+
+export type InternalGetProductIdsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type InternalGetProductIdsQuery = { __typename?: 'Query', products: Array<{ __typename?: 'Product', id: number }> };
+
 export type InternalGetRolesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -470,6 +571,16 @@ export type InternalUpdateMakerMutationVariables = Exact<{
 
 
 export type InternalUpdateMakerMutation = { __typename?: 'Mutation', updateMaker: { __typename?: 'Maker', id: number, name: string } };
+
+export type InternalUpdateProductMutationVariables = Exact<{
+  id: Scalars['Int'];
+  makerId: Scalars['Int'];
+  name: Scalars['String'];
+  remark: Scalars['String'];
+}>;
+
+
+export type InternalUpdateProductMutation = { __typename?: 'Mutation', updateProduct: { __typename?: 'Product', id: number, name: string, remark: string, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any }> } };
 
 export const HospitalFieldsFragmentDoc = gql`
     fragment HospitalFields on Hospital {
@@ -543,6 +654,26 @@ export const MakerFieldsFragmentDoc = gql`
   name
 }
     `;
+export const StockFieldsFragmentDoc = gql`
+    fragment StockFields on Stock {
+  id
+  expired_at
+}
+    `;
+export const ProductFieldsFragmentDoc = gql`
+    fragment ProductFields on Product {
+  id
+  name
+  remark
+  maker {
+    ...MakerFields
+  }
+  stocks {
+    ...StockFields
+  }
+}
+    ${MakerFieldsFragmentDoc}
+${StockFieldsFragmentDoc}`;
 export const InternalCreateHospitalDocument = gql`
     mutation InternalCreateHospital($name: String!, $url: String, $deleted: Boolean!, $internal_memo: String!) {
   createHospital(
@@ -658,6 +789,41 @@ export function useInternalCreateMakerMutation(baseOptions?: Apollo.MutationHook
 export type InternalCreateMakerMutationHookResult = ReturnType<typeof useInternalCreateMakerMutation>;
 export type InternalCreateMakerMutationResult = Apollo.MutationResult<InternalCreateMakerMutation>;
 export type InternalCreateMakerMutationOptions = Apollo.BaseMutationOptions<InternalCreateMakerMutation, InternalCreateMakerMutationVariables>;
+export const InternalCreateProductDocument = gql`
+    mutation InternalCreateProduct($makerId: Int!, $name: String!, $remark: String!) {
+  createProduct(makerId: $makerId, name: $name, remark: $remark) {
+    ...ProductFields
+  }
+}
+    ${ProductFieldsFragmentDoc}`;
+export type InternalCreateProductMutationFn = Apollo.MutationFunction<InternalCreateProductMutation, InternalCreateProductMutationVariables>;
+
+/**
+ * __useInternalCreateProductMutation__
+ *
+ * To run a mutation, you first call `useInternalCreateProductMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInternalCreateProductMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [internalCreateProductMutation, { data, loading, error }] = useInternalCreateProductMutation({
+ *   variables: {
+ *      makerId: // value for 'makerId'
+ *      name: // value for 'name'
+ *      remark: // value for 'remark'
+ *   },
+ * });
+ */
+export function useInternalCreateProductMutation(baseOptions?: Apollo.MutationHookOptions<InternalCreateProductMutation, InternalCreateProductMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<InternalCreateProductMutation, InternalCreateProductMutationVariables>(InternalCreateProductDocument, options);
+      }
+export type InternalCreateProductMutationHookResult = ReturnType<typeof useInternalCreateProductMutation>;
+export type InternalCreateProductMutationResult = Apollo.MutationResult<InternalCreateProductMutation>;
+export type InternalCreateProductMutationOptions = Apollo.BaseMutationOptions<InternalCreateProductMutation, InternalCreateProductMutationVariables>;
 export const InternalDeleteInternalUserDocument = gql`
     mutation InternalDeleteInternalUser($id: BigInt!) {
   deleteInternalUser(id: $id) {
@@ -989,6 +1155,121 @@ export function useInternalGetMakersLazyQuery(baseOptions?: Apollo.LazyQueryHook
 export type InternalGetMakersQueryHookResult = ReturnType<typeof useInternalGetMakersQuery>;
 export type InternalGetMakersLazyQueryHookResult = ReturnType<typeof useInternalGetMakersLazyQuery>;
 export type InternalGetMakersQueryResult = Apollo.QueryResult<InternalGetMakersQuery, InternalGetMakersQueryVariables>;
+export const InternalGetProductDocument = gql`
+    query InternalGetProduct($id: Int!) {
+  product(id: $id) {
+    ...ProductFields
+  }
+}
+    ${ProductFieldsFragmentDoc}`;
+
+/**
+ * __useInternalGetProductQuery__
+ *
+ * To run a query within a React component, call `useInternalGetProductQuery` and pass it any options that fit your needs.
+ * When your component renders, `useInternalGetProductQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useInternalGetProductQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useInternalGetProductQuery(baseOptions: Apollo.QueryHookOptions<InternalGetProductQuery, InternalGetProductQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<InternalGetProductQuery, InternalGetProductQueryVariables>(InternalGetProductDocument, options);
+      }
+export function useInternalGetProductLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InternalGetProductQuery, InternalGetProductQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<InternalGetProductQuery, InternalGetProductQueryVariables>(InternalGetProductDocument, options);
+        }
+export type InternalGetProductQueryHookResult = ReturnType<typeof useInternalGetProductQuery>;
+export type InternalGetProductLazyQueryHookResult = ReturnType<typeof useInternalGetProductLazyQuery>;
+export type InternalGetProductQueryResult = Apollo.QueryResult<InternalGetProductQuery, InternalGetProductQueryVariables>;
+export const InternalGetProductConnectionDocument = gql`
+    query InternalGetProductConnection($first: Int, $after: String) {
+  productConnection(first: $first, after: $after) {
+    edges {
+      node {
+        ...ProductFields
+      }
+    }
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+  }
+}
+    ${ProductFieldsFragmentDoc}`;
+
+/**
+ * __useInternalGetProductConnectionQuery__
+ *
+ * To run a query within a React component, call `useInternalGetProductConnectionQuery` and pass it any options that fit your needs.
+ * When your component renders, `useInternalGetProductConnectionQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useInternalGetProductConnectionQuery({
+ *   variables: {
+ *      first: // value for 'first'
+ *      after: // value for 'after'
+ *   },
+ * });
+ */
+export function useInternalGetProductConnectionQuery(baseOptions?: Apollo.QueryHookOptions<InternalGetProductConnectionQuery, InternalGetProductConnectionQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<InternalGetProductConnectionQuery, InternalGetProductConnectionQueryVariables>(InternalGetProductConnectionDocument, options);
+      }
+export function useInternalGetProductConnectionLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InternalGetProductConnectionQuery, InternalGetProductConnectionQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<InternalGetProductConnectionQuery, InternalGetProductConnectionQueryVariables>(InternalGetProductConnectionDocument, options);
+        }
+export type InternalGetProductConnectionQueryHookResult = ReturnType<typeof useInternalGetProductConnectionQuery>;
+export type InternalGetProductConnectionLazyQueryHookResult = ReturnType<typeof useInternalGetProductConnectionLazyQuery>;
+export type InternalGetProductConnectionQueryResult = Apollo.QueryResult<InternalGetProductConnectionQuery, InternalGetProductConnectionQueryVariables>;
+export const InternalGetProductIdsDocument = gql`
+    query InternalGetProductIds {
+  products {
+    id
+  }
+}
+    `;
+
+/**
+ * __useInternalGetProductIdsQuery__
+ *
+ * To run a query within a React component, call `useInternalGetProductIdsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useInternalGetProductIdsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useInternalGetProductIdsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useInternalGetProductIdsQuery(baseOptions?: Apollo.QueryHookOptions<InternalGetProductIdsQuery, InternalGetProductIdsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<InternalGetProductIdsQuery, InternalGetProductIdsQueryVariables>(InternalGetProductIdsDocument, options);
+      }
+export function useInternalGetProductIdsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InternalGetProductIdsQuery, InternalGetProductIdsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<InternalGetProductIdsQuery, InternalGetProductIdsQueryVariables>(InternalGetProductIdsDocument, options);
+        }
+export type InternalGetProductIdsQueryHookResult = ReturnType<typeof useInternalGetProductIdsQuery>;
+export type InternalGetProductIdsLazyQueryHookResult = ReturnType<typeof useInternalGetProductIdsLazyQuery>;
+export type InternalGetProductIdsQueryResult = Apollo.QueryResult<InternalGetProductIdsQuery, InternalGetProductIdsQueryVariables>;
 export const InternalGetRolesDocument = gql`
     query InternalGetRoles {
   roles {
@@ -1196,3 +1477,39 @@ export function useInternalUpdateMakerMutation(baseOptions?: Apollo.MutationHook
 export type InternalUpdateMakerMutationHookResult = ReturnType<typeof useInternalUpdateMakerMutation>;
 export type InternalUpdateMakerMutationResult = Apollo.MutationResult<InternalUpdateMakerMutation>;
 export type InternalUpdateMakerMutationOptions = Apollo.BaseMutationOptions<InternalUpdateMakerMutation, InternalUpdateMakerMutationVariables>;
+export const InternalUpdateProductDocument = gql`
+    mutation InternalUpdateProduct($id: Int!, $makerId: Int!, $name: String!, $remark: String!) {
+  updateProduct(id: $id, makerId: $makerId, name: $name, remark: $remark) {
+    ...ProductFields
+  }
+}
+    ${ProductFieldsFragmentDoc}`;
+export type InternalUpdateProductMutationFn = Apollo.MutationFunction<InternalUpdateProductMutation, InternalUpdateProductMutationVariables>;
+
+/**
+ * __useInternalUpdateProductMutation__
+ *
+ * To run a mutation, you first call `useInternalUpdateProductMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInternalUpdateProductMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [internalUpdateProductMutation, { data, loading, error }] = useInternalUpdateProductMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      makerId: // value for 'makerId'
+ *      name: // value for 'name'
+ *      remark: // value for 'remark'
+ *   },
+ * });
+ */
+export function useInternalUpdateProductMutation(baseOptions?: Apollo.MutationHookOptions<InternalUpdateProductMutation, InternalUpdateProductMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<InternalUpdateProductMutation, InternalUpdateProductMutationVariables>(InternalUpdateProductDocument, options);
+      }
+export type InternalUpdateProductMutationHookResult = ReturnType<typeof useInternalUpdateProductMutation>;
+export type InternalUpdateProductMutationResult = Apollo.MutationResult<InternalUpdateProductMutation>;
+export type InternalUpdateProductMutationOptions = Apollo.BaseMutationOptions<InternalUpdateProductMutation, InternalUpdateProductMutationVariables>;

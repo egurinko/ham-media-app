@@ -12,6 +12,7 @@ const Navigation: React.VFC<NoProps> = () => {
   );
   const isAdminHospitalsPath = router.pathname.includes('admin/hospitals');
   const isAdminMakersPath = router.pathname.includes('admin/makers');
+  const isAdminProductsPath = router.pathname.includes('admin/products');
 
   return (
     <VStack alignItems="flex-start" spacing={{ base: 6, sm: 12 }} mt="8">
@@ -83,24 +84,24 @@ const Navigation: React.VFC<NoProps> = () => {
               </a>
             </Link>
           </ListItem>
-          {/* <ListItem>
+          <ListItem>
             <Link href="/admin/products">
               <a>
                 <Box
                   display="flex"
                   alignItems="center"
-                  fill={isAdminHospitalsPath ? 'primary.main' : 'text.main'}
-                  color={isAdminHospitalsPath ? 'primary.main' : undefined}
+                  fill={isAdminProductsPath ? 'primary.main' : 'text.main'}
+                  color={isAdminProductsPath ? 'primary.main' : undefined}
                   _hover={{
                     fill: 'primary.main',
                     color: 'primary.main',
                   }}
                 >
-                  在庫一覧
+                  商品管理
                 </Box>
               </a>
             </Link>
-          </ListItem> */}
+          </ListItem>
         </UnorderedList>
       </Box>
     </VStack>
