@@ -27,6 +27,12 @@ export const goAdminMakersEdit = (router: NextRouter, { id }: { id: number }) =>
   router.push(`/admin/makers/${id}/edit`);
 export const goAdminProducts = (router: NextRouter) =>
   router.push('/admin/products');
+export const goAdminProductsNew = (router: NextRouter) =>
+  router.push('/admin/products/new');
+export const goAdminProductsEdit = (
+  router: NextRouter,
+  { id }: { id: number }
+) => router.push(`/admin/products/${id}/edit`);
 
 export const goHospitals = (router: NextRouter) => router.push('/hospitals');
 export const goHospitalDetail = (router: NextRouter, { id }: { id: BigInt }) =>
