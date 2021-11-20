@@ -317,7 +317,7 @@ export interface NexusGenFieldTypes {
     maker: NexusGenRootTypes['Maker']; // Maker!
     name: string; // String!
     remark: string; // String!
-    stocks: NexusGenRootTypes['Stock'][][]; // [[Stock!]!]!
+    stocks: NexusGenRootTypes['Stock'][]; // [Stock!]!
   }
   ProductConnection: { // field return type
     edges: Array<NexusGenRootTypes['ProductEdge'] | null> | null; // [ProductEdge]

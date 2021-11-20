@@ -210,7 +210,7 @@ type Product {
   maker: Maker!
   name: String!
   remark: String!
-  stocks: [[Stock!]!]!
+  stocks: [Stock!]!
 }
 
 type ProductConnection {
