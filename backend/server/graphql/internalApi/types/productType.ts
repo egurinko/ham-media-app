@@ -9,6 +9,6 @@ export const productType = objectType({
     t.field(Product.name);
     t.field(Product.remark);
     t.nonNull.field(Product.maker);
-    t.nonNull.list.field(Product.stocks);
+    t.nonNull.field(Product.stocks);
   },
 });

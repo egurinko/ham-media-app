@@ -295,11 +295,13 @@ export interface NexusGenFieldTypes {
     createHospital: NexusGenRootTypes['Hospital']; // Hospital!
     createInternalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     createMaker: NexusGenRootTypes['Maker']; // Maker!
+    createProduct: NexusGenRootTypes['Product']; // Product!
     deleteInternalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     deleteMaker: NexusGenRootTypes['Maker']; // Maker!
     updateHospital: NexusGenRootTypes['Hospital']; // Hospital!
     updateInternalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     updateMaker: NexusGenRootTypes['Maker']; // Maker!
+    updateProduct: NexusGenRootTypes['Product']; // Product!
   }
   PageInfo: { // field return type
     endCursor: string | null; // String
@@ -317,7 +319,7 @@ export interface NexusGenFieldTypes {
     maker: NexusGenRootTypes['Maker']; // Maker!
     name: string; // String!
     remark: string; // String!
-    stocks: NexusGenRootTypes['Stock'][][]; // [[Stock!]!]!
+    stocks: NexusGenRootTypes['Stock'][]; // [Stock!]!
   }
   ProductConnection: { // field return type
     edges: Array<NexusGenRootTypes['ProductEdge'] | null> | null; // [ProductEdge]
@@ -440,11 +442,13 @@ export interface NexusGenFieldTypeNames {
     createHospital: 'Hospital'
     createInternalUser: 'InternalUser'
     createMaker: 'Maker'
+    createProduct: 'Product'
     deleteInternalUser: 'InternalUser'
     deleteMaker: 'Maker'
     updateHospital: 'Hospital'
     updateInternalUser: 'InternalUser'
     updateMaker: 'Maker'
+    updateProduct: 'Product'
   }
   PageInfo: { // field return type name
     endCursor: 'String'
@@ -521,6 +525,11 @@ export interface NexusGenArgTypes {
     createMaker: { // args
       name: string; // String!
     }
+    createProduct: { // args
+      makerId: number; // Int!
+      name: string; // String!
+      remark: string; // String!
+    }
     deleteInternalUser: { // args
       id: NexusGenScalars['BigInt']; // BigInt!
     }
@@ -551,6 +560,12 @@ export interface NexusGenArgTypes {
     updateMaker: { // args
       id: number; // Int!
       name: string; // String!
+    }
+    updateProduct: { // args
+      id: number; // Int!
+      makerId: number; // Int!
+      name: string; // String!
+      remark: string; // String!
     }
   }
   Query: {

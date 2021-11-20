@@ -6,3 +6,5 @@ export * from './updateHospital';
 export * from './createMaker';
 export * from './updateMaker';
 export * from './deleteMaker';
+export * from './createProduct';
+export * from './updateProduct';
