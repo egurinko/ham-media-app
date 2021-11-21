@@ -48,6 +48,10 @@ declare global {
 }
 
 export interface NexusGenInputs {
+  CreateStocksStocksInputType: { // input type
+    amount: number; // Int!
+    expiredAt: NexusGenScalars['DateTime']; // DateTime!
+  }
   HospitalAddressInputType: { // input type
     address: string; // String!
     phone_number: string; // String!
@@ -300,6 +304,7 @@ export interface NexusGenFieldTypes {
     createInternalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     createMaker: NexusGenRootTypes['Maker']; // Maker!
     createProduct: NexusGenRootTypes['Product']; // Product!
+    createStocks: NexusGenRootTypes['Stock'][]; // [Stock!]!
     deleteInternalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     deleteMaker: NexusGenRootTypes['Maker']; // Maker!
     updateHospital: NexusGenRootTypes['Hospital']; // Hospital!
@@ -457,6 +462,7 @@ export interface NexusGenFieldTypeNames {
     createInternalUser: 'InternalUser'
     createMaker: 'Maker'
     createProduct: 'Product'
+    createStocks: 'Stock'
     deleteInternalUser: 'InternalUser'
     deleteMaker: 'Maker'
     updateHospital: 'Hospital'
@@ -553,6 +559,10 @@ export interface NexusGenArgTypes {
       makerId: number; // Int!
       name: string; // String!
       remark: string; // String!
+    }
+    createStocks: { // args
+      productId: number; // Int!
+      stocks: NexusGenInputs['CreateStocksStocksInputType'][]; // [CreateStocksStocksInputType!]!
     }
     deleteInternalUser: { // args
       id: NexusGenScalars['BigInt']; // BigInt!
