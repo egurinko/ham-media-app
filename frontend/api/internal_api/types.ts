@@ -22,6 +22,11 @@ export type Scalars = {
   DateTime: any;
 };
 
+export type CreateStocksStocksInputType = {
+  amount: Scalars['Int'];
+  expiredAt: Scalars['DateTime'];
+};
+
 /** A hospital */
 export type Hospital = {
   __typename?: 'Hospital';
@@ -183,6 +188,7 @@ export type Mutation = {
   createInternalUser: InternalUser;
   createMaker: Maker;
   createProduct: Product;
+  createStocks: Array<Stock>;
   deleteInternalUser: InternalUser;
   deleteMaker: Maker;
   updateHospital: Hospital;
@@ -217,6 +223,12 @@ export type MutationCreateProductArgs = {
   makerId: Scalars['Int'];
   name: Scalars['String'];
   remark: Scalars['String'];
+};
+
+
+export type MutationCreateStocksArgs = {
+  productId: Scalars['Int'];
+  stocks: Array<CreateStocksStocksInputType>;
 };
 
 
@@ -450,6 +462,14 @@ export type InternalCreateProductMutationVariables = Exact<{
 
 
 export type InternalCreateProductMutation = { __typename?: 'Mutation', createProduct: { __typename?: 'Product', id: number, name: string, remark: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> } };
+
+export type InternalCreateStocksMutationVariables = Exact<{
+  productId: Scalars['Int'];
+  stocks: Array<CreateStocksStocksInputType> | CreateStocksStocksInputType;
+}>;
+
+
+export type InternalCreateStocksMutation = { __typename?: 'Mutation', createStocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> };
 
 export type InternalDeleteInternalUserMutationVariables = Exact<{
   id: Scalars['BigInt'];
@@ -860,6 +880,40 @@ export function useInternalCreateProductMutation(baseOptions?: Apollo.MutationHo
 export type InternalCreateProductMutationHookResult = ReturnType<typeof useInternalCreateProductMutation>;
 export type InternalCreateProductMutationResult = Apollo.MutationResult<InternalCreateProductMutation>;
 export type InternalCreateProductMutationOptions = Apollo.BaseMutationOptions<InternalCreateProductMutation, InternalCreateProductMutationVariables>;
+export const InternalCreateStocksDocument = gql`
+    mutation InternalCreateStocks($productId: Int!, $stocks: [CreateStocksStocksInputType!]!) {
+  createStocks(productId: $productId, stocks: $stocks) {
+    ...StockFields
+  }
+}
+    ${StockFieldsFragmentDoc}`;
+export type InternalCreateStocksMutationFn = Apollo.MutationFunction<InternalCreateStocksMutation, InternalCreateStocksMutationVariables>;
+
+/**
+ * __useInternalCreateStocksMutation__
+ *
+ * To run a mutation, you first call `useInternalCreateStocksMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInternalCreateStocksMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [internalCreateStocksMutation, { data, loading, error }] = useInternalCreateStocksMutation({
+ *   variables: {
+ *      productId: // value for 'productId'
+ *      stocks: // value for 'stocks'
+ *   },
+ * });
+ */
+export function useInternalCreateStocksMutation(baseOptions?: Apollo.MutationHookOptions<InternalCreateStocksMutation, InternalCreateStocksMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<InternalCreateStocksMutation, InternalCreateStocksMutationVariables>(InternalCreateStocksDocument, options);
+      }
+export type InternalCreateStocksMutationHookResult = ReturnType<typeof useInternalCreateStocksMutation>;
+export type InternalCreateStocksMutationResult = Apollo.MutationResult<InternalCreateStocksMutation>;
+export type InternalCreateStocksMutationOptions = Apollo.BaseMutationOptions<InternalCreateStocksMutation, InternalCreateStocksMutationVariables>;
 export const InternalDeleteInternalUserDocument = gql`
     mutation InternalDeleteInternalUser($id: BigInt!) {
   deleteInternalUser(id: $id) {
