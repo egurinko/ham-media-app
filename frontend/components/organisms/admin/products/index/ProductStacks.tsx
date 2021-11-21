@@ -72,7 +72,7 @@ const ProductStacks: React.VFC<NoProps> = () => {
                     {product.name}
                   </Text>
                 </Box>
-                <Box>
+                <Box ml="2">
                   <Text fontSize="sm">在庫：{product.stocks.length}</Text>
                 </Box>
               </Box>

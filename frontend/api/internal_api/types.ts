@@ -184,6 +184,7 @@ export type Maker = {
 
 export type Mutation = {
   __typename?: 'Mutation';
+  allocateStock: Stock;
   createHospital: Hospital;
   createInternalUser: InternalUser;
   createMaker: Maker;
@@ -191,10 +192,17 @@ export type Mutation = {
   createStocks: Array<Stock>;
   deleteInternalUser: InternalUser;
   deleteMaker: Maker;
+  returnStock: Stock;
   updateHospital: Hospital;
   updateInternalUser: InternalUser;
   updateMaker: Maker;
   updateProduct: Product;
+};
+
+
+export type MutationAllocateStockArgs = {
+  id: Scalars['Int'];
+  internalUserId: Scalars['BigInt'];
 };
 
 
@@ -238,6 +246,11 @@ export type MutationDeleteInternalUserArgs = {
 
 
 export type MutationDeleteMakerArgs = {
+  id: Scalars['Int'];
+};
+
+
+export type MutationReturnStockArgs = {
   id: Scalars['Int'];
 };
 
@@ -427,6 +440,14 @@ export type StockAllocation = {
   internalUser: InternalUser;
 };
 
+export type InternalAllocateStockMutationVariables = Exact<{
+  id: Scalars['Int'];
+  internalUserId: Scalars['BigInt'];
+}>;
+
+
+export type InternalAllocateStockMutation = { __typename?: 'Mutation', allocateStock: { __typename?: 'Stock', id: number, expired_at: any, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined } };
+
 export type InternalCreateHospitalMutationVariables = Exact<{
   name: Scalars['String'];
   url?: InputMaybe<Scalars['String']>;
@@ -581,6 +602,13 @@ export type InternalGetStocksQueryVariables = Exact<{
 
 export type InternalGetStocksQuery = { __typename?: 'Query', stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> };
 
+export type InternalReturnStockMutationVariables = Exact<{
+  id: Scalars['Int'];
+}>;
+
+
+export type InternalReturnStockMutation = { __typename?: 'Mutation', returnStock: { __typename?: 'Stock', id: number, expired_at: any, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined } };
+
 export type InternalUpdateHospitalMutationVariables = Exact<{
   id: Scalars['BigInt'];
   name: Scalars['String'];
@@ -730,6 +758,40 @@ export const ProductFieldsFragmentDoc = gql`
 }
     ${MakerFieldsFragmentDoc}
 ${StockFieldsFragmentDoc}`;
+export const InternalAllocateStockDocument = gql`
+    mutation InternalAllocateStock($id: Int!, $internalUserId: BigInt!) {
+  allocateStock(id: $id, internalUserId: $internalUserId) {
+    ...StockFields
+  }
+}
+    ${StockFieldsFragmentDoc}`;
+export type InternalAllocateStockMutationFn = Apollo.MutationFunction<InternalAllocateStockMutation, InternalAllocateStockMutationVariables>;
+
+/**
+ * __useInternalAllocateStockMutation__
+ *
+ * To run a mutation, you first call `useInternalAllocateStockMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInternalAllocateStockMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [internalAllocateStockMutation, { data, loading, error }] = useInternalAllocateStockMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      internalUserId: // value for 'internalUserId'
+ *   },
+ * });
+ */
+export function useInternalAllocateStockMutation(baseOptions?: Apollo.MutationHookOptions<InternalAllocateStockMutation, InternalAllocateStockMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<InternalAllocateStockMutation, InternalAllocateStockMutationVariables>(InternalAllocateStockDocument, options);
+      }
+export type InternalAllocateStockMutationHookResult = ReturnType<typeof useInternalAllocateStockMutation>;
+export type InternalAllocateStockMutationResult = Apollo.MutationResult<InternalAllocateStockMutation>;
+export type InternalAllocateStockMutationOptions = Apollo.BaseMutationOptions<InternalAllocateStockMutation, InternalAllocateStockMutationVariables>;
 export const InternalCreateHospitalDocument = gql`
     mutation InternalCreateHospital($name: String!, $url: String, $deleted: Boolean!, $internal_memo: String!) {
   createHospital(
@@ -1468,6 +1530,39 @@ export function useInternalGetStocksLazyQuery(baseOptions?: Apollo.LazyQueryHook
 export type InternalGetStocksQueryHookResult = ReturnType<typeof useInternalGetStocksQuery>;
 export type InternalGetStocksLazyQueryHookResult = ReturnType<typeof useInternalGetStocksLazyQuery>;
 export type InternalGetStocksQueryResult = Apollo.QueryResult<InternalGetStocksQuery, InternalGetStocksQueryVariables>;
+export const InternalReturnStockDocument = gql`
+    mutation InternalReturnStock($id: Int!) {
+  returnStock(id: $id) {
+    ...StockFields
+  }
+}
+    ${StockFieldsFragmentDoc}`;
+export type InternalReturnStockMutationFn = Apollo.MutationFunction<InternalReturnStockMutation, InternalReturnStockMutationVariables>;
+
+/**
+ * __useInternalReturnStockMutation__
+ *
+ * To run a mutation, you first call `useInternalReturnStockMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInternalReturnStockMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [internalReturnStockMutation, { data, loading, error }] = useInternalReturnStockMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useInternalReturnStockMutation(baseOptions?: Apollo.MutationHookOptions<InternalReturnStockMutation, InternalReturnStockMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<InternalReturnStockMutation, InternalReturnStockMutationVariables>(InternalReturnStockDocument, options);
+      }
+export type InternalReturnStockMutationHookResult = ReturnType<typeof useInternalReturnStockMutation>;
+export type InternalReturnStockMutationResult = Apollo.MutationResult<InternalReturnStockMutation>;
+export type InternalReturnStockMutationOptions = Apollo.BaseMutationOptions<InternalReturnStockMutation, InternalReturnStockMutationVariables>;
 export const InternalUpdateHospitalDocument = gql`
     mutation InternalUpdateHospital($id: BigInt!, $name: String!, $url: String!, $deleted: Boolean!, $internal_memo: String!, $hospitalAddressInput: HospitalAddressInputType!, $hospitalBusinessFormInput: HospitalBusinessFormInputType!, $hospitalCertificationOptionInput: HospitalCertificationOptionInputType!, $hospitalInternalReputationInput: HospitalInternalReputationInputType!, $hospitalNightServiceOptionInput: HospitalNightServiceOptionInputType!, $hospitalNightUrgentActionOptionInput: HospitalNightUrgentActionOptionInputType!, $hospitalReservationStatusInput: HospitalReservationStatusInputType!) {
   updateHospital(
