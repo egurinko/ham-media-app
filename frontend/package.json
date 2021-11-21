@@ -20,6 +20,7 @@
     "@emotion/react": "^11.6.0",
     "@emotion/styled": "^11.6.0",
     "@react-google-maps/api": "^2.7.0",
+    "dayjs": "^1.10.7",
     "framer-motion": "^5.3.1",
     "js-cookie": "^3.0.1",
     "json-bigint-patch": "^0.0.4",

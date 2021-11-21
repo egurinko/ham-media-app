@@ -10,3 +10,4 @@ export * from './maker';
 export * from './productConnection';
 export * from './products';
 export * from './product';
+export * from './stocks';

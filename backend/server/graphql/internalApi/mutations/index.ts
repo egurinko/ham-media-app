@@ -8,3 +8,4 @@ export * from './updateMaker';
 export * from './deleteMaker';
 export * from './createProduct';
 export * from './updateProduct';
+export * from './createStocks';

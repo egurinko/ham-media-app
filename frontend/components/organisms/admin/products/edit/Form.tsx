@@ -78,7 +78,7 @@ const Form: React.VFC<Props> = ({ productId }) => {
       ) : null}
       <Card>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Stack spacing={4}>
+          <Stack spacing={2}>
             {makerData ? (
               <FormControl id="makerId" isRequired isInvalid={!!errors.makerId}>
                 <FormLabel>メーカー</FormLabel>
@@ -135,7 +135,7 @@ const Form: React.VFC<Props> = ({ productId }) => {
           <Box d="grid" justifyContent="center">
             <Button
               size="lg"
-              mt="16"
+              mt="6"
               variant="solid"
               bgColor="primary.main"
               color="white"

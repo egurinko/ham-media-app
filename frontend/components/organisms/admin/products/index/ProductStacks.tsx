@@ -34,7 +34,7 @@ const ProductStacks: React.VFC<NoProps> = () => {
     if (isIntersect && pageInfo?.hasNextPage && !loading) {
       fetchMore({ variables: { first: 10, after: pageInfo?.endCursor } });
     }
-  }, [isIntersect]);
+  }, [isIntersect, pageInfo, loading, fetchMore]);
 
   const handleProductClick = useCallback(
     (id: number) => {
@@ -67,8 +67,8 @@ const ProductStacks: React.VFC<NoProps> = () => {
                 onClick={() => handleProductClick(product.id)}
               >
                 <Box flex="1">
-                  <Text fontSize="sm">{product.maker.name}</Text>
-                  <Text fontSize="md" fontWeight="bold">
+                  <Text fontSize="xs">{product.maker.name}</Text>
+                  <Text fontSize="sm" fontWeight="bold">
                     {product.name}
                   </Text>
                 </Box>

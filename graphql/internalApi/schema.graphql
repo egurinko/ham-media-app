@@ -8,6 +8,11 @@ The `BigInt` scalar type represents non-fractional signed whole numeric values.
 """
 scalar BigInt
 
+input CreateStocksStocksInputType {
+  amount: Int!
+  expiredAt: DateTime!
+}
+
 """
 A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
 """
@@ -166,6 +171,7 @@ type Mutation {
   createInternalUser(email: String!, name: String!, password: String!, roleId: Int!): InternalUser!
   createMaker(name: String!): Maker!
   createProduct(makerId: Int!, name: String!, remark: String!): Product!
+  createStocks(productId: Int!, stocks: [CreateStocksStocksInputType!]!): [Stock!]!
   deleteInternalUser(id: BigInt!): InternalUser!
   deleteMaker(id: Int!): Maker!
   updateHospital(deleted: Boolean!, hospitalAddressInput: HospitalAddressInputType!, hospitalBusinessFormInput: HospitalBusinessFormInputType!, hospitalCertificationOptionInput: HospitalCertificationOptionInputType!, hospitalInternalReputationInput: HospitalInternalReputationInputType!, hospitalNightServiceOptionInput: HospitalNightServiceOptionInputType!, hospitalNightUrgentActionOptionInput: HospitalNightUrgentActionOptionInputType!, hospitalReservationStatusInput: HospitalReservationStatusInputType!, id: BigInt!, internal_memo: String!, name: String!, url: String!): Hospital!
@@ -208,11 +214,14 @@ type Prefecture {
 
 """A product"""
 type Product {
+  allocatedStockAmount: Int!
   id: Int!
   maker: Maker!
   name: String!
+  remainingStockAmount: Int!
   remark: String!
   stocks: [Stock!]!
+  totalStockAmount: Int!
 }
 
 type ProductConnection {
@@ -275,6 +284,7 @@ type Query {
   products: [Product!]!
   roles: [Role!]!
   session: Session!
+  stocks(productId: Int!): [Stock!]!
 }
 
 """A region"""
@@ -298,4 +308,12 @@ type Session {
 type Stock {
   expired_at: DateTime!
   id: Int!
+  stockAllocation: StockAllocation
+}
+
+"""A stock allocation"""
+type StockAllocation {
+  created_at: DateTime!
+  id: Int!
+  internalUser: InternalUser!
 }
