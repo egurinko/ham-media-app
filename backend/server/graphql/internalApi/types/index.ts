@@ -15,3 +15,4 @@ export * from './prefectureType';
 export * from './makerType';
 export * from './productType';
 export * from './product/stockType';
+export * from './product/stock/stockAllocationType';

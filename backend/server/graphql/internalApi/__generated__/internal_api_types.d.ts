@@ -202,6 +202,10 @@ export interface NexusGenObjects {
     expired_at: NexusGenScalars['DateTime']; // DateTime!
     id: number; // Int!
   }
+  StockAllocation: { // root type
+    created_at: NexusGenScalars['DateTime']; // DateTime!
+    id: number; // Int!
+  }
 }
 
 export interface NexusGenInterfaces {
@@ -315,11 +319,14 @@ export interface NexusGenFieldTypes {
     region: NexusGenRootTypes['Region']; // Region!
   }
   Product: { // field return type
+    allocatedStockAmount: number; // Int!
     id: number; // Int!
     maker: NexusGenRootTypes['Maker']; // Maker!
     name: string; // String!
+    remainingStockAmount: number; // Int!
     remark: string; // String!
     stocks: NexusGenRootTypes['Stock'][]; // [Stock!]!
+    totalStockAmount: number; // Int!
   }
   ProductConnection: { // field return type
     edges: Array<NexusGenRootTypes['ProductEdge'] | null> | null; // [ProductEdge]
@@ -342,6 +349,7 @@ export interface NexusGenFieldTypes {
     products: NexusGenRootTypes['Product'][]; // [Product!]!
     roles: NexusGenRootTypes['Role'][]; // [Role!]!
     session: NexusGenRootTypes['Session']; // Session!
+    stocks: NexusGenRootTypes['Stock'][]; // [Stock!]!
   }
   Region: { // field return type
     id: NexusGenScalars['BigInt']; // BigInt!
@@ -358,6 +366,12 @@ export interface NexusGenFieldTypes {
   Stock: { // field return type
     expired_at: NexusGenScalars['DateTime']; // DateTime!
     id: number; // Int!
+    stockAllocation: NexusGenRootTypes['StockAllocation'] | null; // StockAllocation
+  }
+  StockAllocation: { // field return type
+    created_at: NexusGenScalars['DateTime']; // DateTime!
+    id: number; // Int!
+    internalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
   }
 }
 
@@ -462,11 +476,14 @@ export interface NexusGenFieldTypeNames {
     region: 'Region'
   }
   Product: { // field return type name
+    allocatedStockAmount: 'Int'
     id: 'Int'
     maker: 'Maker'
     name: 'String'
+    remainingStockAmount: 'Int'
     remark: 'String'
     stocks: 'Stock'
+    totalStockAmount: 'Int'
   }
   ProductConnection: { // field return type name
     edges: 'ProductEdge'
@@ -489,6 +506,7 @@ export interface NexusGenFieldTypeNames {
     products: 'Product'
     roles: 'Role'
     session: 'Session'
+    stocks: 'Stock'
   }
   Region: { // field return type name
     id: 'BigInt'
@@ -505,6 +523,12 @@ export interface NexusGenFieldTypeNames {
   Stock: { // field return type name
     expired_at: 'DateTime'
     id: 'Int'
+    stockAllocation: 'StockAllocation'
+  }
+  StockAllocation: { // field return type name
+    created_at: 'DateTime'
+    id: 'Int'
+    internalUser: 'InternalUser'
   }
 }
 
@@ -595,6 +619,9 @@ export interface NexusGenArgTypes {
       before?: string | null; // String
       first?: number | null; // Int
       last?: number | null; // Int
+    }
+    stocks: { // args
+      productId: number; // Int!
     }
   }
 }

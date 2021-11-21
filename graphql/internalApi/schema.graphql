@@ -208,11 +208,14 @@ type Prefecture {
 
 """A product"""
 type Product {
+  allocatedStockAmount: Int!
   id: Int!
   maker: Maker!
   name: String!
+  remainingStockAmount: Int!
   remark: String!
   stocks: [Stock!]!
+  totalStockAmount: Int!
 }
 
 type ProductConnection {
@@ -275,6 +278,7 @@ type Query {
   products: [Product!]!
   roles: [Role!]!
   session: Session!
+  stocks(productId: Int!): [Stock!]!
 }
 
 """A region"""
@@ -298,4 +302,12 @@ type Session {
 type Stock {
   expired_at: DateTime!
   id: Int!
+  stockAllocation: StockAllocation
+}
+
+"""A stock allocation"""
+type StockAllocation {
+  created_at: DateTime!
+  id: Int!
+  internalUser: InternalUser!
 }
