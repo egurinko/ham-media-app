@@ -27,7 +27,7 @@ yarn install
 
 AWS_PROFILE=${AWS_PROFILE} aws s3 sync s3://ham-media-app-serverless-state/${ENV}/.serverless .serverless --delete
 
-sls --stage ${ENV}
+serverless --stage ${ENV}
 
 AWS_PROFILE=${AWS_PROFILE} aws s3 sync .serverless s3://ham-media-app-serverless-state/${ENV}/.serverless --delete
 
