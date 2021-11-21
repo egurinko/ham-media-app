@@ -1,5 +1,5 @@
 ham-media-front-app-stg:
-  component: '../node_modules/@sls-next/serverless-component'
+  component: '@sls-next/serverless-component'
   inputs:
     domain: ham-media-stg-app.link
     cloudfront:
