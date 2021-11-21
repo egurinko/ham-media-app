@@ -449,7 +449,7 @@ export type InternalCreateProductMutationVariables = Exact<{
 }>;
 
 
-export type InternalCreateProductMutation = { __typename?: 'Mutation', createProduct: { __typename?: 'Product', id: number, name: string, remark: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any }> } };
+export type InternalCreateProductMutation = { __typename?: 'Mutation', createProduct: { __typename?: 'Product', id: number, name: string, remark: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> } };
 
 export type InternalDeleteInternalUserMutationVariables = Exact<{
   id: Scalars['BigInt'];
@@ -471,9 +471,9 @@ export type InternalUserFieldsFragment = { __typename?: 'InternalUser', id: BigI
 
 export type MakerFieldsFragment = { __typename?: 'Maker', id: number, name: string };
 
-export type ProductFieldsFragment = { __typename?: 'Product', id: number, name: string, remark: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any }> };
+export type ProductFieldsFragment = { __typename?: 'Product', id: number, name: string, remark: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> };
 
-export type StockFieldsFragment = { __typename?: 'Stock', id: number, expired_at: any };
+export type StockFieldsFragment = { __typename?: 'Stock', id: number, expired_at: any, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined };
 
 export type RoleFieldsFragment = { __typename?: 'Role', id: number, name: string };
 
@@ -529,7 +529,7 @@ export type InternalGetProductQueryVariables = Exact<{
 }>;
 
 
-export type InternalGetProductQuery = { __typename?: 'Query', product: { __typename?: 'Product', id: number, name: string, remark: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any }> } };
+export type InternalGetProductQuery = { __typename?: 'Query', product: { __typename?: 'Product', id: number, name: string, remark: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> } };
 
 export type InternalGetProductConnectionQueryVariables = Exact<{
   first?: InputMaybe<Scalars['Int']>;
@@ -537,7 +537,7 @@ export type InternalGetProductConnectionQueryVariables = Exact<{
 }>;
 
 
-export type InternalGetProductConnectionQuery = { __typename?: 'Query', productConnection?: { __typename?: 'ProductConnection', edges?: Array<{ __typename?: 'ProductEdge', node?: { __typename?: 'Product', id: number, name: string, remark: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any }> } | null | undefined } | null | undefined> | null | undefined, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, hasPreviousPage: boolean, startCursor?: string | null | undefined, endCursor?: string | null | undefined } } | null | undefined };
+export type InternalGetProductConnectionQuery = { __typename?: 'Query', productConnection?: { __typename?: 'ProductConnection', edges?: Array<{ __typename?: 'ProductEdge', node?: { __typename?: 'Product', id: number, name: string, remark: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> } | null | undefined } | null | undefined> | null | undefined, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, hasPreviousPage: boolean, startCursor?: string | null | undefined, endCursor?: string | null | undefined } } | null | undefined };
 
 export type InternalGetProductIdsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -553,6 +553,13 @@ export type InternalGetSessionQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type InternalGetSessionQuery = { __typename?: 'Query', session: { __typename?: 'Session', token: string, internalUser: { __typename?: 'InternalUser', id: BigInt, name: string, email: string } } };
+
+export type InternalGetStocksQueryVariables = Exact<{
+  productId: Scalars['Int'];
+}>;
+
+
+export type InternalGetStocksQuery = { __typename?: 'Query', stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> };
 
 export type InternalUpdateHospitalMutationVariables = Exact<{
   id: Scalars['BigInt'];
@@ -599,7 +606,7 @@ export type InternalUpdateProductMutationVariables = Exact<{
 }>;
 
 
-export type InternalUpdateProductMutation = { __typename?: 'Mutation', updateProduct: { __typename?: 'Product', id: number, name: string, remark: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any }> } };
+export type InternalUpdateProductMutation = { __typename?: 'Mutation', updateProduct: { __typename?: 'Product', id: number, name: string, remark: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> } };
 
 export const HospitalFieldsFragmentDoc = gql`
     fragment HospitalFields on Hospital {
@@ -651,6 +658,12 @@ export const HospitalFieldsFragmentDoc = gql`
   }
 }
     `;
+export const MakerFieldsFragmentDoc = gql`
+    fragment MakerFields on Maker {
+  id
+  name
+}
+    `;
 export const RoleFieldsFragmentDoc = gql`
     fragment RoleFields on Role {
   id
@@ -667,18 +680,19 @@ export const InternalUserFieldsFragmentDoc = gql`
   }
 }
     ${RoleFieldsFragmentDoc}`;
-export const MakerFieldsFragmentDoc = gql`
-    fragment MakerFields on Maker {
-  id
-  name
-}
-    `;
 export const StockFieldsFragmentDoc = gql`
     fragment StockFields on Stock {
   id
   expired_at
+  stockAllocation {
+    created_at
+    id
+    internalUser {
+      ...InternalUserFields
+    }
+  }
 }
-    `;
+    ${InternalUserFieldsFragmentDoc}`;
 export const ProductFieldsFragmentDoc = gql`
     fragment ProductFields on Product {
   id
@@ -1365,6 +1379,41 @@ export function useInternalGetSessionLazyQuery(baseOptions?: Apollo.LazyQueryHoo
 export type InternalGetSessionQueryHookResult = ReturnType<typeof useInternalGetSessionQuery>;
 export type InternalGetSessionLazyQueryHookResult = ReturnType<typeof useInternalGetSessionLazyQuery>;
 export type InternalGetSessionQueryResult = Apollo.QueryResult<InternalGetSessionQuery, InternalGetSessionQueryVariables>;
+export const InternalGetStocksDocument = gql`
+    query InternalGetStocks($productId: Int!) {
+  stocks(productId: $productId) {
+    ...StockFields
+  }
+}
+    ${StockFieldsFragmentDoc}`;
+
+/**
+ * __useInternalGetStocksQuery__
+ *
+ * To run a query within a React component, call `useInternalGetStocksQuery` and pass it any options that fit your needs.
+ * When your component renders, `useInternalGetStocksQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useInternalGetStocksQuery({
+ *   variables: {
+ *      productId: // value for 'productId'
+ *   },
+ * });
+ */
+export function useInternalGetStocksQuery(baseOptions: Apollo.QueryHookOptions<InternalGetStocksQuery, InternalGetStocksQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<InternalGetStocksQuery, InternalGetStocksQueryVariables>(InternalGetStocksDocument, options);
+      }
+export function useInternalGetStocksLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InternalGetStocksQuery, InternalGetStocksQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<InternalGetStocksQuery, InternalGetStocksQueryVariables>(InternalGetStocksDocument, options);
+        }
+export type InternalGetStocksQueryHookResult = ReturnType<typeof useInternalGetStocksQuery>;
+export type InternalGetStocksLazyQueryHookResult = ReturnType<typeof useInternalGetStocksLazyQuery>;
+export type InternalGetStocksQueryResult = Apollo.QueryResult<InternalGetStocksQuery, InternalGetStocksQueryVariables>;
 export const InternalUpdateHospitalDocument = gql`
     mutation InternalUpdateHospital($id: BigInt!, $name: String!, $url: String!, $deleted: Boolean!, $internal_memo: String!, $hospitalAddressInput: HospitalAddressInputType!, $hospitalBusinessFormInput: HospitalBusinessFormInputType!, $hospitalCertificationOptionInput: HospitalCertificationOptionInputType!, $hospitalInternalReputationInput: HospitalInternalReputationInputType!, $hospitalNightServiceOptionInput: HospitalNightServiceOptionInputType!, $hospitalNightUrgentActionOptionInput: HospitalNightUrgentActionOptionInputType!, $hospitalReservationStatusInput: HospitalReservationStatusInputType!) {
   updateHospital(
