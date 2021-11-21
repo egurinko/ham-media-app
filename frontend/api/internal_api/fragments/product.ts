@@ -15,5 +15,8 @@ export const PRODUCT_FIELDS = gql`
     stocks {
       ...StockFields
     }
+    totalStockAmount
+    allocatedStockAmount
+    remainingStockAmount
   }
 `;

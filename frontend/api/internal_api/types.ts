@@ -1,6 +1,7 @@
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
+export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
@@ -195,7 +196,7 @@ export type MutationCreateHospitalArgs = {
   deleted: Scalars['Boolean'];
   internal_memo: Scalars['String'];
   name: Scalars['String'];
-  url?: Maybe<Scalars['String']>;
+  url?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -291,11 +292,14 @@ export type Prefecture = {
 /** A product */
 export type Product = {
   __typename?: 'Product';
+  allocatedStockAmount: Scalars['Int'];
   id: Scalars['Int'];
   maker: Maker;
   name: Scalars['String'];
+  remainingStockAmount: Scalars['Int'];
   remark: Scalars['String'];
   stocks: Array<Stock>;
+  totalStockAmount: Scalars['Int'];
 };
 
 export type ProductConnection = {
@@ -328,6 +332,7 @@ export type Query = {
   products: Array<Product>;
   roles: Array<Role>;
   session: Session;
+  stocks: Array<Stock>;
 };
 
 
@@ -337,13 +342,13 @@ export type QueryHospitalArgs = {
 
 
 export type QueryHospitalConnectionArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  deleted?: Maybe<Scalars['Boolean']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  name?: Maybe<Scalars['String']>;
-  prefectureId?: Maybe<Scalars['BigInt']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  deleted?: InputMaybe<Scalars['Boolean']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  name?: InputMaybe<Scalars['String']>;
+  prefectureId?: InputMaybe<Scalars['BigInt']>;
 };
 
 
@@ -363,10 +368,15 @@ export type QueryProductArgs = {
 
 
 export type QueryProductConnectionArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type QueryStocksArgs = {
+  productId: Scalars['Int'];
 };
 
 /** A region */
@@ -394,11 +404,20 @@ export type Stock = {
   __typename?: 'Stock';
   expired_at: Scalars['DateTime'];
   id: Scalars['Int'];
+  stockAllocation?: Maybe<StockAllocation>;
+};
+
+/** A stock allocation */
+export type StockAllocation = {
+  __typename?: 'StockAllocation';
+  created_at: Scalars['DateTime'];
+  id: Scalars['Int'];
+  internalUser: InternalUser;
 };
 
 export type InternalCreateHospitalMutationVariables = Exact<{
   name: Scalars['String'];
-  url?: Maybe<Scalars['String']>;
+  url?: InputMaybe<Scalars['String']>;
   deleted: Scalars['Boolean'];
   internal_memo: Scalars['String'];
 }>;
@@ -430,7 +449,7 @@ export type InternalCreateProductMutationVariables = Exact<{
 }>;
 
 
-export type InternalCreateProductMutation = { __typename?: 'Mutation', createProduct: { __typename?: 'Product', id: number, name: string, remark: string, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any }> } };
+export type InternalCreateProductMutation = { __typename?: 'Mutation', createProduct: { __typename?: 'Product', id: number, name: string, remark: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any }> } };
 
 export type InternalDeleteInternalUserMutationVariables = Exact<{
   id: Scalars['BigInt'];
@@ -452,7 +471,7 @@ export type InternalUserFieldsFragment = { __typename?: 'InternalUser', id: BigI
 
 export type MakerFieldsFragment = { __typename?: 'Maker', id: number, name: string };
 
-export type ProductFieldsFragment = { __typename?: 'Product', id: number, name: string, remark: string, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any }> };
+export type ProductFieldsFragment = { __typename?: 'Product', id: number, name: string, remark: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any }> };
 
 export type StockFieldsFragment = { __typename?: 'Stock', id: number, expired_at: any };
 
@@ -466,11 +485,11 @@ export type InternalGetHospitalQueryVariables = Exact<{
 export type InternalGetHospitalQuery = { __typename?: 'Query', hospital: { __typename?: 'Hospital', id: BigInt, name: string, url: string, deleted: boolean, internal_memo: string, hospitalAddress?: { __typename?: 'HospitalAddress', id: BigInt, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: BigInt } } | null | undefined, hospitalBusinessForm?: { __typename?: 'HospitalBusinessForm', id: BigInt, business_hour: string, closed_day: string, insurance_enabled: string, remark: string } | null | undefined, hospitalCertificationOption?: { __typename?: 'HospitalCertificationOption', id: BigInt, nichiju_registered: string, jsava_registered: string } | null | undefined, hospitalInternalReputation?: { __typename?: 'HospitalInternalReputation', id: BigInt, star: number, remark: string } | null | undefined, hospitalNightServiceOption?: { __typename?: 'HospitalNightServiceOption', id: BigInt, status: string, remark: string } | null | undefined, hospitalNightUrgentActionOption?: { __typename?: 'HospitalNightUrgentActionOption', id: BigInt, status: string } | null | undefined, hospitalReservationStatus?: { __typename?: 'HospitalReservationStatus', id: BigInt, required: string, reservable: string, remark: string } | null | undefined } };
 
 export type InternalGetHospitalConnectionQueryVariables = Exact<{
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-  deleted?: Maybe<Scalars['Boolean']>;
-  prefectureId?: Maybe<Scalars['BigInt']>;
+  first?: InputMaybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  deleted?: InputMaybe<Scalars['Boolean']>;
+  prefectureId?: InputMaybe<Scalars['BigInt']>;
 }>;
 
 
@@ -510,15 +529,15 @@ export type InternalGetProductQueryVariables = Exact<{
 }>;
 
 
-export type InternalGetProductQuery = { __typename?: 'Query', product: { __typename?: 'Product', id: number, name: string, remark: string, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any }> } };
+export type InternalGetProductQuery = { __typename?: 'Query', product: { __typename?: 'Product', id: number, name: string, remark: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any }> } };
 
 export type InternalGetProductConnectionQueryVariables = Exact<{
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
 }>;
 
 
-export type InternalGetProductConnectionQuery = { __typename?: 'Query', productConnection?: { __typename?: 'ProductConnection', edges?: Array<{ __typename?: 'ProductEdge', node?: { __typename?: 'Product', id: number, name: string, remark: string, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any }> } | null | undefined } | null | undefined> | null | undefined, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, hasPreviousPage: boolean, startCursor?: string | null | undefined, endCursor?: string | null | undefined } } | null | undefined };
+export type InternalGetProductConnectionQuery = { __typename?: 'Query', productConnection?: { __typename?: 'ProductConnection', edges?: Array<{ __typename?: 'ProductEdge', node?: { __typename?: 'Product', id: number, name: string, remark: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any }> } | null | undefined } | null | undefined> | null | undefined, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, hasPreviousPage: boolean, startCursor?: string | null | undefined, endCursor?: string | null | undefined } } | null | undefined };
 
 export type InternalGetProductIdsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -580,7 +599,7 @@ export type InternalUpdateProductMutationVariables = Exact<{
 }>;
 
 
-export type InternalUpdateProductMutation = { __typename?: 'Mutation', updateProduct: { __typename?: 'Product', id: number, name: string, remark: string, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any }> } };
+export type InternalUpdateProductMutation = { __typename?: 'Mutation', updateProduct: { __typename?: 'Product', id: number, name: string, remark: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any }> } };
 
 export const HospitalFieldsFragmentDoc = gql`
     fragment HospitalFields on Hospital {
@@ -671,6 +690,9 @@ export const ProductFieldsFragmentDoc = gql`
   stocks {
     ...StockFields
   }
+  totalStockAmount
+  allocatedStockAmount
+  remainingStockAmount
 }
     ${MakerFieldsFragmentDoc}
 ${StockFieldsFragmentDoc}`;

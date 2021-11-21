@@ -1,6 +1,7 @@
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
+export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
@@ -220,13 +221,13 @@ export type QueryPlaceAutocompleteArgs = {
 
 
 export type QueryPublicHospitalConnectionArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  currentLocation?: Maybe<CurrentLocation>;
-  first?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  currentLocation?: InputMaybe<CurrentLocation>;
+  first?: InputMaybe<Scalars['Int']>;
   insuranceEnabled: Scalars['Boolean'];
   jsavaOption: Scalars['Boolean'];
-  last?: Maybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
   nichijuOption: Scalars['Boolean'];
   nightServiceOption: Scalars['Boolean'];
   reservable: Scalars['Boolean'];
@@ -263,10 +264,10 @@ export type PublicGetHospitalQueryVariables = Exact<{
 export type PublicGetHospitalQuery = { __typename?: 'Query', hospital: { __typename?: 'Hospital', id: BigInt, name: string, url: string, hospitalAddress?: { __typename?: 'HospitalAddress', id: BigInt, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: BigInt }, hospitalAddressGeoLocation?: { __typename?: 'HospitalAddressGeoLocation', latitude: number, longitude: number } | null | undefined } | null | undefined, hospitalBusinessForm?: { __typename?: 'HospitalBusinessForm', id: BigInt, business_hour: string, closed_day: string, insurance_enabled: string, remark: string } | null | undefined, hospitalCertificationOption?: { __typename?: 'HospitalCertificationOption', id: BigInt, nichiju_registered: string, jsava_registered: string } | null | undefined, hospitalNightServiceOption?: { __typename?: 'HospitalNightServiceOption', id: BigInt, status: string, remark: string } | null | undefined, hospitalNightUrgentActionOption?: { __typename?: 'HospitalNightUrgentActionOption', id: BigInt, status: string } | null | undefined, hospitalReservationStatus?: { __typename?: 'HospitalReservationStatus', id: BigInt, required: string, reservable: string, remark: string } | null | undefined } };
 
 export type PublicGetHospitalConnectionQueryVariables = Exact<{
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
   searchText: Scalars['String'];
-  currentLocation?: Maybe<CurrentLocation>;
+  currentLocation?: InputMaybe<CurrentLocation>;
   reservable: Scalars['Boolean'];
   nightServiceOption: Scalars['Boolean'];
   insuranceEnabled: Scalars['Boolean'];

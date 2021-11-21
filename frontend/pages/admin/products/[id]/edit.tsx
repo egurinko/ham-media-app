@@ -3,12 +3,13 @@ import { useRouter } from 'next/router';
 import { ParsedUrlQuery } from 'querystring';
 import { Heading, Box, IconButton } from '@chakra-ui/react';
 import { ChevronRightIcon } from '@chakra-ui/icons';
+import { ProductSummary } from '@/components/organisms/admin/products/edit/ProductSummary';
 import { Form } from '@/components/organisms/admin/products/edit/Form';
 import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
 import { getProductIds } from '@/api/internal_api/getProductIds';
 import type { InternalGetProductIdsQuery } from '@/api/internal_api/types';
 import { apiClient } from '@/utils/apollo';
-import { goAdminMakers } from '@/utils/routes';
+import { goAdminProducts } from '@/utils/routes';
 
 const Edit: React.VFC<Props> = () => {
   const router = useRouter();
@@ -20,13 +21,18 @@ const Edit: React.VFC<Props> = () => {
         <IconButton
           aria-label="link"
           variant="link"
-          onClick={() => goAdminMakers(router)}
+          onClick={() => goAdminProducts(router)}
           icon={<ChevronRightIcon />}
         />
         <Heading size="sm">商品編集</Heading>
       </Box>
       {typeof productId === 'string' ? (
-        <Form productId={Number(productId)} />
+        <>
+          <Box mb="2">
+            <ProductSummary productId={Number(productId)} />
+          </Box>
+          <Form productId={Number(productId)} />
+        </>
       ) : null}
     </InternalLayout>
   );
