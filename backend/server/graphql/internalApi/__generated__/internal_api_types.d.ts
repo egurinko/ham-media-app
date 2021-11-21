@@ -300,6 +300,7 @@ export interface NexusGenFieldTypes {
     name: string; // String!
   }
   Mutation: { // field return type
+    allocateStock: NexusGenRootTypes['Stock']; // Stock!
     createHospital: NexusGenRootTypes['Hospital']; // Hospital!
     createInternalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     createMaker: NexusGenRootTypes['Maker']; // Maker!
@@ -307,6 +308,7 @@ export interface NexusGenFieldTypes {
     createStocks: NexusGenRootTypes['Stock'][]; // [Stock!]!
     deleteInternalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     deleteMaker: NexusGenRootTypes['Maker']; // Maker!
+    returnStock: NexusGenRootTypes['Stock']; // Stock!
     updateHospital: NexusGenRootTypes['Hospital']; // Hospital!
     updateInternalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     updateMaker: NexusGenRootTypes['Maker']; // Maker!
@@ -458,6 +460,7 @@ export interface NexusGenFieldTypeNames {
     name: 'String'
   }
   Mutation: { // field return type name
+    allocateStock: 'Stock'
     createHospital: 'Hospital'
     createInternalUser: 'InternalUser'
     createMaker: 'Maker'
@@ -465,6 +468,7 @@ export interface NexusGenFieldTypeNames {
     createStocks: 'Stock'
     deleteInternalUser: 'InternalUser'
     deleteMaker: 'Maker'
+    returnStock: 'Stock'
     updateHospital: 'Hospital'
     updateInternalUser: 'InternalUser'
     updateMaker: 'Maker'
@@ -540,6 +544,10 @@ export interface NexusGenFieldTypeNames {
 
 export interface NexusGenArgTypes {
   Mutation: {
+    allocateStock: { // args
+      id: number; // Int!
+      internalUserId: NexusGenScalars['BigInt']; // BigInt!
+    }
     createHospital: { // args
       deleted: boolean; // Boolean!
       internal_memo: string; // String!
@@ -568,6 +576,9 @@ export interface NexusGenArgTypes {
       id: NexusGenScalars['BigInt']; // BigInt!
     }
     deleteMaker: { // args
+      id: number; // Int!
+    }
+    returnStock: { // args
       id: number; // Int!
     }
     updateHospital: { // args

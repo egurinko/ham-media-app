@@ -7,14 +7,19 @@ import {
   Input,
   IconButton,
   Button,
+  Badge,
+  Select,
 } from '@chakra-ui/react';
-import { SmallCloseIcon, AddIcon } from '@chakra-ui/icons';
+import { SmallCloseIcon, AddIcon, ArrowBackIcon } from '@chakra-ui/icons';
 import dayjs from 'dayjs';
 import { Card } from '@/components/atoms/Card';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
 import {
   useInternalGetStocksQuery,
   useInternalCreateStocksMutation,
+  useInternalGetInternalUsersQuery,
+  useInternalAllocateStockMutation,
+  useInternalReturnStockMutation,
 } from '@/api/internal_api/types';
 import type { InternalGetProductQuery } from '@/api/internal_api/types';
 
@@ -35,6 +40,23 @@ const Stocks: React.FC<Props> = ({ productId }) => {
   const { data, error, loading, fetchMore } = useInternalGetStocksQuery({
     variables: { productId: productId },
   });
+  const { data: internalUserData } = useInternalGetInternalUsersQuery();
+  const [
+    allocateStock,
+    {
+      data: allocateStockData,
+      error: allocateStockError,
+      loading: allocateStockLoading,
+    },
+  ] = useInternalAllocateStockMutation();
+  const [
+    returnStock,
+    {
+      data: returnStockData,
+      error: returnStockError,
+      loading: returnStockLoading,
+    },
+  ] = useInternalReturnStockMutation();
   const [addingStocks, setAddingStocks] = useState([addingStockInitialState]);
   const [
     createStocks,
@@ -101,6 +123,24 @@ const Stocks: React.FC<Props> = ({ productId }) => {
     } catch (_e) {}
   };
 
+  const handleAllocate = async (id: number, internalUserId: BigInt) => {
+    try {
+      await allocateStock({
+        variables: { id, internalUserId },
+      });
+      await fetchMore({ variables: { productId } });
+    } catch (error) {}
+  };
+
+  const handleReturnStock = async (id: number) => {
+    try {
+      await returnStock({
+        variables: { id },
+      });
+      await fetchMore({ variables: { productId } });
+    } catch (error) {}
+  };
+
   return (
     <Card>
       <Text mb="2" fontSize="lg" fontWeight="bold">
@@ -109,6 +149,24 @@ const Stocks: React.FC<Props> = ({ productId }) => {
       {loading ? <Spinner size="lg" color="main.primary" /> : null}
       {error ? (
         <FlashMessage status="error" message="在庫情報の取得に失敗しました。" />
+      ) : null}
+
+      {allocateStockLoading ? <Spinner size="lg" color="main.primary" /> : null}
+      {allocateStockError ? (
+        <FlashMessage status="error" message={allocateStockError.message} />
+      ) : null}
+      {allocateStockData ? (
+        <FlashMessage status="success" message="在庫を割り当てました。" />
+      ) : null}
+      {returnStockLoading ? <Spinner size="lg" color="main.primary" /> : null}
+      {returnStockError ? (
+        <FlashMessage status="error" message={returnStockError.message} />
+      ) : null}
+      {returnStockData ? (
+        <FlashMessage
+          status="success"
+          message="在庫の割り当てを解除しました。"
+        />
       ) : null}
       {data
         ? data.stocks.map((stock) => (
@@ -125,22 +183,58 @@ const Stocks: React.FC<Props> = ({ productId }) => {
                 }}
                 p="2"
               >
-                <Box flex="1">
+                <Box w="50%">
                   <Text fontSize="xs">id：{stock.id}</Text>
                   <Text fontSize="8" fontWeight="bold">
-                    在庫期限：
+                    期限：
                     {dayjs(stock.expired_at).isBefore('2100-00-00')
                       ? dayjs(stock.expired_at).format('YYYY年MM月DD日')
                       : 'なし'}
                   </Text>
                 </Box>
-                <Box>
+                <Box w="50%">
                   {stock.stockAllocation ? (
-                    <Text fontSize="sm">
-                      {stock.stockAllocation.internalUser.name}
-                    </Text>
+                    <Box
+                      display="flex"
+                      flexDir="row"
+                      justifyContent="space-between"
+                    >
+                      <Text fontSize="sm">
+                        {stock.stockAllocation.internalUser.name}
+                      </Text>
+                      <Button
+                        size="xs"
+                        ml="1"
+                        onClick={() => handleReturnStock(stock.id)}
+                      >
+                        返却
+                      </Button>
+                    </Box>
                   ) : (
-                    '未割り当て'
+                    <Box>
+                      <Badge size="xs" colorScheme="green">
+                        未割当
+                      </Badge>
+                      {internalUserData ? (
+                        <Select
+                          size="xs"
+                          onChange={(e) => {
+                            handleAllocate(stock.id, BigInt(e.target.value));
+                          }}
+                        >
+                          {internalUserData.internalUsers.map(
+                            (internalUser) => (
+                              <option
+                                key={internalUser.email}
+                                value={Number(internalUser.id)}
+                              >
+                                {internalUser.name}
+                              </option>
+                            )
+                          )}
+                        </Select>
+                      ) : null}
+                    </Box>
                   )}
                 </Box>
               </Box>
