@@ -308,6 +308,7 @@ export interface NexusGenFieldTypes {
     createStocks: NexusGenRootTypes['Stock'][]; // [Stock!]!
     deleteInternalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     deleteMaker: NexusGenRootTypes['Maker']; // Maker!
+    deleteStock: NexusGenRootTypes['Stock']; // Stock!
     returnStock: NexusGenRootTypes['Stock']; // Stock!
     updateHospital: NexusGenRootTypes['Hospital']; // Hospital!
     updateInternalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
@@ -468,6 +469,7 @@ export interface NexusGenFieldTypeNames {
     createStocks: 'Stock'
     deleteInternalUser: 'InternalUser'
     deleteMaker: 'Maker'
+    deleteStock: 'Stock'
     returnStock: 'Stock'
     updateHospital: 'Hospital'
     updateInternalUser: 'InternalUser'
@@ -576,6 +578,9 @@ export interface NexusGenArgTypes {
       id: NexusGenScalars['BigInt']; // BigInt!
     }
     deleteMaker: { // args
+      id: number; // Int!
+    }
+    deleteStock: { // args
       id: number; // Int!
     }
     returnStock: { // args

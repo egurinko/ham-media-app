@@ -1,16 +1,21 @@
-import { Fragment, useState } from 'react';
+import { useState } from 'react';
 import {
   Box,
   Spinner,
   Text,
-  Divider,
   Input,
   IconButton,
   Button,
   Badge,
   Select,
+  Table,
+  Thead,
+  Tbody,
+  Tr,
+  Th,
+  Td,
 } from '@chakra-ui/react';
-import { SmallCloseIcon, AddIcon, ArrowBackIcon } from '@chakra-ui/icons';
+import { SmallCloseIcon, AddIcon, DeleteIcon } from '@chakra-ui/icons';
 import dayjs from 'dayjs';
 import { Card } from '@/components/atoms/Card';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
@@ -20,6 +25,7 @@ import {
   useInternalGetInternalUsersQuery,
   useInternalAllocateStockMutation,
   useInternalReturnStockMutation,
+  useInternalDeleteStockMutation,
 } from '@/api/internal_api/types';
 import type { InternalGetProductQuery } from '@/api/internal_api/types';
 
@@ -57,6 +63,14 @@ const Stocks: React.FC<Props> = ({ productId }) => {
       loading: returnStockLoading,
     },
   ] = useInternalReturnStockMutation();
+  const [
+    deleteStock,
+    {
+      data: deleteStockData,
+      error: deleteStockError,
+      loading: deleteStockLoading,
+    },
+  ] = useInternalDeleteStockMutation();
   const [addingStocks, setAddingStocks] = useState([addingStockInitialState]);
   const [
     createStocks,
@@ -141,6 +155,13 @@ const Stocks: React.FC<Props> = ({ productId }) => {
     } catch (error) {}
   };
 
+  const handleDeleteStock = async (id: number) => {
+    try {
+      await deleteStock({ variables: { id } });
+      await fetchMore({ variables: { productId } });
+    } catch (_) {}
+  };
+
   return (
     <Card>
       <Text mb="2" fontSize="lg" fontWeight="bold">
@@ -151,54 +172,55 @@ const Stocks: React.FC<Props> = ({ productId }) => {
         <FlashMessage status="error" message="在庫情報の取得に失敗しました。" />
       ) : null}
 
-      {allocateStockLoading ? <Spinner size="lg" color="main.primary" /> : null}
+      {allocateStockLoading || returnStockLoading || deleteStockLoading ? (
+        <Spinner size="lg" color="main.primary" />
+      ) : null}
       {allocateStockError ? (
         <FlashMessage status="error" message={allocateStockError.message} />
-      ) : null}
-      {allocateStockData ? (
+      ) : allocateStockData ? (
         <FlashMessage status="success" message="在庫を割り当てました。" />
       ) : null}
-      {returnStockLoading ? <Spinner size="lg" color="main.primary" /> : null}
       {returnStockError ? (
         <FlashMessage status="error" message={returnStockError.message} />
-      ) : null}
-      {returnStockData ? (
+      ) : returnStockData ? (
         <FlashMessage
           status="success"
           message="在庫の割り当てを解除しました。"
         />
       ) : null}
-      {data
-        ? data.stocks.map((stock) => (
-            <Fragment key={stock.id}>
-              <Box
-                w="100%"
-                display="flex"
-                flexDirection="row"
-                alignItems="center"
-                _hover={{
-                  background: 'background.hover',
-                  color: 'primary.main',
-                  cursor: 'pointer',
-                }}
-                p="2"
-              >
-                <Box w="50%">
-                  <Text fontSize="xs">id：{stock.id}</Text>
-                  <Text fontSize="8" fontWeight="bold">
-                    期限：
+      {deleteStockError ? (
+        <FlashMessage status="error" message={deleteStockError.message} />
+      ) : deleteStockData ? (
+        <FlashMessage status="success" message="在庫を削除しました。" />
+      ) : null}
+      {data ? (
+        <Table size="sm">
+          <Thead>
+            <Tr>
+              <Th w="2" p="1">
+                id
+              </Th>
+              <Th p="1">在庫期限</Th>
+              <Th p="1">割当状況</Th>
+              <Th p="1"></Th>
+            </Tr>
+          </Thead>
+          <Tbody>
+            {data.stocks.map((stock) => (
+              <Tr key={stock.id}>
+                <Td w="2" px="1" py="3">
+                  <Text fontSize="8">{stock.id}</Text>
+                </Td>
+                <Td px="1" py="3">
+                  <Text fontSize="8">
                     {dayjs(stock.expired_at).isBefore('2100-00-00')
                       ? dayjs(stock.expired_at).format('YYYY年MM月DD日')
                       : 'なし'}
                   </Text>
-                </Box>
-                <Box w="50%">
+                </Td>
+                <Td px="1" py="3">
                   {stock.stockAllocation ? (
-                    <Box
-                      display="flex"
-                      flexDir="row"
-                      justifyContent="space-between"
-                    >
+                    <Box display="flex" flexDir="row" alignItems="center">
                       <Text fontSize="sm">
                         {stock.stockAllocation.internalUser.name}
                       </Text>
@@ -212,7 +234,7 @@ const Stocks: React.FC<Props> = ({ productId }) => {
                     </Box>
                   ) : (
                     <Box>
-                      <Badge size="xs" colorScheme="green">
+                      <Badge size="xs" colorScheme="green" mb="1">
                         未割当
                       </Badge>
                       {internalUserData ? (
@@ -221,6 +243,7 @@ const Stocks: React.FC<Props> = ({ productId }) => {
                           onChange={(e) => {
                             handleAllocate(stock.id, BigInt(e.target.value));
                           }}
+                          placeholder="スタッフを選択"
                         >
                           {internalUserData.internalUsers.map(
                             (internalUser) => (
@@ -236,16 +259,24 @@ const Stocks: React.FC<Props> = ({ productId }) => {
                       ) : null}
                     </Box>
                   )}
-                </Box>
-              </Box>
-              <Divider />
-            </Fragment>
-          ))
-        : null}
+                </Td>
+                <Td px="1" py="3">
+                  <IconButton
+                    size="xs"
+                    ml="1"
+                    onClick={() => handleDeleteStock(stock.id)}
+                    icon={<DeleteIcon size="sm" />}
+                    aria-label="delete stock"
+                  />
+                </Td>
+              </Tr>
+            ))}
+          </Tbody>
+        </Table>
+      ) : null}
       <Text mt="6" mb="2" fontSize="lg" fontWeight="bold">
         在庫追加
       </Text>
-
       {createStocksError ? (
         <FlashMessage status="error" message={createStocksError.message} />
       ) : createStockData ? (
