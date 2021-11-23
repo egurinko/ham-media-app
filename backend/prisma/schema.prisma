@@ -219,6 +219,7 @@ model Product {
   id         Int      @id @default(autoincrement())
   name       String   @unique @db.VarChar(100)
   remark     String   @db.Text
+  url        String?   @db.VarChar(255)
   maker_id   Int
   maker      Maker    @relation(fields: [maker_id], references: [id])
   stocks     Stock[]

@@ -7,8 +7,14 @@ export const createProduct = gql`
     $makerId: Int!
     $name: String!
     $remark: String!
+    $file: Upload!
   ) {
-    createProduct(makerId: $makerId, name: $name, remark: $remark) {
+    createProduct(
+      makerId: $makerId
+      name: $name
+      remark: $remark
+      file: $file
+    ) {
       ...ProductFields
     }
   }

@@ -20,6 +20,8 @@ export type Scalars = {
   BigInt: BigInt;
   /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
   DateTime: any;
+  /** The `Upload` scalar type represents a file upload. */
+  Upload: any;
 };
 
 export type CreateStocksStocksInputType = {
@@ -229,6 +231,7 @@ export type MutationCreateMakerArgs = {
 
 
 export type MutationCreateProductArgs = {
+  file: Scalars['Upload'];
   makerId: Scalars['Int'];
   name: Scalars['String'];
   remark: Scalars['String'];
@@ -485,6 +488,7 @@ export type InternalCreateProductMutationVariables = Exact<{
   makerId: Scalars['Int'];
   name: Scalars['String'];
   remark: Scalars['String'];
+  file: Scalars['Upload'];
 }>;
 
 
@@ -921,8 +925,8 @@ export type InternalCreateMakerMutationHookResult = ReturnType<typeof useInterna
 export type InternalCreateMakerMutationResult = Apollo.MutationResult<InternalCreateMakerMutation>;
 export type InternalCreateMakerMutationOptions = Apollo.BaseMutationOptions<InternalCreateMakerMutation, InternalCreateMakerMutationVariables>;
 export const InternalCreateProductDocument = gql`
-    mutation InternalCreateProduct($makerId: Int!, $name: String!, $remark: String!) {
-  createProduct(makerId: $makerId, name: $name, remark: $remark) {
+    mutation InternalCreateProduct($makerId: Int!, $name: String!, $remark: String!, $file: Upload!) {
+  createProduct(makerId: $makerId, name: $name, remark: $remark, file: $file) {
     ...ProductFields
   }
 }
@@ -945,6 +949,7 @@ export type InternalCreateProductMutationFn = Apollo.MutationFunction<InternalCr
  *      makerId: // value for 'makerId'
  *      name: // value for 'name'
  *      remark: // value for 'remark'
+ *      file: // value for 'file'
  *   },
  * });
  */

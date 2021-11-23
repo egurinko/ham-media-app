@@ -17,6 +17,10 @@ declare global {
      * A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
      */
     dateTime<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "DateTime";
+    /**
+     * The `Upload` scalar type represents a file upload.
+     */
+    upload<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "Upload";
   }
 }
 declare global {
@@ -30,6 +34,10 @@ declare global {
      * A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
      */
     dateTime<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "DateTime";
+    /**
+     * The `Upload` scalar type represents a file upload.
+     */
+    upload<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "Upload";
     /**
      * Adds a Relay-style connection to the type, with numerous options for configuration
      *
@@ -96,6 +104,7 @@ export interface NexusGenScalars {
   ID: string
   BigInt: any
   DateTime: any
+  Upload: any
 }
 
 export interface NexusGenObjects {
@@ -566,6 +575,7 @@ export interface NexusGenArgTypes {
       name: string; // String!
     }
     createProduct: { // args
+      file: NexusGenScalars['Upload']; // Upload!
       makerId: number; // Int!
       name: string; // String!
       remark: string; // String!
