@@ -171,7 +171,7 @@ type Mutation {
   createHospital(deleted: Boolean!, internal_memo: String!, name: String!, url: String): Hospital!
   createInternalUser(email: String!, name: String!, password: String!, roleId: Int!): InternalUser!
   createMaker(name: String!): Maker!
-  createProduct(makerId: Int!, name: String!, remark: String!): Product!
+  createProduct(file: Upload!, makerId: Int!, name: String!, remark: String!): Product!
   createStocks(productId: Int!, stocks: [CreateStocksStocksInputType!]!): [Stock!]!
   deleteInternalUser(id: BigInt!): InternalUser!
   deleteMaker(id: Int!): Maker!
@@ -320,3 +320,6 @@ type StockAllocation {
   id: Int!
   internalUser: InternalUser!
 }
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
