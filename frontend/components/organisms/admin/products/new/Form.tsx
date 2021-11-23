@@ -18,6 +18,7 @@ import {
 } from '@/api/internal_api/types';
 import { goAdminProducts } from '@/utils/routes';
 import validators from '@/validators/index';
+import { useState } from 'react';
 
 interface FormInput {
   makerId: string;
@@ -35,6 +36,7 @@ const Form: React.VFC<NoProps> = () => {
     trigger,
     formState: { errors },
   } = useForm<FormInput>({ mode: 'onTouched' });
+  const [image, setImage] = useState<File | null>(null);
   const [create, { data, loading, error }] = useInternalCreateProductMutation();
 
   const onSubmit: SubmitHandler<FormInput> = async ({
@@ -46,12 +48,19 @@ const Form: React.VFC<NoProps> = () => {
 
     try {
       await create({
-        variables: { makerId: Number(makerId), name, remark },
+        variables: { makerId: Number(makerId), name, remark, file: image },
       });
       setTimeout(() => {
         goAdminProducts(router);
       }, 2000);
     } catch (e) {}
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      const file = e.target.files[0];
+      setImage(file);
+    }
   };
 
   return (
@@ -114,6 +123,17 @@ const Form: React.VFC<NoProps> = () => {
               {errors.remark && (
                 <FormErrorMessage>{errors.remark.message}</FormErrorMessage>
               )}
+            </FormControl>
+
+            <FormControl id="image" isRequired>
+              <FormLabel>商品画像</FormLabel>
+              <input
+                name="image"
+                type="file"
+                onChange={handleFileChange}
+                accept="image/png, image/jpeg"
+                required
+              />
             </FormControl>
           </Stack>
           <Box d="grid" justifyContent="center">
