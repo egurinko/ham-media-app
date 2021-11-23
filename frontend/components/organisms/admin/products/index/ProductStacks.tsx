@@ -68,8 +68,18 @@ const ProductStacks: React.VFC<NoProps> = () => {
                 onClick={() => handleProductClick(product.id)}
               >
                 <Box flex="1" display="flex" flexDir="row" alignItems="center">
-                  <Box flexShrink="0" w="16" h="16" objectFit="contain" mr="1">
-                    <img src={product.url} alt={product.name} />
+                  <Box flexShrink="0" mr="1">
+                    <img
+                      src={product.url}
+                      alt={product.name}
+                      width="60"
+                      height="60"
+                      style={{
+                        objectFit: 'contain',
+                        width: '60px',
+                        height: '60px',
+                      }}
+                    />
                   </Box>
                   <Box flexShrink="1">
                     <Text fontSize="xs">{product.maker.name}</Text>

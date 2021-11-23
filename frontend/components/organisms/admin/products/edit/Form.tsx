@@ -134,10 +134,17 @@ const Form: React.VFC<Props> = ({ productId }) => {
 
             <FormControl id="image">
               <FormLabel>商品画像</FormLabel>
-              <Box w="32" h="32" objectFit="contain">
+              <Box flexShrink="0" mr="1">
                 <img
                   src={productData.product.url}
                   alt={productData.product.name}
+                  width="120"
+                  height="120"
+                  style={{
+                    objectFit: 'contain',
+                    width: '120px',
+                    height: '120px',
+                  }}
                 />
               </Box>
             </FormControl>
