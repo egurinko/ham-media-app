@@ -225,6 +225,7 @@ type Product {
   remark: String!
   stocks: [Stock!]!
   totalStockAmount: Int!
+  url: String!
 }
 
 type ProductConnection {
