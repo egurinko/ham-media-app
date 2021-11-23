@@ -9,6 +9,7 @@ export const PRODUCT_FIELDS = gql`
     id
     name
     remark
+    url
     maker {
       ...MakerFields
     }

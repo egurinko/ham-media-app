@@ -131,6 +131,16 @@ const Form: React.VFC<Props> = ({ productId }) => {
                 <FormErrorMessage>{errors.remark.message}</FormErrorMessage>
               )}
             </FormControl>
+
+            <FormControl id="image">
+              <FormLabel>商品画像</FormLabel>
+              <Box w="32" h="32" objectFit="contain">
+                <img
+                  src={productData.product.url}
+                  alt={productData.product.name}
+                />
+              </Box>
+            </FormControl>
           </Stack>
           <Box d="grid" justifyContent="center">
             <Button

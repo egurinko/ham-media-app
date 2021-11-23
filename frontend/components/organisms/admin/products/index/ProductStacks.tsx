@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import {
   Text,
   Skeleton,
@@ -66,11 +67,16 @@ const ProductStacks: React.VFC<NoProps> = () => {
                 p="2"
                 onClick={() => handleProductClick(product.id)}
               >
-                <Box flex="1">
-                  <Text fontSize="xs">{product.maker.name}</Text>
-                  <Text fontSize="sm" fontWeight="bold">
-                    {product.name}
-                  </Text>
+                <Box flex="1" display="flex" flexDir="row" alignItems="center">
+                  <Box flexShrink="0" w="16" h="16" objectFit="contain" mr="1">
+                    <img src={product.url} alt={product.name} />
+                  </Box>
+                  <Box flexShrink="1">
+                    <Text fontSize="xs">{product.maker.name}</Text>
+                    <Text fontSize="sm" fontWeight="bold">
+                      {product.name}
+                    </Text>
+                  </Box>
                 </Box>
                 <Box ml="2">
                   <Text fontSize="sm">在庫：{product.stocks.length}</Text>

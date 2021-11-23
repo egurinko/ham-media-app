@@ -189,6 +189,7 @@ export interface NexusGenObjects {
     id: number; // Int!
     name: string; // String!
     remark: string; // String!
+    url: string; // String!
   }
   ProductConnection: { // root type
     edges?: Array<NexusGenRootTypes['ProductEdge'] | null> | null; // [ProductEdge]
@@ -344,6 +345,7 @@ export interface NexusGenFieldTypes {
     remark: string; // String!
     stocks: NexusGenRootTypes['Stock'][]; // [Stock!]!
     totalStockAmount: number; // Int!
+    url: string; // String!
   }
   ProductConnection: { // field return type
     edges: Array<NexusGenRootTypes['ProductEdge'] | null> | null; // [ProductEdge]
@@ -505,6 +507,7 @@ export interface NexusGenFieldTypeNames {
     remark: 'String'
     stocks: 'Stock'
     totalStockAmount: 'Int'
+    url: 'String'
   }
   ProductConnection: { // field return type name
     edges: 'ProductEdge'
