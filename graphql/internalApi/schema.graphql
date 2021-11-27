@@ -248,6 +248,19 @@ type ProductEdge {
   node: Product
 }
 
+"""A product tag"""
+type ProductTag {
+  id: Int!
+  name: String!
+}
+
+"""A product tag group"""
+type ProductTagGroup {
+  id: Int!
+  name: String!
+  productTags: [ProductTag!]!
+}
+
 type Query {
   hospital(id: BigInt!): Hospital!
   hospitalConnection(
@@ -285,6 +298,8 @@ type Query {
     """Returns the last n elements from the list."""
     last: Int
   ): ProductConnection
+  productTagGroup(id: Int!): ProductTagGroup!
+  productTagGroups: [ProductTagGroup!]!
   products: [Product!]!
   roles: [Role!]!
   session: Session!

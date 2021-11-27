@@ -199,6 +199,14 @@ export interface NexusGenObjects {
     cursor: string; // String!
     node?: NexusGenRootTypes['Product'] | null; // Product
   }
+  ProductTag: { // root type
+    id: number; // Int!
+    name: string; // String!
+  }
+  ProductTagGroup: { // root type
+    id: number; // Int!
+    name: string; // String!
+  }
   Query: {};
   Region: { // root type
     id: NexusGenScalars['BigInt']; // BigInt!
@@ -355,6 +363,15 @@ export interface NexusGenFieldTypes {
     cursor: string; // String!
     node: NexusGenRootTypes['Product'] | null; // Product
   }
+  ProductTag: { // field return type
+    id: number; // Int!
+    name: string; // String!
+  }
+  ProductTagGroup: { // field return type
+    id: number; // Int!
+    name: string; // String!
+    productTags: NexusGenRootTypes['ProductTag'][]; // [ProductTag!]!
+  }
   Query: { // field return type
     hospital: NexusGenRootTypes['Hospital']; // Hospital!
     hospitalConnection: NexusGenRootTypes['HospitalConnection'] | null; // HospitalConnection
@@ -365,6 +382,8 @@ export interface NexusGenFieldTypes {
     makers: NexusGenRootTypes['Maker'][]; // [Maker!]!
     product: NexusGenRootTypes['Product']; // Product!
     productConnection: NexusGenRootTypes['ProductConnection'] | null; // ProductConnection
+    productTagGroup: NexusGenRootTypes['ProductTagGroup']; // ProductTagGroup!
+    productTagGroups: NexusGenRootTypes['ProductTagGroup'][]; // [ProductTagGroup!]!
     products: NexusGenRootTypes['Product'][]; // [Product!]!
     roles: NexusGenRootTypes['Role'][]; // [Role!]!
     session: NexusGenRootTypes['Session']; // Session!
@@ -517,6 +536,15 @@ export interface NexusGenFieldTypeNames {
     cursor: 'String'
     node: 'Product'
   }
+  ProductTag: { // field return type name
+    id: 'Int'
+    name: 'String'
+  }
+  ProductTagGroup: { // field return type name
+    id: 'Int'
+    name: 'String'
+    productTags: 'ProductTag'
+  }
   Query: { // field return type name
     hospital: 'Hospital'
     hospitalConnection: 'HospitalConnection'
@@ -527,6 +555,8 @@ export interface NexusGenFieldTypeNames {
     makers: 'Maker'
     product: 'Product'
     productConnection: 'ProductConnection'
+    productTagGroup: 'ProductTagGroup'
+    productTagGroups: 'ProductTagGroup'
     products: 'Product'
     roles: 'Role'
     session: 'Session'
@@ -658,6 +688,9 @@ export interface NexusGenArgTypes {
       before?: string | null; // String
       first?: number | null; // Int
       last?: number | null; // Int
+    }
+    productTagGroup: { // args
+      id: number; // Int!
     }
     stocks: { // args
       productId: number; // Int!
