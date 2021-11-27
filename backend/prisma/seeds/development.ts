@@ -30,12 +30,58 @@ export const executeDevelopment = async () => {
         },
       });
 
+      const foodTagGroup = await client.productTagGroup.upsert({
+        where: { name: '消耗品（食品）' },
+        update: {},
+        create: { name: '消耗品（食品）' },
+      });
+
+      const pelletTag = await client.productTag.upsert({
+        where: { name: 'ペレット' },
+        update: {},
+        create: { name: 'ペレット', product_tag_group_id: foodTagGroup.id },
+      });
+
+      const nonConsumableTagGroup = await client.productTagGroup.upsert({
+        where: { name: '非消耗品' },
+        update: {},
+        create: { name: '非消耗品' },
+      });
+
+      const cageTag = await client.productTag.upsert({
+        where: { name: 'ケージ' },
+        update: {},
+        create: {
+          name: 'ケージ',
+          product_tag_group_id: nonConsumableTagGroup.id,
+        },
+      });
+
+      const wheelTag = await client.productTag.upsert({
+        where: { name: '回し車' },
+        update: {},
+        create: {
+          name: '回し車',
+          product_tag_group_id: nonConsumableTagGroup.id,
+        },
+      });
+
+      const toiletTag = await client.productTag.upsert({
+        where: { name: 'トイレ' },
+        update: {},
+        create: {
+          name: 'トイレ',
+          product_tag_group_id: nonConsumableTagGroup.id,
+        },
+      });
+
       const sanko = await client.maker.upsert({
         where: { name: '三晃商会' },
         update: {},
         create: { name: '三晃商会' },
       });
 
+      // 消耗品（食品）
       const sankoProduct = await client.product.upsert({
         where: { name: 'ハムスタープラスダイエットメンテンス' },
         update: {},
@@ -44,6 +90,15 @@ export const executeDevelopment = async () => {
           remark: '2022/01\n2022/08',
           maker_id: sanko.id,
           url: 'https://ham-media-app-local-images.s3.amazonaws.com/%E3%82%B9%E3%82%AF%E3%82%B7%E3%83%A7+2021-11-24+2.52.08.png',
+        },
+      });
+
+      await client.productTagging.upsert({
+        where: { id: 1 },
+        update: {},
+        create: {
+          product_id: sankoProduct.id,
+          product_tag_id: pelletTag.id,
         },
       });
 
@@ -68,6 +123,7 @@ export const executeDevelopment = async () => {
         });
       }
 
+      // 非消耗品
       const sankoProductTwo = await client.product.upsert({
         where: { name: 'パーテーションケース ミニ' },
         update: {},
@@ -76,6 +132,15 @@ export const executeDevelopment = async () => {
           remark: 'W180×Ｄ110×Ｈ145ｍｍ',
           maker_id: sanko.id,
           url: 'https://ham-media-app-local-images.s3.amazonaws.com/%E3%82%B9%E3%82%AF%E3%82%B7%E3%83%A7+2021-11-24+2.52.39.png',
+        },
+      });
+
+      await client.productTagging.upsert({
+        where: { id: 2 },
+        update: {},
+        create: {
+          product_id: sankoProductTwo.id,
+          product_tag_id: cageTag.id,
         },
       });
 
@@ -95,7 +160,8 @@ export const executeDevelopment = async () => {
         create: { name: 'GEX' },
       });
 
-      await client.product.upsert({
+      // 非消耗品
+      const gexWhile = await client.product.upsert({
         where: { name: 'ハーモニーホイールDS14' },
         update: {},
         create: {
@@ -106,7 +172,17 @@ export const executeDevelopment = async () => {
         },
       });
 
-      await client.product.upsert({
+      await client.productTagging.upsert({
+        where: { id: 3 },
+        update: {},
+        create: {
+          product_id: gexWhile.id,
+          product_tag_id: wheelTag.id,
+        },
+      });
+
+      // 非消耗品
+      const toilet = await client.product.upsert({
         where: { name: 'ハーモニートイレ' },
         update: {},
         create: {
@@ -114,6 +190,15 @@ export const executeDevelopment = async () => {
           remark: '',
           maker_id: gex.id,
           url: 'https://ham-media-app-local-images.s3.amazonaws.com/%E3%82%B9%E3%82%AF%E3%82%B7%E3%83%A7+2021-11-24+2.53.41.png',
+        },
+      });
+
+      await client.productTagging.upsert({
+        where: { id: 4 },
+        update: {},
+        create: {
+          product_id: toilet.id,
+          product_tag_id: toiletTag.id,
         },
       });
     }
