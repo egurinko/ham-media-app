@@ -181,11 +181,13 @@ type Mutation {
   createMaker(name: String!): Maker!
   createProduct(file: Upload!, makerId: Int!, name: String!, remark: String!): Product!
   createProductTagGroup(name: String!): ProductTagGroup!
+  createProductTaggings(productId: Int!, productTagIds: [Int!]!): Product!
   createProductTags(productTagGroupId: Int!, productTags: [CreateProductTagsProductTagInputType!]!): BatchPayload!
   createStocks(productId: Int!, stocks: [CreateStocksStocksInputType!]!): [Stock!]!
   deleteInternalUser(id: BigInt!): InternalUser!
   deleteMaker(id: Int!): Maker!
   deleteProductTag(id: Int!): ProductTag!
+  deleteProductTagging(id: Int!): ProductTagging!
   deleteStock(id: Int!): Stock!
   returnStock(id: Int!): Stock!
   updateHospital(deleted: Boolean!, hospitalAddressInput: HospitalAddressInputType!, hospitalBusinessFormInput: HospitalBusinessFormInputType!, hospitalCertificationOptionInput: HospitalCertificationOptionInputType!, hospitalInternalReputationInput: HospitalInternalReputationInputType!, hospitalNightServiceOptionInput: HospitalNightServiceOptionInputType!, hospitalNightUrgentActionOptionInput: HospitalNightUrgentActionOptionInputType!, hospitalReservationStatusInput: HospitalReservationStatusInputType!, id: BigInt!, internal_memo: String!, name: String!, url: String!): Hospital!
@@ -233,6 +235,7 @@ type Product {
   id: Int!
   maker: Maker!
   name: String!
+  productTaggings: [ProductTagging!]!
   remainingStockAmount: Int!
   remark: String!
   stocks: [Stock!]!
@@ -272,6 +275,12 @@ type ProductTagGroup {
   id: Int!
   name: String!
   productTags: [ProductTag!]!
+}
+
+"""A product tagging"""
+type ProductTagging {
+  id: Int!
+  productTag: ProductTag!
 }
 
 type Query {

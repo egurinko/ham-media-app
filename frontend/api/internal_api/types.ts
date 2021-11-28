@@ -201,11 +201,13 @@ export type Mutation = {
   createMaker: Maker;
   createProduct: Product;
   createProductTagGroup: ProductTagGroup;
+  createProductTaggings: Product;
   createProductTags: BatchPayload;
   createStocks: Array<Stock>;
   deleteInternalUser: InternalUser;
   deleteMaker: Maker;
   deleteProductTag: ProductTag;
+  deleteProductTagging: ProductTagging;
   deleteStock: Stock;
   returnStock: Stock;
   updateHospital: Hospital;
@@ -256,6 +258,12 @@ export type MutationCreateProductTagGroupArgs = {
 };
 
 
+export type MutationCreateProductTaggingsArgs = {
+  productId: Scalars['Int'];
+  productTagIds: Array<Scalars['Int']>;
+};
+
+
 export type MutationCreateProductTagsArgs = {
   productTagGroupId: Scalars['Int'];
   productTags: Array<CreateProductTagsProductTagInputType>;
@@ -279,6 +287,11 @@ export type MutationDeleteMakerArgs = {
 
 
 export type MutationDeleteProductTagArgs = {
+  id: Scalars['Int'];
+};
+
+
+export type MutationDeleteProductTaggingArgs = {
   id: Scalars['Int'];
 };
 
@@ -365,6 +378,7 @@ export type Product = {
   id: Scalars['Int'];
   maker: Maker;
   name: Scalars['String'];
+  productTaggings: Array<ProductTagging>;
   remainingStockAmount: Scalars['Int'];
   remark: Scalars['String'];
   stocks: Array<Stock>;
@@ -402,6 +416,13 @@ export type ProductTagGroup = {
   id: Scalars['Int'];
   name: Scalars['String'];
   productTags: Array<ProductTag>;
+};
+
+/** A product tagging */
+export type ProductTagging = {
+  __typename?: 'ProductTagging';
+  id: Scalars['Int'];
+  productTag: ProductTag;
 };
 
 export type Query = {
@@ -551,7 +572,7 @@ export type InternalCreateProductMutationVariables = Exact<{
 }>;
 
 
-export type InternalCreateProductMutation = { __typename?: 'Mutation', createProduct: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> } };
+export type InternalCreateProductMutation = { __typename?: 'Mutation', createProduct: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> } };
 
 export type InternalCreateProductTagGroupMutationVariables = Exact<{
   name: Scalars['String'];
@@ -559,6 +580,14 @@ export type InternalCreateProductTagGroupMutationVariables = Exact<{
 
 
 export type InternalCreateProductTagGroupMutation = { __typename?: 'Mutation', createProductTagGroup: { __typename?: 'ProductTagGroup', id: number, name: string, productTags: Array<{ __typename?: 'ProductTag', id: number, name: string }> } };
+
+export type InternalCreateProductTaggingsMutationVariables = Exact<{
+  productId: Scalars['Int'];
+  productTagIds: Array<Scalars['Int']> | Scalars['Int'];
+}>;
+
+
+export type InternalCreateProductTaggingsMutation = { __typename?: 'Mutation', createProductTaggings: { __typename?: 'Product', id: number } };
 
 export type InternalCreateProductTagsMutationVariables = Exact<{
   productTagGroupId: Scalars['Int'];
@@ -597,6 +626,13 @@ export type InternalDeleteProductTagMutationVariables = Exact<{
 
 export type InternalDeleteProductTagMutation = { __typename?: 'Mutation', deleteProductTag: { __typename?: 'ProductTag', id: number, name: string } };
 
+export type InternalDeleteProductTaggingMutationVariables = Exact<{
+  id: Scalars['Int'];
+}>;
+
+
+export type InternalDeleteProductTaggingMutation = { __typename?: 'Mutation', deleteProductTagging: { __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } } };
+
 export type InternalDeleteStockMutationVariables = Exact<{
   id: Scalars['Int'];
 }>;
@@ -610,9 +646,11 @@ export type InternalUserFieldsFragment = { __typename?: 'InternalUser', id: BigI
 
 export type MakerFieldsFragment = { __typename?: 'Maker', id: number, name: string };
 
-export type ProductFieldsFragment = { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> };
+export type ProductFieldsFragment = { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> };
 
 export type StockFieldsFragment = { __typename?: 'Stock', id: number, expired_at: any, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined };
+
+export type ProductTaggingFieldsFragment = { __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } };
 
 export type ProductTagFieldsFragment = { __typename?: 'ProductTag', id: number, name: string };
 
@@ -672,7 +710,7 @@ export type InternalGetProductQueryVariables = Exact<{
 }>;
 
 
-export type InternalGetProductQuery = { __typename?: 'Query', product: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> } };
+export type InternalGetProductQuery = { __typename?: 'Query', product: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> } };
 
 export type InternalGetProductConnectionQueryVariables = Exact<{
   first?: InputMaybe<Scalars['Int']>;
@@ -680,7 +718,7 @@ export type InternalGetProductConnectionQueryVariables = Exact<{
 }>;
 
 
-export type InternalGetProductConnectionQuery = { __typename?: 'Query', productConnection?: { __typename?: 'ProductConnection', edges?: Array<{ __typename?: 'ProductEdge', node?: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> } | null | undefined } | null | undefined> | null | undefined, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, hasPreviousPage: boolean, startCursor?: string | null | undefined, endCursor?: string | null | undefined } } | null | undefined };
+export type InternalGetProductConnectionQuery = { __typename?: 'Query', productConnection?: { __typename?: 'ProductConnection', edges?: Array<{ __typename?: 'ProductEdge', node?: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> } | null | undefined } | null | undefined> | null | undefined, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, hasPreviousPage: boolean, startCursor?: string | null | undefined, endCursor?: string | null | undefined } } | null | undefined };
 
 export type InternalGetProductIdsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -773,7 +811,7 @@ export type InternalUpdateProductMutationVariables = Exact<{
 }>;
 
 
-export type InternalUpdateProductMutation = { __typename?: 'Mutation', updateProduct: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> } };
+export type InternalUpdateProductMutation = { __typename?: 'Mutation', updateProduct: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> } };
 
 export type InternalUpdateProductTagGroupMutationVariables = Exact<{
   id: Scalars['Int'];
@@ -833,6 +871,20 @@ export const HospitalFieldsFragmentDoc = gql`
   }
 }
     `;
+export const ProductTagFieldsFragmentDoc = gql`
+    fragment ProductTagFields on ProductTag {
+  id
+  name
+}
+    `;
+export const ProductTaggingFieldsFragmentDoc = gql`
+    fragment ProductTaggingFields on ProductTagging {
+  id
+  productTag {
+    ...ProductTagFields
+  }
+}
+    ${ProductTagFieldsFragmentDoc}`;
 export const MakerFieldsFragmentDoc = gql`
     fragment MakerFields on Maker {
   id
@@ -874,6 +926,9 @@ export const ProductFieldsFragmentDoc = gql`
   name
   remark
   url
+  productTaggings {
+    ...ProductTaggingFields
+  }
   maker {
     ...MakerFields
   }
@@ -884,14 +939,9 @@ export const ProductFieldsFragmentDoc = gql`
   allocatedStockAmount
   remainingStockAmount
 }
-    ${MakerFieldsFragmentDoc}
+    ${ProductTaggingFieldsFragmentDoc}
+${MakerFieldsFragmentDoc}
 ${StockFieldsFragmentDoc}`;
-export const ProductTagFieldsFragmentDoc = gql`
-    fragment ProductTagFields on ProductTag {
-  id
-  name
-}
-    `;
 export const ProductTagGroupFieldsFragmentDoc = gql`
     fragment ProductTagGroupFields on ProductTagGroup {
   id
@@ -1119,6 +1169,40 @@ export function useInternalCreateProductTagGroupMutation(baseOptions?: Apollo.Mu
 export type InternalCreateProductTagGroupMutationHookResult = ReturnType<typeof useInternalCreateProductTagGroupMutation>;
 export type InternalCreateProductTagGroupMutationResult = Apollo.MutationResult<InternalCreateProductTagGroupMutation>;
 export type InternalCreateProductTagGroupMutationOptions = Apollo.BaseMutationOptions<InternalCreateProductTagGroupMutation, InternalCreateProductTagGroupMutationVariables>;
+export const InternalCreateProductTaggingsDocument = gql`
+    mutation InternalCreateProductTaggings($productId: Int!, $productTagIds: [Int!]!) {
+  createProductTaggings(productId: $productId, productTagIds: $productTagIds) {
+    id
+  }
+}
+    `;
+export type InternalCreateProductTaggingsMutationFn = Apollo.MutationFunction<InternalCreateProductTaggingsMutation, InternalCreateProductTaggingsMutationVariables>;
+
+/**
+ * __useInternalCreateProductTaggingsMutation__
+ *
+ * To run a mutation, you first call `useInternalCreateProductTaggingsMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInternalCreateProductTaggingsMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [internalCreateProductTaggingsMutation, { data, loading, error }] = useInternalCreateProductTaggingsMutation({
+ *   variables: {
+ *      productId: // value for 'productId'
+ *      productTagIds: // value for 'productTagIds'
+ *   },
+ * });
+ */
+export function useInternalCreateProductTaggingsMutation(baseOptions?: Apollo.MutationHookOptions<InternalCreateProductTaggingsMutation, InternalCreateProductTaggingsMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<InternalCreateProductTaggingsMutation, InternalCreateProductTaggingsMutationVariables>(InternalCreateProductTaggingsDocument, options);
+      }
+export type InternalCreateProductTaggingsMutationHookResult = ReturnType<typeof useInternalCreateProductTaggingsMutation>;
+export type InternalCreateProductTaggingsMutationResult = Apollo.MutationResult<InternalCreateProductTaggingsMutation>;
+export type InternalCreateProductTaggingsMutationOptions = Apollo.BaseMutationOptions<InternalCreateProductTaggingsMutation, InternalCreateProductTaggingsMutationVariables>;
 export const InternalCreateProductTagsDocument = gql`
     mutation InternalCreateProductTags($productTagGroupId: Int!, $productTags: [CreateProductTagsProductTagInputType!]!) {
   createProductTags(
@@ -1292,6 +1376,39 @@ export function useInternalDeleteProductTagMutation(baseOptions?: Apollo.Mutatio
 export type InternalDeleteProductTagMutationHookResult = ReturnType<typeof useInternalDeleteProductTagMutation>;
 export type InternalDeleteProductTagMutationResult = Apollo.MutationResult<InternalDeleteProductTagMutation>;
 export type InternalDeleteProductTagMutationOptions = Apollo.BaseMutationOptions<InternalDeleteProductTagMutation, InternalDeleteProductTagMutationVariables>;
+export const InternalDeleteProductTaggingDocument = gql`
+    mutation InternalDeleteProductTagging($id: Int!) {
+  deleteProductTagging(id: $id) {
+    ...ProductTaggingFields
+  }
+}
+    ${ProductTaggingFieldsFragmentDoc}`;
+export type InternalDeleteProductTaggingMutationFn = Apollo.MutationFunction<InternalDeleteProductTaggingMutation, InternalDeleteProductTaggingMutationVariables>;
+
+/**
+ * __useInternalDeleteProductTaggingMutation__
+ *
+ * To run a mutation, you first call `useInternalDeleteProductTaggingMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInternalDeleteProductTaggingMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [internalDeleteProductTaggingMutation, { data, loading, error }] = useInternalDeleteProductTaggingMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useInternalDeleteProductTaggingMutation(baseOptions?: Apollo.MutationHookOptions<InternalDeleteProductTaggingMutation, InternalDeleteProductTaggingMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<InternalDeleteProductTaggingMutation, InternalDeleteProductTaggingMutationVariables>(InternalDeleteProductTaggingDocument, options);
+      }
+export type InternalDeleteProductTaggingMutationHookResult = ReturnType<typeof useInternalDeleteProductTaggingMutation>;
+export type InternalDeleteProductTaggingMutationResult = Apollo.MutationResult<InternalDeleteProductTaggingMutation>;
+export type InternalDeleteProductTaggingMutationOptions = Apollo.BaseMutationOptions<InternalDeleteProductTaggingMutation, InternalDeleteProductTaggingMutationVariables>;
 export const InternalDeleteStockDocument = gql`
     mutation InternalDeleteStock($id: Int!) {
   deleteStock(id: $id) {

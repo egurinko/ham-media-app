@@ -6,6 +6,7 @@ import { ChevronRightIcon } from '@chakra-ui/icons';
 import { ProductSummary } from '@/components/organisms/admin/products/edit/ProductSummary';
 import { Form } from '@/components/organisms/admin/products/edit/Form';
 import { Stocks } from '@/components/organisms/admin/products/edit/Stocks';
+import { ProductTaggings } from '@/components/organisms/admin/products/edit/ProductTaggings';
 import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
 import { getProductIds } from '@/api/internal_api/getProductIds';
 import type { InternalGetProductIdsQuery } from '@/api/internal_api/types';
@@ -35,7 +36,10 @@ const Edit: React.VFC<Props> = () => {
           <Box mb="2">
             <Form productId={Number(productId)} />
           </Box>
-          <Stocks productId={Number(productId)} />
+          <Box mb="2">
+            <Stocks productId={Number(productId)} />
+          </Box>
+          <ProductTaggings productId={Number(productId)} />
         </>
       ) : null}
     </InternalLayout>
