@@ -33,6 +33,14 @@ export const goAdminProductsEdit = (
   router: NextRouter,
   { id }: { id: number }
 ) => router.push(`/admin/products/${id}/edit`);
+export const goAdminProductTagGroups = (router: NextRouter) =>
+  router.push('/admin/product_tag_groups');
+export const goAdminProductTagGroupsNew = (router: NextRouter) =>
+  router.push('/admin/product_tag_groups/new');
+export const goAdminProductTagGroupsEdit = (
+  router: NextRouter,
+  { id }: { id: number }
+) => router.push(`/admin/product_tag_groups/${id}/edit`);
 
 export const goHospitals = (router: NextRouter) => router.push('/hospitals');
 export const goHospitalDetail = (router: NextRouter, { id }: { id: BigInt }) =>

@@ -24,6 +24,15 @@ export type Scalars = {
   Upload: any;
 };
 
+export type BatchPayload = {
+  __typename?: 'BatchPayload';
+  count: Scalars['Int'];
+};
+
+export type CreateProductTagsProductTagInputType = {
+  name: Scalars['String'];
+};
+
 export type CreateStocksStocksInputType = {
   amount: Scalars['Int'];
   expiredAt: Scalars['DateTime'];
@@ -191,15 +200,19 @@ export type Mutation = {
   createInternalUser: InternalUser;
   createMaker: Maker;
   createProduct: Product;
+  createProductTagGroup: ProductTagGroup;
+  createProductTags: BatchPayload;
   createStocks: Array<Stock>;
   deleteInternalUser: InternalUser;
   deleteMaker: Maker;
+  deleteProductTag: ProductTag;
   deleteStock: Stock;
   returnStock: Stock;
   updateHospital: Hospital;
   updateInternalUser: InternalUser;
   updateMaker: Maker;
   updateProduct: Product;
+  updateProductTagGroup: ProductTagGroup;
 };
 
 
@@ -238,6 +251,17 @@ export type MutationCreateProductArgs = {
 };
 
 
+export type MutationCreateProductTagGroupArgs = {
+  name: Scalars['String'];
+};
+
+
+export type MutationCreateProductTagsArgs = {
+  productTagGroupId: Scalars['Int'];
+  productTags: Array<CreateProductTagsProductTagInputType>;
+};
+
+
 export type MutationCreateStocksArgs = {
   productId: Scalars['Int'];
   stocks: Array<CreateStocksStocksInputType>;
@@ -250,6 +274,11 @@ export type MutationDeleteInternalUserArgs = {
 
 
 export type MutationDeleteMakerArgs = {
+  id: Scalars['Int'];
+};
+
+
+export type MutationDeleteProductTagArgs = {
   id: Scalars['Int'];
 };
 
@@ -300,6 +329,12 @@ export type MutationUpdateProductArgs = {
   makerId: Scalars['Int'];
   name: Scalars['String'];
   remark: Scalars['String'];
+};
+
+
+export type MutationUpdateProductTagGroupArgs = {
+  id: Scalars['Int'];
+  name: Scalars['String'];
 };
 
 /** PageInfo cursor, as defined in https://facebook.github.io/relay/graphql/connections.htm#sec-undefined.PageInfo */
@@ -353,6 +388,22 @@ export type ProductEdge = {
   node?: Maybe<Product>;
 };
 
+/** A product tag */
+export type ProductTag = {
+  __typename?: 'ProductTag';
+  id: Scalars['Int'];
+  name: Scalars['String'];
+  productTagGroup: ProductTagGroup;
+};
+
+/** A product tag group */
+export type ProductTagGroup = {
+  __typename?: 'ProductTagGroup';
+  id: Scalars['Int'];
+  name: Scalars['String'];
+  productTags: Array<ProductTag>;
+};
+
 export type Query = {
   __typename?: 'Query';
   hospital: Hospital;
@@ -364,6 +415,8 @@ export type Query = {
   makers: Array<Maker>;
   product: Product;
   productConnection?: Maybe<ProductConnection>;
+  productTagGroup: ProductTagGroup;
+  productTagGroups: Array<ProductTagGroup>;
   products: Array<Product>;
   roles: Array<Role>;
   session: Session;
@@ -407,6 +460,11 @@ export type QueryProductConnectionArgs = {
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type QueryProductTagGroupArgs = {
+  id: Scalars['Int'];
 };
 
 
@@ -495,6 +553,21 @@ export type InternalCreateProductMutationVariables = Exact<{
 
 export type InternalCreateProductMutation = { __typename?: 'Mutation', createProduct: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> } };
 
+export type InternalCreateProductTagGroupMutationVariables = Exact<{
+  name: Scalars['String'];
+}>;
+
+
+export type InternalCreateProductTagGroupMutation = { __typename?: 'Mutation', createProductTagGroup: { __typename?: 'ProductTagGroup', id: number, name: string, productTags: Array<{ __typename?: 'ProductTag', id: number, name: string }> } };
+
+export type InternalCreateProductTagsMutationVariables = Exact<{
+  productTagGroupId: Scalars['Int'];
+  productTags: Array<CreateProductTagsProductTagInputType> | CreateProductTagsProductTagInputType;
+}>;
+
+
+export type InternalCreateProductTagsMutation = { __typename?: 'Mutation', createProductTags: { __typename?: 'BatchPayload', count: number } };
+
 export type InternalCreateStocksMutationVariables = Exact<{
   productId: Scalars['Int'];
   stocks: Array<CreateStocksStocksInputType> | CreateStocksStocksInputType;
@@ -517,6 +590,13 @@ export type InternalDeleteMakerMutationVariables = Exact<{
 
 export type InternalDeleteMakerMutation = { __typename?: 'Mutation', deleteMaker: { __typename?: 'Maker', id: number, name: string } };
 
+export type InternalDeleteProductTagMutationVariables = Exact<{
+  id: Scalars['Int'];
+}>;
+
+
+export type InternalDeleteProductTagMutation = { __typename?: 'Mutation', deleteProductTag: { __typename?: 'ProductTag', id: number, name: string } };
+
 export type InternalDeleteStockMutationVariables = Exact<{
   id: Scalars['Int'];
 }>;
@@ -533,6 +613,10 @@ export type MakerFieldsFragment = { __typename?: 'Maker', id: number, name: stri
 export type ProductFieldsFragment = { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> };
 
 export type StockFieldsFragment = { __typename?: 'Stock', id: number, expired_at: any, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined };
+
+export type ProductTagFieldsFragment = { __typename?: 'ProductTag', id: number, name: string };
+
+export type ProductTagGroupFieldsFragment = { __typename?: 'ProductTagGroup', id: number, name: string, productTags: Array<{ __typename?: 'ProductTag', id: number, name: string }> };
 
 export type RoleFieldsFragment = { __typename?: 'Role', id: number, name: string };
 
@@ -602,6 +686,23 @@ export type InternalGetProductIdsQueryVariables = Exact<{ [key: string]: never; 
 
 
 export type InternalGetProductIdsQuery = { __typename?: 'Query', products: Array<{ __typename?: 'Product', id: number }> };
+
+export type InternalGetProductTagGroupQueryVariables = Exact<{
+  id: Scalars['Int'];
+}>;
+
+
+export type InternalGetProductTagGroupQuery = { __typename?: 'Query', productTagGroup: { __typename?: 'ProductTagGroup', id: number, name: string, productTags: Array<{ __typename?: 'ProductTag', id: number, name: string }> } };
+
+export type InternalGetProductTagGroupIdsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type InternalGetProductTagGroupIdsQuery = { __typename?: 'Query', productTagGroups: Array<{ __typename?: 'ProductTagGroup', id: number }> };
+
+export type InternalGetProductTagGroupsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type InternalGetProductTagGroupsQuery = { __typename?: 'Query', productTagGroups: Array<{ __typename?: 'ProductTagGroup', id: number, name: string, productTags: Array<{ __typename?: 'ProductTag', id: number, name: string }> }> };
 
 export type InternalGetRolesQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -673,6 +774,14 @@ export type InternalUpdateProductMutationVariables = Exact<{
 
 
 export type InternalUpdateProductMutation = { __typename?: 'Mutation', updateProduct: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> } };
+
+export type InternalUpdateProductTagGroupMutationVariables = Exact<{
+  id: Scalars['Int'];
+  name: Scalars['String'];
+}>;
+
+
+export type InternalUpdateProductTagGroupMutation = { __typename?: 'Mutation', updateProductTagGroup: { __typename?: 'ProductTagGroup', id: number, name: string, productTags: Array<{ __typename?: 'ProductTag', id: number, name: string }> } };
 
 export const HospitalFieldsFragmentDoc = gql`
     fragment HospitalFields on Hospital {
@@ -777,6 +886,21 @@ export const ProductFieldsFragmentDoc = gql`
 }
     ${MakerFieldsFragmentDoc}
 ${StockFieldsFragmentDoc}`;
+export const ProductTagFieldsFragmentDoc = gql`
+    fragment ProductTagFields on ProductTag {
+  id
+  name
+}
+    `;
+export const ProductTagGroupFieldsFragmentDoc = gql`
+    fragment ProductTagGroupFields on ProductTagGroup {
+  id
+  name
+  productTags {
+    ...ProductTagFields
+  }
+}
+    ${ProductTagFieldsFragmentDoc}`;
 export const InternalAllocateStockDocument = gql`
     mutation InternalAllocateStock($id: Int!, $internalUserId: BigInt!) {
   allocateStock(id: $id, internalUserId: $internalUserId) {
@@ -962,6 +1086,76 @@ export function useInternalCreateProductMutation(baseOptions?: Apollo.MutationHo
 export type InternalCreateProductMutationHookResult = ReturnType<typeof useInternalCreateProductMutation>;
 export type InternalCreateProductMutationResult = Apollo.MutationResult<InternalCreateProductMutation>;
 export type InternalCreateProductMutationOptions = Apollo.BaseMutationOptions<InternalCreateProductMutation, InternalCreateProductMutationVariables>;
+export const InternalCreateProductTagGroupDocument = gql`
+    mutation InternalCreateProductTagGroup($name: String!) {
+  createProductTagGroup(name: $name) {
+    ...ProductTagGroupFields
+  }
+}
+    ${ProductTagGroupFieldsFragmentDoc}`;
+export type InternalCreateProductTagGroupMutationFn = Apollo.MutationFunction<InternalCreateProductTagGroupMutation, InternalCreateProductTagGroupMutationVariables>;
+
+/**
+ * __useInternalCreateProductTagGroupMutation__
+ *
+ * To run a mutation, you first call `useInternalCreateProductTagGroupMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInternalCreateProductTagGroupMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [internalCreateProductTagGroupMutation, { data, loading, error }] = useInternalCreateProductTagGroupMutation({
+ *   variables: {
+ *      name: // value for 'name'
+ *   },
+ * });
+ */
+export function useInternalCreateProductTagGroupMutation(baseOptions?: Apollo.MutationHookOptions<InternalCreateProductTagGroupMutation, InternalCreateProductTagGroupMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<InternalCreateProductTagGroupMutation, InternalCreateProductTagGroupMutationVariables>(InternalCreateProductTagGroupDocument, options);
+      }
+export type InternalCreateProductTagGroupMutationHookResult = ReturnType<typeof useInternalCreateProductTagGroupMutation>;
+export type InternalCreateProductTagGroupMutationResult = Apollo.MutationResult<InternalCreateProductTagGroupMutation>;
+export type InternalCreateProductTagGroupMutationOptions = Apollo.BaseMutationOptions<InternalCreateProductTagGroupMutation, InternalCreateProductTagGroupMutationVariables>;
+export const InternalCreateProductTagsDocument = gql`
+    mutation InternalCreateProductTags($productTagGroupId: Int!, $productTags: [CreateProductTagsProductTagInputType!]!) {
+  createProductTags(
+    productTagGroupId: $productTagGroupId
+    productTags: $productTags
+  ) {
+    count
+  }
+}
+    `;
+export type InternalCreateProductTagsMutationFn = Apollo.MutationFunction<InternalCreateProductTagsMutation, InternalCreateProductTagsMutationVariables>;
+
+/**
+ * __useInternalCreateProductTagsMutation__
+ *
+ * To run a mutation, you first call `useInternalCreateProductTagsMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInternalCreateProductTagsMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [internalCreateProductTagsMutation, { data, loading, error }] = useInternalCreateProductTagsMutation({
+ *   variables: {
+ *      productTagGroupId: // value for 'productTagGroupId'
+ *      productTags: // value for 'productTags'
+ *   },
+ * });
+ */
+export function useInternalCreateProductTagsMutation(baseOptions?: Apollo.MutationHookOptions<InternalCreateProductTagsMutation, InternalCreateProductTagsMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<InternalCreateProductTagsMutation, InternalCreateProductTagsMutationVariables>(InternalCreateProductTagsDocument, options);
+      }
+export type InternalCreateProductTagsMutationHookResult = ReturnType<typeof useInternalCreateProductTagsMutation>;
+export type InternalCreateProductTagsMutationResult = Apollo.MutationResult<InternalCreateProductTagsMutation>;
+export type InternalCreateProductTagsMutationOptions = Apollo.BaseMutationOptions<InternalCreateProductTagsMutation, InternalCreateProductTagsMutationVariables>;
 export const InternalCreateStocksDocument = gql`
     mutation InternalCreateStocks($productId: Int!, $stocks: [CreateStocksStocksInputType!]!) {
   createStocks(productId: $productId, stocks: $stocks) {
@@ -1065,6 +1259,39 @@ export function useInternalDeleteMakerMutation(baseOptions?: Apollo.MutationHook
 export type InternalDeleteMakerMutationHookResult = ReturnType<typeof useInternalDeleteMakerMutation>;
 export type InternalDeleteMakerMutationResult = Apollo.MutationResult<InternalDeleteMakerMutation>;
 export type InternalDeleteMakerMutationOptions = Apollo.BaseMutationOptions<InternalDeleteMakerMutation, InternalDeleteMakerMutationVariables>;
+export const InternalDeleteProductTagDocument = gql`
+    mutation InternalDeleteProductTag($id: Int!) {
+  deleteProductTag(id: $id) {
+    ...ProductTagFields
+  }
+}
+    ${ProductTagFieldsFragmentDoc}`;
+export type InternalDeleteProductTagMutationFn = Apollo.MutationFunction<InternalDeleteProductTagMutation, InternalDeleteProductTagMutationVariables>;
+
+/**
+ * __useInternalDeleteProductTagMutation__
+ *
+ * To run a mutation, you first call `useInternalDeleteProductTagMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInternalDeleteProductTagMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [internalDeleteProductTagMutation, { data, loading, error }] = useInternalDeleteProductTagMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useInternalDeleteProductTagMutation(baseOptions?: Apollo.MutationHookOptions<InternalDeleteProductTagMutation, InternalDeleteProductTagMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<InternalDeleteProductTagMutation, InternalDeleteProductTagMutationVariables>(InternalDeleteProductTagDocument, options);
+      }
+export type InternalDeleteProductTagMutationHookResult = ReturnType<typeof useInternalDeleteProductTagMutation>;
+export type InternalDeleteProductTagMutationResult = Apollo.MutationResult<InternalDeleteProductTagMutation>;
+export type InternalDeleteProductTagMutationOptions = Apollo.BaseMutationOptions<InternalDeleteProductTagMutation, InternalDeleteProductTagMutationVariables>;
 export const InternalDeleteStockDocument = gql`
     mutation InternalDeleteStock($id: Int!) {
   deleteStock(id: $id) {
@@ -1475,6 +1702,109 @@ export function useInternalGetProductIdsLazyQuery(baseOptions?: Apollo.LazyQuery
 export type InternalGetProductIdsQueryHookResult = ReturnType<typeof useInternalGetProductIdsQuery>;
 export type InternalGetProductIdsLazyQueryHookResult = ReturnType<typeof useInternalGetProductIdsLazyQuery>;
 export type InternalGetProductIdsQueryResult = Apollo.QueryResult<InternalGetProductIdsQuery, InternalGetProductIdsQueryVariables>;
+export const InternalGetProductTagGroupDocument = gql`
+    query InternalGetProductTagGroup($id: Int!) {
+  productTagGroup(id: $id) {
+    ...ProductTagGroupFields
+  }
+}
+    ${ProductTagGroupFieldsFragmentDoc}`;
+
+/**
+ * __useInternalGetProductTagGroupQuery__
+ *
+ * To run a query within a React component, call `useInternalGetProductTagGroupQuery` and pass it any options that fit your needs.
+ * When your component renders, `useInternalGetProductTagGroupQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useInternalGetProductTagGroupQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useInternalGetProductTagGroupQuery(baseOptions: Apollo.QueryHookOptions<InternalGetProductTagGroupQuery, InternalGetProductTagGroupQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<InternalGetProductTagGroupQuery, InternalGetProductTagGroupQueryVariables>(InternalGetProductTagGroupDocument, options);
+      }
+export function useInternalGetProductTagGroupLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InternalGetProductTagGroupQuery, InternalGetProductTagGroupQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<InternalGetProductTagGroupQuery, InternalGetProductTagGroupQueryVariables>(InternalGetProductTagGroupDocument, options);
+        }
+export type InternalGetProductTagGroupQueryHookResult = ReturnType<typeof useInternalGetProductTagGroupQuery>;
+export type InternalGetProductTagGroupLazyQueryHookResult = ReturnType<typeof useInternalGetProductTagGroupLazyQuery>;
+export type InternalGetProductTagGroupQueryResult = Apollo.QueryResult<InternalGetProductTagGroupQuery, InternalGetProductTagGroupQueryVariables>;
+export const InternalGetProductTagGroupIdsDocument = gql`
+    query InternalGetProductTagGroupIds {
+  productTagGroups {
+    id
+  }
+}
+    `;
+
+/**
+ * __useInternalGetProductTagGroupIdsQuery__
+ *
+ * To run a query within a React component, call `useInternalGetProductTagGroupIdsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useInternalGetProductTagGroupIdsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useInternalGetProductTagGroupIdsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useInternalGetProductTagGroupIdsQuery(baseOptions?: Apollo.QueryHookOptions<InternalGetProductTagGroupIdsQuery, InternalGetProductTagGroupIdsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<InternalGetProductTagGroupIdsQuery, InternalGetProductTagGroupIdsQueryVariables>(InternalGetProductTagGroupIdsDocument, options);
+      }
+export function useInternalGetProductTagGroupIdsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InternalGetProductTagGroupIdsQuery, InternalGetProductTagGroupIdsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<InternalGetProductTagGroupIdsQuery, InternalGetProductTagGroupIdsQueryVariables>(InternalGetProductTagGroupIdsDocument, options);
+        }
+export type InternalGetProductTagGroupIdsQueryHookResult = ReturnType<typeof useInternalGetProductTagGroupIdsQuery>;
+export type InternalGetProductTagGroupIdsLazyQueryHookResult = ReturnType<typeof useInternalGetProductTagGroupIdsLazyQuery>;
+export type InternalGetProductTagGroupIdsQueryResult = Apollo.QueryResult<InternalGetProductTagGroupIdsQuery, InternalGetProductTagGroupIdsQueryVariables>;
+export const InternalGetProductTagGroupsDocument = gql`
+    query InternalGetProductTagGroups {
+  productTagGroups {
+    ...ProductTagGroupFields
+  }
+}
+    ${ProductTagGroupFieldsFragmentDoc}`;
+
+/**
+ * __useInternalGetProductTagGroupsQuery__
+ *
+ * To run a query within a React component, call `useInternalGetProductTagGroupsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useInternalGetProductTagGroupsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useInternalGetProductTagGroupsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useInternalGetProductTagGroupsQuery(baseOptions?: Apollo.QueryHookOptions<InternalGetProductTagGroupsQuery, InternalGetProductTagGroupsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<InternalGetProductTagGroupsQuery, InternalGetProductTagGroupsQueryVariables>(InternalGetProductTagGroupsDocument, options);
+      }
+export function useInternalGetProductTagGroupsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InternalGetProductTagGroupsQuery, InternalGetProductTagGroupsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<InternalGetProductTagGroupsQuery, InternalGetProductTagGroupsQueryVariables>(InternalGetProductTagGroupsDocument, options);
+        }
+export type InternalGetProductTagGroupsQueryHookResult = ReturnType<typeof useInternalGetProductTagGroupsQuery>;
+export type InternalGetProductTagGroupsLazyQueryHookResult = ReturnType<typeof useInternalGetProductTagGroupsLazyQuery>;
+export type InternalGetProductTagGroupsQueryResult = Apollo.QueryResult<InternalGetProductTagGroupsQuery, InternalGetProductTagGroupsQueryVariables>;
 export const InternalGetRolesDocument = gql`
     query InternalGetRoles {
   roles {
@@ -1786,3 +2116,37 @@ export function useInternalUpdateProductMutation(baseOptions?: Apollo.MutationHo
 export type InternalUpdateProductMutationHookResult = ReturnType<typeof useInternalUpdateProductMutation>;
 export type InternalUpdateProductMutationResult = Apollo.MutationResult<InternalUpdateProductMutation>;
 export type InternalUpdateProductMutationOptions = Apollo.BaseMutationOptions<InternalUpdateProductMutation, InternalUpdateProductMutationVariables>;
+export const InternalUpdateProductTagGroupDocument = gql`
+    mutation InternalUpdateProductTagGroup($id: Int!, $name: String!) {
+  updateProductTagGroup(id: $id, name: $name) {
+    ...ProductTagGroupFields
+  }
+}
+    ${ProductTagGroupFieldsFragmentDoc}`;
+export type InternalUpdateProductTagGroupMutationFn = Apollo.MutationFunction<InternalUpdateProductTagGroupMutation, InternalUpdateProductTagGroupMutationVariables>;
+
+/**
+ * __useInternalUpdateProductTagGroupMutation__
+ *
+ * To run a mutation, you first call `useInternalUpdateProductTagGroupMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInternalUpdateProductTagGroupMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [internalUpdateProductTagGroupMutation, { data, loading, error }] = useInternalUpdateProductTagGroupMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      name: // value for 'name'
+ *   },
+ * });
+ */
+export function useInternalUpdateProductTagGroupMutation(baseOptions?: Apollo.MutationHookOptions<InternalUpdateProductTagGroupMutation, InternalUpdateProductTagGroupMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<InternalUpdateProductTagGroupMutation, InternalUpdateProductTagGroupMutationVariables>(InternalUpdateProductTagGroupDocument, options);
+      }
+export type InternalUpdateProductTagGroupMutationHookResult = ReturnType<typeof useInternalUpdateProductTagGroupMutation>;
+export type InternalUpdateProductTagGroupMutationResult = Apollo.MutationResult<InternalUpdateProductTagGroupMutation>;
+export type InternalUpdateProductTagGroupMutationOptions = Apollo.BaseMutationOptions<InternalUpdateProductTagGroupMutation, InternalUpdateProductTagGroupMutationVariables>;

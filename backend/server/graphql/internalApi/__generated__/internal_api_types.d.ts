@@ -56,6 +56,9 @@ declare global {
 }
 
 export interface NexusGenInputs {
+  CreateProductTagsProductTagInputType: { // input type
+    name: string; // String!
+  }
   CreateStocksStocksInputType: { // input type
     amount: number; // Int!
     expiredAt: NexusGenScalars['DateTime']; // DateTime!
@@ -108,6 +111,9 @@ export interface NexusGenScalars {
 }
 
 export interface NexusGenObjects {
+  BatchPayload: { // root type
+    count: number; // Int!
+  }
   Hospital: { // root type
     deleted: boolean; // Boolean!
     id: NexusGenScalars['BigInt']; // BigInt!
@@ -199,6 +205,14 @@ export interface NexusGenObjects {
     cursor: string; // String!
     node?: NexusGenRootTypes['Product'] | null; // Product
   }
+  ProductTag: { // root type
+    id: number; // Int!
+    name: string; // String!
+  }
+  ProductTagGroup: { // root type
+    id: number; // Int!
+    name: string; // String!
+  }
   Query: {};
   Region: { // root type
     id: NexusGenScalars['BigInt']; // BigInt!
@@ -233,6 +247,9 @@ export type NexusGenRootTypes = NexusGenObjects
 export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
+  BatchPayload: { // field return type
+    count: number; // Int!
+  }
   Hospital: { // field return type
     deleted: boolean; // Boolean!
     hospitalAddress: NexusGenRootTypes['HospitalAddress'] | null; // HospitalAddress
@@ -315,15 +332,19 @@ export interface NexusGenFieldTypes {
     createInternalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     createMaker: NexusGenRootTypes['Maker']; // Maker!
     createProduct: NexusGenRootTypes['Product']; // Product!
+    createProductTagGroup: NexusGenRootTypes['ProductTagGroup']; // ProductTagGroup!
+    createProductTags: NexusGenRootTypes['BatchPayload']; // BatchPayload!
     createStocks: NexusGenRootTypes['Stock'][]; // [Stock!]!
     deleteInternalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     deleteMaker: NexusGenRootTypes['Maker']; // Maker!
+    deleteProductTag: NexusGenRootTypes['ProductTag']; // ProductTag!
     deleteStock: NexusGenRootTypes['Stock']; // Stock!
     returnStock: NexusGenRootTypes['Stock']; // Stock!
     updateHospital: NexusGenRootTypes['Hospital']; // Hospital!
     updateInternalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     updateMaker: NexusGenRootTypes['Maker']; // Maker!
     updateProduct: NexusGenRootTypes['Product']; // Product!
+    updateProductTagGroup: NexusGenRootTypes['ProductTagGroup']; // ProductTagGroup!
   }
   PageInfo: { // field return type
     endCursor: string | null; // String
@@ -355,6 +376,16 @@ export interface NexusGenFieldTypes {
     cursor: string; // String!
     node: NexusGenRootTypes['Product'] | null; // Product
   }
+  ProductTag: { // field return type
+    id: number; // Int!
+    name: string; // String!
+    productTagGroup: NexusGenRootTypes['ProductTagGroup']; // ProductTagGroup!
+  }
+  ProductTagGroup: { // field return type
+    id: number; // Int!
+    name: string; // String!
+    productTags: NexusGenRootTypes['ProductTag'][]; // [ProductTag!]!
+  }
   Query: { // field return type
     hospital: NexusGenRootTypes['Hospital']; // Hospital!
     hospitalConnection: NexusGenRootTypes['HospitalConnection'] | null; // HospitalConnection
@@ -365,6 +396,8 @@ export interface NexusGenFieldTypes {
     makers: NexusGenRootTypes['Maker'][]; // [Maker!]!
     product: NexusGenRootTypes['Product']; // Product!
     productConnection: NexusGenRootTypes['ProductConnection'] | null; // ProductConnection
+    productTagGroup: NexusGenRootTypes['ProductTagGroup']; // ProductTagGroup!
+    productTagGroups: NexusGenRootTypes['ProductTagGroup'][]; // [ProductTagGroup!]!
     products: NexusGenRootTypes['Product'][]; // [Product!]!
     roles: NexusGenRootTypes['Role'][]; // [Role!]!
     session: NexusGenRootTypes['Session']; // Session!
@@ -395,6 +428,9 @@ export interface NexusGenFieldTypes {
 }
 
 export interface NexusGenFieldTypeNames {
+  BatchPayload: { // field return type name
+    count: 'Int'
+  }
   Hospital: { // field return type name
     deleted: 'Boolean'
     hospitalAddress: 'HospitalAddress'
@@ -477,15 +513,19 @@ export interface NexusGenFieldTypeNames {
     createInternalUser: 'InternalUser'
     createMaker: 'Maker'
     createProduct: 'Product'
+    createProductTagGroup: 'ProductTagGroup'
+    createProductTags: 'BatchPayload'
     createStocks: 'Stock'
     deleteInternalUser: 'InternalUser'
     deleteMaker: 'Maker'
+    deleteProductTag: 'ProductTag'
     deleteStock: 'Stock'
     returnStock: 'Stock'
     updateHospital: 'Hospital'
     updateInternalUser: 'InternalUser'
     updateMaker: 'Maker'
     updateProduct: 'Product'
+    updateProductTagGroup: 'ProductTagGroup'
   }
   PageInfo: { // field return type name
     endCursor: 'String'
@@ -517,6 +557,16 @@ export interface NexusGenFieldTypeNames {
     cursor: 'String'
     node: 'Product'
   }
+  ProductTag: { // field return type name
+    id: 'Int'
+    name: 'String'
+    productTagGroup: 'ProductTagGroup'
+  }
+  ProductTagGroup: { // field return type name
+    id: 'Int'
+    name: 'String'
+    productTags: 'ProductTag'
+  }
   Query: { // field return type name
     hospital: 'Hospital'
     hospitalConnection: 'HospitalConnection'
@@ -527,6 +577,8 @@ export interface NexusGenFieldTypeNames {
     makers: 'Maker'
     product: 'Product'
     productConnection: 'ProductConnection'
+    productTagGroup: 'ProductTagGroup'
+    productTagGroups: 'ProductTagGroup'
     products: 'Product'
     roles: 'Role'
     session: 'Session'
@@ -583,6 +635,13 @@ export interface NexusGenArgTypes {
       name: string; // String!
       remark: string; // String!
     }
+    createProductTagGroup: { // args
+      name: string; // String!
+    }
+    createProductTags: { // args
+      productTagGroupId: number; // Int!
+      productTags: NexusGenInputs['CreateProductTagsProductTagInputType'][]; // [CreateProductTagsProductTagInputType!]!
+    }
     createStocks: { // args
       productId: number; // Int!
       stocks: NexusGenInputs['CreateStocksStocksInputType'][]; // [CreateStocksStocksInputType!]!
@@ -591,6 +650,9 @@ export interface NexusGenArgTypes {
       id: NexusGenScalars['BigInt']; // BigInt!
     }
     deleteMaker: { // args
+      id: number; // Int!
+    }
+    deleteProductTag: { // args
       id: number; // Int!
     }
     deleteStock: { // args
@@ -630,6 +692,10 @@ export interface NexusGenArgTypes {
       name: string; // String!
       remark: string; // String!
     }
+    updateProductTagGroup: { // args
+      id: number; // Int!
+      name: string; // String!
+    }
   }
   Query: {
     hospital: { // args
@@ -658,6 +724,9 @@ export interface NexusGenArgTypes {
       before?: string | null; // String
       first?: number | null; // Int
       last?: number | null; // Int
+    }
+    productTagGroup: { // args
+      id: number; // Int!
     }
     stocks: { // args
       productId: number; // Int!

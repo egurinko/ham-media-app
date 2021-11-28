@@ -13,6 +13,9 @@ const Navigation: React.VFC<NoProps> = () => {
   const isAdminHospitalsPath = router.pathname.includes('admin/hospitals');
   const isAdminMakersPath = router.pathname.includes('admin/makers');
   const isAdminProductsPath = router.pathname.includes('admin/products');
+  const isAdminProductTagGroupsPath = router.pathname.includes(
+    'admin/product_tag_groups'
+  );
 
   return (
     <VStack alignItems="flex-start" spacing={{ base: 6, sm: 12 }} mt="8">
@@ -98,6 +101,28 @@ const Navigation: React.VFC<NoProps> = () => {
                   }}
                 >
                   商品管理
+                </Box>
+              </a>
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link href="/admin/product_tag_groups">
+              <a>
+                <Box
+                  display="flex"
+                  alignItems="center"
+                  fill={
+                    isAdminProductTagGroupsPath ? 'primary.main' : 'text.main'
+                  }
+                  color={
+                    isAdminProductTagGroupsPath ? 'primary.main' : undefined
+                  }
+                  _hover={{
+                    fill: 'primary.main',
+                    color: 'primary.main',
+                  }}
+                >
+                  タグ管理
                 </Box>
               </a>
             </Link>

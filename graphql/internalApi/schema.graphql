@@ -2,11 +2,19 @@
 ### Do not make changes to this file directly
 
 
+type BatchPayload {
+  count: Int!
+}
+
 """
 The `BigInt` scalar type represents non-fractional signed whole numeric values.
 @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt
 """
 scalar BigInt
+
+input CreateProductTagsProductTagInputType {
+  name: String!
+}
 
 input CreateStocksStocksInputType {
   amount: Int!
@@ -172,15 +180,19 @@ type Mutation {
   createInternalUser(email: String!, name: String!, password: String!, roleId: Int!): InternalUser!
   createMaker(name: String!): Maker!
   createProduct(file: Upload!, makerId: Int!, name: String!, remark: String!): Product!
+  createProductTagGroup(name: String!): ProductTagGroup!
+  createProductTags(productTagGroupId: Int!, productTags: [CreateProductTagsProductTagInputType!]!): BatchPayload!
   createStocks(productId: Int!, stocks: [CreateStocksStocksInputType!]!): [Stock!]!
   deleteInternalUser(id: BigInt!): InternalUser!
   deleteMaker(id: Int!): Maker!
+  deleteProductTag(id: Int!): ProductTag!
   deleteStock(id: Int!): Stock!
   returnStock(id: Int!): Stock!
   updateHospital(deleted: Boolean!, hospitalAddressInput: HospitalAddressInputType!, hospitalBusinessFormInput: HospitalBusinessFormInputType!, hospitalCertificationOptionInput: HospitalCertificationOptionInputType!, hospitalInternalReputationInput: HospitalInternalReputationInputType!, hospitalNightServiceOptionInput: HospitalNightServiceOptionInputType!, hospitalNightUrgentActionOptionInput: HospitalNightUrgentActionOptionInputType!, hospitalReservationStatusInput: HospitalReservationStatusInputType!, id: BigInt!, internal_memo: String!, name: String!, url: String!): Hospital!
   updateInternalUser(email: String!, id: BigInt!, name: String!, password: String!, roleId: Int!): InternalUser!
   updateMaker(id: Int!, name: String!): Maker!
   updateProduct(id: Int!, makerId: Int!, name: String!, remark: String!): Product!
+  updateProductTagGroup(id: Int!, name: String!): ProductTagGroup!
 }
 
 """
@@ -248,6 +260,20 @@ type ProductEdge {
   node: Product
 }
 
+"""A product tag"""
+type ProductTag {
+  id: Int!
+  name: String!
+  productTagGroup: ProductTagGroup!
+}
+
+"""A product tag group"""
+type ProductTagGroup {
+  id: Int!
+  name: String!
+  productTags: [ProductTag!]!
+}
+
 type Query {
   hospital(id: BigInt!): Hospital!
   hospitalConnection(
@@ -285,6 +311,8 @@ type Query {
     """Returns the last n elements from the list."""
     last: Int
   ): ProductConnection
+  productTagGroup(id: Int!): ProductTagGroup!
+  productTagGroups: [ProductTagGroup!]!
   products: [Product!]!
   roles: [Role!]!
   session: Session!
