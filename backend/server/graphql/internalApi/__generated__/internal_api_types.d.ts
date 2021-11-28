@@ -213,6 +213,9 @@ export interface NexusGenObjects {
     id: number; // Int!
     name: string; // String!
   }
+  ProductTagging: { // root type
+    id: number; // Int!
+  }
   Query: {};
   Region: { // root type
     id: NexusGenScalars['BigInt']; // BigInt!
@@ -333,6 +336,7 @@ export interface NexusGenFieldTypes {
     createMaker: NexusGenRootTypes['Maker']; // Maker!
     createProduct: NexusGenRootTypes['Product']; // Product!
     createProductTagGroup: NexusGenRootTypes['ProductTagGroup']; // ProductTagGroup!
+    createProductTaggings: NexusGenRootTypes['Product']; // Product!
     createProductTags: NexusGenRootTypes['BatchPayload']; // BatchPayload!
     createStocks: NexusGenRootTypes['Stock'][]; // [Stock!]!
     deleteInternalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
@@ -362,6 +366,7 @@ export interface NexusGenFieldTypes {
     id: number; // Int!
     maker: NexusGenRootTypes['Maker']; // Maker!
     name: string; // String!
+    productTaggings: NexusGenRootTypes['ProductTagging'][]; // [ProductTagging!]!
     remainingStockAmount: number; // Int!
     remark: string; // String!
     stocks: NexusGenRootTypes['Stock'][]; // [Stock!]!
@@ -385,6 +390,10 @@ export interface NexusGenFieldTypes {
     id: number; // Int!
     name: string; // String!
     productTags: NexusGenRootTypes['ProductTag'][]; // [ProductTag!]!
+  }
+  ProductTagging: { // field return type
+    id: number; // Int!
+    productTag: NexusGenRootTypes['ProductTag']; // ProductTag!
   }
   Query: { // field return type
     hospital: NexusGenRootTypes['Hospital']; // Hospital!
@@ -514,6 +523,7 @@ export interface NexusGenFieldTypeNames {
     createMaker: 'Maker'
     createProduct: 'Product'
     createProductTagGroup: 'ProductTagGroup'
+    createProductTaggings: 'Product'
     createProductTags: 'BatchPayload'
     createStocks: 'Stock'
     deleteInternalUser: 'InternalUser'
@@ -543,6 +553,7 @@ export interface NexusGenFieldTypeNames {
     id: 'Int'
     maker: 'Maker'
     name: 'String'
+    productTaggings: 'ProductTagging'
     remainingStockAmount: 'Int'
     remark: 'String'
     stocks: 'Stock'
@@ -566,6 +577,10 @@ export interface NexusGenFieldTypeNames {
     id: 'Int'
     name: 'String'
     productTags: 'ProductTag'
+  }
+  ProductTagging: { // field return type name
+    id: 'Int'
+    productTag: 'ProductTag'
   }
   Query: { // field return type name
     hospital: 'Hospital'
@@ -637,6 +652,10 @@ export interface NexusGenArgTypes {
     }
     createProductTagGroup: { // args
       name: string; // String!
+    }
+    createProductTaggings: { // args
+      productId: number; // Int!
+      productTagIds: number[]; // [Int!]!
     }
     createProductTags: { // args
       productTagGroupId: number; // Int!

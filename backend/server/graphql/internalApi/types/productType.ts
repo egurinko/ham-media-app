@@ -9,6 +9,7 @@ export const productType = objectType({
     t.field(Product.name);
     t.field(Product.remark);
     t.field(Product.url);
+    t.field(Product.productTaggings);
     t.nonNull.field(Product.maker);
     t.nonNull.field(Product.stocks);
     t.nonNull.int('totalStockAmount', {
