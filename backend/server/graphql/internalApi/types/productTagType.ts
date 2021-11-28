@@ -7,5 +7,6 @@ export const productTagType = objectType({
   definition(t) {
     t.field(ProductTag.id);
     t.field(ProductTag.name);
+    t.field(ProductTag.productTagGroup);
   },
 });

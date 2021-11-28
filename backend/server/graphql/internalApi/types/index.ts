@@ -1,3 +1,4 @@
+export * from './batchPayloadType';
 export * from './roleType';
 export * from './internalUserType';
 export * from './sessionType';
@@ -19,3 +20,4 @@ export * from './product/stock/stockAllocationType';
 export * from './createStocks/stocksInputType';
 export * from './productTagGroupType';
 export * from './productTagType';
+export * from './createProductTags/productTagInputType';
