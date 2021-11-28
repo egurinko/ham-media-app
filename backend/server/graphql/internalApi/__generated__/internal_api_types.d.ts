@@ -748,6 +748,9 @@ export interface NexusGenArgTypes {
       before?: string | null; // String
       first?: number | null; // Int
       last?: number | null; // Int
+      makerId?: number | null; // Int
+      name?: string | null; // String
+      productTagId?: number | null; // Int
     }
     productTagGroup: { // args
       id: number; // Int!

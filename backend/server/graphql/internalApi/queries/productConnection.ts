@@ -2,15 +2,37 @@
 // ref: https://github.com/prisma-labs/graphql-framework-experiment/issues/952#issuecomment-647865021
 // because ts-node-dev does not know nexus generated types, type injection is needed
 
-import { queryField } from 'nexus';
+import { intArg, queryField, stringArg } from 'nexus';
 import { connectionFromArray } from 'graphql-relay';
 import { productType } from '../types';
 
 export const productConnection = queryField((t) => {
   t.connectionField('productConnection', {
     type: productType,
+    additionalArgs: {
+      name: stringArg(),
+      makerId: intArg(),
+      productTagId: intArg(),
+    },
     resolve: async (_root, args, ctx) => {
-      return connectionFromArray(await ctx.prisma.product.findMany(), args);
+      return connectionFromArray(
+        await ctx.prisma.product.findMany({
+          where: {
+            name: {
+              startsWith: args.name ? args.name : undefined,
+            },
+            maker_id: args.makerId ? args.makerId : undefined,
+            productTaggings: {
+              some: {
+                product_tag_id: args.productTagId
+                  ? args.productTagId
+                  : undefined,
+              },
+            },
+          },
+        }),
+        args
+      );
     },
   });
 });

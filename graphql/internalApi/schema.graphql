@@ -319,6 +319,9 @@ type Query {
 
     """Returns the last n elements from the list."""
     last: Int
+    makerId: Int
+    name: String
+    productTagId: Int
   ): ProductConnection
   productTagGroup(id: Int!): ProductTagGroup!
   productTagGroups: [ProductTagGroup!]!
