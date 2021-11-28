@@ -10,7 +10,12 @@ const Index: React.VFC<NoProps> = () => {
 
   return (
     <InternalLayout>
-      <Box display="flex" justifyContent="space-between" alignItems="center">
+      <Box
+        display="flex"
+        justifyContent="space-between"
+        alignItems="center"
+        mb="2"
+      >
         <Heading size="sm">商品管理</Heading>
         <Button
           bgColor="primary.main"
