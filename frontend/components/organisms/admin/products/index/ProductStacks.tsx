@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-import Image from 'next/image';
 import {
   Text,
   Skeleton,
@@ -7,6 +6,7 @@ import {
   VStack,
   Divider,
   Spinner,
+  Tag,
 } from '@chakra-ui/react';
 import { useCallback, Fragment } from 'react';
 import { useRouter } from 'next/router';
@@ -83,9 +83,21 @@ const ProductStacks: React.VFC<NoProps> = () => {
                   </Box>
                   <Box flexShrink="1">
                     <Text fontSize="xs">{product.maker.name}</Text>
-                    <Text fontSize="sm" fontWeight="bold">
+                    <Text fontSize="sm" mb="2" fontWeight="bold">
                       {product.name}
                     </Text>
+                    {product.productTaggings.map((productTagging) => (
+                      <Tag
+                        key={productTagging.id}
+                        bgColor="primary.main"
+                        color="white"
+                        fontSize="xs"
+                        mr="1"
+                        mb="1"
+                      >
+                        {productTagging.productTag.name}
+                      </Tag>
+                    ))}
                   </Box>
                 </Box>
                 <Box ml="2">
