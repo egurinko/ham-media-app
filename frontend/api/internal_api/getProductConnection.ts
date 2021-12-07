@@ -9,6 +9,7 @@ export const getProductConnection = gql`
     $name: String
     $makerId: Int
     $productTagId: Int
+    $allocatedInternalUserId: Int
   ) {
     productConnection(
       first: $first
@@ -16,6 +17,7 @@ export const getProductConnection = gql`
       name: $name
       makerId: $makerId
       productTagId: $productTagId
+      allocatedInternalUserId: $allocatedInternalUserId
     ) {
       edges {
         node {
