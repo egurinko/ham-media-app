@@ -745,6 +745,7 @@ export interface NexusGenArgTypes {
     }
     productConnection: { // args
       after?: string | null; // String
+      allocatedInternalUserId?: number | null; // Int
       before?: string | null; // String
       first?: number | null; // Int
       last?: number | null; // Int

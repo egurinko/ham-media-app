@@ -13,6 +13,7 @@ export const productConnection = queryField((t) => {
       name: stringArg(),
       makerId: intArg(),
       productTagId: intArg(),
+      allocatedInternalUserId: intArg(),
     },
     resolve: async (_root, args, ctx) => {
       const products = await ctx.prisma.product.findMany({
@@ -25,6 +26,15 @@ export const productConnection = queryField((t) => {
             ? {
                 some: {
                   product_tag_id: args.productTagId,
+                },
+              }
+            : undefined,
+          stocks: args.allocatedInternalUserId
+            ? {
+                some: {
+                  stockAllocation: {
+                    internal_user_id: args.allocatedInternalUserId,
+                  },
                 },
               }
             : undefined,
