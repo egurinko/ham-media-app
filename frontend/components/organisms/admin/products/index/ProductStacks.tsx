@@ -215,7 +215,13 @@ const ProductStacks: React.VFC<NoProps> = () => {
                   </Box>
                 </Box>
                 <Box ml="2">
-                  <Text fontSize="sm">在庫：{product.stocks.length}</Text>
+                  <Text fontSize="sm">総在庫：{product.totalStockAmount}</Text>
+                  <Text fontSize="sm">
+                    貸出数：{product.allocatedStockAmount}
+                  </Text>
+                  <Text fontSize="sm">
+                    残数：{product.remainingStockAmount}
+                  </Text>
                 </Box>
               </Box>
               <Divider />
