@@ -4,6 +4,7 @@ import { FlashMessage } from '@/components/molecules/FlashMessage';
 import {
   useInternalGetProductTagGroupsQuery,
   useInternalCreateProductTaggingsMutation,
+  useInternalGetProductLazyQuery,
 } from '@/api/internal_api/types';
 import type { InternalGetProductQuery } from '@/api/internal_api/types';
 import React, { useState } from 'react';
@@ -25,6 +26,10 @@ const NewSection: React.FC<Props> = ({ productId }) => {
       loading: createProductTaggingsLoading,
     },
   ] = useInternalCreateProductTaggingsMutation();
+  const [getProducts] = useInternalGetProductLazyQuery({
+    variables: { id: productId },
+    fetchPolicy: 'network-only',
+  });
 
   const handleTagChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedProductTag(Number(e.target.value));
@@ -35,6 +40,7 @@ const NewSection: React.FC<Props> = ({ productId }) => {
       await createProductTaggings({
         variables: { productId, productTagIds: [selectedProductTag] },
       });
+      await getProducts();
     }
   };
 
