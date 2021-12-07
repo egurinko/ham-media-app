@@ -310,6 +310,7 @@ type Query {
   productConnection(
     """Returns the elements in the list that come after the specified cursor"""
     after: String
+    allocatedInternalUserId: Int
 
     """Returns the elements in the list that come before the specified cursor"""
     before: String

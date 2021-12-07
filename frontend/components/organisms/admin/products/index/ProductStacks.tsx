@@ -20,6 +20,7 @@ import {
   useInternalGetProductConnectionQuery,
   useInternalGetMakersQuery,
   useInternalGetProductTagGroupsQuery,
+  useInternalGetInternalUsersQuery,
 } from '@/api/internal_api/types';
 import type { Product } from '@/api/internal_api/types';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
@@ -35,9 +36,13 @@ const ProductStacks: React.VFC<NoProps> = () => {
   const [selectedTagId, setSelectedTagId] = useState<undefined | string>(
     undefined
   );
+  const [selectedInternalUserId, setSelectedInternalUserID] = useState<
+    undefined | string
+  >(undefined);
 
   const { data: makersData } = useInternalGetMakersQuery();
   const { data: productTagGroupsData } = useInternalGetProductTagGroupsQuery();
+  const { data: internalUsersData } = useInternalGetInternalUsersQuery();
   const infiniteScrollTarget = useRef<HTMLDivElement>(null);
   const { isIntersect } = useIntersectionObserver(infiniteScrollTarget);
 
@@ -60,6 +65,7 @@ const ProductStacks: React.VFC<NoProps> = () => {
           name,
           makerId: Number(selectedMakerId),
           productTagId: Number(selectedTagId),
+          allocatedInternalUserId: Number(selectedInternalUserId),
         },
       });
     }
@@ -71,6 +77,7 @@ const ProductStacks: React.VFC<NoProps> = () => {
     name,
     selectedMakerId,
     selectedTagId,
+    selectedInternalUserId,
   ]);
 
   const handleProductClick = useCallback(
@@ -87,6 +94,7 @@ const ProductStacks: React.VFC<NoProps> = () => {
         name,
         makerId: Number(selectedMakerId),
         productTagId: Number(selectedTagId),
+        allocatedInternalUserId: Number(selectedInternalUserId),
       },
     });
   };
@@ -144,6 +152,28 @@ const ProductStacks: React.VFC<NoProps> = () => {
                     </option>
                   ))
                 )}
+              </Select>
+            </FormControl>
+          ) : null}
+          {internalUsersData ? (
+            <FormControl w="32" id="allocatedInternalUser" mr="2" mb="2">
+              <FormLabel mb="1" fontSize="sm">
+                在庫割当ユーザ
+              </FormLabel>
+              <Select
+                size="sm"
+                placeholder="選択してください"
+                value={selectedTagId}
+                onChange={(e) => setSelectedInternalUserID(e.target.value)}
+              >
+                {internalUsersData.internalUsers.map((internalUser) => (
+                  <option
+                    key={Number(internalUser.id)}
+                    value={Number(internalUser.id)}
+                  >
+                    {internalUser.name}
+                  </option>
+                ))}
               </Select>
             </FormControl>
           ) : null}
@@ -215,7 +245,13 @@ const ProductStacks: React.VFC<NoProps> = () => {
                   </Box>
                 </Box>
                 <Box ml="2">
-                  <Text fontSize="sm">在庫：{product.stocks.length}</Text>
+                  <Text fontSize="sm">総在庫：{product.totalStockAmount}</Text>
+                  <Text fontSize="sm">
+                    貸出数：{product.allocatedStockAmount}
+                  </Text>
+                  <Text fontSize="sm">
+                    残数：{product.remainingStockAmount}
+                  </Text>
                 </Box>
               </Box>
               <Divider />
