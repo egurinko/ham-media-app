@@ -14,21 +14,27 @@ export const productType = objectType({
     t.nonNull.field(Product.stocks);
     t.nonNull.int('totalStockAmount', {
       resolve: async (root, _args, ctx) => {
-        return ctx.prisma.stock.count({ where: { product_id: root.id } });
+        const stocks = await ctx.prisma.product
+          .findUnique({ where: { id: root.id } })
+          .stocks();
+
+        return stocks.length;
       },
     });
     t.nonNull.int('allocatedStockAmount', {
       resolve: async (root, _args, ctx) => {
-        return ctx.prisma.stock.count({
-          where: { product_id: root.id, stockAllocation: { isNot: null } },
-        });
+        const stocks = await ctx.prisma.product
+          .findUnique({ where: { id: root.id } })
+          .stocks({ where: { stockAllocation: { isNot: null } } });
+        return stocks.length;
       },
     });
     t.nonNull.int('remainingStockAmount', {
       resolve: async (root, _args, ctx) => {
-        return ctx.prisma.stock.count({
-          where: { product_id: root.id, stockAllocation: { is: null } },
-        });
+        const stocks = await ctx.prisma.product
+          .findUnique({ where: { id: root.id } })
+          .stocks({ where: { stockAllocation: { is: null } } });
+        return stocks.length;
       },
     });
   },
