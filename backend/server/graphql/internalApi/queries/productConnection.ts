@@ -15,24 +15,22 @@ export const productConnection = queryField((t) => {
       productTagId: intArg(),
     },
     resolve: async (_root, args, ctx) => {
-      return connectionFromArray(
-        await ctx.prisma.product.findMany({
-          where: {
-            name: {
-              startsWith: args.name ? args.name : undefined,
-            },
-            maker_id: args.makerId ? args.makerId : undefined,
-            productTaggings: {
-              some: {
-                product_tag_id: args.productTagId
-                  ? args.productTagId
-                  : undefined,
-              },
-            },
+      const products = await ctx.prisma.product.findMany({
+        where: {
+          name: {
+            startsWith: args.name ? args.name : undefined,
           },
-        }),
-        args
-      );
+          maker_id: args.makerId ? args.makerId : undefined,
+          productTaggings: args.productTagId
+            ? {
+                some: {
+                  product_tag_id: args.productTagId,
+                },
+              }
+            : undefined,
+        },
+      });
+      return connectionFromArray(products, args);
     },
   });
 });
