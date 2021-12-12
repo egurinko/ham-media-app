@@ -9,7 +9,7 @@ import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
 import { getProductTagGroupIds } from '@/api/internal_api/getProductTagGroupIds';
 import type { InternalGetProductTagGroupIdsQuery } from '@/api/internal_api/types';
 import { apiClient } from '@/utils/apollo';
-import { goAdminProducts } from '@/utils/routes';
+import { goAdminProductTagGroups } from '@/utils/routes';
 
 const Edit: React.VFC<Props> = () => {
   const router = useRouter();
@@ -21,7 +21,7 @@ const Edit: React.VFC<Props> = () => {
         <IconButton
           aria-label="link"
           variant="link"
-          onClick={() => goAdminProducts(router)}
+          onClick={() => goAdminProductTagGroups(router)}
           icon={<ChevronRightIcon />}
         />
         <Heading size="sm">タグカテゴリー編集</Heading>
