@@ -161,7 +161,7 @@ const Form: React.VFC<Props> = ({ productId }) => {
                 name="image"
                 type="file"
                 onChange={handleFileChange}
-                accept="image/png, image/jpeg"
+                accept="image/png, image/jpeg, image/gif"
               />
             </FormControl>
           </Stack>
