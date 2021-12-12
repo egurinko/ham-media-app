@@ -1,4 +1,4 @@
-import { stringArg, nonNull, mutationField, intArg, arg } from 'nexus';
+import { stringArg, nonNull, mutationField, intArg, arg, list } from 'nexus';
 import { productType } from '../types';
 import { uploadFile } from '@/services/fileUploader';
 
@@ -10,6 +10,7 @@ export const createProductField = mutationField((t) => {
       name: nonNull(stringArg()),
       remark: nonNull(stringArg()),
       file: nonNull(arg({ type: 'Upload' })),
+      productTagIds: nonNull(list(nonNull(intArg()))),
     },
     resolve: async (_, args, ctx) => {
       const file = await args.file;
@@ -22,6 +23,11 @@ export const createProductField = mutationField((t) => {
           name: args.name,
           remark: args.remark,
           url,
+          productTaggings: {
+            createMany: {
+              data: args.productTagIds.map((id) => ({ product_tag_id: id })),
+            },
+          },
         },
       });
     },

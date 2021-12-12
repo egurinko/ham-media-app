@@ -650,6 +650,7 @@ export interface NexusGenArgTypes {
       file: NexusGenScalars['Upload']; // Upload!
       makerId: number; // Int!
       name: string; // String!
+      productTagIds: number[]; // [Int!]!
       remark: string; // String!
     }
     createProductTagGroup: { // args
