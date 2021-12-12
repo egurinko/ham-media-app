@@ -10,20 +10,27 @@ import {
   Select,
 } from '@chakra-ui/react';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
+import { CUIAutoComplete } from 'chakra-ui-autocomplete';
 import { Card } from '@/components/atoms/Card';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
 import {
   useInternalGetMakersQuery,
   useInternalCreateProductMutation,
+  useInternalGetProductTagGroupsQuery,
 } from '@/api/internal_api/types';
 import { goAdminProducts } from '@/utils/routes';
 import validators from '@/validators/index';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface FormInput {
   makerId: string;
   name: string;
   remark: string;
+}
+
+interface AutoCompleteItem {
+  label: string;
+  value: string;
 }
 
 const Form: React.VFC<NoProps> = () => {
@@ -46,9 +53,19 @@ const Form: React.VFC<NoProps> = () => {
   }) => {
     trigger();
 
+    const productTagIds = selectedItems.map((productTag) =>
+      Number(productTag.value)
+    );
+
     try {
       await create({
-        variables: { makerId: Number(makerId), name, remark, file: image },
+        variables: {
+          makerId: Number(makerId),
+          name,
+          remark,
+          file: image,
+          productTagIds,
+        },
       });
       setTimeout(() => {
         goAdminProducts(router);
@@ -60,6 +77,29 @@ const Form: React.VFC<NoProps> = () => {
     if (e.target.files) {
       const file = e.target.files[0];
       setImage(file);
+    }
+  };
+
+  const { data: productTagGroupData } = useInternalGetProductTagGroupsQuery();
+  const [productTags, setProductTags] = useState<AutoCompleteItem[]>([]);
+  const [selectedItems, setSelectedItems] = useState<AutoCompleteItem[]>([]);
+
+  useEffect(() => {
+    if (productTagGroupData) {
+      const tags = productTagGroupData.productTagGroups
+        .map((productTagGroup) => productTagGroup.productTags.flat())
+        .flat()
+        .map((productTag) => ({
+          label: productTag.name,
+          value: String(productTag.id),
+        }));
+      setProductTags(tags);
+    }
+  }, [productTagGroupData]);
+
+  const handleSelectedItemsChange = (selectedItems?: AutoCompleteItem[]) => {
+    if (selectedItems) {
+      setSelectedItems(selectedItems);
     }
   };
 
@@ -135,6 +175,21 @@ const Form: React.VFC<NoProps> = () => {
                 required
               />
             </FormControl>
+
+            {productTagGroupData ? (
+              <FormControl id="productTag">
+                <CUIAutoComplete
+                  label="タグ"
+                  placeholder="タグを選択"
+                  items={productTags}
+                  selectedItems={selectedItems}
+                  onSelectedItemsChange={(changes) =>
+                    handleSelectedItemsChange(changes.selectedItems)
+                  }
+                  disableCreateItem={true}
+                />
+              </FormControl>
+            ) : null}
           </Stack>
           <Box d="grid" justifyContent="center">
             <Button

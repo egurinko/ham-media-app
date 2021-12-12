@@ -249,6 +249,7 @@ export type MutationCreateProductArgs = {
   file: Scalars['Upload'];
   makerId: Scalars['Int'];
   name: Scalars['String'];
+  productTagIds: Array<Scalars['Int']>;
   remark: Scalars['String'];
 };
 
@@ -573,6 +574,7 @@ export type InternalCreateProductMutationVariables = Exact<{
   name: Scalars['String'];
   remark: Scalars['String'];
   file: Scalars['Upload'];
+  productTagIds: Array<Scalars['Int']> | Scalars['Int'];
 }>;
 
 
@@ -1109,8 +1111,14 @@ export type InternalCreateMakerMutationHookResult = ReturnType<typeof useInterna
 export type InternalCreateMakerMutationResult = Apollo.MutationResult<InternalCreateMakerMutation>;
 export type InternalCreateMakerMutationOptions = Apollo.BaseMutationOptions<InternalCreateMakerMutation, InternalCreateMakerMutationVariables>;
 export const InternalCreateProductDocument = gql`
-    mutation InternalCreateProduct($makerId: Int!, $name: String!, $remark: String!, $file: Upload!) {
-  createProduct(makerId: $makerId, name: $name, remark: $remark, file: $file) {
+    mutation InternalCreateProduct($makerId: Int!, $name: String!, $remark: String!, $file: Upload!, $productTagIds: [Int!]!) {
+  createProduct(
+    makerId: $makerId
+    name: $name
+    remark: $remark
+    file: $file
+    productTagIds: $productTagIds
+  ) {
     ...ProductFields
   }
 }
@@ -1134,6 +1142,7 @@ export type InternalCreateProductMutationFn = Apollo.MutationFunction<InternalCr
  *      name: // value for 'name'
  *      remark: // value for 'remark'
  *      file: // value for 'file'
+ *      productTagIds: // value for 'productTagIds'
  *   },
  * });
  */
