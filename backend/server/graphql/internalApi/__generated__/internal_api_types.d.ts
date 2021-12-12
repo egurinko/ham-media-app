@@ -712,6 +712,7 @@ export interface NexusGenArgTypes {
       name: string; // String!
     }
     updateProduct: { // args
+      file?: NexusGenScalars['Upload'] | null; // Upload
       id: number; // Int!
       makerId: number; // Int!
       name: string; // String!

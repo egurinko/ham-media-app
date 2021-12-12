@@ -339,6 +339,7 @@ export type MutationUpdateMakerArgs = {
 
 
 export type MutationUpdateProductArgs = {
+  file?: InputMaybe<Scalars['Upload']>;
   id: Scalars['Int'];
   makerId: Scalars['Int'];
   name: Scalars['String'];
@@ -818,6 +819,7 @@ export type InternalUpdateProductMutationVariables = Exact<{
   makerId: Scalars['Int'];
   name: Scalars['String'];
   remark: Scalars['String'];
+  file?: InputMaybe<Scalars['Upload']>;
 }>;
 
 
@@ -2226,8 +2228,14 @@ export type InternalUpdateMakerMutationHookResult = ReturnType<typeof useInterna
 export type InternalUpdateMakerMutationResult = Apollo.MutationResult<InternalUpdateMakerMutation>;
 export type InternalUpdateMakerMutationOptions = Apollo.BaseMutationOptions<InternalUpdateMakerMutation, InternalUpdateMakerMutationVariables>;
 export const InternalUpdateProductDocument = gql`
-    mutation InternalUpdateProduct($id: Int!, $makerId: Int!, $name: String!, $remark: String!) {
-  updateProduct(id: $id, makerId: $makerId, name: $name, remark: $remark) {
+    mutation InternalUpdateProduct($id: Int!, $makerId: Int!, $name: String!, $remark: String!, $file: Upload) {
+  updateProduct(
+    id: $id
+    makerId: $makerId
+    name: $name
+    remark: $remark
+    file: $file
+  ) {
     ...ProductFields
   }
 }
@@ -2251,6 +2259,7 @@ export type InternalUpdateProductMutationFn = Apollo.MutationFunction<InternalUp
  *      makerId: // value for 'makerId'
  *      name: // value for 'name'
  *      remark: // value for 'remark'
+ *      file: // value for 'file'
  *   },
  * });
  */

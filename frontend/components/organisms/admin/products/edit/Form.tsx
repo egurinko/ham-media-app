@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 import {
   Box,
@@ -59,12 +60,21 @@ const Form: React.VFC<Props> = ({ productId }) => {
           makerId: Number(makerId),
           name,
           remark,
+          file: image,
         },
       });
       setTimeout(() => {
         goAdminProducts(router);
       }, 2000);
     } catch (e) {}
+  };
+
+  const [image, setImage] = useState<File | null>(null);
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      const file = e.target.files[0];
+      setImage(file);
+    }
   };
 
   return makerError ? (
@@ -134,7 +144,7 @@ const Form: React.VFC<Props> = ({ productId }) => {
 
             <FormControl id="image">
               <FormLabel>商品画像</FormLabel>
-              <Box flexShrink="0" mr="1">
+              <Box flexShrink="0" mr="1" mb="2">
                 <img
                   src={productData.product.url}
                   alt={productData.product.name}
@@ -147,6 +157,12 @@ const Form: React.VFC<Props> = ({ productId }) => {
                   }}
                 />
               </Box>
+              <input
+                name="image"
+                type="file"
+                onChange={handleFileChange}
+                accept="image/png, image/jpeg"
+              />
             </FormControl>
           </Stack>
           <Box d="grid" justifyContent="center">
