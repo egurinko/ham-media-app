@@ -8,8 +8,15 @@ export const updateProduct = gql`
     $makerId: Int!
     $name: String!
     $remark: String!
+    $file: Upload
   ) {
-    updateProduct(id: $id, makerId: $makerId, name: $name, remark: $remark) {
+    updateProduct(
+      id: $id
+      makerId: $makerId
+      name: $name
+      remark: $remark
+      file: $file
+    ) {
       ...ProductFields
     }
   }

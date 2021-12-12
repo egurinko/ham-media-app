@@ -216,12 +216,12 @@ const ProductStacks: React.VFC<NoProps> = () => {
                     <img
                       src={product.url}
                       alt={product.name}
-                      width="60"
-                      height="60"
+                      width="80"
+                      height="80"
                       style={{
                         objectFit: 'contain',
-                        width: '60px',
-                        height: '60px',
+                        width: '80px',
+                        height: '80px',
                       }}
                     />
                   </Box>
@@ -237,11 +237,21 @@ const ProductStacks: React.VFC<NoProps> = () => {
                         color="primary.main"
                         fontSize="xs"
                         mr="1"
-                        mb="1"
+                        mb="2"
                       >
                         {productTagging.productTag.name}
                       </Tag>
                     ))}
+                    <Text fontSize="xs" mb="2">
+                      割当：
+                      {Array.from(
+                        new Set(
+                          product.stocks
+                            .filter((s) => s.stockAllocation)
+                            .map((s) => s.stockAllocation?.internalUser.name)
+                        )
+                      ).join(', ')}
+                    </Text>
                   </Box>
                 </Box>
                 <Box ml="2">

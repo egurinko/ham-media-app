@@ -292,6 +292,7 @@ model ProductTagging {
   productTag     ProductTag @relation(fields: [product_tag_id], references: [id])
   created_at     DateTime   @default(now()) @db.DateTime(0)
 
+  @@unique([product_id, product_tag_id], name: "idx_product_taggings_1")
   @@map(name: "product_taggings")
 }
 

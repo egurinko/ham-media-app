@@ -1,4 +1,5 @@
 export * from './batchPayloadType';
+export * from './deleteType';
 export * from './roleType';
 export * from './internalUserType';
 export * from './sessionType';

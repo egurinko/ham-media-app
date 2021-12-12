@@ -1,5 +1,7 @@
-import { Spinner, Select, Box, Button } from '@chakra-ui/react';
+import { useEffect } from 'react';
+import { Spinner, Box, Button } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
+import { CUIAutoComplete } from 'chakra-ui-autocomplete';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
 import {
   useInternalGetProductTagGroupsQuery,
@@ -13,10 +15,12 @@ interface Props {
   productId: InternalGetProductQuery['product']['id'];
 }
 
+interface AutoCompleteItem {
+  label: string;
+  value: string;
+}
+
 const NewSection: React.FC<Props> = ({ productId }) => {
-  const [selectedProductTag, setSelectedProductTag] = useState<
-    undefined | number
-  >(undefined);
   const { data, loading, error } = useInternalGetProductTagGroupsQuery();
   const [
     createProductTaggings,
@@ -31,16 +35,36 @@ const NewSection: React.FC<Props> = ({ productId }) => {
     fetchPolicy: 'network-only',
   });
 
-  const handleTagChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedProductTag(Number(e.target.value));
-  };
-
   const handleAddProductTaggings = async () => {
-    if (selectedProductTag) {
+    if (selectedItems) {
+      const productTagIds = selectedItems.map((i) => Number(i.value));
       await createProductTaggings({
-        variables: { productId, productTagIds: [selectedProductTag] },
+        variables: { productId, productTagIds },
       });
       await getProducts();
+      setSelectedItems([]);
+    }
+  };
+
+  const [productTags, setProductTags] = useState<AutoCompleteItem[]>([]);
+  const [selectedItems, setSelectedItems] = useState<AutoCompleteItem[]>([]);
+
+  useEffect(() => {
+    if (data) {
+      const tags = data.productTagGroups
+        .map((productTagGroup) => productTagGroup.productTags.flat())
+        .flat()
+        .map((productTag) => ({
+          label: productTag.name,
+          value: String(productTag.id),
+        }));
+      setProductTags(tags);
+    }
+  }, [data]);
+
+  const handleSelectedItemsChange = (selectedItems?: AutoCompleteItem[]) => {
+    if (selectedItems) {
+      setSelectedItems(selectedItems);
     }
   };
 
@@ -64,20 +88,16 @@ const NewSection: React.FC<Props> = ({ productId }) => {
         }}
       >
         {data ? (
-          <Select
+          <CUIAutoComplete
+            label=""
             placeholder="紐付けるタグを選んでください。"
-            onChange={handleTagChange}
-            value={selectedProductTag}
-            required
-          >
-            {data.productTagGroups.map((productTagGroup) =>
-              productTagGroup.productTags.map((productTag) => (
-                <option key={productTag.id} value={productTag.id}>
-                  {productTag.name}
-                </option>
-              ))
-            )}
-          </Select>
+            items={productTags}
+            selectedItems={selectedItems}
+            onSelectedItemsChange={(changes) =>
+              handleSelectedItemsChange(changes.selectedItems)
+            }
+            disableCreateItem={true}
+          />
         ) : null}
         <Box textAlign="center" mt="8">
           <Button
