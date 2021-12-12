@@ -38,6 +38,11 @@ export type CreateStocksStocksInputType = {
   expiredAt: Scalars['DateTime'];
 };
 
+export type Delete = {
+  __typename?: 'Delete';
+  deleted: Scalars['Boolean'];
+};
+
 /** A hospital */
 export type Hospital = {
   __typename?: 'Hospital';
@@ -207,7 +212,7 @@ export type Mutation = {
   deleteInternalUser: InternalUser;
   deleteMaker: Maker;
   deleteProductTag: ProductTag;
-  deleteProductTagging: ProductTagging;
+  deleteProductTagging: Delete;
   deleteStock: Stock;
   returnStock: Stock;
   updateHospital: Hospital;
@@ -638,7 +643,7 @@ export type InternalDeleteProductTaggingMutationVariables = Exact<{
 }>;
 
 
-export type InternalDeleteProductTaggingMutation = { __typename?: 'Mutation', deleteProductTagging: { __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } } };
+export type InternalDeleteProductTaggingMutation = { __typename?: 'Mutation', deleteProductTagging: { __typename?: 'Delete', deleted: boolean } };
 
 export type InternalDeleteStockMutationVariables = Exact<{
   id: Scalars['Int'];
@@ -1398,10 +1403,10 @@ export type InternalDeleteProductTagMutationOptions = Apollo.BaseMutationOptions
 export const InternalDeleteProductTaggingDocument = gql`
     mutation InternalDeleteProductTagging($id: Int!) {
   deleteProductTagging(id: $id) {
-    ...ProductTaggingFields
+    deleted
   }
 }
-    ${ProductTaggingFieldsFragmentDoc}`;
+    `;
 export type InternalDeleteProductTaggingMutationFn = Apollo.MutationFunction<InternalDeleteProductTaggingMutation, InternalDeleteProductTaggingMutationVariables>;
 
 /**
