@@ -114,6 +114,9 @@ export interface NexusGenObjects {
   BatchPayload: { // root type
     count: number; // Int!
   }
+  Delete: { // root type
+    deleted: boolean; // Boolean!
+  }
   Hospital: { // root type
     deleted: boolean; // Boolean!
     id: NexusGenScalars['BigInt']; // BigInt!
@@ -253,6 +256,9 @@ export interface NexusGenFieldTypes {
   BatchPayload: { // field return type
     count: number; // Int!
   }
+  Delete: { // field return type
+    deleted: boolean; // Boolean!
+  }
   Hospital: { // field return type
     deleted: boolean; // Boolean!
     hospitalAddress: NexusGenRootTypes['HospitalAddress'] | null; // HospitalAddress
@@ -342,7 +348,7 @@ export interface NexusGenFieldTypes {
     deleteInternalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     deleteMaker: NexusGenRootTypes['Maker']; // Maker!
     deleteProductTag: NexusGenRootTypes['ProductTag']; // ProductTag!
-    deleteProductTagging: NexusGenRootTypes['ProductTagging']; // ProductTagging!
+    deleteProductTagging: NexusGenRootTypes['Delete']; // Delete!
     deleteStock: NexusGenRootTypes['Stock']; // Stock!
     returnStock: NexusGenRootTypes['Stock']; // Stock!
     updateHospital: NexusGenRootTypes['Hospital']; // Hospital!
@@ -441,6 +447,9 @@ export interface NexusGenFieldTypeNames {
   BatchPayload: { // field return type name
     count: 'Int'
   }
+  Delete: { // field return type name
+    deleted: 'Boolean'
+  }
   Hospital: { // field return type name
     deleted: 'Boolean'
     hospitalAddress: 'HospitalAddress'
@@ -530,7 +539,7 @@ export interface NexusGenFieldTypeNames {
     deleteInternalUser: 'InternalUser'
     deleteMaker: 'Maker'
     deleteProductTag: 'ProductTag'
-    deleteProductTagging: 'ProductTagging'
+    deleteProductTagging: 'Delete'
     deleteStock: 'Stock'
     returnStock: 'Stock'
     updateHospital: 'Hospital'

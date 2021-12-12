@@ -26,6 +26,10 @@ A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `dat
 """
 scalar DateTime
 
+type Delete {
+  deleted: Boolean!
+}
+
 """A hospital"""
 type Hospital {
   deleted: Boolean!
@@ -187,7 +191,7 @@ type Mutation {
   deleteInternalUser(id: BigInt!): InternalUser!
   deleteMaker(id: Int!): Maker!
   deleteProductTag(id: Int!): ProductTag!
-  deleteProductTagging(id: Int!): ProductTagging!
+  deleteProductTagging(id: Int!): Delete!
   deleteStock(id: Int!): Stock!
   returnStock(id: Int!): Stock!
   updateHospital(deleted: Boolean!, hospitalAddressInput: HospitalAddressInputType!, hospitalBusinessFormInput: HospitalBusinessFormInputType!, hospitalCertificationOptionInput: HospitalCertificationOptionInputType!, hospitalInternalReputationInput: HospitalInternalReputationInputType!, hospitalNightServiceOptionInput: HospitalNightServiceOptionInputType!, hospitalNightUrgentActionOptionInput: HospitalNightUrgentActionOptionInputType!, hospitalReservationStatusInput: HospitalReservationStatusInputType!, id: BigInt!, internal_memo: String!, name: String!, url: String!): Hospital!
