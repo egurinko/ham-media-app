@@ -171,7 +171,7 @@ const Form: React.VFC<NoProps> = () => {
                 name="image"
                 type="file"
                 onChange={handleFileChange}
-                accept="image/png, image/jpeg"
+                accept="image/png, image/jpeg, image/gif"
                 required
               />
             </FormControl>
