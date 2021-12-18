@@ -355,6 +355,7 @@ export interface NexusGenFieldTypes {
     updateInternalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     updateMaker: NexusGenRootTypes['Maker']; // Maker!
     updateProduct: NexusGenRootTypes['Product']; // Product!
+    updateProductTag: NexusGenRootTypes['ProductTag']; // ProductTag!
     updateProductTagGroup: NexusGenRootTypes['ProductTagGroup']; // ProductTagGroup!
   }
   PageInfo: { // field return type
@@ -546,6 +547,7 @@ export interface NexusGenFieldTypeNames {
     updateInternalUser: 'InternalUser'
     updateMaker: 'Maker'
     updateProduct: 'Product'
+    updateProductTag: 'ProductTag'
     updateProductTagGroup: 'ProductTagGroup'
   }
   PageInfo: { // field return type name
@@ -726,6 +728,10 @@ export interface NexusGenArgTypes {
       makerId: number; // Int!
       name: string; // String!
       remark: string; // String!
+    }
+    updateProductTag: { // args
+      id: number; // Int!
+      name: string; // String!
     }
     updateProductTagGroup: { // args
       id: number; // Int!

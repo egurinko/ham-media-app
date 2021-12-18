@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useEffect, useState, useCallback } from 'react';
 import {
   Spinner,
   Text,
@@ -24,6 +24,7 @@ import {
   useInternalDeleteProductTagMutation,
   useInternalGetProductTagGroupQuery,
   useInternalCreateProductTagsMutation,
+  useInternalUpdateProductTagMutation,
 } from '@/api/internal_api/types';
 import type {
   InternalUpdateProductTagGroupMutationVariables,
@@ -41,14 +42,15 @@ const addingTagInitialState: AddingTag = {
   name: '',
 };
 
+type ProductTag =
+  InternalGetProductTagGroupQuery['productTagGroup']['productTags'][number];
+
 const Tags: React.FC<Props> = ({ productTagGroupId }) => {
   const [addingTags, setAddingTags] = useState([addingTagInitialState]);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [selectedProductTag, setSelectedProductTag] = useState<
-    | null
-    | InternalGetProductTagGroupQuery['productTagGroup']['productTags'][number]
-  >(null);
+  const [selectedProductTag, setSelectedProductTag] =
+    useState<null | ProductTag>(null);
   const { data, error, loading, fetchMore } =
     useInternalGetProductTagGroupQuery({
       variables: { id: productTagGroupId },
@@ -71,9 +73,7 @@ const Tags: React.FC<Props> = ({ productTagGroupId }) => {
     },
   ] = useInternalCreateProductTagsMutation();
 
-  const handleOpenDelete = (
-    productTag: InternalGetProductTagGroupQuery['productTagGroup']['productTags'][number]
-  ) => {
+  const handleOpenDelete = (productTag: ProductTag) => {
     setSelectedProductTag(productTag);
     onOpen();
   };
@@ -115,6 +115,38 @@ const Tags: React.FC<Props> = ({ productTagGroupId }) => {
     setAddingTags([addingTagInitialState]);
   };
 
+  const [productTags, setProductTags] = useState<ProductTag[]>([]);
+  const [
+    updateProductTag,
+    { data: updateProductTagData, error: updateProductTagError },
+  ] = useInternalUpdateProductTagMutation();
+  useEffect(() => {
+    if (data) {
+      setProductTags(data.productTagGroup.productTags);
+    }
+  }, [data]);
+  const handleProductTagNameChange = useCallback(
+    (newTagName, updateProductTagId) => {
+      const newTagNames = productTags.map((productTag) => {
+        if (updateProductTagId === productTag.id) {
+          return { ...productTag, name: newTagName };
+        }
+        return productTag;
+      });
+      setProductTags(newTagNames);
+    },
+    [productTags]
+  );
+  const handleUpdateProductTag = useCallback(
+    async (productTag: ProductTag) => {
+      updateProductTag({
+        variables: { id: productTag.id, name: productTag.name },
+      });
+      await fetchMore({ variables: { id: productTagGroupId } });
+    },
+    [updateProductTag]
+  );
+
   return (
     <>
       <Card>
@@ -137,23 +169,29 @@ const Tags: React.FC<Props> = ({ productTagGroupId }) => {
               status="error"
             />
           ) : null}
+          {updateProductTagData ? (
+            <FlashMessage
+              message="タグの更新に成功しました。"
+              status="success"
+            />
+          ) : updateProductTagError ? (
+            <FlashMessage
+              message={updateProductTagError.message}
+              status="error"
+            />
+          ) : null}
           <VStack spacing="0" mt="4" alignItems="flex-start">
             {error ? (
               <FlashMessage message="エラーが発生しました。" status="error" />
             ) : null}
             <Divider />
-            {data?.productTagGroup.productTags.map((productTag) => (
+            {productTags.map((productTag) => (
               <Fragment key={productTag.id}>
                 <Box
                   w="100%"
                   display="flex"
                   flexDirection="row"
                   alignItems="center"
-                  _hover={{
-                    background: 'background.hover',
-                    color: 'primary.main',
-                    cursor: 'pointer',
-                  }}
                   p="2"
                 >
                   <Box
@@ -162,9 +200,29 @@ const Tags: React.FC<Props> = ({ productTagGroupId }) => {
                     flexDir="row"
                     alignItems="center"
                   >
-                    <Text fontSize="xs">{productTag.name}</Text>
+                    <Input
+                      value={productTag.name}
+                      onChange={(e) =>
+                        handleProductTagNameChange(
+                          e.target.value,
+                          productTag.id
+                        )
+                      }
+                    />
+                    <Button
+                      ml="2"
+                      onClick={() => handleUpdateProductTag(productTag)}
+                    >
+                      更新する
+                    </Button>
                   </Box>
-                  <Box ml="2">
+                  <Box
+                    ml="2"
+                    _hover={{
+                      background: 'background.hover',
+                      cursor: 'pointer',
+                    }}
+                  >
                     <IconButton
                       icon={<DeleteIcon />}
                       aria-label="delete"

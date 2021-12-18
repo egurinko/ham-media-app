@@ -15,6 +15,7 @@ export * from './deleteStock';
 export * from './createProductTagGroup';
 export * from './updateProductTagGroup';
 export * from './createProductTags';
+export * from './updateProductTag';
 export * from './deleteProductTag';
 export * from './createProductTaggings';
 export * from './deleteProductTagging';
