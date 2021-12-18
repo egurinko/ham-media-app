@@ -219,6 +219,7 @@ export type Mutation = {
   updateInternalUser: InternalUser;
   updateMaker: Maker;
   updateProduct: Product;
+  updateProductTag: ProductTag;
   updateProductTagGroup: ProductTagGroup;
 };
 
@@ -349,6 +350,12 @@ export type MutationUpdateProductArgs = {
   makerId: Scalars['Int'];
   name: Scalars['String'];
   remark: Scalars['String'];
+};
+
+
+export type MutationUpdateProductTagArgs = {
+  id: Scalars['Int'];
+  name: Scalars['String'];
 };
 
 
@@ -829,6 +836,14 @@ export type InternalUpdateProductMutationVariables = Exact<{
 
 
 export type InternalUpdateProductMutation = { __typename?: 'Mutation', updateProduct: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> } };
+
+export type InternalUpdateProductTagMutationVariables = Exact<{
+  id: Scalars['Int'];
+  name: Scalars['String'];
+}>;
+
+
+export type InternalUpdateProductTagMutation = { __typename?: 'Mutation', updateProductTag: { __typename?: 'ProductTag', id: number, name: string } };
 
 export type InternalUpdateProductTagGroupMutationVariables = Exact<{
   id: Scalars['Int'];
@@ -2275,6 +2290,40 @@ export function useInternalUpdateProductMutation(baseOptions?: Apollo.MutationHo
 export type InternalUpdateProductMutationHookResult = ReturnType<typeof useInternalUpdateProductMutation>;
 export type InternalUpdateProductMutationResult = Apollo.MutationResult<InternalUpdateProductMutation>;
 export type InternalUpdateProductMutationOptions = Apollo.BaseMutationOptions<InternalUpdateProductMutation, InternalUpdateProductMutationVariables>;
+export const InternalUpdateProductTagDocument = gql`
+    mutation InternalUpdateProductTag($id: Int!, $name: String!) {
+  updateProductTag(id: $id, name: $name) {
+    ...ProductTagFields
+  }
+}
+    ${ProductTagFieldsFragmentDoc}`;
+export type InternalUpdateProductTagMutationFn = Apollo.MutationFunction<InternalUpdateProductTagMutation, InternalUpdateProductTagMutationVariables>;
+
+/**
+ * __useInternalUpdateProductTagMutation__
+ *
+ * To run a mutation, you first call `useInternalUpdateProductTagMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInternalUpdateProductTagMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [internalUpdateProductTagMutation, { data, loading, error }] = useInternalUpdateProductTagMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      name: // value for 'name'
+ *   },
+ * });
+ */
+export function useInternalUpdateProductTagMutation(baseOptions?: Apollo.MutationHookOptions<InternalUpdateProductTagMutation, InternalUpdateProductTagMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<InternalUpdateProductTagMutation, InternalUpdateProductTagMutationVariables>(InternalUpdateProductTagDocument, options);
+      }
+export type InternalUpdateProductTagMutationHookResult = ReturnType<typeof useInternalUpdateProductTagMutation>;
+export type InternalUpdateProductTagMutationResult = Apollo.MutationResult<InternalUpdateProductTagMutation>;
+export type InternalUpdateProductTagMutationOptions = Apollo.BaseMutationOptions<InternalUpdateProductTagMutation, InternalUpdateProductTagMutationVariables>;
 export const InternalUpdateProductTagGroupDocument = gql`
     mutation InternalUpdateProductTagGroup($id: Int!, $name: String!) {
   updateProductTagGroup(id: $id, name: $name) {
