@@ -1,11 +1,11 @@
-import { PrismaClient } from '@prisma/client';
 import { FastifyRequest, FastifyReply } from 'fastify';
 import { InternalUser } from '@prisma/client';
 import { client } from '@/services/prisma';
+import type { Client } from '@/services/prisma';
 import { verify } from '@/services/authentication';
 
 export interface Context {
-  prisma: PrismaClient;
+  prisma: Client;
   currentInternalUser: InternalUser | null;
 }
 
