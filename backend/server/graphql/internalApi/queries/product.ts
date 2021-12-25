@@ -6,16 +6,10 @@ export const product = queryField((t) => {
     type: productType,
     args: { id: nonNull(intArg()) },
     resolve: async (_root, args, ctx) => {
-      const product = await ctx.prisma.product.findUnique({
+      return await ctx.prisma.product.findUnique({
         where: { id: args.id },
         include: { maker: true, stocks: true },
       });
-
-      if (!product) {
-        throw new Error('Not Found');
-      }
-
-      return product;
     },
   });
 });

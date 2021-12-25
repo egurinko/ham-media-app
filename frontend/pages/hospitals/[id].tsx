@@ -51,16 +51,18 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
       query: getHospitalIds,
     });
 
-    const paths = data.hospitals.map((hospital) => ({
-      params: { id: String(hospital.id) },
-    }));
+    const paths = data.hospitals
+      .map((hospital) => ({
+        params: { id: String(hospital.id) },
+      }))
+      .slice(0, 300);
 
     return { paths, fallback: 'blocking' };
   } catch (e) {
     console.log({ e });
   }
 
-  return { paths: [], fallback: false };
+  return { paths: [], fallback: 'blocking' };
 };
 
 export const getStaticProps: GetStaticProps<Props, Params> = async ({
@@ -77,7 +79,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
     fetchPolicy: 'no-cache',
   });
 
-  return { props: { hospital: data.hospital, revalidate: 300 } };
+  return { props: { hospital: data.hospital, revalidate: 60 } };
 };
 
 export default Show;

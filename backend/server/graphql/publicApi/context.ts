@@ -1,9 +1,9 @@
-import { PrismaClient } from '@prisma/client';
 import { FastifyRequest, FastifyReply } from 'fastify';
 import { client } from '@/services/prisma';
+import type { Client } from '@/services/prisma';
 
 export interface Context {
-  prisma: PrismaClient;
+  prisma: Client;
 }
 
 export const context = (
