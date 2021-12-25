@@ -27,8 +27,8 @@ jobs:
         uses: actions/cache@v2
         with:
           path: |
-            */*/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('./frontend/yarn.lock') }}
+            ./node_modules
+          key: ${{ runner.os }}-${{ hashFiles('./yarn.lock') }}
       - name: Install sls
         run: yarn global add serverless
       - name: Deploy
