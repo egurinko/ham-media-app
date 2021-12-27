@@ -8,9 +8,6 @@ import { Form } from '@/components/organisms/admin/products/edit/Form';
 import { Stocks } from '@/components/organisms/admin/products/edit/Stocks';
 import { ProductTaggings } from '@/components/organisms/admin/products/edit/ProductTaggings';
 import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
-import { getProductIds } from '@/api/internal_api/getProductIds';
-import type { InternalGetProductIdsQuery } from '@/api/internal_api/types';
-import { apiClient } from '@/utils/apollo';
 import { goAdminProducts } from '@/utils/routes';
 
 const Edit: React.VFC<Props> = () => {
@@ -53,15 +50,7 @@ interface Params extends ParsedUrlQuery {
 interface Props {}
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  const { data } = await apiClient.query<InternalGetProductIdsQuery>({
-    query: getProductIds,
-  });
-
-  const paths = data.products.map((product) => ({
-    params: { id: String(product.id) },
-  }));
-
-  return { paths, fallback: 'blocking' };
+  return { paths: [], fallback: 'blocking' };
 };
 
 export const getStaticProps: GetStaticProps<Props, Params> = async () => {

@@ -6,9 +6,6 @@ import { ChevronRightIcon } from '@chakra-ui/icons';
 import { Form } from '@/components/organisms/admin/product_tag_groups/edit/Form';
 import { Tags } from '@/components/organisms/admin/product_tag_groups/edit/Tags';
 import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
-import { getProductTagGroupIds } from '@/api/internal_api/getProductTagGroupIds';
-import type { InternalGetProductTagGroupIdsQuery } from '@/api/internal_api/types';
-import { apiClient } from '@/utils/apollo';
 import { goAdminProductTagGroups } from '@/utils/routes';
 
 const Edit: React.VFC<Props> = () => {
@@ -45,15 +42,7 @@ interface Params extends ParsedUrlQuery {
 interface Props {}
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  const { data } = await apiClient.query<InternalGetProductTagGroupIdsQuery>({
-    query: getProductTagGroupIds,
-  });
-
-  const paths = data.productTagGroups.map((productTagGroup) => ({
-    params: { id: String(productTagGroup.id) },
-  }));
-
-  return { paths, fallback: 'blocking' };
+  return { paths: [], fallback: 'blocking' };
 };
 
 export const getStaticProps: GetStaticProps<Props, Params> = async () => {
