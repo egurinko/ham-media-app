@@ -495,6 +495,7 @@ export type QueryProductConnectionArgs = {
   allocatedInternalUserId?: InputMaybe<Scalars['Int']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
+  hasStock?: InputMaybe<Scalars['Boolean']>;
   last?: InputMaybe<Scalars['Int']>;
   makerId?: InputMaybe<Scalars['Int']>;
   name?: InputMaybe<Scalars['String']>;
@@ -738,6 +739,7 @@ export type InternalGetProductConnectionQueryVariables = Exact<{
   makerId?: InputMaybe<Scalars['Int']>;
   productTagId?: InputMaybe<Scalars['Int']>;
   allocatedInternalUserId?: InputMaybe<Scalars['Int']>;
+  hasStock?: InputMaybe<Scalars['Boolean']>;
 }>;
 
 
@@ -1779,7 +1781,7 @@ export type InternalGetProductQueryHookResult = ReturnType<typeof useInternalGet
 export type InternalGetProductLazyQueryHookResult = ReturnType<typeof useInternalGetProductLazyQuery>;
 export type InternalGetProductQueryResult = Apollo.QueryResult<InternalGetProductQuery, InternalGetProductQueryVariables>;
 export const InternalGetProductConnectionDocument = gql`
-    query InternalGetProductConnection($first: Int, $after: String, $name: String, $makerId: Int, $productTagId: Int, $allocatedInternalUserId: Int) {
+    query InternalGetProductConnection($first: Int, $after: String, $name: String, $makerId: Int, $productTagId: Int, $allocatedInternalUserId: Int, $hasStock: Boolean) {
   productConnection(
     first: $first
     after: $after
@@ -1787,6 +1789,7 @@ export const InternalGetProductConnectionDocument = gql`
     makerId: $makerId
     productTagId: $productTagId
     allocatedInternalUserId: $allocatedInternalUserId
+    hasStock: $hasStock
   ) {
     edges {
       node {
@@ -1821,6 +1824,7 @@ export const InternalGetProductConnectionDocument = gql`
  *      makerId: // value for 'makerId'
  *      productTagId: // value for 'productTagId'
  *      allocatedInternalUserId: // value for 'allocatedInternalUserId'
+ *      hasStock: // value for 'hasStock'
  *   },
  * });
  */

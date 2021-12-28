@@ -10,6 +10,7 @@ export const getProductConnection = gql`
     $makerId: Int
     $productTagId: Int
     $allocatedInternalUserId: Int
+    $hasStock: Boolean
   ) {
     productConnection(
       first: $first
@@ -18,6 +19,7 @@ export const getProductConnection = gql`
       makerId: $makerId
       productTagId: $productTagId
       allocatedInternalUserId: $allocatedInternalUserId
+      hasStock: $hasStock
     ) {
       edges {
         node {
