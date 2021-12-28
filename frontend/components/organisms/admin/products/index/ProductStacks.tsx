@@ -12,6 +12,9 @@ import {
   FormControl,
   FormLabel,
   Select,
+  Radio,
+  RadioGroup,
+  Stack,
 } from '@chakra-ui/react';
 import { useCallback, Fragment } from 'react';
 import { useRouter } from 'next/router';
@@ -27,6 +30,12 @@ import { FlashMessage } from '@/components/molecules/FlashMessage';
 import { goAdminProductsEdit } from '@/utils/routes';
 import { useIntersectionObserver } from '@/utils/hooks/useIntersectionObserver';
 
+const HAS_STOCKS = {
+  HAS: 'has',
+  NOT: 'not',
+  ALL: 'all',
+} as const;
+
 const ProductStacks: React.VFC<NoProps> = () => {
   const router = useRouter();
   const [name, setName] = useState('');
@@ -39,6 +48,7 @@ const ProductStacks: React.VFC<NoProps> = () => {
   const [selectedInternalUserId, setSelectedInternalUserID] = useState<
     undefined | string
   >(undefined);
+  const [hasStock, setHasStock] = useState<string>(HAS_STOCKS.ALL);
 
   const { data: makersData } = useInternalGetMakersQuery();
   const { data: productTagGroupsData } = useInternalGetProductTagGroupsQuery();
@@ -95,6 +105,12 @@ const ProductStacks: React.VFC<NoProps> = () => {
         makerId: Number(selectedMakerId),
         productTagId: Number(selectedTagId),
         allocatedInternalUserId: Number(selectedInternalUserId),
+        hasStock:
+          hasStock === HAS_STOCKS.HAS
+            ? true
+            : hasStock === HAS_STOCKS.NOT
+            ? false
+            : undefined,
       },
     });
   };
@@ -177,6 +193,15 @@ const ProductStacks: React.VFC<NoProps> = () => {
               </Select>
             </FormControl>
           ) : null}
+        </Box>
+        <Box mt="2">
+          <RadioGroup onChange={(e) => setHasStock(e)} value={hasStock}>
+            <Stack direction="row">
+              <Radio value={HAS_STOCKS.HAS}>在庫あり</Radio>
+              <Radio value={HAS_STOCKS.NOT}>在庫なし</Radio>
+              <Radio value={HAS_STOCKS.ALL}>どちらも</Radio>
+            </Stack>
+          </RadioGroup>
         </Box>
         <Box textAlign="center">
           <Button
