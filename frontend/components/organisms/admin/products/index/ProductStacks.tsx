@@ -179,7 +179,7 @@ const ProductStacks: React.VFC<NoProps> = () => {
               <Select
                 size="sm"
                 placeholder="選択してください"
-                value={selectedTagId}
+                value={selectedInternalUserId}
                 onChange={(e) => setSelectedInternalUserID(e.target.value)}
               >
                 {internalUsersData.internalUsers.map((internalUser) => (
