@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useMemo } from 'react';
 import {
   Text,
   Skeleton,
@@ -30,7 +30,7 @@ import { FlashMessage } from '@/components/molecules/FlashMessage';
 import { goAdminProductsEdit } from '@/utils/routes';
 import { useIntersectionObserver } from '@/utils/hooks/useIntersectionObserver';
 
-const HAS_STOCKS = {
+const PRODUCT_STOCK = {
   HAS: 'has',
   NOT: 'not',
   ALL: 'all',
@@ -48,7 +48,14 @@ const ProductStacks: React.VFC<NoProps> = () => {
   const [selectedInternalUserId, setSelectedInternalUserID] = useState<
     undefined | string
   >(undefined);
-  const [hasStock, setHasStock] = useState<string>(HAS_STOCKS.ALL);
+  const [productStock, setProductStock] = useState<string>(PRODUCT_STOCK.HAS);
+  const hasStock = useMemo(() => {
+    return productStock === PRODUCT_STOCK.HAS
+      ? true
+      : productStock === PRODUCT_STOCK.NOT
+      ? false
+      : undefined;
+  }, [productStock]);
 
   const { data: makersData } = useInternalGetMakersQuery();
   const { data: productTagGroupsData } = useInternalGetProductTagGroupsQuery();
@@ -58,7 +65,7 @@ const ProductStacks: React.VFC<NoProps> = () => {
 
   const { data, loading, error, fetchMore } =
     useInternalGetProductConnectionQuery({
-      variables: { first: 10 },
+      variables: { first: 10, hasStock: true },
       fetchPolicy: 'network-only',
     });
   const nodes = data?.productConnection?.edges
@@ -76,6 +83,7 @@ const ProductStacks: React.VFC<NoProps> = () => {
           makerId: Number(selectedMakerId),
           productTagId: Number(selectedTagId),
           allocatedInternalUserId: Number(selectedInternalUserId),
+          hasStock,
         },
       });
     }
@@ -88,6 +96,7 @@ const ProductStacks: React.VFC<NoProps> = () => {
     selectedMakerId,
     selectedTagId,
     selectedInternalUserId,
+    hasStock,
   ]);
 
   const handleProductClick = useCallback(
@@ -105,12 +114,7 @@ const ProductStacks: React.VFC<NoProps> = () => {
         makerId: Number(selectedMakerId),
         productTagId: Number(selectedTagId),
         allocatedInternalUserId: Number(selectedInternalUserId),
-        hasStock:
-          hasStock === HAS_STOCKS.HAS
-            ? true
-            : hasStock === HAS_STOCKS.NOT
-            ? false
-            : undefined,
+        hasStock,
       },
     });
   };
@@ -195,11 +199,11 @@ const ProductStacks: React.VFC<NoProps> = () => {
           ) : null}
         </Box>
         <Box mt="2">
-          <RadioGroup onChange={(e) => setHasStock(e)} value={hasStock}>
+          <RadioGroup onChange={(e) => setProductStock(e)} value={productStock}>
             <Stack direction="row">
-              <Radio value={HAS_STOCKS.HAS}>在庫あり</Radio>
-              <Radio value={HAS_STOCKS.NOT}>在庫なし</Radio>
-              <Radio value={HAS_STOCKS.ALL}>どちらも</Radio>
+              <Radio value={PRODUCT_STOCK.HAS}>在庫あり</Radio>
+              <Radio value={PRODUCT_STOCK.NOT}>在庫なし</Radio>
+              <Radio value={PRODUCT_STOCK.ALL}>どちらも</Radio>
             </Stack>
           </RadioGroup>
         </Box>
