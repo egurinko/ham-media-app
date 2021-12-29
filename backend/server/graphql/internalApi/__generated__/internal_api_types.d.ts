@@ -240,6 +240,20 @@ export interface NexusGenObjects {
     created_at: NexusGenScalars['DateTime']; // DateTime!
     id: number; // Int!
   }
+  StockRequest: { // root type
+    id: number; // Int!
+  }
+  StockRequestConnection: { // root type
+    edges?: Array<NexusGenRootTypes['StockRequestEdge'] | null> | null; // [StockRequestEdge]
+    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
+  }
+  StockRequestEdge: { // root type
+    cursor: string; // String!
+    node?: NexusGenRootTypes['StockRequest'] | null; // StockRequest
+  }
+  StockRequestStockRegistration: { // root type
+    id: number; // Int!
+  }
 }
 
 export interface NexusGenInterfaces {
@@ -418,6 +432,7 @@ export interface NexusGenFieldTypes {
     products: NexusGenRootTypes['Product'][]; // [Product!]!
     roles: NexusGenRootTypes['Role'][]; // [Role!]!
     session: NexusGenRootTypes['Session']; // Session!
+    stockRequestConnection: NexusGenRootTypes['StockRequestConnection'] | null; // StockRequestConnection
     stocks: NexusGenRootTypes['Stock'][]; // [Stock!]!
   }
   Region: { // field return type
@@ -441,6 +456,23 @@ export interface NexusGenFieldTypes {
     created_at: NexusGenScalars['DateTime']; // DateTime!
     id: number; // Int!
     internalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
+  }
+  StockRequest: { // field return type
+    id: number; // Int!
+    internalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
+    stockRegistrations: NexusGenRootTypes['StockRequestStockRegistration'][]; // [StockRequestStockRegistration!]!
+  }
+  StockRequestConnection: { // field return type
+    edges: Array<NexusGenRootTypes['StockRequestEdge'] | null> | null; // [StockRequestEdge]
+    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
+  }
+  StockRequestEdge: { // field return type
+    cursor: string; // String!
+    node: NexusGenRootTypes['StockRequest'] | null; // StockRequest
+  }
+  StockRequestStockRegistration: { // field return type
+    id: number; // Int!
+    stock: NexusGenRootTypes['Stock']; // Stock!
   }
 }
 
@@ -610,6 +642,7 @@ export interface NexusGenFieldTypeNames {
     products: 'Product'
     roles: 'Role'
     session: 'Session'
+    stockRequestConnection: 'StockRequestConnection'
     stocks: 'Stock'
   }
   Region: { // field return type name
@@ -633,6 +666,23 @@ export interface NexusGenFieldTypeNames {
     created_at: 'DateTime'
     id: 'Int'
     internalUser: 'InternalUser'
+  }
+  StockRequest: { // field return type name
+    id: 'Int'
+    internalUser: 'InternalUser'
+    stockRegistrations: 'StockRequestStockRegistration'
+  }
+  StockRequestConnection: { // field return type name
+    edges: 'StockRequestEdge'
+    pageInfo: 'PageInfo'
+  }
+  StockRequestEdge: { // field return type name
+    cursor: 'String'
+    node: 'StockRequest'
+  }
+  StockRequestStockRegistration: { // field return type name
+    id: 'Int'
+    stock: 'Stock'
   }
 }
 
@@ -773,6 +823,13 @@ export interface NexusGenArgTypes {
     }
     productTagGroup: { // args
       id: number; // Int!
+    }
+    stockRequestConnection: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      internalUserId: NexusGenScalars['BigInt']; // BigInt!
+      last?: number | null; // Int
     }
     stocks: { // args
       productId: number; // Int!
