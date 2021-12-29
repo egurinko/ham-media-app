@@ -19,6 +19,8 @@ export * from './productType';
 export * from './product/stockType';
 export * from './product/stock/stockAllocationType';
 export * from './createStocks/stocksInputType';
+export * from './stockRequestType';
+export * from './stockRequest/stockRegistrationType';
 export * from './productTagGroupType';
 export * from './productTagType';
 export * from './productTaggingType';
