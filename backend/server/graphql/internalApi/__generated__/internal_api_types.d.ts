@@ -243,6 +243,9 @@ export interface NexusGenObjects {
   StockRequest: { // root type
     id: number; // Int!
   }
+  StockRequestApproval: { // root type
+    id: number; // Int!
+  }
   StockRequestConnection: { // root type
     edges?: Array<NexusGenRootTypes['StockRequestEdge'] | null> | null; // [StockRequestEdge]
     pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
@@ -458,9 +461,13 @@ export interface NexusGenFieldTypes {
     internalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
   }
   StockRequest: { // field return type
+    approval: NexusGenRootTypes['StockRequestApproval'] | null; // StockRequestApproval
     id: number; // Int!
     internalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     stockRegistrations: NexusGenRootTypes['StockRequestStockRegistration'][]; // [StockRequestStockRegistration!]!
+  }
+  StockRequestApproval: { // field return type
+    id: number; // Int!
   }
   StockRequestConnection: { // field return type
     edges: Array<NexusGenRootTypes['StockRequestEdge'] | null> | null; // [StockRequestEdge]
@@ -668,9 +675,13 @@ export interface NexusGenFieldTypeNames {
     internalUser: 'InternalUser'
   }
   StockRequest: { // field return type name
+    approval: 'StockRequestApproval'
     id: 'Int'
     internalUser: 'InternalUser'
     stockRegistrations: 'StockRequestStockRegistration'
+  }
+  StockRequestApproval: { // field return type name
+    id: 'Int'
   }
   StockRequestConnection: { // field return type name
     edges: 'StockRequestEdge'

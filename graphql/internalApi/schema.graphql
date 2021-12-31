@@ -385,9 +385,15 @@ type StockAllocation {
 
 """A stock request"""
 type StockRequest {
+  approval: StockRequestApproval
   id: Int!
   internalUser: InternalUser!
   stockRegistrations: [StockRequestStockRegistration!]!
+}
+
+"""A stock request approval"""
+type StockRequestApproval {
+  id: Int!
 }
 
 type StockRequestConnection {
