@@ -335,6 +335,20 @@ type Query {
   products: [Product!]!
   roles: [Role!]!
   session: Session!
+  stockRequestConnection(
+    """Returns the elements in the list that come after the specified cursor"""
+    after: String
+
+    """Returns the elements in the list that come before the specified cursor"""
+    before: String
+
+    """Returns the first n elements from the list."""
+    first: Int
+    internalUserId: BigInt!
+
+    """Returns the last n elements from the list."""
+    last: Int
+  ): StockRequestConnection
   stocks(productId: Int!): [Stock!]!
 }
 
@@ -367,6 +381,39 @@ type StockAllocation {
   created_at: DateTime!
   id: Int!
   internalUser: InternalUser!
+}
+
+"""A stock request"""
+type StockRequest {
+  id: Int!
+  internalUser: InternalUser!
+  stockRegistrations: [StockRequestStockRegistration!]!
+}
+
+type StockRequestConnection {
+  """
+  https://facebook.github.io/relay/graphql/connections.htm#sec-Edge-Types
+  """
+  edges: [StockRequestEdge]
+
+  """
+  https://facebook.github.io/relay/graphql/connections.htm#sec-undefined.PageInfo
+  """
+  pageInfo: PageInfo!
+}
+
+type StockRequestEdge {
+  """https://facebook.github.io/relay/graphql/connections.htm#sec-Cursor"""
+  cursor: String!
+
+  """https://facebook.github.io/relay/graphql/connections.htm#sec-Node"""
+  node: StockRequest
+}
+
+"""A stock request stock registration"""
+type StockRequestStockRegistration {
+  id: Int!
+  stock: Stock!
 }
 
 """The `Upload` scalar type represents a file upload."""
