@@ -849,7 +849,7 @@ export interface NexusGenArgTypes {
       after?: string | null; // String
       before?: string | null; // String
       first?: number | null; // Int
-      internalUserId: NexusGenScalars['BigInt']; // BigInt!
+      internalUserId?: NexusGenScalars['BigInt'] | null; // BigInt
       last?: number | null; // Int
     }
     stocks: { // args

@@ -350,7 +350,7 @@ type Query {
 
     """Returns the first n elements from the list."""
     first: Int
-    internalUserId: BigInt!
+    internalUserId: BigInt
 
     """Returns the last n elements from the list."""
     last: Int
