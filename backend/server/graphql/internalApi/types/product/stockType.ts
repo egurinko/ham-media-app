@@ -8,5 +8,6 @@ export const stockType = objectType({
     t.field(Stock.id);
     t.field(Stock.expired_at);
     t.field(Stock.stockAllocation);
+    t.field(Stock.product);
   },
 });

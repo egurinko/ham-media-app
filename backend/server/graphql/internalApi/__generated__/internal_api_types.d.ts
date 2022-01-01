@@ -458,6 +458,7 @@ export interface NexusGenFieldTypes {
   Stock: { // field return type
     expired_at: NexusGenScalars['DateTime']; // DateTime!
     id: number; // Int!
+    product: NexusGenRootTypes['Product']; // Product!
     stockAllocation: NexusGenRootTypes['StockAllocation'] | null; // StockAllocation
   }
   StockAllocation: { // field return type
@@ -673,6 +674,7 @@ export interface NexusGenFieldTypeNames {
   Stock: { // field return type name
     expired_at: 'DateTime'
     id: 'Int'
+    product: 'Product'
     stockAllocation: 'StockAllocation'
   }
   StockAllocation: { // field return type name

@@ -379,6 +379,7 @@ type Session {
 type Stock {
   expired_at: DateTime!
   id: Int!
+  product: Product!
   stockAllocation: StockAllocation
 }
 
