@@ -59,6 +59,10 @@ export interface NexusGenInputs {
   CreateProductTagsProductTagInputType: { // input type
     name: string; // String!
   }
+  CreateStockRequestrequestProductsInputType: { // input type
+    count: number; // Int!
+    productId: number; // Int!
+  }
   CreateStocksStocksInputType: { // input type
     amount: number; // Int!
     expiredAt: NexusGenScalars['DateTime']; // DateTime!
@@ -361,6 +365,7 @@ export interface NexusGenFieldTypes {
     createProductTagGroup: NexusGenRootTypes['ProductTagGroup']; // ProductTagGroup!
     createProductTaggings: NexusGenRootTypes['Product']; // Product!
     createProductTags: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    createStockRequest: NexusGenRootTypes['StockRequest']; // StockRequest!
     createStocks: NexusGenRootTypes['Stock'][]; // [Stock!]!
     deleteInternalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     deleteMaker: NexusGenRootTypes['Maker']; // Maker!
@@ -575,6 +580,7 @@ export interface NexusGenFieldTypeNames {
     createProductTagGroup: 'ProductTagGroup'
     createProductTaggings: 'Product'
     createProductTags: 'BatchPayload'
+    createStockRequest: 'StockRequest'
     createStocks: 'Stock'
     deleteInternalUser: 'InternalUser'
     deleteMaker: 'Maker'
@@ -735,6 +741,10 @@ export interface NexusGenArgTypes {
     createProductTags: { // args
       productTagGroupId: number; // Int!
       productTags: NexusGenInputs['CreateProductTagsProductTagInputType'][]; // [CreateProductTagsProductTagInputType!]!
+    }
+    createStockRequest: { // args
+      internalUserId: number; // Int!
+      requestProducts: NexusGenInputs['CreateStockRequestrequestProductsInputType'][]; // [CreateStockRequestrequestProductsInputType!]!
     }
     createStocks: { // args
       productId: number; // Int!

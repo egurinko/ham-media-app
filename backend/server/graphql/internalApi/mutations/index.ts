@@ -12,6 +12,7 @@ export * from './createStocks';
 export * from './allocateStock';
 export * from './returnStock';
 export * from './deleteStock';
+export * from './createStockRequest';
 export * from './createProductTagGroup';
 export * from './updateProductTagGroup';
 export * from './createProductTags';
