@@ -33,6 +33,11 @@ export type CreateProductTagsProductTagInputType = {
   name: Scalars['String'];
 };
 
+export type CreateStockRequestrequestProductsInputType = {
+  count: Scalars['Int'];
+  productId: Scalars['Int'];
+};
+
 export type CreateStocksStocksInputType = {
   amount: Scalars['Int'];
   expiredAt: Scalars['DateTime'];
@@ -208,6 +213,7 @@ export type Mutation = {
   createProductTagGroup: ProductTagGroup;
   createProductTaggings: Product;
   createProductTags: BatchPayload;
+  createStockRequest: StockRequest;
   createStocks: Array<Stock>;
   deleteInternalUser: InternalUser;
   deleteMaker: Maker;
@@ -274,6 +280,12 @@ export type MutationCreateProductTaggingsArgs = {
 export type MutationCreateProductTagsArgs = {
   productTagGroupId: Scalars['Int'];
   productTags: Array<CreateProductTagsProductTagInputType>;
+};
+
+
+export type MutationCreateStockRequestArgs = {
+  internalUserId: Scalars['Int'];
+  requestProducts: Array<CreateStockRequestrequestProductsInputType>;
 };
 
 
@@ -455,6 +467,7 @@ export type Query = {
   products: Array<Product>;
   roles: Array<Role>;
   session: Session;
+  stockRequestConnection?: Maybe<StockRequestConnection>;
   stocks: Array<Stock>;
 };
 
@@ -508,6 +521,15 @@ export type QueryProductTagGroupArgs = {
 };
 
 
+export type QueryStockRequestConnectionArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  internalUserId?: InputMaybe<Scalars['BigInt']>;
+  last?: InputMaybe<Scalars['Int']>;
+};
+
+
 export type QueryStocksArgs = {
   productId: Scalars['Int'];
 };
@@ -537,6 +559,7 @@ export type Stock = {
   __typename?: 'Stock';
   expired_at: Scalars['DateTime'];
   id: Scalars['Int'];
+  product: Product;
   stockAllocation?: Maybe<StockAllocation>;
 };
 
@@ -546,6 +569,44 @@ export type StockAllocation = {
   created_at: Scalars['DateTime'];
   id: Scalars['Int'];
   internalUser: InternalUser;
+};
+
+/** A stock request */
+export type StockRequest = {
+  __typename?: 'StockRequest';
+  approval?: Maybe<StockRequestApproval>;
+  id: Scalars['Int'];
+  internalUser: InternalUser;
+  stockRegistrations: Array<StockRequestStockRegistration>;
+};
+
+/** A stock request approval */
+export type StockRequestApproval = {
+  __typename?: 'StockRequestApproval';
+  id: Scalars['Int'];
+};
+
+export type StockRequestConnection = {
+  __typename?: 'StockRequestConnection';
+  /** https://facebook.github.io/relay/graphql/connections.htm#sec-Edge-Types */
+  edges?: Maybe<Array<Maybe<StockRequestEdge>>>;
+  /** https://facebook.github.io/relay/graphql/connections.htm#sec-undefined.PageInfo */
+  pageInfo: PageInfo;
+};
+
+export type StockRequestEdge = {
+  __typename?: 'StockRequestEdge';
+  /** https://facebook.github.io/relay/graphql/connections.htm#sec-Cursor */
+  cursor: Scalars['String'];
+  /** https://facebook.github.io/relay/graphql/connections.htm#sec-Node */
+  node?: Maybe<StockRequest>;
+};
+
+/** A stock request stock registration */
+export type StockRequestStockRegistration = {
+  __typename?: 'StockRequestStockRegistration';
+  id: Scalars['Int'];
+  stock: Stock;
 };
 
 export type InternalAllocateStockMutationVariables = Exact<{
@@ -678,6 +739,8 @@ export type ProductTagGroupFieldsFragment = { __typename?: 'ProductTagGroup', id
 
 export type RoleFieldsFragment = { __typename?: 'Role', id: number, name: string };
 
+export type StockRequestFieldsFragment = { __typename?: 'StockRequest', id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }, stockRegistrations: Array<{ __typename?: 'StockRequestStockRegistration', id: number, stock: { __typename?: 'Stock', id: number, expired_at: any, product: { __typename?: 'Product', id: number, name: string, url: string, maker: { __typename?: 'Maker', id: number, name: string } } } }>, approval?: { __typename?: 'StockRequestApproval', id: number } | null | undefined };
+
 export type InternalGetHospitalQueryVariables = Exact<{
   id: Scalars['BigInt'];
 }>;
@@ -776,6 +839,15 @@ export type InternalGetSessionQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type InternalGetSessionQuery = { __typename?: 'Query', session: { __typename?: 'Session', token: string, internalUser: { __typename?: 'InternalUser', id: BigInt, name: string, email: string } } };
+
+export type InternalGetStockRequestConnectionQueryVariables = Exact<{
+  first?: InputMaybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  internalUserId?: InputMaybe<Scalars['BigInt']>;
+}>;
+
+
+export type InternalGetStockRequestConnectionQuery = { __typename?: 'Query', stockRequestConnection?: { __typename?: 'StockRequestConnection', edges?: Array<{ __typename?: 'StockRequestEdge', node?: { __typename?: 'StockRequest', id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }, stockRegistrations: Array<{ __typename?: 'StockRequestStockRegistration', id: number, stock: { __typename?: 'Stock', id: number, expired_at: any, product: { __typename?: 'Product', id: number, name: string, url: string, maker: { __typename?: 'Maker', id: number, name: string } } } }>, approval?: { __typename?: 'StockRequestApproval', id: number } | null | undefined } | null | undefined } | null | undefined> | null | undefined, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, hasPreviousPage: boolean, startCursor?: string | null | undefined, endCursor?: string | null | undefined } } | null | undefined };
 
 export type InternalGetStocksQueryVariables = Exact<{
   productId: Scalars['Int'];
@@ -985,6 +1057,33 @@ export const ProductTagGroupFieldsFragmentDoc = gql`
   }
 }
     ${ProductTagFieldsFragmentDoc}`;
+export const StockRequestFieldsFragmentDoc = gql`
+    fragment StockRequestFields on StockRequest {
+  id
+  internalUser {
+    ...InternalUserFields
+  }
+  stockRegistrations {
+    id
+    stock {
+      id
+      expired_at
+      product {
+        id
+        name
+        url
+        maker {
+          id
+          name
+        }
+      }
+    }
+  }
+  approval {
+    id
+  }
+}
+    ${InternalUserFieldsFragmentDoc}`;
 export const InternalAllocateStockDocument = gql`
     mutation InternalAllocateStock($id: Int!, $internalUserId: BigInt!) {
   allocateStock(id: $id, internalUserId: $internalUserId) {
@@ -2049,6 +2148,57 @@ export function useInternalGetSessionLazyQuery(baseOptions?: Apollo.LazyQueryHoo
 export type InternalGetSessionQueryHookResult = ReturnType<typeof useInternalGetSessionQuery>;
 export type InternalGetSessionLazyQueryHookResult = ReturnType<typeof useInternalGetSessionLazyQuery>;
 export type InternalGetSessionQueryResult = Apollo.QueryResult<InternalGetSessionQuery, InternalGetSessionQueryVariables>;
+export const InternalGetStockRequestConnectionDocument = gql`
+    query InternalGetStockRequestConnection($first: Int, $after: String, $internalUserId: BigInt) {
+  stockRequestConnection(
+    first: $first
+    after: $after
+    internalUserId: $internalUserId
+  ) {
+    edges {
+      node {
+        ...StockRequestFields
+      }
+    }
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+  }
+}
+    ${StockRequestFieldsFragmentDoc}`;
+
+/**
+ * __useInternalGetStockRequestConnectionQuery__
+ *
+ * To run a query within a React component, call `useInternalGetStockRequestConnectionQuery` and pass it any options that fit your needs.
+ * When your component renders, `useInternalGetStockRequestConnectionQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useInternalGetStockRequestConnectionQuery({
+ *   variables: {
+ *      first: // value for 'first'
+ *      after: // value for 'after'
+ *      internalUserId: // value for 'internalUserId'
+ *   },
+ * });
+ */
+export function useInternalGetStockRequestConnectionQuery(baseOptions?: Apollo.QueryHookOptions<InternalGetStockRequestConnectionQuery, InternalGetStockRequestConnectionQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<InternalGetStockRequestConnectionQuery, InternalGetStockRequestConnectionQueryVariables>(InternalGetStockRequestConnectionDocument, options);
+      }
+export function useInternalGetStockRequestConnectionLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InternalGetStockRequestConnectionQuery, InternalGetStockRequestConnectionQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<InternalGetStockRequestConnectionQuery, InternalGetStockRequestConnectionQueryVariables>(InternalGetStockRequestConnectionDocument, options);
+        }
+export type InternalGetStockRequestConnectionQueryHookResult = ReturnType<typeof useInternalGetStockRequestConnectionQuery>;
+export type InternalGetStockRequestConnectionLazyQueryHookResult = ReturnType<typeof useInternalGetStockRequestConnectionLazyQuery>;
+export type InternalGetStockRequestConnectionQueryResult = Apollo.QueryResult<InternalGetStockRequestConnectionQuery, InternalGetStockRequestConnectionQueryVariables>;
 export const InternalGetStocksDocument = gql`
     query InternalGetStocks($productId: Int!) {
   stocks(productId: $productId) {
