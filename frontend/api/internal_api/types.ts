@@ -215,7 +215,7 @@ export type Mutation = {
   createProductTags: BatchPayload;
   createStockRequest: StockRequest;
   createStocks: Array<Stock>;
-  deleteInternalUser: InternalUser;
+  deleteInternalUser: Delete;
   deleteMaker: Maker;
   deleteProductTag: ProductTag;
   deleteProductTagging: Delete;
@@ -691,7 +691,7 @@ export type InternalDeleteInternalUserMutationVariables = Exact<{
 }>;
 
 
-export type InternalDeleteInternalUserMutation = { __typename?: 'Mutation', deleteInternalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string } };
+export type InternalDeleteInternalUserMutation = { __typename?: 'Mutation', deleteInternalUser: { __typename?: 'Delete', deleted: boolean } };
 
 export type InternalDeleteMakerMutationVariables = Exact<{
   id: Scalars['Int'];
@@ -1417,9 +1417,7 @@ export type InternalCreateStocksMutationOptions = Apollo.BaseMutationOptions<Int
 export const InternalDeleteInternalUserDocument = gql`
     mutation InternalDeleteInternalUser($id: BigInt!) {
   deleteInternalUser(id: $id) {
-    id
-    email
-    name
+    deleted
   }
 }
     `;

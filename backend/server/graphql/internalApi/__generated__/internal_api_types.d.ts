@@ -367,7 +367,7 @@ export interface NexusGenFieldTypes {
     createProductTags: NexusGenRootTypes['BatchPayload']; // BatchPayload!
     createStockRequest: NexusGenRootTypes['StockRequest']; // StockRequest!
     createStocks: NexusGenRootTypes['Stock'][]; // [Stock!]!
-    deleteInternalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
+    deleteInternalUser: NexusGenRootTypes['Delete']; // Delete!
     deleteMaker: NexusGenRootTypes['Maker']; // Maker!
     deleteProductTag: NexusGenRootTypes['ProductTag']; // ProductTag!
     deleteProductTagging: NexusGenRootTypes['Delete']; // Delete!
@@ -583,7 +583,7 @@ export interface NexusGenFieldTypeNames {
     createProductTags: 'BatchPayload'
     createStockRequest: 'StockRequest'
     createStocks: 'Stock'
-    deleteInternalUser: 'InternalUser'
+    deleteInternalUser: 'Delete'
     deleteMaker: 'Maker'
     deleteProductTag: 'ProductTag'
     deleteProductTagging: 'Delete'
