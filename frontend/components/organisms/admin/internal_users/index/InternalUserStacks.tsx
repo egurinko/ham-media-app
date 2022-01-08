@@ -25,9 +25,13 @@ import {
 } from '@/api/internal_api/types';
 import type { InternalGetInternalUsersQuery } from '@/api/internal_api/types';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
+import { goAdminInternalUserEdit } from '@/utils/routes';
+import { scrollTo } from '@/utils/scroll';
 
 const InternalUserStacks: React.VFC<NoProps> = () => {
-  const { data, loading, error } = useInternalGetInternalUsersQuery();
+  const { data, loading, error, fetchMore } = useInternalGetInternalUsersQuery({
+    fetchPolicy: 'network-only',
+  });
   const router = useRouter();
 
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -37,29 +41,19 @@ const InternalUserStacks: React.VFC<NoProps> = () => {
   const [
     remove,
     { data: mutationData, loading: mutationLoading, error: mutationError },
-  ] = useInternalDeleteInternalUserMutation({
-    update(cache) {
-      cache.modify({
-        fields: {
-          internalUsers(_ = [], { DELETE }) {
-            return DELETE;
-          },
-        },
-      });
-    },
-  });
+  ] = useInternalDeleteInternalUserMutation();
 
   const handleClick = useCallback(
-    (id: BigInt) => {
-      router.push(`/admin/internal_users/${id}/edit`);
-    },
+    (id: BigInt) => goAdminInternalUserEdit(router, { id }),
     [router]
   );
 
-  const handleDelete = useCallback(() => {
-    remove({ variables: { id: selectedInternalUser!.id } });
+  const handleDelete = useCallback(async () => {
+    await remove({ variables: { id: selectedInternalUser!.id } });
     onClose();
-  }, [remove, selectedInternalUser, onClose]);
+    scrollTo();
+    await fetchMore({});
+  }, [remove, selectedInternalUser, onClose, fetchMore]);
 
   if (error) return <Text>エラーです</Text>;
 

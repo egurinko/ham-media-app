@@ -3,7 +3,7 @@ import { NextRouter } from 'next/router';
 export const ADMIN_LOGIN_PATH = '/admin/login';
 export const ADMIN_INTERNAL_USERS_PATH = '/admin/internal_users';
 export const ADMIN_INTERNAL_USERS_NEW_PATH = '/admin/internal_users/new';
-export const ADMIN_INTERNAL_USERS_EDIT_PATH = (id: number) =>
+export const ADMIN_INTERNAL_USERS_EDIT_PATH = (id: BigInt) =>
   `/admin/internal_users/${id}/edit`;
 export const ADMIN_HOSPIALS_PATH = '/admin/hospitals';
 export const ADMIN_HOSPIALS_NEW_PATH = '/admin/hospitals/new';
@@ -41,7 +41,7 @@ export const goAdminInternalUserNew = (router: NextRouter) =>
   pushRouter(router, ADMIN_INTERNAL_USERS_NEW_PATH);
 export const goAdminInternalUserEdit = (
   router: NextRouter,
-  { id }: { id: number }
+  { id }: { id: BigInt }
 ) => pushRouter(router, ADMIN_INTERNAL_USERS_EDIT_PATH(id));
 
 export const goAdminHospitals = (router: NextRouter) =>
