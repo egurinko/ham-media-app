@@ -1,26 +1,50 @@
+import { useMemo } from 'react';
 import { Box, VStack, UnorderedList, ListItem } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { UserProfileIcon } from '@/components/atoms/assets/UserProfileIcon';
 import { HospitalIcon } from '@/components/atoms/assets/HospitalIcon';
 import { InventoryIcon } from '@/components/atoms/assets/InventoryIcon';
+import {
+  ADMIN_INTERNAL_USERS_PATH,
+  ADMIN_HOSPIALS_PATH,
+  ADMIN_MAKERS_PATH,
+  ADMIN_PRODUCTS_PATH,
+  ADMIN_STOCK_REQUESTS_PATH,
+  ADMIN_PRODUCT_TAG_GROUPS_PATH,
+} from '@/utils/routes';
 
 const Navigation: React.VFC<NoProps> = () => {
   const router = useRouter();
-  const isAdminInternalUsersPath = router.pathname.includes(
-    'admin/internal_users'
+  const isAdminInternalUsersPath = useMemo(
+    () => router.pathname.includes(ADMIN_INTERNAL_USERS_PATH),
+    [router.pathname]
   );
-  const isAdminHospitalsPath = router.pathname.includes('admin/hospitals');
-  const isAdminMakersPath = router.pathname.includes('admin/makers');
-  const isAdminProductsPath = router.pathname.includes('admin/products');
-  const isAdminProductTagGroupsPath = router.pathname.includes(
-    'admin/product_tag_groups'
+  const isAdminHospitalsPath = useMemo(
+    () => router.pathname.includes(ADMIN_HOSPIALS_PATH),
+    [router.pathname]
+  );
+  const isAdminMakersPath = useMemo(
+    () => router.pathname.includes(ADMIN_MAKERS_PATH),
+    [router.pathname]
+  );
+  const isAdminProductsPath = useMemo(
+    () => router.pathname.includes(ADMIN_PRODUCTS_PATH),
+    [router.pathname]
+  );
+  const isAdminProductTagGroupsPath = useMemo(
+    () => router.pathname.includes(ADMIN_PRODUCT_TAG_GROUPS_PATH),
+    [router.pathname]
+  );
+  const isAdminStockRequestsPath = useMemo(
+    () => router.pathname.includes(ADMIN_STOCK_REQUESTS_PATH),
+    [router.pathname]
   );
 
   return (
     <VStack alignItems="flex-start" spacing={{ base: 6, sm: 12 }} mt="8">
       <Box>
-        <Link href="/admin/internal_users">
+        <Link href={ADMIN_INTERNAL_USERS_PATH}>
           <a>
             <Box
               display="flex"
@@ -41,7 +65,7 @@ const Navigation: React.VFC<NoProps> = () => {
         </Link>
       </Box>
       <Box>
-        <Link href="/admin/hospitals">
+        <Link href={ADMIN_HOSPIALS_PATH}>
           <a>
             <Box
               display="flex"
@@ -70,7 +94,7 @@ const Navigation: React.VFC<NoProps> = () => {
         </Box>
         <UnorderedList spacing={3} ml="6" mt="2">
           <ListItem>
-            <Link href="/admin/makers">
+            <Link href={ADMIN_MAKERS_PATH}>
               <a>
                 <Box
                   display="flex"
@@ -88,7 +112,7 @@ const Navigation: React.VFC<NoProps> = () => {
             </Link>
           </ListItem>
           <ListItem>
-            <Link href="/admin/products">
+            <Link href={ADMIN_PRODUCTS_PATH}>
               <a>
                 <Box
                   display="flex"
@@ -106,7 +130,7 @@ const Navigation: React.VFC<NoProps> = () => {
             </Link>
           </ListItem>
           <ListItem>
-            <Link href="/admin/product_tag_groups">
+            <Link href={ADMIN_PRODUCT_TAG_GROUPS_PATH}>
               <a>
                 <Box
                   display="flex"
@@ -123,6 +147,24 @@ const Navigation: React.VFC<NoProps> = () => {
                   }}
                 >
                   タグ管理
+                </Box>
+              </a>
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link href={ADMIN_STOCK_REQUESTS_PATH}>
+              <a>
+                <Box
+                  display="flex"
+                  alignItems="center"
+                  fill={isAdminStockRequestsPath ? 'primary.main' : 'text.main'}
+                  color={isAdminStockRequestsPath ? 'primary.main' : undefined}
+                  _hover={{
+                    fill: 'primary.main',
+                    color: 'primary.main',
+                  }}
+                >
+                  在庫リクエスト管理
                 </Box>
               </a>
             </Link>
