@@ -2,7 +2,7 @@ import { Heading, Box, Button } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
 import { useRouter } from 'next/router';
 import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
-import { ProductTagGroupsStacks } from '@/components/organisms/admin/product_tag_groups/index/ProductTagGroupStacks';
+import { ProductTagGroupsStack } from '@/components/organisms/admin/product_tag_groups/index/ProductTagGroupsStack';
 import { goAdminProductTagGroupsNew } from '@/utils/routes';
 
 const Index: React.VFC<NoProps> = () => {
@@ -22,7 +22,7 @@ const Index: React.VFC<NoProps> = () => {
           新規登録
         </Button>
       </Box>
-      <ProductTagGroupsStacks />
+      <ProductTagGroupsStack />
     </InternalLayout>
   );
 };

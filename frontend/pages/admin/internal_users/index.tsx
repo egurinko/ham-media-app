@@ -2,7 +2,7 @@ import { Heading, Box, Button } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
 import { useRouter } from 'next/router';
 import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
-import { InternalUserStacks } from '@/components/organisms/admin/internal_users/index/InternalUserStacks';
+import { InternalUsersStack } from '@/components/organisms/admin/internal_users/index/InternalUsersStack';
 import { goAdminInternalUserNew } from '@/utils/routes';
 
 const Index: React.VFC<NoProps> = () => {
@@ -21,7 +21,7 @@ const Index: React.VFC<NoProps> = () => {
           新規登録
         </Button>
       </Box>
-      <InternalUserStacks />
+      <InternalUsersStack />
     </InternalLayout>
   );
 };

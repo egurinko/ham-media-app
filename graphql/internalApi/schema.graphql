@@ -16,6 +16,11 @@ input CreateProductTagsProductTagInputType {
   name: String!
 }
 
+input CreateStockRequestrequestProductsInputType {
+  count: Int!
+  productId: Int!
+}
+
 input CreateStocksStocksInputType {
   amount: Int!
   expiredAt: DateTime!
@@ -187,8 +192,9 @@ type Mutation {
   createProductTagGroup(name: String!): ProductTagGroup!
   createProductTaggings(productId: Int!, productTagIds: [Int!]!): Product!
   createProductTags(productTagGroupId: Int!, productTags: [CreateProductTagsProductTagInputType!]!): BatchPayload!
+  createStockRequest(internalUserId: Int!, requestProducts: [CreateStockRequestrequestProductsInputType!]!): StockRequest!
   createStocks(productId: Int!, stocks: [CreateStocksStocksInputType!]!): [Stock!]!
-  deleteInternalUser(id: BigInt!): InternalUser!
+  deleteInternalUser(id: BigInt!): Delete!
   deleteMaker(id: Int!): Maker!
   deleteProductTag(id: Int!): ProductTag!
   deleteProductTagging(id: Int!): Delete!
@@ -344,7 +350,7 @@ type Query {
 
     """Returns the first n elements from the list."""
     first: Int
-    internalUserId: BigInt!
+    internalUserId: BigInt
 
     """Returns the last n elements from the list."""
     last: Int
@@ -373,6 +379,7 @@ type Session {
 type Stock {
   expired_at: DateTime!
   id: Int!
+  product: Product!
   stockAllocation: StockAllocation
 }
 

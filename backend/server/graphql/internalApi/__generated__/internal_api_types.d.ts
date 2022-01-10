@@ -59,6 +59,10 @@ export interface NexusGenInputs {
   CreateProductTagsProductTagInputType: { // input type
     name: string; // String!
   }
+  CreateStockRequestrequestProductsInputType: { // input type
+    count: number; // Int!
+    productId: number; // Int!
+  }
   CreateStocksStocksInputType: { // input type
     amount: number; // Int!
     expiredAt: NexusGenScalars['DateTime']; // DateTime!
@@ -361,8 +365,9 @@ export interface NexusGenFieldTypes {
     createProductTagGroup: NexusGenRootTypes['ProductTagGroup']; // ProductTagGroup!
     createProductTaggings: NexusGenRootTypes['Product']; // Product!
     createProductTags: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    createStockRequest: NexusGenRootTypes['StockRequest']; // StockRequest!
     createStocks: NexusGenRootTypes['Stock'][]; // [Stock!]!
-    deleteInternalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
+    deleteInternalUser: NexusGenRootTypes['Delete']; // Delete!
     deleteMaker: NexusGenRootTypes['Maker']; // Maker!
     deleteProductTag: NexusGenRootTypes['ProductTag']; // ProductTag!
     deleteProductTagging: NexusGenRootTypes['Delete']; // Delete!
@@ -453,6 +458,7 @@ export interface NexusGenFieldTypes {
   Stock: { // field return type
     expired_at: NexusGenScalars['DateTime']; // DateTime!
     id: number; // Int!
+    product: NexusGenRootTypes['Product']; // Product!
     stockAllocation: NexusGenRootTypes['StockAllocation'] | null; // StockAllocation
   }
   StockAllocation: { // field return type
@@ -575,8 +581,9 @@ export interface NexusGenFieldTypeNames {
     createProductTagGroup: 'ProductTagGroup'
     createProductTaggings: 'Product'
     createProductTags: 'BatchPayload'
+    createStockRequest: 'StockRequest'
     createStocks: 'Stock'
-    deleteInternalUser: 'InternalUser'
+    deleteInternalUser: 'Delete'
     deleteMaker: 'Maker'
     deleteProductTag: 'ProductTag'
     deleteProductTagging: 'Delete'
@@ -667,6 +674,7 @@ export interface NexusGenFieldTypeNames {
   Stock: { // field return type name
     expired_at: 'DateTime'
     id: 'Int'
+    product: 'Product'
     stockAllocation: 'StockAllocation'
   }
   StockAllocation: { // field return type name
@@ -735,6 +743,10 @@ export interface NexusGenArgTypes {
     createProductTags: { // args
       productTagGroupId: number; // Int!
       productTags: NexusGenInputs['CreateProductTagsProductTagInputType'][]; // [CreateProductTagsProductTagInputType!]!
+    }
+    createStockRequest: { // args
+      internalUserId: number; // Int!
+      requestProducts: NexusGenInputs['CreateStockRequestrequestProductsInputType'][]; // [CreateStockRequestrequestProductsInputType!]!
     }
     createStocks: { // args
       productId: number; // Int!
@@ -839,7 +851,7 @@ export interface NexusGenArgTypes {
       after?: string | null; // String
       before?: string | null; // String
       first?: number | null; // Int
-      internalUserId: NexusGenScalars['BigInt']; // BigInt!
+      internalUserId?: NexusGenScalars['BigInt'] | null; // BigInt
       last?: number | null; // Int
     }
     stocks: { // args

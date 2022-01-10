@@ -1,18 +1,17 @@
 import { nonNull, mutationField, arg } from 'nexus';
-import { internalUserType } from '../types/internalUserType';
+import { deleteType } from '../types/';
 
 export const deleteInternalUserField = mutationField((t) => {
   t.nonNull.field('deleteInternalUser', {
-    type: internalUserType,
+    type: deleteType,
     args: {
       id: nonNull(arg({ type: 'BigInt' })),
     },
     resolve: async (_, args, ctx) => {
-      return ctx.prisma.internalUser.delete({
-        where: {
-          id: args.id,
-        },
+      const deleted = await ctx.prisma.internalUser.delete({
+        where: { id: args.id },
       });
+      return { deleted: !!deleted };
     },
   });
 });
