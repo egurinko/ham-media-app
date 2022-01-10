@@ -46,6 +46,7 @@ const getCache = () =>
             'nichijuOption',
           ]),
           productConnection: relayStylePagination(),
+          stockRequestConnection: relayStylePagination(),
         },
       },
     },
