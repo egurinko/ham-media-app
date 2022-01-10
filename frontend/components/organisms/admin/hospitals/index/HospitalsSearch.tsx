@@ -1,8 +1,9 @@
-import { Text, Box, Spinner } from '@chakra-ui/react';
+import { Text, Box } from '@chakra-ui/react';
 import { useCallback, useRef, useEffect, useState } from 'react';
-import { useInternalGetHospitalConnectionLazyQuery } from '@/api/internal_api/types';
+import { useInternalGetHospitalConnectionQuery } from '@/api/internal_api/types';
 import type { Hospital } from '@/api/internal_api/types';
 import { useIntersectionObserver } from '@/utils/hooks/useIntersectionObserver';
+import { Spinner } from '@/components/atoms/Spinner';
 import { SearchSection } from './hospitalsSearch/SearchSection';
 import { HospitalsStack } from './hospitalsSearch/HospitalsStack';
 import type { SearchHospitals } from './types';
@@ -14,8 +15,8 @@ const HospitalsSearch: React.VFC<NoProps> = () => {
   const infiniteScrollTarget = useRef<HTMLDivElement>(null);
   const { isIntersect } = useIntersectionObserver(infiniteScrollTarget);
 
-  const [getHospitals, { data, loading, error, fetchMore }] =
-    useInternalGetHospitalConnectionLazyQuery();
+  const { data, loading, error, fetchMore } =
+    useInternalGetHospitalConnectionQuery({ variables: { first: 10 } });
 
   const nodes = data?.hospitalConnection?.edges
     ?.map((edge) => edge?.node)
@@ -33,7 +34,7 @@ const HospitalsSearch: React.VFC<NoProps> = () => {
         },
       });
     }
-  }, [getHospitals, name, deleted, prefectureId]);
+  }, [name, deleted, prefectureId, fetchMore]);
 
   useEffect(() => {
     if (isIntersect) {
@@ -50,13 +51,17 @@ const HospitalsSearch: React.VFC<NoProps> = () => {
             },
           });
         }
-      } else {
-        getHospitals({
-          variables: { first: 10 },
-        });
       }
     }
-  }, [isIntersect, fetchMore, pageInfo?.hasNextPage, pageInfo?.endCursor]);
+  }, [
+    isIntersect,
+    fetchMore,
+    pageInfo?.hasNextPage,
+    pageInfo?.endCursor,
+    deleted,
+    name,
+    prefectureId,
+  ]);
 
   if (error) return <Text>エラーです</Text>;
 
@@ -77,7 +82,7 @@ const HospitalsSearch: React.VFC<NoProps> = () => {
       <HospitalsStack hospitals={nodes} />
       <Box w="2" h="2" ref={infiniteScrollTarget} id="target" />
       <Box textAlign="center">
-        {loading ? <Spinner size="lg" color="main.primary" /> : null}
+        <Spinner loading={loading} />
       </Box>
     </>
   );

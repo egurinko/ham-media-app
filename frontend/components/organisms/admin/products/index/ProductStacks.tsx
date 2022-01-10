@@ -4,7 +4,6 @@ import {
   Box,
   VStack,
   Divider,
-  Spinner,
   Button,
   Input,
   FormControl,
@@ -16,6 +15,7 @@ import {
 } from '@chakra-ui/react';
 import { Fragment } from 'react';
 import { Card } from '@/components/atoms/Card';
+import { Spinner } from '@/components/atoms/Spinner';
 import {
   useInternalGetProductConnectionQuery,
   useInternalGetMakersQuery,
@@ -222,7 +222,9 @@ const ProductStacks: React.VFC<NoProps> = () => {
           ))}
         </VStack>
       </Skeleton>
-      {loading ? <Spinner /> : null}
+      <Box textAlign="center">
+        <Spinner loading={loading} />
+      </Box>
       <Box w="2" h="2" ref={infiniteScrollTarget} id="target" />
     </>
   );
