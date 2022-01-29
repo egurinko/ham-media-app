@@ -34,4 +34,4 @@ const internalApi: FastifyPluginCallback = async (app, _options) => {
   });
 };
 
-export { internalApi };
+export { internalApi, schema, context };

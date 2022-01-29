@@ -30,4 +30,4 @@ const publicApi: FastifyPluginCallback = async (app, _options) => {
   });
 };
 
-export { publicApi };
+export { publicApi, schema, context };
