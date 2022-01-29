@@ -15,7 +15,7 @@ model ar_internal_metadata {
   key        String   @id @db.VarChar(255)
   value      String?  @db.VarChar(255)
   created_at DateTime @db.DateTime(0)
-  updated_at DateTime @db.DateTime(0)
+  updated_at DateTime @default(now()) @updatedAt
 }
 
 /// A hospital address geo location
@@ -26,7 +26,7 @@ model HospitalAddressGeoLocation {
   latitude            Float           @db.Float
   longitude           Float           @db.Float
   created_at          DateTime        @default(now()) @db.DateTime(0)
-  updated_at          DateTime        @default(now()) @db.DateTime(0)
+  updated_at          DateTime        @default(now()) @updatedAt
   hospitalAddress     HospitalAddress @relation(fields: [hospital_address_id], references: [id], onDelete: Cascade)
   @@map(name: "hospital_address_geo_locations")
 }
@@ -40,7 +40,7 @@ model HospitalAddress {
   address                    String                      @db.VarChar(255)
   phone_number               String                      @db.VarChar(255)
   created_at                 DateTime                    @default(now()) @db.DateTime(0)
-  updated_at                 DateTime                    @default(now()) @db.DateTime(0)
+  updated_at                 DateTime                    @default(now()) @updatedAt
   hospital                   Hospital                    @relation(fields: [hospital_id], references: [id], onDelete: Cascade)
   prefecture                 Prefecture                  @relation(fields: [prefecture_id], references: [id])
   hospitalAddressGeoLocation HospitalAddressGeoLocation?
@@ -61,7 +61,7 @@ model HospitalBusinessForm {
   insurance_enabled String   @db.VarChar(255)
   remark            String   @db.Text
   created_at        DateTime @default(now()) @db.DateTime(0)
-  updated_at        DateTime @default(now()) @db.DateTime(0)
+  updated_at        DateTime @default(now()) @updatedAt
   hospital          Hospital @relation(fields: [hospital_id], references: [id], onDelete: Cascade)
 
   @@index([business_hour], name: "idx_hospital_business_forms_2")
@@ -78,7 +78,7 @@ model HospitalCertificationOption {
   nichiju_registered String   @db.VarChar(255)
   jsava_registered   String   @db.VarChar(255)
   created_at         DateTime @default(now()) @db.DateTime(0)
-  updated_at         DateTime @default(now()) @db.DateTime(0)
+  updated_at         DateTime @default(now()) @updatedAt
   hospital           Hospital @relation(fields: [hospital_id], references: [id], onDelete: Cascade)
 
   @@index([nichiju_registered], name: "idx_hospital_certification_options_2")
@@ -94,7 +94,7 @@ model HospitalInternalReputation {
   star        Int
   remark      String   @db.Text
   created_at  DateTime @default(now()) @db.DateTime(0)
-  updated_at  DateTime @default(now()) @db.DateTime(0)
+  updated_at  DateTime @default(now()) @updatedAt
   hospital    Hospital @relation(fields: [hospital_id], references: [id], onDelete: Cascade)
 
   @@index([star], name: "idx_hospital_internal_reputations_2")
@@ -109,7 +109,7 @@ model HospitalNightServiceOption {
   status      String   @db.VarChar(255)
   remark      String   @db.Text
   created_at  DateTime @default(now()) @db.DateTime(0)
-  updated_at  DateTime @default(now()) @db.DateTime(0)
+  updated_at  DateTime @default(now()) @updatedAt
   hospital    Hospital @relation(fields: [hospital_id], references: [id], onDelete: Cascade)
 
   @@index([status], name: "idx_hospital_night_service_option_2")
@@ -123,7 +123,7 @@ model HospitalNightUrgentActionOption {
   hospital_id BigInt   @unique
   status      String   @db.VarChar(255)
   created_at  DateTime @default(now()) @db.DateTime(0)
-  updated_at  DateTime @default(now()) @db.DateTime(0)
+  updated_at  DateTime @default(now()) @updatedAt
   hospital    Hospital @relation(fields: [hospital_id], references: [id], onDelete: Cascade)
 
   @@index([status], name: "idx_hospital_night_urgent_action_options_2")
@@ -139,7 +139,7 @@ model HospitalReservationStatus {
   reservable  String   @db.VarChar(255)
   remark      String   @db.Text
   created_at  DateTime @default(now()) @db.DateTime(0)
-  updated_at  DateTime @default(now()) @db.DateTime(0)
+  updated_at  DateTime @default(now()) @updatedAt
   hospital    Hospital @relation(fields: [hospital_id], references: [id], onDelete: Cascade)
 
   @@index([required], name: "idx_hospital_reservation_statuses_2")
@@ -156,7 +156,7 @@ model Hospital {
   deleted                         Boolean                          @default(false)
   internal_memo                   String                           @db.Text
   created_at                      DateTime                         @default(now()) @db.DateTime(0)
-  updated_at                      DateTime                         @default(now()) @db.DateTime(0)
+  updated_at                      DateTime                         @default(now()) @updatedAt
   hospitalAddress                 HospitalAddress?
   hospitalBusinessForm            HospitalBusinessForm?
   hospitalCertificationOption     HospitalCertificationOption?
@@ -178,6 +178,7 @@ model Role {
   name          String         @unique @db.VarChar(100)
   internalUsers InternalUser[]
   created_at    DateTime       @default(now()) @db.DateTime(0)
+  updated_at    DateTime       @default(now()) @updatedAt
 
   @@index([name], name: "idx_role_1")
   @@map(name: "roles")
@@ -195,7 +196,7 @@ model InternalUser {
   stockAllocations StockAllocation[]
   stockRequests    StockRequest[]
   created_at       DateTime          @default(now()) @db.DateTime(0)
-  updated_at       DateTime          @default(now()) @db.DateTime(0)
+  updated_at       DateTime          @default(now()) @updatedAt
 
   @@index([name], name: "idx_internal_users_1")
   @@index([password_digest], name: "idx_internal_users_3")
@@ -209,6 +210,7 @@ model Maker {
   name       String    @unique @db.VarChar(100)
   products   Product[]
   created_at DateTime  @default(now()) @db.DateTime(0)
+  updated_at DateTime  @default(now()) @updatedAt
 
   @@index([name], name: "idx_makers_1")
   @@map(name: "makers")
@@ -226,6 +228,7 @@ model Product {
   stocks          Stock[]
   productTaggings ProductTagging[]
   created_at      DateTime         @default(now()) @db.DateTime(0)
+  updated_at      DateTime         @default(now()) @updatedAt
 
   @@index([name], name: "idx_products_1")
   @@map(name: "products")
@@ -241,6 +244,7 @@ model Stock {
   stockRequestStockRegistration StockRequestStockRegistration?
   expired_at                    DateTime                       @db.DateTime(0)
   created_at                    DateTime                       @default(now()) @db.DateTime(0)
+  updated_at                    DateTime                       @default(now()) @updatedAt
 
   @@map(name: "stocks")
 }
@@ -254,6 +258,7 @@ model StockAllocation {
   internal_user_id BigInt
   internalUser     InternalUser @relation(fields: [internal_user_id], references: [id])
   created_at       DateTime     @default(now()) @db.DateTime(0)
+  updated_at       DateTime     @default(now()) @updatedAt
 
   @@map(name: "stock_allocations")
 }
@@ -267,7 +272,7 @@ model StockRequest {
   stockRegistrations StockRequestStockRegistration[]
   approval           StockRequestApproval?
   created_at         DateTime                        @default(now()) @db.DateTime(0)
-  updated_at         DateTime                        @updatedAt
+  updated_at         DateTime                        @default(now()) @updatedAt
 
   @@map(name: "stock_requests")
 }
@@ -281,7 +286,7 @@ model StockRequestStockRegistration {
   stock_id         Int          @unique
   stock            Stock        @relation(fields: [stock_id], references: [id])
   created_at       DateTime     @default(now()) @db.DateTime(0)
-  updated_at       DateTime     @updatedAt
+  updated_at       DateTime     @default(now()) @updatedAt
 
   @@map(name: "stock_request_stock_registrations")
 }
@@ -293,7 +298,7 @@ model StockRequestApproval {
   stock_request_id Int          @unique
   stockRequest     StockRequest @relation(fields: [stock_request_id], references: [id])
   created_at       DateTime     @default(now()) @db.DateTime(0)
-  updated_at       DateTime     @updatedAt
+  updated_at       DateTime     @default(now()) @updatedAt
 
   @@map(name: "stock_request_approvals")
 }
@@ -304,6 +309,7 @@ model ProductTag {
   id                   Int              @id @default(autoincrement())
   name                 String           @unique @db.VarChar(100)
   created_at           DateTime         @default(now()) @db.DateTime(0)
+  updated_at           DateTime         @default(now()) @updatedAt
   product_tag_group_id Int
   productTagGroup      ProductTagGroup  @relation(fields: [product_tag_group_id], references: [id])
   productTaggings      ProductTagging[]
@@ -319,6 +325,7 @@ model ProductTagGroup {
   name        String       @unique @db.VarChar(100)
   productTags ProductTag[]
   created_at  DateTime     @default(now()) @db.DateTime(0)
+  updated_at  DateTime     @default(now()) @updatedAt
 
   @@index([name], name: "idx_product_tag_groups_1")
   @@map(name: "product_tag_groups")
@@ -333,6 +340,7 @@ model ProductTagging {
   product_tag_id Int
   productTag     ProductTag @relation(fields: [product_tag_id], references: [id])
   created_at     DateTime   @default(now()) @db.DateTime(0)
+  updated_at     DateTime   @default(now()) @updatedAt
 
   @@unique([product_id, product_tag_id], name: "idx_product_taggings_1")
   @@map(name: "product_taggings")
@@ -345,7 +353,7 @@ model Prefecture {
   region_id       BigInt
   name            String            @unique @db.VarChar(255)
   created_at      DateTime          @default(now()) @db.DateTime(0)
-  updated_at      DateTime          @default(now()) @db.DateTime(0)
+  updated_at      DateTime          @default(now()) @updatedAt
   region          Region            @relation(fields: [region_id], references: [id])
   hospitalAddress HospitalAddress[]
 
@@ -359,7 +367,7 @@ model Region {
   id          BigInt       @id @default(autoincrement())
   name        String       @unique @db.VarChar(255)
   created_at  DateTime     @default(now()) @db.DateTime(0)
-  updated_at  DateTime     @default(now()) @db.DateTime(0)
+  updated_at  DateTime     @default(now()) @updatedAt
   prefectures Prefecture[]
   @@map(name: "regions")
 }

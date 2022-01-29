@@ -1,18 +1,13 @@
-import { client } from '../../server/services/prisma';
+import { seedRole } from './production/role';
+import { seedRegion } from './production/region';
+import { seedPrefecture } from './production/prefecture';
 
 export const executeProduction = async () => {
   try {
-    await client.role.upsert({
-      where: { name: 'admin' },
-      update: {},
-      create: { name: 'admin' },
-    });
+    await seedRole();
 
-    await client.role.upsert({
-      where: { name: 'user' },
-      update: {},
-      create: { name: 'user' },
-    });
+    await seedRegion();
+    await seedPrefecture();
 
     return Promise.resolve();
   } catch (e) {

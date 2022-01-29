@@ -35,8 +35,8 @@ const getCurrentInternalUser = async (authorizationHeader?: string) => {
         where: { email: decoded.email },
       });
     } catch (error) {
-      console.log({ error });
+      throw new Error('Authentication Error');
     }
   }
-  return null;
+  throw new Error('Authentication Error');
 };

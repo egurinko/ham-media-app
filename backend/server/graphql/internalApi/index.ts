@@ -5,7 +5,7 @@ import { makeSchema, connectionPlugin } from 'nexus';
 import * as types from './types';
 import * as queryTypes from './queries';
 import * as mutationTypes from './mutations';
-import * as scalars from './scalars';
+import * as scalars from '../scalars';
 import { context } from './context';
 
 const schema = makeSchema({
@@ -34,4 +34,4 @@ const internalApi: FastifyPluginCallback = async (app, _options) => {
   });
 };
 
-export { internalApi };
+export { internalApi, schema, context };
