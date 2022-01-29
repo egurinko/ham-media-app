@@ -1,7 +1,10 @@
 import { client } from '../../server/services/prisma';
+import { executeProduction } from './production';
 
 export const executeDevelopment = async () => {
   try {
+    await executeProduction();
+
     const admin = await client.role.findUnique({ where: { name: 'admin' } });
     const user = await client.role.findUnique({ where: { name: 'user' } });
 
