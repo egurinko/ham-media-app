@@ -11,7 +11,7 @@ const QUERY = gql`
 `;
 
 describe('prefectures', () => {
-  it('true to be true', async () => {
+  it('returns prefectures', async () => {
     const client = await setup();
 
     const result = await client.query(QUERY);
