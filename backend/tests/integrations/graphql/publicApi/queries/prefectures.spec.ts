@@ -1,11 +1,12 @@
 import { setup } from '@tests/utils/setupPublicApi';
+import gql from 'graphql-tag';
 
-const QUERY = `
-  query { 
-    prefectures { 
-      id 
+const QUERY = gql`
+  query {
+    prefectures {
+      id
       name
-    } 
+    }
   }
 `;
 

@@ -1,11 +1,12 @@
 import { setup } from '@tests/utils/setupInternalApi';
+import gql from 'graphql-tag';
 
-const QUERY = `
-  query { 
-    roles { 
-      id 
+const QUERY = gql`
+  query {
+    roles {
+      id
       name
-    } 
+    }
   }
 `;
 
