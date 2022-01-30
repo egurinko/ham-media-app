@@ -1,0 +1,60 @@
+name: Ham-Media backend app
+
+on:
+  push:
+    paths:
+      - backend/**
+      - .github/workflows/backend.yml
+      - ./package.json
+      - ./yarn.lock
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+      db:
+        image: mysql:5.7
+    env:
+      DATABASE_URL: mysql://root:@localhost:3306/ham_media_app_test
+      JWT_TOKEN: test
+      PORT: 3000
+      GOOGLE_API_KEY: test
+      LINE_CHANNEL_ACCESS_TOKEN: test
+      LINE_CHANNEL_SECRET: test
+      AWS_BUCKET_NAME: test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '16.13.1'
+      - name: Cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('./yarn.lock') }}
+      - name: Install dependencies
+        run: yarn install
+        working-directory: ./backend
+      - name: Setup database
+        run: yarn db:push
+        working-directory: ./backend
+      - name: Generate types from prisma
+        run: yarn db:reflect
+        working-directory: ./backend
+      - name: Run tests
+        run: yarn test
+        working-directory: ./backend
