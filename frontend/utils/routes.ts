@@ -15,6 +15,8 @@ export const ADMIN_MAKERS_EDIT_PATH = (id: number) =>
   `/admin/makers/${id}/edit`;
 export const ADMIN_PRODUCTS_PATH = '/admin/products';
 export const ADMIN_PRODUCTS_NEW_PATH = '/admin/products/new';
+export const ADMIN_PRODUCTS_EDIT_DETAIL = (id: number) =>
+  `/admin/products/${id}`;
 export const ADMIN_PRODUCTS_EDIT_PATH = (id: number) =>
   `/admin/products/${id}/edit`;
 export const ADMIN_STOCK_REQUESTS_PATH = '/admin/stock_requests';
@@ -64,6 +66,10 @@ export const goAdminProducts = (router: NextRouter) =>
   pushRouter(router, ADMIN_PRODUCTS_PATH);
 export const goAdminProductsNew = (router: NextRouter) =>
   pushRouter(router, ADMIN_PRODUCTS_NEW_PATH);
+export const goAdminProductsDetail = (
+  router: NextRouter,
+  { id }: { id: number }
+) => pushRouter(router, ADMIN_PRODUCTS_EDIT_DETAIL(id));
 export const goAdminProductsEdit = (
   router: NextRouter,
   { id }: { id: number }
