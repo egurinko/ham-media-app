@@ -678,6 +678,14 @@ export type InternalCreateProductTagsMutationVariables = Exact<{
 
 export type InternalCreateProductTagsMutation = { __typename?: 'Mutation', createProductTags: { __typename?: 'BatchPayload', count: number } };
 
+export type InternalCreateStockRequestMutationVariables = Exact<{
+  internalUserId: Scalars['Int'];
+  requestProducts: Array<CreateStockRequestrequestProductsInputType> | CreateStockRequestrequestProductsInputType;
+}>;
+
+
+export type InternalCreateStockRequestMutation = { __typename?: 'Mutation', createStockRequest: { __typename?: 'StockRequest', id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }, stockRegistrations: Array<{ __typename?: 'StockRequestStockRegistration', id: number, stock: { __typename?: 'Stock', id: number, expired_at: any, product: { __typename?: 'Product', id: number, name: string, url: string, maker: { __typename?: 'Maker', id: number, name: string } } } }>, approval?: { __typename?: 'StockRequestApproval', id: number } | null | undefined } };
+
 export type InternalCreateStocksMutationVariables = Exact<{
   productId: Scalars['Int'];
   stocks: Array<CreateStocksStocksInputType> | CreateStocksStocksInputType;
@@ -1380,6 +1388,43 @@ export function useInternalCreateProductTagsMutation(baseOptions?: Apollo.Mutati
 export type InternalCreateProductTagsMutationHookResult = ReturnType<typeof useInternalCreateProductTagsMutation>;
 export type InternalCreateProductTagsMutationResult = Apollo.MutationResult<InternalCreateProductTagsMutation>;
 export type InternalCreateProductTagsMutationOptions = Apollo.BaseMutationOptions<InternalCreateProductTagsMutation, InternalCreateProductTagsMutationVariables>;
+export const InternalCreateStockRequestDocument = gql`
+    mutation InternalCreateStockRequest($internalUserId: Int!, $requestProducts: [CreateStockRequestrequestProductsInputType!]!) {
+  createStockRequest(
+    internalUserId: $internalUserId
+    requestProducts: $requestProducts
+  ) {
+    ...StockRequestFields
+  }
+}
+    ${StockRequestFieldsFragmentDoc}`;
+export type InternalCreateStockRequestMutationFn = Apollo.MutationFunction<InternalCreateStockRequestMutation, InternalCreateStockRequestMutationVariables>;
+
+/**
+ * __useInternalCreateStockRequestMutation__
+ *
+ * To run a mutation, you first call `useInternalCreateStockRequestMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInternalCreateStockRequestMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [internalCreateStockRequestMutation, { data, loading, error }] = useInternalCreateStockRequestMutation({
+ *   variables: {
+ *      internalUserId: // value for 'internalUserId'
+ *      requestProducts: // value for 'requestProducts'
+ *   },
+ * });
+ */
+export function useInternalCreateStockRequestMutation(baseOptions?: Apollo.MutationHookOptions<InternalCreateStockRequestMutation, InternalCreateStockRequestMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<InternalCreateStockRequestMutation, InternalCreateStockRequestMutationVariables>(InternalCreateStockRequestDocument, options);
+      }
+export type InternalCreateStockRequestMutationHookResult = ReturnType<typeof useInternalCreateStockRequestMutation>;
+export type InternalCreateStockRequestMutationResult = Apollo.MutationResult<InternalCreateStockRequestMutation>;
+export type InternalCreateStockRequestMutationOptions = Apollo.BaseMutationOptions<InternalCreateStockRequestMutation, InternalCreateStockRequestMutationVariables>;
 export const InternalCreateStocksDocument = gql`
     mutation InternalCreateStocks($productId: Int!, $stocks: [CreateStocksStocksInputType!]!) {
   createStocks(productId: $productId, stocks: $stocks) {
