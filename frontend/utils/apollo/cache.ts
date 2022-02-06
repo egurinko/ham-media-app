@@ -1,5 +1,10 @@
-import { InMemoryCache } from '@apollo/client';
+import { InMemoryCache, makeVar } from '@apollo/client';
 import { relayStylePagination } from '@apollo/client/utilities';
+import type { CreateStockRequestrequestProductsInputType } from '@/api/internal_api/types';
+
+const productCartItemsVar = makeVar<
+  CreateStockRequestrequestProductsInputType[]
+>([]);
 
 const getCache = () =>
   new InMemoryCache({
@@ -17,6 +22,11 @@ const getCache = () =>
           ]),
           productConnection: relayStylePagination(),
           stockRequestConnection: relayStylePagination(),
+          productCartItems: {
+            read() {
+              return productCartItemsVar();
+            },
+          },
         },
       },
     },
