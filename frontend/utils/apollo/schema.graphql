@@ -1,0 +1,8 @@
+type ProductCartItem {
+  count: Int!
+  productId: Int!
+}
+
+extend type Query {
+  productCartItems: [ProductCartItem!]!
+}

@@ -412,6 +412,12 @@ export type Product = {
   url: Scalars['String'];
 };
 
+export type ProductCartItem = {
+  __typename?: 'ProductCartItem';
+  count: Scalars['Int'];
+  productId: Scalars['Int'];
+};
+
 export type ProductConnection = {
   __typename?: 'ProductConnection';
   /** https://facebook.github.io/relay/graphql/connections.htm#sec-Edge-Types */
@@ -461,6 +467,7 @@ export type Query = {
   maker: Maker;
   makers: Array<Maker>;
   product: Product;
+  productCartItems: Array<ProductCartItem>;
   productConnection?: Maybe<ProductConnection>;
   productTagGroup: ProductTagGroup;
   productTagGroups: Array<ProductTagGroup>;
@@ -802,6 +809,11 @@ export type InternalGetProductQueryVariables = Exact<{
 
 
 export type InternalGetProductQuery = { __typename?: 'Query', product: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> } };
+
+export type LocalGetProductCartItemsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type LocalGetProductCartItemsQuery = { __typename?: 'Query', productCartItems: Array<{ __typename?: 'ProductCartItem', count: number, productId: number }> };
 
 export type InternalGetProductConnectionQueryVariables = Exact<{
   first?: InputMaybe<Scalars['Int']>;
@@ -1922,6 +1934,41 @@ export function useInternalGetProductLazyQuery(baseOptions?: Apollo.LazyQueryHoo
 export type InternalGetProductQueryHookResult = ReturnType<typeof useInternalGetProductQuery>;
 export type InternalGetProductLazyQueryHookResult = ReturnType<typeof useInternalGetProductLazyQuery>;
 export type InternalGetProductQueryResult = Apollo.QueryResult<InternalGetProductQuery, InternalGetProductQueryVariables>;
+export const LocalGetProductCartItemsDocument = gql`
+    query LocalGetProductCartItems {
+  productCartItems {
+    count
+    productId
+  }
+}
+    `;
+
+/**
+ * __useLocalGetProductCartItemsQuery__
+ *
+ * To run a query within a React component, call `useLocalGetProductCartItemsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useLocalGetProductCartItemsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useLocalGetProductCartItemsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useLocalGetProductCartItemsQuery(baseOptions?: Apollo.QueryHookOptions<LocalGetProductCartItemsQuery, LocalGetProductCartItemsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<LocalGetProductCartItemsQuery, LocalGetProductCartItemsQueryVariables>(LocalGetProductCartItemsDocument, options);
+      }
+export function useLocalGetProductCartItemsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<LocalGetProductCartItemsQuery, LocalGetProductCartItemsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<LocalGetProductCartItemsQuery, LocalGetProductCartItemsQueryVariables>(LocalGetProductCartItemsDocument, options);
+        }
+export type LocalGetProductCartItemsQueryHookResult = ReturnType<typeof useLocalGetProductCartItemsQuery>;
+export type LocalGetProductCartItemsLazyQueryHookResult = ReturnType<typeof useLocalGetProductCartItemsLazyQuery>;
+export type LocalGetProductCartItemsQueryResult = Apollo.QueryResult<LocalGetProductCartItemsQuery, LocalGetProductCartItemsQueryVariables>;
 export const InternalGetProductConnectionDocument = gql`
     query InternalGetProductConnection($first: Int, $after: String, $name: String, $makerId: Int, $productTagId: Int, $allocatedInternalUserId: Int, $hasStock: Boolean) {
   productConnection(
