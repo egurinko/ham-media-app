@@ -3,6 +3,7 @@ import { AddIcon } from '@chakra-ui/icons';
 import { useRouter } from 'next/router';
 import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
 import { ProductStacks } from '@/components/organisms/admin/products/index/ProductStacks';
+import { StockRequestCartButton } from '@/components/organisms/admin/products/StockRequestCartButton';
 import { goAdminProductsNew } from '@/utils/routes';
 
 const Index: React.VFC<NoProps> = () => {
@@ -28,6 +29,7 @@ const Index: React.VFC<NoProps> = () => {
         </Button>
       </Box>
       <ProductStacks />
+      <StockRequestCartButton />
     </InternalLayout>
   );
 };

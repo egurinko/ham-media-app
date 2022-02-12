@@ -6,6 +6,8 @@ import { Heading, Box, IconButton, Button } from '@chakra-ui/react';
 import { ChevronRightIcon } from '@chakra-ui/icons';
 import { ProductCartItem } from '@/components/organisms/admin/products/detail/ProductCartItem';
 import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
+import { Stocks } from '@/components/organisms/admin/products/edit/Stocks';
+import { StockRequestCartButton } from '@/components/organisms/admin/products/StockRequestCartButton';
 import { goAdminProducts, ADMIN_PRODUCTS_EDIT_PATH } from '@/utils/routes';
 
 const Detail: React.VFC<Props> = () => {
@@ -32,12 +34,7 @@ const Detail: React.VFC<Props> = () => {
         {typeof productId === 'string' ? (
           <Link href={ADMIN_PRODUCTS_EDIT_PATH(Number(productId))}>
             <a>
-              <Button
-                bgColor="primary.main"
-                color="white"
-                size="md"
-                // leftIcon={<AddIcon />}
-              >
+              <Button bgColor="primary.main" color="white" size="md">
                 商品編集
               </Button>
             </a>
@@ -49,8 +46,12 @@ const Detail: React.VFC<Props> = () => {
           <Box mb="2">
             <ProductCartItem productId={Number(productId)} />
           </Box>
+          <Box mb="2">
+            <Stocks productId={Number(productId)} />
+          </Box>
         </>
       ) : null}
+      <StockRequestCartButton />
     </InternalLayout>
   );
 };

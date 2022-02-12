@@ -8,6 +8,7 @@ import { Form } from '@/components/organisms/admin/products/edit/Form';
 import { Stocks } from '@/components/organisms/admin/products/edit/Stocks';
 import { ProductTaggings } from '@/components/organisms/admin/products/edit/ProductTaggings';
 import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
+import { StockRequestCartButton } from '@/components/organisms/admin/products/StockRequestCartButton';
 import { goAdminProducts } from '@/utils/routes';
 
 const Edit: React.VFC<Props> = () => {
@@ -39,6 +40,7 @@ const Edit: React.VFC<Props> = () => {
           <ProductTaggings productId={Number(productId)} />
         </>
       ) : null}
+      <StockRequestCartButton />
     </InternalLayout>
   );
 };
