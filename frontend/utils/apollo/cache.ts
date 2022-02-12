@@ -32,4 +32,4 @@ const getCache = () =>
     },
   });
 
-export { getCache };
+export { getCache, productCartItemsVar };
