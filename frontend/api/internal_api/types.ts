@@ -412,6 +412,12 @@ export type Product = {
   url: Scalars['String'];
 };
 
+export type ProductCartItem = {
+  __typename?: 'ProductCartItem';
+  count: Scalars['Int'];
+  productId: Scalars['Int'];
+};
+
 export type ProductConnection = {
   __typename?: 'ProductConnection';
   /** https://facebook.github.io/relay/graphql/connections.htm#sec-Edge-Types */
@@ -461,6 +467,7 @@ export type Query = {
   maker: Maker;
   makers: Array<Maker>;
   product: Product;
+  productCartItems: Array<ProductCartItem>;
   productConnection?: Maybe<ProductConnection>;
   productTagGroup: ProductTagGroup;
   productTagGroups: Array<ProductTagGroup>;
@@ -518,6 +525,11 @@ export type QueryProductConnectionArgs = {
 
 export type QueryProductTagGroupArgs = {
   id: Scalars['Int'];
+};
+
+
+export type QueryProductsArgs = {
+  ids?: InputMaybe<Array<Scalars['Int']>>;
 };
 
 
@@ -678,6 +690,14 @@ export type InternalCreateProductTagsMutationVariables = Exact<{
 
 export type InternalCreateProductTagsMutation = { __typename?: 'Mutation', createProductTags: { __typename?: 'BatchPayload', count: number } };
 
+export type InternalCreateStockRequestMutationVariables = Exact<{
+  internalUserId: Scalars['Int'];
+  requestProducts: Array<CreateStockRequestrequestProductsInputType> | CreateStockRequestrequestProductsInputType;
+}>;
+
+
+export type InternalCreateStockRequestMutation = { __typename?: 'Mutation', createStockRequest: { __typename?: 'StockRequest', id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }, stockRegistrations: Array<{ __typename?: 'StockRequestStockRegistration', id: number, stock: { __typename?: 'Stock', id: number, expired_at: any, product: { __typename?: 'Product', id: number, name: string, url: string, maker: { __typename?: 'Maker', id: number, name: string } } } }>, approval?: { __typename?: 'StockRequestApproval', id: number } | null | undefined } };
+
 export type InternalCreateStocksMutationVariables = Exact<{
   productId: Scalars['Int'];
   stocks: Array<CreateStocksStocksInputType> | CreateStocksStocksInputType;
@@ -795,6 +815,11 @@ export type InternalGetProductQueryVariables = Exact<{
 
 export type InternalGetProductQuery = { __typename?: 'Query', product: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> } };
 
+export type LocalGetProductCartItemsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type LocalGetProductCartItemsQuery = { __typename?: 'Query', productCartItems: Array<{ __typename?: 'ProductCartItem', count: number, productId: number }> };
+
 export type InternalGetProductConnectionQueryVariables = Exact<{
   first?: InputMaybe<Scalars['Int']>;
   after?: InputMaybe<Scalars['String']>;
@@ -829,6 +854,13 @@ export type InternalGetProductTagGroupsQueryVariables = Exact<{ [key: string]: n
 
 
 export type InternalGetProductTagGroupsQuery = { __typename?: 'Query', productTagGroups: Array<{ __typename?: 'ProductTagGroup', id: number, name: string, productTags: Array<{ __typename?: 'ProductTag', id: number, name: string }> }> };
+
+export type InternalGetProductsQueryVariables = Exact<{
+  ids?: InputMaybe<Array<Scalars['Int']> | Scalars['Int']>;
+}>;
+
+
+export type InternalGetProductsQuery = { __typename?: 'Query', products: Array<{ __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> }> };
 
 export type InternalGetRolesQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1380,6 +1412,43 @@ export function useInternalCreateProductTagsMutation(baseOptions?: Apollo.Mutati
 export type InternalCreateProductTagsMutationHookResult = ReturnType<typeof useInternalCreateProductTagsMutation>;
 export type InternalCreateProductTagsMutationResult = Apollo.MutationResult<InternalCreateProductTagsMutation>;
 export type InternalCreateProductTagsMutationOptions = Apollo.BaseMutationOptions<InternalCreateProductTagsMutation, InternalCreateProductTagsMutationVariables>;
+export const InternalCreateStockRequestDocument = gql`
+    mutation InternalCreateStockRequest($internalUserId: Int!, $requestProducts: [CreateStockRequestrequestProductsInputType!]!) {
+  createStockRequest(
+    internalUserId: $internalUserId
+    requestProducts: $requestProducts
+  ) {
+    ...StockRequestFields
+  }
+}
+    ${StockRequestFieldsFragmentDoc}`;
+export type InternalCreateStockRequestMutationFn = Apollo.MutationFunction<InternalCreateStockRequestMutation, InternalCreateStockRequestMutationVariables>;
+
+/**
+ * __useInternalCreateStockRequestMutation__
+ *
+ * To run a mutation, you first call `useInternalCreateStockRequestMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInternalCreateStockRequestMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [internalCreateStockRequestMutation, { data, loading, error }] = useInternalCreateStockRequestMutation({
+ *   variables: {
+ *      internalUserId: // value for 'internalUserId'
+ *      requestProducts: // value for 'requestProducts'
+ *   },
+ * });
+ */
+export function useInternalCreateStockRequestMutation(baseOptions?: Apollo.MutationHookOptions<InternalCreateStockRequestMutation, InternalCreateStockRequestMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<InternalCreateStockRequestMutation, InternalCreateStockRequestMutationVariables>(InternalCreateStockRequestDocument, options);
+      }
+export type InternalCreateStockRequestMutationHookResult = ReturnType<typeof useInternalCreateStockRequestMutation>;
+export type InternalCreateStockRequestMutationResult = Apollo.MutationResult<InternalCreateStockRequestMutation>;
+export type InternalCreateStockRequestMutationOptions = Apollo.BaseMutationOptions<InternalCreateStockRequestMutation, InternalCreateStockRequestMutationVariables>;
 export const InternalCreateStocksDocument = gql`
     mutation InternalCreateStocks($productId: Int!, $stocks: [CreateStocksStocksInputType!]!) {
   createStocks(productId: $productId, stocks: $stocks) {
@@ -1877,6 +1946,41 @@ export function useInternalGetProductLazyQuery(baseOptions?: Apollo.LazyQueryHoo
 export type InternalGetProductQueryHookResult = ReturnType<typeof useInternalGetProductQuery>;
 export type InternalGetProductLazyQueryHookResult = ReturnType<typeof useInternalGetProductLazyQuery>;
 export type InternalGetProductQueryResult = Apollo.QueryResult<InternalGetProductQuery, InternalGetProductQueryVariables>;
+export const LocalGetProductCartItemsDocument = gql`
+    query LocalGetProductCartItems {
+  productCartItems {
+    count
+    productId
+  }
+}
+    `;
+
+/**
+ * __useLocalGetProductCartItemsQuery__
+ *
+ * To run a query within a React component, call `useLocalGetProductCartItemsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useLocalGetProductCartItemsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useLocalGetProductCartItemsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useLocalGetProductCartItemsQuery(baseOptions?: Apollo.QueryHookOptions<LocalGetProductCartItemsQuery, LocalGetProductCartItemsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<LocalGetProductCartItemsQuery, LocalGetProductCartItemsQueryVariables>(LocalGetProductCartItemsDocument, options);
+      }
+export function useLocalGetProductCartItemsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<LocalGetProductCartItemsQuery, LocalGetProductCartItemsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<LocalGetProductCartItemsQuery, LocalGetProductCartItemsQueryVariables>(LocalGetProductCartItemsDocument, options);
+        }
+export type LocalGetProductCartItemsQueryHookResult = ReturnType<typeof useLocalGetProductCartItemsQuery>;
+export type LocalGetProductCartItemsLazyQueryHookResult = ReturnType<typeof useLocalGetProductCartItemsLazyQuery>;
+export type LocalGetProductCartItemsQueryResult = Apollo.QueryResult<LocalGetProductCartItemsQuery, LocalGetProductCartItemsQueryVariables>;
 export const InternalGetProductConnectionDocument = gql`
     query InternalGetProductConnection($first: Int, $after: String, $name: String, $makerId: Int, $productTagId: Int, $allocatedInternalUserId: Int, $hasStock: Boolean) {
   productConnection(
@@ -2073,6 +2177,41 @@ export function useInternalGetProductTagGroupsLazyQuery(baseOptions?: Apollo.Laz
 export type InternalGetProductTagGroupsQueryHookResult = ReturnType<typeof useInternalGetProductTagGroupsQuery>;
 export type InternalGetProductTagGroupsLazyQueryHookResult = ReturnType<typeof useInternalGetProductTagGroupsLazyQuery>;
 export type InternalGetProductTagGroupsQueryResult = Apollo.QueryResult<InternalGetProductTagGroupsQuery, InternalGetProductTagGroupsQueryVariables>;
+export const InternalGetProductsDocument = gql`
+    query InternalGetProducts($ids: [Int!]) {
+  products(ids: $ids) {
+    ...ProductFields
+  }
+}
+    ${ProductFieldsFragmentDoc}`;
+
+/**
+ * __useInternalGetProductsQuery__
+ *
+ * To run a query within a React component, call `useInternalGetProductsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useInternalGetProductsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useInternalGetProductsQuery({
+ *   variables: {
+ *      ids: // value for 'ids'
+ *   },
+ * });
+ */
+export function useInternalGetProductsQuery(baseOptions?: Apollo.QueryHookOptions<InternalGetProductsQuery, InternalGetProductsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<InternalGetProductsQuery, InternalGetProductsQueryVariables>(InternalGetProductsDocument, options);
+      }
+export function useInternalGetProductsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InternalGetProductsQuery, InternalGetProductsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<InternalGetProductsQuery, InternalGetProductsQueryVariables>(InternalGetProductsDocument, options);
+        }
+export type InternalGetProductsQueryHookResult = ReturnType<typeof useInternalGetProductsQuery>;
+export type InternalGetProductsLazyQueryHookResult = ReturnType<typeof useInternalGetProductsLazyQuery>;
+export type InternalGetProductsQueryResult = Apollo.QueryResult<InternalGetProductsQuery, InternalGetProductsQueryVariables>;
 export const InternalGetRolesDocument = gql`
     query InternalGetRoles {
   roles {

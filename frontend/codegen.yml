@@ -1,6 +1,8 @@
 generates:
   ./api/internal_api/types.ts:
-    schema: ../graphql/internalApi/schema.graphql
+    schema:
+      - ../graphql/internalApi/schema.graphql
+      - utils/apollo/schema.graphql
     documents: ./api/internal_api/**/*.ts
     plugins:
       - typescript
