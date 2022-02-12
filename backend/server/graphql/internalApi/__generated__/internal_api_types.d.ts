@@ -847,6 +847,9 @@ export interface NexusGenArgTypes {
     productTagGroup: { // args
       id: number; // Int!
     }
+    products: { // args
+      ids?: number[] | null; // [Int!]
+    }
     stockRequestConnection: { // args
       after?: string | null; // String
       before?: string | null; // String

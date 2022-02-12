@@ -338,7 +338,7 @@ type Query {
   ): ProductConnection
   productTagGroup(id: Int!): ProductTagGroup!
   productTagGroups: [ProductTagGroup!]!
-  products: [Product!]!
+  products(ids: [Int!]): [Product!]!
   roles: [Role!]!
   session: Session!
   stockRequestConnection(
