@@ -528,6 +528,11 @@ export type QueryProductTagGroupArgs = {
 };
 
 
+export type QueryProductsArgs = {
+  ids?: InputMaybe<Array<Scalars['Int']>>;
+};
+
+
 export type QueryStockRequestConnectionArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
@@ -849,6 +854,13 @@ export type InternalGetProductTagGroupsQueryVariables = Exact<{ [key: string]: n
 
 
 export type InternalGetProductTagGroupsQuery = { __typename?: 'Query', productTagGroups: Array<{ __typename?: 'ProductTagGroup', id: number, name: string, productTags: Array<{ __typename?: 'ProductTag', id: number, name: string }> }> };
+
+export type InternalGetProductsQueryVariables = Exact<{
+  ids?: InputMaybe<Array<Scalars['Int']> | Scalars['Int']>;
+}>;
+
+
+export type InternalGetProductsQuery = { __typename?: 'Query', products: Array<{ __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> }> };
 
 export type InternalGetRolesQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -2165,6 +2177,41 @@ export function useInternalGetProductTagGroupsLazyQuery(baseOptions?: Apollo.Laz
 export type InternalGetProductTagGroupsQueryHookResult = ReturnType<typeof useInternalGetProductTagGroupsQuery>;
 export type InternalGetProductTagGroupsLazyQueryHookResult = ReturnType<typeof useInternalGetProductTagGroupsLazyQuery>;
 export type InternalGetProductTagGroupsQueryResult = Apollo.QueryResult<InternalGetProductTagGroupsQuery, InternalGetProductTagGroupsQueryVariables>;
+export const InternalGetProductsDocument = gql`
+    query InternalGetProducts($ids: [Int!]) {
+  products(ids: $ids) {
+    ...ProductFields
+  }
+}
+    ${ProductFieldsFragmentDoc}`;
+
+/**
+ * __useInternalGetProductsQuery__
+ *
+ * To run a query within a React component, call `useInternalGetProductsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useInternalGetProductsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useInternalGetProductsQuery({
+ *   variables: {
+ *      ids: // value for 'ids'
+ *   },
+ * });
+ */
+export function useInternalGetProductsQuery(baseOptions?: Apollo.QueryHookOptions<InternalGetProductsQuery, InternalGetProductsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<InternalGetProductsQuery, InternalGetProductsQueryVariables>(InternalGetProductsDocument, options);
+      }
+export function useInternalGetProductsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InternalGetProductsQuery, InternalGetProductsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<InternalGetProductsQuery, InternalGetProductsQueryVariables>(InternalGetProductsDocument, options);
+        }
+export type InternalGetProductsQueryHookResult = ReturnType<typeof useInternalGetProductsQuery>;
+export type InternalGetProductsLazyQueryHookResult = ReturnType<typeof useInternalGetProductsLazyQuery>;
+export type InternalGetProductsQueryResult = Apollo.QueryResult<InternalGetProductsQuery, InternalGetProductsQueryVariables>;
 export const InternalGetRolesDocument = gql`
     query InternalGetRoles {
   roles {
