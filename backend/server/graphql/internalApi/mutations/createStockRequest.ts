@@ -24,7 +24,7 @@ export const createStockRequestField = mutationField((t) => {
             take: requestProduct.count,
             include: { product: true },
           });
-        if (stocks.length !== requestProduct.count) {
+        if (stocks.length < requestProduct.count) {
           throw Error(`${stocks[0]?.product.name}の在庫数が足りません。`);
         }
         const stockIds = stocks.map((s) => ({ stock_id: s.id }));
