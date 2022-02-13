@@ -24,6 +24,7 @@ input CreateStockRequestrequestProductsInputType {
 input CreateStocksStocksInputType {
   amount: Int!
   expiredAt: DateTime!
+  internalUserId: BigInt!
 }
 
 """
@@ -379,6 +380,7 @@ type Session {
 type Stock {
   expired_at: DateTime!
   id: Int!
+  internalUser: InternalUser!
   product: Product!
   stockAllocation: StockAllocation
 }

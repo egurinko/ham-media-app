@@ -3,6 +3,7 @@ import { stockType, stocksInputType } from '../types';
 
 type Stock = {
   expired_at: string;
+  internal_user_id: number;
 };
 
 export const createStocksField = mutationField((t) => {
@@ -16,6 +17,7 @@ export const createStocksField = mutationField((t) => {
       const stocks = args.stocks.reduce((acc: Stock[], stock) => {
         const newStocks = [...Array(stock.amount)].map((_) => ({
           expired_at: stock.expiredAt,
+          internal_user_id: stock.internalUserId,
         }));
         return [...acc, ...newStocks];
       }, []);
