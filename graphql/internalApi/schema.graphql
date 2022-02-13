@@ -207,6 +207,7 @@ type Mutation {
   updateProduct(file: Upload, id: Int!, makerId: Int!, name: String!, remark: String!): Product!
   updateProductTag(id: Int!, name: String!): ProductTag!
   updateProductTagGroup(id: Int!, name: String!): ProductTagGroup!
+  updateStockInternalUser(id: Int!, internalUserId: BigInt!): Stock!
 }
 
 """

@@ -380,6 +380,7 @@ export interface NexusGenFieldTypes {
     updateProduct: NexusGenRootTypes['Product']; // Product!
     updateProductTag: NexusGenRootTypes['ProductTag']; // ProductTag!
     updateProductTagGroup: NexusGenRootTypes['ProductTagGroup']; // ProductTagGroup!
+    updateStockInternalUser: NexusGenRootTypes['Stock']; // Stock!
   }
   PageInfo: { // field return type
     endCursor: string | null; // String
@@ -597,6 +598,7 @@ export interface NexusGenFieldTypeNames {
     updateProduct: 'Product'
     updateProductTag: 'ProductTag'
     updateProductTagGroup: 'ProductTagGroup'
+    updateStockInternalUser: 'Stock'
   }
   PageInfo: { // field return type name
     endCursor: 'String'
@@ -811,6 +813,10 @@ export interface NexusGenArgTypes {
     updateProductTagGroup: { // args
       id: number; // Int!
       name: string; // String!
+    }
+    updateStockInternalUser: { // args
+      id: number; // Int!
+      internalUserId: NexusGenScalars['BigInt']; // BigInt!
     }
   }
   Query: {
