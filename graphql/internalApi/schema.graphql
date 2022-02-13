@@ -192,7 +192,7 @@ type Mutation {
   createProductTagGroup(name: String!): ProductTagGroup!
   createProductTaggings(productId: Int!, productTagIds: [Int!]!): Product!
   createProductTags(productTagGroupId: Int!, productTags: [CreateProductTagsProductTagInputType!]!): BatchPayload!
-  createStockRequest(internalUserId: Int!, requestProducts: [CreateStockRequestrequestProductsInputType!]!): StockRequest!
+  createStockRequest(requestProducts: [CreateStockRequestrequestProductsInputType!]!): StockRequest!
   createStocks(productId: Int!, stocks: [CreateStocksStocksInputType!]!): [Stock!]!
   deleteInternalUser(id: BigInt!): Delete!
   deleteMaker(id: Int!): Maker!

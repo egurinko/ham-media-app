@@ -1,4 +1,4 @@
-import { nonNull, mutationField, intArg, list } from 'nexus';
+import { nonNull, mutationField, list } from 'nexus';
 import { requestProductsInputType, stockRequestType } from '../types';
 
 type StockRegistrations = {
@@ -9,7 +9,6 @@ export const createStockRequestField = mutationField((t) => {
   t.nonNull.field('createStockRequest', {
     type: stockRequestType,
     args: {
-      internalUserId: nonNull(intArg()),
       requestProducts: nonNull(list(nonNull(requestProductsInputType))),
     },
     resolve: async (_, args, ctx) => {
@@ -34,7 +33,7 @@ export const createStockRequestField = mutationField((t) => {
 
       return await ctx.prisma.stockRequest.create({
         data: {
-          internalUser: { connect: { id: args.internalUserId } },
+          internalUser: { connect: { id: ctx.currentInternalUser?.id } },
           stockRegistrations: {
             createMany: {
               data: stockRegistrations,
