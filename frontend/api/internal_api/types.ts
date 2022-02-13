@@ -228,6 +228,7 @@ export type Mutation = {
   updateProduct: Product;
   updateProductTag: ProductTag;
   updateProductTagGroup: ProductTagGroup;
+  updateStockInternalUser: Stock;
 };
 
 
@@ -374,6 +375,12 @@ export type MutationUpdateProductTagArgs = {
 export type MutationUpdateProductTagGroupArgs = {
   id: Scalars['Int'];
   name: Scalars['String'];
+};
+
+
+export type MutationUpdateStockInternalUserArgs = {
+  id: Scalars['Int'];
+  internalUserId: Scalars['BigInt'];
 };
 
 /** PageInfo cursor, as defined in https://facebook.github.io/relay/graphql/connections.htm#sec-undefined.PageInfo */
@@ -958,6 +965,14 @@ export type InternalUpdateProductTagGroupMutationVariables = Exact<{
 
 
 export type InternalUpdateProductTagGroupMutation = { __typename?: 'Mutation', updateProductTagGroup: { __typename?: 'ProductTagGroup', id: number, name: string, productTags: Array<{ __typename?: 'ProductTag', id: number, name: string }> } };
+
+export type InternalUpdateStockInternalUserMutationVariables = Exact<{
+  id: Scalars['Int'];
+  internalUserId: Scalars['BigInt'];
+}>;
+
+
+export type InternalUpdateStockInternalUserMutation = { __typename?: 'Mutation', updateStockInternalUser: { __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined } };
 
 export const HospitalFieldsFragmentDoc = gql`
     fragment HospitalFields on Hospital {
@@ -2648,3 +2663,37 @@ export function useInternalUpdateProductTagGroupMutation(baseOptions?: Apollo.Mu
 export type InternalUpdateProductTagGroupMutationHookResult = ReturnType<typeof useInternalUpdateProductTagGroupMutation>;
 export type InternalUpdateProductTagGroupMutationResult = Apollo.MutationResult<InternalUpdateProductTagGroupMutation>;
 export type InternalUpdateProductTagGroupMutationOptions = Apollo.BaseMutationOptions<InternalUpdateProductTagGroupMutation, InternalUpdateProductTagGroupMutationVariables>;
+export const InternalUpdateStockInternalUserDocument = gql`
+    mutation InternalUpdateStockInternalUser($id: Int!, $internalUserId: BigInt!) {
+  updateStockInternalUser(id: $id, internalUserId: $internalUserId) {
+    ...StockFields
+  }
+}
+    ${StockFieldsFragmentDoc}`;
+export type InternalUpdateStockInternalUserMutationFn = Apollo.MutationFunction<InternalUpdateStockInternalUserMutation, InternalUpdateStockInternalUserMutationVariables>;
+
+/**
+ * __useInternalUpdateStockInternalUserMutation__
+ *
+ * To run a mutation, you first call `useInternalUpdateStockInternalUserMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInternalUpdateStockInternalUserMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [internalUpdateStockInternalUserMutation, { data, loading, error }] = useInternalUpdateStockInternalUserMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      internalUserId: // value for 'internalUserId'
+ *   },
+ * });
+ */
+export function useInternalUpdateStockInternalUserMutation(baseOptions?: Apollo.MutationHookOptions<InternalUpdateStockInternalUserMutation, InternalUpdateStockInternalUserMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<InternalUpdateStockInternalUserMutation, InternalUpdateStockInternalUserMutationVariables>(InternalUpdateStockInternalUserDocument, options);
+      }
+export type InternalUpdateStockInternalUserMutationHookResult = ReturnType<typeof useInternalUpdateStockInternalUserMutation>;
+export type InternalUpdateStockInternalUserMutationResult = Apollo.MutationResult<InternalUpdateStockInternalUserMutation>;
+export type InternalUpdateStockInternalUserMutationOptions = Apollo.BaseMutationOptions<InternalUpdateStockInternalUserMutation, InternalUpdateStockInternalUserMutationVariables>;
