@@ -21,6 +21,7 @@ import {
   useInternalAllocateStockMutation,
   useInternalReturnStockMutation,
   useInternalDeleteStockMutation,
+  useInternalUpdateStockInternalUserMutation,
 } from '@/api/internal_api/types';
 import type {
   InternalGetProductQuery,
@@ -66,6 +67,14 @@ const AllocationSection: React.FC<Props> = ({
       loading: deleteStockLoading,
     },
   ] = useInternalDeleteStockMutation();
+  const [
+    updateStockInternalUser,
+    {
+      data: updateStockInternalUserData,
+      error: updateStockInternalUserError,
+      loading: updateStockInternalUserLoading,
+    },
+  ] = useInternalUpdateStockInternalUserMutation();
 
   const handleAllocate = async (id: number, internalUserId: BigInt) => {
     try {
@@ -98,7 +107,10 @@ const AllocationSection: React.FC<Props> = ({
         在庫情報
       </Text>
 
-      {allocateStockLoading || returnStockLoading || deleteStockLoading ? (
+      {allocateStockLoading ||
+      returnStockLoading ||
+      deleteStockLoading ||
+      updateStockInternalUserLoading ? (
         <Spinner size="lg" color="main.primary" />
       ) : null}
       {allocateStockError ? (
@@ -118,6 +130,14 @@ const AllocationSection: React.FC<Props> = ({
         <FlashMessage status="error" message={deleteStockError.message} />
       ) : deleteStockData ? (
         <FlashMessage status="success" message="在庫を削除しました。" />
+      ) : null}
+      {updateStockInternalUserError ? (
+        <FlashMessage
+          status="error"
+          message={updateStockInternalUserError.message}
+        />
+      ) : updateStockInternalUserData ? (
+        <FlashMessage status="success" message="責任者を更新しました。" />
       ) : null}
       <Table size="sm">
         <Thead>
@@ -151,7 +171,32 @@ const AllocationSection: React.FC<Props> = ({
                 </Text>
               </Td>
               <Td px="1" py="3">
-                <Text fontSize="8">{stock.internalUser.name}</Text>
+                {internalUserData ? (
+                  <Select
+                    size="sm"
+                    placeholder="選択してください"
+                    defaultValue={Number(stock.internalUser.id)}
+                    onChange={async (e) => {
+                      await updateStockInternalUser({
+                        variables: {
+                          id: stock.id,
+                          internalUserId: BigInt(e.target.value),
+                        },
+                      });
+                      await fetchStocksMore({ variables: { productId } });
+                    }}
+                    mr="2"
+                  >
+                    {internalUserData.internalUsers.map((internalUser) => (
+                      <option
+                        key={String(internalUser.id)}
+                        value={String(internalUser.id)}
+                      >
+                        {internalUser.name}
+                      </option>
+                    ))}
+                  </Select>
+                ) : null}
               </Td>
               <Td px="1" py="3">
                 {stock.stockAllocation ? (
