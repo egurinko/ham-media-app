@@ -122,11 +122,18 @@ const AllocationSection: React.FC<Props> = ({
       <Table size="sm">
         <Thead>
           <Tr>
-            <Th w="2" p="1">
+            <Th w="2" p="1" fontSize="xs">
               id
             </Th>
-            <Th p="1">在庫期限</Th>
-            <Th p="1">割当状況</Th>
+            <Th p="1" fontSize="xs">
+              期限
+            </Th>
+            <Th p="1" fontSize="xs">
+              責任者
+            </Th>
+            <Th p="1" fontSize="xs">
+              割当状況
+            </Th>
             <Th p="1"></Th>
           </Tr>
         </Thead>
@@ -142,6 +149,9 @@ const AllocationSection: React.FC<Props> = ({
                     ? dayjs(stock.expired_at).format('YYYY年MM月DD日')
                     : 'なし'}
                 </Text>
+              </Td>
+              <Td px="1" py="3">
+                <Text fontSize="8">{stock.internalUser.name}</Text>
               </Td>
               <Td px="1" py="3">
                 {stock.stockAllocation ? (
