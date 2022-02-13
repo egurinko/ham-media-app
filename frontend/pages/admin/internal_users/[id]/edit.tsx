@@ -5,9 +5,6 @@ import { Heading, Box, IconButton } from '@chakra-ui/react';
 import { ChevronRightIcon } from '@chakra-ui/icons';
 import { Form } from '@/components/organisms/admin/internal_users/edit/Form';
 import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
-import { getInternalUsers } from '@/api/internal_api/getInternalUsers';
-import type { InternalGetInternalUsersQuery } from '@/api/internal_api/types';
-import { apiClient } from '@/utils/apollo';
 import { goAdminInternalUsers } from '@/utils/routes';
 
 const Edit: React.VFC<Props> = () => {
@@ -39,15 +36,7 @@ interface Params extends ParsedUrlQuery {
 interface Props {}
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  const { data } = await apiClient.query<InternalGetInternalUsersQuery>({
-    query: getInternalUsers,
-  });
-
-  const paths = data.internalUsers.map((internalUser) => ({
-    params: { id: String(internalUser.id) },
-  }));
-
-  return { paths, fallback: 'blocking' };
+  return { paths: [], fallback: 'blocking' };
 };
 
 export const getStaticProps: GetStaticProps<Props, Params> = async () => {

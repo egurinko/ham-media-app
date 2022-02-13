@@ -5,9 +5,6 @@ import { Heading, Box, IconButton } from '@chakra-ui/react';
 import { ChevronRightIcon } from '@chakra-ui/icons';
 import { Form } from '@/components/organisms/admin/makers/edit/Form';
 import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
-import { getMakers } from '@/api/internal_api/getMakers';
-import type { InternalGetMakersQuery } from '@/api/internal_api/types';
-import { apiClient } from '@/utils/apollo';
 import { goAdminMakers } from '@/utils/routes';
 
 const Edit: React.VFC<Props> = () => {
@@ -37,15 +34,7 @@ interface Params extends ParsedUrlQuery {
 interface Props {}
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  const { data } = await apiClient.query<InternalGetMakersQuery>({
-    query: getMakers,
-  });
-
-  const paths = data.makers.map((maker) => ({
-    params: { id: String(maker.id) },
-  }));
-
-  return { paths, fallback: 'blocking' };
+  return { paths: [], fallback: 'blocking' };
 };
 
 export const getStaticProps: GetStaticProps<Props, Params> = async () => {

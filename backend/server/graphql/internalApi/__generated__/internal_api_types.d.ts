@@ -745,7 +745,6 @@ export interface NexusGenArgTypes {
       productTags: NexusGenInputs['CreateProductTagsProductTagInputType'][]; // [CreateProductTagsProductTagInputType!]!
     }
     createStockRequest: { // args
-      internalUserId: number; // Int!
       requestProducts: NexusGenInputs['CreateStockRequestrequestProductsInputType'][]; // [CreateStockRequestrequestProductsInputType!]!
     }
     createStocks: { // args

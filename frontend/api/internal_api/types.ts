@@ -284,7 +284,6 @@ export type MutationCreateProductTagsArgs = {
 
 
 export type MutationCreateStockRequestArgs = {
-  internalUserId: Scalars['Int'];
   requestProducts: Array<CreateStockRequestrequestProductsInputType>;
 };
 
@@ -691,7 +690,6 @@ export type InternalCreateProductTagsMutationVariables = Exact<{
 export type InternalCreateProductTagsMutation = { __typename?: 'Mutation', createProductTags: { __typename?: 'BatchPayload', count: number } };
 
 export type InternalCreateStockRequestMutationVariables = Exact<{
-  internalUserId: Scalars['Int'];
   requestProducts: Array<CreateStockRequestrequestProductsInputType> | CreateStockRequestrequestProductsInputType;
 }>;
 
@@ -1413,11 +1411,8 @@ export type InternalCreateProductTagsMutationHookResult = ReturnType<typeof useI
 export type InternalCreateProductTagsMutationResult = Apollo.MutationResult<InternalCreateProductTagsMutation>;
 export type InternalCreateProductTagsMutationOptions = Apollo.BaseMutationOptions<InternalCreateProductTagsMutation, InternalCreateProductTagsMutationVariables>;
 export const InternalCreateStockRequestDocument = gql`
-    mutation InternalCreateStockRequest($internalUserId: Int!, $requestProducts: [CreateStockRequestrequestProductsInputType!]!) {
-  createStockRequest(
-    internalUserId: $internalUserId
-    requestProducts: $requestProducts
-  ) {
+    mutation InternalCreateStockRequest($requestProducts: [CreateStockRequestrequestProductsInputType!]!) {
+  createStockRequest(requestProducts: $requestProducts) {
     ...StockRequestFields
   }
 }
@@ -1437,7 +1432,6 @@ export type InternalCreateStockRequestMutationFn = Apollo.MutationFunction<Inter
  * @example
  * const [internalCreateStockRequestMutation, { data, loading, error }] = useInternalCreateStockRequestMutation({
  *   variables: {
- *      internalUserId: // value for 'internalUserId'
  *      requestProducts: // value for 'requestProducts'
  *   },
  * });
