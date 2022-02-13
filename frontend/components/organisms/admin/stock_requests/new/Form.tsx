@@ -7,6 +7,7 @@ import { ProductSummary } from '@/components/organisms/admin/products/ProductSum
 import {
   useLocalGetProductCartItemsQuery,
   useInternalGetProductsQuery,
+  useInternalCreateStockRequestMutation,
 } from '@/api/internal_api/types';
 import type { ProductFieldsFragment } from '@/api/internal_api/types';
 import { productCartItemsVar } from '@/utils/apollo/cache';
@@ -17,13 +18,15 @@ type RequestProduct = {
 };
 
 const Form: React.VFC<NoProps> = () => {
-  const { data: cartItemsData, error } = useLocalGetProductCartItemsQuery();
+  const { data: cartItemsData } = useLocalGetProductCartItemsQuery();
   const productIds =
     cartItemsData?.productCartItems.map((item) => item.productId) || [];
   const { data: productsData } = useInternalGetProductsQuery({
     variables: { ids: productIds },
   });
   const [requestProducts, setRequestProducts] = useState<RequestProduct[]>([]);
+  const [create, { data, loading, error }] =
+    useInternalCreateStockRequestMutation();
 
   useEffect(() => {
     if (cartItemsData && productsData) {
@@ -67,45 +70,78 @@ const Form: React.VFC<NoProps> = () => {
     productCartItemsVar(deletedCartItems);
   }, []);
 
+  const handleSubmit = () => {
+    const cartItems = productCartItemsVar();
+    create({ variables: { requestProducts: cartItems } });
+  };
+
   return (
     <Card>
+      {data ? (
+        <FlashMessage
+          message="在庫リクエストを行いました。少々お待ちください。"
+          status="success"
+        />
+      ) : null}
       {error ? <FlashMessage message={error.message} status="error" /> : null}
-      {requestProducts
-        ? requestProducts.map((requestProduct) => (
-            <Box key={requestProduct.product.id} mb="2">
-              <ProductSummary product={requestProduct.product} />
-              <Box display="flex" alignItems="center">
-                <Box flexShrink="0">
-                  <Text>数量：</Text>
+      {requestProducts ? (
+        requestProducts.length === 0 ? (
+          '存在してません'
+        ) : (
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleSubmit();
+            }}
+          >
+            <Box textAlign="center">
+              {requestProducts.map((requestProduct) => (
+                <Box key={requestProduct.product.id} mb="2">
+                  <ProductSummary product={requestProduct.product} />
+                  <Box display="flex" alignItems="center">
+                    <Box flexShrink="0">
+                      <Text>数量：</Text>
+                    </Box>
+                    <Select
+                      value={requestProduct.count}
+                      onChange={(e) =>
+                        handleChangeCount(
+                          Number(e.target.value),
+                          requestProduct.product
+                        )
+                      }
+                    >
+                      {Array(requestProduct.product.remainingStockAmount)
+                        .fill('')
+                        .map((_, i) => (
+                          <option key={String(i)} value={i + 1}>
+                            {i + 1}
+                          </option>
+                        ))}
+                    </Select>
+                    <Button
+                      ml="2"
+                      onClick={() => handleDelete(requestProduct.product)}
+                    >
+                      <DeleteIcon mr="1" />
+                      削除
+                    </Button>
+                  </Box>
                 </Box>
-                <Select
-                  value={requestProduct.count}
-                  onChange={(e) =>
-                    handleChangeCount(
-                      Number(e.target.value),
-                      requestProduct.product
-                    )
-                  }
-                >
-                  {Array(requestProduct.product.remainingStockAmount)
-                    .fill('')
-                    .map((_, i) => (
-                      <option key={String(i)} value={i + 1}>
-                        {i + 1}
-                      </option>
-                    ))}
-                </Select>
-                <Button
-                  ml="2"
-                  onClick={() => handleDelete(requestProduct.product)}
-                >
-                  <DeleteIcon mr="1" />
-                  削除
-                </Button>
-              </Box>
+              ))}
+              <Button
+                type="submit"
+                bgColor="primary.main"
+                color="white"
+                isLoading={loading}
+                mt="8"
+              >
+                在庫リクエストをする
+              </Button>
             </Box>
-          ))
-        : null}
+          </form>
+        )
+      ) : null}
     </Card>
   );
 };
