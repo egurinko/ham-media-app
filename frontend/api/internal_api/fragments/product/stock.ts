@@ -6,6 +6,9 @@ export const STOCK_FIELDS = gql`
   fragment StockFields on Stock {
     id
     expired_at
+    internalUser {
+      ...InternalUserFields
+    }
     stockAllocation {
       created_at
       id

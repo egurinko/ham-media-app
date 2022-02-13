@@ -66,6 +66,7 @@ export interface NexusGenInputs {
   CreateStocksStocksInputType: { // input type
     amount: number; // Int!
     expiredAt: NexusGenScalars['DateTime']; // DateTime!
+    internalUserId: NexusGenScalars['BigInt']; // BigInt!
   }
   HospitalAddressInputType: { // input type
     address: string; // String!
@@ -379,6 +380,7 @@ export interface NexusGenFieldTypes {
     updateProduct: NexusGenRootTypes['Product']; // Product!
     updateProductTag: NexusGenRootTypes['ProductTag']; // ProductTag!
     updateProductTagGroup: NexusGenRootTypes['ProductTagGroup']; // ProductTagGroup!
+    updateStockInternalUser: NexusGenRootTypes['Stock']; // Stock!
   }
   PageInfo: { // field return type
     endCursor: string | null; // String
@@ -458,6 +460,7 @@ export interface NexusGenFieldTypes {
   Stock: { // field return type
     expired_at: NexusGenScalars['DateTime']; // DateTime!
     id: number; // Int!
+    internalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     product: NexusGenRootTypes['Product']; // Product!
     stockAllocation: NexusGenRootTypes['StockAllocation'] | null; // StockAllocation
   }
@@ -595,6 +598,7 @@ export interface NexusGenFieldTypeNames {
     updateProduct: 'Product'
     updateProductTag: 'ProductTag'
     updateProductTagGroup: 'ProductTagGroup'
+    updateStockInternalUser: 'Stock'
   }
   PageInfo: { // field return type name
     endCursor: 'String'
@@ -674,6 +678,7 @@ export interface NexusGenFieldTypeNames {
   Stock: { // field return type name
     expired_at: 'DateTime'
     id: 'Int'
+    internalUser: 'InternalUser'
     product: 'Product'
     stockAllocation: 'StockAllocation'
   }
@@ -808,6 +813,10 @@ export interface NexusGenArgTypes {
     updateProductTagGroup: { // args
       id: number; // Int!
       name: string; // String!
+    }
+    updateStockInternalUser: { // args
+      id: number; // Int!
+      internalUserId: NexusGenScalars['BigInt']; // BigInt!
     }
   }
   Query: {

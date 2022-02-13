@@ -21,6 +21,7 @@ import {
   useInternalAllocateStockMutation,
   useInternalReturnStockMutation,
   useInternalDeleteStockMutation,
+  useInternalUpdateStockInternalUserMutation,
 } from '@/api/internal_api/types';
 import type {
   InternalGetProductQuery,
@@ -66,6 +67,14 @@ const AllocationSection: React.FC<Props> = ({
       loading: deleteStockLoading,
     },
   ] = useInternalDeleteStockMutation();
+  const [
+    updateStockInternalUser,
+    {
+      data: updateStockInternalUserData,
+      error: updateStockInternalUserError,
+      loading: updateStockInternalUserLoading,
+    },
+  ] = useInternalUpdateStockInternalUserMutation();
 
   const handleAllocate = async (id: number, internalUserId: BigInt) => {
     try {
@@ -98,7 +107,10 @@ const AllocationSection: React.FC<Props> = ({
         在庫情報
       </Text>
 
-      {allocateStockLoading || returnStockLoading || deleteStockLoading ? (
+      {allocateStockLoading ||
+      returnStockLoading ||
+      deleteStockLoading ||
+      updateStockInternalUserLoading ? (
         <Spinner size="lg" color="main.primary" />
       ) : null}
       {allocateStockError ? (
@@ -119,14 +131,29 @@ const AllocationSection: React.FC<Props> = ({
       ) : deleteStockData ? (
         <FlashMessage status="success" message="在庫を削除しました。" />
       ) : null}
+      {updateStockInternalUserError ? (
+        <FlashMessage
+          status="error"
+          message={updateStockInternalUserError.message}
+        />
+      ) : updateStockInternalUserData ? (
+        <FlashMessage status="success" message="責任者を更新しました。" />
+      ) : null}
       <Table size="sm">
         <Thead>
           <Tr>
-            <Th w="2" p="1">
+            <Th w="2" p="1" fontSize="xs">
               id
             </Th>
-            <Th p="1">在庫期限</Th>
-            <Th p="1">割当状況</Th>
+            <Th p="1" fontSize="xs">
+              期限
+            </Th>
+            <Th p="1" fontSize="xs">
+              責任者
+            </Th>
+            <Th p="1" fontSize="xs">
+              割当状況
+            </Th>
             <Th p="1"></Th>
           </Tr>
         </Thead>
@@ -142,6 +169,34 @@ const AllocationSection: React.FC<Props> = ({
                     ? dayjs(stock.expired_at).format('YYYY年MM月DD日')
                     : 'なし'}
                 </Text>
+              </Td>
+              <Td px="1" py="3">
+                {internalUserData ? (
+                  <Select
+                    size="sm"
+                    placeholder="選択してください"
+                    defaultValue={Number(stock.internalUser.id)}
+                    onChange={async (e) => {
+                      await updateStockInternalUser({
+                        variables: {
+                          id: stock.id,
+                          internalUserId: BigInt(e.target.value),
+                        },
+                      });
+                      await fetchStocksMore({ variables: { productId } });
+                    }}
+                    mr="2"
+                  >
+                    {internalUserData.internalUsers.map((internalUser) => (
+                      <option
+                        key={String(internalUser.id)}
+                        value={String(internalUser.id)}
+                      >
+                        {internalUser.name}
+                      </option>
+                    ))}
+                  </Select>
+                ) : null}
               </Td>
               <Td px="1" py="3">
                 {stock.stockAllocation ? (

@@ -5,5 +5,6 @@ export const stocksInputType = inputObjectType({
   definition(t) {
     t.nonNull.dateTime('expiredAt');
     t.nonNull.int('amount');
+    t.nonNull.bigInt('internalUserId');
   },
 });

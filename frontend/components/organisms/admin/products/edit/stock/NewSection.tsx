@@ -1,9 +1,12 @@
 import { useState } from 'react';
-import { Box, Text, Input, IconButton, Button } from '@chakra-ui/react';
+import { Box, Text, Input, IconButton, Button, Select } from '@chakra-ui/react';
 import { SmallCloseIcon, AddIcon } from '@chakra-ui/icons';
 import dayjs from 'dayjs';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
-import { useInternalCreateStocksMutation } from '@/api/internal_api/types';
+import {
+  useInternalCreateStocksMutation,
+  useInternalGetInternalUsersQuery,
+} from '@/api/internal_api/types';
 import type {
   InternalGetProductQuery,
   InternalGetStocksQueryVariables,
@@ -19,13 +22,16 @@ interface Props {
 type AddingStock = {
   expired_at: string;
   amount: string;
+  internal_user_id?: number;
 };
 const addingStockInitialState: AddingStock = {
   expired_at: '',
   amount: '1',
+  internal_user_id: undefined,
 };
 
 const NewSection: React.FC<Props> = ({ productId, fetchStocksMore }) => {
+  const { data: internalUsersData } = useInternalGetInternalUsersQuery();
   const [addingStocks, setAddingStocks] = useState([addingStockInitialState]);
   const [
     createStocks,
@@ -35,6 +41,19 @@ const NewSection: React.FC<Props> = ({ productId, fetchStocksMore }) => {
       loading: createStocksLoading,
     },
   ] = useInternalCreateStocksMutation();
+
+  const handleInternalUserChange = (
+    changingIndex: number,
+    internalUserId: number
+  ) => {
+    const newAddingStocks = addingStocks.map((addingStock, index) => {
+      if (changingIndex === index) {
+        return { ...addingStock, internal_user_id: internalUserId };
+      }
+      return addingStock;
+    });
+    setAddingStocks(newAddingStocks);
+  };
 
   const handleExpiredAtChange = (
     changingIndex: number,
@@ -84,6 +103,7 @@ const NewSection: React.FC<Props> = ({ productId, fetchStocksMore }) => {
               stock.expired_at === ''
                 ? dayjs('2100-12-00').toISOString()
                 : dayjs(stock.expired_at).toISOString(),
+            internalUserId: BigInt(stock.internal_user_id || 1),
           })),
         },
       });
@@ -104,11 +124,14 @@ const NewSection: React.FC<Props> = ({ productId, fetchStocksMore }) => {
       ) : null}
       <Box>
         <Box display="flex" flexDir="row">
-          <Text width="50%" fontSize="sm">
-            在庫期限 (任意)
+          <Text width="33%" fontSize="xs" mr="2">
+            期限 (任意)
           </Text>
-          <Text width="50%" fontSize="sm">
-            追加数量 (必須)
+          <Text width="33%" fontSize="xs" mr="2">
+            責任者 (必須)
+          </Text>
+          <Text width="33%" fontSize="xs">
+            数量 (必須)
           </Text>
         </Box>
         <form
@@ -134,7 +157,29 @@ const NewSection: React.FC<Props> = ({ productId, fetchStocksMore }) => {
                   value={addingStock.expired_at}
                   onChange={(e) => handleExpiredAtChange(index, e.target.value)}
                   mr="2"
+                  width="33%"
                 />
+                {internalUsersData ? (
+                  <Select
+                    placeholder="選択してください"
+                    value={addingStock.internal_user_id}
+                    onChange={(e) =>
+                      handleInternalUserChange(index, Number(e.target.value))
+                    }
+                    mr="2"
+                    width="30%"
+                    required
+                  >
+                    {internalUsersData.internalUsers.map((internalUser) => (
+                      <option
+                        key={String(internalUser.id)}
+                        value={String(internalUser.id)}
+                      >
+                        {internalUser.name}
+                      </option>
+                    ))}
+                  </Select>
+                ) : null}
                 <Input
                   placeholder="10"
                   type="number"
@@ -143,6 +188,7 @@ const NewSection: React.FC<Props> = ({ productId, fetchStocksMore }) => {
                   value={addingStock.amount}
                   onChange={(e) => handleAmountChange(index, e.target.value)}
                   required
+                  width="20%"
                 />
                 <IconButton
                   onClick={() => handleAddingStocksDelete(index)}
