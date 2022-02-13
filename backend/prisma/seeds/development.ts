@@ -113,6 +113,7 @@ export const executeDevelopment = async () => {
             id: i,
             product_id: sankoProduct.id,
             expired_at: new Date('2030/10/10').toISOString(),
+            internal_user_id: adminUser.id,
           },
         });
         await client.stockAllocation.upsert({
@@ -154,6 +155,7 @@ export const executeDevelopment = async () => {
           id: 4,
           product_id: sankoProductTwo.id,
           expired_at: new Date('2030/10/10').toISOString(),
+          internal_user_id: adminUser.id,
         },
       });
 
