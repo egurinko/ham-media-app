@@ -369,10 +369,10 @@ export interface NexusGenFieldTypes {
     createStockRequest: NexusGenRootTypes['StockRequest']; // StockRequest!
     createStocks: NexusGenRootTypes['Stock'][]; // [Stock!]!
     deleteInternalUser: NexusGenRootTypes['Delete']; // Delete!
-    deleteMaker: NexusGenRootTypes['Maker']; // Maker!
-    deleteProductTag: NexusGenRootTypes['ProductTag']; // ProductTag!
+    deleteMaker: NexusGenRootTypes['Delete']; // Delete!
+    deleteProductTag: NexusGenRootTypes['Delete']; // Delete!
     deleteProductTagging: NexusGenRootTypes['Delete']; // Delete!
-    deleteStock: NexusGenRootTypes['Stock']; // Stock!
+    deleteStock: NexusGenRootTypes['Delete']; // Delete!
     returnStock: NexusGenRootTypes['Stock']; // Stock!
     updateHospital: NexusGenRootTypes['Hospital']; // Hospital!
     updateInternalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
@@ -587,10 +587,10 @@ export interface NexusGenFieldTypeNames {
     createStockRequest: 'StockRequest'
     createStocks: 'Stock'
     deleteInternalUser: 'Delete'
-    deleteMaker: 'Maker'
-    deleteProductTag: 'ProductTag'
+    deleteMaker: 'Delete'
+    deleteProductTag: 'Delete'
     deleteProductTagging: 'Delete'
-    deleteStock: 'Stock'
+    deleteStock: 'Delete'
     returnStock: 'Stock'
     updateHospital: 'Hospital'
     updateInternalUser: 'InternalUser'

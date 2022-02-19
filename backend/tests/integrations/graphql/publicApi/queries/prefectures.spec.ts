@@ -1,16 +1,17 @@
 import { setup } from '@tests/utils/setupPublicApi';
+import gql from 'graphql-tag';
 
-const QUERY = `
-  query { 
-    prefectures { 
-      id 
+const QUERY = gql`
+  query {
+    prefectures {
+      id
       name
-    } 
+    }
   }
 `;
 
 describe('prefectures', () => {
-  it('true to be true', async () => {
+  it('returns prefectures', async () => {
     const client = await setup();
 
     const result = await client.query(QUERY);

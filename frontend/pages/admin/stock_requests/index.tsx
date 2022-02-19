@@ -24,7 +24,7 @@ const Index: React.VFC<NoProps> = () => {
           leftIcon={<AddIcon />}
           onClick={() => goAdminStockRequestsNew(router)}
         >
-          新規登録
+          カートを確認
         </Button>
       </Box>
       <StockRequestsStack />

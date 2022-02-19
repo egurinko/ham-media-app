@@ -1,9 +1,11 @@
 import { useState, useEffect, useCallback } from 'react';
+import { useRouter } from 'next/router';
 import { Box, Text, Select, Button } from '@chakra-ui/react';
 import { DeleteIcon } from '@chakra-ui/icons';
 import { Card } from '@/components/atoms/Card';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
 import { ProductSummary } from '@/components/organisms/admin/products/ProductSummary';
+import { Empty } from './Empty';
 import {
   useLocalGetProductCartItemsQuery,
   useInternalGetProductsQuery,
@@ -11,6 +13,7 @@ import {
 } from '@/api/internal_api/types';
 import type { ProductFieldsFragment } from '@/api/internal_api/types';
 import { productCartItemsVar } from '@/utils/apollo/cache';
+import { goAdminStockRequests } from '@/utils/routes';
 
 type RequestProduct = {
   count: number;
@@ -18,10 +21,11 @@ type RequestProduct = {
 };
 
 const Form: React.VFC<NoProps> = () => {
+  const router = useRouter();
   const { data: cartItemsData } = useLocalGetProductCartItemsQuery();
   const productIds =
     cartItemsData?.productCartItems.map((item) => item.productId) || [];
-  const { data: productsData } = useInternalGetProductsQuery({
+  const { data: productsData, fetchMore } = useInternalGetProductsQuery({
     variables: { ids: productIds },
   });
   const [requestProducts, setRequestProducts] = useState<RequestProduct[]>([]);
@@ -70,9 +74,12 @@ const Form: React.VFC<NoProps> = () => {
     productCartItemsVar(deletedCartItems);
   }, []);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const cartItems = productCartItemsVar();
-    create({ variables: { requestProducts: cartItems } });
+    await create({ variables: { requestProducts: cartItems } });
+    productCartItemsVar([]);
+    await fetchMore({ variables: { productIds: [] } });
+    goAdminStockRequests(router);
   };
 
   return (
@@ -86,7 +93,7 @@ const Form: React.VFC<NoProps> = () => {
       {error ? <FlashMessage message={error.message} status="error" /> : null}
       {requestProducts ? (
         requestProducts.length === 0 ? (
-          '存在してません'
+          <Empty />
         ) : (
           <form
             onSubmit={(e) => {

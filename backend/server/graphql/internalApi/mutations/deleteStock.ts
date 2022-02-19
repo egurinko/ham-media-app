@@ -1,9 +1,9 @@
 import { nonNull, mutationField, intArg } from 'nexus';
-import { stockType } from '../types';
+import { deleteType } from '../types/';
 
 export const deleteStockField = mutationField((t) => {
   t.nonNull.field('deleteStock', {
-    type: stockType,
+    type: deleteType,
     args: {
       id: nonNull(intArg()),
     },
@@ -21,12 +21,13 @@ export const deleteStockField = mutationField((t) => {
             include: { stockAllocation: { include: { internalUser: true } } },
           }),
         ]);
-        return stock;
+        return { deleted: !!stock };
       } else {
-        return await ctx.prisma.stock.delete({
+        const deleted = await ctx.prisma.stock.delete({
           where: { id: args.id },
           include: { stockAllocation: { include: { internalUser: true } } },
         });
+        return { deleted: !!deleted };
       }
     },
   });

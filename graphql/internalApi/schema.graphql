@@ -196,10 +196,10 @@ type Mutation {
   createStockRequest(requestProducts: [CreateStockRequestrequestProductsInputType!]!): StockRequest!
   createStocks(productId: Int!, stocks: [CreateStocksStocksInputType!]!): [Stock!]!
   deleteInternalUser(id: BigInt!): Delete!
-  deleteMaker(id: Int!): Maker!
-  deleteProductTag(id: Int!): ProductTag!
+  deleteMaker(id: Int!): Delete!
+  deleteProductTag(id: Int!): Delete!
   deleteProductTagging(id: Int!): Delete!
-  deleteStock(id: Int!): Stock!
+  deleteStock(id: Int!): Delete!
   returnStock(id: Int!): Stock!
   updateHospital(deleted: Boolean!, hospitalAddressInput: HospitalAddressInputType!, hospitalBusinessFormInput: HospitalBusinessFormInputType!, hospitalCertificationOptionInput: HospitalCertificationOptionInputType!, hospitalInternalReputationInput: HospitalInternalReputationInputType!, hospitalNightServiceOptionInput: HospitalNightServiceOptionInputType!, hospitalNightUrgentActionOptionInput: HospitalNightUrgentActionOptionInputType!, hospitalReservationStatusInput: HospitalReservationStatusInputType!, id: BigInt!, internal_memo: String!, name: String!, url: String!): Hospital!
   updateInternalUser(email: String!, id: BigInt!, name: String!, password: String!, roleId: Int!): InternalUser!
