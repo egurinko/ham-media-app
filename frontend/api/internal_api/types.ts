@@ -217,10 +217,10 @@ export type Mutation = {
   createStockRequest: StockRequest;
   createStocks: Array<Stock>;
   deleteInternalUser: Delete;
-  deleteMaker: Maker;
-  deleteProductTag: ProductTag;
+  deleteMaker: Delete;
+  deleteProductTag: Delete;
   deleteProductTagging: Delete;
-  deleteStock: Stock;
+  deleteStock: Delete;
   returnStock: Stock;
   updateHospital: Hospital;
   updateInternalUser: InternalUser;
@@ -725,14 +725,14 @@ export type InternalDeleteMakerMutationVariables = Exact<{
 }>;
 
 
-export type InternalDeleteMakerMutation = { __typename?: 'Mutation', deleteMaker: { __typename?: 'Maker', id: number, name: string } };
+export type InternalDeleteMakerMutation = { __typename?: 'Mutation', deleteMaker: { __typename?: 'Delete', deleted: boolean } };
 
 export type InternalDeleteProductTagMutationVariables = Exact<{
   id: Scalars['Int'];
 }>;
 
 
-export type InternalDeleteProductTagMutation = { __typename?: 'Mutation', deleteProductTag: { __typename?: 'ProductTag', id: number, name: string } };
+export type InternalDeleteProductTagMutation = { __typename?: 'Mutation', deleteProductTag: { __typename?: 'Delete', deleted: boolean } };
 
 export type InternalDeleteProductTaggingMutationVariables = Exact<{
   id: Scalars['Int'];
@@ -746,7 +746,7 @@ export type InternalDeleteStockMutationVariables = Exact<{
 }>;
 
 
-export type InternalDeleteStockMutation = { __typename?: 'Mutation', deleteStock: { __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined } };
+export type InternalDeleteStockMutation = { __typename?: 'Mutation', deleteStock: { __typename?: 'Delete', deleted: boolean } };
 
 export type HospitalFieldsFragment = { __typename?: 'Hospital', id: BigInt, name: string, url: string, deleted: boolean, internal_memo: string, hospitalAddress?: { __typename?: 'HospitalAddress', id: BigInt, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: BigInt } } | null | undefined, hospitalBusinessForm?: { __typename?: 'HospitalBusinessForm', id: BigInt, business_hour: string, closed_day: string, insurance_enabled: string, remark: string } | null | undefined, hospitalCertificationOption?: { __typename?: 'HospitalCertificationOption', id: BigInt, nichiju_registered: string, jsava_registered: string } | null | undefined, hospitalInternalReputation?: { __typename?: 'HospitalInternalReputation', id: BigInt, star: number, remark: string } | null | undefined, hospitalNightServiceOption?: { __typename?: 'HospitalNightServiceOption', id: BigInt, status: string, remark: string } | null | undefined, hospitalNightUrgentActionOption?: { __typename?: 'HospitalNightUrgentActionOption', id: BigInt, status: string } | null | undefined, hospitalReservationStatus?: { __typename?: 'HospitalReservationStatus', id: BigInt, required: string, reservable: string, remark: string } | null | undefined };
 
@@ -1533,8 +1533,7 @@ export type InternalDeleteInternalUserMutationOptions = Apollo.BaseMutationOptio
 export const InternalDeleteMakerDocument = gql`
     mutation InternalDeleteMaker($id: Int!) {
   deleteMaker(id: $id) {
-    id
-    name
+    deleted
   }
 }
     `;
@@ -1567,10 +1566,10 @@ export type InternalDeleteMakerMutationOptions = Apollo.BaseMutationOptions<Inte
 export const InternalDeleteProductTagDocument = gql`
     mutation InternalDeleteProductTag($id: Int!) {
   deleteProductTag(id: $id) {
-    ...ProductTagFields
+    deleted
   }
 }
-    ${ProductTagFieldsFragmentDoc}`;
+    `;
 export type InternalDeleteProductTagMutationFn = Apollo.MutationFunction<InternalDeleteProductTagMutation, InternalDeleteProductTagMutationVariables>;
 
 /**
@@ -1633,10 +1632,10 @@ export type InternalDeleteProductTaggingMutationOptions = Apollo.BaseMutationOpt
 export const InternalDeleteStockDocument = gql`
     mutation InternalDeleteStock($id: Int!) {
   deleteStock(id: $id) {
-    ...StockFields
+    deleted
   }
 }
-    ${StockFieldsFragmentDoc}`;
+    `;
 export type InternalDeleteStockMutationFn = Apollo.MutationFunction<InternalDeleteStockMutation, InternalDeleteStockMutationVariables>;
 
 /**
