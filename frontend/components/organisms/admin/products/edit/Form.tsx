@@ -13,6 +13,7 @@ import {
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import { Card } from '@/components/atoms/Card';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
+import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import {
   useInternalUpdateProductMutation,
   useInternalGetMakersQuery,
@@ -84,7 +85,7 @@ const Form: React.VFC<Props> = ({ productId }) => {
       {data ? (
         <FlashMessage message="更新に成功しました" status="success" />
       ) : error ? (
-        <FlashMessage message={error.message} status="error" />
+        <ErrorMessage error={error} />
       ) : null}
       <Card>
         <form onSubmit={handleSubmit(onSubmit)}>
