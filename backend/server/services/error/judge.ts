@@ -50,6 +50,17 @@ const mapTarget = (target: string) => {
     } else if (target.includes('url')) {
       return { key: 'url', jaKey: MODELS.PRODUCT.URL };
     }
+  } else if (target.includes('internal_users')) {
+    if (target.includes('name')) {
+      return { key: 'name', jaKey: MODELS.INTERNAL_USER.NAME };
+    } else if (target.includes('email')) {
+      return { key: 'email', jaKey: MODELS.INTERNAL_USER.EMAIL };
+    } else if (target.includes('password_digest')) {
+      return {
+        key: 'password_digest',
+        jaKey: MODELS.INTERNAL_USER.PASSWORD_DIGEST,
+      };
+    }
   }
 
   return { key: target, jaKey: '不明なキー' };

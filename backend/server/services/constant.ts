@@ -5,4 +5,10 @@ export const MODELS = {
     REMARK: '備考',
     URL: 'URL',
   },
+  INTERNAL_USER: {
+    TABLE_NAME: 'ユーザ',
+    NAME: 'ユーザ名',
+    EMAIL: 'メールアドレス',
+    PASSWORD_DIGEST: 'パスワード',
+  },
 } as const;
