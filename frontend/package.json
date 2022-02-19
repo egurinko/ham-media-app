@@ -38,7 +38,7 @@
     "@graphql-codegen/typescript-react-apollo": "^3.2.2",
     "@serverless/core": "^1.1.2",
     "@serverless/template": "^1.1.4",
-    "@sls-next/serverless-component": "^3.6.0",
+    "@sls-next/serverless-component": "^3.7.0-alpha.7",
     "@types/apollo-upload-client": "^14.1.0",
     "@types/js-cookie": "^3.0.1",
     "@types/react": "17.0.38",

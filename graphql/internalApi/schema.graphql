@@ -24,6 +24,7 @@ input CreateStockRequestrequestProductsInputType {
 input CreateStocksStocksInputType {
   amount: Int!
   expiredAt: DateTime!
+  internalUserId: BigInt!
 }
 
 """
@@ -192,7 +193,7 @@ type Mutation {
   createProductTagGroup(name: String!): ProductTagGroup!
   createProductTaggings(productId: Int!, productTagIds: [Int!]!): Product!
   createProductTags(productTagGroupId: Int!, productTags: [CreateProductTagsProductTagInputType!]!): BatchPayload!
-  createStockRequest(internalUserId: Int!, requestProducts: [CreateStockRequestrequestProductsInputType!]!): StockRequest!
+  createStockRequest(requestProducts: [CreateStockRequestrequestProductsInputType!]!): StockRequest!
   createStocks(productId: Int!, stocks: [CreateStocksStocksInputType!]!): [Stock!]!
   deleteInternalUser(id: BigInt!): Delete!
   deleteMaker(id: Int!): Maker!
@@ -206,6 +207,7 @@ type Mutation {
   updateProduct(file: Upload, id: Int!, makerId: Int!, name: String!, remark: String!): Product!
   updateProductTag(id: Int!, name: String!): ProductTag!
   updateProductTagGroup(id: Int!, name: String!): ProductTagGroup!
+  updateStockInternalUser(id: Int!, internalUserId: BigInt!): Stock!
 }
 
 """
@@ -338,7 +340,7 @@ type Query {
   ): ProductConnection
   productTagGroup(id: Int!): ProductTagGroup!
   productTagGroups: [ProductTagGroup!]!
-  products: [Product!]!
+  products(ids: [Int!]): [Product!]!
   roles: [Role!]!
   session: Session!
   stockRequestConnection(
@@ -379,6 +381,7 @@ type Session {
 type Stock {
   expired_at: DateTime!
   id: Int!
+  internalUser: InternalUser!
   product: Product!
   stockAllocation: StockAllocation
 }

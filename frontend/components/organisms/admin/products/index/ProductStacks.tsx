@@ -22,9 +22,10 @@ import {
   useInternalGetProductTagGroupsQuery,
   useInternalGetInternalUsersQuery,
 } from '@/api/internal_api/types';
-import type { Product } from '@/api/internal_api/types';
+import type { ProductFieldsFragment } from '@/api/internal_api/types';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
-import { ProductSummary } from './productStacks/ProductSummary';
+import { SummaryLink } from '@/components/molecules/SummaryLink';
+import { ProductSummary } from '../ProductSummary';
 import { useIntersectionObserver } from '@/utils/hooks/useIntersectionObserver';
 
 const PRODUCT_STOCK = {
@@ -66,7 +67,7 @@ const ProductStacks: React.VFC<NoProps> = () => {
     });
   const nodes = data?.productConnection?.edges
     ?.map((edge) => edge?.node)
-    .filter((node): node is Product => !!node);
+    .filter((node): node is ProductFieldsFragment => !!node);
   const pageInfo = data?.productConnection?.pageInfo;
 
   useEffect(() => {
@@ -216,7 +217,9 @@ const ProductStacks: React.VFC<NoProps> = () => {
           <Divider />
           {nodes?.map((product) => (
             <Fragment key={product.id}>
-              <ProductSummary product={product} />
+              <SummaryLink url={`/admin/products/${product.id}`}>
+                <ProductSummary product={product} />
+              </SummaryLink>
               <Divider />
             </Fragment>
           ))}

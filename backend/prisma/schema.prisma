@@ -195,6 +195,8 @@ model InternalUser {
   role             Role              @relation(fields: [role_id], references: [id])
   stockAllocations StockAllocation[]
   stockRequests    StockRequest[]
+  stocks           Stock[]
+
   created_at       DateTime          @default(now()) @db.DateTime(0)
   updated_at       DateTime          @default(now()) @updatedAt
 
@@ -240,6 +242,8 @@ model Stock {
   id                            Int                            @id @default(autoincrement())
   product_id                    Int
   product                       Product                        @relation(fields: [product_id], references: [id])
+  internal_user_id              BigInt
+  internalUser                  InternalUser                   @relation(fields: [internal_user_id], references: [id])
   stockAllocation               StockAllocation?
   stockRequestStockRegistration StockRequestStockRegistration?
   expired_at                    DateTime                       @db.DateTime(0)
