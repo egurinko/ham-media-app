@@ -1,4 +1,6 @@
 import { arg, stringArg, intArg, nonNull, mutationField } from 'nexus';
+import Mercurius from 'mercurius';
+import { judgeError } from '@/services/error/judge';
 import { internalUserType } from '../types/internalUserType';
 import { hash } from 'bcrypt';
 
@@ -14,17 +16,26 @@ export const updateInternalUserField = mutationField((t) => {
     },
     resolve: async (_, args, ctx) => {
       const hashedPassword = await hash(args.password, 8);
-      return ctx.prisma.internalUser.update({
-        data: {
-          name: args.name,
-          email: args.email,
-          password_digest: hashedPassword,
-          role_id: args.roleId,
-        },
-        where: {
-          id: args.id,
-        },
-      });
+      try {
+        return await ctx.prisma.internalUser.update({
+          data: {
+            name: args.name,
+            email: args.email,
+            password_digest: hashedPassword,
+            role_id: args.roleId,
+          },
+          where: {
+            id: args.id,
+          },
+        });
+      } catch (e) {
+        const { key, message, statusCode } = judgeError(e);
+        throw new Mercurius.ErrorWithProps(message, {
+          key,
+          message,
+          statusCode,
+        });
+      }
     },
   });
 });
