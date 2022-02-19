@@ -15,6 +15,11 @@ const STATUS_CODES = {
 
 export const judgeError = (e: unknown): Result => {
   if (e instanceof Prisma.PrismaClientKnownRequestError) {
+    // console.log('CODE: ', e.code);
+    // console.log('MESSAGE: ', e.message);
+    // console.log('META: ', e.meta);
+    // console.log('NAME: ', e.name);
+    // console.log('STACK: ', e.stack);
     if (e.code === 'P2002') {
       // unique 制約エラー
       if (hasSingleTarget(e.meta)) {
@@ -27,6 +32,14 @@ export const judgeError = (e: unknown): Result => {
       }
     } else if (e.code === 'P2003') {
       // 外部キーエラー
+      if (hasFieldName(e.meta)) {
+        const { key, jaKey } = mapFieldName(e.meta.field_name);
+        return {
+          key,
+          message: errorMessage.foreignKey(jaKey),
+          statusCode: STATUS_CODES.BAD_REQUEST,
+        };
+      }
     }
   }
 
@@ -64,4 +77,19 @@ const mapTarget = (target: string) => {
   }
 
   return { key: target, jaKey: '不明なキー' };
+};
+
+const hasFieldName = (
+  meta: Prisma.PrismaClientKnownRequestError['meta']
+): meta is { field_name: string } =>
+  !!meta &&
+  !!(meta as any).field_name &&
+  typeof (meta as any).field_name === 'string';
+
+const mapFieldName = (fieldName: string) => {
+  if (fieldName.includes('internal_user_id')) {
+    return { key: 'internal_user_id', jaKey: MODELS.INTERNAL_USER.TABLE_NAME };
+  }
+
+  return { key: fieldName, jaKey: '不明なキー' };
 };
