@@ -133,7 +133,7 @@ const New: React.VFC<NoProps> = () => {
                     onBlur={field.onBlur}
                     onChange={field.onChange}
                     checked={field.value}
-                    defaultChecked={true}
+                    defaultChecked={false}
                     colorScheme="green"
                   />
                 )}
