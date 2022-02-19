@@ -5,6 +5,7 @@ import { DeleteIcon } from '@chakra-ui/icons';
 import { Card } from '@/components/atoms/Card';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
 import { ProductSummary } from '@/components/organisms/admin/products/ProductSummary';
+import { Empty } from './Empty';
 import {
   useLocalGetProductCartItemsQuery,
   useInternalGetProductsQuery,
@@ -92,7 +93,7 @@ const Form: React.VFC<NoProps> = () => {
       {error ? <FlashMessage message={error.message} status="error" /> : null}
       {requestProducts ? (
         requestProducts.length === 0 ? (
-          '存在してません'
+          <Empty />
         ) : (
           <form
             onSubmit={(e) => {
