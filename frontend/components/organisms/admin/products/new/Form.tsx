@@ -13,6 +13,7 @@ import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import { CUIAutoComplete } from 'chakra-ui-autocomplete';
 import { Card } from '@/components/atoms/Card';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
+import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import {
   useInternalGetMakersQuery,
   useInternalCreateProductMutation,
@@ -108,7 +109,7 @@ const Form: React.VFC<NoProps> = () => {
       {data ? (
         <FlashMessage message="登録に成功しました。" status="success" />
       ) : error ? (
-        <FlashMessage message={error.message} status="error" />
+        <ErrorMessage error={error} />
       ) : null}
       <Card>
         <form onSubmit={handleSubmit(onSubmit)}>

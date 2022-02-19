@@ -31,6 +31,10 @@ const internalApi: FastifyPluginCallback = async (app, _options) => {
     schema,
     graphiql: true,
     context,
+    errorFormatter: (r) => ({
+      statusCode: 200,
+      response: r,
+    }),
   });
 };
 
