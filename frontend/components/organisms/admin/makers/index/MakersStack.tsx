@@ -20,6 +20,7 @@ import {
 } from '@/api/internal_api/types';
 import type { InternalGetMakersQuery } from '@/api/internal_api/types';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
+import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { Spinner } from '@/components/atoms/Spinner';
 import { MakerSummary } from './makersStack/MakerSummary';
 
@@ -58,7 +59,9 @@ const MakersStack: React.VFC<NoProps> = () => {
 
   const handleDelete = useCallback(() => {
     if (selectedMaker) {
-      remove({ variables: { id: selectedMaker.id } });
+      try {
+        remove({ variables: { id: selectedMaker.id } });
+      } catch {}
       onClose();
     }
   }, [remove, selectedMaker, onClose]);
@@ -74,7 +77,7 @@ const MakersStack: React.VFC<NoProps> = () => {
         {mutationData ? (
           <FlashMessage message="削除に成功しました" status="success" />
         ) : mutationError ? (
-          <FlashMessage message={mutationError.message} status="error" />
+          <ErrorMessage error={mutationError} />
         ) : null}
         <Divider />
         {data?.makers.map((maker) => (

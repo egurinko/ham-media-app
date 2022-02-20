@@ -74,6 +74,10 @@ const mapTarget = (target: string) => {
         jaKey: MODELS.INTERNAL_USER.PASSWORD_DIGEST,
       };
     }
+  } else if (target.includes('makers')) {
+    if (target.includes('name')) {
+      return { key: 'name', jaKey: MODELS.MAKER.NAME };
+    }
   }
 
   return { key: target, jaKey: '不明なキー' };
@@ -89,6 +93,8 @@ const hasFieldName = (
 const mapFieldName = (fieldName: string) => {
   if (fieldName.includes('internal_user_id')) {
     return { key: 'internal_user_id', jaKey: MODELS.INTERNAL_USER.TABLE_NAME };
+  } else if (fieldName.includes('maker_id')) {
+    return { key: 'maker_id', jaKey: MODELS.MAKER.TABLE_NAME };
   }
 
   return { key: fieldName, jaKey: '不明なキー' };

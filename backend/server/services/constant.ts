@@ -11,4 +11,8 @@ export const MODELS = {
     EMAIL: 'メールアドレス',
     PASSWORD_DIGEST: 'パスワード',
   },
+  MAKER: {
+    TABLE_NAME: 'メーカー',
+    NAME: 'メーカー名',
+  },
 } as const;
