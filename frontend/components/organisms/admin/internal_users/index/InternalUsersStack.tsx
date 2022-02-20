@@ -20,6 +20,7 @@ import {
 } from '@/api/internal_api/types';
 import type { InternalGetInternalUsersQuery } from '@/api/internal_api/types';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
+import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { Spinner } from '@/components/atoms/Spinner';
 import { InternalUserSummary } from './internalUsersStack/InternalUserSummary';
 import { scrollTo } from '@/utils/scroll';
@@ -49,10 +50,12 @@ const InternalUsersStack: React.VFC<NoProps> = () => {
   );
 
   const handleDelete = useCallback(async () => {
-    await remove({ variables: { id: selectedInternalUser!.id } });
+    try {
+      await remove({ variables: { id: selectedInternalUser!.id } });
+      await fetchMore({});
+    } catch {}
     onClose();
     scrollTo();
-    await fetchMore({});
   }, [remove, selectedInternalUser, onClose, fetchMore]);
 
   if (error) return <Text>エラーです</Text>;
@@ -66,7 +69,7 @@ const InternalUsersStack: React.VFC<NoProps> = () => {
         {mutationData ? (
           <FlashMessage message="削除に成功しました" status="success" />
         ) : mutationError ? (
-          <FlashMessage message={mutationError.message} status="error" />
+          <ErrorMessage error={mutationError} />
         ) : null}
         <Divider />
         {data?.internalUsers.map((internalUser) => (

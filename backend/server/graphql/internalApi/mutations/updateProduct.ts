@@ -1,4 +1,6 @@
 import { stringArg, intArg, nonNull, mutationField, arg } from 'nexus';
+import Mercurius from 'mercurius';
+import { judgeError } from '@/services/error/judge';
 import { productType } from '../types';
 import { uploadFile } from '@/services/fileUploader';
 
@@ -20,17 +22,26 @@ export const updateProductField = mutationField((t) => {
         url = await uploadFile(file.filename, stream);
       }
 
-      return ctx.prisma.product.update({
-        data: {
-          name: args.name,
-          remark: args.remark,
-          maker_id: args.makerId,
-          url,
-        },
-        where: {
-          id: args.id,
-        },
-      });
+      try {
+        return await ctx.prisma.product.update({
+          data: {
+            name: args.name,
+            remark: args.remark,
+            maker_id: args.makerId,
+            url,
+          },
+          where: {
+            id: args.id,
+          },
+        });
+      } catch (e) {
+        const { key, message, statusCode } = judgeError(e);
+        throw new Mercurius.ErrorWithProps(message, {
+          key,
+          message,
+          statusCode,
+        });
+      }
     },
   });
 });
