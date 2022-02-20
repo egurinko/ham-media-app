@@ -15,4 +15,8 @@ export const MODELS = {
     TABLE_NAME: 'メーカー',
     NAME: 'メーカー名',
   },
+  PRODUCT_TAG_GROUPS: {
+    TABLE_NAME: 'タググループ',
+    NAME: 'タググループ名',
+  },
 } as const;

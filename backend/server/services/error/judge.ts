@@ -78,6 +78,10 @@ const mapTarget = (target: string) => {
     if (target.includes('name')) {
       return { key: 'name', jaKey: MODELS.MAKER.NAME };
     }
+  } else if (target.includes('product_tag_groups')) {
+    if (target.includes('name')) {
+      return { key: 'name', jaKey: MODELS.PRODUCT_TAG_GROUPS.NAME };
+    }
   }
 
   return { key: target, jaKey: '不明なキー' };
