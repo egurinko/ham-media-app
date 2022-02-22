@@ -24,8 +24,5 @@ export const STOCK_REQUEST_FIELDS = gql`
         }
       }
     }
-    approval {
-      id
-    }
   }
 `;

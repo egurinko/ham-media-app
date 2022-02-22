@@ -594,16 +594,9 @@ export type StockAllocation = {
 /** A stock request */
 export type StockRequest = {
   __typename?: 'StockRequest';
-  approval?: Maybe<StockRequestApproval>;
   id: Scalars['Int'];
   internalUser: InternalUser;
   stockRegistrations: Array<StockRequestStockRegistration>;
-};
-
-/** A stock request approval */
-export type StockRequestApproval = {
-  __typename?: 'StockRequestApproval';
-  id: Scalars['Int'];
 };
 
 export type StockRequestConnection = {
@@ -703,7 +696,7 @@ export type InternalCreateStockRequestMutationVariables = Exact<{
 }>;
 
 
-export type InternalCreateStockRequestMutation = { __typename?: 'Mutation', createStockRequest: { __typename?: 'StockRequest', id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }, stockRegistrations: Array<{ __typename?: 'StockRequestStockRegistration', id: number, stock: { __typename?: 'Stock', id: number, expired_at: any, product: { __typename?: 'Product', id: number, name: string, url: string, maker: { __typename?: 'Maker', id: number, name: string } } } }>, approval?: { __typename?: 'StockRequestApproval', id: number } | null | undefined } };
+export type InternalCreateStockRequestMutation = { __typename?: 'Mutation', createStockRequest: { __typename?: 'StockRequest', id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }, stockRegistrations: Array<{ __typename?: 'StockRequestStockRegistration', id: number, stock: { __typename?: 'Stock', id: number, expired_at: any, product: { __typename?: 'Product', id: number, name: string, url: string, maker: { __typename?: 'Maker', id: number, name: string } } } }> } };
 
 export type InternalCreateStocksMutationVariables = Exact<{
   productId: Scalars['Int'];
@@ -766,7 +759,7 @@ export type ProductTagGroupFieldsFragment = { __typename?: 'ProductTagGroup', id
 
 export type RoleFieldsFragment = { __typename?: 'Role', id: number, name: string };
 
-export type StockRequestFieldsFragment = { __typename?: 'StockRequest', id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }, stockRegistrations: Array<{ __typename?: 'StockRequestStockRegistration', id: number, stock: { __typename?: 'Stock', id: number, expired_at: any, product: { __typename?: 'Product', id: number, name: string, url: string, maker: { __typename?: 'Maker', id: number, name: string } } } }>, approval?: { __typename?: 'StockRequestApproval', id: number } | null | undefined };
+export type StockRequestFieldsFragment = { __typename?: 'StockRequest', id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }, stockRegistrations: Array<{ __typename?: 'StockRequestStockRegistration', id: number, stock: { __typename?: 'Stock', id: number, expired_at: any, product: { __typename?: 'Product', id: number, name: string, url: string, maker: { __typename?: 'Maker', id: number, name: string } } } }> };
 
 export type InternalGetHospitalQueryVariables = Exact<{
   id: Scalars['BigInt'];
@@ -886,7 +879,7 @@ export type InternalGetStockRequestConnectionQueryVariables = Exact<{
 }>;
 
 
-export type InternalGetStockRequestConnectionQuery = { __typename?: 'Query', stockRequestConnection?: { __typename?: 'StockRequestConnection', edges?: Array<{ __typename?: 'StockRequestEdge', node?: { __typename?: 'StockRequest', id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }, stockRegistrations: Array<{ __typename?: 'StockRequestStockRegistration', id: number, stock: { __typename?: 'Stock', id: number, expired_at: any, product: { __typename?: 'Product', id: number, name: string, url: string, maker: { __typename?: 'Maker', id: number, name: string } } } }>, approval?: { __typename?: 'StockRequestApproval', id: number } | null | undefined } | null | undefined } | null | undefined> | null | undefined, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, hasPreviousPage: boolean, startCursor?: string | null | undefined, endCursor?: string | null | undefined } } | null | undefined };
+export type InternalGetStockRequestConnectionQuery = { __typename?: 'Query', stockRequestConnection?: { __typename?: 'StockRequestConnection', edges?: Array<{ __typename?: 'StockRequestEdge', node?: { __typename?: 'StockRequest', id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }, stockRegistrations: Array<{ __typename?: 'StockRequestStockRegistration', id: number, stock: { __typename?: 'Stock', id: number, expired_at: any, product: { __typename?: 'Product', id: number, name: string, url: string, maker: { __typename?: 'Maker', id: number, name: string } } } }> } | null | undefined } | null | undefined> | null | undefined, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, hasPreviousPage: boolean, startCursor?: string | null | undefined, endCursor?: string | null | undefined } } | null | undefined };
 
 export type InternalGetStocksQueryVariables = Exact<{
   productId: Scalars['Int'];
@@ -1128,9 +1121,6 @@ export const StockRequestFieldsFragmentDoc = gql`
         }
       }
     }
-  }
-  approval {
-    id
   }
 }
     ${InternalUserFieldsFragmentDoc}`;
