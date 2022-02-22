@@ -229,6 +229,7 @@ model Product {
   maker           Maker            @relation(fields: [maker_id], references: [id])
   stocks          Stock[]
   productTaggings ProductTagging[]
+  stockRequestProductRegistrations StockRequestProductRegistration[]
   created_at      DateTime         @default(now()) @db.DateTime(0)
   updated_at      DateTime         @default(now()) @updatedAt
 
@@ -274,7 +275,7 @@ model StockRequest {
   internal_user_id   BigInt
   internalUser       InternalUser                    @relation(fields: [internal_user_id], references: [id])
   stockRegistrations StockRequestStockRegistration[]
-  approval           StockRequestApproval?
+  productRegistrations StockRequestProductRegistration[]
   created_at         DateTime                        @default(now()) @db.DateTime(0)
   updated_at         DateTime                        @default(now()) @updatedAt
 
@@ -295,16 +296,18 @@ model StockRequestStockRegistration {
   @@map(name: "stock_request_stock_registrations")
 }
 
-/// A stock request approval
-model StockRequestApproval {
+/// A stock request product registration
+model StockRequestProductRegistration {
 
   id               Int          @id @default(autoincrement())
-  stock_request_id Int          @unique
+  stock_request_id Int
   stockRequest     StockRequest @relation(fields: [stock_request_id], references: [id])
+  product_id       Int
+  product          Product      @relation(fields: [product_id], references: [id])
   created_at       DateTime     @default(now()) @db.DateTime(0)
   updated_at       DateTime     @default(now()) @updatedAt
 
-  @@map(name: "stock_request_approvals")
+  @@map(name: "stock_request_product_registrations")
 }
 
 /// A product tag

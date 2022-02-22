@@ -15,4 +15,16 @@ export const MODELS = {
     TABLE_NAME: 'メーカー',
     NAME: 'メーカー名',
   },
+  PRODUCT_TAGS: {
+    TABLE_NAME: 'タグ',
+    NAME: 'タグ名',
+  },
+  PRODUCT_TAG_GROUPS: {
+    TABLE_NAME: 'タググループ',
+    NAME: 'タググループ名',
+  },
+  STOCK: {
+    TABLE_NAME: '在庫',
+    expired_at: '有効期限',
+  },
 } as const;

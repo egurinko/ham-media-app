@@ -78,6 +78,14 @@ const mapTarget = (target: string) => {
     if (target.includes('name')) {
       return { key: 'name', jaKey: MODELS.MAKER.NAME };
     }
+  } else if (target.includes('product_tags')) {
+    if (target.includes('name')) {
+      return { key: 'name', jaKey: MODELS.PRODUCT_TAGS.NAME };
+    }
+  } else if (target.includes('product_tag_groups')) {
+    if (target.includes('name')) {
+      return { key: 'name', jaKey: MODELS.PRODUCT_TAG_GROUPS.NAME };
+    }
   }
 
   return { key: target, jaKey: '不明なキー' };
@@ -95,6 +103,10 @@ const mapFieldName = (fieldName: string) => {
     return { key: 'internal_user_id', jaKey: MODELS.INTERNAL_USER.TABLE_NAME };
   } else if (fieldName.includes('maker_id')) {
     return { key: 'maker_id', jaKey: MODELS.MAKER.TABLE_NAME };
+  } else if (fieldName.includes('product_tag_id')) {
+    return { key: 'product_tag_id', jaKey: MODELS.PRODUCT_TAGS.TABLE_NAME };
+  } else if (fieldName.includes('stock_id')) {
+    return { key: 'stock_id', jaKey: MODELS.STOCK.TABLE_NAME };
   }
 
   return { key: fieldName, jaKey: '不明なキー' };

@@ -395,15 +395,10 @@ type StockAllocation {
 
 """A stock request"""
 type StockRequest {
-  approval: StockRequestApproval
   id: Int!
   internalUser: InternalUser!
+  productRegistrations: [StockRequestProductRegistration!]!
   stockRegistrations: [StockRequestStockRegistration!]!
-}
-
-"""A stock request approval"""
-type StockRequestApproval {
-  id: Int!
 }
 
 type StockRequestConnection {
@@ -424,6 +419,12 @@ type StockRequestEdge {
 
   """https://facebook.github.io/relay/graphql/connections.htm#sec-Node"""
   node: StockRequest
+}
+
+"""A stock request product registration"""
+type StockRequestProductRegistration {
+  id: Int!
+  product: Product!
 }
 
 """A stock request stock registration"""

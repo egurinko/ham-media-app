@@ -20,6 +20,7 @@ import {
 import { DeleteIcon, SmallCloseIcon, AddIcon } from '@chakra-ui/icons';
 import { Card } from '@/components/atoms/Card';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
+import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import {
   useInternalDeleteProductTagMutation,
   useInternalGetProductTagGroupQuery,
@@ -80,9 +81,11 @@ const Tags: React.FC<Props> = ({ productTagGroupId }) => {
 
   const handleDelete = async () => {
     if (selectedProductTag) {
-      await deleteProductTag({ variables: { id: selectedProductTag.id } });
-      onClose();
-      await fetchMore({ variables: { id: productTagGroupId } });
+      try {
+        onClose();
+        await deleteProductTag({ variables: { id: selectedProductTag.id } });
+        await fetchMore({ variables: { id: productTagGroupId } });
+      } catch {}
     }
   };
 
@@ -108,11 +111,13 @@ const Tags: React.FC<Props> = ({ productTagGroupId }) => {
   };
 
   const handleAddTags = async () => {
-    await createProductTags({
-      variables: { productTagGroupId, productTags: addingTags },
-    });
-    await fetchMore({ variables: { id: productTagGroupId } });
-    setAddingTags([addingTagInitialState]);
+    try {
+      await createProductTags({
+        variables: { productTagGroupId, productTags: addingTags },
+      });
+      await fetchMore({ variables: { id: productTagGroupId } });
+      setAddingTags([addingTagInitialState]);
+    } catch {}
   };
 
   const [productTags, setProductTags] = useState<ProductTag[]>([]);
@@ -139,12 +144,14 @@ const Tags: React.FC<Props> = ({ productTagGroupId }) => {
   );
   const handleUpdateProductTag = useCallback(
     async (productTag: ProductTag) => {
-      updateProductTag({
-        variables: { id: productTag.id, name: productTag.name },
-      });
-      await fetchMore({ variables: { id: productTagGroupId } });
+      try {
+        updateProductTag({
+          variables: { id: productTag.id, name: productTag.name },
+        });
+        await fetchMore({ variables: { id: productTagGroupId } });
+      } catch {}
     },
-    [updateProductTag]
+    [updateProductTag, fetchMore, productTagGroupId]
   );
 
   return (
@@ -164,10 +171,7 @@ const Tags: React.FC<Props> = ({ productTagGroupId }) => {
               status="success"
             />
           ) : deleteProductTagError ? (
-            <FlashMessage
-              message={deleteProductTagError.message}
-              status="error"
-            />
+            <ErrorMessage error={deleteProductTagError} />
           ) : null}
           {updateProductTagData ? (
             <FlashMessage
@@ -175,10 +179,7 @@ const Tags: React.FC<Props> = ({ productTagGroupId }) => {
               status="success"
             />
           ) : updateProductTagError ? (
-            <FlashMessage
-              message={updateProductTagError.message}
-              status="error"
-            />
+            <ErrorMessage error={updateProductTagError} />
           ) : null}
           <VStack spacing="0" mt="4" alignItems="flex-start">
             {error ? (
@@ -245,10 +246,7 @@ const Tags: React.FC<Props> = ({ productTagGroupId }) => {
               status="success"
             />
           ) : createProductTagsError ? (
-            <FlashMessage
-              message={createProductTagsError.message}
-              status="error"
-            />
+            <ErrorMessage error={createProductTagsError} />
           ) : null}
           <Box>
             <Text fontSize="sm">タグ名</Text>
