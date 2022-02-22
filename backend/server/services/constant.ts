@@ -23,4 +23,8 @@ export const MODELS = {
     TABLE_NAME: 'タググループ',
     NAME: 'タググループ名',
   },
+  STOCK: {
+    TABLE_NAME: '在庫',
+    expired_at: '有効期限',
+  },
 } as const;
