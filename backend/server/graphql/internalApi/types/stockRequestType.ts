@@ -8,5 +8,6 @@ export const stockRequestType = objectType({
     t.field(StockRequest.id);
     t.field(StockRequest.internalUser);
     t.field(StockRequest.stockRegistrations);
+    t.field(StockRequest.productRegistrations);
   },
 });
