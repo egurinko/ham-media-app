@@ -1,3 +1,4 @@
+import * as discordApi from './discordApi';
 import * as googleApi from './googleApi';
 import * as wordPressApi from './wordPressApi';
 import type {
@@ -5,5 +6,5 @@ import type {
   GetOfferingHamsterResponse,
 } from './wordPressApi';
 
-export { googleApi, wordPressApi };
+export { discordApi, googleApi, wordPressApi };
 export type { GetOfferingHamstersResponse, GetOfferingHamsterResponse };
