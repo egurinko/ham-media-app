@@ -398,7 +398,6 @@ type StockRequest {
   id: Int!
   internalUser: InternalUser!
   productRegistrations: [StockRequestProductRegistration!]!
-  stockRegistrations: [StockRequestStockRegistration!]!
 }
 
 type StockRequestConnection {
@@ -425,12 +424,6 @@ type StockRequestEdge {
 type StockRequestProductRegistration {
   id: Int!
   product: Product!
-}
-
-"""A stock request stock registration"""
-type StockRequestStockRegistration {
-  id: Int!
-  stock: Stock!
 }
 
 """The `Upload` scalar type represents a file upload."""

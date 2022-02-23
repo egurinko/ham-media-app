@@ -246,7 +246,6 @@ model Stock {
   internal_user_id              BigInt
   internalUser                  InternalUser                   @relation(fields: [internal_user_id], references: [id])
   stockAllocation               StockAllocation?
-  stockRequestStockRegistration StockRequestStockRegistration?
   expired_at                    DateTime                       @db.DateTime(0)
   created_at                    DateTime                       @default(now()) @db.DateTime(0)
   updated_at                    DateTime                       @default(now()) @updatedAt
@@ -274,26 +273,11 @@ model StockRequest {
   id                 Int                             @id @default(autoincrement())
   internal_user_id   BigInt
   internalUser       InternalUser                    @relation(fields: [internal_user_id], references: [id])
-  stockRegistrations StockRequestStockRegistration[]
   productRegistrations StockRequestProductRegistration[]
   created_at         DateTime                        @default(now()) @db.DateTime(0)
   updated_at         DateTime                        @default(now()) @updatedAt
 
   @@map(name: "stock_requests")
-}
-
-/// A stock request stock registration
-model StockRequestStockRegistration {
-
-  id               Int          @id @default(autoincrement())
-  stock_request_id Int
-  stockRequest     StockRequest @relation(fields: [stock_request_id], references: [id])
-  stock_id         Int          @unique
-  stock            Stock        @relation(fields: [stock_id], references: [id])
-  created_at       DateTime     @default(now()) @db.DateTime(0)
-  updated_at       DateTime     @default(now()) @updatedAt
-
-  @@map(name: "stock_request_stock_registrations")
 }
 
 /// A stock request product registration
