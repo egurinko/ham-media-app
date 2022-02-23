@@ -11,13 +11,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model ar_internal_metadata {
-  key        String   @id @db.VarChar(255)
-  value      String?  @db.VarChar(255)
-  created_at DateTime @db.DateTime(0)
-  updated_at DateTime @default(now()) @updatedAt
-}
-
 /// A hospital address geo location
 model HospitalAddressGeoLocation {
 
