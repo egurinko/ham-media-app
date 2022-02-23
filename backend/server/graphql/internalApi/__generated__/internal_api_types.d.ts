@@ -59,7 +59,7 @@ export interface NexusGenInputs {
   CreateProductTagsProductTagInputType: { // input type
     name: string; // String!
   }
-  CreateStockRequestrequestProductsInputType: { // input type
+  CreateStockRequestRequestProductsInputType: { // input type
     count: number; // Int!
     productId: number; // Int!
   }
@@ -741,7 +741,7 @@ export interface NexusGenArgTypes {
       productTags: NexusGenInputs['CreateProductTagsProductTagInputType'][]; // [CreateProductTagsProductTagInputType!]!
     }
     createStockRequest: { // args
-      requestProducts: NexusGenInputs['CreateStockRequestrequestProductsInputType'][]; // [CreateStockRequestrequestProductsInputType!]!
+      requestProducts: NexusGenInputs['CreateStockRequestRequestProductsInputType'][]; // [CreateStockRequestRequestProductsInputType!]!
     }
     createStocks: { // args
       productId: number; // Int!
