@@ -17,14 +17,33 @@ const ProductCartItem: React.VFC<Props> = ({ productId }) => {
     variables: { id: productId },
   });
   const [count, setCount] = useState(1);
+  const [message, setMessage] = useState('');
 
   const handleAddProductCartItem = useCallback(() => {
-    productCartItemsVar([...productCartItemsVar(), { count, productId }]);
+    const productCartItems = productCartItemsVar();
+    const hasProduct = productCartItems.some(
+      (item) => item.productId === productId
+    );
+    if (hasProduct) {
+      const newProductCartItems = productCartItems.map((item) => {
+        if (item.productId === productId) {
+          return { count: item.count + count, productId: item.productId };
+        }
+        return item;
+      });
+      productCartItemsVar(newProductCartItems);
+    } else {
+      productCartItemsVar([...productCartItemsVar(), { count, productId }]);
+    }
+    setMessage('カートに追加しました');
   }, [productId, count]);
 
   return (
     <Card>
       {error ? <FlashMessage message={error.message} status="error" /> : null}
+      {message !== '' ? (
+        <FlashMessage message={message} status="success" />
+      ) : null}
       {data?.product ? (
         <>
           <ProductSummary product={data.product}></ProductSummary>
