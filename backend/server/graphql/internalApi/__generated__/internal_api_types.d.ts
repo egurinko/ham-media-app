@@ -259,9 +259,6 @@ export interface NexusGenObjects {
   StockRequestProductRegistration: { // root type
     id: number; // Int!
   }
-  StockRequestStockRegistration: { // root type
-    id: number; // Int!
-  }
 }
 
 export interface NexusGenInterfaces {
@@ -473,7 +470,6 @@ export interface NexusGenFieldTypes {
     id: number; // Int!
     internalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     productRegistrations: NexusGenRootTypes['StockRequestProductRegistration'][]; // [StockRequestProductRegistration!]!
-    stockRegistrations: NexusGenRootTypes['StockRequestStockRegistration'][]; // [StockRequestStockRegistration!]!
   }
   StockRequestConnection: { // field return type
     edges: Array<NexusGenRootTypes['StockRequestEdge'] | null> | null; // [StockRequestEdge]
@@ -486,10 +482,6 @@ export interface NexusGenFieldTypes {
   StockRequestProductRegistration: { // field return type
     id: number; // Int!
     product: NexusGenRootTypes['Product']; // Product!
-  }
-  StockRequestStockRegistration: { // field return type
-    id: number; // Int!
-    stock: NexusGenRootTypes['Stock']; // Stock!
   }
 }
 
@@ -692,7 +684,6 @@ export interface NexusGenFieldTypeNames {
     id: 'Int'
     internalUser: 'InternalUser'
     productRegistrations: 'StockRequestProductRegistration'
-    stockRegistrations: 'StockRequestStockRegistration'
   }
   StockRequestConnection: { // field return type name
     edges: 'StockRequestEdge'
@@ -705,10 +696,6 @@ export interface NexusGenFieldTypeNames {
   StockRequestProductRegistration: { // field return type name
     id: 'Int'
     product: 'Product'
-  }
-  StockRequestStockRegistration: { // field return type name
-    id: 'Int'
-    stock: 'Stock'
   }
 }
 
