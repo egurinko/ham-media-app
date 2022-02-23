@@ -17,6 +17,7 @@ const ProductCartItem: React.VFC<Props> = ({ productId }) => {
     variables: { id: productId },
   });
   const [count, setCount] = useState(1);
+  const [message, setMessage] = useState('');
 
   const handleAddProductCartItem = useCallback(() => {
     const productCartItems = productCartItemsVar();
@@ -34,11 +35,15 @@ const ProductCartItem: React.VFC<Props> = ({ productId }) => {
     } else {
       productCartItemsVar([...productCartItemsVar(), { count, productId }]);
     }
+    setMessage('カートに追加しました');
   }, [productId, count]);
 
   return (
     <Card>
       {error ? <FlashMessage message={error.message} status="error" /> : null}
+      {message !== '' ? (
+        <FlashMessage message={message} status="success" />
+      ) : null}
       {data?.product ? (
         <>
           <ProductSummary product={data.product}></ProductSummary>
