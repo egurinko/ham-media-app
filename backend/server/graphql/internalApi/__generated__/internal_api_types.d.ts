@@ -439,6 +439,7 @@ export interface NexusGenFieldTypes {
     products: NexusGenRootTypes['Product'][]; // [Product!]!
     roles: NexusGenRootTypes['Role'][]; // [Role!]!
     session: NexusGenRootTypes['Session']; // Session!
+    stockRequest: NexusGenRootTypes['StockRequest']; // StockRequest!
     stockRequestConnection: NexusGenRootTypes['StockRequestConnection'] | null; // StockRequestConnection
     stocks: NexusGenRootTypes['Stock'][]; // [Stock!]!
   }
@@ -653,6 +654,7 @@ export interface NexusGenFieldTypeNames {
     products: 'Product'
     roles: 'Role'
     session: 'Session'
+    stockRequest: 'StockRequest'
     stockRequestConnection: 'StockRequestConnection'
     stocks: 'Stock'
   }
@@ -846,6 +848,9 @@ export interface NexusGenArgTypes {
     }
     products: { // args
       ids?: number[] | null; // [Int!]
+    }
+    stockRequest: { // args
+      id: number; // Int!
     }
     stockRequestConnection: { // args
       after?: string | null; // String

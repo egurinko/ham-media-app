@@ -343,6 +343,7 @@ type Query {
   products(ids: [Int!]): [Product!]!
   roles: [Role!]!
   session: Session!
+  stockRequest(id: Int!): StockRequest!
   stockRequestConnection(
     """Returns the elements in the list that come after the specified cursor"""
     after: String
