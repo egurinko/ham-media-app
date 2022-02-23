@@ -30,7 +30,7 @@ const postStockExpiringAlert = (variables: PostStockAlertVariables): void => {
     .join();
 
   postStockAlert(
-    `===== 以下の在庫が一週間で期限切れちゃうよ <:doyouebest:844132000788643860> ===== ${lines}\r`
+    `===== 今週はこの在庫の期限が切れちゃうよ <:doyouebest:844132000788643860> ===== ${lines}\r`
   );
 };
 
