@@ -13,11 +13,7 @@ const StockRequestSummary: React.VFC<Props> = ({ stockRequest }) => {
     <SummaryLink url={ADMIN_STOCK_REQUESTS_EDIT_PATH(stockRequest.id)}>
       <Box display="flex" alignItems="center" p="2">
         <Box p="2">
-          {stockRequest.approval ? (
-            <Badge colorScheme="green">準備中</Badge>
-          ) : (
-            <Badge>承認待ち</Badge>
-          )}
+          <Badge>承認待ち</Badge>
         </Box>
         <Box p="2">
           <Text fontSize="xs" fontWeight="bold">
@@ -25,16 +21,16 @@ const StockRequestSummary: React.VFC<Props> = ({ stockRequest }) => {
           </Text>
         </Box>
         <Box>
-          {stockRequest.stockRegistrations.map((stockRegistration) => (
+          {stockRequest.productRegistrations.map((productRegistration) => (
             <Box
               m="1"
-              key={stockRegistration.id}
+              key={productRegistration.id}
               display="flex"
               alignItems="center"
             >
               <img
-                src={stockRegistration.stock.product.url}
-                alt={stockRegistration.stock.product.name}
+                src={productRegistration.product.url}
+                alt={productRegistration.product.name}
                 width="25"
                 height="25"
                 style={{
@@ -43,7 +39,7 @@ const StockRequestSummary: React.VFC<Props> = ({ stockRequest }) => {
                   height: '25px',
                 }}
               />
-              <Text size="xs">{stockRegistration.stock.product.name}</Text>
+              <Text size="xs">{productRegistration.product.name}</Text>
             </Box>
           ))}
         </Box>

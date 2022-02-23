@@ -10,22 +10,6 @@ export const STOCK_REQUEST_FIELDS = gql`
     internalUser {
       ...InternalUserFields
     }
-    stockRegistrations {
-      id
-      stock {
-        id
-        expired_at
-        product {
-          id
-          name
-          url
-          maker {
-            id
-            name
-          }
-        }
-      }
-    }
     productRegistrations {
       id
       product {
