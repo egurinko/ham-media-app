@@ -40,7 +40,7 @@ const postStockAlert = (content: string): void => {
   instance.post(DISCORD_STOCK_WEBHOOK_URL, {
     username: '在庫管理大臣',
     avatar_url:
-      'https://user-images.githubusercontent.com/23233648/155275175-7c3d9f01-8030-4ab4-b6d3-29bde6545a2b.jpeg',
+      'https://user-images.githubusercontent.com/23233648/155543196-5043b4d5-58c9-4552-8a33-43784596c06b.png',
     content,
   });
 };
