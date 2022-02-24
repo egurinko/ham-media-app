@@ -1,5 +1,11 @@
 import axios from 'axios';
-import type { Product, Stock } from '@prisma/client';
+import type {
+  Product,
+  Stock,
+  StockRequest,
+  StockRequestProductRegistration,
+  InternalUser,
+} from '@prisma/client';
 
 const DISCORD_STOCK_WEBHOOK_URL = process.env['DISCORD_STOCK_WEBHOOK_URL'];
 
@@ -34,15 +40,35 @@ const postStockExpiringAlert = (variables: PostStockAlertVariables): void => {
   );
 };
 
+const postStockRequestAlert = (
+  stockRequest: StockRequest & {
+    productRegistrations: (StockRequestProductRegistration & {
+      product: Product;
+    })[];
+  },
+  internalUser: InternalUser
+): void => {
+  if (!DISCORD_STOCK_WEBHOOK_URL) return;
+  const lines = stockRequest.productRegistrations
+    .map((productRegistration) => `\r・${productRegistration.product.name}`)
+    .join();
+  const content = `${internalUser.name}さんが在庫リクエストをしたよ <:yeah:913316943921033247> https://ham-media-app.net/admin/stock_requests/${stockRequest.id}/edit ${lines}`;
+  postStockAlert(content);
+};
+
 const postStockAlert = (content: string): void => {
   if (!DISCORD_STOCK_WEBHOOK_URL) return;
 
   instance.post(DISCORD_STOCK_WEBHOOK_URL, {
     username: '在庫管理大臣',
     avatar_url:
-      'https://user-images.githubusercontent.com/23233648/155275175-7c3d9f01-8030-4ab4-b6d3-29bde6545a2b.jpeg',
+      'https://user-images.githubusercontent.com/23233648/155543196-5043b4d5-58c9-4552-8a33-43784596c06b.png',
     content,
   });
 };
 
-export { postStockExpirationAlert, postStockExpiringAlert };
+export {
+  postStockExpirationAlert,
+  postStockExpiringAlert,
+  postStockRequestAlert,
+};
