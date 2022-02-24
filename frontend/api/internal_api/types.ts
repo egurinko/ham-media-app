@@ -33,7 +33,7 @@ export type CreateProductTagsProductTagInputType = {
   name: Scalars['String'];
 };
 
-export type CreateStockRequestrequestProductsInputType = {
+export type CreateStockRequestRequestProductsInputType = {
   count: Scalars['Int'];
   productId: Scalars['Int'];
 };
@@ -229,6 +229,7 @@ export type Mutation = {
   updateProductTag: ProductTag;
   updateProductTagGroup: ProductTagGroup;
   updateStockInternalUser: Stock;
+  updateStockRequest: StockRequest;
 };
 
 
@@ -286,7 +287,7 @@ export type MutationCreateProductTagsArgs = {
 
 
 export type MutationCreateStockRequestArgs = {
-  requestProducts: Array<CreateStockRequestrequestProductsInputType>;
+  requestProducts: Array<CreateStockRequestRequestProductsInputType>;
 };
 
 
@@ -381,6 +382,12 @@ export type MutationUpdateProductTagGroupArgs = {
 export type MutationUpdateStockInternalUserArgs = {
   id: Scalars['Int'];
   internalUserId: Scalars['BigInt'];
+};
+
+
+export type MutationUpdateStockRequestArgs = {
+  id: Scalars['Int'];
+  requestProducts: Array<CreateStockRequestRequestProductsInputType>;
 };
 
 /** PageInfo cursor, as defined in https://facebook.github.io/relay/graphql/connections.htm#sec-undefined.PageInfo */
@@ -698,7 +705,7 @@ export type InternalCreateProductTagsMutationVariables = Exact<{
 export type InternalCreateProductTagsMutation = { __typename?: 'Mutation', createProductTags: { __typename?: 'BatchPayload', count: number } };
 
 export type InternalCreateStockRequestMutationVariables = Exact<{
-  requestProducts: Array<CreateStockRequestrequestProductsInputType> | CreateStockRequestrequestProductsInputType;
+  requestProducts: Array<CreateStockRequestRequestProductsInputType> | CreateStockRequestRequestProductsInputType;
 }>;
 
 
@@ -979,6 +986,14 @@ export type InternalUpdateStockInternalUserMutationVariables = Exact<{
 
 
 export type InternalUpdateStockInternalUserMutation = { __typename?: 'Mutation', updateStockInternalUser: { __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined } };
+
+export type InternalUpdateStockRequestMutationVariables = Exact<{
+  id: Scalars['Int'];
+  requestProducts: Array<CreateStockRequestRequestProductsInputType> | CreateStockRequestRequestProductsInputType;
+}>;
+
+
+export type InternalUpdateStockRequestMutation = { __typename?: 'Mutation', updateStockRequest: { __typename?: 'StockRequest', id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }, productRegistrations: Array<{ __typename?: 'StockRequestProductRegistration', id: number, product: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> } }> } };
 
 export const HospitalFieldsFragmentDoc = gql`
     fragment HospitalFields on Hospital {
@@ -1425,7 +1440,7 @@ export type InternalCreateProductTagsMutationHookResult = ReturnType<typeof useI
 export type InternalCreateProductTagsMutationResult = Apollo.MutationResult<InternalCreateProductTagsMutation>;
 export type InternalCreateProductTagsMutationOptions = Apollo.BaseMutationOptions<InternalCreateProductTagsMutation, InternalCreateProductTagsMutationVariables>;
 export const InternalCreateStockRequestDocument = gql`
-    mutation InternalCreateStockRequest($requestProducts: [CreateStockRequestrequestProductsInputType!]!) {
+    mutation InternalCreateStockRequest($requestProducts: [CreateStockRequestRequestProductsInputType!]!) {
   createStockRequest(requestProducts: $requestProducts) {
     ...StockRequestFields
   }
@@ -2725,3 +2740,37 @@ export function useInternalUpdateStockInternalUserMutation(baseOptions?: Apollo.
 export type InternalUpdateStockInternalUserMutationHookResult = ReturnType<typeof useInternalUpdateStockInternalUserMutation>;
 export type InternalUpdateStockInternalUserMutationResult = Apollo.MutationResult<InternalUpdateStockInternalUserMutation>;
 export type InternalUpdateStockInternalUserMutationOptions = Apollo.BaseMutationOptions<InternalUpdateStockInternalUserMutation, InternalUpdateStockInternalUserMutationVariables>;
+export const InternalUpdateStockRequestDocument = gql`
+    mutation InternalUpdateStockRequest($id: Int!, $requestProducts: [CreateStockRequestRequestProductsInputType!]!) {
+  updateStockRequest(id: $id, requestProducts: $requestProducts) {
+    ...StockRequestFields
+  }
+}
+    ${StockRequestFieldsFragmentDoc}`;
+export type InternalUpdateStockRequestMutationFn = Apollo.MutationFunction<InternalUpdateStockRequestMutation, InternalUpdateStockRequestMutationVariables>;
+
+/**
+ * __useInternalUpdateStockRequestMutation__
+ *
+ * To run a mutation, you first call `useInternalUpdateStockRequestMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInternalUpdateStockRequestMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [internalUpdateStockRequestMutation, { data, loading, error }] = useInternalUpdateStockRequestMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      requestProducts: // value for 'requestProducts'
+ *   },
+ * });
+ */
+export function useInternalUpdateStockRequestMutation(baseOptions?: Apollo.MutationHookOptions<InternalUpdateStockRequestMutation, InternalUpdateStockRequestMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<InternalUpdateStockRequestMutation, InternalUpdateStockRequestMutationVariables>(InternalUpdateStockRequestDocument, options);
+      }
+export type InternalUpdateStockRequestMutationHookResult = ReturnType<typeof useInternalUpdateStockRequestMutation>;
+export type InternalUpdateStockRequestMutationResult = Apollo.MutationResult<InternalUpdateStockRequestMutation>;
+export type InternalUpdateStockRequestMutationOptions = Apollo.BaseMutationOptions<InternalUpdateStockRequestMutation, InternalUpdateStockRequestMutationVariables>;
