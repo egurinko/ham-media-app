@@ -1,5 +1,11 @@
 import axios from 'axios';
-import type { Product, Stock } from '@prisma/client';
+import type {
+  Product,
+  Stock,
+  StockRequest,
+  StockRequestProductRegistration,
+  InternalUser,
+} from '@prisma/client';
 
 const DISCORD_STOCK_WEBHOOK_URL = process.env['DISCORD_STOCK_WEBHOOK_URL'];
 
@@ -34,6 +40,22 @@ const postStockExpiringAlert = (variables: PostStockAlertVariables): void => {
   );
 };
 
+const postStockRequestAlert = (
+  stockRequest: StockRequest & {
+    productRegistrations: (StockRequestProductRegistration & {
+      product: Product;
+    })[];
+  },
+  internalUser: InternalUser
+): void => {
+  if (!DISCORD_STOCK_WEBHOOK_URL) return;
+  const lines = stockRequest.productRegistrations
+    .map((productRegistration) => `\r・${productRegistration.product.name}`)
+    .join();
+  const content = `${internalUser.name}さんが在庫リクエストをしたよ <:yeah:913316943921033247> https://ham-media-app.net/admin/stock_requests/${stockRequest.id}/edit ${lines}`;
+  postStockAlert(content);
+};
+
 const postStockAlert = (content: string): void => {
   if (!DISCORD_STOCK_WEBHOOK_URL) return;
 
@@ -45,4 +67,8 @@ const postStockAlert = (content: string): void => {
   });
 };
 
-export { postStockExpirationAlert, postStockExpiringAlert };
+export {
+  postStockExpirationAlert,
+  postStockExpiringAlert,
+  postStockRequestAlert,
+};

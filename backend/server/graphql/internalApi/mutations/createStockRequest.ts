@@ -2,6 +2,7 @@ import { nonNull, mutationField, list } from 'nexus';
 import { requestProductsInputType, stockRequestType } from '../types';
 import Mercurius from 'mercurius';
 import { judgeError } from '@/services/error/judge';
+import { postStockRequestAlert } from '@/services/api/discordApi';
 
 type ProductRegistrations = {
   product_id: number;
@@ -33,16 +34,23 @@ export const createStockRequestField = mutationField((t) => {
       }
 
       try {
-        return await ctx.prisma.stockRequest.create({
+        const stockRequest = await ctx.prisma.stockRequest.create({
           data: {
-            internalUser: { connect: { id: ctx.currentInternalUser?.id } },
+            internalUser: { connect: { id: ctx.currentInternalUser!.id } },
             productRegistrations: {
               createMany: {
                 data: productRegistrations,
               },
             },
           },
+          include: {
+            productRegistrations: { include: { product: true } },
+          },
         });
+
+        postStockRequestAlert(stockRequest, ctx.currentInternalUser!);
+
+        return stockRequest;
       } catch (e) {
         const { key, message, statusCode } = judgeError(e);
         throw new Mercurius.ErrorWithProps(message, {
