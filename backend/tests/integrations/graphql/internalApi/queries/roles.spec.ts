@@ -19,7 +19,5 @@ describe('roles', () => {
     const roles = result.data['roles'];
     expect(roles[0].id).toEqual(1);
     expect(roles[0].name).toEqual('admin');
-    expect(roles[1].id).toEqual(2);
-    expect(roles[1].name).toEqual('user');
   });
 });
