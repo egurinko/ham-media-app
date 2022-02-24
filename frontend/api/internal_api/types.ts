@@ -481,6 +481,7 @@ export type Query = {
   products: Array<Product>;
   roles: Array<Role>;
   session: Session;
+  stockRequest: StockRequest;
   stockRequestConnection?: Maybe<StockRequestConnection>;
   stocks: Array<Stock>;
 };
@@ -537,6 +538,11 @@ export type QueryProductTagGroupArgs = {
 
 export type QueryProductsArgs = {
   ids?: InputMaybe<Array<Scalars['Int']>>;
+};
+
+
+export type QueryStockRequestArgs = {
+  id: Scalars['Int'];
 };
 
 
@@ -597,7 +603,6 @@ export type StockRequest = {
   id: Scalars['Int'];
   internalUser: InternalUser;
   productRegistrations: Array<StockRequestProductRegistration>;
-  stockRegistrations: Array<StockRequestStockRegistration>;
 };
 
 export type StockRequestConnection = {
@@ -621,13 +626,6 @@ export type StockRequestProductRegistration = {
   __typename?: 'StockRequestProductRegistration';
   id: Scalars['Int'];
   product: Product;
-};
-
-/** A stock request stock registration */
-export type StockRequestStockRegistration = {
-  __typename?: 'StockRequestStockRegistration';
-  id: Scalars['Int'];
-  stock: Stock;
 };
 
 export type InternalAllocateStockMutationVariables = Exact<{
@@ -879,6 +877,13 @@ export type InternalGetSessionQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type InternalGetSessionQuery = { __typename?: 'Query', session: { __typename?: 'Session', token: string, internalUser: { __typename?: 'InternalUser', id: BigInt, name: string, email: string } } };
+
+export type InternalGetStockRequestQueryVariables = Exact<{
+  id: Scalars['Int'];
+}>;
+
+
+export type InternalGetStockRequestQuery = { __typename?: 'Query', stockRequest: { __typename?: 'StockRequest', id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }, productRegistrations: Array<{ __typename?: 'StockRequestProductRegistration', id: number, product: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> } }> } };
 
 export type InternalGetStockRequestConnectionQueryVariables = Exact<{
   first?: InputMaybe<Scalars['Int']>;
@@ -2287,6 +2292,41 @@ export function useInternalGetSessionLazyQuery(baseOptions?: Apollo.LazyQueryHoo
 export type InternalGetSessionQueryHookResult = ReturnType<typeof useInternalGetSessionQuery>;
 export type InternalGetSessionLazyQueryHookResult = ReturnType<typeof useInternalGetSessionLazyQuery>;
 export type InternalGetSessionQueryResult = Apollo.QueryResult<InternalGetSessionQuery, InternalGetSessionQueryVariables>;
+export const InternalGetStockRequestDocument = gql`
+    query InternalGetStockRequest($id: Int!) {
+  stockRequest(id: $id) {
+    ...StockRequestFields
+  }
+}
+    ${StockRequestFieldsFragmentDoc}`;
+
+/**
+ * __useInternalGetStockRequestQuery__
+ *
+ * To run a query within a React component, call `useInternalGetStockRequestQuery` and pass it any options that fit your needs.
+ * When your component renders, `useInternalGetStockRequestQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useInternalGetStockRequestQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useInternalGetStockRequestQuery(baseOptions: Apollo.QueryHookOptions<InternalGetStockRequestQuery, InternalGetStockRequestQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<InternalGetStockRequestQuery, InternalGetStockRequestQueryVariables>(InternalGetStockRequestDocument, options);
+      }
+export function useInternalGetStockRequestLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InternalGetStockRequestQuery, InternalGetStockRequestQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<InternalGetStockRequestQuery, InternalGetStockRequestQueryVariables>(InternalGetStockRequestDocument, options);
+        }
+export type InternalGetStockRequestQueryHookResult = ReturnType<typeof useInternalGetStockRequestQuery>;
+export type InternalGetStockRequestLazyQueryHookResult = ReturnType<typeof useInternalGetStockRequestLazyQuery>;
+export type InternalGetStockRequestQueryResult = Apollo.QueryResult<InternalGetStockRequestQuery, InternalGetStockRequestQueryVariables>;
 export const InternalGetStockRequestConnectionDocument = gql`
     query InternalGetStockRequestConnection($first: Int, $after: String, $internalUserId: BigInt) {
   stockRequestConnection(
