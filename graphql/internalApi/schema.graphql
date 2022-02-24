@@ -208,6 +208,7 @@ type Mutation {
   updateProductTag(id: Int!, name: String!): ProductTag!
   updateProductTagGroup(id: Int!, name: String!): ProductTagGroup!
   updateStockInternalUser(id: Int!, internalUserId: BigInt!): Stock!
+  updateStockRequest(id: Int!, requestProducts: [CreateStockRequestRequestProductsInputType!]!): StockRequest!
 }
 
 """
