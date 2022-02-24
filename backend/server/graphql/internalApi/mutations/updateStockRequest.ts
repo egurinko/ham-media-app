@@ -41,7 +41,6 @@ export const updateStockRequestField = mutationField((t) => {
           ctx.prisma.stockRequest.update({
             where: { id: args.id },
             data: {
-              internalUser: { connect: { id: ctx.currentInternalUser?.id } },
               productRegistrations: {
                 createMany: {
                   data: productRegistrations,
