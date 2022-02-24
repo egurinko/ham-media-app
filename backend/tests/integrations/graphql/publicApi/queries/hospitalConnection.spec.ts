@@ -1,24 +1,12 @@
 import gql from 'graphql-tag';
-import type { AxiosResponse } from 'axios';
 import { client as db } from '@/services/prisma';
 import { setup } from '@tests/utils/setupPublicApi';
+import { getGeoLocationMockResponse } from '@tests/fixtures/googleApi';
 import * as googleApiModule from '@/services/api/googleApi';
-import type { GeocodeResponse } from '@/services/api/googleApi/types';
 
-jest.spyOn(googleApiModule, 'getGeoLocation').mockResolvedValue({
-  data: {
-    results: [
-      {
-        geometry: {
-          location: {
-            lat: 50,
-            lng: 50,
-          },
-        },
-      },
-    ],
-  },
-} as AxiosResponse<GeocodeResponse>);
+jest
+  .spyOn(googleApiModule, 'getGeoLocation')
+  .mockResolvedValue(getGeoLocationMockResponse);
 
 const QUERY = gql`
   query (
