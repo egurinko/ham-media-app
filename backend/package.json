@@ -16,7 +16,7 @@
     "db:seed:dev": "NODE_ENV=development prisma db seed",
     "db:seed:test": "NODE_ENV=test dotenv -e .env.test prisma db seed",
     "tsc": "tsc",
-    "test": "NODE_ENV=test dotenv -e .env.test -- jest $SPEC --runInBand"
+    "test": "NODE_ENV=test dotenv -e .env.test -- jest --runInBand"
   },
   "prisma": {
     "seed": "ts-node-dev prisma/seed.ts"
