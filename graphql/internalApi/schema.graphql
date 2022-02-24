@@ -16,7 +16,7 @@ input CreateProductTagsProductTagInputType {
   name: String!
 }
 
-input CreateStockRequestrequestProductsInputType {
+input CreateStockRequestRequestProductsInputType {
   count: Int!
   productId: Int!
 }
@@ -193,7 +193,7 @@ type Mutation {
   createProductTagGroup(name: String!): ProductTagGroup!
   createProductTaggings(productId: Int!, productTagIds: [Int!]!): Product!
   createProductTags(productTagGroupId: Int!, productTags: [CreateProductTagsProductTagInputType!]!): BatchPayload!
-  createStockRequest(requestProducts: [CreateStockRequestrequestProductsInputType!]!): StockRequest!
+  createStockRequest(requestProducts: [CreateStockRequestRequestProductsInputType!]!): StockRequest!
   createStocks(productId: Int!, stocks: [CreateStocksStocksInputType!]!): [Stock!]!
   deleteInternalUser(id: BigInt!): Delete!
   deleteMaker(id: Int!): Delete!
@@ -208,6 +208,7 @@ type Mutation {
   updateProductTag(id: Int!, name: String!): ProductTag!
   updateProductTagGroup(id: Int!, name: String!): ProductTagGroup!
   updateStockInternalUser(id: Int!, internalUserId: BigInt!): Stock!
+  updateStockRequest(id: Int!, requestProducts: [CreateStockRequestRequestProductsInputType!]!): StockRequest!
 }
 
 """
@@ -343,6 +344,7 @@ type Query {
   products(ids: [Int!]): [Product!]!
   roles: [Role!]!
   session: Session!
+  stockRequest(id: Int!): StockRequest!
   stockRequestConnection(
     """Returns the elements in the list that come after the specified cursor"""
     after: String

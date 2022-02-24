@@ -59,7 +59,7 @@ export interface NexusGenInputs {
   CreateProductTagsProductTagInputType: { // input type
     name: string; // String!
   }
-  CreateStockRequestrequestProductsInputType: { // input type
+  CreateStockRequestRequestProductsInputType: { // input type
     count: number; // Int!
     productId: number; // Int!
   }
@@ -378,6 +378,7 @@ export interface NexusGenFieldTypes {
     updateProductTag: NexusGenRootTypes['ProductTag']; // ProductTag!
     updateProductTagGroup: NexusGenRootTypes['ProductTagGroup']; // ProductTagGroup!
     updateStockInternalUser: NexusGenRootTypes['Stock']; // Stock!
+    updateStockRequest: NexusGenRootTypes['StockRequest']; // StockRequest!
   }
   PageInfo: { // field return type
     endCursor: string | null; // String
@@ -439,6 +440,7 @@ export interface NexusGenFieldTypes {
     products: NexusGenRootTypes['Product'][]; // [Product!]!
     roles: NexusGenRootTypes['Role'][]; // [Role!]!
     session: NexusGenRootTypes['Session']; // Session!
+    stockRequest: NexusGenRootTypes['StockRequest']; // StockRequest!
     stockRequestConnection: NexusGenRootTypes['StockRequestConnection'] | null; // StockRequestConnection
     stocks: NexusGenRootTypes['Stock'][]; // [Stock!]!
   }
@@ -592,6 +594,7 @@ export interface NexusGenFieldTypeNames {
     updateProductTag: 'ProductTag'
     updateProductTagGroup: 'ProductTagGroup'
     updateStockInternalUser: 'Stock'
+    updateStockRequest: 'StockRequest'
   }
   PageInfo: { // field return type name
     endCursor: 'String'
@@ -653,6 +656,7 @@ export interface NexusGenFieldTypeNames {
     products: 'Product'
     roles: 'Role'
     session: 'Session'
+    stockRequest: 'StockRequest'
     stockRequestConnection: 'StockRequestConnection'
     stocks: 'Stock'
   }
@@ -739,7 +743,7 @@ export interface NexusGenArgTypes {
       productTags: NexusGenInputs['CreateProductTagsProductTagInputType'][]; // [CreateProductTagsProductTagInputType!]!
     }
     createStockRequest: { // args
-      requestProducts: NexusGenInputs['CreateStockRequestrequestProductsInputType'][]; // [CreateStockRequestrequestProductsInputType!]!
+      requestProducts: NexusGenInputs['CreateStockRequestRequestProductsInputType'][]; // [CreateStockRequestRequestProductsInputType!]!
     }
     createStocks: { // args
       productId: number; // Int!
@@ -807,6 +811,10 @@ export interface NexusGenArgTypes {
       id: number; // Int!
       internalUserId: NexusGenScalars['BigInt']; // BigInt!
     }
+    updateStockRequest: { // args
+      id: number; // Int!
+      requestProducts: NexusGenInputs['CreateStockRequestRequestProductsInputType'][]; // [CreateStockRequestRequestProductsInputType!]!
+    }
   }
   Query: {
     hospital: { // args
@@ -846,6 +854,9 @@ export interface NexusGenArgTypes {
     }
     products: { // args
       ids?: number[] | null; // [Int!]
+    }
+    stockRequest: { // args
+      id: number; // Int!
     }
     stockRequestConnection: { // args
       after?: string | null; // String

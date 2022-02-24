@@ -23,7 +23,7 @@ const ProductSummary: React.VFC<Props> = ({ product }) => {
             }}
           />
         </Box>
-        <Box flexShrink="1">
+        <Box textAlign="left" flexShrink="1">
           <Text fontSize="xs">{product.maker.name}</Text>
           <Text fontSize="sm" mb="2" fontWeight="bold">
             {product.name}

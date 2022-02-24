@@ -1,12 +1,13 @@
 import { gql } from '@apollo/client';
 import { STOCK_REQUEST_FIELDS } from './fragments/stockRequest';
 
-export const createStockRequest = gql`
+export const updateStockRequest = gql`
   ${STOCK_REQUEST_FIELDS}
-  mutation InternalCreateStockRequest(
+  mutation InternalUpdateStockRequest(
+    $id: Int!
     $requestProducts: [CreateStockRequestRequestProductsInputType!]!
   ) {
-    createStockRequest(requestProducts: $requestProducts) {
+    updateStockRequest(id: $id, requestProducts: $requestProducts) {
       ...StockRequestFields
     }
   }

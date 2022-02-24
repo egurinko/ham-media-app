@@ -1,9 +1,9 @@
 import { InMemoryCache, makeVar } from '@apollo/client';
 import { relayStylePagination } from '@apollo/client/utilities';
-import type { CreateStockRequestrequestProductsInputType } from '@/api/internal_api/types';
+import type { CreateStockRequestRequestProductsInputType } from '@/api/internal_api/types';
 
 const productCartItemsVar = makeVar<
-  CreateStockRequestrequestProductsInputType[]
+  CreateStockRequestRequestProductsInputType[]
 >([]);
 
 const getCache = () =>

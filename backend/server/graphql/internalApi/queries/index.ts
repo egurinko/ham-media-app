@@ -11,6 +11,7 @@ export * from './productConnection';
 export * from './products';
 export * from './product';
 export * from './stocks';
+export * from './stockRequest';
 export * from './stockRequestConnection';
 export * from './productTagGroups';
 export * from './productTagGroup';
