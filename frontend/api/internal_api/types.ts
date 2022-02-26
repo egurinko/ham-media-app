@@ -207,6 +207,7 @@ export type Maker = {
 export type Mutation = {
   __typename?: 'Mutation';
   allocateStock: Stock;
+  approveStockRequest: Delete;
   createHospital: Hospital;
   createInternalUser: InternalUser;
   createMaker: Maker;
@@ -238,6 +239,12 @@ export type Mutation = {
 export type MutationAllocateStockArgs = {
   id: Scalars['Int'];
   internalUserId: Scalars['BigInt'];
+};
+
+
+export type MutationApproveStockRequestArgs = {
+  id: Scalars['Int'];
+  message: Scalars['String'];
 };
 
 
@@ -655,6 +662,14 @@ export type InternalAllocateStockMutationVariables = Exact<{
 
 
 export type InternalAllocateStockMutation = { __typename?: 'Mutation', allocateStock: { __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined } };
+
+export type InternalApproveStockRequestMutationVariables = Exact<{
+  id: Scalars['Int'];
+  message: Scalars['String'];
+}>;
+
+
+export type InternalApproveStockRequestMutation = { __typename?: 'Mutation', approveStockRequest: { __typename?: 'Delete', deleted: boolean } };
 
 export type InternalCreateHospitalMutationVariables = Exact<{
   name: Scalars['String'];
@@ -1205,6 +1220,40 @@ export function useInternalAllocateStockMutation(baseOptions?: Apollo.MutationHo
 export type InternalAllocateStockMutationHookResult = ReturnType<typeof useInternalAllocateStockMutation>;
 export type InternalAllocateStockMutationResult = Apollo.MutationResult<InternalAllocateStockMutation>;
 export type InternalAllocateStockMutationOptions = Apollo.BaseMutationOptions<InternalAllocateStockMutation, InternalAllocateStockMutationVariables>;
+export const InternalApproveStockRequestDocument = gql`
+    mutation InternalApproveStockRequest($id: Int!, $message: String!) {
+  approveStockRequest(id: $id, message: $message) {
+    deleted
+  }
+}
+    `;
+export type InternalApproveStockRequestMutationFn = Apollo.MutationFunction<InternalApproveStockRequestMutation, InternalApproveStockRequestMutationVariables>;
+
+/**
+ * __useInternalApproveStockRequestMutation__
+ *
+ * To run a mutation, you first call `useInternalApproveStockRequestMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInternalApproveStockRequestMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [internalApproveStockRequestMutation, { data, loading, error }] = useInternalApproveStockRequestMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      message: // value for 'message'
+ *   },
+ * });
+ */
+export function useInternalApproveStockRequestMutation(baseOptions?: Apollo.MutationHookOptions<InternalApproveStockRequestMutation, InternalApproveStockRequestMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<InternalApproveStockRequestMutation, InternalApproveStockRequestMutationVariables>(InternalApproveStockRequestDocument, options);
+      }
+export type InternalApproveStockRequestMutationHookResult = ReturnType<typeof useInternalApproveStockRequestMutation>;
+export type InternalApproveStockRequestMutationResult = Apollo.MutationResult<InternalApproveStockRequestMutation>;
+export type InternalApproveStockRequestMutationOptions = Apollo.BaseMutationOptions<InternalApproveStockRequestMutation, InternalApproveStockRequestMutationVariables>;
 export const InternalCreateHospitalDocument = gql`
     mutation InternalCreateHospital($name: String!, $url: String, $deleted: Boolean!, $internal_memo: String!) {
   createHospital(

@@ -198,12 +198,12 @@ const StockRequestsStack: React.VFC<NoProps> = () => {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>在庫リクエストの削除</ModalHeader>
+          <ModalHeader>在庫リクエストの取り下げ</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <Text>
               {selectedStockRequest?.internalUser.name}
-              の以下の在庫リクエストを削除しますか？
+              の以下の在庫リクエストを取り下げますか？
             </Text>
             <Box my="4">
               {selectedStockRequest?.productRegistrations.map(
@@ -245,7 +245,7 @@ const StockRequestsStack: React.VFC<NoProps> = () => {
               isLoading={deleteStockRequestLoading}
               onClick={handleDelete}
             >
-              削除する
+              取り下げる
             </Button>
           </ModalFooter>
         </ModalContent>

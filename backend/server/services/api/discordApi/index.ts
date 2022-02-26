@@ -73,6 +73,27 @@ const postStockRequestRejectionAlert = (
   postStockAlert(content);
 };
 
+const postStockRequestApprovalAlert = (
+  stockRequest: StockRequest & {
+    internalUser: InternalUser;
+    productRegistrations: (StockRequestProductRegistration & {
+      product: Product;
+    })[];
+  },
+  approvingInternalUser: InternalUser,
+  message: string
+) => {
+  if (!DISCORD_STOCK_WEBHOOK_URL) return;
+  const lines = stockRequest.productRegistrations
+    .map(
+      (productRegistration) =>
+        `\n・${productRegistration.product.name} https://ham-media-app.net/admin/products/${productRegistration.product.id}`
+    )
+    .join();
+  const content = `${stockRequest.internalUser.name}さんの以下の在庫リクエストが承認されたよ <:ok:776668642976071730> \n${approvingInternalUser.name}さんは在庫の割り当てをやってね🙊 ${lines} \n[承認メッセージ]\n${message}\n`;
+  postStockAlert(content);
+};
+
 const postStockAlert = (content: string): void => {
   if (!DISCORD_STOCK_WEBHOOK_URL) return;
 
@@ -89,4 +110,5 @@ export {
   postStockExpiringAlert,
   postStockRequestAlert,
   postStockRequestRejectionAlert,
+  postStockRequestApprovalAlert,
 };

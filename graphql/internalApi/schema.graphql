@@ -186,6 +186,7 @@ type Maker {
 
 type Mutation {
   allocateStock(id: Int!, internalUserId: BigInt!): Stock!
+  approveStockRequest(id: Int!, message: String!): Delete!
   createHospital(deleted: Boolean!, internal_memo: String!, name: String!, url: String): Hospital!
   createInternalUser(email: String!, name: String!, password: String!, roleId: Int!): InternalUser!
   createMaker(name: String!): Maker!

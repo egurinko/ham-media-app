@@ -356,6 +356,7 @@ export interface NexusGenFieldTypes {
   }
   Mutation: { // field return type
     allocateStock: NexusGenRootTypes['Stock']; // Stock!
+    approveStockRequest: NexusGenRootTypes['Delete']; // Delete!
     createHospital: NexusGenRootTypes['Hospital']; // Hospital!
     createInternalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     createMaker: NexusGenRootTypes['Maker']; // Maker!
@@ -574,6 +575,7 @@ export interface NexusGenFieldTypeNames {
   }
   Mutation: { // field return type name
     allocateStock: 'Stock'
+    approveStockRequest: 'Delete'
     createHospital: 'Hospital'
     createInternalUser: 'InternalUser'
     createMaker: 'Maker'
@@ -712,6 +714,10 @@ export interface NexusGenArgTypes {
     allocateStock: { // args
       id: number; // Int!
       internalUserId: NexusGenScalars['BigInt']; // BigInt!
+    }
+    approveStockRequest: { // args
+      id: number; // Int!
+      message: string; // String!
     }
     createHospital: { // args
       deleted: boolean; // Boolean!
