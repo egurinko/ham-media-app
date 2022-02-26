@@ -222,6 +222,7 @@ export type Mutation = {
   deleteProductTagging: Delete;
   deleteStock: Delete;
   deleteStockRequest: Delete;
+  rejectStockRequest: Delete;
   returnStock: Stock;
   updateHospital: Hospital;
   updateInternalUser: InternalUser;
@@ -325,6 +326,12 @@ export type MutationDeleteStockArgs = {
 
 export type MutationDeleteStockRequestArgs = {
   id: Scalars['Int'];
+};
+
+
+export type MutationRejectStockRequestArgs = {
+  id: Scalars['Int'];
+  message: Scalars['String'];
 };
 
 
@@ -920,6 +927,14 @@ export type InternalGetStocksQueryVariables = Exact<{
 
 
 export type InternalGetStocksQuery = { __typename?: 'Query', stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> };
+
+export type InternalRejectStockRequestMutationVariables = Exact<{
+  id: Scalars['Int'];
+  message: Scalars['String'];
+}>;
+
+
+export type InternalRejectStockRequestMutation = { __typename?: 'Mutation', rejectStockRequest: { __typename?: 'Delete', deleted: boolean } };
 
 export type InternalReturnStockMutationVariables = Exact<{
   id: Scalars['Int'];
@@ -2474,6 +2489,40 @@ export function useInternalGetStocksLazyQuery(baseOptions?: Apollo.LazyQueryHook
 export type InternalGetStocksQueryHookResult = ReturnType<typeof useInternalGetStocksQuery>;
 export type InternalGetStocksLazyQueryHookResult = ReturnType<typeof useInternalGetStocksLazyQuery>;
 export type InternalGetStocksQueryResult = Apollo.QueryResult<InternalGetStocksQuery, InternalGetStocksQueryVariables>;
+export const InternalRejectStockRequestDocument = gql`
+    mutation InternalRejectStockRequest($id: Int!, $message: String!) {
+  rejectStockRequest(id: $id, message: $message) {
+    deleted
+  }
+}
+    `;
+export type InternalRejectStockRequestMutationFn = Apollo.MutationFunction<InternalRejectStockRequestMutation, InternalRejectStockRequestMutationVariables>;
+
+/**
+ * __useInternalRejectStockRequestMutation__
+ *
+ * To run a mutation, you first call `useInternalRejectStockRequestMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInternalRejectStockRequestMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [internalRejectStockRequestMutation, { data, loading, error }] = useInternalRejectStockRequestMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      message: // value for 'message'
+ *   },
+ * });
+ */
+export function useInternalRejectStockRequestMutation(baseOptions?: Apollo.MutationHookOptions<InternalRejectStockRequestMutation, InternalRejectStockRequestMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<InternalRejectStockRequestMutation, InternalRejectStockRequestMutationVariables>(InternalRejectStockRequestDocument, options);
+      }
+export type InternalRejectStockRequestMutationHookResult = ReturnType<typeof useInternalRejectStockRequestMutation>;
+export type InternalRejectStockRequestMutationResult = Apollo.MutationResult<InternalRejectStockRequestMutation>;
+export type InternalRejectStockRequestMutationOptions = Apollo.BaseMutationOptions<InternalRejectStockRequestMutation, InternalRejectStockRequestMutationVariables>;
 export const InternalReturnStockDocument = gql`
     mutation InternalReturnStock($id: Int!) {
   returnStock(id: $id) {
