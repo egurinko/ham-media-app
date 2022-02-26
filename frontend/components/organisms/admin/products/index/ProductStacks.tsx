@@ -4,7 +4,6 @@ import {
   Box,
   VStack,
   Divider,
-  Button,
   Input,
   FormControl,
   FormLabel,
@@ -14,6 +13,7 @@ import {
   Stack,
 } from '@chakra-ui/react';
 import { Fragment } from 'react';
+import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { Card } from '@/components/atoms/Card';
 import { Spinner } from '@/components/atoms/Spinner';
 import {
@@ -23,7 +23,7 @@ import {
   useInternalGetInternalUsersQuery,
 } from '@/api/internal_api/types';
 import type { ProductFieldsFragment } from '@/api/internal_api/types';
-import { FlashMessage } from '@/components/molecules/FlashMessage';
+import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { SummaryLink } from '@/components/molecules/SummaryLink';
 import { ProductSummary } from '../ProductSummary';
 import { useIntersectionObserver } from '@/utils/hooks/useIntersectionObserver';
@@ -198,22 +198,14 @@ const ProductStacks: React.VFC<NoProps> = () => {
           </RadioGroup>
         </Box>
         <Box textAlign="center">
-          <Button
-            onClick={handleSearch}
-            mt="4"
-            variant="solid"
-            bgColor="primary.main"
-            color="white"
-          >
+          <PrimaryButton onClick={handleSearch} mt="4">
             検索
-          </Button>
+          </PrimaryButton>
         </Box>
       </Card>
       <Skeleton isLoaded={!loading}>
         <VStack spacing="0" mt="4" alignItems="flex-start">
-          {error ? (
-            <FlashMessage message="エラーが発生しました。" status="error" />
-          ) : null}
+          <ErrorMessage error={error} />
           <Divider />
           {nodes?.map((product) => (
             <Fragment key={product.id}>

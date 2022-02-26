@@ -18,8 +18,9 @@ import {
   Input,
 } from '@chakra-ui/react';
 import { DeleteIcon, SmallCloseIcon, AddIcon } from '@chakra-ui/icons';
+import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { Card } from '@/components/atoms/Card';
-import { FlashMessage } from '@/components/molecules/FlashMessage';
+import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import {
   useInternalDeleteProductTagMutation,
@@ -160,33 +161,22 @@ const Tags: React.FC<Props> = ({ productTagGroupId }) => {
     <>
       <Card>
         {loading ? <Spinner size="lg" color="main.primary" /> : null}
-        {error ? (
-          <FlashMessage status="error" message="タグの取得に失敗しました。" />
-        ) : null}
+        <ErrorMessage error={error} />
         <>
           <Text mb="2" fontSize="lg" fontWeight="bold">
             タグ情報
           </Text>
-          {deleteProductTagData ? (
-            <FlashMessage
-              message="タグの削除に成功しました。"
-              status="success"
-            />
-          ) : deleteProductTagError ? (
-            <ErrorMessage error={deleteProductTagError} />
-          ) : null}
-          {updateProductTagData ? (
-            <FlashMessage
-              message="タグの更新に成功しました。"
-              status="success"
-            />
-          ) : updateProductTagError ? (
-            <ErrorMessage error={updateProductTagError} />
-          ) : null}
+          <SuccessMessage
+            data={deleteProductTagData}
+            message="タグの削除に成功しました。"
+          />
+          <ErrorMessage error={deleteProductTagError} />
+          <SuccessMessage
+            data={updateProductTagData}
+            message="タグの更新に成功しました。"
+          />
+          <ErrorMessage error={updateProductTagError} />
           <VStack spacing="0" mt="4" alignItems="flex-start">
-            {error ? (
-              <FlashMessage message="エラーが発生しました。" status="error" />
-            ) : null}
             <Divider />
             {productTags.map((productTag) => (
               <Fragment key={productTag.id}>
@@ -244,12 +234,11 @@ const Tags: React.FC<Props> = ({ productTagGroupId }) => {
           <Text mb="2" mt="8" fontSize="lg" fontWeight="bold">
             タグ追加
           </Text>
-          {createProductTagsData ? (
-            <FlashMessage
-              message="タグの追加に成功しました。"
-              status="success"
-            />
-          ) : createProductTagsError ? (
+          <SuccessMessage
+            data={createProductTagsData}
+            message="タグの追加に成功しました。"
+          />
+          {createProductTagsError ? (
             <ErrorMessage error={createProductTagsError} />
           ) : null}
           <Box>
@@ -301,17 +290,15 @@ const Tags: React.FC<Props> = ({ productTagGroupId }) => {
                 />
               </Box>
               <Box textAlign="center">
-                <Button
+                <PrimaryButton
                   type="submit"
-                  bgColor="primary.main"
                   aria-label="add"
-                  color="white"
                   leftIcon={<AddIcon />}
                   isLoading={createProductTagsLoading}
                   disabled={!isAdminData?.readIsAdmin.isAdmin}
                 >
                   タグ追加
-                </Button>
+                </PrimaryButton>
               </Box>
             </form>
           </Box>
@@ -327,14 +314,12 @@ const Tags: React.FC<Props> = ({ productTagGroupId }) => {
             <Button variant="ghost" mr={3} onClick={onClose}>
               キャンセル
             </Button>
-            <Button
-              bgColor="primary.main"
-              color="white"
+            <PrimaryButton
               isLoading={deleteProductTagLoading}
               onClick={handleDelete}
             >
               削除する
-            </Button>
+            </PrimaryButton>
           </ModalFooter>
         </ModalContent>
       </Modal>

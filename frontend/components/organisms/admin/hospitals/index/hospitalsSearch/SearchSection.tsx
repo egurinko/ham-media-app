@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
-import { Text, Box, Input, Switch, Select, Button } from '@chakra-ui/react';
+import { Text, Box, Input, Switch, Select } from '@chakra-ui/react';
+import { PrimaryButton } from '@/components/atoms/PrimaryButton';
+import { SecondaryButton } from '@/components/atoms/SecondaryButton';
 import { usePublicGetPrefecturesQuery } from '@/api/public_api/types';
 import { useInternalGetHospitalConnectionLazyQuery } from '@/api/internal_api/types';
 import type {
@@ -157,29 +159,20 @@ const SearchSection: React.VFC<Props> = ({
         </Box>
       </Box>
       <Box textAlign="center" position="relative">
-        <Button
-          mt="4"
-          variant="solid"
-          bgColor="primary.main"
-          color="white"
-          isLoading={loading}
-          type="submit"
-        >
+        <PrimaryButton mt="4" isLoading={loading} type="submit">
           検索
-        </Button>
-        <Button
+        </PrimaryButton>
+        <SecondaryButton
           position="absolute"
           right={0}
           mt="4"
           variant="outline"
           borderColor="primary.main"
-          bgColor="primary.light"
-          color="primary.main"
           isLoading={csvLoading}
           onClick={handleCsv}
         >
           CSV出力
-        </Button>
+        </SecondaryButton>
       </Box>
     </form>
   );

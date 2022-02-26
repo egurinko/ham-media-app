@@ -6,7 +6,6 @@ import {
   Box,
   Input,
   Stack,
-  Button,
   FormControl,
   FormLabel,
   FormHelperText,
@@ -22,6 +21,7 @@ import {
 import { ChevronRightIcon } from '@chakra-ui/icons';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
+import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { Card } from '@/components/atoms/Card';
 import { getHospital } from '@/api/internal_api/getHospital';
 import {
@@ -549,12 +549,9 @@ const Edit: React.VFC<Props> = () => {
               </Stack>
             </Box>
             <Box d="grid" justifyContent="center">
-              <Button
+              <PrimaryButton
                 size="lg"
                 mt="16"
-                variant="solid"
-                bgColor="primary.main"
-                color="white"
                 type="submit"
                 isLoading={loading}
                 disabled={
@@ -563,7 +560,7 @@ const Edit: React.VFC<Props> = () => {
                 }
               >
                 更新する
-              </Button>
+              </PrimaryButton>
             </Box>
           </form>
         </Card>

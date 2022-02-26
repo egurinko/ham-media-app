@@ -1,5 +1,6 @@
 import { Box, Text, Divider } from '@chakra-ui/react';
 import { Marker, InfoWindow } from '@react-google-maps/api';
+import { SecondaryButton } from '@/components/atoms/SecondaryButton';
 import { Card } from '@/components/atoms/Card';
 import { MapPinIcon } from '@/components/atoms/assets/MapPinIcon';
 import { PhoneIcon } from '@/components/atoms/assets/PhoneIcon';
@@ -146,10 +147,8 @@ const DetailCard: React.FC<Props> = ({ hospital }) => (
           </Box>
 
           <Divider my="4" />
-          <Box
+          <SecondaryButton
             fill="primary.main"
-            color="primary.main"
-            bgColor="primary.light"
             p="4"
             borderRadius="5"
             textAlign="center"
@@ -167,7 +166,7 @@ const DetailCard: React.FC<Props> = ({ hospital }) => (
                 </Text>
               </Box>
             </a>
-          </Box>
+          </SecondaryButton>
         </Box>
       </Box>
     </Card>

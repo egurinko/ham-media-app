@@ -1,6 +1,8 @@
-import { Spinner, Tag } from '@chakra-ui/react';
+import { Spinner } from '@chakra-ui/react';
 import { SmallCloseIcon } from '@chakra-ui/icons';
-import { FlashMessage } from '@/components/molecules/FlashMessage';
+import { PrimaryTag } from '@/components/atoms/PrimaryTag';
+import { SuccessMessage } from '@/components/molecules/SuccessMessage';
+import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import {
   useInternalGetProductQuery,
   useInternalDeleteProductTaggingMutation,
@@ -35,23 +37,16 @@ const IndexSection: React.FC<Props> = ({ productId }) => {
       {loading || deleteProductTaggingLoading ? (
         <Spinner size="lg" color="main.primary" />
       ) : null}
-      {error ? (
-        <FlashMessage status="error" message="タグの取得に失敗しました。" />
-      ) : null}
-      {deleteProductTaggingData ? (
-        <FlashMessage status="success" message="タグの紐付けを解除しました。" />
-      ) : deleteProductTaggingError ? (
-        <FlashMessage
-          status="error"
-          message="タグの紐付け解除に失敗しました。"
-        />
-      ) : null}
+      <ErrorMessage error={error} />
+      <SuccessMessage
+        data={deleteProductTaggingData}
+        message="タグの紐付けを解除しました。"
+      />
+      <ErrorMessage error={deleteProductTaggingError} />
       {data
         ? data.product.productTaggings.map((productTagging) => (
-            <Tag
+            <PrimaryTag
               key={productTagging.id}
-              bgColor="primary.main"
-              color="white"
               m="2"
               _hover={{
                 opacity: 0.8,
@@ -61,7 +56,7 @@ const IndexSection: React.FC<Props> = ({ productId }) => {
               <SmallCloseIcon
                 onClick={() => handleDeleteProductTagging(productTagging.id)}
               />
-            </Tag>
+            </PrimaryTag>
           ))
         : null}
     </>

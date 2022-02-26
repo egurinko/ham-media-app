@@ -3,14 +3,14 @@ import {
   Box,
   Input,
   Stack,
-  Button,
   FormControl,
   FormLabel,
   FormErrorMessage,
 } from '@chakra-ui/react';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
+import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { Card } from '@/components/atoms/Card';
-import { FlashMessage } from '@/components/molecules/FlashMessage';
+import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import {
   useInternalUpdateMakerMutation,
@@ -62,52 +62,49 @@ const Form: React.VFC<Props> = ({ makerId }) => {
     }
   };
 
-  return makerError ? (
-    <FlashMessage message={makerError.message} status="error" />
-  ) : maker ? (
+  return (
     <>
-      {data ? (
-        <FlashMessage message="更新に成功しました" status="success" />
-      ) : error ? (
-        <ErrorMessage error={error} />
+      <ErrorMessage error={makerError} />
+      {maker ? (
+        <>
+          <SuccessMessage data={data} message="更新に成功しました" />
+          <ErrorMessage error={error} />
+          <Card>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <Stack spacing={4}>
+                <FormControl id="name" isRequired isInvalid={!!errors.name}>
+                  <FormLabel>メーカー名</FormLabel>
+                  <Controller
+                    name="name"
+                    control={control}
+                    defaultValue={maker.name}
+                    rules={validators.maker.rules}
+                    render={({ field }) => (
+                      <Input type="text" isInvalid={!!errors.name} {...field} />
+                    )}
+                  />
+                  {errors.name && (
+                    <FormErrorMessage>{errors.name.message}</FormErrorMessage>
+                  )}
+                </FormControl>
+              </Stack>
+              <Box d="grid" justifyContent="center">
+                <PrimaryButton
+                  size="lg"
+                  mt="16"
+                  type="submit"
+                  isLoading={loading}
+                  disabled={!!errors.name || !isAdminData?.readIsAdmin.isAdmin}
+                >
+                  更新する
+                </PrimaryButton>
+              </Box>
+            </form>
+          </Card>
+        </>
       ) : null}
-      <Card>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <Stack spacing={4}>
-            <FormControl id="name" isRequired isInvalid={!!errors.name}>
-              <FormLabel>メーカー名</FormLabel>
-              <Controller
-                name="name"
-                control={control}
-                defaultValue={maker.name}
-                rules={validators.maker.rules}
-                render={({ field }) => (
-                  <Input type="text" isInvalid={!!errors.name} {...field} />
-                )}
-              />
-              {errors.name && (
-                <FormErrorMessage>{errors.name.message}</FormErrorMessage>
-              )}
-            </FormControl>
-          </Stack>
-          <Box d="grid" justifyContent="center">
-            <Button
-              size="lg"
-              mt="16"
-              variant="solid"
-              bgColor="primary.main"
-              color="white"
-              type="submit"
-              isLoading={loading}
-              disabled={!!errors.name || !isAdminData?.readIsAdmin.isAdmin}
-            >
-              更新する
-            </Button>
-          </Box>
-        </form>
-      </Card>
     </>
-  ) : null;
+  );
 };
 
 export { Form };

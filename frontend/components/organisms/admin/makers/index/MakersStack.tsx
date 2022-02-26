@@ -19,7 +19,8 @@ import {
   useInternalDeleteMakerMutation,
 } from '@/api/internal_api/types';
 import type { InternalGetMakersQuery } from '@/api/internal_api/types';
-import { FlashMessage } from '@/components/molecules/FlashMessage';
+import { PrimaryButton } from '@/components/atoms/PrimaryButton';
+import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { Spinner } from '@/components/atoms/Spinner';
 import { MakerSummary } from './makersStack/MakerSummary';
@@ -74,11 +75,8 @@ const MakersStack: React.VFC<NoProps> = () => {
         <Spinner loading={loading} />
       </Box>
       <VStack spacing="0" mt="4" alignItems="flex-start">
-        {mutationData ? (
-          <FlashMessage message="削除に成功しました" status="success" />
-        ) : mutationError ? (
-          <ErrorMessage error={mutationError} />
-        ) : null}
+        <SuccessMessage data={mutationData} message="削除に成功しました" />
+        <ErrorMessage error={mutationError} />
         <Divider />
         {data?.makers.map((maker) => (
           <Fragment key={maker.id}>
@@ -97,14 +95,9 @@ const MakersStack: React.VFC<NoProps> = () => {
             <Button variant="ghost" mr={3} onClick={onClose}>
               キャンセル
             </Button>
-            <Button
-              bgColor="primary.main"
-              color="white"
-              isLoading={mutationLoading}
-              onClick={handleDelete}
-            >
+            <PrimaryButton isLoading={mutationLoading} onClick={handleDelete}>
               削除する
-            </Button>
+            </PrimaryButton>
           </ModalFooter>
         </ModalContent>
       </Modal>

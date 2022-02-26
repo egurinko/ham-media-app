@@ -1,6 +1,7 @@
-import { Heading, Box, Button } from '@chakra-ui/react';
+import { Heading, Box } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
 import { useRouter } from 'next/router';
+import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
 import { ProductStacks } from '@/components/organisms/admin/products/index/ProductStacks';
 import { StockRequestCartButton } from '@/components/organisms/admin/products/StockRequestCartButton';
@@ -20,16 +21,14 @@ const Index: React.VFC<NoProps> = () => {
         mb="2"
       >
         <Heading size="sm">商品管理</Heading>
-        <Button
-          bgColor="primary.main"
-          color="white"
+        <PrimaryButton
           size="md"
           leftIcon={<AddIcon />}
           onClick={() => goAdminProductsNew(router)}
           disabled={!isAdminData?.readIsAdmin.isAdmin}
         >
           新規登録
-        </Button>
+        </PrimaryButton>
       </Box>
       <ProductStacks />
       <StockRequestCartButton />

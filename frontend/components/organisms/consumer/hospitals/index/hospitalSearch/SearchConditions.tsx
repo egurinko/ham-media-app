@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 import { Text, HStack, Button } from '@chakra-ui/react';
 import { CloseIcon } from '@chakra-ui/icons';
+import { SecondaryButton } from '@/components/atoms/SecondaryButton';
 import type {
   SetSearchText,
   SetCurrentLocation,
@@ -109,89 +110,79 @@ const SearchConditions: React.FC<Props> = ({
       </Button>
 
       {!reservable || (
-        <Button
+        <SecondaryButton
           onClick={clearReservable}
           borderRadius={100}
           p="2"
           my="2"
           variant="outline"
           borderColor="primary.main"
-          bgColor="primary.light"
-          color="primary.main"
           boxShadow="sm"
           size="sm"
           rightIcon={<CloseIcon fontSize="xs" ml="1" />}
         >
           <Text fontSize="sm">予約可</Text>
-        </Button>
+        </SecondaryButton>
       )}
       {!nightServiceOption || (
-        <Button
+        <SecondaryButton
           onClick={clearNightServiceOption}
           borderRadius={100}
           p="2"
           my="2"
           variant="outline"
           borderColor="primary.main"
-          bgColor="primary.light"
-          color="primary.main"
           boxShadow="sm"
           size="sm"
           rightIcon={<CloseIcon fontSize="xs" ml="1" />}
         >
           <Text fontSize="sm">夜間営業</Text>
-        </Button>
+        </SecondaryButton>
       )}
       {!insuranceEnabled || (
-        <Button
+        <SecondaryButton
           onClick={clearInsuranceEnabled}
           borderRadius={100}
           p="2"
           my="2"
           variant="outline"
           borderColor="primary.main"
-          bgColor="primary.light"
-          color="primary.main"
           boxShadow="sm"
           size="sm"
           rightIcon={<CloseIcon fontSize="xs" ml="1" />}
         >
           <Text fontSize="sm">保険適用可</Text>
-        </Button>
+        </SecondaryButton>
       )}
       {!jsavaOption || (
-        <Button
+        <SecondaryButton
           onClick={clearJsavaOption}
           borderRadius={100}
           p="2"
           my="2"
           variant="outline"
           borderColor="primary.main"
-          bgColor="primary.light"
-          color="primary.main"
           boxShadow="sm"
           size="sm"
           rightIcon={<CloseIcon fontSize="xs" ml="1" />}
         >
           <Text fontSize="sm">日本小動物獣医師会 (JSAVA) 認定あり</Text>
-        </Button>
+        </SecondaryButton>
       )}
       {!nichijuOption || (
-        <Button
+        <SecondaryButton
           onClick={clearNichijuOption}
           borderRadius={100}
           p="2"
           my="2"
           variant="outline"
           borderColor="primary.main"
-          bgColor="primary.light"
-          color="primary.main"
           boxShadow="sm"
           size="sm"
           rightIcon={<CloseIcon fontSize="xs" ml="1" />}
         >
           <Text fontSize="sm">日本獣医師会認定あり</Text>
-        </Button>
+        </SecondaryButton>
       )}
     </HStack>
   );

@@ -15,7 +15,8 @@ import {
 } from '@chakra-ui/react';
 import { DeleteIcon } from '@chakra-ui/icons';
 import dayjs from 'dayjs';
-import { FlashMessage } from '@/components/molecules/FlashMessage';
+import { SuccessMessage } from '@/components/molecules/SuccessMessage';
+import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import {
   useInternalGetInternalUsersQuery,
   useInternalAllocateStockMutation,
@@ -115,32 +116,26 @@ const AllocationSection: React.FC<Props> = ({
       updateStockInternalUserLoading ? (
         <Spinner size="lg" color="main.primary" />
       ) : null}
-      {allocateStockError ? (
-        <FlashMessage status="error" message={allocateStockError.message} />
-      ) : allocateStockData ? (
-        <FlashMessage status="success" message="在庫を割り当てました。" />
-      ) : null}
-      {returnStockError ? (
-        <FlashMessage status="error" message={returnStockError.message} />
-      ) : returnStockData ? (
-        <FlashMessage
-          status="success"
-          message="在庫の割り当てを解除しました。"
-        />
-      ) : null}
-      {deleteStockError ? (
-        <FlashMessage status="error" message={deleteStockError.message} />
-      ) : deleteStockData ? (
-        <FlashMessage status="success" message="在庫を削除しました。" />
-      ) : null}
-      {updateStockInternalUserError ? (
-        <FlashMessage
-          status="error"
-          message={updateStockInternalUserError.message}
-        />
-      ) : updateStockInternalUserData ? (
-        <FlashMessage status="success" message="責任者を更新しました。" />
-      ) : null}
+      <SuccessMessage
+        data={allocateStockData}
+        message="在庫を割り当てました。"
+      />
+      <ErrorMessage error={allocateStockError} />
+
+      <SuccessMessage
+        data={returnStockData}
+        message="在庫の割り当てを解除しました。"
+      />
+      <ErrorMessage error={returnStockError} />
+
+      <SuccessMessage data={deleteStockData} message="在庫を削除しました。" />
+      <ErrorMessage error={deleteStockError} />
+
+      <SuccessMessage
+        data={updateStockInternalUserData}
+        message="責任者を更新しました。"
+      />
+      <ErrorMessage error={updateStockInternalUserError} />
       <Table size="sm">
         <Thead>
           <Tr>

@@ -14,6 +14,7 @@ import {
   Text,
 } from '@chakra-ui/react';
 import { ArrowUpIcon } from '@chakra-ui/icons';
+import { SecondaryButton } from '@/components/atoms/SecondaryButton';
 import { FilterIcon } from '@/components/atoms/assets/FilterIcon';
 import { scrollTo } from '@/utils/scroll';
 import type {
@@ -109,16 +110,15 @@ const Filter: React.FC<Props> = ({
         flexDir="column"
         alignItems="flex-end"
       >
-        <Button
+        <SecondaryButton
           onClick={() => scrollTo()}
-          bgColor="primary.light"
           borderRadius="50%"
           boxShadow="lg"
           p="0"
           mb="4"
         >
           <ArrowUpIcon fontWeight="bold" fontSize="2xl" color="primary.main" />
-        </Button>
+        </SecondaryButton>
         <Button
           onClick={onOpen}
           leftIcon={

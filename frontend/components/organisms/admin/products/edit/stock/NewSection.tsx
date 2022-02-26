@@ -1,8 +1,10 @@
 import { useState } from 'react';
-import { Box, Text, Input, IconButton, Button, Select } from '@chakra-ui/react';
+import { Box, Text, Input, IconButton, Select } from '@chakra-ui/react';
 import { SmallCloseIcon, AddIcon } from '@chakra-ui/icons';
 import dayjs from 'dayjs';
-import { FlashMessage } from '@/components/molecules/FlashMessage';
+import { PrimaryButton } from '@/components/atoms/PrimaryButton';
+import { SuccessMessage } from '@/components/molecules/SuccessMessage';
+import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import {
   useInternalCreateStocksMutation,
   useInternalGetInternalUsersQuery,
@@ -119,11 +121,8 @@ const NewSection: React.FC<Props> = ({ productId, fetchStocksMore }) => {
       <Text mt="6" mb="2" fontSize="lg" fontWeight="bold">
         在庫追加
       </Text>
-      {createStocksError ? (
-        <FlashMessage status="error" message={createStocksError.message} />
-      ) : createStockData ? (
-        <FlashMessage status="success" message="在庫を追加しました。" />
-      ) : null}
+      <SuccessMessage data={createStockData} message="在庫を追加しました。" />
+      <ErrorMessage error={createStocksError} />
       <Box>
         <Box display="flex" flexDir="row">
           <Text width="33%" fontSize="xs" mr="2">
@@ -217,17 +216,15 @@ const NewSection: React.FC<Props> = ({ productId, fetchStocksMore }) => {
             />
           </Box>
           <Box textAlign="center">
-            <Button
+            <PrimaryButton
               type="submit"
-              bgColor="primary.main"
               aria-label="add"
-              color="white"
               leftIcon={<AddIcon />}
               isLoading={createStocksLoading}
               disabled={!isAdminData?.readIsAdmin.isAdmin}
             >
               在庫追加
-            </Button>
+            </PrimaryButton>
           </Box>
         </form>
       </Box>

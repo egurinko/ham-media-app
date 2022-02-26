@@ -6,7 +6,7 @@ import {
   StatLabel,
   StatNumber,
 } from '@chakra-ui/react';
-import { FlashMessage } from '@/components/molecules/FlashMessage';
+import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { useInternalGetProductQuery } from '@/api/internal_api/types';
 import type { InternalGetProductQuery } from '@/api/internal_api/types';
 
@@ -21,9 +21,7 @@ const ProductSummary: React.FC<Props> = ({ productId }) => {
   return (
     <Box>
       {loading ? <Spinner size="lg" color="main.primary" /> : null}
-      {error ? (
-        <FlashMessage status="error" message="商品情報の取得に失敗しました。" />
-      ) : null}
+      <ErrorMessage error={error} />
       {data ? (
         <StatGroup
           border="1px"

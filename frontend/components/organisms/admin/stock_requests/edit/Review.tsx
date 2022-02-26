@@ -18,7 +18,8 @@ import {
   FormHelperText,
 } from '@chakra-ui/react';
 import { NotAllowedIcon, CheckIcon } from '@chakra-ui/icons';
-import { FlashMessage } from '@/components/molecules/FlashMessage';
+import { PrimaryButton } from '@/components/atoms/PrimaryButton';
+import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import {
   useInternalGetStockRequestQuery,
@@ -82,28 +83,25 @@ const Review: React.VFC<Props> = ({ stockRequestId }) => {
 
   return (
     <>
-      {rejectData ? (
-        <FlashMessage message="在庫リクエストを棄却しました" status="success" />
-      ) : null}
-      {rejectError ? <ErrorMessage error={rejectError} /> : null}
-      {approveData ? (
-        <FlashMessage message="在庫リクエストを承認しました" status="success" />
-      ) : null}
-      {approveError ? <ErrorMessage error={approveError} /> : null}
-
+      <SuccessMessage
+        data={rejectData}
+        message="在庫リクエストを棄却しました"
+      />
+      <ErrorMessage error={rejectError} />
+      <SuccessMessage
+        data={approveData}
+        message="在庫リクエストを承認しました"
+      />
+      <ErrorMessage error={approveError} />
       <Box textAlign="right">
         <Button mr={['2', '6']} onClick={onRejectModalOpen}>
           <NotAllowedIcon mr="1" />
           棄却
         </Button>
-        <Button
-          bgColor="primary.main"
-          color="white"
-          onClick={onApproveModalOpen}
-        >
+        <PrimaryButton onClick={onApproveModalOpen}>
           <CheckIcon mr="1" />
           承認
-        </Button>
+        </PrimaryButton>
       </Box>
       {data ? (
         <>
@@ -164,14 +162,9 @@ const Review: React.VFC<Props> = ({ stockRequestId }) => {
                 <Button variant="ghost" mr={3} onClick={onRejectModalClose}>
                   キャンセル
                 </Button>
-                <Button
-                  bgColor="primary.main"
-                  color="white"
-                  isLoading={rejectLoading}
-                  onClick={handleReject}
-                >
+                <PrimaryButton isLoading={rejectLoading} onClick={handleReject}>
                   棄却する
-                </Button>
+                </PrimaryButton>
               </ModalFooter>
             </ModalContent>
           </Modal>
@@ -230,14 +223,12 @@ const Review: React.VFC<Props> = ({ stockRequestId }) => {
                 <Button variant="ghost" mr={3} onClick={onApproveModalClose}>
                   キャンセル
                 </Button>
-                <Button
-                  bgColor="primary.main"
-                  color="white"
+                <PrimaryButton
                   isLoading={approveLoading}
                   onClick={handleApprove}
                 >
                   承認する
-                </Button>
+                </PrimaryButton>
               </ModalFooter>
             </ModalContent>
           </Modal>

@@ -4,7 +4,6 @@ import {
   Box,
   Input,
   Stack,
-  Button,
   FormControl,
   FormLabel,
   FormErrorMessage,
@@ -18,6 +17,7 @@ import {
 import { ChevronRightIcon } from '@chakra-ui/icons';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
+import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { Card } from '@/components/atoms/Card';
 import { useInternalCreateHospitalMutation } from '@/api/internal_api/types';
 import { goAdminHospitalsEdit, goAdminHospitals } from '@/utils/routes';
@@ -164,18 +164,15 @@ const New: React.VFC<NoProps> = () => {
             </FormControl>
           </Stack>
           <Box d="grid" justifyContent="center">
-            <Button
+            <PrimaryButton
               size="lg"
               mt="16"
-              variant="solid"
-              bgColor="primary.main"
-              color="white"
               type="submit"
               isLoading={loading}
               disabled={Object.keys(errors).length !== 0}
             >
               新規登録する
-            </Button>
+            </PrimaryButton>
           </Box>
         </form>
       </Card>

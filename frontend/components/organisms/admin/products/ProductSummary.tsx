@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, Box, Tag } from '@chakra-ui/react';
+import { SecondaryTag } from '@/components/atoms/SecondaryTag';
 import type { ProductFieldsFragment } from '@/api/internal_api/types';
 
 type Props = {
@@ -29,16 +30,9 @@ const ProductSummary: React.VFC<Props> = ({ product }) => {
             {product.name}
           </Text>
           {product.productTaggings.map((productTagging) => (
-            <Tag
-              key={productTagging.id}
-              bgColor="primary.light"
-              color="primary.main"
-              fontSize="xs"
-              mr="1"
-              mb="2"
-            >
+            <SecondaryTag key={productTagging.id} fontSize="xs" mr="1" mb="2">
               {productTagging.productTag.name}
-            </Tag>
+            </SecondaryTag>
           ))}
           <Text fontSize="xs" mb="2">
             割当：

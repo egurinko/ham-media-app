@@ -3,14 +3,14 @@ import {
   Box,
   Input,
   Stack,
-  Button,
   FormControl,
   FormLabel,
   FormErrorMessage,
 } from '@chakra-ui/react';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
+import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { Card } from '@/components/atoms/Card';
-import { FlashMessage } from '@/components/molecules/FlashMessage';
+import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import {
   useInternalUpdateProductTagGroupMutation,
@@ -62,11 +62,8 @@ const Form: React.VFC<Props> = ({ productTagGroupId }) => {
 
   return productTagGroupData ? (
     <>
-      {data ? (
-        <FlashMessage message="更新に成功しました" status="success" />
-      ) : error ? (
-        <ErrorMessage error={error} />
-      ) : null}
+      <SuccessMessage data={data} message="更新に成功しました" />
+      <ErrorMessage error={error} />
       <Card>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Stack spacing={2}>
@@ -87,18 +84,15 @@ const Form: React.VFC<Props> = ({ productTagGroupId }) => {
             </FormControl>
           </Stack>
           <Box d="grid" justifyContent="center">
-            <Button
+            <PrimaryButton
               size="lg"
               mt="6"
-              variant="solid"
-              bgColor="primary.main"
-              color="white"
               type="submit"
               isLoading={loading}
               disabled={!!errors.name || !isAdminData?.readIsAdmin.isAdmin}
             >
               更新する
-            </Button>
+            </PrimaryButton>
           </Box>
         </form>
       </Card>

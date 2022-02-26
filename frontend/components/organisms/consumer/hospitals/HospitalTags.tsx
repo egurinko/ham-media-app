@@ -1,4 +1,5 @@
-import { Tag, HStack } from '@chakra-ui/react';
+import { HStack } from '@chakra-ui/react';
+import { PrimaryTag } from '@/components/atoms/PrimaryTag';
 import type { HospitalFieldsFragment } from '@/api/public_api/types';
 
 type Props = {
@@ -9,24 +10,16 @@ type Props = {
 const HospitalTags: React.FC<Props> = ({ hospital, spacing }) => (
   <HStack spacing={spacing}>
     {hospital.hospitalNightServiceOption?.status === '○' ? (
-      <Tag bgColor="primary.main" color="white">
-        夜間営業可
-      </Tag>
+      <PrimaryTag>夜間営業可</PrimaryTag>
     ) : null}
     {hospital.hospitalReservationStatus?.required === '○' ? (
-      <Tag bgColor="primary.main" color="white">
-        予約必須
-      </Tag>
+      <PrimaryTag>予約必須</PrimaryTag>
     ) : null}
     {hospital.hospitalReservationStatus?.reservable === '○' ? (
-      <Tag bgColor="primary.main" color="white">
-        予約可
-      </Tag>
+      <PrimaryTag>予約可</PrimaryTag>
     ) : null}
     {hospital.hospitalBusinessForm?.insurance_enabled === '○' ? (
-      <Tag bgColor="primary.main" color="white">
-        保険利用可
-      </Tag>
+      <PrimaryTag>保険利用可</PrimaryTag>
     ) : null}
   </HStack>
 );
