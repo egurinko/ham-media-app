@@ -1,5 +1,6 @@
-import { Spinner, Tag } from '@chakra-ui/react';
+import { Spinner } from '@chakra-ui/react';
 import { SmallCloseIcon } from '@chakra-ui/icons';
+import { PrimaryTag } from '@/components/atoms/PrimaryTag';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
 import {
   useInternalGetProductQuery,
@@ -48,10 +49,8 @@ const IndexSection: React.FC<Props> = ({ productId }) => {
       ) : null}
       {data
         ? data.product.productTaggings.map((productTagging) => (
-            <Tag
+            <PrimaryTag
               key={productTagging.id}
-              bgColor="primary.main"
-              color="white"
               m="2"
               _hover={{
                 opacity: 0.8,
@@ -61,7 +60,7 @@ const IndexSection: React.FC<Props> = ({ productId }) => {
               <SmallCloseIcon
                 onClick={() => handleDeleteProductTagging(productTagging.id)}
               />
-            </Tag>
+            </PrimaryTag>
           ))
         : null}
     </>
