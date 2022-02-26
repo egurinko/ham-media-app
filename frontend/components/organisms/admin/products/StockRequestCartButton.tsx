@@ -1,8 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
-import { Button, Box, Badge } from '@chakra-ui/react';
+import { Box, Badge } from '@chakra-ui/react';
 import { ADMIN_STOCK_REQUESTS_NEW_PATH } from '@/utils/routes';
 import { CartIcon } from '@/components/atoms/assets/CartIcon';
+import { SecondaryButton } from '@/components/atoms/SecondaryButton';
 import { useLocalGetProductCartItemsQuery } from '@/api/internal_api/types';
 
 const StockRequestCartButton: React.VFC<NoProps> = ({}) => {
@@ -15,12 +16,10 @@ const StockRequestCartButton: React.VFC<NoProps> = ({}) => {
     <Box position="fixed" right="3" bottom="3">
       <Link href={ADMIN_STOCK_REQUESTS_NEW_PATH}>
         <a>
-          <Button
+          <SecondaryButton
             w="16"
             height="16"
             fill="primary.main"
-            bgColor="primary.light"
-            color="primary.main"
             borderRadius="50%"
             boxShadow="lg"
           >
@@ -36,7 +35,7 @@ const StockRequestCartButton: React.VFC<NoProps> = ({}) => {
             >
               {count || 0}
             </Badge>
-          </Button>
+          </SecondaryButton>
         </a>
       </Link>
     </Box>
