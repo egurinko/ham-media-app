@@ -2,7 +2,7 @@ import { Spinner } from '@chakra-ui/react';
 import { Card } from '@/components/atoms/Card';
 import { AllocationSection } from './stock/AllocationSection';
 import { NewSection } from './stock/NewSection';
-import { FlashMessage } from '@/components/molecules/FlashMessage';
+import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { useInternalGetStocksQuery } from '@/api/internal_api/types';
 import type { InternalGetProductQuery } from '@/api/internal_api/types';
 
@@ -18,9 +18,7 @@ const Stocks: React.FC<Props> = ({ productId }) => {
   return (
     <Card>
       {loading ? <Spinner size="lg" color="main.primary" /> : null}
-      {error ? (
-        <FlashMessage status="error" message="在庫情報の取得に失敗しました。" />
-      ) : null}
+      {error ? <ErrorMessage error={error} /> : null}
       {data ? (
         <AllocationSection
           productId={productId}

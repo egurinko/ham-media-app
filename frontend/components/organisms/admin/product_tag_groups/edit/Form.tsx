@@ -10,7 +10,7 @@ import {
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { Card } from '@/components/atoms/Card';
-import { FlashMessage } from '@/components/molecules/FlashMessage';
+import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import {
   useInternalUpdateProductTagGroupMutation,
@@ -62,11 +62,8 @@ const Form: React.VFC<Props> = ({ productTagGroupId }) => {
 
   return productTagGroupData ? (
     <>
-      {data ? (
-        <FlashMessage message="更新に成功しました" status="success" />
-      ) : error ? (
-        <ErrorMessage error={error} />
-      ) : null}
+      <SuccessMessage data={data} message="更新に成功しました" />
+      {error ? <ErrorMessage error={error} /> : null}
       <Card>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Stack spacing={2}>

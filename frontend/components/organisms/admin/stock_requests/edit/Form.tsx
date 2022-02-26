@@ -4,7 +4,7 @@ import { DeleteIcon } from '@chakra-ui/icons';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { Card } from '@/components/atoms/Card';
 import { Spinner } from '@/components/atoms/Spinner';
-import { FlashMessage } from '@/components/molecules/FlashMessage';
+import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { ProductSummary } from '@/components/organisms/admin/products/ProductSummary';
 import {
@@ -109,9 +109,7 @@ const Form: React.VFC<Props> = ({ stockRequestId }) => {
       {getStockRequestError ? (
         <ErrorMessage error={getStockRequestError} />
       ) : null}
-      {data ? (
-        <FlashMessage message="在庫リクエストを更新しました" status="success" />
-      ) : null}
+      <SuccessMessage data={data} message="在庫リクエストを更新しました" />
       {error ? <ErrorMessage error={error} /> : null}
       <form
         onSubmit={(e) => {

@@ -20,7 +20,7 @@ import {
 import { DeleteIcon, SmallCloseIcon, AddIcon } from '@chakra-ui/icons';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { Card } from '@/components/atoms/Card';
-import { FlashMessage } from '@/components/molecules/FlashMessage';
+import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import {
   useInternalDeleteProductTagMutation,
@@ -161,33 +161,26 @@ const Tags: React.FC<Props> = ({ productTagGroupId }) => {
     <>
       <Card>
         {loading ? <Spinner size="lg" color="main.primary" /> : null}
-        {error ? (
-          <FlashMessage status="error" message="タグの取得に失敗しました。" />
-        ) : null}
+        {error ? <ErrorMessage error={error} /> : null}
         <>
           <Text mb="2" fontSize="lg" fontWeight="bold">
             タグ情報
           </Text>
-          {deleteProductTagData ? (
-            <FlashMessage
-              message="タグの削除に成功しました。"
-              status="success"
-            />
-          ) : deleteProductTagError ? (
+          <SuccessMessage
+            data={deleteProductTagData}
+            message="タグの削除に成功しました。"
+          />
+          {deleteProductTagError ? (
             <ErrorMessage error={deleteProductTagError} />
           ) : null}
-          {updateProductTagData ? (
-            <FlashMessage
-              message="タグの更新に成功しました。"
-              status="success"
-            />
-          ) : updateProductTagError ? (
+          <SuccessMessage
+            data={updateProductTagData}
+            message="タグの更新に成功しました。"
+          />
+          {updateProductTagError ? (
             <ErrorMessage error={updateProductTagError} />
           ) : null}
           <VStack spacing="0" mt="4" alignItems="flex-start">
-            {error ? (
-              <FlashMessage message="エラーが発生しました。" status="error" />
-            ) : null}
             <Divider />
             {productTags.map((productTag) => (
               <Fragment key={productTag.id}>
@@ -245,12 +238,11 @@ const Tags: React.FC<Props> = ({ productTagGroupId }) => {
           <Text mb="2" mt="8" fontSize="lg" fontWeight="bold">
             タグ追加
           </Text>
-          {createProductTagsData ? (
-            <FlashMessage
-              message="タグの追加に成功しました。"
-              status="success"
-            />
-          ) : createProductTagsError ? (
+          <SuccessMessage
+            data={createProductTagsData}
+            message="タグの追加に成功しました。"
+          />
+          {createProductTagsError ? (
             <ErrorMessage error={createProductTagsError} />
           ) : null}
           <Box>

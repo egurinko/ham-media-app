@@ -3,7 +3,8 @@ import { Box, Text, Input, IconButton, Select } from '@chakra-ui/react';
 import { SmallCloseIcon, AddIcon } from '@chakra-ui/icons';
 import dayjs from 'dayjs';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
-import { FlashMessage } from '@/components/molecules/FlashMessage';
+import { SuccessMessage } from '@/components/molecules/SuccessMessage';
+import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import {
   useInternalCreateStocksMutation,
   useInternalGetInternalUsersQuery,
@@ -120,11 +121,8 @@ const NewSection: React.FC<Props> = ({ productId, fetchStocksMore }) => {
       <Text mt="6" mb="2" fontSize="lg" fontWeight="bold">
         在庫追加
       </Text>
-      {createStocksError ? (
-        <FlashMessage status="error" message={createStocksError.message} />
-      ) : createStockData ? (
-        <FlashMessage status="success" message="在庫を追加しました。" />
-      ) : null}
+      <SuccessMessage data={createStockData} message="在庫を追加しました。" />
+      {createStocksError ? <ErrorMessage error={createStocksError} /> : null}
       <Box>
         <Box display="flex" flexDir="row">
           <Text width="33%" fontSize="xs" mr="2">

@@ -19,7 +19,7 @@ import {
 } from '@chakra-ui/react';
 import { NotAllowedIcon, CheckIcon } from '@chakra-ui/icons';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
-import { FlashMessage } from '@/components/molecules/FlashMessage';
+import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import {
   useInternalGetStockRequestQuery,
@@ -83,13 +83,16 @@ const Review: React.VFC<Props> = ({ stockRequestId }) => {
 
   return (
     <>
-      {rejectData ? (
-        <FlashMessage message="在庫リクエストを棄却しました" status="success" />
-      ) : null}
+      <SuccessMessage
+        data={rejectData}
+        message="在庫リクエストを棄却しました"
+      />
       {rejectError ? <ErrorMessage error={rejectError} /> : null}
-      {approveData ? (
-        <FlashMessage message="在庫リクエストを承認しました" status="success" />
-      ) : null}
+
+      <SuccessMessage
+        data={approveData}
+        message="在庫リクエストを承認しました"
+      />
       {approveError ? <ErrorMessage error={approveError} /> : null}
 
       <Box textAlign="right">

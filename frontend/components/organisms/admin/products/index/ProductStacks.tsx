@@ -23,7 +23,7 @@ import {
   useInternalGetInternalUsersQuery,
 } from '@/api/internal_api/types';
 import type { ProductFieldsFragment } from '@/api/internal_api/types';
-import { FlashMessage } from '@/components/molecules/FlashMessage';
+import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { SummaryLink } from '@/components/molecules/SummaryLink';
 import { ProductSummary } from '../ProductSummary';
 import { useIntersectionObserver } from '@/utils/hooks/useIntersectionObserver';
@@ -205,9 +205,7 @@ const ProductStacks: React.VFC<NoProps> = () => {
       </Card>
       <Skeleton isLoaded={!loading}>
         <VStack spacing="0" mt="4" alignItems="flex-start">
-          {error ? (
-            <FlashMessage message="エラーが発生しました。" status="error" />
-          ) : null}
+          {error ? <ErrorMessage error={error} /> : null}
           <Divider />
           {nodes?.map((product) => (
             <Fragment key={product.id}>

@@ -32,7 +32,7 @@ import {
   useInternalDeleteStockRequestMutation,
 } from '@/api/internal_api/types';
 import type { StockRequestFieldsFragment } from '@/api/internal_api/types';
-import { FlashMessage } from '@/components/molecules/FlashMessage';
+import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { StockRequestSummary } from './stockRequestsStack/StockRequestSummary';
 import { useIntersectionObserver } from '@/utils/hooks/useIntersectionObserver';
@@ -161,15 +161,12 @@ const StockRequestsStack: React.VFC<NoProps> = () => {
         </form>
       </Card>
 
-      {error ? (
-        <FlashMessage message="エラーが発生しました。" status="error" />
-      ) : null}
-      {deleteStockRequestData ? (
-        <FlashMessage
-          message="在庫リクエストを削除しました。"
-          status="success"
-        />
-      ) : null}
+      {error ? <ErrorMessage error={error} /> : null}
+      <SuccessMessage
+        data={deleteStockRequestData}
+        message="在庫リクエストを削除しました。"
+      />
+
       {deleteStockRequestError ? (
         <ErrorMessage error={deleteStockRequestError} />
       ) : null}

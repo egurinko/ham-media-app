@@ -12,6 +12,7 @@ import {
 import { usePublicCreateSessionMutation } from '@/api/public_api/types';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { Card } from '@/components/atoms/Card';
+import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
 import validators from '@/validators/index';
 import { setCookie } from '@/utils/cookies';
@@ -50,9 +51,8 @@ const Form: React.VFC<NoProps> = () => {
 
   return (
     <>
-      {loginData ? (
-        <FlashMessage message="ログインに成功しました。" status="success" />
-      ) : loginError ? (
+      <SuccessMessage data={loginData} message="ログインに成功しました。" />
+      {loginError ? (
         <FlashMessage
           message="メールアドレスかパスワードが間違っています。"
           status="error"

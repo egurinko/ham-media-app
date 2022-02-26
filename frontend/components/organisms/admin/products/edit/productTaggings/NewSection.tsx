@@ -3,7 +3,8 @@ import { Spinner, Box } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
 import { CUIAutoComplete } from 'chakra-ui-autocomplete';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
-import { FlashMessage } from '@/components/molecules/FlashMessage';
+import { SuccessMessage } from '@/components/molecules/SuccessMessage';
+import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import {
   useInternalGetProductTagGroupsQuery,
   useInternalCreateProductTaggingsMutation,
@@ -74,13 +75,13 @@ const NewSection: React.FC<Props> = ({ productId }) => {
       {loading || createProductTaggingsLoading ? (
         <Spinner size="lg" color="main.primary" />
       ) : null}
-      {error ? (
-        <FlashMessage status="error" message="タグの取得に失敗しました。" />
-      ) : null}
-      {createProductTaggingsData ? (
-        <FlashMessage status="success" message="タグの紐付けに成功しました。" />
-      ) : createProductTaggingsError ? (
-        <FlashMessage status="error" message="タグの紐付けに失敗しました。" />
+      {error ? <ErrorMessage error={error} /> : null}
+      <SuccessMessage
+        data={createProductTaggingsData}
+        message="タグの紐付けに成功しました。"
+      />
+      {createProductTaggingsError ? (
+        <ErrorMessage error={createProductTaggingsError} />
       ) : null}
       <form
         onSubmit={(e) => {

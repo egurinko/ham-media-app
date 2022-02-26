@@ -20,7 +20,7 @@ import {
 } from '@/api/internal_api/types';
 import type { InternalGetInternalUsersQuery } from '@/api/internal_api/types';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
-import { FlashMessage } from '@/components/molecules/FlashMessage';
+import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { Spinner } from '@/components/atoms/Spinner';
 import { InternalUserSummary } from './internalUsersStack/InternalUserSummary';
@@ -67,11 +67,8 @@ const InternalUsersStack: React.VFC<NoProps> = () => {
         <Spinner loading={loading} />
       </Box>
       <VStack spacing="0" mt="4" alignItems="flex-start">
-        {mutationData ? (
-          <FlashMessage message="削除に成功しました" status="success" />
-        ) : mutationError ? (
-          <ErrorMessage error={mutationError} />
-        ) : null}
+        <SuccessMessage data={mutationData} message="削除に成功しました" />
+        {mutationError ? <ErrorMessage error={mutationError} /> : null}
         <Divider />
         {data?.internalUsers.map((internalUser) => (
           <Fragment key={internalUser.email}>

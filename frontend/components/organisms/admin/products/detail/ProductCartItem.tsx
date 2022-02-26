@@ -4,6 +4,7 @@ import { AddIcon } from '@chakra-ui/icons';
 import { SecondaryButton } from '@/components/atoms/SecondaryButton';
 import { Card } from '@/components/atoms/Card';
 import { ProductSummary } from '@/components/organisms/admin/products/ProductSummary';
+import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
 import { useInternalGetProductQuery } from '@/api/internal_api/types';
 import { productCartItemsVar } from '@/utils/apollo/cache';
@@ -41,7 +42,7 @@ const ProductCartItem: React.VFC<Props> = ({ productId }) => {
 
   return (
     <Card>
-      {error ? <FlashMessage message={error.message} status="error" /> : null}
+      {error ? <ErrorMessage error={error} /> : null}
       {message !== '' ? (
         <FlashMessage message={message} status="success" />
       ) : null}

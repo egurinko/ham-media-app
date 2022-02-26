@@ -5,7 +5,8 @@ import { DeleteIcon } from '@chakra-ui/icons';
 import { Spinner } from '@/components/atoms/Spinner';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { Card } from '@/components/atoms/Card';
-import { FlashMessage } from '@/components/molecules/FlashMessage';
+import { SuccessMessage } from '@/components/molecules/SuccessMessage';
+import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { ProductSummary } from '@/components/organisms/admin/products/ProductSummary';
 import { Empty } from './Empty';
 import {
@@ -90,13 +91,11 @@ const Form: React.VFC<NoProps> = () => {
 
   return (
     <Card>
-      {data ? (
-        <FlashMessage
-          message="在庫リクエストを行いました。少々お待ちください。"
-          status="success"
-        />
-      ) : null}
-      {error ? <FlashMessage message={error.message} status="error" /> : null}
+      <SuccessMessage
+        data={data}
+        message="在庫リクエストを行いました。少々お待ちください。"
+      />
+      {error ? <ErrorMessage error={error} /> : null}
       {productsLoading ? (
         <Spinner loading={productsLoading} />
       ) : requestProducts.length === 0 ? (
