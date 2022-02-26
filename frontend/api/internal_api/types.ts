@@ -221,6 +221,7 @@ export type Mutation = {
   deleteProductTag: Delete;
   deleteProductTagging: Delete;
   deleteStock: Delete;
+  deleteStockRequest: Delete;
   returnStock: Stock;
   updateHospital: Hospital;
   updateInternalUser: InternalUser;
@@ -318,6 +319,11 @@ export type MutationDeleteProductTaggingArgs = {
 
 
 export type MutationDeleteStockArgs = {
+  id: Scalars['Int'];
+};
+
+
+export type MutationDeleteStockRequestArgs = {
   id: Scalars['Int'];
 };
 
@@ -753,6 +759,13 @@ export type InternalDeleteStockMutationVariables = Exact<{
 
 
 export type InternalDeleteStockMutation = { __typename?: 'Mutation', deleteStock: { __typename?: 'Delete', deleted: boolean } };
+
+export type InternalDeleteStockRequestMutationVariables = Exact<{
+  id: Scalars['Int'];
+}>;
+
+
+export type InternalDeleteStockRequestMutation = { __typename?: 'Mutation', deleteStockRequest: { __typename?: 'Delete', deleted: boolean } };
 
 export type HospitalFieldsFragment = { __typename?: 'Hospital', id: BigInt, name: string, url: string, deleted: boolean, internal_memo: string, hospitalAddress?: { __typename?: 'HospitalAddress', id: BigInt, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: BigInt } } | null | undefined, hospitalBusinessForm?: { __typename?: 'HospitalBusinessForm', id: BigInt, business_hour: string, closed_day: string, insurance_enabled: string, remark: string } | null | undefined, hospitalCertificationOption?: { __typename?: 'HospitalCertificationOption', id: BigInt, nichiju_registered: string, jsava_registered: string } | null | undefined, hospitalInternalReputation?: { __typename?: 'HospitalInternalReputation', id: BigInt, star: number, remark: string } | null | undefined, hospitalNightServiceOption?: { __typename?: 'HospitalNightServiceOption', id: BigInt, status: string, remark: string } | null | undefined, hospitalNightUrgentActionOption?: { __typename?: 'HospitalNightUrgentActionOption', id: BigInt, status: string } | null | undefined, hospitalReservationStatus?: { __typename?: 'HospitalReservationStatus', id: BigInt, required: string, reservable: string, remark: string } | null | undefined };
 
@@ -1671,6 +1684,39 @@ export function useInternalDeleteStockMutation(baseOptions?: Apollo.MutationHook
 export type InternalDeleteStockMutationHookResult = ReturnType<typeof useInternalDeleteStockMutation>;
 export type InternalDeleteStockMutationResult = Apollo.MutationResult<InternalDeleteStockMutation>;
 export type InternalDeleteStockMutationOptions = Apollo.BaseMutationOptions<InternalDeleteStockMutation, InternalDeleteStockMutationVariables>;
+export const InternalDeleteStockRequestDocument = gql`
+    mutation InternalDeleteStockRequest($id: Int!) {
+  deleteStockRequest(id: $id) {
+    deleted
+  }
+}
+    `;
+export type InternalDeleteStockRequestMutationFn = Apollo.MutationFunction<InternalDeleteStockRequestMutation, InternalDeleteStockRequestMutationVariables>;
+
+/**
+ * __useInternalDeleteStockRequestMutation__
+ *
+ * To run a mutation, you first call `useInternalDeleteStockRequestMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInternalDeleteStockRequestMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [internalDeleteStockRequestMutation, { data, loading, error }] = useInternalDeleteStockRequestMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useInternalDeleteStockRequestMutation(baseOptions?: Apollo.MutationHookOptions<InternalDeleteStockRequestMutation, InternalDeleteStockRequestMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<InternalDeleteStockRequestMutation, InternalDeleteStockRequestMutationVariables>(InternalDeleteStockRequestDocument, options);
+      }
+export type InternalDeleteStockRequestMutationHookResult = ReturnType<typeof useInternalDeleteStockRequestMutation>;
+export type InternalDeleteStockRequestMutationResult = Apollo.MutationResult<InternalDeleteStockRequestMutation>;
+export type InternalDeleteStockRequestMutationOptions = Apollo.BaseMutationOptions<InternalDeleteStockRequestMutation, InternalDeleteStockRequestMutationVariables>;
 export const InternalGetHospitalDocument = gql`
     query InternalGetHospital($id: BigInt!) {
   hospital(id: $id) {
