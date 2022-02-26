@@ -26,6 +26,7 @@ import {
   useInternalGetProductTagGroupQuery,
   useInternalCreateProductTagsMutation,
   useInternalUpdateProductTagMutation,
+  useLocalReadIsAdminQuery,
 } from '@/api/internal_api/types';
 import type {
   InternalUpdateProductTagGroupMutationVariables,
@@ -47,6 +48,7 @@ type ProductTag =
   InternalGetProductTagGroupQuery['productTagGroup']['productTags'][number];
 
 const Tags: React.FC<Props> = ({ productTagGroupId }) => {
+  const { data: isAdminData } = useLocalReadIsAdminQuery();
   const [addingTags, setAddingTags] = useState([addingTagInitialState]);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -213,6 +215,7 @@ const Tags: React.FC<Props> = ({ productTagGroupId }) => {
                     <Button
                       ml="2"
                       onClick={() => handleUpdateProductTag(productTag)}
+                      disabled={!isAdminData?.readIsAdmin.isAdmin}
                     >
                       更新する
                     </Button>
@@ -228,6 +231,7 @@ const Tags: React.FC<Props> = ({ productTagGroupId }) => {
                       icon={<DeleteIcon />}
                       aria-label="delete"
                       onClick={() => handleOpenDelete(productTag)}
+                      disabled={!isAdminData?.readIsAdmin.isAdmin}
                     />
                   </Box>
                 </Box>
@@ -304,6 +308,7 @@ const Tags: React.FC<Props> = ({ productTagGroupId }) => {
                   color="white"
                   leftIcon={<AddIcon />}
                   isLoading={createProductTagsLoading}
+                  disabled={!isAdminData?.readIsAdmin.isAdmin}
                 >
                   タグ追加
                 </Button>

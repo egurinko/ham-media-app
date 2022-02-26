@@ -24,7 +24,10 @@ import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
 import { Card } from '@/components/atoms/Card';
 import { getHospital } from '@/api/internal_api/getHospital';
-import { useInternalGetHospitalQuery } from '@/api/internal_api/types';
+import {
+  useInternalGetHospitalQuery,
+  useLocalReadIsAdminQuery,
+} from '@/api/internal_api/types';
 import { usePublicGetPrefecturesQuery } from '@/api/public_api/types';
 import { useInternalUpdateHospitalMutation } from '@/api/internal_api/types';
 import { goAdminHospitals } from '@/utils/routes';
@@ -63,6 +66,7 @@ const Edit: React.VFC<Props> = () => {
   const hospital = hospitalData?.hospital;
 
   const { data: prefectureData } = usePublicGetPrefecturesQuery();
+  const { data: isAdminData } = useLocalReadIsAdminQuery();
 
   const [update, { data, loading, error }] =
     useInternalUpdateHospitalMutation();
@@ -553,7 +557,10 @@ const Edit: React.VFC<Props> = () => {
                 color="white"
                 type="submit"
                 isLoading={loading}
-                disabled={Object.keys(errors).length !== 0}
+                disabled={
+                  Object.keys(errors).length !== 0 ||
+                  !isAdminData?.readIsAdmin.isAdmin
+                }
               >
                 更新する
               </Button>
