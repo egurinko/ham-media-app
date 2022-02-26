@@ -134,7 +134,7 @@ const Review: React.VFC<Props> = ({ stockRequestId }) => {
                 isLoading={rejectLoading}
                 onClick={handleReject}
               >
-                削除する
+                棄却する
               </Button>
             </ModalFooter>
           </ModalContent>

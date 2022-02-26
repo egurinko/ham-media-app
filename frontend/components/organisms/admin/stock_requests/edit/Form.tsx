@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { Box, Text, Select, Button } from '@chakra-ui/react';
 import { DeleteIcon } from '@chakra-ui/icons';
 import { Card } from '@/components/atoms/Card';
+import { Spinner } from '@/components/atoms/Spinner';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { ProductSummary } from '@/components/organisms/admin/products/ProductSummary';
@@ -22,10 +23,13 @@ type UpdatingStockRequest = {
 }[];
 
 const Form: React.VFC<Props> = ({ stockRequestId }) => {
-  const { data: getStockRequestData, error: getStockRequestError } =
-    useInternalGetStockRequestQuery({
-      variables: { id: stockRequestId },
-    });
+  const {
+    data: getStockRequestData,
+    error: getStockRequestError,
+    loading: getStockRequestLoading,
+  } = useInternalGetStockRequestQuery({
+    variables: { id: stockRequestId },
+  });
   const [updatingStockRequest, setUpdatingStockRequest] =
     useState<UpdatingStockRequest>([]);
 
@@ -100,6 +104,7 @@ const Form: React.VFC<Props> = ({ stockRequestId }) => {
 
   return (
     <Card>
+      <Spinner loading={getStockRequestLoading} />
       {getStockRequestError ? (
         <ErrorMessage error={getStockRequestError} />
       ) : null}
