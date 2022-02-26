@@ -506,6 +506,7 @@ export type Query = {
   productTagGroup: ProductTagGroup;
   productTagGroups: Array<ProductTagGroup>;
   products: Array<Product>;
+  readIsAdmin: ReadIsAdmin;
   roles: Array<Role>;
   session: Session;
   stockRequest: StockRequest;
@@ -584,6 +585,11 @@ export type QueryStockRequestConnectionArgs = {
 
 export type QueryStocksArgs = {
   productId: Scalars['Int'];
+};
+
+export type ReadIsAdmin = {
+  __typename?: 'ReadIsAdmin';
+  isAdmin: Scalars['Boolean'];
 };
 
 /** A region */
@@ -942,6 +948,11 @@ export type InternalGetStocksQueryVariables = Exact<{
 
 
 export type InternalGetStocksQuery = { __typename?: 'Query', stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> };
+
+export type LocalReadIsAdminQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type LocalReadIsAdminQuery = { __typename?: 'Query', readIsAdmin: { __typename?: 'ReadIsAdmin', isAdmin: boolean } };
 
 export type InternalRejectStockRequestMutationVariables = Exact<{
   id: Scalars['Int'];
@@ -2538,6 +2549,40 @@ export function useInternalGetStocksLazyQuery(baseOptions?: Apollo.LazyQueryHook
 export type InternalGetStocksQueryHookResult = ReturnType<typeof useInternalGetStocksQuery>;
 export type InternalGetStocksLazyQueryHookResult = ReturnType<typeof useInternalGetStocksLazyQuery>;
 export type InternalGetStocksQueryResult = Apollo.QueryResult<InternalGetStocksQuery, InternalGetStocksQueryVariables>;
+export const LocalReadIsAdminDocument = gql`
+    query LocalReadIsAdmin {
+  readIsAdmin {
+    isAdmin
+  }
+}
+    `;
+
+/**
+ * __useLocalReadIsAdminQuery__
+ *
+ * To run a query within a React component, call `useLocalReadIsAdminQuery` and pass it any options that fit your needs.
+ * When your component renders, `useLocalReadIsAdminQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useLocalReadIsAdminQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useLocalReadIsAdminQuery(baseOptions?: Apollo.QueryHookOptions<LocalReadIsAdminQuery, LocalReadIsAdminQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<LocalReadIsAdminQuery, LocalReadIsAdminQueryVariables>(LocalReadIsAdminDocument, options);
+      }
+export function useLocalReadIsAdminLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<LocalReadIsAdminQuery, LocalReadIsAdminQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<LocalReadIsAdminQuery, LocalReadIsAdminQueryVariables>(LocalReadIsAdminDocument, options);
+        }
+export type LocalReadIsAdminQueryHookResult = ReturnType<typeof useLocalReadIsAdminQuery>;
+export type LocalReadIsAdminLazyQueryHookResult = ReturnType<typeof useLocalReadIsAdminLazyQuery>;
+export type LocalReadIsAdminQueryResult = Apollo.QueryResult<LocalReadIsAdminQuery, LocalReadIsAdminQueryVariables>;
 export const InternalRejectStockRequestDocument = gql`
     mutation InternalRejectStockRequest($id: Int!, $message: String!) {
   rejectStockRequest(id: $id, message: $message) {
