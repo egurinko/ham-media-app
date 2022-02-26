@@ -370,6 +370,7 @@ export interface NexusGenFieldTypes {
     deleteProductTag: NexusGenRootTypes['Delete']; // Delete!
     deleteProductTagging: NexusGenRootTypes['Delete']; // Delete!
     deleteStock: NexusGenRootTypes['Delete']; // Delete!
+    deleteStockRequest: NexusGenRootTypes['Delete']; // Delete!
     returnStock: NexusGenRootTypes['Stock']; // Stock!
     updateHospital: NexusGenRootTypes['Hospital']; // Hospital!
     updateInternalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
@@ -586,6 +587,7 @@ export interface NexusGenFieldTypeNames {
     deleteProductTag: 'Delete'
     deleteProductTagging: 'Delete'
     deleteStock: 'Delete'
+    deleteStockRequest: 'Delete'
     returnStock: 'Stock'
     updateHospital: 'Hospital'
     updateInternalUser: 'InternalUser'
@@ -762,6 +764,9 @@ export interface NexusGenArgTypes {
       id: number; // Int!
     }
     deleteStock: { // args
+      id: number; // Int!
+    }
+    deleteStockRequest: { // args
       id: number; // Int!
     }
     returnStock: { // args
