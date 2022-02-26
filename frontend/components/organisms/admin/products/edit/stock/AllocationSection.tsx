@@ -22,6 +22,7 @@ import {
   useInternalReturnStockMutation,
   useInternalDeleteStockMutation,
   useInternalUpdateStockInternalUserMutation,
+  useLocalReadIsAdminQuery,
 } from '@/api/internal_api/types';
 import type {
   InternalGetProductQuery,
@@ -42,6 +43,7 @@ const AllocationSection: React.FC<Props> = ({
   stocks,
   fetchStocksMore,
 }) => {
+  const { data: isAdminData } = useLocalReadIsAdminQuery();
   const { data: internalUserData } = useInternalGetInternalUsersQuery();
   const [
     allocateStock,
@@ -176,6 +178,7 @@ const AllocationSection: React.FC<Props> = ({
                     size="sm"
                     placeholder="選択してください"
                     defaultValue={Number(stock.internalUser.id)}
+                    disabled={!isAdminData?.readIsAdmin.isAdmin}
                     onChange={async (e) => {
                       await updateStockInternalUser({
                         variables: {
@@ -207,6 +210,7 @@ const AllocationSection: React.FC<Props> = ({
                     <Button
                       size="xs"
                       ml="1"
+                      disabled={!isAdminData?.readIsAdmin.isAdmin}
                       onClick={() => handleReturnStock(stock.id)}
                     >
                       返却
@@ -223,6 +227,7 @@ const AllocationSection: React.FC<Props> = ({
                         onChange={(e) => {
                           handleAllocate(stock.id, BigInt(e.target.value));
                         }}
+                        disabled={!isAdminData?.readIsAdmin.isAdmin}
                         placeholder="スタッフを選択"
                       >
                         {internalUserData.internalUsers.map((internalUser) => (
@@ -245,6 +250,7 @@ const AllocationSection: React.FC<Props> = ({
                   onClick={() => handleDeleteStock(stock.id)}
                   icon={<DeleteIcon size="sm" />}
                   aria-label="delete stock"
+                  disabled={!isAdminData?.readIsAdmin.isAdmin}
                 />
               </Td>
             </Tr>
