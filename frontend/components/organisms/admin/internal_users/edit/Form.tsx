@@ -17,6 +17,7 @@ import {
   useInternalUpdateInternalUserMutation,
   useInternalGetInternalUserQuery,
   useInternalGetRolesQuery,
+  useLocalReadIsAdminQuery,
 } from '@/api/internal_api/types';
 import type { InternalGetInternalUserQuery } from '@/api/internal_api/types';
 import { goAdminInternalUsers } from '@/utils/routes';
@@ -34,6 +35,7 @@ interface Props {
 }
 
 const Form: React.VFC<Props> = ({ internalUserId }) => {
+  const { data: isAdminData } = useLocalReadIsAdminQuery();
   const { data: internalUserData, error: internalUserError } =
     useInternalGetInternalUserQuery({
       variables: { id: internalUserId },
@@ -153,7 +155,11 @@ const Form: React.VFC<Props> = ({ internalUserId }) => {
                 control={control}
                 rules={{ required: 'ロールを入力してください' }}
                 render={({ field }) => (
-                  <Select isInvalid={!!errors.roleId} {...field}>
+                  <Select
+                    disabled={!isAdminData?.readIsAdmin.isAdmin}
+                    isInvalid={!!errors.roleId}
+                    {...field}
+                  >
                     {rolesData?.roles.map((role) => (
                       <option key={String(role.id)} value={role.id}>
                         {role.name}

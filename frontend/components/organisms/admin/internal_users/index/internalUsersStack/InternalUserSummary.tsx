@@ -1,6 +1,7 @@
 import { Text, Box, IconButton } from '@chakra-ui/react';
 import { DeleteIcon, StarIcon } from '@chakra-ui/icons';
 import { UserProfileIcon } from '@/components/atoms/assets/UserProfileIcon';
+import { useLocalReadIsAdminQuery } from '@/api/internal_api/types';
 import type { InternalGetInternalUsersQuery } from '@/api/internal_api/types';
 import { SummaryLink } from '@/components/molecules/SummaryLink';
 import { ADMIN_INTERNAL_USERS_EDIT_PATH } from '@/utils/routes';
@@ -17,6 +18,8 @@ const InternalUserSummary: React.VFC<Props> = ({
   internalUser,
   handleDeleteOpen,
 }) => {
+  const { data: isAdminData } = useLocalReadIsAdminQuery();
+
   return (
     <SummaryLink url={ADMIN_INTERNAL_USERS_EDIT_PATH(internalUser.id)}>
       <Box
@@ -48,6 +51,7 @@ const InternalUserSummary: React.VFC<Props> = ({
             icon={<DeleteIcon />}
             color="gray"
             onClick={(e) => handleDeleteOpen(e, internalUser)}
+            disabled={!isAdminData?.readIsAdmin.isAdmin}
           />
         </Box>
       </Box>

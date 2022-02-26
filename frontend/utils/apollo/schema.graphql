@@ -3,6 +3,11 @@ type ProductCartItem {
   productId: Int!
 }
 
+type ReadIsAdmin {
+  isAdmin: Boolean!
+}
+
 extend type Query {
   productCartItems: [ProductCartItem!]!
+  readIsAdmin: ReadIsAdmin!
 }

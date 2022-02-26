@@ -15,6 +15,7 @@ import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import {
   useInternalUpdateMakerMutation,
   useInternalGetMakerQuery,
+  useLocalReadIsAdminQuery,
 } from '@/api/internal_api/types';
 import type { InternalUpdateMakerMutation } from '@/api/internal_api/types';
 import { goAdminMakers } from '@/utils/routes';
@@ -29,6 +30,7 @@ interface Props {
 }
 
 const Form: React.VFC<Props> = ({ makerId }) => {
+  const { data: isAdminData } = useLocalReadIsAdminQuery();
   const { data: makerData, error: makerError } = useInternalGetMakerQuery({
     variables: { id: makerId },
   });
@@ -97,7 +99,7 @@ const Form: React.VFC<Props> = ({ makerId }) => {
               color="white"
               type="submit"
               isLoading={loading}
-              disabled={!!errors.name}
+              disabled={!!errors.name || !isAdminData?.readIsAdmin.isAdmin}
             >
               更新する
             </Button>

@@ -6,6 +6,7 @@ import { FlashMessage } from '@/components/molecules/FlashMessage';
 import {
   useInternalCreateStocksMutation,
   useInternalGetInternalUsersQuery,
+  useLocalReadIsAdminQuery,
 } from '@/api/internal_api/types';
 import type {
   InternalGetProductQuery,
@@ -31,6 +32,7 @@ const addingStockInitialState: AddingStock = {
 };
 
 const NewSection: React.FC<Props> = ({ productId, fetchStocksMore }) => {
+  const { data: isAdminData } = useLocalReadIsAdminQuery();
   const { data: internalUsersData } = useInternalGetInternalUsersQuery();
   const [addingStocks, setAddingStocks] = useState([addingStockInitialState]);
   const [
@@ -222,6 +224,7 @@ const NewSection: React.FC<Props> = ({ productId, fetchStocksMore }) => {
               color="white"
               leftIcon={<AddIcon />}
               isLoading={createStocksLoading}
+              disabled={!isAdminData?.readIsAdmin.isAdmin}
             >
               在庫追加
             </Button>

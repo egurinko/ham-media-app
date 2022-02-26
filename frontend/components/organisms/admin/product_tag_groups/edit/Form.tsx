@@ -15,6 +15,7 @@ import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import {
   useInternalUpdateProductTagGroupMutation,
   useInternalGetProductTagGroupQuery,
+  useLocalReadIsAdminQuery,
 } from '@/api/internal_api/types';
 import type { InternalUpdateProductTagGroupMutationVariables } from '@/api/internal_api/types';
 import { goAdminProductTagGroups } from '@/utils/routes';
@@ -29,6 +30,7 @@ interface Props {
 }
 
 const Form: React.VFC<Props> = ({ productTagGroupId }) => {
+  const { data: isAdminData } = useLocalReadIsAdminQuery();
   const { data: productTagGroupData } = useInternalGetProductTagGroupQuery({
     variables: { id: productTagGroupId },
   });
@@ -93,7 +95,7 @@ const Form: React.VFC<Props> = ({ productTagGroupId }) => {
               color="white"
               type="submit"
               isLoading={loading}
-              disabled={!!errors.name}
+              disabled={!!errors.name || !isAdminData?.readIsAdmin.isAdmin}
             >
               更新する
             </Button>

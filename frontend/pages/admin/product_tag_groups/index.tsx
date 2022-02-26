@@ -4,9 +4,11 @@ import { useRouter } from 'next/router';
 import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
 import { ProductTagGroupsStack } from '@/components/organisms/admin/product_tag_groups/index/ProductTagGroupsStack';
 import { goAdminProductTagGroupsNew } from '@/utils/routes';
+import { useLocalReadIsAdminQuery } from '@/api/internal_api/types';
 
 const Index: React.VFC<NoProps> = () => {
   const router = useRouter();
+  const { data: isAdminData } = useLocalReadIsAdminQuery();
 
   return (
     <InternalLayout>
@@ -18,6 +20,7 @@ const Index: React.VFC<NoProps> = () => {
           size="md"
           leftIcon={<AddIcon />}
           onClick={() => goAdminProductTagGroupsNew(router)}
+          disabled={!isAdminData?.readIsAdmin.isAdmin}
         >
           新規登録
         </Button>
