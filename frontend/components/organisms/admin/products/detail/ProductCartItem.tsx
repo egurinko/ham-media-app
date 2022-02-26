@@ -42,7 +42,7 @@ const ProductCartItem: React.VFC<Props> = ({ productId }) => {
 
   return (
     <Card>
-      {error ? <ErrorMessage error={error} /> : null}
+      <ErrorMessage error={error} />
       {message !== '' ? (
         <FlashMessage message={message} status="success" />
       ) : null}

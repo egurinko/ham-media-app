@@ -161,15 +161,13 @@ const StockRequestsStack: React.VFC<NoProps> = () => {
         </form>
       </Card>
 
-      {error ? <ErrorMessage error={error} /> : null}
+      <ErrorMessage error={error} />
       <SuccessMessage
         data={deleteStockRequestData}
         message="在庫リクエストを削除しました。"
       />
 
-      {deleteStockRequestError ? (
-        <ErrorMessage error={deleteStockRequestError} />
-      ) : null}
+      <ErrorMessage error={deleteStockRequestError} />
       <VStack spacing="0" mt="4" alignItems="flex-start">
         <Divider />
         {nodes?.map((stockRequest) => (

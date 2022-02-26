@@ -63,7 +63,7 @@ const Form: React.VFC<Props> = ({ productTagGroupId }) => {
   return productTagGroupData ? (
     <>
       <SuccessMessage data={data} message="更新に成功しました" />
-      {error ? <ErrorMessage error={error} /> : null}
+      <ErrorMessage error={error} />
       <Card>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Stack spacing={2}>

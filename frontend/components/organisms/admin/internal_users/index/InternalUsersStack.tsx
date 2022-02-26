@@ -68,7 +68,7 @@ const InternalUsersStack: React.VFC<NoProps> = () => {
       </Box>
       <VStack spacing="0" mt="4" alignItems="flex-start">
         <SuccessMessage data={mutationData} message="削除に成功しました" />
-        {mutationError ? <ErrorMessage error={mutationError} /> : null}
+        <ErrorMessage error={mutationError} />
         <Divider />
         {data?.internalUsers.map((internalUser) => (
           <Fragment key={internalUser.email}>

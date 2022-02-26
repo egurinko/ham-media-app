@@ -15,7 +15,7 @@ const ProductTagGroupsStack: React.VFC<NoProps> = () => {
       <Box textAlign="center">
         <Spinner loading={loading} />
       </Box>
-      {error ? <ErrorMessage error={error} /> : null}
+      <ErrorMessage error={error} />
       <Divider mt="2" />
       {data?.productTagGroups.map((productTagGroup) => (
         <Fragment key={productTagGroup.id}>

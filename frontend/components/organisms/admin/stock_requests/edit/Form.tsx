@@ -106,11 +106,9 @@ const Form: React.VFC<Props> = ({ stockRequestId }) => {
   return (
     <Card>
       <Spinner loading={getStockRequestLoading} />
-      {getStockRequestError ? (
-        <ErrorMessage error={getStockRequestError} />
-      ) : null}
+      <ErrorMessage error={getStockRequestError} />
       <SuccessMessage data={data} message="在庫リクエストを更新しました" />
-      {error ? <ErrorMessage error={error} /> : null}
+      <ErrorMessage error={error} />
       <form
         onSubmit={(e) => {
           e.preventDefault();

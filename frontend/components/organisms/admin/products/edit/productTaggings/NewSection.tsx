@@ -75,14 +75,12 @@ const NewSection: React.FC<Props> = ({ productId }) => {
       {loading || createProductTaggingsLoading ? (
         <Spinner size="lg" color="main.primary" />
       ) : null}
-      {error ? <ErrorMessage error={error} /> : null}
+      <ErrorMessage error={error} />
       <SuccessMessage
         data={createProductTaggingsData}
         message="タグの紐付けに成功しました。"
       />
-      {createProductTaggingsError ? (
-        <ErrorMessage error={createProductTaggingsError} />
-      ) : null}
+      <ErrorMessage error={createProductTaggingsError} />
       <form
         onSubmit={(e) => {
           e.preventDefault();

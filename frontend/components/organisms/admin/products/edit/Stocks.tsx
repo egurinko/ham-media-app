@@ -18,7 +18,7 @@ const Stocks: React.FC<Props> = ({ productId }) => {
   return (
     <Card>
       {loading ? <Spinner size="lg" color="main.primary" /> : null}
-      {error ? <ErrorMessage error={error} /> : null}
+      <ErrorMessage error={error} />
       {data ? (
         <AllocationSection
           productId={productId}

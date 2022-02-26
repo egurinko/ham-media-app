@@ -21,7 +21,7 @@ const ProductSummary: React.FC<Props> = ({ productId }) => {
   return (
     <Box>
       {loading ? <Spinner size="lg" color="main.primary" /> : null}
-      {error ? <ErrorMessage error={error} /> : null}
+      <ErrorMessage error={error} />
       {data ? (
         <StatGroup
           border="1px"

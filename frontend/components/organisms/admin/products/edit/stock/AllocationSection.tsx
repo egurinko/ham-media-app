@@ -120,24 +120,22 @@ const AllocationSection: React.FC<Props> = ({
         data={allocateStockData}
         message="在庫を割り当てました。"
       />
-      {allocateStockError ? <ErrorMessage error={allocateStockError} /> : null}
+      <ErrorMessage error={allocateStockError} />
 
       <SuccessMessage
         data={returnStockData}
         message="在庫の割り当てを解除しました。"
       />
-      {returnStockError ? <ErrorMessage error={returnStockError} /> : null}
+      <ErrorMessage error={returnStockError} />
 
       <SuccessMessage data={deleteStockData} message="在庫を削除しました。" />
-      {deleteStockError ? <ErrorMessage error={deleteStockError} /> : null}
+      <ErrorMessage error={deleteStockError} />
 
       <SuccessMessage
         data={updateStockInternalUserData}
         message="責任者を更新しました。"
       />
-      {updateStockInternalUserError ? (
-        <ErrorMessage error={updateStockInternalUserError} />
-      ) : null}
+      <ErrorMessage error={updateStockInternalUserError} />
       <Table size="sm">
         <Thead>
           <Tr>

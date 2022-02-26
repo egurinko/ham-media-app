@@ -122,7 +122,7 @@ const NewSection: React.FC<Props> = ({ productId, fetchStocksMore }) => {
         在庫追加
       </Text>
       <SuccessMessage data={createStockData} message="在庫を追加しました。" />
-      {createStocksError ? <ErrorMessage error={createStocksError} /> : null}
+      <ErrorMessage error={createStocksError} />
       <Box>
         <Box display="flex" flexDir="row">
           <Text width="33%" fontSize="xs" mr="2">

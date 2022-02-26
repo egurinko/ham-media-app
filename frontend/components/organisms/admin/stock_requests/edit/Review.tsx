@@ -87,14 +87,12 @@ const Review: React.VFC<Props> = ({ stockRequestId }) => {
         data={rejectData}
         message="在庫リクエストを棄却しました"
       />
-      {rejectError ? <ErrorMessage error={rejectError} /> : null}
-
+      <ErrorMessage error={rejectError} />
       <SuccessMessage
         data={approveData}
         message="在庫リクエストを承認しました"
       />
-      {approveError ? <ErrorMessage error={approveError} /> : null}
-
+      <ErrorMessage error={approveError} />
       <Box textAlign="right">
         <Button mr={['2', '6']} onClick={onRejectModalOpen}>
           <NotAllowedIcon mr="1" />

@@ -37,14 +37,12 @@ const IndexSection: React.FC<Props> = ({ productId }) => {
       {loading || deleteProductTaggingLoading ? (
         <Spinner size="lg" color="main.primary" />
       ) : null}
-      {error ? <ErrorMessage error={error} /> : null}
+      <ErrorMessage error={error} />
       <SuccessMessage
         data={deleteProductTaggingData}
         message="タグの紐付けを解除しました。"
       />
-      {deleteProductTaggingError ? (
-        <ErrorMessage error={deleteProductTaggingError} />
-      ) : null}
+      <ErrorMessage error={deleteProductTaggingError} />
       {data
         ? data.product.productTaggings.map((productTagging) => (
             <PrimaryTag

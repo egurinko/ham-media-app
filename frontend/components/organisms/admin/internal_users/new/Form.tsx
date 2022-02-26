@@ -61,7 +61,7 @@ const Form: React.VFC<NoProps> = () => {
   return (
     <>
       <SuccessMessage message="登録に成功しました。" data={data} />
-      {error ? <ErrorMessage error={error} /> : null}
+      <ErrorMessage error={error} />
       <Card>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Stack spacing={4}>

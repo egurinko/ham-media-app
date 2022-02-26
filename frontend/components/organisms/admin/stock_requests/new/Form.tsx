@@ -95,7 +95,7 @@ const Form: React.VFC<NoProps> = () => {
         data={data}
         message="在庫リクエストを行いました。少々お待ちください。"
       />
-      {error ? <ErrorMessage error={error} /> : null}
+      <ErrorMessage error={error} />
       {productsLoading ? (
         <Spinner loading={productsLoading} />
       ) : requestProducts.length === 0 ? (

@@ -62,46 +62,49 @@ const Form: React.VFC<Props> = ({ makerId }) => {
     }
   };
 
-  return makerError ? (
-    <ErrorMessage error={makerError} />
-  ) : maker ? (
+  return (
     <>
-      <SuccessMessage data={data} message="更新に成功しました" />
-      {error ? <ErrorMessage error={error} /> : null}
-      <Card>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <Stack spacing={4}>
-            <FormControl id="name" isRequired isInvalid={!!errors.name}>
-              <FormLabel>メーカー名</FormLabel>
-              <Controller
-                name="name"
-                control={control}
-                defaultValue={maker.name}
-                rules={validators.maker.rules}
-                render={({ field }) => (
-                  <Input type="text" isInvalid={!!errors.name} {...field} />
-                )}
-              />
-              {errors.name && (
-                <FormErrorMessage>{errors.name.message}</FormErrorMessage>
-              )}
-            </FormControl>
-          </Stack>
-          <Box d="grid" justifyContent="center">
-            <PrimaryButton
-              size="lg"
-              mt="16"
-              type="submit"
-              isLoading={loading}
-              disabled={!!errors.name || !isAdminData?.readIsAdmin.isAdmin}
-            >
-              更新する
-            </PrimaryButton>
-          </Box>
-        </form>
-      </Card>
+      <ErrorMessage error={makerError} />
+      {maker ? (
+        <>
+          <SuccessMessage data={data} message="更新に成功しました" />
+          <ErrorMessage error={error} />
+          <Card>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <Stack spacing={4}>
+                <FormControl id="name" isRequired isInvalid={!!errors.name}>
+                  <FormLabel>メーカー名</FormLabel>
+                  <Controller
+                    name="name"
+                    control={control}
+                    defaultValue={maker.name}
+                    rules={validators.maker.rules}
+                    render={({ field }) => (
+                      <Input type="text" isInvalid={!!errors.name} {...field} />
+                    )}
+                  />
+                  {errors.name && (
+                    <FormErrorMessage>{errors.name.message}</FormErrorMessage>
+                  )}
+                </FormControl>
+              </Stack>
+              <Box d="grid" justifyContent="center">
+                <PrimaryButton
+                  size="lg"
+                  mt="16"
+                  type="submit"
+                  isLoading={loading}
+                  disabled={!!errors.name || !isAdminData?.readIsAdmin.isAdmin}
+                >
+                  更新する
+                </PrimaryButton>
+              </Box>
+            </form>
+          </Card>
+        </>
+      ) : null}
     </>
-  ) : null;
+  );
 };
 
 export { Form };

@@ -205,7 +205,7 @@ const ProductStacks: React.VFC<NoProps> = () => {
       </Card>
       <Skeleton isLoaded={!loading}>
         <VStack spacing="0" mt="4" alignItems="flex-start">
-          {error ? <ErrorMessage error={error} /> : null}
+          <ErrorMessage error={error} />
           <Divider />
           {nodes?.map((product) => (
             <Fragment key={product.id}>
