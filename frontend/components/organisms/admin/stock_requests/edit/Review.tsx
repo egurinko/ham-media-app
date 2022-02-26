@@ -18,6 +18,7 @@ import {
   FormHelperText,
 } from '@chakra-ui/react';
 import { NotAllowedIcon, CheckIcon } from '@chakra-ui/icons';
+import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import {
@@ -96,14 +97,10 @@ const Review: React.VFC<Props> = ({ stockRequestId }) => {
           <NotAllowedIcon mr="1" />
           棄却
         </Button>
-        <Button
-          bgColor="primary.main"
-          color="white"
-          onClick={onApproveModalOpen}
-        >
+        <PrimaryButton onClick={onApproveModalOpen}>
           <CheckIcon mr="1" />
           承認
-        </Button>
+        </PrimaryButton>
       </Box>
       {data ? (
         <>
@@ -164,14 +161,9 @@ const Review: React.VFC<Props> = ({ stockRequestId }) => {
                 <Button variant="ghost" mr={3} onClick={onRejectModalClose}>
                   キャンセル
                 </Button>
-                <Button
-                  bgColor="primary.main"
-                  color="white"
-                  isLoading={rejectLoading}
-                  onClick={handleReject}
-                >
+                <PrimaryButton isLoading={rejectLoading} onClick={handleReject}>
                   棄却する
-                </Button>
+                </PrimaryButton>
               </ModalFooter>
             </ModalContent>
           </Modal>
@@ -230,14 +222,12 @@ const Review: React.VFC<Props> = ({ stockRequestId }) => {
                 <Button variant="ghost" mr={3} onClick={onApproveModalClose}>
                   キャンセル
                 </Button>
-                <Button
-                  bgColor="primary.main"
-                  color="white"
+                <PrimaryButton
                   isLoading={approveLoading}
                   onClick={handleApprove}
                 >
                   承認する
-                </Button>
+                </PrimaryButton>
               </ModalFooter>
             </ModalContent>
           </Modal>

@@ -23,6 +23,7 @@ import {
   ModalCloseButton,
   useDisclosure,
 } from '@chakra-ui/react';
+import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { Card } from '@/components/atoms/Card';
 import { Spinner } from '@/components/atoms/Spinner';
 import {
@@ -153,16 +154,9 @@ const StockRequestsStack: React.VFC<NoProps> = () => {
             ) : null}
           </Box>
           <Box textAlign="center">
-            <Button
-              type="submit"
-              mt="4"
-              variant="solid"
-              bgColor="primary.main"
-              color="white"
-              isLoading={loading}
-            >
+            <PrimaryButton type="submit" mt="4" isLoading={loading}>
               検索
-            </Button>
+            </PrimaryButton>
           </Box>
         </form>
       </Card>
@@ -239,14 +233,12 @@ const StockRequestsStack: React.VFC<NoProps> = () => {
             <Button variant="ghost" mr={3} onClick={onClose}>
               キャンセル
             </Button>
-            <Button
-              bgColor="primary.main"
-              color="white"
+            <PrimaryButton
               isLoading={deleteStockRequestLoading}
               onClick={handleDelete}
             >
               取り下げる
-            </Button>
+            </PrimaryButton>
           </ModalFooter>
         </ModalContent>
       </Modal>

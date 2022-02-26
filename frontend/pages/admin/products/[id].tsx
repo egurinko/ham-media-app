@@ -2,8 +2,9 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { ParsedUrlQuery } from 'querystring';
-import { Heading, Box, IconButton, Button } from '@chakra-ui/react';
+import { Heading, Box, IconButton } from '@chakra-ui/react';
 import { ChevronRightIcon } from '@chakra-ui/icons';
+import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { ProductCartItem } from '@/components/organisms/admin/products/detail/ProductCartItem';
 import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
 import { Stocks } from '@/components/organisms/admin/products/edit/Stocks';
@@ -36,14 +37,12 @@ const Detail: React.VFC<Props> = () => {
         {typeof productId === 'string' ? (
           <Link href={ADMIN_PRODUCTS_EDIT_PATH(Number(productId))}>
             <a>
-              <Button
+              <PrimaryButton
                 disabled={!isAdminData?.readIsAdmin.isAdmin}
-                bgColor="primary.main"
-                color="white"
                 size="md"
               >
                 商品編集
-              </Button>
+              </PrimaryButton>
             </a>
           </Link>
         ) : null}

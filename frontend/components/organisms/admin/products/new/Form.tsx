@@ -3,7 +3,6 @@ import {
   Box,
   Input,
   Stack,
-  Button,
   FormControl,
   FormLabel,
   FormErrorMessage,
@@ -11,6 +10,7 @@ import {
 } from '@chakra-ui/react';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import { CUIAutoComplete } from 'chakra-ui-autocomplete';
+import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { Card } from '@/components/atoms/Card';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
@@ -193,18 +193,15 @@ const Form: React.VFC<NoProps> = () => {
             ) : null}
           </Stack>
           <Box d="grid" justifyContent="center">
-            <Button
+            <PrimaryButton
               size="lg"
               mt="16"
-              variant="solid"
-              bgColor="primary.main"
-              color="white"
               type="submit"
               isLoading={loading}
               disabled={!!errors.name || !!errors.makerId || !!errors.remark}
             >
               新規登録する
-            </Button>
+            </PrimaryButton>
           </Box>
         </form>
       </Card>

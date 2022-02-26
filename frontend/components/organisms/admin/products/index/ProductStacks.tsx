@@ -4,7 +4,6 @@ import {
   Box,
   VStack,
   Divider,
-  Button,
   Input,
   FormControl,
   FormLabel,
@@ -14,6 +13,7 @@ import {
   Stack,
 } from '@chakra-ui/react';
 import { Fragment } from 'react';
+import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { Card } from '@/components/atoms/Card';
 import { Spinner } from '@/components/atoms/Spinner';
 import {
@@ -198,15 +198,9 @@ const ProductStacks: React.VFC<NoProps> = () => {
           </RadioGroup>
         </Box>
         <Box textAlign="center">
-          <Button
-            onClick={handleSearch}
-            mt="4"
-            variant="solid"
-            bgColor="primary.main"
-            color="white"
-          >
+          <PrimaryButton onClick={handleSearch} mt="4">
             検索
-          </Button>
+          </PrimaryButton>
         </Box>
       </Card>
       <Skeleton isLoaded={!loading}>

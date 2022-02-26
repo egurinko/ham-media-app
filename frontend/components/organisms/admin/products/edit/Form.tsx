@@ -4,13 +4,13 @@ import {
   Box,
   Input,
   Stack,
-  Button,
   FormControl,
   FormLabel,
   FormErrorMessage,
   Select,
 } from '@chakra-ui/react';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
+import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { Card } from '@/components/atoms/Card';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
@@ -167,18 +167,15 @@ const Form: React.VFC<Props> = ({ productId }) => {
             </FormControl>
           </Stack>
           <Box d="grid" justifyContent="center">
-            <Button
+            <PrimaryButton
               size="lg"
               mt="6"
-              variant="solid"
-              bgColor="primary.main"
-              color="white"
               type="submit"
               isLoading={loading}
               disabled={!!errors.name || !!errors.makerId || !!errors.remark}
             >
               更新する
-            </Button>
+            </PrimaryButton>
           </Box>
         </form>
       </Card>

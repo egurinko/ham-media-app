@@ -5,12 +5,12 @@ import {
   Box,
   Input,
   Stack,
-  Button,
   FormControl,
   FormLabel,
   FormErrorMessage,
 } from '@chakra-ui/react';
 import { usePublicCreateSessionMutation } from '@/api/public_api/types';
+import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { Card } from '@/components/atoms/Card';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
 import validators from '@/validators/index';
@@ -50,9 +50,9 @@ const Form: React.VFC<NoProps> = () => {
 
   return (
     <>
-      {!!loginData ? (
+      {loginData ? (
         <FlashMessage message="ログインに成功しました。" status="success" />
-      ) : !!loginError ? (
+      ) : loginError ? (
         <FlashMessage
           message="メールアドレスかパスワードが間違っています。"
           status="error"
@@ -111,16 +111,9 @@ const Form: React.VFC<NoProps> = () => {
             </FormControl>
           </Stack>
           <Box d="grid" justifyContent="center">
-            <Button
-              size="lg"
-              mt="16"
-              variant="solid"
-              bgColor="primary.main"
-              color="white"
-              type="submit"
-            >
+            <PrimaryButton size="lg" mt="16" type="submit">
               ログイン
-            </Button>
+            </PrimaryButton>
           </Box>
         </form>
       </Card>

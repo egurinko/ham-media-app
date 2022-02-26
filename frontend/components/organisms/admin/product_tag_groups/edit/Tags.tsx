@@ -18,6 +18,7 @@ import {
   Input,
 } from '@chakra-ui/react';
 import { DeleteIcon, SmallCloseIcon, AddIcon } from '@chakra-ui/icons';
+import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { Card } from '@/components/atoms/Card';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
@@ -301,17 +302,15 @@ const Tags: React.FC<Props> = ({ productTagGroupId }) => {
                 />
               </Box>
               <Box textAlign="center">
-                <Button
+                <PrimaryButton
                   type="submit"
-                  bgColor="primary.main"
                   aria-label="add"
-                  color="white"
                   leftIcon={<AddIcon />}
                   isLoading={createProductTagsLoading}
                   disabled={!isAdminData?.readIsAdmin.isAdmin}
                 >
                   タグ追加
-                </Button>
+                </PrimaryButton>
               </Box>
             </form>
           </Box>
@@ -327,14 +326,12 @@ const Tags: React.FC<Props> = ({ productTagGroupId }) => {
             <Button variant="ghost" mr={3} onClick={onClose}>
               キャンセル
             </Button>
-            <Button
-              bgColor="primary.main"
-              color="white"
+            <PrimaryButton
               isLoading={deleteProductTagLoading}
               onClick={handleDelete}
             >
               削除する
-            </Button>
+            </PrimaryButton>
           </ModalFooter>
         </ModalContent>
       </Modal>

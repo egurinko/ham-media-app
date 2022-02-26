@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
-import { Spinner, Box, Button } from '@chakra-ui/react';
+import { Spinner, Box } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
 import { CUIAutoComplete } from 'chakra-ui-autocomplete';
+import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
 import {
   useInternalGetProductTagGroupsQuery,
@@ -100,16 +101,14 @@ const NewSection: React.FC<Props> = ({ productId }) => {
           />
         ) : null}
         <Box textAlign="center" mt="8">
-          <Button
+          <PrimaryButton
             type="submit"
-            bgColor="primary.main"
             aria-label="add"
-            color="white"
             leftIcon={<AddIcon />}
             isLoading={createProductTaggingsLoading}
           >
             タグ紐付け
-          </Button>
+          </PrimaryButton>
         </Box>
       </form>
     </>

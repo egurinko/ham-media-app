@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { Box, Text, Select, Button } from '@chakra-ui/react';
 import { DeleteIcon } from '@chakra-ui/icons';
 import { Spinner } from '@/components/atoms/Spinner';
+import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { Card } from '@/components/atoms/Card';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
 import { ProductSummary } from '@/components/organisms/admin/products/ProductSummary';
@@ -142,15 +143,9 @@ const Form: React.VFC<NoProps> = () => {
               </Box>
             </Box>
           ))}
-          <Button
-            type="submit"
-            bgColor="primary.main"
-            color="white"
-            isLoading={loading}
-            mt="8"
-          >
+          <PrimaryButton type="submit" isLoading={loading} mt="8">
             在庫リクエストをする
-          </Button>
+          </PrimaryButton>
         </Box>
       </form>
     </Card>

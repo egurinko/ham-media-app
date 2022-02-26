@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { Box, Text, Input, IconButton, Button, Select } from '@chakra-ui/react';
+import { Box, Text, Input, IconButton, Select } from '@chakra-ui/react';
 import { SmallCloseIcon, AddIcon } from '@chakra-ui/icons';
 import dayjs from 'dayjs';
+import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
 import {
   useInternalCreateStocksMutation,
@@ -217,17 +218,15 @@ const NewSection: React.FC<Props> = ({ productId, fetchStocksMore }) => {
             />
           </Box>
           <Box textAlign="center">
-            <Button
+            <PrimaryButton
               type="submit"
-              bgColor="primary.main"
               aria-label="add"
-              color="white"
               leftIcon={<AddIcon />}
               isLoading={createStocksLoading}
               disabled={!isAdminData?.readIsAdmin.isAdmin}
             >
               在庫追加
-            </Button>
+            </PrimaryButton>
           </Box>
         </form>
       </Box>

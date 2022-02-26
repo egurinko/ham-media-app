@@ -19,6 +19,7 @@ import {
   useInternalDeleteMakerMutation,
 } from '@/api/internal_api/types';
 import type { InternalGetMakersQuery } from '@/api/internal_api/types';
+import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { Spinner } from '@/components/atoms/Spinner';
@@ -97,14 +98,9 @@ const MakersStack: React.VFC<NoProps> = () => {
             <Button variant="ghost" mr={3} onClick={onClose}>
               キャンセル
             </Button>
-            <Button
-              bgColor="primary.main"
-              color="white"
-              isLoading={mutationLoading}
-              onClick={handleDelete}
-            >
+            <PrimaryButton isLoading={mutationLoading} onClick={handleDelete}>
               削除する
-            </Button>
+            </PrimaryButton>
           </ModalFooter>
         </ModalContent>
       </Modal>
