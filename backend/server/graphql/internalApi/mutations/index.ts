@@ -15,6 +15,8 @@ export * from './updateStockInternalUser';
 export * from './deleteStock';
 export * from './createStockRequest';
 export * from './updateStockRequest';
+export * from './deleteStockRequest';
+export * from './rejectStockRequest';
 export * from './createProductTagGroup';
 export * from './updateProductTagGroup';
 export * from './createProductTags';

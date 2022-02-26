@@ -4,6 +4,7 @@ import { ParsedUrlQuery } from 'querystring';
 import { Heading, Box, IconButton } from '@chakra-ui/react';
 import { ChevronRightIcon } from '@chakra-ui/icons';
 import { Form } from '@/components/organisms/admin/stock_requests/edit/Form';
+import { Review } from '@/components/organisms/admin/stock_requests/edit/Review';
 import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
 import { StockRequestCartButton } from '@/components/organisms/admin/products/StockRequestCartButton';
 import { goAdminStockRequests } from '@/utils/routes';
@@ -14,7 +15,7 @@ const Edit: React.VFC<Props> = () => {
 
   return (
     <InternalLayout>
-      <Box d="flex" mb="4">
+      <Box d="flex" alignItems="center">
         <IconButton
           aria-label="link"
           variant="link"
@@ -25,6 +26,9 @@ const Edit: React.VFC<Props> = () => {
       </Box>
       {typeof stockRequestId === 'string' ? (
         <>
+          <Box mb="2">
+            <Review stockRequestId={Number(stockRequestId)} />
+          </Box>
           <Box mb="2">
             <Form stockRequestId={Number(stockRequestId)} />
           </Box>

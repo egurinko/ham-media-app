@@ -56,6 +56,23 @@ const postStockRequestAlert = (
   postStockAlert(content);
 };
 
+const postStockRequestRejectionAlert = (
+  stockRequest: StockRequest & {
+    productRegistrations: (StockRequestProductRegistration & {
+      product: Product;
+    })[];
+  },
+  internalUser: InternalUser,
+  message: string
+) => {
+  if (!DISCORD_STOCK_WEBHOOK_URL) return;
+  const lines = stockRequest.productRegistrations
+    .map((productRegistration) => `\r・${productRegistration.product.name}`)
+    .join();
+  const content = `${internalUser.name}さんの以下の在庫リクエストが棄却されたよ <:jii:913298500861698058> ${lines} \r[棄却メッセージ]\r${message}`;
+  postStockAlert(content);
+};
+
 const postStockAlert = (content: string): void => {
   if (!DISCORD_STOCK_WEBHOOK_URL) return;
 
@@ -71,4 +88,5 @@ export {
   postStockExpirationAlert,
   postStockExpiringAlert,
   postStockRequestAlert,
+  postStockRequestRejectionAlert,
 };
