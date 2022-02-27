@@ -14,6 +14,7 @@ export const seedInternalUser = async () => {
       email: 'test@example.com',
       role_id: admin.id,
       name: 'admin',
+      discord_user_id: '',
       password_digest:
         '$2b$08$nOByk5csZtvw62zGlLZLne63t/jDGqGEoofMWyZ8egaNkcdC1HDra', // password
     },

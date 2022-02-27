@@ -32,6 +32,7 @@ const init = async () => {
   const role = await db.role.create({ data: { name: ROLE_NAME } });
   const internalUser = await db.internalUser.create({
     data: {
+      discord_user_id: '',
       name: INTERNAL_USER_NAME,
       email: INTERNAL_USER_EMAIL,
       password_digest: 'test',
