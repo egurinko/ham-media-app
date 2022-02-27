@@ -184,7 +184,7 @@ model InternalUser {
   name             String            @db.VarChar(255)
   email            String            @unique @db.VarChar(255)
   password_digest  String            @db.VarChar(255)
-  discord_user_id  String?           @db.VarChar(255)
+  discord_user_id  String            @db.VarChar(255)
   role_id          Int
   role             Role              @relation(fields: [role_id], references: [id])
   stockAllocations StockAllocation[]
