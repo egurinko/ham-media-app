@@ -15,6 +15,7 @@ export const sessionField = queryField((t) => {
           id: ctx.currentInternalUser.id,
           name: ctx.currentInternalUser.name,
           email: ctx.currentInternalUser.email,
+          discord_user_id: ctx.currentInternalUser.discord_user_id,
         },
       };
     },

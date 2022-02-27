@@ -172,6 +172,7 @@ input HospitalReservationStatusInputType {
 
 """A internal user"""
 type InternalUser {
+  discord_user_id: String!
   email: String!
   id: BigInt!
   name: String!
@@ -188,7 +189,7 @@ type Mutation {
   allocateStock(id: Int!, internalUserId: BigInt!): Stock!
   approveStockRequest(id: Int!, message: String!): Delete!
   createHospital(deleted: Boolean!, internal_memo: String!, name: String!, url: String): Hospital!
-  createInternalUser(email: String!, name: String!, password: String!, roleId: Int!): InternalUser!
+  createInternalUser(discord_user_id: String!, email: String!, name: String!, password: String!, roleId: Int!): InternalUser!
   createMaker(name: String!): Maker!
   createProduct(file: Upload!, makerId: Int!, name: String!, productTagIds: [Int!]!, remark: String!): Product!
   createProductTagGroup(name: String!): ProductTagGroup!
@@ -205,7 +206,7 @@ type Mutation {
   rejectStockRequest(id: Int!, message: String!): Delete!
   returnStock(id: Int!): Stock!
   updateHospital(deleted: Boolean!, hospitalAddressInput: HospitalAddressInputType!, hospitalBusinessFormInput: HospitalBusinessFormInputType!, hospitalCertificationOptionInput: HospitalCertificationOptionInputType!, hospitalInternalReputationInput: HospitalInternalReputationInputType!, hospitalNightServiceOptionInput: HospitalNightServiceOptionInputType!, hospitalNightUrgentActionOptionInput: HospitalNightUrgentActionOptionInputType!, hospitalReservationStatusInput: HospitalReservationStatusInputType!, id: BigInt!, internal_memo: String!, name: String!, url: String!): Hospital!
-  updateInternalUser(email: String!, id: BigInt!, name: String!, password: String!, roleId: Int!): InternalUser!
+  updateInternalUser(discord_user_id: String!, email: String!, id: BigInt!, name: String!, password: String!, roleId: Int!): InternalUser!
   updateMaker(id: Int!, name: String!): Maker!
   updateProduct(file: Upload, id: Int!, makerId: Int!, name: String!, remark: String!): Product!
   updateProductTag(id: Int!, name: String!): ProductTag!

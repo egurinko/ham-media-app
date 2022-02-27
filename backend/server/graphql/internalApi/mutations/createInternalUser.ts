@@ -9,6 +9,7 @@ export const createInternalUserField = mutationField((t) => {
     type: internalUserType,
     args: {
       name: nonNull(stringArg()),
+      discord_user_id: nonNull(stringArg()),
       email: nonNull(stringArg()),
       password: nonNull(stringArg()),
       roleId: nonNull(intArg()),
@@ -18,6 +19,7 @@ export const createInternalUserField = mutationField((t) => {
       try {
         return await ctx.prisma.internalUser.create({
           data: {
+            discord_user_id: args.discord_user_id,
             name: args.name,
             email: args.email,
             password_digest: hashedPassword,

@@ -8,6 +8,7 @@ export const internalUserType = objectType({
     t.field(InternalUser.id);
     t.field(InternalUser.name);
     t.field(InternalUser.email);
+    t.field(InternalUser.discord_user_id);
     t.nonNull.field(InternalUser.role);
   },
 });
