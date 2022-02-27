@@ -6,6 +6,7 @@ import {
   FormControl,
   FormLabel,
   FormErrorMessage,
+  FormHelperText,
   Select,
 } from '@chakra-ui/react';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
@@ -27,6 +28,7 @@ interface FormInput {
   name: string;
   email: string;
   password: string;
+  discordUserId: string;
   roleId: string;
 }
 
@@ -56,6 +58,7 @@ const Form: React.VFC<Props> = ({ internalUserId }) => {
     name,
     email,
     password,
+    discordUserId,
     roleId,
   }) => {
     if (internalUser) {
@@ -67,6 +70,7 @@ const Form: React.VFC<Props> = ({ internalUserId }) => {
             id: internalUser.id,
             name,
             email,
+            discord_user_id: discordUserId,
             password,
             roleId: Number(roleId),
           },
@@ -122,6 +126,34 @@ const Form: React.VFC<Props> = ({ internalUserId }) => {
                   />
                   {errors.email && (
                     <FormErrorMessage>{errors.email.message}</FormErrorMessage>
+                  )}
+                </FormControl>
+                <FormControl
+                  id="discordUserId"
+                  isRequired
+                  isInvalid={!!errors.discordUserId}
+                >
+                  <FormLabel>discord user id</FormLabel>
+                  <Controller
+                    name="discordUserId"
+                    defaultValue={internalUser.discord_user_id}
+                    control={control}
+                    rules={validators.discordUserId.rules}
+                    render={({ field }) => (
+                      <Input
+                        type="text"
+                        isInvalid={!!errors.discordUserId}
+                        {...field}
+                      />
+                    )}
+                  />
+                  <FormHelperText>
+                    通知のメンションに必要です。18桁の数字が有効です
+                  </FormHelperText>
+                  {errors.discordUserId && (
+                    <FormErrorMessage>
+                      {errors.discordUserId.message}
+                    </FormErrorMessage>
                   )}
                 </FormControl>
                 <FormControl
@@ -183,6 +215,7 @@ const Form: React.VFC<Props> = ({ internalUserId }) => {
                     !!errors.name ||
                     !!errors.email ||
                     !!errors.password ||
+                    !!errors.discordUserId ||
                     !isAdminData?.readIsAdmin.isAdmin
                   }
                 >

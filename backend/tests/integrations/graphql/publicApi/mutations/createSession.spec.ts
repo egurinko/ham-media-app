@@ -24,6 +24,7 @@ const setupData = async () => {
   const hashedPassword = await hash(INTERNAL_USER_PASSWORD, 8);
   await db.internalUser.create({
     data: {
+      discord_user_id: '',
       name: INTERNAL_USER_NAME,
       email: INTERNAL_USER_EMAIL,
       password_digest: hashedPassword,

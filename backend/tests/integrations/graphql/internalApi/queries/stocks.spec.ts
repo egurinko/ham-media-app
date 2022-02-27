@@ -41,6 +41,7 @@ const init = async () => {
     data: {
       name: STOCK_ADMIN_INTERNAL_USER_NAME,
       email: STOCK_ADMIN_INTERNAL_USER_EMAIL,
+      discord_user_id: '',
       password_digest: 'test',
       role_id: role.id,
     },
@@ -49,6 +50,7 @@ const init = async () => {
     data: {
       name: STOCK_ASSIGNED_INTERNAL_USER_NAME,
       email: STOCK_ASSIGNED_INTERNAL_USER_EMAIL,
+      discord_user_id: '',
       password_digest: 'test',
       role_id: role.id,
     },

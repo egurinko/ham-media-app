@@ -7,12 +7,14 @@ export const createInternalUser = gql`
     $name: String!
     $email: String!
     $password: String!
+    $discord_user_id: String!
     $roleId: Int!
   ) {
     createInternalUser(
       name: $name
       email: $email
       password: $password
+      discord_user_id: $discord_user_id
       roleId: $roleId
     ) {
       ...InternalUserFields

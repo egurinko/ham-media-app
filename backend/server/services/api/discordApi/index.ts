@@ -42,34 +42,35 @@ const postStockExpiringAlert = (variables: PostStockAlertVariables): void => {
 
 const postStockRequestAlert = (
   stockRequest: StockRequest & {
+    internalUser: InternalUser;
     productRegistrations: (StockRequestProductRegistration & {
       product: Product;
     })[];
-  },
-  internalUser: InternalUser
+  }
 ): void => {
   if (!DISCORD_STOCK_WEBHOOK_URL) return;
   const lines = stockRequest.productRegistrations
     .map((productRegistration) => `\n・${productRegistration.product.name}`)
     .join();
-  const content = `${internalUser.name}さんが在庫リクエストをしたよ <:yeah:913316943921033247> \n https://ham-media-app.net/admin/stock_requests/${stockRequest.id}/edit ${lines}`;
+  const content = `<@${stockRequest.internalUser.discord_user_id}> さんが在庫リクエストをしたよ <:yeah:913316943921033247> \n https://ham-media-app.net/admin/stock_requests/${stockRequest.id}/edit ${lines}`;
   postStockAlert(content);
 };
 
 const postStockRequestRejectionAlert = (
   stockRequest: StockRequest & {
+    internalUser: InternalUser;
     productRegistrations: (StockRequestProductRegistration & {
       product: Product;
     })[];
   },
-  internalUser: InternalUser,
+  rejectInternalUser: InternalUser,
   message: string
 ) => {
   if (!DISCORD_STOCK_WEBHOOK_URL) return;
   const lines = stockRequest.productRegistrations
     .map((productRegistration) => `\n・${productRegistration.product.name}`)
     .join();
-  const content = `${internalUser.name}さんの以下の在庫リクエストが棄却されたよ <:jii:913298500861698058> ${lines} \n[棄却メッセージ]\n${message}`;
+  const content = `<@${stockRequest.internalUser.discord_user_id}> さんの在庫リクエストが <@${rejectInternalUser.discord_user_id}> さんに棄却されたよ <:jii:913298500861698058> ${lines} \n[棄却メッセージ]\n${message}`;
   postStockAlert(content);
 };
 
@@ -90,7 +91,7 @@ const postStockRequestApprovalAlert = (
         `\n・${productRegistration.product.name} https://ham-media-app.net/admin/products/${productRegistration.product.id}`
     )
     .join();
-  const content = `${stockRequest.internalUser.name}さんの以下の在庫リクエストが承認されたよ <:ok:776668642976071730> \n${approvingInternalUser.name}さんは在庫の割り当てをやってね🙊 ${lines} \n[承認メッセージ]\n${message}\n`;
+  const content = `<@${stockRequest.internalUser.discord_user_id}> さんの在庫リクエストが <@${approvingInternalUser.discord_user_id}> さんに承認されたよ <:ok:776668642976071730> \n <@${approvingInternalUser.discord_user_id}> さんは在庫の割り当てをやってね🙊 ${lines} \n[承認メッセージ]\n${message}\n`;
   postStockAlert(content);
 };
 

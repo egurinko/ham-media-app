@@ -45,10 +45,11 @@ export const createStockRequestField = mutationField((t) => {
           },
           include: {
             productRegistrations: { include: { product: true } },
+            internalUser: true,
           },
         });
 
-        postStockRequestAlert(stockRequest, ctx.currentInternalUser!);
+        postStockRequestAlert(stockRequest);
 
         return stockRequest;
       } catch (e) {

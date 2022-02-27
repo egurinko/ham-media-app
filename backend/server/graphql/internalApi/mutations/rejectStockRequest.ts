@@ -16,6 +16,7 @@ export const rejectStockRequestField = mutationField((t) => {
         where: { id: args.id },
         include: {
           productRegistrations: { include: { product: true } },
+          internalUser: true,
         },
       });
       try {

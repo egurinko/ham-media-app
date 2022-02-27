@@ -61,6 +61,7 @@ const init = async () => {
 
   const internalUser1 = await db.internalUser.create({
     data: {
+      discord_user_id: '',
       id: INTERNAL_USER_ID_1,
       name: INTERNAL_USER_NAME_1,
       email: INTERNAL_USER_EMAIL_1,
@@ -70,6 +71,7 @@ const init = async () => {
   });
   const internalUser2 = await db.internalUser.create({
     data: {
+      discord_user_id: '',
       id: INTERNAL_USER_ID_2,
       name: INTERNAL_USER_NAME_2,
       email: INTERNAL_USER_EMAIL_2,

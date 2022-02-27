@@ -180,6 +180,7 @@ export interface NexusGenObjects {
     reservable: string; // String!
   }
   InternalUser: { // root type
+    discord_user_id: string; // String!
     email: string; // String!
     id: NexusGenScalars['BigInt']; // BigInt!
     name: string; // String!
@@ -345,6 +346,7 @@ export interface NexusGenFieldTypes {
     reservable: string; // String!
   }
   InternalUser: { // field return type
+    discord_user_id: string; // String!
     email: string; // String!
     id: NexusGenScalars['BigInt']; // BigInt!
     name: string; // String!
@@ -564,6 +566,7 @@ export interface NexusGenFieldTypeNames {
     reservable: 'String'
   }
   InternalUser: { // field return type name
+    discord_user_id: 'String'
     email: 'String'
     id: 'BigInt'
     name: 'String'
@@ -726,6 +729,7 @@ export interface NexusGenArgTypes {
       url?: string | null; // String
     }
     createInternalUser: { // args
+      discord_user_id: string; // String!
       email: string; // String!
       name: string; // String!
       password: string; // String!
@@ -799,6 +803,7 @@ export interface NexusGenArgTypes {
       url: string; // String!
     }
     updateInternalUser: { // args
+      discord_user_id: string; // String!
       email: string; // String!
       id: NexusGenScalars['BigInt']; // BigInt!
       name: string; // String!

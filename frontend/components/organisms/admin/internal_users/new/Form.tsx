@@ -6,6 +6,7 @@ import {
   FormControl,
   FormLabel,
   FormErrorMessage,
+  FormHelperText,
   Select,
 } from '@chakra-ui/react';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
@@ -24,6 +25,7 @@ interface FormInput {
   name: string;
   email: string;
   password: string;
+  discordUserId: string;
   roleId: string;
 }
 
@@ -44,13 +46,20 @@ const Form: React.VFC<NoProps> = () => {
     name,
     email,
     password,
+    discordUserId,
     roleId,
   }) => {
     trigger();
 
     try {
       await create({
-        variables: { name, email, password, roleId: Number(roleId) },
+        variables: {
+          name,
+          email,
+          password,
+          roleId: Number(roleId),
+          discord_user_id: discordUserId,
+        },
       });
       setTimeout(() => {
         goAdminInternalUsers(router);
@@ -97,6 +106,33 @@ const Form: React.VFC<NoProps> = () => {
               />
               {errors.email && (
                 <FormErrorMessage>{errors.email.message}</FormErrorMessage>
+              )}
+            </FormControl>
+            <FormControl
+              id="discordUserId"
+              isRequired
+              isInvalid={!!errors.discordUserId}
+            >
+              <FormLabel>discord user id</FormLabel>
+              <Controller
+                name="discordUserId"
+                control={control}
+                rules={validators.discordUserId.rules}
+                render={({ field }) => (
+                  <Input
+                    type="text"
+                    isInvalid={!!errors.discordUserId}
+                    {...field}
+                  />
+                )}
+              />
+              <FormHelperText>
+                通知のメンションに必要です。18桁の数字が有効です
+              </FormHelperText>
+              {errors.discordUserId && (
+                <FormErrorMessage>
+                  {errors.discordUserId.message}
+                </FormErrorMessage>
               )}
             </FormControl>
             <FormControl id="password" isRequired isInvalid={!!errors.password}>
@@ -150,7 +186,12 @@ const Form: React.VFC<NoProps> = () => {
               mt="16"
               type="submit"
               isLoading={loading}
-              disabled={!!errors.name || !!errors.email || !!errors.password}
+              disabled={
+                !!errors.name ||
+                !!errors.email ||
+                !!errors.password ||
+                !!errors.discordUserId
+              }
             >
               新規登録する
             </PrimaryButton>

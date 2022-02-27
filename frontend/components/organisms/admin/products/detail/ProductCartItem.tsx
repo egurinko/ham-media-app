@@ -71,10 +71,14 @@ const ProductCartItem: React.VFC<Props> = ({ productId }) => {
               mb="2"
               isFullWidth
               onClick={handleAddProductCartItem}
+              disabled={data.product.remainingStockAmount === 0}
             >
               <AddIcon mr="1" />
               在庫リクエストに入れる
             </SecondaryButton>
+            <Text fontSize="xs" color="text.secondary">
+              ※残数がない場合リクエストできません
+            </Text>
           </Box>
         </>
       ) : null}

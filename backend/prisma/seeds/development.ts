@@ -15,6 +15,7 @@ export const executeDevelopment = async () => {
         create: {
           email: 'admin@example.com',
           name: 'admin',
+          discord_user_id: '',
           password_digest:
             '$2b$08$nOByk5csZtvw62zGlLZLne63t/jDGqGEoofMWyZ8egaNkcdC1HDra', // password
           role_id: admin.id,
@@ -27,6 +28,7 @@ export const executeDevelopment = async () => {
         create: {
           email: 'user@example.com',
           name: 'user',
+          discord_user_id: '',
           password_digest:
             '$2b$08$nOByk5csZtvw62zGlLZLne63t/jDGqGEoofMWyZ8egaNkcdC1HDra', // password
           role_id: user.id,

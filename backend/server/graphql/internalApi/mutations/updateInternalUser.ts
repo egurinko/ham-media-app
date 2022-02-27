@@ -12,6 +12,7 @@ export const updateInternalUserField = mutationField((t) => {
       name: nonNull(stringArg()),
       email: nonNull(stringArg()),
       password: nonNull(stringArg()),
+      discord_user_id: nonNull(stringArg()),
       roleId: nonNull(intArg()),
     },
     resolve: async (_, args, ctx) => {
@@ -22,6 +23,7 @@ export const updateInternalUserField = mutationField((t) => {
             name: args.name,
             email: args.email,
             password_digest: hashedPassword,
+            discord_user_id: args.discord_user_id,
             role_id: args.roleId,
           },
           where: {
