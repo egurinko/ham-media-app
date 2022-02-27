@@ -159,11 +159,7 @@ const Form: React.VFC<Props> = ({ internalUserId }) => {
                     control={control}
                     rules={{ required: 'ロールを入力してください' }}
                     render={({ field }) => (
-                      <Select
-                        disabled={!isAdminData?.readIsAdmin.isAdmin}
-                        isInvalid={!!errors.roleId}
-                        {...field}
-                      >
+                      <Select isInvalid={!!errors.roleId} {...field}>
                         {rolesData?.roles.map((role) => (
                           <option key={String(role.id)} value={role.id}>
                             {role.name}
@@ -184,7 +180,10 @@ const Form: React.VFC<Props> = ({ internalUserId }) => {
                   type="submit"
                   isLoading={loading}
                   disabled={
-                    !!errors.name || !!errors.email || !!errors.password
+                    !!errors.name ||
+                    !!errors.email ||
+                    !!errors.password ||
+                    !isAdminData?.readIsAdmin.isAdmin
                   }
                 >
                   更新する
