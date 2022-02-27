@@ -191,6 +191,7 @@ export type HospitalReservationStatusInputType = {
 /** A internal user */
 export type InternalUser = {
   __typename?: 'InternalUser';
+  discord_user_id: Scalars['String'];
   email: Scalars['String'];
   id: Scalars['BigInt'];
   name: Scalars['String'];
@@ -257,6 +258,7 @@ export type MutationCreateHospitalArgs = {
 
 
 export type MutationCreateInternalUserArgs = {
+  discord_user_id: Scalars['String'];
   email: Scalars['String'];
   name: Scalars['String'];
   password: Scalars['String'];
@@ -364,6 +366,7 @@ export type MutationUpdateHospitalArgs = {
 
 
 export type MutationUpdateInternalUserArgs = {
+  discord_user_id: Scalars['String'];
   email: Scalars['String'];
   id: Scalars['BigInt'];
   name: Scalars['String'];
@@ -667,7 +670,7 @@ export type InternalAllocateStockMutationVariables = Exact<{
 }>;
 
 
-export type InternalAllocateStockMutation = { __typename?: 'Mutation', allocateStock: { __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined } };
+export type InternalAllocateStockMutation = { __typename?: 'Mutation', allocateStock: { __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined } };
 
 export type InternalApproveStockRequestMutationVariables = Exact<{
   id: Scalars['Int'];
@@ -691,11 +694,12 @@ export type InternalCreateInternalUserMutationVariables = Exact<{
   name: Scalars['String'];
   email: Scalars['String'];
   password: Scalars['String'];
+  discord_user_id: Scalars['String'];
   roleId: Scalars['Int'];
 }>;
 
 
-export type InternalCreateInternalUserMutation = { __typename?: 'Mutation', createInternalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } };
+export type InternalCreateInternalUserMutation = { __typename?: 'Mutation', createInternalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } };
 
 export type InternalCreateMakerMutationVariables = Exact<{
   name: Scalars['String'];
@@ -713,7 +717,7 @@ export type InternalCreateProductMutationVariables = Exact<{
 }>;
 
 
-export type InternalCreateProductMutation = { __typename?: 'Mutation', createProduct: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> } };
+export type InternalCreateProductMutation = { __typename?: 'Mutation', createProduct: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> } };
 
 export type InternalCreateProductTagGroupMutationVariables = Exact<{
   name: Scalars['String'];
@@ -743,7 +747,7 @@ export type InternalCreateStockRequestMutationVariables = Exact<{
 }>;
 
 
-export type InternalCreateStockRequestMutation = { __typename?: 'Mutation', createStockRequest: { __typename?: 'StockRequest', id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }, productRegistrations: Array<{ __typename?: 'StockRequestProductRegistration', id: number, product: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> } }> } };
+export type InternalCreateStockRequestMutation = { __typename?: 'Mutation', createStockRequest: { __typename?: 'StockRequest', id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, productRegistrations: Array<{ __typename?: 'StockRequestProductRegistration', id: number, product: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> } }> } };
 
 export type InternalCreateStocksMutationVariables = Exact<{
   productId: Scalars['Int'];
@@ -751,7 +755,7 @@ export type InternalCreateStocksMutationVariables = Exact<{
 }>;
 
 
-export type InternalCreateStocksMutation = { __typename?: 'Mutation', createStocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> };
+export type InternalCreateStocksMutation = { __typename?: 'Mutation', createStocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> };
 
 export type InternalDeleteInternalUserMutationVariables = Exact<{
   id: Scalars['BigInt'];
@@ -797,13 +801,13 @@ export type InternalDeleteStockRequestMutation = { __typename?: 'Mutation', dele
 
 export type HospitalFieldsFragment = { __typename?: 'Hospital', id: BigInt, name: string, url: string, deleted: boolean, internal_memo: string, hospitalAddress?: { __typename?: 'HospitalAddress', id: BigInt, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: BigInt } } | null | undefined, hospitalBusinessForm?: { __typename?: 'HospitalBusinessForm', id: BigInt, business_hour: string, closed_day: string, insurance_enabled: string, remark: string } | null | undefined, hospitalCertificationOption?: { __typename?: 'HospitalCertificationOption', id: BigInt, nichiju_registered: string, jsava_registered: string } | null | undefined, hospitalInternalReputation?: { __typename?: 'HospitalInternalReputation', id: BigInt, star: number, remark: string } | null | undefined, hospitalNightServiceOption?: { __typename?: 'HospitalNightServiceOption', id: BigInt, status: string, remark: string } | null | undefined, hospitalNightUrgentActionOption?: { __typename?: 'HospitalNightUrgentActionOption', id: BigInt, status: string } | null | undefined, hospitalReservationStatus?: { __typename?: 'HospitalReservationStatus', id: BigInt, required: string, reservable: string, remark: string } | null | undefined };
 
-export type InternalUserFieldsFragment = { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } };
+export type InternalUserFieldsFragment = { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } };
 
 export type MakerFieldsFragment = { __typename?: 'Maker', id: number, name: string };
 
-export type ProductFieldsFragment = { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> };
+export type ProductFieldsFragment = { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> };
 
-export type StockFieldsFragment = { __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined };
+export type StockFieldsFragment = { __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined };
 
 export type ProductTaggingFieldsFragment = { __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } };
 
@@ -813,7 +817,7 @@ export type ProductTagGroupFieldsFragment = { __typename?: 'ProductTagGroup', id
 
 export type RoleFieldsFragment = { __typename?: 'Role', id: number, name: string };
 
-export type StockRequestFieldsFragment = { __typename?: 'StockRequest', id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }, productRegistrations: Array<{ __typename?: 'StockRequestProductRegistration', id: number, product: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> } }> };
+export type StockRequestFieldsFragment = { __typename?: 'StockRequest', id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, productRegistrations: Array<{ __typename?: 'StockRequestProductRegistration', id: number, product: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> } }> };
 
 export type InternalGetHospitalQueryVariables = Exact<{
   id: Scalars['BigInt'];
@@ -843,12 +847,12 @@ export type InternalGetInternalUserQueryVariables = Exact<{
 }>;
 
 
-export type InternalGetInternalUserQuery = { __typename?: 'Query', internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } };
+export type InternalGetInternalUserQuery = { __typename?: 'Query', internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } };
 
 export type InternalGetInternalUsersQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type InternalGetInternalUsersQuery = { __typename?: 'Query', internalUsers: Array<{ __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }> };
+export type InternalGetInternalUsersQuery = { __typename?: 'Query', internalUsers: Array<{ __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }> };
 
 export type InternalGetMakerQueryVariables = Exact<{
   id: Scalars['Int'];
@@ -867,7 +871,7 @@ export type InternalGetProductQueryVariables = Exact<{
 }>;
 
 
-export type InternalGetProductQuery = { __typename?: 'Query', product: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> } };
+export type InternalGetProductQuery = { __typename?: 'Query', product: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> } };
 
 export type LocalGetProductCartItemsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -885,7 +889,7 @@ export type InternalGetProductConnectionQueryVariables = Exact<{
 }>;
 
 
-export type InternalGetProductConnectionQuery = { __typename?: 'Query', productConnection?: { __typename?: 'ProductConnection', edges?: Array<{ __typename?: 'ProductEdge', node?: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> } | null | undefined } | null | undefined> | null | undefined, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, hasPreviousPage: boolean, startCursor?: string | null | undefined, endCursor?: string | null | undefined } } | null | undefined };
+export type InternalGetProductConnectionQuery = { __typename?: 'Query', productConnection?: { __typename?: 'ProductConnection', edges?: Array<{ __typename?: 'ProductEdge', node?: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> } | null | undefined } | null | undefined> | null | undefined, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, hasPreviousPage: boolean, startCursor?: string | null | undefined, endCursor?: string | null | undefined } } | null | undefined };
 
 export type InternalGetProductIdsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -914,7 +918,7 @@ export type InternalGetProductsQueryVariables = Exact<{
 }>;
 
 
-export type InternalGetProductsQuery = { __typename?: 'Query', products: Array<{ __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> }> };
+export type InternalGetProductsQuery = { __typename?: 'Query', products: Array<{ __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> }> };
 
 export type InternalGetRolesQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -931,7 +935,7 @@ export type InternalGetStockRequestQueryVariables = Exact<{
 }>;
 
 
-export type InternalGetStockRequestQuery = { __typename?: 'Query', stockRequest: { __typename?: 'StockRequest', id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }, productRegistrations: Array<{ __typename?: 'StockRequestProductRegistration', id: number, product: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> } }> } };
+export type InternalGetStockRequestQuery = { __typename?: 'Query', stockRequest: { __typename?: 'StockRequest', id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, productRegistrations: Array<{ __typename?: 'StockRequestProductRegistration', id: number, product: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> } }> } };
 
 export type InternalGetStockRequestConnectionQueryVariables = Exact<{
   first?: InputMaybe<Scalars['Int']>;
@@ -940,14 +944,14 @@ export type InternalGetStockRequestConnectionQueryVariables = Exact<{
 }>;
 
 
-export type InternalGetStockRequestConnectionQuery = { __typename?: 'Query', stockRequestConnection?: { __typename?: 'StockRequestConnection', edges?: Array<{ __typename?: 'StockRequestEdge', node?: { __typename?: 'StockRequest', id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }, productRegistrations: Array<{ __typename?: 'StockRequestProductRegistration', id: number, product: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> } }> } | null | undefined } | null | undefined> | null | undefined, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, hasPreviousPage: boolean, startCursor?: string | null | undefined, endCursor?: string | null | undefined } } | null | undefined };
+export type InternalGetStockRequestConnectionQuery = { __typename?: 'Query', stockRequestConnection?: { __typename?: 'StockRequestConnection', edges?: Array<{ __typename?: 'StockRequestEdge', node?: { __typename?: 'StockRequest', id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, productRegistrations: Array<{ __typename?: 'StockRequestProductRegistration', id: number, product: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> } }> } | null | undefined } | null | undefined> | null | undefined, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, hasPreviousPage: boolean, startCursor?: string | null | undefined, endCursor?: string | null | undefined } } | null | undefined };
 
 export type InternalGetStocksQueryVariables = Exact<{
   productId: Scalars['Int'];
 }>;
 
 
-export type InternalGetStocksQuery = { __typename?: 'Query', stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> };
+export type InternalGetStocksQuery = { __typename?: 'Query', stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> };
 
 export type LocalReadIsAdminQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -967,7 +971,7 @@ export type InternalReturnStockMutationVariables = Exact<{
 }>;
 
 
-export type InternalReturnStockMutation = { __typename?: 'Mutation', returnStock: { __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined } };
+export type InternalReturnStockMutation = { __typename?: 'Mutation', returnStock: { __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined } };
 
 export type InternalUpdateHospitalMutationVariables = Exact<{
   id: Scalars['BigInt'];
@@ -992,11 +996,12 @@ export type InternalUpdateInternalUserMutationVariables = Exact<{
   name: Scalars['String'];
   email: Scalars['String'];
   password: Scalars['String'];
+  discord_user_id: Scalars['String'];
   roleId: Scalars['Int'];
 }>;
 
 
-export type InternalUpdateInternalUserMutation = { __typename?: 'Mutation', updateInternalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } };
+export type InternalUpdateInternalUserMutation = { __typename?: 'Mutation', updateInternalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } };
 
 export type InternalUpdateMakerMutationVariables = Exact<{
   id: Scalars['Int'];
@@ -1015,7 +1020,7 @@ export type InternalUpdateProductMutationVariables = Exact<{
 }>;
 
 
-export type InternalUpdateProductMutation = { __typename?: 'Mutation', updateProduct: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> } };
+export type InternalUpdateProductMutation = { __typename?: 'Mutation', updateProduct: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> } };
 
 export type InternalUpdateProductTagMutationVariables = Exact<{
   id: Scalars['Int'];
@@ -1039,7 +1044,7 @@ export type InternalUpdateStockInternalUserMutationVariables = Exact<{
 }>;
 
 
-export type InternalUpdateStockInternalUserMutation = { __typename?: 'Mutation', updateStockInternalUser: { __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined } };
+export type InternalUpdateStockInternalUserMutation = { __typename?: 'Mutation', updateStockInternalUser: { __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined } };
 
 export type InternalUpdateStockRequestMutationVariables = Exact<{
   id: Scalars['Int'];
@@ -1047,7 +1052,7 @@ export type InternalUpdateStockRequestMutationVariables = Exact<{
 }>;
 
 
-export type InternalUpdateStockRequestMutation = { __typename?: 'Mutation', updateStockRequest: { __typename?: 'StockRequest', id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }, productRegistrations: Array<{ __typename?: 'StockRequestProductRegistration', id: number, product: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> } }> } };
+export type InternalUpdateStockRequestMutation = { __typename?: 'Mutation', updateStockRequest: { __typename?: 'StockRequest', id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, productRegistrations: Array<{ __typename?: 'StockRequestProductRegistration', id: number, product: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } } | null | undefined }> } }> } };
 
 export const HospitalFieldsFragmentDoc = gql`
     fragment HospitalFields on Hospital {
@@ -1125,6 +1130,7 @@ export const InternalUserFieldsFragmentDoc = gql`
   id
   email
   name
+  discord_user_id
   role {
     ...RoleFields
   }
@@ -1307,11 +1313,12 @@ export type InternalCreateHospitalMutationHookResult = ReturnType<typeof useInte
 export type InternalCreateHospitalMutationResult = Apollo.MutationResult<InternalCreateHospitalMutation>;
 export type InternalCreateHospitalMutationOptions = Apollo.BaseMutationOptions<InternalCreateHospitalMutation, InternalCreateHospitalMutationVariables>;
 export const InternalCreateInternalUserDocument = gql`
-    mutation InternalCreateInternalUser($name: String!, $email: String!, $password: String!, $roleId: Int!) {
+    mutation InternalCreateInternalUser($name: String!, $email: String!, $password: String!, $discord_user_id: String!, $roleId: Int!) {
   createInternalUser(
     name: $name
     email: $email
     password: $password
+    discord_user_id: $discord_user_id
     roleId: $roleId
   ) {
     ...InternalUserFields
@@ -1336,6 +1343,7 @@ export type InternalCreateInternalUserMutationFn = Apollo.MutationFunction<Inter
  *      name: // value for 'name'
  *      email: // value for 'email'
  *      password: // value for 'password'
+ *      discord_user_id: // value for 'discord_user_id'
  *      roleId: // value for 'roleId'
  *   },
  * });
@@ -2708,12 +2716,13 @@ export type InternalUpdateHospitalMutationHookResult = ReturnType<typeof useInte
 export type InternalUpdateHospitalMutationResult = Apollo.MutationResult<InternalUpdateHospitalMutation>;
 export type InternalUpdateHospitalMutationOptions = Apollo.BaseMutationOptions<InternalUpdateHospitalMutation, InternalUpdateHospitalMutationVariables>;
 export const InternalUpdateInternalUserDocument = gql`
-    mutation InternalUpdateInternalUser($id: BigInt!, $name: String!, $email: String!, $password: String!, $roleId: Int!) {
+    mutation InternalUpdateInternalUser($id: BigInt!, $name: String!, $email: String!, $password: String!, $discord_user_id: String!, $roleId: Int!) {
   updateInternalUser(
     id: $id
     name: $name
     email: $email
     password: $password
+    discord_user_id: $discord_user_id
     roleId: $roleId
   ) {
     ...InternalUserFields
@@ -2739,6 +2748,7 @@ export type InternalUpdateInternalUserMutationFn = Apollo.MutationFunction<Inter
  *      name: // value for 'name'
  *      email: // value for 'email'
  *      password: // value for 'password'
+ *      discord_user_id: // value for 'discord_user_id'
  *      roleId: // value for 'roleId'
  *   },
  * });

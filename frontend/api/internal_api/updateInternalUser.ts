@@ -8,6 +8,7 @@ export const updateInternalUser = gql`
     $name: String!
     $email: String!
     $password: String!
+    $discord_user_id: String!
     $roleId: Int!
   ) {
     updateInternalUser(
@@ -15,6 +16,7 @@ export const updateInternalUser = gql`
       name: $name
       email: $email
       password: $password
+      discord_user_id: $discord_user_id
       roleId: $roleId
     ) {
       ...InternalUserFields

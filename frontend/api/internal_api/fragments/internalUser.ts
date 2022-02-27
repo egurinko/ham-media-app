@@ -7,6 +7,7 @@ export const INTERNAL_USER_FIELDS = gql`
     id
     email
     name
+    discord_user_id
     role {
       ...RoleFields
     }
