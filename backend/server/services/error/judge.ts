@@ -1,4 +1,5 @@
 import { Prisma } from '@prisma/client';
+import * as Sentry from '@sentry/node';
 import { errorMessage } from './message';
 import { MODELS } from '../constant';
 
@@ -43,6 +44,7 @@ export const judgeError = (e: unknown): Result => {
     }
   }
 
+  Sentry.captureException(e);
   return {
     message: errorMessage.internalServerError,
     statusCode: STATUS_CODES.INTERNAL_SERVER_ERROR,
@@ -88,6 +90,7 @@ const mapTarget = (target: string) => {
     }
   }
 
+  Sentry.captureException(target);
   return { key: target, jaKey: '不明なキー' };
 };
 
@@ -109,5 +112,6 @@ const mapFieldName = (fieldName: string) => {
     return { key: 'stock_id', jaKey: MODELS.STOCK.TABLE_NAME };
   }
 
+  Sentry.captureException(fieldName);
   return { key: fieldName, jaKey: '不明なキー' };
 };

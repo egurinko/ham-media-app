@@ -6,6 +6,9 @@ import MercuriusGQLUpload from 'mercurius-upload';
 import 'json-bigint-patch';
 import { router } from './routes';
 import { jobs } from './services/jobs';
+import { initSentry } from './services/sentry';
+
+initSentry();
 
 const app = fastify({
   logger: {
