@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ArrowUpIcon } from '@chakra-ui/icons';
 import {
   Button,
   Box,
@@ -13,7 +13,7 @@ import {
   useDisclosure,
   Text,
 } from '@chakra-ui/react';
-import { ArrowUpIcon } from '@chakra-ui/icons';
+import { useState } from 'react';
 import { SecondaryButton } from '@/components/atoms/SecondaryButton';
 import { FilterIcon } from '@/components/atoms/assets/FilterIcon';
 import { scrollTo } from '@/utils/scroll';

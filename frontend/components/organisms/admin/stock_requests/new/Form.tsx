@@ -1,22 +1,22 @@
-import { useState, useEffect, useCallback } from 'react';
-import { useRouter } from 'next/router';
-import { Box, Text, Select, Button } from '@chakra-ui/react';
 import { DeleteIcon } from '@chakra-ui/icons';
-import { Spinner } from '@/components/atoms/Spinner';
-import { PrimaryButton } from '@/components/atoms/PrimaryButton';
-import { Card } from '@/components/atoms/Card';
-import { SuccessMessage } from '@/components/molecules/SuccessMessage';
-import { ErrorMessage } from '@/components/molecules/ErrorMessage';
-import { ProductSummary } from '@/components/organisms/admin/products/ProductSummary';
-import { Empty } from './Empty';
+import { Box, Text, Select, Button } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
+import { useState, useEffect, useCallback } from 'react';
 import {
   useLocalGetProductCartItemsQuery,
   useInternalGetProductsQuery,
   useInternalCreateStockRequestMutation,
 } from '@/api/internal_api/types';
 import type { ProductFieldsFragment } from '@/api/internal_api/types';
+import { Card } from '@/components/atoms/Card';
+import { PrimaryButton } from '@/components/atoms/PrimaryButton';
+import { Spinner } from '@/components/atoms/Spinner';
+import { ErrorMessage } from '@/components/molecules/ErrorMessage';
+import { SuccessMessage } from '@/components/molecules/SuccessMessage';
+import { ProductSummary } from '@/components/organisms/admin/products/ProductSummary';
 import { productCartItemsVar } from '@/utils/apollo/cache';
 import { goAdminStockRequests } from '@/utils/routes';
+import { Empty } from './Empty';
 
 type RequestProduct = {
   count: number;

@@ -1,12 +1,12 @@
-import { Heading, Box } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
+import { Heading, Box } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
+import { useLocalReadIsAdminQuery } from '@/api/internal_api/types';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
-import { ProductStacks } from '@/components/organisms/admin/products/index/ProductStacks';
 import { StockRequestCartButton } from '@/components/organisms/admin/products/StockRequestCartButton';
+import { ProductStacks } from '@/components/organisms/admin/products/index/ProductStacks';
 import { goAdminProductsNew } from '@/utils/routes';
-import { useLocalReadIsAdminQuery } from '@/api/internal_api/types';
 
 const Index: React.VFC<NoProps> = () => {
   const router = useRouter();

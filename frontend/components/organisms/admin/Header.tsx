@@ -1,3 +1,4 @@
+import { HamburgerIcon } from '@chakra-ui/icons';
 import {
   Box,
   Flex,
@@ -9,14 +10,12 @@ import {
   DrawerContent,
   DrawerCloseButton,
   Button,
-} from '@chakra-ui/react';
-import { HamburgerIcon } from '@chakra-ui/icons';
+ useDisclosure } from '@chakra-ui/react';
 import Image from 'next/image';
-import { Navigation } from './Navigation';
 import { useCallback } from 'react';
-import { useDisclosure } from '@chakra-ui/react';
-import { UserCard } from '@/components/molecules/UserCard';
 import type { InternalGetSessionQuery } from '@/api/internal_api/types';
+import { UserCard } from '@/components/molecules/UserCard';
+import { Navigation } from './Navigation';
 
 type Props = {
   internalUser: InternalGetSessionQuery['session']['internalUser'];

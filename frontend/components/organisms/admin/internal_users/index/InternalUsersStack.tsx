@@ -20,11 +20,11 @@ import {
 } from '@/api/internal_api/types';
 import type { InternalGetInternalUsersQuery } from '@/api/internal_api/types';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
-import { SuccessMessage } from '@/components/molecules/SuccessMessage';
-import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { Spinner } from '@/components/atoms/Spinner';
-import { InternalUserSummary } from './internalUsersStack/InternalUserSummary';
+import { ErrorMessage } from '@/components/molecules/ErrorMessage';
+import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 import { scrollTo } from '@/utils/scroll';
+import { InternalUserSummary } from './internalUsersStack/InternalUserSummary';
 
 type InternalUser = InternalGetInternalUsersQuery['internalUsers'][number];
 
@@ -51,8 +51,9 @@ const InternalUsersStack: React.VFC<NoProps> = () => {
   );
 
   const handleDelete = useCallback(async () => {
+    if (!selectedInternalUser) return;
     try {
-      await remove({ variables: { id: selectedInternalUser!.id } });
+      await remove({ variables: { id: selectedInternalUser.id } });
       await fetchMore({});
     } catch {}
     onClose();

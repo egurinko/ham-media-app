@@ -20,15 +20,15 @@ import {
 } from '@/api/internal_api/types';
 import type { InternalGetMakersQuery } from '@/api/internal_api/types';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
-import { SuccessMessage } from '@/components/molecules/SuccessMessage';
-import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { Spinner } from '@/components/atoms/Spinner';
+import { ErrorMessage } from '@/components/molecules/ErrorMessage';
+import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 import { MakerSummary } from './makersStack/MakerSummary';
 
 type Maker = InternalGetMakersQuery['makers'][number];
 
 const MakersStack: React.VFC<NoProps> = () => {
-  const { data, loading, error } = useInternalGetMakersQuery({
+  const { data, loading, error, fetchMore } = useInternalGetMakersQuery({
     fetchPolicy: 'network-only',
   });
 
@@ -37,17 +37,7 @@ const MakersStack: React.VFC<NoProps> = () => {
   const [
     remove,
     { data: mutationData, loading: mutationLoading, error: mutationError },
-  ] = useInternalDeleteMakerMutation({
-    update(cache) {
-      cache.modify({
-        fields: {
-          makers(_ = [], { DELETE }) {
-            return DELETE;
-          },
-        },
-      });
-    },
-  });
+  ] = useInternalDeleteMakerMutation({});
 
   const handleDeleteOpen = useCallback(
     (e: React.MouseEvent, maker: Maker) => {
@@ -58,14 +48,15 @@ const MakersStack: React.VFC<NoProps> = () => {
     [onOpen, setSelectedMaker]
   );
 
-  const handleDelete = useCallback(() => {
+  const handleDelete = useCallback(async () => {
     if (selectedMaker) {
       try {
-        remove({ variables: { id: selectedMaker.id } });
+        await remove({ variables: { id: selectedMaker.id } });
+        await fetchMore({});
       } catch {}
       onClose();
     }
-  }, [remove, selectedMaker, onClose]);
+  }, [remove, selectedMaker, onClose, fetchMore]);
 
   if (error) return <Text>エラーです</Text>;
 

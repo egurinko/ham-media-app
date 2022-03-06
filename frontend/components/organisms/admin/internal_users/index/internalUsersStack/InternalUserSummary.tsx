@@ -1,11 +1,11 @@
-import { Text, Box, IconButton } from '@chakra-ui/react';
 import { DeleteIcon, StarIcon } from '@chakra-ui/icons';
-import { UserProfileIcon } from '@/components/atoms/assets/UserProfileIcon';
+import { Text, Box, IconButton } from '@chakra-ui/react';
+import React from 'react';
 import { useLocalReadIsAdminQuery } from '@/api/internal_api/types';
 import type { InternalGetInternalUsersQuery } from '@/api/internal_api/types';
+import { UserProfileIcon } from '@/components/atoms/assets/UserProfileIcon';
 import { SummaryLink } from '@/components/molecules/SummaryLink';
 import { ADMIN_INTERNAL_USERS_EDIT_PATH } from '@/utils/routes';
-import React from 'react';
 
 type InternalUser = InternalGetInternalUsersQuery['internalUsers'][number];
 

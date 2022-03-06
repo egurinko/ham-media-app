@@ -1,8 +1,8 @@
 import { Box, Divider, Button } from '@chakra-ui/react';
 import Image from 'next/image';
-import { Navigation } from './Navigation';
-import { UserCard } from '@/components/molecules/UserCard';
 import type { InternalGetSessionQuery } from '@/api/internal_api/types';
+import { UserCard } from '@/components/molecules/UserCard';
+import { Navigation } from './Navigation';
 
 type Props = {
   internalUser: InternalGetSessionQuery['session']['internalUser'];

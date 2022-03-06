@@ -7,20 +7,16 @@ type Props = {
   hospitals: Hospitals;
 };
 
-const HospitalsStack: React.VFC<Props> = ({ hospitals }) => {
-  return (
+const HospitalsStack: React.VFC<Props> = ({ hospitals }) => (
     <VStack spacing="0" mt="4" alignItems="flex-start">
       <Divider />
-      {hospitals?.map((hospital) => {
-        return hospital ? (
+      {hospitals?.map((hospital) => hospital ? (
           <Fragment key={Number(hospital.id)}>
             <HospitalSummary hospital={hospital} />
             <Divider />
           </Fragment>
-        ) : null;
-      })}
+        ) : null)}
     </VStack>
   );
-};
 
 export { HospitalsStack };

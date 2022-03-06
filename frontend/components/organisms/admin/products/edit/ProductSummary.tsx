@@ -6,9 +6,9 @@ import {
   StatLabel,
   StatNumber,
 } from '@chakra-ui/react';
-import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { useInternalGetProductQuery } from '@/api/internal_api/types';
 import type { InternalGetProductQuery } from '@/api/internal_api/types';
+import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 
 interface Props {
   productId: InternalGetProductQuery['product']['id'];

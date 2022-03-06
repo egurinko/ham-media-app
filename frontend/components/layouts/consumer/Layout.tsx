@@ -1,7 +1,7 @@
 import { Box } from '@chakra-ui/react';
 import { Head } from '@/components/molecules/Head';
-import { Header } from '@/components/organisms/consumer/Header';
 import { Footer } from '@/components/organisms/consumer/Footer';
+import { Header } from '@/components/organisms/consumer/Header';
 
 type Props = {
   title?: string;

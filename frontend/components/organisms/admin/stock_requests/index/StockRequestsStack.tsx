@@ -1,10 +1,3 @@
-import React, {
-  useEffect,
-  useRef,
-  useState,
-  Fragment,
-  useCallback,
-} from 'react';
 import {
   Text,
   Box,
@@ -23,20 +16,27 @@ import {
   ModalCloseButton,
   useDisclosure,
 } from '@chakra-ui/react';
-import { PrimaryButton } from '@/components/atoms/PrimaryButton';
-import { Card } from '@/components/atoms/Card';
-import { Spinner } from '@/components/atoms/Spinner';
+import React, {
+  useEffect,
+  useRef,
+  useState,
+  Fragment,
+  useCallback,
+} from 'react';
 import {
   useInternalGetStockRequestConnectionQuery,
   useInternalGetInternalUsersQuery,
   useInternalDeleteStockRequestMutation,
 } from '@/api/internal_api/types';
 import type { StockRequestFieldsFragment } from '@/api/internal_api/types';
-import { SuccessMessage } from '@/components/molecules/SuccessMessage';
+import { Card } from '@/components/atoms/Card';
+import { PrimaryButton } from '@/components/atoms/PrimaryButton';
+import { Spinner } from '@/components/atoms/Spinner';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
-import { StockRequestSummary } from './stockRequestsStack/StockRequestSummary';
+import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 import { useIntersectionObserver } from '@/utils/hooks/useIntersectionObserver';
 import { scrollTo } from '@/utils/scroll';
+import { StockRequestSummary } from './stockRequestsStack/StockRequestSummary';
 
 const StockRequestsStack: React.VFC<NoProps> = () => {
   const [selectedInternalUserId, setSelectedInternalUserId] = useState<
@@ -196,8 +196,7 @@ const StockRequestsStack: React.VFC<NoProps> = () => {
             </Text>
             <Box my="4">
               {selectedStockRequest?.productRegistrations.map(
-                (productRegistration) => {
-                  return (
+                (productRegistration) => (
                     <Box
                       m="1"
                       key={productRegistration.id}
@@ -219,8 +218,7 @@ const StockRequestsStack: React.VFC<NoProps> = () => {
                         {productRegistration.product.name}
                       </Text>
                     </Box>
-                  );
-                }
+                  )
               )}
             </Box>
           </ModalBody>

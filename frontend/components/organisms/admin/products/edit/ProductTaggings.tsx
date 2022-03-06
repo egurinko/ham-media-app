@@ -1,15 +1,14 @@
 import { Text } from '@chakra-ui/react';
+import type { InternalGetProductQuery } from '@/api/internal_api/types';
 import { Card } from '@/components/atoms/Card';
 import { IndexSection } from './productTaggings/IndexSection';
 import { NewSection } from './productTaggings/NewSection';
-import type { InternalGetProductQuery } from '@/api/internal_api/types';
 
 interface Props {
   productId: InternalGetProductQuery['product']['id'];
 }
 
-const ProductTaggings: React.FC<Props> = ({ productId }) => {
-  return (
+const ProductTaggings: React.FC<Props> = ({ productId }) => (
     <Card>
       <Text mb="2" fontSize="lg" fontWeight="bold">
         タグ一覧
@@ -22,6 +21,5 @@ const ProductTaggings: React.FC<Props> = ({ productId }) => {
       <NewSection productId={productId} />
     </Card>
   );
-};
 
 export { ProductTaggings };

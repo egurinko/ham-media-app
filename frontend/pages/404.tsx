@@ -1,8 +1,8 @@
-import Image from 'next/image';
 import { Box, Text } from '@chakra-ui/react';
+import Image from 'next/image';
 import { Layout } from '@/components/layouts/consumer/Layout';
 
-const NotFound: React.FC<{}> = () => (
+const NotFound: React.FC<NoProps> = () => (
   <Layout title="ページが見つかりませんでした - Ham ω Media" description="">
     <Box
       display="flex"

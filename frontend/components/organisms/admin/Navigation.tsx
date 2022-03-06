@@ -1,10 +1,10 @@
-import { useMemo } from 'react';
 import { Box, VStack, UnorderedList, ListItem } from '@chakra-ui/react';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { UserProfileIcon } from '@/components/atoms/assets/UserProfileIcon';
+import { useRouter } from 'next/router';
+import { useMemo } from 'react';
 import { HospitalIcon } from '@/components/atoms/assets/HospitalIcon';
 import { InventoryIcon } from '@/components/atoms/assets/InventoryIcon';
+import { UserProfileIcon } from '@/components/atoms/assets/UserProfileIcon';
 import {
   ADMIN_INTERNAL_USERS_PATH,
   ADMIN_HOSPIALS_PATH,

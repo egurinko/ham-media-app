@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router';
 import {
   Box,
   Input,
@@ -7,19 +6,21 @@ import {
   FormLabel,
   FormErrorMessage,
 } from '@chakra-ui/react';
-import { useForm, Controller, SubmitHandler } from 'react-hook-form';
-import { PrimaryButton } from '@/components/atoms/PrimaryButton';
-import { Card } from '@/components/atoms/Card';
-import { SuccessMessage } from '@/components/molecules/SuccessMessage';
-import { ErrorMessage } from '@/components/molecules/ErrorMessage';
+import { useRouter } from 'next/router';
+import { useForm, Controller } from 'react-hook-form';
 import {
   useInternalUpdateMakerMutation,
   useInternalGetMakerQuery,
   useLocalReadIsAdminQuery,
 } from '@/api/internal_api/types';
 import type { InternalUpdateMakerMutation } from '@/api/internal_api/types';
+import { Card } from '@/components/atoms/Card';
+import { PrimaryButton } from '@/components/atoms/PrimaryButton';
+import { ErrorMessage } from '@/components/molecules/ErrorMessage';
+import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 import { goAdminMakers } from '@/utils/routes';
 import validators from '@/validators/index';
+import type { SubmitHandler } from 'react-hook-form';
 
 interface FormInput {
   name: string;

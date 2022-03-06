@@ -1,4 +1,3 @@
-import React, { useEffect, useRef, useState, useMemo } from 'react';
 import {
   Skeleton,
   Box,
@@ -12,10 +11,7 @@ import {
   RadioGroup,
   Stack,
 } from '@chakra-ui/react';
-import { Fragment } from 'react';
-import { PrimaryButton } from '@/components/atoms/PrimaryButton';
-import { Card } from '@/components/atoms/Card';
-import { Spinner } from '@/components/atoms/Spinner';
+import React, { useEffect, useRef, useState, useMemo , Fragment } from 'react';
 import {
   useInternalGetProductConnectionQuery,
   useInternalGetMakersQuery,
@@ -23,10 +19,13 @@ import {
   useInternalGetInternalUsersQuery,
 } from '@/api/internal_api/types';
 import type { ProductFieldsFragment } from '@/api/internal_api/types';
+import { Card } from '@/components/atoms/Card';
+import { PrimaryButton } from '@/components/atoms/PrimaryButton';
+import { Spinner } from '@/components/atoms/Spinner';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { SummaryLink } from '@/components/molecules/SummaryLink';
-import { ProductSummary } from '../ProductSummary';
 import { useIntersectionObserver } from '@/utils/hooks/useIntersectionObserver';
+import { ProductSummary } from '../ProductSummary';
 
 const PRODUCT_STOCK = {
   HAS: 'has',
@@ -46,13 +45,11 @@ const ProductStacks: React.VFC<NoProps> = () => {
     undefined | string
   >(undefined);
   const [productStock, setProductStock] = useState<string>(PRODUCT_STOCK.HAS);
-  const hasStock = useMemo(() => {
-    return productStock === PRODUCT_STOCK.HAS
+  const hasStock = useMemo(() => productStock === PRODUCT_STOCK.HAS
       ? true
       : productStock === PRODUCT_STOCK.NOT
       ? false
-      : undefined;
-  }, [productStock]);
+      : undefined, [productStock]);
 
   const { data: makersData } = useInternalGetMakersQuery();
   const { data: productTagGroupsData } = useInternalGetProductTagGroupsQuery();

@@ -1,11 +1,11 @@
-import { Heading, Box } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
+import { Heading, Box } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
+import { useLocalReadIsAdminQuery } from '@/api/internal_api/types';
+import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
 import { ProductTagGroupsStack } from '@/components/organisms/admin/product_tag_groups/index/ProductTagGroupsStack';
-import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { goAdminProductTagGroupsNew } from '@/utils/routes';
-import { useLocalReadIsAdminQuery } from '@/api/internal_api/types';
 
 const Index: React.VFC<NoProps> = () => {
   const router = useRouter();

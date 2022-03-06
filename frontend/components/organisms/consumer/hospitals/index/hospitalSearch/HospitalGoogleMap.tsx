@@ -1,8 +1,8 @@
-import { memo, useState, useCallback } from 'react';
 import { Box, Text } from '@chakra-ui/react';
 import { Marker, InfoWindow } from '@react-google-maps/api';
-import { usePublicGetHospitalLocationsQuery } from '@/api/public_api/types';
+import { memo, useState, useCallback } from 'react';
 import type { PublicGetHospitalLocationsQuery } from '@/api/public_api/types';
+import { usePublicGetHospitalLocationsQuery } from '@/api/public_api/types';
 import { GoogleMap } from '@/components/organisms/GoogleMap';
 
 type HospitalLocation = PublicGetHospitalLocationsQuery['hospitals'][number];
@@ -60,10 +60,11 @@ const HospitalGoogleMapComponent: React.FC<Props> = ({
         <InfoWindow
           position={{
             lat:
-              currentHospital.hospitalAddress!.hospitalAddressGeoLocation!
-                .latitude + 0.012,
-            lng: currentHospital.hospitalAddress!.hospitalAddressGeoLocation!
-              .longitude,
+              currentHospital.hospitalAddress?.hospitalAddressGeoLocation
+                ?.latitude || 0 + 0.012,
+            lng:
+              currentHospital.hospitalAddress?.hospitalAddressGeoLocation
+                ?.longitude || 0,
           }}
           onCloseClick={handleInfoWindoClose}
         >

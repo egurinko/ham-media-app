@@ -1,8 +1,8 @@
 import { Divider, Box } from '@chakra-ui/react';
 import { Fragment } from 'react';
 import { useInternalGetProductTagGroupsQuery } from '@/api/internal_api/types';
-import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { Spinner } from '@/components/atoms/Spinner';
+import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { ProductTagGroupSummary } from './productTagGroupsStack/ProductTagGroupSummary';
 
 const ProductTagGroupsStack: React.VFC<NoProps> = () => {

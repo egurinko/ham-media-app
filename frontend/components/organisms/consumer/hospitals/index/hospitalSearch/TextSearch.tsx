@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import { IconButton, Input, Box, Button } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
-import { Card } from '@/components/atoms/Card';
+import { IconButton, Input, Box, Button } from '@chakra-ui/react';
+import { useState } from 'react';
 import { usePublicGetPlaceAutocompleteLazyQuery } from '@/api/public_api/types';
+import { Card } from '@/components/atoms/Card';
 import type {
   SearchText,
   SetSearchText,

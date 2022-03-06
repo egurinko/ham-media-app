@@ -1,13 +1,13 @@
-import { Spinner } from '@chakra-ui/react';
 import { SmallCloseIcon } from '@chakra-ui/icons';
-import { PrimaryTag } from '@/components/atoms/PrimaryTag';
-import { SuccessMessage } from '@/components/molecules/SuccessMessage';
-import { ErrorMessage } from '@/components/molecules/ErrorMessage';
+import { Spinner } from '@chakra-ui/react';
 import {
   useInternalGetProductQuery,
   useInternalDeleteProductTaggingMutation,
 } from '@/api/internal_api/types';
 import type { InternalGetProductQuery } from '@/api/internal_api/types';
+import { PrimaryTag } from '@/components/atoms/PrimaryTag';
+import { ErrorMessage } from '@/components/molecules/ErrorMessage';
+import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 
 interface Props {
   productId: InternalGetProductQuery['product']['id'];

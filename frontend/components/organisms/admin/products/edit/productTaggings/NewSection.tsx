@@ -1,17 +1,16 @@
-import { useEffect } from 'react';
-import { Spinner, Box } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
+import { Spinner, Box } from '@chakra-ui/react';
 import { CUIAutoComplete } from 'chakra-ui-autocomplete';
-import { PrimaryButton } from '@/components/atoms/PrimaryButton';
-import { SuccessMessage } from '@/components/molecules/SuccessMessage';
-import { ErrorMessage } from '@/components/molecules/ErrorMessage';
+import React, { useEffect , useState } from 'react';
 import {
   useInternalGetProductTagGroupsQuery,
   useInternalCreateProductTaggingsMutation,
   useInternalGetProductLazyQuery,
 } from '@/api/internal_api/types';
 import type { InternalGetProductQuery } from '@/api/internal_api/types';
-import React, { useState } from 'react';
+import { PrimaryButton } from '@/components/atoms/PrimaryButton';
+import { ErrorMessage } from '@/components/molecules/ErrorMessage';
+import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 
 interface Props {
   productId: InternalGetProductQuery['product']['id'];

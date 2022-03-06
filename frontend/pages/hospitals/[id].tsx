@@ -1,19 +1,19 @@
-import { GetStaticPaths, GetStaticProps } from 'next';
-import { useRouter } from 'next/router';
-import { ParsedUrlQuery } from 'querystring';
-import { Heading, Box, Button } from '@chakra-ui/react';
 import { ChevronRightIcon } from '@chakra-ui/icons';
-import { Layout } from '@/components/layouts/consumer/Layout';
-import { DetailCard } from '@/components/organisms/consumer/hospitals/detail/DetailCard';
+import { Heading, Box, Button } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
+import { getHospital } from '@/api/public_api/getHospital';
+import { getHospitalIds } from '@/api/public_api/getHospitalIds';
 import type {
   PublicGetHospitalIdsQuery,
   PublicGetHospitalQuery,
   PublicGetHospitalQueryVariables,
 } from '@/api/public_api/types';
-import { getHospitalIds } from '@/api/public_api/getHospitalIds';
-import { getHospital } from '@/api/public_api/getHospital';
+import { Layout } from '@/components/layouts/consumer/Layout';
+import { DetailCard } from '@/components/organisms/consumer/hospitals/detail/DetailCard';
 import { apiClient } from '@/utils/apollo';
 import { goHospitals } from '@/utils/routes';
+import type { GetStaticPaths, GetStaticProps } from 'next';
+import type { ParsedUrlQuery } from 'querystring';
 
 const Show: React.VFC<Props> = ({ hospital }) => {
   const router = useRouter();
@@ -68,18 +68,23 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 export const getStaticProps: GetStaticProps<Props, Params> = async ({
   params,
 }) => {
-  const { data } = await apiClient.query<
-    PublicGetHospitalQuery,
-    PublicGetHospitalQueryVariables
-  >({
-    query: getHospital,
-    variables: {
-      id: BigInt(params!.id),
-    },
-    fetchPolicy: 'no-cache',
-  });
+  if (params) {
+    try {
+      const { data } = await apiClient.query<
+        PublicGetHospitalQuery,
+        PublicGetHospitalQueryVariables
+      >({
+        query: getHospital,
+        variables: {
+          id: BigInt(params.id),
+        },
+        fetchPolicy: 'no-cache',
+      });
+      return { props: { hospital: data.hospital }, revalidate: 60 };
+    } catch {}
+  }
 
-  return { props: { hospital: data.hospital, revalidate: 60 } };
+  return { notFound: true };
 };
 
 export default Show;

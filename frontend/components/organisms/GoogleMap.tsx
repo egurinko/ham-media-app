@@ -60,8 +60,7 @@ const Map: React.FC<Props> = ({
   currentLat,
   currentLng,
   children,
-}) => {
-  return (
+}) => (
     <ReactGoogleMap
       mapContainerStyle={{
         width: width ? `${width}px` : '100%',
@@ -76,6 +75,5 @@ const Map: React.FC<Props> = ({
       {children}
     </ReactGoogleMap>
   );
-};
 
 export { GoogleMap };

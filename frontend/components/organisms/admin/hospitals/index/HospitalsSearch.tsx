@@ -2,10 +2,10 @@ import { Text, Box } from '@chakra-ui/react';
 import { useCallback, useRef, useEffect, useState } from 'react';
 import { useInternalGetHospitalConnectionQuery } from '@/api/internal_api/types';
 import type { Hospital } from '@/api/internal_api/types';
-import { useIntersectionObserver } from '@/utils/hooks/useIntersectionObserver';
 import { Spinner } from '@/components/atoms/Spinner';
-import { SearchSection } from './hospitalsSearch/SearchSection';
+import { useIntersectionObserver } from '@/utils/hooks/useIntersectionObserver';
 import { HospitalsStack } from './hospitalsSearch/HospitalsStack';
+import { SearchSection } from './hospitalsSearch/SearchSection';
 import type { SearchHospitals } from './types';
 
 const HospitalsSearch: React.VFC<NoProps> = () => {
@@ -23,9 +23,9 @@ const HospitalsSearch: React.VFC<NoProps> = () => {
     .filter((node): node is Hospital => !!node);
   const pageInfo = data?.hospitalConnection?.pageInfo;
 
-  const searchHospitals: SearchHospitals = useCallback(() => {
+  const searchHospitals: SearchHospitals = useCallback(async () => {
     if (fetchMore) {
-      fetchMore({
+      await fetchMore({
         variables: {
           first: 10,
           name,

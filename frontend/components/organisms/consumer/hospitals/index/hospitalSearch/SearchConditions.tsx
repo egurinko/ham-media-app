@@ -1,6 +1,6 @@
-import { useCallback } from 'react';
-import { Text, HStack, Button } from '@chakra-ui/react';
 import { CloseIcon } from '@chakra-ui/icons';
+import { Text, HStack, Button } from '@chakra-ui/react';
+import { useCallback } from 'react';
 import { SecondaryButton } from '@/components/atoms/SecondaryButton';
 import type {
   SetSearchText,
@@ -57,7 +57,15 @@ const SearchConditions: React.FC<Props> = ({
     setInsuranceEnabled(false);
     setJsavaOption(false);
     setNichijuOption(false);
-  }, []);
+  }, [
+    setSearchText,
+    setCurrentLocation,
+    setReservable,
+    setNightServiceOption,
+    setInsuranceEnabled,
+    setJsavaOption,
+    setNichijuOption,
+  ]);
 
   const clearReservable = useCallback(() => {
     setReservable(false);
