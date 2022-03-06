@@ -928,7 +928,7 @@ export type InternalGetRolesQuery = { __typename?: 'Query', roles: Array<{ __typ
 export type InternalGetSessionQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type InternalGetSessionQuery = { __typename?: 'Query', session: { __typename?: 'Session', token: string, internalUser: { __typename?: 'InternalUser', id: BigInt, name: string, email: string } } };
+export type InternalGetSessionQuery = { __typename?: 'Query', session: { __typename?: 'Session', token: string, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } } };
 
 export type InternalGetStockRequestQueryVariables = Exact<{
   id: Scalars['Int'];
@@ -2402,13 +2402,11 @@ export const InternalGetSessionDocument = gql`
   session {
     token
     internalUser {
-      id
-      name
-      email
+      ...InternalUserFields
     }
   }
 }
-    `;
+    ${InternalUserFieldsFragmentDoc}`;
 
 /**
  * __useInternalGetSessionQuery__

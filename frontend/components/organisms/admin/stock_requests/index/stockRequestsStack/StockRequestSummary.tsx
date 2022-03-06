@@ -43,10 +43,6 @@ const StockRequestSummary: React.VFC<Props> = ({
             display="flex"
             alignItems="center"
           >
-            <Image
-              src={productRegistration.product.url}
-              alt={productRegistration.product.name}
-            />
             <img
               src={productRegistration.product.url}
               alt={productRegistration.product.name}
