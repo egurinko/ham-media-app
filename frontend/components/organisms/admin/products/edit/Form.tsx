@@ -18,6 +18,7 @@ import {
 import type { InternalUpdateProductMutationVariables } from '@/api/internal_api/types';
 import { Card } from '@/components/atoms/Card';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
+import { Zoom } from '@/components/atoms/Zoom';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 import { goAdminProducts } from '@/utils/routes';
@@ -155,17 +156,19 @@ const Form: React.VFC<Props> = ({ productId }) => {
                 <FormControl id="image">
                   <FormLabel>商品画像</FormLabel>
                   <Box flexShrink="0" mr="1" mb="2">
-                    <img
-                      src={productData.product.url}
-                      alt={productData.product.name}
-                      width="120"
-                      height="120"
-                      style={{
-                        objectFit: 'contain',
-                        width: '120px',
-                        height: '120px',
-                      }}
-                    />
+                    <Zoom>
+                      <img
+                        src={productData.product.url}
+                        alt={productData.product.name}
+                        width="120"
+                        height="120"
+                        style={{
+                          objectFit: 'contain',
+                          width: '120px',
+                          height: '120px',
+                        }}
+                      />
+                    </Zoom>
                   </Box>
                   <input
                     name="image"

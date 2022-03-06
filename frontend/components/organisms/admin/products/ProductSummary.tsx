@@ -2,6 +2,7 @@ import { Text, Box } from '@chakra-ui/react';
 import React from 'react';
 import type { ProductFieldsFragment } from '@/api/internal_api/types';
 import { SecondaryTag } from '@/components/atoms/SecondaryTag';
+import { Zoom } from '@/components/atoms/Zoom';
 
 type Props = {
   product: ProductFieldsFragment;
@@ -11,17 +12,19 @@ const ProductSummary: React.VFC<Props> = ({ product }) => (
   <Box w="100%" display="flex" flexDirection="row" alignItems="center" p="2">
     <Box flex="1" display="flex" flexDir="row" alignItems="center">
       <Box flexShrink="0" mr="1">
-        <img
-          src={product.url}
-          alt={product.name}
-          width="80"
-          height="80"
-          style={{
-            objectFit: 'contain',
-            width: '80px',
-            height: '80px',
-          }}
-        />
+        <Zoom>
+          <img
+            src={product.url}
+            alt={product.name}
+            width="80"
+            height="80"
+            style={{
+              objectFit: 'contain',
+              width: '80px',
+              height: '80px',
+            }}
+          />
+        </Zoom>
       </Box>
       <Box textAlign="left" flexShrink="1">
         <Text fontSize="xs">{product.maker.name}</Text>
