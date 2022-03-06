@@ -1,10 +1,7 @@
-import { useState } from 'react';
-import { Box, Text, Input, IconButton, Select } from '@chakra-ui/react';
 import { SmallCloseIcon, AddIcon } from '@chakra-ui/icons';
+import { Box, Text, Input, IconButton, Select } from '@chakra-ui/react';
 import dayjs from 'dayjs';
-import { PrimaryButton } from '@/components/atoms/PrimaryButton';
-import { SuccessMessage } from '@/components/molecules/SuccessMessage';
-import { ErrorMessage } from '@/components/molecules/ErrorMessage';
+import { useState } from 'react';
 import {
   useInternalCreateStocksMutation,
   useInternalGetInternalUsersQuery,
@@ -14,12 +11,15 @@ import type {
   InternalGetProductQuery,
   InternalGetStocksQueryVariables,
 } from '@/api/internal_api/types';
+import { PrimaryButton } from '@/components/atoms/PrimaryButton';
+import { ErrorMessage } from '@/components/molecules/ErrorMessage';
+import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 
 type FetchStocksMoreArgs = { variables: InternalGetStocksQueryVariables };
 
 interface Props {
   productId: InternalGetProductQuery['product']['id'];
-  fetchStocksMore: (args: FetchStocksMoreArgs) => Promise<any>;
+  fetchStocksMore: (args: FetchStocksMoreArgs) => Promise<unknown>;
 }
 
 type AddingStock = {
@@ -141,69 +141,67 @@ const NewSection: React.FC<Props> = ({ productId, fetchStocksMore }) => {
             handleAddStocks();
           }}
         >
-          {addingStocks.map((addingStock, index) => {
-            return (
-              <Box
-                key={index}
-                display="flex"
-                flexDir="row"
-                alignItems="center"
-                mb="2"
-              >
-                <Input
-                  placeholder="2100/10/10"
-                  type="date"
-                  size="md"
-                  min={dayjs().add(1, 'day').format('YYYY-MM-DD')}
-                  value={addingStock.expired_at}
-                  onChange={(e) => handleExpiredAtChange(index, e.target.value)}
+          {addingStocks.map((addingStock, index) => (
+            <Box
+              key={index}
+              display="flex"
+              flexDir="row"
+              alignItems="center"
+              mb="2"
+            >
+              <Input
+                placeholder="2100/10/10"
+                type="date"
+                size="md"
+                min={dayjs().add(1, 'day').format('YYYY-MM-DD')}
+                value={addingStock.expired_at}
+                onChange={(e) => handleExpiredAtChange(index, e.target.value)}
+                mr="2"
+                width="33%"
+              />
+              {internalUsersData ? (
+                <Select
+                  placeholder="選択してください"
+                  value={addingStock.internal_user_id}
+                  onChange={(e) =>
+                    handleInternalUserChange(index, Number(e.target.value))
+                  }
                   mr="2"
-                  width="33%"
-                />
-                {internalUsersData ? (
-                  <Select
-                    placeholder="選択してください"
-                    value={addingStock.internal_user_id}
-                    onChange={(e) =>
-                      handleInternalUserChange(index, Number(e.target.value))
-                    }
-                    mr="2"
-                    width="30%"
-                    required
-                  >
-                    {internalUsersData.internalUsers.map((internalUser) => (
-                      <option
-                        key={String(internalUser.id)}
-                        value={String(internalUser.id)}
-                      >
-                        {internalUser.name}
-                      </option>
-                    ))}
-                  </Select>
-                ) : null}
-                <Input
-                  placeholder="10"
-                  type="number"
-                  size="md"
-                  min="1"
-                  value={addingStock.amount}
-                  onChange={(e) => handleAmountChange(index, e.target.value)}
+                  width="30%"
                   required
-                  width="20%"
-                />
-                <IconButton
-                  onClick={() => handleAddingStocksDelete(index)}
-                  disabled={index === 0}
-                  icon={<SmallCloseIcon color="black" />}
-                  aria-label="delete"
-                  ml="2"
-                  textAlign="center"
-                  size="xs"
-                  borderRadius="50%"
-                />
-              </Box>
-            );
-          })}
+                >
+                  {internalUsersData.internalUsers.map((internalUser) => (
+                    <option
+                      key={String(internalUser.id)}
+                      value={String(internalUser.id)}
+                    >
+                      {internalUser.name}
+                    </option>
+                  ))}
+                </Select>
+              ) : null}
+              <Input
+                placeholder="10"
+                type="number"
+                size="md"
+                min="1"
+                value={addingStock.amount}
+                onChange={(e) => handleAmountChange(index, e.target.value)}
+                required
+                width="20%"
+              />
+              <IconButton
+                onClick={() => handleAddingStocksDelete(index)}
+                disabled={index === 0}
+                icon={<SmallCloseIcon color="black" />}
+                aria-label="delete"
+                ml="2"
+                textAlign="center"
+                size="xs"
+                borderRadius="50%"
+              />
+            </Box>
+          ))}
           <Box textAlign="center" mb="6">
             <IconButton
               onClick={handleAddingStocksAdd}

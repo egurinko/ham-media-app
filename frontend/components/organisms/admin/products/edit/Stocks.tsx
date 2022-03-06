@@ -1,10 +1,10 @@
 import { Spinner } from '@chakra-ui/react';
-import { Card } from '@/components/atoms/Card';
-import { AllocationSection } from './stock/AllocationSection';
-import { NewSection } from './stock/NewSection';
-import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { useInternalGetStocksQuery } from '@/api/internal_api/types';
 import type { InternalGetProductQuery } from '@/api/internal_api/types';
+import { Card } from '@/components/atoms/Card';
+import { ErrorMessage } from '@/components/molecules/ErrorMessage';
+import { AllocationSection } from './stock/AllocationSection';
+import { NewSection } from './stock/NewSection';
 
 interface Props {
   productId: InternalGetProductQuery['product']['id'];

@@ -1,14 +1,14 @@
-import { useState, useEffect } from 'react';
 import { Box } from '@chakra-ui/react';
+import { useState, useEffect, useCallback } from 'react';
 import { usePublicGetHospitalConnectionLazyQuery } from '@/api/public_api/types';
 import type { PublicGetHospitalConnectionQueryVariables } from '@/api/public_api/types';
-import { scrollTo } from '@/utils/scroll';
 import { useLocalStorage } from '@/utils/hooks';
-import { TextSearch } from './hospitalSearch/TextSearch';
+import { scrollTo } from '@/utils/scroll';
+import { Filter } from './hospitalSearch/Filter';
+import { Hospitals } from './hospitalSearch/Hospitals';
 import { MapSearch } from './hospitalSearch/MapSearch';
 import { SearchConditions } from './hospitalSearch/SearchConditions';
-import { Hospitals } from './hospitalSearch/Hospitals';
-import { Filter } from './hospitalSearch/Filter';
+import { TextSearch } from './hospitalSearch/TextSearch';
 import type {
   SearchText,
   CurrentLocation,
@@ -17,7 +17,6 @@ import type {
   InsuranceEnabled,
   JsavaOption,
   NichijuOption,
-  GetInitialHospitalConnection,
   GetContinuousHospitalConnection,
 } from './types';
 
@@ -45,11 +44,66 @@ const HospitalSearch: React.FC<NoProps> = () => {
   const { setLocalStorage, getLocalStorage } =
     useLocalStorage<PERSISTED>(PAGE_STORED_KEY);
 
-  useEffect(() => {
-    restorePage();
-  }, []);
+  const persistPage = useCallback(
+    (variables: Partial<PublicGetHospitalConnectionQueryVariables>) => {
+      const persisting: PERSISTED = {
+        after: hospitalData?.publicHospitalConnection?.pageInfo.endCursor,
+        searchText,
+        currentLocation,
+        reservable,
+        nightServiceOption,
+        insuranceEnabled,
+        jsavaOption,
+        nichijuOption,
+        ...variables,
+      };
+      setLocalStorage(persisting);
+    },
+    [
+      currentLocation,
+      hospitalData?.publicHospitalConnection?.pageInfo.endCursor,
+      insuranceEnabled,
+      jsavaOption,
+      nichijuOption,
+      nightServiceOption,
+      reservable,
+      searchText,
+      setLocalStorage,
+    ]
+  );
 
-  const restorePage = () => {
+  const getInitialHospitalConnection = useCallback(
+    (variables) => {
+      getHospitalConnection({
+        variables: {
+          first: 20,
+          searchText,
+          currentLocation,
+          reservable,
+          nightServiceOption,
+          insuranceEnabled,
+          jsavaOption,
+          nichijuOption,
+          ...variables,
+        },
+      });
+      scrollTo();
+      persistPage(variables);
+    },
+    [
+      currentLocation,
+      getHospitalConnection,
+      insuranceEnabled,
+      jsavaOption,
+      nichijuOption,
+      nightServiceOption,
+      persistPage,
+      reservable,
+      searchText,
+    ]
+  );
+
+  const restorePage = useCallback(() => {
     const persisted = getLocalStorage();
     if (persisted) {
       const {
@@ -75,44 +129,11 @@ const HospitalSearch: React.FC<NoProps> = () => {
         nichijuOption: nichijuOption || false,
       });
     }
-  };
+  }, [getInitialHospitalConnection, getLocalStorage]);
 
-  const persistPage = (
-    variables: Partial<PublicGetHospitalConnectionQueryVariables>
-  ) => {
-    const persisting: PERSISTED = {
-      after: hospitalData?.publicHospitalConnection?.pageInfo.endCursor,
-      searchText,
-      currentLocation,
-      reservable,
-      nightServiceOption,
-      insuranceEnabled,
-      jsavaOption,
-      nichijuOption,
-      ...variables,
-    };
-    setLocalStorage(persisting);
-  };
-
-  const getInitialHospitalConnection: GetInitialHospitalConnection = (
-    variables
-  ) => {
-    getHospitalConnection({
-      variables: {
-        first: 20,
-        searchText,
-        currentLocation,
-        reservable,
-        nightServiceOption,
-        insuranceEnabled,
-        jsavaOption,
-        nichijuOption,
-        ...variables,
-      },
-    });
-    scrollTo();
-    persistPage(variables);
-  };
+  useEffect(() => {
+    restorePage();
+  }, [restorePage]);
 
   const getContinuousHospitalConnection: GetContinuousHospitalConnection =
     () => {

@@ -1,6 +1,3 @@
-import { useEffect } from 'react';
-import { useRouter } from 'next/router';
-import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import {
   Box,
   Input,
@@ -9,14 +6,18 @@ import {
   FormLabel,
   FormErrorMessage,
 } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+import { useForm, Controller } from 'react-hook-form';
 import { usePublicCreateSessionMutation } from '@/api/public_api/types';
-import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { Card } from '@/components/atoms/Card';
-import { SuccessMessage } from '@/components/molecules/SuccessMessage';
+import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
-import validators from '@/validators/index';
+import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 import { setCookie } from '@/utils/cookies';
 import { goAdminInternalUsers } from '@/utils/routes';
+import validators from '@/validators/index';
+import type { SubmitHandler } from 'react-hook-form';
 
 export interface FormInput {
   email: string;
@@ -47,7 +48,7 @@ const Form: React.VFC<NoProps> = () => {
       setCookie(loginData.createSession.token);
       goAdminInternalUsers(router);
     }
-  }, [loginData, loginError]);
+  }, [loginData, loginError, router]);
 
   return (
     <>

@@ -5,8 +5,7 @@ type Props = {
   title: string;
 };
 
-const TitleCard: React.FC<Props> = ({ title, children }) => {
-  return (
+const TitleCard: React.FC<Props> = ({ title, children }) => (
     <Card>
       <Box textAlign="center" mb="2">
         <Text as="span" p="1" borderBottom="2px" borderColor="primary.main">
@@ -16,6 +15,5 @@ const TitleCard: React.FC<Props> = ({ title, children }) => {
       {children}
     </Card>
   );
-};
 
 export { TitleCard };

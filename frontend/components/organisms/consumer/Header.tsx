@@ -1,6 +1,6 @@
+import { Flex, Box, Text } from '@chakra-ui/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Flex, Box, Text } from '@chakra-ui/react';
 import { RedirectIcon } from '@/components/atoms/assets/RedirectIcon';
 
 type Props = Record<string, never>;

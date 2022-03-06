@@ -5,13 +5,11 @@ type Props = {
   status: 'success' | 'error';
 };
 
-const FlashMessage: React.FC<Props> = ({ message, status }) => {
-  return (
+const FlashMessage: React.FC<Props> = ({ message, status }) => (
     <Alert my="4" status={status}>
       <AlertIcon />
       {message}
     </Alert>
   );
-};
 
 export { FlashMessage };

@@ -1,18 +1,17 @@
-import { useState, useEffect, useCallback } from 'react';
-import { Box, Text, Select, Button } from '@chakra-ui/react';
 import { DeleteIcon } from '@chakra-ui/icons';
-import { PrimaryButton } from '@/components/atoms/PrimaryButton';
-import { Card } from '@/components/atoms/Card';
-import { Spinner } from '@/components/atoms/Spinner';
-import { SuccessMessage } from '@/components/molecules/SuccessMessage';
-import { ErrorMessage } from '@/components/molecules/ErrorMessage';
-import { ProductSummary } from '@/components/organisms/admin/products/ProductSummary';
+import { Box, Text, Select, Button } from '@chakra-ui/react';
+import { useState, useEffect, useCallback } from 'react';
 import {
   useInternalGetStockRequestQuery,
   useInternalUpdateStockRequestMutation,
 } from '@/api/internal_api/types';
-import type { StockRequestFieldsFragment } from '@/api/internal_api/types';
-import type { CreateStockRequestRequestProductsInputType } from '@/api/internal_api/types';
+import type { StockRequestFieldsFragment , CreateStockRequestRequestProductsInputType } from '@/api/internal_api/types';
+import { Card } from '@/components/atoms/Card';
+import { PrimaryButton } from '@/components/atoms/PrimaryButton';
+import { Spinner } from '@/components/atoms/Spinner';
+import { ErrorMessage } from '@/components/molecules/ErrorMessage';
+import { SuccessMessage } from '@/components/molecules/SuccessMessage';
+import { ProductSummary } from '@/components/organisms/admin/products/ProductSummary';
 
 type Props = {
   stockRequestId: StockRequestFieldsFragment['id'];

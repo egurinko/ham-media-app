@@ -2,9 +2,9 @@ import { Box } from '@chakra-ui/react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useInternalGetSessionQuery } from '@/api/internal_api/types';
-import { setCookie } from '@/utils/cookies';
 import { PublicLayout } from '@/components/layouts/admin/PublicLayout';
 import { Form } from '@/components/organisms/admin/login/Form';
+import { setCookie } from '@/utils/cookies';
 import { goAdminInternalUsers } from '@/utils/routes';
 
 const Login: React.VFC<NoProps> = () => {

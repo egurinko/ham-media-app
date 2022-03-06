@@ -7,8 +7,7 @@ type Props = {
   productTagGroup: InternalGetProductTagGroupsQuery['productTagGroups'][number];
 };
 
-const ProductTagGroupSummary: React.VFC<Props> = ({ productTagGroup }) => {
-  return (
+const ProductTagGroupSummary: React.VFC<Props> = ({ productTagGroup }) => (
     <SummaryLink url={ADMIN_PRODUCT_TAG_GROUPS_EDIT_PATH(productTagGroup.id)}>
       <Box
         display="flex"
@@ -34,6 +33,5 @@ const ProductTagGroupSummary: React.VFC<Props> = ({ productTagGroup }) => {
       </Box>
     </SummaryLink>
   );
-};
 
 export { ProductTagGroupSummary };

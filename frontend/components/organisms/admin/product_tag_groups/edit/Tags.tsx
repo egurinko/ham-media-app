@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState, useCallback } from 'react';
+import { DeleteIcon, SmallCloseIcon, AddIcon } from '@chakra-ui/icons';
 import {
   Spinner,
   Text,
@@ -17,11 +17,7 @@ import {
   Button,
   Input,
 } from '@chakra-ui/react';
-import { DeleteIcon, SmallCloseIcon, AddIcon } from '@chakra-ui/icons';
-import { PrimaryButton } from '@/components/atoms/PrimaryButton';
-import { Card } from '@/components/atoms/Card';
-import { SuccessMessage } from '@/components/molecules/SuccessMessage';
-import { ErrorMessage } from '@/components/molecules/ErrorMessage';
+import { Fragment, useEffect, useState, useCallback } from 'react';
 import {
   useInternalDeleteProductTagMutation,
   useInternalGetProductTagGroupQuery,
@@ -33,6 +29,10 @@ import type {
   InternalUpdateProductTagGroupMutationVariables,
   InternalGetProductTagGroupQuery,
 } from '@/api/internal_api/types';
+import { Card } from '@/components/atoms/Card';
+import { PrimaryButton } from '@/components/atoms/PrimaryButton';
+import { ErrorMessage } from '@/components/molecules/ErrorMessage';
+import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 
 interface Props {
   productTagGroupId: InternalUpdateProductTagGroupMutationVariables['id'];
@@ -249,8 +249,7 @@ const Tags: React.FC<Props> = ({ productTagGroupId }) => {
                 handleAddTags();
               }}
             >
-              {addingTags.map((addingTag, index) => {
-                return (
+              {addingTags.map((addingTag, index) => (
                   <Box
                     key={index}
                     display="flex"
@@ -276,8 +275,7 @@ const Tags: React.FC<Props> = ({ productTagGroupId }) => {
                       borderRadius="50%"
                     />
                   </Box>
-                );
-              })}
+                ))}
               <Box textAlign="center" mb="6">
                 <IconButton
                   onClick={handleAddingTagsAdd}

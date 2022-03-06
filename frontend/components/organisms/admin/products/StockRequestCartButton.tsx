@@ -1,12 +1,12 @@
-import React from 'react';
-import Link from 'next/link';
 import { Box, Badge } from '@chakra-ui/react';
-import { ADMIN_STOCK_REQUESTS_NEW_PATH } from '@/utils/routes';
-import { CartIcon } from '@/components/atoms/assets/CartIcon';
-import { SecondaryButton } from '@/components/atoms/SecondaryButton';
+import Link from 'next/link';
+import React from 'react';
 import { useLocalGetProductCartItemsQuery } from '@/api/internal_api/types';
+import { SecondaryButton } from '@/components/atoms/SecondaryButton';
+import { CartIcon } from '@/components/atoms/assets/CartIcon';
+import { ADMIN_STOCK_REQUESTS_NEW_PATH } from '@/utils/routes';
 
-const StockRequestCartButton: React.VFC<NoProps> = ({}) => {
+const StockRequestCartButton: React.VFC<NoProps> = () => {
   const { data } = useLocalGetProductCartItemsQuery();
   const count = data?.productCartItems.reduce(
     (count, item) => count + item.count,

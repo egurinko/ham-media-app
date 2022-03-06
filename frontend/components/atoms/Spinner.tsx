@@ -1,4 +1,5 @@
-import { Spinner as ChakraSpinner, SpinnerProps } from '@chakra-ui/react';
+import { Spinner as ChakraSpinner } from '@chakra-ui/react';
+import type { SpinnerProps } from '@chakra-ui/react';
 
 type Props = {
   size?: SpinnerProps['size'];

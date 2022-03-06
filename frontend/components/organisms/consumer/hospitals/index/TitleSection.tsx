@@ -1,6 +1,6 @@
-import Image from 'next/image';
-import { Box, Text, useBreakpointValue } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
+import { Box, Text, useBreakpointValue } from '@chakra-ui/react';
+import Image from 'next/image';
 
 const TitleSection: React.FC<NoProps> = () => {
   const imageWidth = useBreakpointValue({ base: 105, md: 210 });

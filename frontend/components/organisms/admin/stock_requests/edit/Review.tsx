@@ -1,5 +1,4 @@
-import { useCallback, useState } from 'react';
-import { useRouter } from 'next/router';
+import { NotAllowedIcon, CheckIcon } from '@chakra-ui/icons';
 import {
   Button,
   Box,
@@ -17,16 +16,17 @@ import {
   Textarea,
   FormHelperText,
 } from '@chakra-ui/react';
-import { NotAllowedIcon, CheckIcon } from '@chakra-ui/icons';
-import { PrimaryButton } from '@/components/atoms/PrimaryButton';
-import { SuccessMessage } from '@/components/molecules/SuccessMessage';
-import { ErrorMessage } from '@/components/molecules/ErrorMessage';
+import { useRouter } from 'next/router';
+import { useCallback, useState } from 'react';
 import {
   useInternalGetStockRequestQuery,
   useInternalRejectStockRequestMutation,
   useInternalApproveStockRequestMutation,
 } from '@/api/internal_api/types';
 import type { StockRequest } from '@/api/internal_api/types';
+import { PrimaryButton } from '@/components/atoms/PrimaryButton';
+import { ErrorMessage } from '@/components/molecules/ErrorMessage';
+import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 import { goAdminStockRequests } from '@/utils/routes';
 
 type Props = {
@@ -117,8 +117,7 @@ const Review: React.VFC<Props> = ({ stockRequestId }) => {
                 </Text>
                 <Box my="4">
                   {data.stockRequest.productRegistrations.map(
-                    (productRegistration) => {
-                      return (
+                    (productRegistration) => (
                         <Box
                           m="1"
                           key={productRegistration.id}
@@ -140,8 +139,7 @@ const Review: React.VFC<Props> = ({ stockRequestId }) => {
                             {productRegistration.product.name}
                           </Text>
                         </Box>
-                      );
-                    }
+                      )
                   )}
                 </Box>
                 <FormControl>
@@ -180,8 +178,7 @@ const Review: React.VFC<Props> = ({ stockRequestId }) => {
                 </Text>
                 <Box my="4">
                   {data.stockRequest.productRegistrations.map(
-                    (productRegistration) => {
-                      return (
+                    (productRegistration) => (
                         <Box
                           m="1"
                           key={productRegistration.id}
@@ -203,8 +200,7 @@ const Review: React.VFC<Props> = ({ stockRequestId }) => {
                             {productRegistration.product.name}
                           </Text>
                         </Box>
-                      );
-                    }
+                      )
                   )}
                 </Box>
                 <FormControl>

@@ -1,10 +1,9 @@
-import Link from 'next/link';
 import { Box, Text } from '@chakra-ui/react';
+import Link from 'next/link';
 import { CartIcon } from '@/components/atoms/assets/CartIcon';
 import { ADMIN_PRODUCTS_PATH } from '@/utils/routes';
 
-const Empty: React.VFC<NoProps> = () => {
-  return (
+const Empty: React.VFC<NoProps> = () => (
     <Box
       display="flex"
       flexDir="column"
@@ -25,6 +24,5 @@ const Empty: React.VFC<NoProps> = () => {
       </Link>
     </Box>
   );
-};
 
 export { Empty };

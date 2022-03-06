@@ -1,6 +1,4 @@
-import { GetStaticPaths, GetStaticProps } from 'next';
-import { useRouter } from 'next/router';
-import { ParsedUrlQuery } from 'querystring';
+import { ChevronRightIcon } from '@chakra-ui/icons';
 import {
   Heading,
   Box,
@@ -18,20 +16,23 @@ import {
   AlertIcon,
   IconButton,
 } from '@chakra-ui/react';
-import { ChevronRightIcon } from '@chakra-ui/icons';
-import { useForm, Controller, SubmitHandler } from 'react-hook-form';
-import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
-import { PrimaryButton } from '@/components/atoms/PrimaryButton';
-import { Card } from '@/components/atoms/Card';
+import { useRouter } from 'next/router';
+import { useForm, Controller } from 'react-hook-form';
 import { getHospital } from '@/api/internal_api/getHospital';
 import {
   useInternalGetHospitalQuery,
   useLocalReadIsAdminQuery,
+  useInternalUpdateHospitalMutation,
 } from '@/api/internal_api/types';
 import { usePublicGetPrefecturesQuery } from '@/api/public_api/types';
-import { useInternalUpdateHospitalMutation } from '@/api/internal_api/types';
+import { Card } from '@/components/atoms/Card';
+import { PrimaryButton } from '@/components/atoms/PrimaryButton';
+import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
 import { goAdminHospitals } from '@/utils/routes';
 import { scrollTo } from '@/utils/scroll';
+import type { GetStaticPaths, GetStaticProps } from 'next';
+import type { ParsedUrlQuery } from 'querystring';
+import type { SubmitHandler } from 'react-hook-form';
 
 interface FormInput {
   name: string;
@@ -57,7 +58,7 @@ interface FormInput {
   nichijuRegistered: string;
 }
 
-const Edit: React.VFC<Props> = () => {
+const Edit: React.VFC<NoProps> = () => {
   const router = useRouter();
   const { id: hospitalId } = router.query;
   const { data: hospitalData } = useInternalGetHospitalQuery({
@@ -573,14 +574,13 @@ interface Params extends ParsedUrlQuery {
   id: string;
 }
 
-interface Props {}
+export const getStaticPaths: GetStaticPaths<Params> = async () => ({
+  paths: [],
+  fallback: 'blocking',
+});
 
-export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  return { paths: [], fallback: 'blocking' };
-};
-
-export const getStaticProps: GetStaticProps<Props, Params> = async () => {
-  return { props: {} };
-};
+export const getStaticProps: GetStaticProps<NoProps, Params> = async () => ({
+  props: {},
+});
 
 export default Edit;

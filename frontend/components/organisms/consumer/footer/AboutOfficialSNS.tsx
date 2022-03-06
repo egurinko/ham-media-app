@@ -1,5 +1,5 @@
-import Image from 'next/image';
 import { Box } from '@chakra-ui/react';
+import Image from 'next/image';
 import { TitleCard } from '@/components/molecules/TitleCard';
 
 type Props = Record<string, never>;

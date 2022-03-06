@@ -1,3 +1,4 @@
+import { DeleteIcon } from '@chakra-ui/icons';
 import {
   Box,
   Spinner,
@@ -13,10 +14,7 @@ import {
   Th,
   Td,
 } from '@chakra-ui/react';
-import { DeleteIcon } from '@chakra-ui/icons';
 import dayjs from 'dayjs';
-import { SuccessMessage } from '@/components/molecules/SuccessMessage';
-import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import {
   useInternalGetInternalUsersQuery,
   useInternalAllocateStockMutation,
@@ -30,13 +28,15 @@ import type {
   InternalGetStocksQuery,
   InternalGetStocksQueryVariables,
 } from '@/api/internal_api/types';
+import { ErrorMessage } from '@/components/molecules/ErrorMessage';
+import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 
 type FetchStocksMoreArgs = { variables: InternalGetStocksQueryVariables };
 
 interface Props {
   productId: InternalGetProductQuery['product']['id'];
   stocks: InternalGetStocksQuery['stocks'];
-  fetchStocksMore: (args: FetchStocksMoreArgs) => Promise<any>;
+  fetchStocksMore: (args: FetchStocksMoreArgs) => Promise<unknown>;
 }
 
 const AllocationSection: React.FC<Props> = ({

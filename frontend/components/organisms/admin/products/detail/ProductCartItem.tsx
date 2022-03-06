@@ -1,14 +1,14 @@
-import React, { useState, useCallback } from 'react';
-import { Text, Box, Select } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
-import { SecondaryButton } from '@/components/atoms/SecondaryButton';
+import { Text, Box, Select } from '@chakra-ui/react';
+import React, { useState, useCallback } from 'react';
+import { useInternalGetProductQuery } from '@/api/internal_api/types';
+import type { Product } from '@/api/internal_api/types';
 import { Card } from '@/components/atoms/Card';
-import { ProductSummary } from '@/components/organisms/admin/products/ProductSummary';
+import { SecondaryButton } from '@/components/atoms/SecondaryButton';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
-import { useInternalGetProductQuery } from '@/api/internal_api/types';
+import { ProductSummary } from '@/components/organisms/admin/products/ProductSummary';
 import { productCartItemsVar } from '@/utils/apollo/cache';
-import type { Product } from '@/api/internal_api/types';
 
 type Props = {
   productId: Product['id'];

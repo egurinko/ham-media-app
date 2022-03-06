@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router';
 import {
   Box,
   Input,
@@ -8,20 +7,22 @@ import {
   FormErrorMessage,
   Select,
 } from '@chakra-ui/react';
-import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import { CUIAutoComplete } from 'chakra-ui-autocomplete';
-import { PrimaryButton } from '@/components/atoms/PrimaryButton';
-import { Card } from '@/components/atoms/Card';
-import { SuccessMessage } from '@/components/molecules/SuccessMessage';
-import { ErrorMessage } from '@/components/molecules/ErrorMessage';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import { useForm, Controller } from 'react-hook-form';
 import {
   useInternalGetMakersQuery,
   useInternalCreateProductMutation,
   useInternalGetProductTagGroupsQuery,
 } from '@/api/internal_api/types';
+import { Card } from '@/components/atoms/Card';
+import { PrimaryButton } from '@/components/atoms/PrimaryButton';
+import { ErrorMessage } from '@/components/molecules/ErrorMessage';
+import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 import { goAdminProducts } from '@/utils/routes';
 import validators from '@/validators/index';
-import { useEffect, useState } from 'react';
+import type { SubmitHandler } from 'react-hook-form';
 
 interface FormInput {
   makerId: string;

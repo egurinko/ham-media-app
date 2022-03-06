@@ -1,5 +1,5 @@
-import { BaseLayout } from './BaseLayout';
 import { ClientOnly } from '@/components/organisms/ClientOnly';
+import { BaseLayout } from './BaseLayout';
 
 type Props = {
   title?: string;

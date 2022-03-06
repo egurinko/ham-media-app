@@ -1,6 +1,6 @@
 import { HStack } from '@chakra-ui/react';
-import { PrimaryTag } from '@/components/atoms/PrimaryTag';
 import type { HospitalFieldsFragment } from '@/api/public_api/types';
+import { PrimaryTag } from '@/components/atoms/PrimaryTag';
 
 type Props = {
   hospital: HospitalFieldsFragment;

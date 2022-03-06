@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router';
+import { ChevronRightIcon } from '@chakra-ui/icons';
 import {
   Heading,
   Box,
@@ -14,13 +14,14 @@ import {
   Textarea,
   FormHelperText,
 } from '@chakra-ui/react';
-import { ChevronRightIcon } from '@chakra-ui/icons';
-import { useForm, Controller, SubmitHandler } from 'react-hook-form';
-import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
-import { PrimaryButton } from '@/components/atoms/PrimaryButton';
-import { Card } from '@/components/atoms/Card';
+import { useRouter } from 'next/router';
+import { useForm, Controller } from 'react-hook-form';
 import { useInternalCreateHospitalMutation } from '@/api/internal_api/types';
+import { Card } from '@/components/atoms/Card';
+import { PrimaryButton } from '@/components/atoms/PrimaryButton';
+import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
 import { goAdminHospitalsEdit, goAdminHospitals } from '@/utils/routes';
+import type { SubmitHandler } from 'react-hook-form';
 
 interface FormInput {
   name: string;
@@ -58,7 +59,9 @@ const New: React.VFC<NoProps> = () => {
         },
       });
       setTimeout(() => {
-        goAdminHospitalsEdit(router, { id: result.data!.createHospital.id });
+        if (result.data) {
+          goAdminHospitalsEdit(router, { id: result.data.createHospital.id });
+        }
       }, 2000);
     } catch (e) {}
   };

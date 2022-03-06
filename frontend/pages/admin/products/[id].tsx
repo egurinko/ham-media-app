@@ -1,18 +1,18 @@
-import { GetStaticPaths, GetStaticProps } from 'next';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
-import { ParsedUrlQuery } from 'querystring';
-import { Heading, Box, IconButton } from '@chakra-ui/react';
 import { ChevronRightIcon } from '@chakra-ui/icons';
-import { PrimaryButton } from '@/components/atoms/PrimaryButton';
-import { ProductCartItem } from '@/components/organisms/admin/products/detail/ProductCartItem';
-import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
-import { Stocks } from '@/components/organisms/admin/products/edit/Stocks';
-import { StockRequestCartButton } from '@/components/organisms/admin/products/StockRequestCartButton';
-import { goAdminProducts, ADMIN_PRODUCTS_EDIT_PATH } from '@/utils/routes';
+import { Heading, Box, IconButton } from '@chakra-ui/react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useLocalReadIsAdminQuery } from '@/api/internal_api/types';
+import { PrimaryButton } from '@/components/atoms/PrimaryButton';
+import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
+import { StockRequestCartButton } from '@/components/organisms/admin/products/StockRequestCartButton';
+import { ProductCartItem } from '@/components/organisms/admin/products/detail/ProductCartItem';
+import { Stocks } from '@/components/organisms/admin/products/edit/Stocks';
+import { goAdminProducts, ADMIN_PRODUCTS_EDIT_PATH } from '@/utils/routes';
+import type { GetStaticPaths, GetStaticProps } from 'next';
+import type { ParsedUrlQuery } from 'querystring';
 
-const Detail: React.VFC<Props> = () => {
+const Detail: React.VFC<NoProps> = () => {
   const router = useRouter();
   const { id: productId } = router.query;
   const { data: isAdminData } = useLocalReadIsAdminQuery();
@@ -66,14 +66,13 @@ interface Params extends ParsedUrlQuery {
   id: string;
 }
 
-interface Props {}
+export const getStaticPaths: GetStaticPaths<Params> = async () => ({
+  paths: [],
+  fallback: 'blocking',
+});
 
-export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  return { paths: [], fallback: 'blocking' };
-};
-
-export const getStaticProps: GetStaticProps<Props, Params> = async () => {
-  return { props: {} };
-};
+export const getStaticProps: GetStaticProps<NoProps, Params> = async () => ({
+  props: {},
+});
 
 export default Detail;
