@@ -133,7 +133,8 @@ const HospitalSearch: React.FC<NoProps> = () => {
 
   useEffect(() => {
     restorePage();
-  }, [restorePage]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const getContinuousHospitalConnection: GetContinuousHospitalConnection =
     () => {
