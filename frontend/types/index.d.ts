@@ -1,4 +1,8 @@
-type NoProps = Record<string, never>;
+type NoProps =
+  | Record<string, never>
+  | {
+      children?: ReactNode;
+    };
 
 type GenericChangeEvent<T> = React.ChangeEvent<{ value: T }>;
 

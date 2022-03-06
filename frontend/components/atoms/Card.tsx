@@ -1,4 +1,5 @@
-import { Box, CSSObject } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
+import type { CSSObject } from '@chakra-ui/react';
 
 type Props = {
   _hover?: CSSObject;
