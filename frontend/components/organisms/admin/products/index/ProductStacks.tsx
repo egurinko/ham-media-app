@@ -11,7 +11,7 @@ import {
   RadioGroup,
   Stack,
 } from '@chakra-ui/react';
-import React, { useEffect, useRef, useState, useMemo , Fragment } from 'react';
+import React, { useEffect, useRef, useState, useMemo, Fragment } from 'react';
 import {
   useInternalGetProductConnectionQuery,
   useInternalGetMakersQuery,
@@ -45,11 +45,15 @@ const ProductStacks: React.VFC<NoProps> = () => {
     undefined | string
   >(undefined);
   const [productStock, setProductStock] = useState<string>(PRODUCT_STOCK.HAS);
-  const hasStock = useMemo(() => productStock === PRODUCT_STOCK.HAS
-      ? true
-      : productStock === PRODUCT_STOCK.NOT
-      ? false
-      : undefined, [productStock]);
+  const hasStock = useMemo(
+    () =>
+      productStock === PRODUCT_STOCK.HAS
+        ? true
+        : productStock === PRODUCT_STOCK.NOT
+        ? false
+        : undefined,
+    [productStock]
+  );
 
   const { data: makersData } = useInternalGetMakersQuery();
   const { data: productTagGroupsData } = useInternalGetProductTagGroupsQuery();
@@ -117,7 +121,7 @@ const ProductStacks: React.VFC<NoProps> = () => {
             <Input
               type="text"
               size="sm"
-              placeholder="先頭一致"
+              placeholder="部分一致"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />

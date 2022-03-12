@@ -132,7 +132,7 @@ const SearchSection: React.VFC<Props> = ({
     >
       <Box display="flex">
         <Box mr="4">
-          <Text>病院名 (前方一致)</Text>
+          <Text>病院名 (部分一致)</Text>
           <Input value={name} onChange={(e) => setName(e.target.value)} />
         </Box>
         <Box mr="4">

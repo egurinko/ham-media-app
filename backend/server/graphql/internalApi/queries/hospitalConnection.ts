@@ -19,7 +19,7 @@ export const hospitalConnection = queryField((t) => {
         await ctx.prisma.hospital.findMany({
           where: {
             name: {
-              startsWith: args.name ? args.name : undefined,
+              contains: args.name ? args.name : undefined,
             },
             deleted: args.deleted ? args.deleted : false,
             hospitalAddress: {
