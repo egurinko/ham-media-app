@@ -380,7 +380,7 @@ const Edit: React.VFC<NoProps> = () => {
                     render={({ field }) => <Textarea {...field} />}
                   />
                 </FormControl>
-                <FormControl id="businessFormRemark" isRequired>
+                <FormControl id="businessFormRemark">
                   <FormLabel>備考</FormLabel>
                   <Controller
                     name="businessFormRemark"
