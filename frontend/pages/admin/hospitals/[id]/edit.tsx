@@ -175,9 +175,7 @@ const Edit: React.VFC<NoProps> = () => {
                       <Input type="text" isInvalid={!!errors.name} {...field} />
                     )}
                   />
-                  {errors.name && (
-                    <FormErrorMessage>{errors.name.message}</FormErrorMessage>
-                  )}
+                  <FormErrorMessage>{errors.name?.message}</FormErrorMessage>
                 </FormControl>
                 {prefectureData ? (
                   <FormControl
@@ -206,11 +204,9 @@ const Edit: React.VFC<NoProps> = () => {
                         </Select>
                       )}
                     />
-                    {errors.prefectureId && (
-                      <FormErrorMessage>
-                        {errors.prefectureId.message}
-                      </FormErrorMessage>
-                    )}
+                    <FormErrorMessage>
+                      {errors.prefectureId?.message}
+                    </FormErrorMessage>
                   </FormControl>
                 ) : null}
 
@@ -245,11 +241,9 @@ const Edit: React.VFC<NoProps> = () => {
                       />
                     )}
                   />
-                  {errors.phoneNumber && (
-                    <FormErrorMessage>
-                      {errors.phoneNumber.message}
-                    </FormErrorMessage>
-                  )}
+                  <FormErrorMessage>
+                    {errors.phoneNumber?.message}
+                  </FormErrorMessage>
                 </FormControl>
                 <FormControl id="url">
                   <FormLabel>URL</FormLabel>
@@ -305,11 +299,9 @@ const Edit: React.VFC<NoProps> = () => {
                       <Textarea isInvalid={!!errors.internalMemo} {...field} />
                     )}
                   />
-                  {errors.internalMemo && (
-                    <FormErrorMessage>
-                      {errors.internalMemo.message}
-                    </FormErrorMessage>
-                  )}
+                  <FormErrorMessage>
+                    {errors.internalMemo?.message}
+                  </FormErrorMessage>
                   <FormHelperText>
                     ※LINE等には露出しないデータです
                   </FormHelperText>
@@ -320,7 +312,7 @@ const Edit: React.VFC<NoProps> = () => {
               <Heading size="md">内部評価</Heading>
               <Divider mt="2" mb="4" />
               <Stack spacing={4}>
-                <FormControl id="star" isRequired>
+                <FormControl id="star" isRequired isInvalid={!!errors.star}>
                   <FormLabel>星</FormLabel>
                   <Controller
                     name="star"
@@ -328,7 +320,7 @@ const Edit: React.VFC<NoProps> = () => {
                     control={control}
                     rules={{ required: '星を入力してください' }}
                     render={({ field }) => (
-                      <Select {...field}>
+                      <Select {...field} isInvalid={!!errors.star}>
                         <option value={1}>1</option>
                         <option value={2}>2</option>
                         <option value={3}>3</option>
@@ -337,6 +329,7 @@ const Edit: React.VFC<NoProps> = () => {
                       </Select>
                     )}
                   />
+                  <FormErrorMessage>{errors.star?.message}</FormErrorMessage>
                   <FormHelperText>
                     ※LINE等には露出しないデータです
                   </FormHelperText>
@@ -353,8 +346,13 @@ const Edit: React.VFC<NoProps> = () => {
                         message: '備考は200字以内で入力してください',
                       },
                     }}
-                    render={({ field }) => <Textarea {...field} />}
+                    render={({ field }) => (
+                      <Textarea isInvalid={!!errors.starRemark} {...field} />
+                    )}
                   />
+                  <FormErrorMessage>
+                    {errors.starRemark?.message}
+                  </FormErrorMessage>
                 </FormControl>
               </Stack>
             </Box>
@@ -362,23 +360,43 @@ const Edit: React.VFC<NoProps> = () => {
               <Heading size="md">営業形態</Heading>
               <Divider mt="2" mb="4" />
               <Stack spacing={4}>
-                <FormControl id="businessHour" isRequired>
+                <FormControl
+                  id="businessHour"
+                  isRequired
+                  isInvalid={!!errors.businessHour}
+                >
                   <FormLabel>診療時間</FormLabel>
                   <Controller
                     name="businessHour"
                     defaultValue={hospital.hospitalBusinessForm?.business_hour}
                     control={control}
-                    render={({ field }) => <Textarea {...field} />}
+                    rules={{ required: '診療時間を入力してください' }}
+                    render={({ field }) => (
+                      <Textarea isInvalid={!!errors.businessHour} {...field} />
+                    )}
                   />
+                  <FormErrorMessage>
+                    {errors.businessHour?.message}
+                  </FormErrorMessage>
                 </FormControl>
-                <FormControl id="closedDay" isRequired>
+                <FormControl
+                  id="closedDay"
+                  isRequired
+                  isInvalid={!!errors.closedDay}
+                >
                   <FormLabel>休診日</FormLabel>
                   <Controller
                     name="closedDay"
                     defaultValue={hospital.hospitalBusinessForm?.closed_day}
                     control={control}
-                    render={({ field }) => <Textarea {...field} />}
+                    rules={{ required: '休診日を入力してください' }}
+                    render={({ field }) => (
+                      <Textarea isInvalid={!!errors.closedDay} {...field} />
+                    )}
                   />
+                  <FormErrorMessage>
+                    {errors.closedDay?.message}
+                  </FormErrorMessage>
                 </FormControl>
                 <FormControl id="businessFormRemark">
                   <FormLabel>備考</FormLabel>
@@ -389,7 +407,11 @@ const Edit: React.VFC<NoProps> = () => {
                     render={({ field }) => <Textarea {...field} />}
                   />
                 </FormControl>
-                <FormControl id="insuranceEnabled" isRequired>
+                <FormControl
+                  id="insuranceEnabled"
+                  isRequired
+                  isInvalid={!!errors.insuranceEnabled}
+                >
                   <FormLabel>保険利用可否</FormLabel>
                   <Controller
                     name="insuranceEnabled"
@@ -399,13 +421,16 @@ const Edit: React.VFC<NoProps> = () => {
                     control={control}
                     rules={{ required: '保険利用可否を入力してください' }}
                     render={({ field }) => (
-                      <Select {...field}>
+                      <Select isInvalid={!!errors.insuranceEnabled} {...field}>
                         <option value="○">○</option>
                         <option value="×">×</option>
                         <option value="不明">不明</option>
                       </Select>
                     )}
                   />
+                  <FormErrorMessage>
+                    {errors.insuranceEnabled?.message}
+                  </FormErrorMessage>
                 </FormControl>
               </Stack>
             </Box>
@@ -413,7 +438,11 @@ const Edit: React.VFC<NoProps> = () => {
               <Heading size="md">予約</Heading>
               <Divider mt="2" mb="4" />
               <Stack spacing={4}>
-                <FormControl id="reservationRequired" isRequired>
+                <FormControl
+                  id="reservationRequired"
+                  isRequired
+                  isInvalid={!!errors.reservationRequired}
+                >
                   <FormLabel>要不要</FormLabel>
                   <Controller
                     name="reservationRequired"
@@ -421,15 +450,25 @@ const Edit: React.VFC<NoProps> = () => {
                     rules={{ required: '要不要を入力してください' }}
                     control={control}
                     render={({ field }) => (
-                      <Select {...field}>
+                      <Select
+                        isInvalid={!!errors.reservationRequired}
+                        {...field}
+                      >
                         <option value="○">○</option>
                         <option value="×">×</option>
                         <option value="不明">不明</option>
                       </Select>
                     )}
                   />
+                  <FormErrorMessage>
+                    {errors.reservationRequired?.message}
+                  </FormErrorMessage>
                 </FormControl>
-                <FormControl id="reservable" isRequired>
+                <FormControl
+                  id="reservable"
+                  isRequired
+                  isInvalid={!!errors.reservable}
+                >
                   <FormLabel>可否</FormLabel>
                   <Controller
                     name="reservable"
@@ -439,13 +478,16 @@ const Edit: React.VFC<NoProps> = () => {
                     rules={{ required: '可否を入力してください' }}
                     control={control}
                     render={({ field }) => (
-                      <Select {...field}>
+                      <Select isInvalid={!!errors.reservable} {...field}>
                         <option value="○">○</option>
                         <option value="×">×</option>
                         <option value="不明">不明</option>
                       </Select>
                     )}
                   />
+                  <FormErrorMessage>
+                    {errors.reservable?.message}
+                  </FormErrorMessage>
                 </FormControl>
                 <FormControl id="reservationRemark">
                   <FormLabel>備考</FormLabel>
@@ -462,7 +504,11 @@ const Edit: React.VFC<NoProps> = () => {
               <Heading size="md">夜間営業</Heading>
               <Divider mt="2" mb="4" />
               <Stack spacing={4}>
-                <FormControl id="nightServiceStatus" isRequired>
+                <FormControl
+                  id="nightServiceStatus"
+                  isRequired
+                  isInvalid={!!errors.nightServiceStatus}
+                >
                   <FormLabel>営業可否</FormLabel>
                   <Controller
                     name="nightServiceStatus"
@@ -470,15 +516,25 @@ const Edit: React.VFC<NoProps> = () => {
                     rules={{ required: '営業可否を入力してください' }}
                     control={control}
                     render={({ field }) => (
-                      <Select {...field}>
+                      <Select
+                        {...field}
+                        isInvalid={!!errors.nightServiceStatus}
+                      >
                         <option value="○">○</option>
                         <option value="×">×</option>
                         <option value="不明">不明</option>
                       </Select>
                     )}
                   />
+                  <FormErrorMessage>
+                    {errors.nightServiceStatus?.message}
+                  </FormErrorMessage>
                 </FormControl>
-                <FormControl id="nightUrgentActionStatus" isRequired>
+                <FormControl
+                  id="nightUrgentActionStatus"
+                  isRequired
+                  isInvalid={!!errors.nightUrgentActionStatus}
+                >
                   <FormLabel>緊急夜間対応可否</FormLabel>
                   <Controller
                     name="nightUrgentActionStatus"
@@ -488,13 +544,19 @@ const Edit: React.VFC<NoProps> = () => {
                     rules={{ required: '緊急夜間対応可否を入力してください' }}
                     control={control}
                     render={({ field }) => (
-                      <Select {...field}>
+                      <Select
+                        {...field}
+                        isInvalid={!!errors.nightUrgentActionStatus}
+                      >
                         <option value="○">○</option>
                         <option value="×">×</option>
                         <option value="不明">不明</option>
                       </Select>
                     )}
                   />
+                  <FormErrorMessage>
+                    {errors.nightUrgentActionStatus?.message}
+                  </FormErrorMessage>
                 </FormControl>
                 <FormControl id="nightServiceRemark">
                   <FormLabel>備考</FormLabel>
@@ -511,7 +573,11 @@ const Edit: React.VFC<NoProps> = () => {
               <Heading size="md">認定</Heading>
               <Divider mt="2" mb="4" />
               <Stack spacing={4}>
-                <FormControl id="jsavaRegistered" isRequired>
+                <FormControl
+                  id="jsavaRegistered"
+                  isRequired
+                  isInvalid={!!errors.jsavaRegistered}
+                >
                   <FormLabel>日本小動物獣医師会(JSAVA)認定状況</FormLabel>
                   <Controller
                     name="jsavaRegistered"
@@ -521,15 +587,22 @@ const Edit: React.VFC<NoProps> = () => {
                     rules={{ required: '認定状況を入力してください' }}
                     control={control}
                     render={({ field }) => (
-                      <Select {...field}>
+                      <Select isInvalid={!!errors.jsavaRegistered} {...field}>
                         <option value="○">○</option>
                         <option value="×">×</option>
                         <option value="不明">不明</option>
                       </Select>
                     )}
                   />
+                  <FormErrorMessage>
+                    {errors.jsavaRegistered?.message}
+                  </FormErrorMessage>
                 </FormControl>
-                <FormControl id="nichijuRegistered" isRequired>
+                <FormControl
+                  id="nichijuRegistered"
+                  isRequired
+                  isInvalid={!!errors.nichijuRegistered}
+                >
                   <FormLabel>日本獣医師会認定状況</FormLabel>
                   <Controller
                     name="nichijuRegistered"
@@ -539,13 +612,16 @@ const Edit: React.VFC<NoProps> = () => {
                     rules={{ required: '認定状況を入力してください' }}
                     control={control}
                     render={({ field }) => (
-                      <Select {...field}>
+                      <Select isInvalid={!!errors.nichijuRegistered} {...field}>
                         <option value="○">○</option>
                         <option value="×">×</option>
                         <option value="不明">不明</option>
                       </Select>
                     )}
                   />
+                  <FormErrorMessage>
+                    {errors.nichijuRegistered?.message}
+                  </FormErrorMessage>
                 </FormControl>
               </Stack>
             </Box>
