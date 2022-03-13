@@ -1,6 +1,5 @@
 import { DeleteIcon, SmallCloseIcon, AddIcon } from '@chakra-ui/icons';
 import {
-  Spinner,
   Text,
   VStack,
   Divider,
@@ -31,6 +30,7 @@ import type {
 } from '@/api/internal_api/types';
 import { Card } from '@/components/atoms/Card';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
+import { Spinner } from '@/components/atoms/Spinner';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 
@@ -160,7 +160,7 @@ const Tags: React.FC<Props> = ({ productTagGroupId }) => {
   return (
     <>
       <Card>
-        {loading ? <Spinner size="lg" color="main.primary" /> : null}
+        <Spinner size="lg" loading={loading} />
         <ErrorMessage error={error} />
         <>
           <Text mb="2" fontSize="lg" fontWeight="bold">
@@ -250,32 +250,32 @@ const Tags: React.FC<Props> = ({ productTagGroupId }) => {
               }}
             >
               {addingTags.map((addingTag, index) => (
-                  <Box
-                    key={index}
-                    display="flex"
-                    flexDir="row"
-                    alignItems="center"
-                    mb="2"
-                  >
-                    <Input
-                      type="text"
-                      required
-                      value={addingTag.name}
-                      onChange={(e) => handleNameChange(index, e.target.value)}
-                      mr="2"
-                    />
-                    <IconButton
-                      onClick={() => handleAddingTagsDelete(index)}
-                      disabled={index === 0}
-                      icon={<SmallCloseIcon color="black" />}
-                      aria-label="delete"
-                      ml="2"
-                      textAlign="center"
-                      size="xs"
-                      borderRadius="50%"
-                    />
-                  </Box>
-                ))}
+                <Box
+                  key={index}
+                  display="flex"
+                  flexDir="row"
+                  alignItems="center"
+                  mb="2"
+                >
+                  <Input
+                    type="text"
+                    required
+                    value={addingTag.name}
+                    onChange={(e) => handleNameChange(index, e.target.value)}
+                    mr="2"
+                  />
+                  <IconButton
+                    onClick={() => handleAddingTagsDelete(index)}
+                    disabled={index === 0}
+                    icon={<SmallCloseIcon color="black" />}
+                    aria-label="delete"
+                    ml="2"
+                    textAlign="center"
+                    size="xs"
+                    borderRadius="50%"
+                  />
+                </Box>
+              ))}
               <Box textAlign="center" mb="6">
                 <IconButton
                   onClick={handleAddingTagsAdd}

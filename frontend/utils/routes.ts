@@ -1,4 +1,4 @@
-import { NextRouter } from 'next/router';
+import type { NextRouter } from 'next/router';
 
 export const ADMIN_LOGIN_PATH = '/admin/login';
 export const ADMIN_INTERNAL_USERS_PATH = '/admin/internal_users';

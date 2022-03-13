@@ -1,13 +1,7 @@
-import {
-  Box,
-  Spinner,
-  StatGroup,
-  Stat,
-  StatLabel,
-  StatNumber,
-} from '@chakra-ui/react';
+import { Box, StatGroup, Stat, StatLabel, StatNumber } from '@chakra-ui/react';
 import { useInternalGetProductQuery } from '@/api/internal_api/types';
 import type { InternalGetProductQuery } from '@/api/internal_api/types';
+import { Spinner } from '@/components/atoms/Spinner';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 
 interface Props {
@@ -20,7 +14,7 @@ const ProductSummary: React.FC<Props> = ({ productId }) => {
   });
   return (
     <Box>
-      {loading ? <Spinner size="lg" color="main.primary" /> : null}
+      <Spinner size="lg" loading={loading} />
       <ErrorMessage error={error} />
       {data ? (
         <StatGroup

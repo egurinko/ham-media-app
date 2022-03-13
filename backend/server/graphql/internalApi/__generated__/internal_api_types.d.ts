@@ -845,7 +845,7 @@ export interface NexusGenArgTypes {
     hospitalConnection: { // args
       after?: string | null; // String
       before?: string | null; // String
-      deleted?: boolean | null; // Boolean
+      deleted: boolean; // Boolean!
       first?: number | null; // Int
       last?: number | null; // Int
       name?: string | null; // String

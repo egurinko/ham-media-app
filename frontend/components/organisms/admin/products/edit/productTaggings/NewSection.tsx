@@ -1,7 +1,7 @@
 import { AddIcon } from '@chakra-ui/icons';
-import { Spinner, Box } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import { CUIAutoComplete } from 'chakra-ui-autocomplete';
-import React, { useEffect , useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   useInternalGetProductTagGroupsQuery,
   useInternalCreateProductTaggingsMutation,
@@ -9,6 +9,7 @@ import {
 } from '@/api/internal_api/types';
 import type { InternalGetProductQuery } from '@/api/internal_api/types';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
+import { Spinner } from '@/components/atoms/Spinner';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 
@@ -71,9 +72,7 @@ const NewSection: React.FC<Props> = ({ productId }) => {
 
   return (
     <>
-      {loading || createProductTaggingsLoading ? (
-        <Spinner size="lg" color="main.primary" />
-      ) : null}
+      <Spinner size="lg" loading={loading || createProductTaggingsLoading} />
       <ErrorMessage error={error} />
       <SuccessMessage
         data={createProductTaggingsData}

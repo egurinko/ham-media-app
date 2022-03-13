@@ -1,10 +1,11 @@
 import { Box, VStack, UnorderedList, ListItem } from '@chakra-ui/react';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
+import { useLocalReadIsAdminQuery } from '@/api/internal_api/types';
 import { HospitalIcon } from '@/components/atoms/assets/HospitalIcon';
 import { InventoryIcon } from '@/components/atoms/assets/InventoryIcon';
 import { UserProfileIcon } from '@/components/atoms/assets/UserProfileIcon';
+import { NavigationLink } from '@/components/molecules/NavigationLink';
 import {
   ADMIN_INTERNAL_USERS_PATH,
   ADMIN_HOSPIALS_PATH,
@@ -15,6 +16,7 @@ import {
 } from '@/utils/routes';
 
 const Navigation: React.VFC<NoProps> = () => {
+  const { data: isAdminData } = useLocalReadIsAdminQuery();
   const router = useRouter();
   const isAdminInternalUsersPath = useMemo(
     () => router.pathname.includes(ADMIN_INTERNAL_USERS_PATH),
@@ -44,46 +46,22 @@ const Navigation: React.VFC<NoProps> = () => {
   return (
     <VStack alignItems="flex-start" spacing={{ base: 6, sm: 12 }} mt="8">
       <Box>
-        <Link href={ADMIN_INTERNAL_USERS_PATH}>
-          <a>
-            <Box
-              display="flex"
-              alignItems="center"
-              fill={isAdminInternalUsersPath ? 'primary.main' : 'text.main'}
-              color={isAdminInternalUsersPath ? 'primary.main' : undefined}
-              _hover={{
-                fill: 'primary.main',
-                color: 'primary.main',
-              }}
-            >
-              <Box mr="2">
-                <UserProfileIcon width={20} height={20} />
-              </Box>
-              ユーザ管理
-            </Box>
-          </a>
-        </Link>
+        {isAdminData?.readIsAdmin.isAdmin ? (
+          <NavigationLink
+            title="ユーザ管理"
+            href={ADMIN_INTERNAL_USERS_PATH}
+            isCurrentPath={isAdminInternalUsersPath}
+            icon={<UserProfileIcon width={20} height={20} />}
+          />
+        ) : null}
       </Box>
       <Box>
-        <Link href={ADMIN_HOSPIALS_PATH}>
-          <a>
-            <Box
-              display="flex"
-              alignItems="center"
-              fill={isAdminHospitalsPath ? 'primary.main' : 'text.main'}
-              color={isAdminHospitalsPath ? 'primary.main' : undefined}
-              _hover={{
-                fill: 'primary.main',
-                color: 'primary.main',
-              }}
-            >
-              <Box mr="2">
-                <HospitalIcon width={20} height={20} />
-              </Box>
-              病院管理
-            </Box>
-          </a>
-        </Link>
+        <NavigationLink
+          title="病院管理"
+          href={ADMIN_HOSPIALS_PATH}
+          isCurrentPath={isAdminHospitalsPath}
+          icon={<HospitalIcon width={20} height={20} />}
+        />
       </Box>
       <Box>
         <Box display="flex" alignItems="center" fill="text.main">
@@ -94,80 +72,32 @@ const Navigation: React.VFC<NoProps> = () => {
         </Box>
         <UnorderedList spacing={3} ml="6" mt="2">
           <ListItem>
-            <Link href={ADMIN_MAKERS_PATH}>
-              <a>
-                <Box
-                  display="flex"
-                  alignItems="center"
-                  fill={isAdminMakersPath ? 'primary.main' : 'text.main'}
-                  color={isAdminMakersPath ? 'primary.main' : undefined}
-                  _hover={{
-                    fill: 'primary.main',
-                    color: 'primary.main',
-                  }}
-                >
-                  メーカー管理
-                </Box>
-              </a>
-            </Link>
+            <NavigationLink
+              title="メーカー管理"
+              href={ADMIN_MAKERS_PATH}
+              isCurrentPath={isAdminMakersPath}
+            />
           </ListItem>
           <ListItem>
-            <Link href={ADMIN_PRODUCTS_PATH}>
-              <a>
-                <Box
-                  display="flex"
-                  alignItems="center"
-                  fill={isAdminProductsPath ? 'primary.main' : 'text.main'}
-                  color={isAdminProductsPath ? 'primary.main' : undefined}
-                  _hover={{
-                    fill: 'primary.main',
-                    color: 'primary.main',
-                  }}
-                >
-                  商品管理
-                </Box>
-              </a>
-            </Link>
+            <NavigationLink
+              title="商品管理"
+              href={ADMIN_PRODUCTS_PATH}
+              isCurrentPath={isAdminProductsPath}
+            />
           </ListItem>
           <ListItem>
-            <Link href={ADMIN_PRODUCT_TAG_GROUPS_PATH}>
-              <a>
-                <Box
-                  display="flex"
-                  alignItems="center"
-                  fill={
-                    isAdminProductTagGroupsPath ? 'primary.main' : 'text.main'
-                  }
-                  color={
-                    isAdminProductTagGroupsPath ? 'primary.main' : undefined
-                  }
-                  _hover={{
-                    fill: 'primary.main',
-                    color: 'primary.main',
-                  }}
-                >
-                  タグ管理
-                </Box>
-              </a>
-            </Link>
+            <NavigationLink
+              title="タグ管理"
+              href={ADMIN_PRODUCT_TAG_GROUPS_PATH}
+              isCurrentPath={isAdminProductTagGroupsPath}
+            />
           </ListItem>
           <ListItem>
-            <Link href={ADMIN_STOCK_REQUESTS_PATH}>
-              <a>
-                <Box
-                  display="flex"
-                  alignItems="center"
-                  fill={isAdminStockRequestsPath ? 'primary.main' : 'text.main'}
-                  color={isAdminStockRequestsPath ? 'primary.main' : undefined}
-                  _hover={{
-                    fill: 'primary.main',
-                    color: 'primary.main',
-                  }}
-                >
-                  在庫リクエスト管理
-                </Box>
-              </a>
-            </Link>
+            <NavigationLink
+              title="在庫リクエスト管理"
+              href={ADMIN_STOCK_REQUESTS_PATH}
+              isCurrentPath={isAdminStockRequestsPath}
+            />
           </ListItem>
         </UnorderedList>
       </Box>
