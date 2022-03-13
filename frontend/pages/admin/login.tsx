@@ -5,7 +5,7 @@ import { useInternalGetSessionQuery } from '@/api/internal_api/types';
 import { PublicLayout } from '@/components/layouts/admin/PublicLayout';
 import { Form } from '@/components/organisms/admin/login/Form';
 import { setCookie } from '@/utils/cookies';
-import { goAdminInternalUsers } from '@/utils/routes';
+import { goAdminProducts } from '@/utils/routes';
 
 const Login: React.VFC<NoProps> = () => {
   const { data } = useInternalGetSessionQuery({ fetchPolicy: 'no-cache' });
@@ -13,7 +13,7 @@ const Login: React.VFC<NoProps> = () => {
 
   if (data?.session.token) {
     setCookie(data.session.token);
-    goAdminInternalUsers(router);
+    goAdminProducts(router);
   }
 
   return (
