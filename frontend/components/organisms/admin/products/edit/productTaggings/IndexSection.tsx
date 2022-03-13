@@ -1,11 +1,11 @@
 import { SmallCloseIcon } from '@chakra-ui/icons';
-import { Spinner } from '@chakra-ui/react';
 import {
   useInternalGetProductQuery,
   useInternalDeleteProductTaggingMutation,
 } from '@/api/internal_api/types';
 import type { InternalGetProductQuery } from '@/api/internal_api/types';
 import { PrimaryTag } from '@/components/atoms/PrimaryTag';
+import { Spinner } from '@/components/atoms/Spinner';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 
@@ -34,9 +34,8 @@ const IndexSection: React.FC<Props> = ({ productId }) => {
 
   return (
     <>
-      {loading || deleteProductTaggingLoading ? (
-        <Spinner size="lg" color="main.primary" />
-      ) : null}
+      <Spinner size="lg" loading={loading || deleteProductTaggingLoading} />
+
       <ErrorMessage error={error} />
       <SuccessMessage
         data={deleteProductTaggingData}

@@ -1,8 +1,9 @@
-import { Spinner, Box } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import {
   GoogleMap as ReactGoogleMap,
   useJsApiLoader,
 } from '@react-google-maps/api';
+import { Spinner } from '@/components/atoms/Spinner';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
 
 type Props = {
@@ -44,12 +45,7 @@ const GoogleMap: React.FC<Props> = ({
     </Map>
   ) : (
     <Box textAlign="center">
-      <Spinner
-        thickness="4px"
-        emptyColor="gray.200"
-        color="primary.main"
-        size="lg"
-      />
+      <Spinner loading={true} size="lg" />
     </Box>
   );
 };
@@ -61,19 +57,19 @@ const Map: React.FC<Props> = ({
   currentLng,
   children,
 }) => (
-    <ReactGoogleMap
-      mapContainerStyle={{
-        width: width ? `${width}px` : '100%',
-        height: height ? `${height}px` : '100%',
-      }}
-      center={{
-        lat: currentLat,
-        lng: currentLng,
-      }}
-      zoom={12}
-    >
-      {children}
-    </ReactGoogleMap>
-  );
+  <ReactGoogleMap
+    mapContainerStyle={{
+      width: width ? `${width}px` : '100%',
+      height: height ? `${height}px` : '100%',
+    }}
+    center={{
+      lat: currentLat,
+      lng: currentLng,
+    }}
+    zoom={12}
+  >
+    {children}
+  </ReactGoogleMap>
+);
 
 export { GoogleMap };

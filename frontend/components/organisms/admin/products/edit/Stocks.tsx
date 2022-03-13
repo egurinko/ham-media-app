@@ -1,7 +1,7 @@
-import { Spinner } from '@chakra-ui/react';
 import { useInternalGetStocksQuery } from '@/api/internal_api/types';
 import type { InternalGetProductQuery } from '@/api/internal_api/types';
 import { Card } from '@/components/atoms/Card';
+import { Spinner } from '@/components/atoms/Spinner';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { AllocationSection } from './stock/AllocationSection';
 import { NewSection } from './stock/NewSection';
@@ -17,7 +17,7 @@ const Stocks: React.FC<Props> = ({ productId }) => {
 
   return (
     <Card>
-      {loading ? <Spinner size="lg" color="main.primary" /> : null}
+      <Spinner size="lg" loading={loading} />
       <ErrorMessage error={error} />
       {data ? (
         <AllocationSection

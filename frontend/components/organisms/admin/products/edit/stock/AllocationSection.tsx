@@ -1,7 +1,6 @@
 import { DeleteIcon } from '@chakra-ui/icons';
 import {
   Box,
-  Spinner,
   Text,
   IconButton,
   Button,
@@ -28,6 +27,7 @@ import type {
   InternalGetStocksQuery,
   InternalGetStocksQueryVariables,
 } from '@/api/internal_api/types';
+import { Spinner } from '@/components/atoms/Spinner';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 
@@ -110,12 +110,16 @@ const AllocationSection: React.FC<Props> = ({
         在庫情報
       </Text>
 
-      {allocateStockLoading ||
-      returnStockLoading ||
-      deleteStockLoading ||
-      updateStockInternalUserLoading ? (
-        <Spinner size="lg" color="main.primary" />
-      ) : null}
+      <Spinner
+        size="lg"
+        loading={
+          allocateStockLoading ||
+          returnStockLoading ||
+          deleteStockLoading ||
+          updateStockInternalUserLoading
+        }
+      />
+
       <SuccessMessage
         data={allocateStockData}
         message="在庫を割り当てました。"
