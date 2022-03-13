@@ -526,7 +526,7 @@ export type QueryHospitalArgs = {
 export type QueryHospitalConnectionArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
-  deleted?: InputMaybe<Scalars['Boolean']>;
+  deleted: Scalars['Boolean'];
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
   name?: InputMaybe<Scalars['String']>;
@@ -830,7 +830,7 @@ export type InternalGetHospitalConnectionQueryVariables = Exact<{
   first?: InputMaybe<Scalars['Int']>;
   after?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
-  deleted?: InputMaybe<Scalars['Boolean']>;
+  deleted: Scalars['Boolean'];
   prefectureId?: InputMaybe<Scalars['BigInt']>;
 }>;
 
@@ -1836,7 +1836,7 @@ export type InternalGetHospitalQueryHookResult = ReturnType<typeof useInternalGe
 export type InternalGetHospitalLazyQueryHookResult = ReturnType<typeof useInternalGetHospitalLazyQuery>;
 export type InternalGetHospitalQueryResult = Apollo.QueryResult<InternalGetHospitalQuery, InternalGetHospitalQueryVariables>;
 export const InternalGetHospitalConnectionDocument = gql`
-    query InternalGetHospitalConnection($first: Int, $after: String, $name: String, $deleted: Boolean, $prefectureId: BigInt) {
+    query InternalGetHospitalConnection($first: Int, $after: String, $name: String, $deleted: Boolean!, $prefectureId: BigInt) {
   hospitalConnection(
     first: $first
     after: $after
@@ -1879,7 +1879,7 @@ export const InternalGetHospitalConnectionDocument = gql`
  *   },
  * });
  */
-export function useInternalGetHospitalConnectionQuery(baseOptions?: Apollo.QueryHookOptions<InternalGetHospitalConnectionQuery, InternalGetHospitalConnectionQueryVariables>) {
+export function useInternalGetHospitalConnectionQuery(baseOptions: Apollo.QueryHookOptions<InternalGetHospitalConnectionQuery, InternalGetHospitalConnectionQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<InternalGetHospitalConnectionQuery, InternalGetHospitalConnectionQueryVariables>(InternalGetHospitalConnectionDocument, options);
       }

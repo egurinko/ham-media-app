@@ -7,7 +7,7 @@ export const getHospitalConnection = gql`
     $first: Int
     $after: String
     $name: String
-    $deleted: Boolean
+    $deleted: Boolean!
     $prefectureId: BigInt
   ) {
     hospitalConnection(

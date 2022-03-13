@@ -16,7 +16,9 @@ const HospitalsSearch: React.VFC<NoProps> = () => {
   const { isIntersect } = useIntersectionObserver(infiniteScrollTarget);
 
   const { data, loading, error, fetchMore } =
-    useInternalGetHospitalConnectionQuery({ variables: { first: 10 } });
+    useInternalGetHospitalConnectionQuery({
+      variables: { first: 10, deleted },
+    });
 
   const nodes = data?.hospitalConnection?.edges
     ?.map((edge) => edge?.node)
