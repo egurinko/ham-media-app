@@ -15,7 +15,7 @@ import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
 import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 import { setCookie } from '@/utils/cookies';
-import { goAdminInternalUsers } from '@/utils/routes';
+import { goAdminProducts } from '@/utils/routes';
 import validators from '@/validators/index';
 import type { SubmitHandler } from 'react-hook-form';
 
@@ -46,7 +46,7 @@ const Form: React.VFC<NoProps> = () => {
   useEffect(() => {
     if (loginData) {
       setCookie(loginData.createSession.token);
-      goAdminInternalUsers(router);
+      goAdminProducts(router);
     }
   }, [loginData, loginError, router]);
 
