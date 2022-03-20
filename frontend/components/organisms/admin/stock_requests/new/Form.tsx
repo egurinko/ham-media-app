@@ -142,7 +142,12 @@ const Form: React.VFC<NoProps> = () => {
               </Box>
             </Box>
           ))}
-          <PrimaryButton type="submit" isLoading={loading} mt="8">
+          <PrimaryButton
+            type="submit"
+            isLoading={loading}
+            mt="8"
+            disabled={requestProducts.length === 0}
+          >
             在庫リクエストをする
           </PrimaryButton>
         </Box>
