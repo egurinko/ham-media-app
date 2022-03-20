@@ -2,6 +2,7 @@ import { nonNull, mutationField, list, intArg } from 'nexus';
 import { requestProductsInputType, stockRequestType } from '../types';
 import Mercurius from 'mercurius';
 import { judgeError } from '@/services/error/judge';
+import { postStockRequestUpdateAlert } from '@/services/api/discordApi';
 
 type ProductRegistrations = {
   product_id: number;
@@ -47,8 +48,14 @@ export const updateStockRequestField = mutationField((t) => {
                 },
               },
             },
+            include: {
+              productRegistrations: { include: { product: true } },
+              internalUser: true,
+            },
           }),
         ]);
+
+        postStockRequestUpdateAlert(stockRequest);
 
         return stockRequest;
       } catch (e) {
