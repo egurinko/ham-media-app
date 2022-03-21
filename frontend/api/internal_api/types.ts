@@ -368,7 +368,7 @@ export type MutationUpdateHospitalArgs = {
 
 export type MutationUpdateHospitalAddressGeoLocationArgs = {
   address: Scalars['String'];
-  id: Scalars['Int'];
+  id: Scalars['BigInt'];
 };
 
 
@@ -695,7 +695,7 @@ export type InternalCreateHospitalMutationVariables = Exact<{
 }>;
 
 
-export type InternalCreateHospitalMutation = { __typename?: 'Mutation', createHospital: { __typename?: 'Hospital', id: BigInt, name: string, url: string, deleted: boolean, internal_memo: string, hospitalAddress?: { __typename?: 'HospitalAddress', id: BigInt, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: BigInt }, hospitalAddressGeoLocation?: { __typename?: 'HospitalAddressGeoLocation', latitude: number, longitude: number } | null } | null, hospitalBusinessForm?: { __typename?: 'HospitalBusinessForm', id: BigInt, business_hour: string, closed_day: string, insurance_enabled: string, remark: string } | null, hospitalCertificationOption?: { __typename?: 'HospitalCertificationOption', id: BigInt, nichiju_registered: string, jsava_registered: string } | null, hospitalInternalReputation?: { __typename?: 'HospitalInternalReputation', id: BigInt, star: number, remark: string } | null, hospitalNightServiceOption?: { __typename?: 'HospitalNightServiceOption', id: BigInt, status: string, remark: string } | null, hospitalNightUrgentActionOption?: { __typename?: 'HospitalNightUrgentActionOption', id: BigInt, status: string } | null, hospitalReservationStatus?: { __typename?: 'HospitalReservationStatus', id: BigInt, required: string, reservable: string, remark: string } | null } };
+export type InternalCreateHospitalMutation = { __typename?: 'Mutation', createHospital: { __typename?: 'Hospital', id: BigInt, name: string, url: string, deleted: boolean, internal_memo: string, hospitalAddress?: { __typename?: 'HospitalAddress', id: BigInt, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: BigInt }, hospitalAddressGeoLocation?: { __typename?: 'HospitalAddressGeoLocation', id: BigInt, latitude: number, longitude: number } | null } | null, hospitalBusinessForm?: { __typename?: 'HospitalBusinessForm', id: BigInt, business_hour: string, closed_day: string, insurance_enabled: string, remark: string } | null, hospitalCertificationOption?: { __typename?: 'HospitalCertificationOption', id: BigInt, nichiju_registered: string, jsava_registered: string } | null, hospitalInternalReputation?: { __typename?: 'HospitalInternalReputation', id: BigInt, star: number, remark: string } | null, hospitalNightServiceOption?: { __typename?: 'HospitalNightServiceOption', id: BigInt, status: string, remark: string } | null, hospitalNightUrgentActionOption?: { __typename?: 'HospitalNightUrgentActionOption', id: BigInt, status: string } | null, hospitalReservationStatus?: { __typename?: 'HospitalReservationStatus', id: BigInt, required: string, reservable: string, remark: string } | null } };
 
 export type InternalCreateInternalUserMutationVariables = Exact<{
   name: Scalars['String'];
@@ -806,11 +806,11 @@ export type InternalDeleteStockRequestMutationVariables = Exact<{
 
 export type InternalDeleteStockRequestMutation = { __typename?: 'Mutation', deleteStockRequest: { __typename?: 'Delete', deleted: boolean } };
 
-export type HospitalFieldsFragment = { __typename?: 'Hospital', id: BigInt, name: string, url: string, deleted: boolean, internal_memo: string, hospitalAddress?: { __typename?: 'HospitalAddress', id: BigInt, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: BigInt }, hospitalAddressGeoLocation?: { __typename?: 'HospitalAddressGeoLocation', latitude: number, longitude: number } | null } | null, hospitalBusinessForm?: { __typename?: 'HospitalBusinessForm', id: BigInt, business_hour: string, closed_day: string, insurance_enabled: string, remark: string } | null, hospitalCertificationOption?: { __typename?: 'HospitalCertificationOption', id: BigInt, nichiju_registered: string, jsava_registered: string } | null, hospitalInternalReputation?: { __typename?: 'HospitalInternalReputation', id: BigInt, star: number, remark: string } | null, hospitalNightServiceOption?: { __typename?: 'HospitalNightServiceOption', id: BigInt, status: string, remark: string } | null, hospitalNightUrgentActionOption?: { __typename?: 'HospitalNightUrgentActionOption', id: BigInt, status: string } | null, hospitalReservationStatus?: { __typename?: 'HospitalReservationStatus', id: BigInt, required: string, reservable: string, remark: string } | null };
+export type HospitalFieldsFragment = { __typename?: 'Hospital', id: BigInt, name: string, url: string, deleted: boolean, internal_memo: string, hospitalAddress?: { __typename?: 'HospitalAddress', id: BigInt, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: BigInt }, hospitalAddressGeoLocation?: { __typename?: 'HospitalAddressGeoLocation', id: BigInt, latitude: number, longitude: number } | null } | null, hospitalBusinessForm?: { __typename?: 'HospitalBusinessForm', id: BigInt, business_hour: string, closed_day: string, insurance_enabled: string, remark: string } | null, hospitalCertificationOption?: { __typename?: 'HospitalCertificationOption', id: BigInt, nichiju_registered: string, jsava_registered: string } | null, hospitalInternalReputation?: { __typename?: 'HospitalInternalReputation', id: BigInt, star: number, remark: string } | null, hospitalNightServiceOption?: { __typename?: 'HospitalNightServiceOption', id: BigInt, status: string, remark: string } | null, hospitalNightUrgentActionOption?: { __typename?: 'HospitalNightUrgentActionOption', id: BigInt, status: string } | null, hospitalReservationStatus?: { __typename?: 'HospitalReservationStatus', id: BigInt, required: string, reservable: string, remark: string } | null };
 
-export type HospitalAddressFieldsFragment = { __typename?: 'HospitalAddress', id: BigInt, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: BigInt }, hospitalAddressGeoLocation?: { __typename?: 'HospitalAddressGeoLocation', latitude: number, longitude: number } | null };
+export type HospitalAddressFieldsFragment = { __typename?: 'HospitalAddress', id: BigInt, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: BigInt }, hospitalAddressGeoLocation?: { __typename?: 'HospitalAddressGeoLocation', id: BigInt, latitude: number, longitude: number } | null };
 
-export type HospitalAddressGeoLocationFieldsFragment = { __typename?: 'HospitalAddressGeoLocation', latitude: number, longitude: number };
+export type HospitalAddressGeoLocationFieldsFragment = { __typename?: 'HospitalAddressGeoLocation', id: BigInt, latitude: number, longitude: number };
 
 export type HospitalBusinessFormFieldsFragment = { __typename?: 'HospitalBusinessForm', id: BigInt, business_hour: string, closed_day: string, insurance_enabled: string, remark: string };
 
@@ -847,7 +847,7 @@ export type InternalGetHospitalQueryVariables = Exact<{
 }>;
 
 
-export type InternalGetHospitalQuery = { __typename?: 'Query', hospital: { __typename?: 'Hospital', id: BigInt, name: string, url: string, deleted: boolean, internal_memo: string, hospitalAddress?: { __typename?: 'HospitalAddress', id: BigInt, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: BigInt }, hospitalAddressGeoLocation?: { __typename?: 'HospitalAddressGeoLocation', latitude: number, longitude: number } | null } | null, hospitalBusinessForm?: { __typename?: 'HospitalBusinessForm', id: BigInt, business_hour: string, closed_day: string, insurance_enabled: string, remark: string } | null, hospitalCertificationOption?: { __typename?: 'HospitalCertificationOption', id: BigInt, nichiju_registered: string, jsava_registered: string } | null, hospitalInternalReputation?: { __typename?: 'HospitalInternalReputation', id: BigInt, star: number, remark: string } | null, hospitalNightServiceOption?: { __typename?: 'HospitalNightServiceOption', id: BigInt, status: string, remark: string } | null, hospitalNightUrgentActionOption?: { __typename?: 'HospitalNightUrgentActionOption', id: BigInt, status: string } | null, hospitalReservationStatus?: { __typename?: 'HospitalReservationStatus', id: BigInt, required: string, reservable: string, remark: string } | null } };
+export type InternalGetHospitalQuery = { __typename?: 'Query', hospital: { __typename?: 'Hospital', id: BigInt, name: string, url: string, deleted: boolean, internal_memo: string, hospitalAddress?: { __typename?: 'HospitalAddress', id: BigInt, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: BigInt }, hospitalAddressGeoLocation?: { __typename?: 'HospitalAddressGeoLocation', id: BigInt, latitude: number, longitude: number } | null } | null, hospitalBusinessForm?: { __typename?: 'HospitalBusinessForm', id: BigInt, business_hour: string, closed_day: string, insurance_enabled: string, remark: string } | null, hospitalCertificationOption?: { __typename?: 'HospitalCertificationOption', id: BigInt, nichiju_registered: string, jsava_registered: string } | null, hospitalInternalReputation?: { __typename?: 'HospitalInternalReputation', id: BigInt, star: number, remark: string } | null, hospitalNightServiceOption?: { __typename?: 'HospitalNightServiceOption', id: BigInt, status: string, remark: string } | null, hospitalNightUrgentActionOption?: { __typename?: 'HospitalNightUrgentActionOption', id: BigInt, status: string } | null, hospitalReservationStatus?: { __typename?: 'HospitalReservationStatus', id: BigInt, required: string, reservable: string, remark: string } | null } };
 
 export type InternalGetHospitalConnectionQueryVariables = Exact<{
   first?: InputMaybe<Scalars['Int']>;
@@ -858,7 +858,7 @@ export type InternalGetHospitalConnectionQueryVariables = Exact<{
 }>;
 
 
-export type InternalGetHospitalConnectionQuery = { __typename?: 'Query', hospitalConnection?: { __typename?: 'HospitalConnection', edges?: Array<{ __typename?: 'HospitalEdge', node?: { __typename?: 'Hospital', id: BigInt, name: string, url: string, deleted: boolean, internal_memo: string, hospitalAddress?: { __typename?: 'HospitalAddress', id: BigInt, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: BigInt }, hospitalAddressGeoLocation?: { __typename?: 'HospitalAddressGeoLocation', latitude: number, longitude: number } | null } | null, hospitalBusinessForm?: { __typename?: 'HospitalBusinessForm', id: BigInt, business_hour: string, closed_day: string, insurance_enabled: string, remark: string } | null, hospitalCertificationOption?: { __typename?: 'HospitalCertificationOption', id: BigInt, nichiju_registered: string, jsava_registered: string } | null, hospitalInternalReputation?: { __typename?: 'HospitalInternalReputation', id: BigInt, star: number, remark: string } | null, hospitalNightServiceOption?: { __typename?: 'HospitalNightServiceOption', id: BigInt, status: string, remark: string } | null, hospitalNightUrgentActionOption?: { __typename?: 'HospitalNightUrgentActionOption', id: BigInt, status: string } | null, hospitalReservationStatus?: { __typename?: 'HospitalReservationStatus', id: BigInt, required: string, reservable: string, remark: string } | null } | null } | null> | null, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, hasPreviousPage: boolean, startCursor?: string | null, endCursor?: string | null } } | null };
+export type InternalGetHospitalConnectionQuery = { __typename?: 'Query', hospitalConnection?: { __typename?: 'HospitalConnection', edges?: Array<{ __typename?: 'HospitalEdge', node?: { __typename?: 'Hospital', id: BigInt, name: string, url: string, deleted: boolean, internal_memo: string, hospitalAddress?: { __typename?: 'HospitalAddress', id: BigInt, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: BigInt }, hospitalAddressGeoLocation?: { __typename?: 'HospitalAddressGeoLocation', id: BigInt, latitude: number, longitude: number } | null } | null, hospitalBusinessForm?: { __typename?: 'HospitalBusinessForm', id: BigInt, business_hour: string, closed_day: string, insurance_enabled: string, remark: string } | null, hospitalCertificationOption?: { __typename?: 'HospitalCertificationOption', id: BigInt, nichiju_registered: string, jsava_registered: string } | null, hospitalInternalReputation?: { __typename?: 'HospitalInternalReputation', id: BigInt, star: number, remark: string } | null, hospitalNightServiceOption?: { __typename?: 'HospitalNightServiceOption', id: BigInt, status: string, remark: string } | null, hospitalNightUrgentActionOption?: { __typename?: 'HospitalNightUrgentActionOption', id: BigInt, status: string } | null, hospitalReservationStatus?: { __typename?: 'HospitalReservationStatus', id: BigInt, required: string, reservable: string, remark: string } | null } | null } | null> | null, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, hasPreviousPage: boolean, startCursor?: string | null, endCursor?: string | null } } | null };
 
 export type InternalGetHospitalIdsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1015,12 +1015,12 @@ export type InternalUpdateHospitalMutationVariables = Exact<{
 export type InternalUpdateHospitalMutation = { __typename?: 'Mutation', updateHospital: { __typename?: 'Hospital', name: string } };
 
 export type InternalUpdateHospitalAddressGeoLocationMutationVariables = Exact<{
-  id: Scalars['Int'];
+  id: Scalars['BigInt'];
   address: Scalars['String'];
 }>;
 
 
-export type InternalUpdateHospitalAddressGeoLocationMutation = { __typename?: 'Mutation', updateHospitalAddressGeoLocation: { __typename?: 'HospitalAddressGeoLocation', latitude: number, longitude: number } };
+export type InternalUpdateHospitalAddressGeoLocationMutation = { __typename?: 'Mutation', updateHospitalAddressGeoLocation: { __typename?: 'HospitalAddressGeoLocation', id: BigInt, latitude: number, longitude: number } };
 
 export type InternalUpdateInternalUserMutationVariables = Exact<{
   id: Scalars['BigInt'];
@@ -1087,6 +1087,7 @@ export type InternalUpdateStockRequestMutation = { __typename?: 'Mutation', upda
 
 export const HospitalAddressGeoLocationFieldsFragmentDoc = gql`
     fragment HospitalAddressGeoLocationFields on HospitalAddressGeoLocation {
+  id
   latitude
   longitude
 }
@@ -2795,7 +2796,7 @@ export type InternalUpdateHospitalMutationHookResult = ReturnType<typeof useInte
 export type InternalUpdateHospitalMutationResult = Apollo.MutationResult<InternalUpdateHospitalMutation>;
 export type InternalUpdateHospitalMutationOptions = Apollo.BaseMutationOptions<InternalUpdateHospitalMutation, InternalUpdateHospitalMutationVariables>;
 export const InternalUpdateHospitalAddressGeoLocationDocument = gql`
-    mutation InternalUpdateHospitalAddressGeoLocation($id: Int!, $address: String!) {
+    mutation InternalUpdateHospitalAddressGeoLocation($id: BigInt!, $address: String!) {
   updateHospitalAddressGeoLocation(id: $id, address: $address) {
     ...HospitalAddressGeoLocationFields
   }

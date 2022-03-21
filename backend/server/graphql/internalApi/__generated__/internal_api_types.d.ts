@@ -806,7 +806,7 @@ export interface NexusGenArgTypes {
     }
     updateHospitalAddressGeoLocation: { // args
       address: string; // String!
-      id: number; // Int!
+      id: NexusGenScalars['BigInt']; // BigInt!
     }
     updateInternalUser: { // args
       discord_user_id: string; // String!

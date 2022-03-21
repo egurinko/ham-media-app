@@ -1,4 +1,4 @@
-import { nonNull, mutationField, intArg, stringArg } from 'nexus';
+import { nonNull, mutationField, arg, stringArg } from 'nexus';
 import { geoLocationType } from '../types';
 import Mercurius from 'mercurius';
 import { judgeError } from '@/services/error/judge';
@@ -8,7 +8,7 @@ export const updateHospitalAddressGeoLocationField = mutationField((t) => {
   t.nonNull.field('updateHospitalAddressGeoLocation', {
     type: geoLocationType,
     args: {
-      id: nonNull(intArg()),
+      id: nonNull(arg({ type: 'BigInt' })),
       address: nonNull(stringArg()),
     },
     resolve: async (_, args, ctx) => {

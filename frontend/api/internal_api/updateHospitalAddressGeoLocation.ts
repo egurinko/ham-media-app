@@ -4,7 +4,7 @@ import { HOSPITAL_ADDRESS_GEO_LOCATION_FIELDS } from './fragments/hospital/addre
 export const updateHospitalAddressGeoLocation = gql`
   ${HOSPITAL_ADDRESS_GEO_LOCATION_FIELDS}
   mutation InternalUpdateHospitalAddressGeoLocation(
-    $id: Int!
+    $id: BigInt!
     $address: String!
   ) {
     updateHospitalAddressGeoLocation(id: $id, address: $address) {
