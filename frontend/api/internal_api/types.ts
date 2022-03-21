@@ -227,6 +227,7 @@ export type Mutation = {
   rejectStockRequest: Delete;
   returnStock: Stock;
   updateHospital: Hospital;
+  updateHospitalAddressGeoLocation: HospitalAddressGeoLocation;
   updateInternalUser: InternalUser;
   updateMaker: Maker;
   updateProduct: Product;
@@ -362,6 +363,12 @@ export type MutationUpdateHospitalArgs = {
   internal_memo: Scalars['String'];
   name: Scalars['String'];
   url: Scalars['String'];
+};
+
+
+export type MutationUpdateHospitalAddressGeoLocationArgs = {
+  address: Scalars['String'];
+  id: Scalars['Int'];
 };
 
 
@@ -801,6 +808,22 @@ export type InternalDeleteStockRequestMutation = { __typename?: 'Mutation', dele
 
 export type HospitalFieldsFragment = { __typename?: 'Hospital', id: BigInt, name: string, url: string, deleted: boolean, internal_memo: string, hospitalAddress?: { __typename?: 'HospitalAddress', id: BigInt, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: BigInt }, hospitalAddressGeoLocation?: { __typename?: 'HospitalAddressGeoLocation', latitude: number, longitude: number } | null } | null, hospitalBusinessForm?: { __typename?: 'HospitalBusinessForm', id: BigInt, business_hour: string, closed_day: string, insurance_enabled: string, remark: string } | null, hospitalCertificationOption?: { __typename?: 'HospitalCertificationOption', id: BigInt, nichiju_registered: string, jsava_registered: string } | null, hospitalInternalReputation?: { __typename?: 'HospitalInternalReputation', id: BigInt, star: number, remark: string } | null, hospitalNightServiceOption?: { __typename?: 'HospitalNightServiceOption', id: BigInt, status: string, remark: string } | null, hospitalNightUrgentActionOption?: { __typename?: 'HospitalNightUrgentActionOption', id: BigInt, status: string } | null, hospitalReservationStatus?: { __typename?: 'HospitalReservationStatus', id: BigInt, required: string, reservable: string, remark: string } | null };
 
+export type HospitalAddressFieldsFragment = { __typename?: 'HospitalAddress', id: BigInt, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: BigInt }, hospitalAddressGeoLocation?: { __typename?: 'HospitalAddressGeoLocation', latitude: number, longitude: number } | null };
+
+export type HospitalAddressGeoLocationFieldsFragment = { __typename?: 'HospitalAddressGeoLocation', latitude: number, longitude: number };
+
+export type HospitalBusinessFormFieldsFragment = { __typename?: 'HospitalBusinessForm', id: BigInt, business_hour: string, closed_day: string, insurance_enabled: string, remark: string };
+
+export type HospitalCertificationOptionFieldsFragment = { __typename?: 'HospitalCertificationOption', id: BigInt, nichiju_registered: string, jsava_registered: string };
+
+export type HospitalInternalReputationFieldsFragment = { __typename?: 'HospitalInternalReputation', id: BigInt, star: number, remark: string };
+
+export type HospitalNightServiceOptionFieldsFragment = { __typename?: 'HospitalNightServiceOption', id: BigInt, status: string, remark: string };
+
+export type HospitalNightUrgentActionOptionFieldsFragment = { __typename?: 'HospitalNightUrgentActionOption', id: BigInt, status: string };
+
+export type HospitalReservationStatusFieldsFragment = { __typename?: 'HospitalReservationStatus', id: BigInt, required: string, reservable: string, remark: string };
+
 export type InternalUserFieldsFragment = { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } };
 
 export type MakerFieldsFragment = { __typename?: 'Maker', id: number, name: string };
@@ -991,6 +1014,14 @@ export type InternalUpdateHospitalMutationVariables = Exact<{
 
 export type InternalUpdateHospitalMutation = { __typename?: 'Mutation', updateHospital: { __typename?: 'Hospital', name: string } };
 
+export type InternalUpdateHospitalAddressGeoLocationMutationVariables = Exact<{
+  id: Scalars['Int'];
+  address: Scalars['String'];
+}>;
+
+
+export type InternalUpdateHospitalAddressGeoLocationMutation = { __typename?: 'Mutation', updateHospitalAddressGeoLocation: { __typename?: 'HospitalAddressGeoLocation', latitude: number, longitude: number } };
+
 export type InternalUpdateInternalUserMutationVariables = Exact<{
   id: Scalars['BigInt'];
   name: Scalars['String'];
@@ -1054,6 +1085,70 @@ export type InternalUpdateStockRequestMutationVariables = Exact<{
 
 export type InternalUpdateStockRequestMutation = { __typename?: 'Mutation', updateStockRequest: { __typename?: 'StockRequest', id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, productRegistrations: Array<{ __typename?: 'StockRequestProductRegistration', id: number, product: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } } | null }> } }> } };
 
+export const HospitalAddressGeoLocationFieldsFragmentDoc = gql`
+    fragment HospitalAddressGeoLocationFields on HospitalAddressGeoLocation {
+  latitude
+  longitude
+}
+    `;
+export const HospitalAddressFieldsFragmentDoc = gql`
+    fragment HospitalAddressFields on HospitalAddress {
+  id
+  address
+  phone_number
+  prefecture {
+    name
+    id
+  }
+  hospitalAddressGeoLocation {
+    ...HospitalAddressGeoLocationFields
+  }
+}
+    ${HospitalAddressGeoLocationFieldsFragmentDoc}`;
+export const HospitalBusinessFormFieldsFragmentDoc = gql`
+    fragment HospitalBusinessFormFields on HospitalBusinessForm {
+  id
+  business_hour
+  closed_day
+  insurance_enabled
+  remark
+}
+    `;
+export const HospitalCertificationOptionFieldsFragmentDoc = gql`
+    fragment HospitalCertificationOptionFields on HospitalCertificationOption {
+  id
+  nichiju_registered
+  jsava_registered
+}
+    `;
+export const HospitalInternalReputationFieldsFragmentDoc = gql`
+    fragment HospitalInternalReputationFields on HospitalInternalReputation {
+  id
+  star
+  remark
+}
+    `;
+export const HospitalNightServiceOptionFieldsFragmentDoc = gql`
+    fragment HospitalNightServiceOptionFields on HospitalNightServiceOption {
+  id
+  status
+  remark
+}
+    `;
+export const HospitalNightUrgentActionOptionFieldsFragmentDoc = gql`
+    fragment HospitalNightUrgentActionOptionFields on HospitalNightUrgentActionOption {
+  id
+  status
+}
+    `;
+export const HospitalReservationStatusFieldsFragmentDoc = gql`
+    fragment HospitalReservationStatusFields on HospitalReservationStatus {
+  id
+  required
+  reservable
+  remark
+}
+    `;
 export const HospitalFieldsFragmentDoc = gql`
     fragment HospitalFields on Hospital {
   id
@@ -1062,52 +1157,34 @@ export const HospitalFieldsFragmentDoc = gql`
   deleted
   internal_memo
   hospitalAddress {
-    id
-    address
-    phone_number
-    prefecture {
-      name
-      id
-    }
-    hospitalAddressGeoLocation {
-      latitude
-      longitude
-    }
+    ...HospitalAddressFields
   }
   hospitalBusinessForm {
-    id
-    business_hour
-    closed_day
-    insurance_enabled
-    remark
+    ...HospitalBusinessFormFields
   }
   hospitalCertificationOption {
-    id
-    nichiju_registered
-    jsava_registered
+    ...HospitalCertificationOptionFields
   }
   hospitalInternalReputation {
-    id
-    star
-    remark
+    ...HospitalInternalReputationFields
   }
   hospitalNightServiceOption {
-    id
-    status
-    remark
+    ...HospitalNightServiceOptionFields
   }
   hospitalNightUrgentActionOption {
-    id
-    status
+    ...HospitalNightUrgentActionOptionFields
   }
   hospitalReservationStatus {
-    id
-    required
-    reservable
-    remark
+    ...HospitalReservationStatusFields
   }
 }
-    `;
+    ${HospitalAddressFieldsFragmentDoc}
+${HospitalBusinessFormFieldsFragmentDoc}
+${HospitalCertificationOptionFieldsFragmentDoc}
+${HospitalInternalReputationFieldsFragmentDoc}
+${HospitalNightServiceOptionFieldsFragmentDoc}
+${HospitalNightUrgentActionOptionFieldsFragmentDoc}
+${HospitalReservationStatusFieldsFragmentDoc}`;
 export const ProductTagFieldsFragmentDoc = gql`
     fragment ProductTagFields on ProductTag {
   id
@@ -2717,6 +2794,40 @@ export function useInternalUpdateHospitalMutation(baseOptions?: Apollo.MutationH
 export type InternalUpdateHospitalMutationHookResult = ReturnType<typeof useInternalUpdateHospitalMutation>;
 export type InternalUpdateHospitalMutationResult = Apollo.MutationResult<InternalUpdateHospitalMutation>;
 export type InternalUpdateHospitalMutationOptions = Apollo.BaseMutationOptions<InternalUpdateHospitalMutation, InternalUpdateHospitalMutationVariables>;
+export const InternalUpdateHospitalAddressGeoLocationDocument = gql`
+    mutation InternalUpdateHospitalAddressGeoLocation($id: Int!, $address: String!) {
+  updateHospitalAddressGeoLocation(id: $id, address: $address) {
+    ...HospitalAddressGeoLocationFields
+  }
+}
+    ${HospitalAddressGeoLocationFieldsFragmentDoc}`;
+export type InternalUpdateHospitalAddressGeoLocationMutationFn = Apollo.MutationFunction<InternalUpdateHospitalAddressGeoLocationMutation, InternalUpdateHospitalAddressGeoLocationMutationVariables>;
+
+/**
+ * __useInternalUpdateHospitalAddressGeoLocationMutation__
+ *
+ * To run a mutation, you first call `useInternalUpdateHospitalAddressGeoLocationMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInternalUpdateHospitalAddressGeoLocationMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [internalUpdateHospitalAddressGeoLocationMutation, { data, loading, error }] = useInternalUpdateHospitalAddressGeoLocationMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      address: // value for 'address'
+ *   },
+ * });
+ */
+export function useInternalUpdateHospitalAddressGeoLocationMutation(baseOptions?: Apollo.MutationHookOptions<InternalUpdateHospitalAddressGeoLocationMutation, InternalUpdateHospitalAddressGeoLocationMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<InternalUpdateHospitalAddressGeoLocationMutation, InternalUpdateHospitalAddressGeoLocationMutationVariables>(InternalUpdateHospitalAddressGeoLocationDocument, options);
+      }
+export type InternalUpdateHospitalAddressGeoLocationMutationHookResult = ReturnType<typeof useInternalUpdateHospitalAddressGeoLocationMutation>;
+export type InternalUpdateHospitalAddressGeoLocationMutationResult = Apollo.MutationResult<InternalUpdateHospitalAddressGeoLocationMutation>;
+export type InternalUpdateHospitalAddressGeoLocationMutationOptions = Apollo.BaseMutationOptions<InternalUpdateHospitalAddressGeoLocationMutation, InternalUpdateHospitalAddressGeoLocationMutationVariables>;
 export const InternalUpdateInternalUserDocument = gql`
     mutation InternalUpdateInternalUser($id: BigInt!, $name: String!, $email: String!, $password: String!, $discord_user_id: String!, $roleId: Int!) {
   updateInternalUser(
