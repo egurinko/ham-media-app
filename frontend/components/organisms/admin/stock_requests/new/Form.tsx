@@ -1,5 +1,14 @@
-import { DeleteIcon } from '@chakra-ui/icons';
-import { Box, Text, Select, Button } from '@chakra-ui/react';
+import { DeleteIcon, CheckCircleIcon } from '@chakra-ui/icons';
+import {
+  Box,
+  Text,
+  Select,
+  Button,
+  Alert,
+  ListItem,
+  List,
+  ListIcon,
+} from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { useState, useEffect, useCallback } from 'react';
 import {
@@ -142,6 +151,25 @@ const Form: React.VFC<NoProps> = () => {
               </Box>
             </Box>
           ))}
+
+          <Alert fontSize="xs" mt="4" status="warning">
+            <Box>
+              <List textAlign="left">
+                <ListItem>
+                  <ListIcon as={CheckCircleIcon} />
+                  食品や床材などの消耗品は基本的に自己負担です。ただし、ご支援品の在庫があれば遠慮なくリクエストしてください
+                </ListItem>
+                <ListItem>
+                  <ListIcon as={CheckCircleIcon} />
+                  送料を下げるためリクエスト内容は責任者がなるべく同じになるようにしてください
+                </ListItem>
+                <ListItem>
+                  <ListIcon as={CheckCircleIcon} />
+                  1回のリクエスト内容が送料を上回るようにしてください
+                </ListItem>
+              </List>
+            </Box>
+          </Alert>
           <PrimaryButton
             type="submit"
             isLoading={loading}
