@@ -377,6 +377,7 @@ export interface NexusGenFieldTypes {
     rejectStockRequest: NexusGenRootTypes['Delete']; // Delete!
     returnStock: NexusGenRootTypes['Stock']; // Stock!
     updateHospital: NexusGenRootTypes['Hospital']; // Hospital!
+    updateHospitalAddressGeoLocation: NexusGenRootTypes['HospitalAddressGeoLocation']; // HospitalAddressGeoLocation!
     updateInternalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     updateMaker: NexusGenRootTypes['Maker']; // Maker!
     updateProduct: NexusGenRootTypes['Product']; // Product!
@@ -597,6 +598,7 @@ export interface NexusGenFieldTypeNames {
     rejectStockRequest: 'Delete'
     returnStock: 'Stock'
     updateHospital: 'Hospital'
+    updateHospitalAddressGeoLocation: 'HospitalAddressGeoLocation'
     updateInternalUser: 'InternalUser'
     updateMaker: 'Maker'
     updateProduct: 'Product'
@@ -801,6 +803,10 @@ export interface NexusGenArgTypes {
       internal_memo: string; // String!
       name: string; // String!
       url: string; // String!
+    }
+    updateHospitalAddressGeoLocation: { // args
+      address: string; // String!
+      id: number; // Int!
     }
     updateInternalUser: { // args
       discord_user_id: string; // String!
