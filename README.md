@@ -95,7 +95,13 @@ $ yarn db:push
 $ yarn db:reflect
 ```
 
-4. dev server 起動
+4. seed 投入
+
+```sh
+$ yarn db:seed:dev
+```
+
+5. dev server 起動
 
 ```sh
 $ yarn dev # port 3000 で立ち上がる
@@ -113,8 +119,10 @@ $ touch .env
 2. dev server 起動
 
 ```sh
-$ yarn dev
+$ yarn dev # port 8080 で立ち上がる
 ```
+
+3. localhost:8080/hospitals などで確認
 
 ## リンク
 
