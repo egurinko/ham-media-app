@@ -384,6 +384,7 @@ export interface NexusGenFieldTypes {
     updateProductTagGroup: NexusGenRootTypes['ProductTagGroup']; // ProductTagGroup!
     updateStockInternalUser: NexusGenRootTypes['Stock']; // Stock!
     updateStockRequest: NexusGenRootTypes['StockRequest']; // StockRequest!
+    upsertHospitalAddressGeoLocation: NexusGenRootTypes['HospitalAddress']; // HospitalAddress!
   }
   PageInfo: { // field return type
     endCursor: string | null; // String
@@ -604,6 +605,7 @@ export interface NexusGenFieldTypeNames {
     updateProductTagGroup: 'ProductTagGroup'
     updateStockInternalUser: 'Stock'
     updateStockRequest: 'StockRequest'
+    upsertHospitalAddressGeoLocation: 'HospitalAddress'
   }
   PageInfo: { // field return type name
     endCursor: 'String'
@@ -836,6 +838,10 @@ export interface NexusGenArgTypes {
     updateStockRequest: { // args
       id: number; // Int!
       requestProducts: NexusGenInputs['CreateStockRequestRequestProductsInputType'][]; // [CreateStockRequestRequestProductsInputType!]!
+    }
+    upsertHospitalAddressGeoLocation: { // args
+      address: string; // String!
+      hospitalAddressId: NexusGenScalars['BigInt']; // BigInt!
     }
   }
   Query: {
