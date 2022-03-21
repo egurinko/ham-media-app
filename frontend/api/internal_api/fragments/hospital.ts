@@ -15,6 +15,10 @@ export const HOSPITAL_FIELDS = gql`
         name
         id
       }
+      hospitalAddressGeoLocation {
+        latitude
+        longitude
+      }
     }
     hospitalBusinessForm {
       id
