@@ -64,7 +64,7 @@ const DetailCard: React.FC<Props> = ({ hospital }) => (
               >
                 診療時間
               </Text>
-              <Box whiteSpace="pre-line">
+              <Box whiteSpace="pre-line" mt="4">
                 {hospital.hospitalBusinessForm?.business_hour}
               </Box>
             </Box>
@@ -92,12 +92,16 @@ const DetailCard: React.FC<Props> = ({ hospital }) => (
               >
                 予約
               </Text>
-              {hospital.hospitalReservationStatus?.required === '○' ? (
-                <Box my="2">■ 予約必須</Box>
-              ) : null}
-              {hospital.hospitalReservationStatus?.reservable === '○' ? (
-                <Box>■ 予約可能</Box>
-              ) : null}
+              <Box my="2" mt="4">
+                {hospital.hospitalReservationStatus?.required === '○'
+                  ? '■ 予約必須'
+                  : hospital.hospitalReservationStatus?.reservable === '×'
+                  ? '■ 予約不可'
+                  : hospital.hospitalReservationStatus?.required === '×' &&
+                    hospital.hospitalReservationStatus?.reservable === '○'
+                  ? '■ 予約なしでOK'
+                  : '■ 予約については公式HPを確認'}
+              </Box>
               <Box my="2">
                 <Text>■ 備考</Text>
                 <Text whiteSpace="pre-line">
@@ -108,16 +112,42 @@ const DetailCard: React.FC<Props> = ({ hospital }) => (
           </Box>
 
           <Divider my="4" />
-          <Box my="2">
-            <Box display="flex" flexDirection="row" alignItems="center" mb="2">
-              <NightIcon width={20} height={20} />
-              <Text ml="2" fontSize="lg">
-                夜間営業{' '}
-                {hospital.hospitalNightServiceOption?.status === '○'
-                  ? '○'
-                  : 'なし'}
+          <Box display="flex" flexDirection="column">
+            <Box mb="2">
+              <Text
+                fontSize="xl"
+                borderLeft="4px"
+                borderColor="primary.main"
+                pl="2"
+                as="span"
+              >
+                夜間営業
               </Text>
+              <Box my="2" mt="4">
+                {hospital.hospitalNightServiceOption?.status === '○'
+                  ? '■ 夜間営業あり'
+                  : hospital.hospitalNightServiceOption?.status === '×'
+                  ? '■ 夜間営業なし'
+                  : '■ 夜間営業については公式HPを確認'}
+              </Box>
+              <Box my="2">
+                {hospital.hospitalNightUrgentActionOption?.status === '○'
+                  ? '■ 夜間救急対応あり'
+                  : hospital.hospitalNightUrgentActionOption?.status === '×'
+                  ? '■ 夜間救急対応なし'
+                  : '■ 夜間救急対応については公式HPを確認'}
+              </Box>
+              <Box my="2">
+                <Text>■ 備考</Text>
+                <Text whiteSpace="pre-line">
+                  {hospital.hospitalNightServiceOption?.remark}
+                </Text>
+              </Box>
             </Box>
+          </Box>
+
+          <Divider my="4" />
+          <Box my="2">
             <Box display="flex" flexDirection="row" alignItems="center" mb="2">
               <InsuranceIcon width={20} height={20} />
               <Text ml="2" fontSize="lg">
