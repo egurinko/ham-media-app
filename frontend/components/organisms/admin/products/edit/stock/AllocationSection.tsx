@@ -247,7 +247,7 @@ const AllocationSection: React.FC<Props> = ({
                   size="xs"
                   ml="1"
                   onClick={() => handleDeleteStock(stock.id)}
-                  icon={<DeleteIcon size="sm" />}
+                  icon={<DeleteIcon />}
                   aria-label="delete stock"
                   disabled={!isAdminData?.readIsAdmin.isAdmin}
                 />

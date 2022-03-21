@@ -118,28 +118,28 @@ const Review: React.VFC<Props> = ({ stockRequestId }) => {
                 <Box my="4">
                   {data.stockRequest.productRegistrations.map(
                     (productRegistration) => (
-                        <Box
-                          m="1"
-                          key={productRegistration.id}
-                          display="flex"
-                          alignItems="center"
-                        >
-                          <img
-                            src={productRegistration.product.url}
-                            alt={productRegistration.product.name}
-                            width="40"
-                            height="40"
-                            style={{
-                              objectFit: 'contain',
-                              width: '40px',
-                              height: '40px',
-                            }}
-                          />
-                          <Text ml="2" size="sm">
-                            {productRegistration.product.name}
-                          </Text>
-                        </Box>
-                      )
+                      <Box
+                        m="1"
+                        key={productRegistration.id}
+                        display="flex"
+                        alignItems="center"
+                      >
+                        <img
+                          src={productRegistration.product.url}
+                          alt={productRegistration.product.name}
+                          width="40"
+                          height="40"
+                          style={{
+                            objectFit: 'contain',
+                            width: '40px',
+                            height: '40px',
+                          }}
+                        />
+                        <Text ml="2" size="sm">
+                          {productRegistration.product.name}
+                        </Text>
+                      </Box>
+                    )
                   )}
                 </Box>
                 <FormControl>
@@ -147,7 +147,6 @@ const Review: React.VFC<Props> = ({ stockRequestId }) => {
                   <Textarea
                     id="message"
                     placeholder="在庫が足りないので別の商品を選択してください"
-                    type="text"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                   />
@@ -179,28 +178,28 @@ const Review: React.VFC<Props> = ({ stockRequestId }) => {
                 <Box my="4">
                   {data.stockRequest.productRegistrations.map(
                     (productRegistration) => (
-                        <Box
-                          m="1"
-                          key={productRegistration.id}
-                          display="flex"
-                          alignItems="center"
-                        >
-                          <img
-                            src={productRegistration.product.url}
-                            alt={productRegistration.product.name}
-                            width="40"
-                            height="40"
-                            style={{
-                              objectFit: 'contain',
-                              width: '40px',
-                              height: '40px',
-                            }}
-                          />
-                          <Text ml="2" size="sm">
-                            {productRegistration.product.name}
-                          </Text>
-                        </Box>
-                      )
+                      <Box
+                        m="1"
+                        key={productRegistration.id}
+                        display="flex"
+                        alignItems="center"
+                      >
+                        <img
+                          src={productRegistration.product.url}
+                          alt={productRegistration.product.name}
+                          width="40"
+                          height="40"
+                          style={{
+                            objectFit: 'contain',
+                            width: '40px',
+                            height: '40px',
+                          }}
+                        />
+                        <Text ml="2" size="sm">
+                          {productRegistration.product.name}
+                        </Text>
+                      </Box>
+                    )
                   )}
                 </Box>
                 <FormControl>
@@ -208,7 +207,6 @@ const Review: React.VFC<Props> = ({ stockRequestId }) => {
                   <Textarea
                     id="message"
                     placeholder="一週間を目処に発送します"
-                    type="text"
                     value={approveMessage}
                     onChange={(e) => setApproveMessage(e.target.value)}
                   />

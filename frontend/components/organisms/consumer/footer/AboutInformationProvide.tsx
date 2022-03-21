@@ -5,7 +5,7 @@ type Props = Record<string, never>;
 
 const AbountInformationProvide: React.VFC<Props> = () => (
   <TitleCard title="情報提供について">
-    <Box size="xs">
+    <Box>
       <Text as="span">
         掲載されている病院、掲載されていない病院について何か情報がありましたら、
       </Text>
@@ -14,7 +14,7 @@ const AbountInformationProvide: React.VFC<Props> = () => (
       </Box>
       <Text as="span">より情報をご提供いただけると幸いです。</Text>
     </Box>
-    <Box size="xs" mt="4">
+    <Box mt="4">
       <Text as="span">以下の情報は即時反映いたします。</Text>
       <UnorderedList>
         <ListItem>掲載されていない病院</ListItem>
@@ -23,7 +23,7 @@ const AbountInformationProvide: React.VFC<Props> = () => (
         </ListItem>
       </UnorderedList>
     </Box>
-    <Box size="xs" mt="4">
+    <Box mt="4">
       <Text as="span">
         以下の情報は一旦ハムメディア内部で蓄積します。蓄積した情報をもとに議論・調査を重ねた上で反映を行いますので時間を要します。
       </Text>
