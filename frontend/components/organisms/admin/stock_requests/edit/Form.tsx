@@ -5,13 +5,17 @@ import {
   useInternalGetStockRequestQuery,
   useInternalUpdateStockRequestMutation,
 } from '@/api/internal_api/types';
-import type { StockRequestFieldsFragment , CreateStockRequestRequestProductsInputType } from '@/api/internal_api/types';
+import type {
+  StockRequestFieldsFragment,
+  CreateStockRequestRequestProductsInputType,
+} from '@/api/internal_api/types';
 import { Card } from '@/components/atoms/Card';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { Spinner } from '@/components/atoms/Spinner';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 import { ProductSummary } from '@/components/organisms/admin/products/ProductSummary';
+import { Note } from '../shared/Note';
 
 type Props = {
   stockRequestId: StockRequestFieldsFragment['id'];
@@ -153,6 +157,7 @@ const Form: React.VFC<Props> = ({ stockRequestId }) => {
               </Box>
             </Box>
           ))}
+          <Note />
           <PrimaryButton
             type="submit"
             isLoading={loading}
