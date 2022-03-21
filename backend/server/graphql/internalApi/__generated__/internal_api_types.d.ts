@@ -377,7 +377,6 @@ export interface NexusGenFieldTypes {
     rejectStockRequest: NexusGenRootTypes['Delete']; // Delete!
     returnStock: NexusGenRootTypes['Stock']; // Stock!
     updateHospital: NexusGenRootTypes['Hospital']; // Hospital!
-    updateHospitalAddressGeoLocation: NexusGenRootTypes['HospitalAddressGeoLocation']; // HospitalAddressGeoLocation!
     updateInternalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     updateMaker: NexusGenRootTypes['Maker']; // Maker!
     updateProduct: NexusGenRootTypes['Product']; // Product!
@@ -385,6 +384,7 @@ export interface NexusGenFieldTypes {
     updateProductTagGroup: NexusGenRootTypes['ProductTagGroup']; // ProductTagGroup!
     updateStockInternalUser: NexusGenRootTypes['Stock']; // Stock!
     updateStockRequest: NexusGenRootTypes['StockRequest']; // StockRequest!
+    upsertHospitalAddressGeoLocation: NexusGenRootTypes['HospitalAddress']; // HospitalAddress!
   }
   PageInfo: { // field return type
     endCursor: string | null; // String
@@ -598,7 +598,6 @@ export interface NexusGenFieldTypeNames {
     rejectStockRequest: 'Delete'
     returnStock: 'Stock'
     updateHospital: 'Hospital'
-    updateHospitalAddressGeoLocation: 'HospitalAddressGeoLocation'
     updateInternalUser: 'InternalUser'
     updateMaker: 'Maker'
     updateProduct: 'Product'
@@ -606,6 +605,7 @@ export interface NexusGenFieldTypeNames {
     updateProductTagGroup: 'ProductTagGroup'
     updateStockInternalUser: 'Stock'
     updateStockRequest: 'StockRequest'
+    upsertHospitalAddressGeoLocation: 'HospitalAddress'
   }
   PageInfo: { // field return type name
     endCursor: 'String'
@@ -804,10 +804,6 @@ export interface NexusGenArgTypes {
       name: string; // String!
       url: string; // String!
     }
-    updateHospitalAddressGeoLocation: { // args
-      address: string; // String!
-      id: NexusGenScalars['BigInt']; // BigInt!
-    }
     updateInternalUser: { // args
       discord_user_id: string; // String!
       email: string; // String!
@@ -842,6 +838,10 @@ export interface NexusGenArgTypes {
     updateStockRequest: { // args
       id: number; // Int!
       requestProducts: NexusGenInputs['CreateStockRequestRequestProductsInputType'][]; // [CreateStockRequestRequestProductsInputType!]!
+    }
+    upsertHospitalAddressGeoLocation: { // args
+      address: string; // String!
+      hospitalAddressId: NexusGenScalars['BigInt']; // BigInt!
     }
   }
   Query: {

@@ -206,7 +206,6 @@ type Mutation {
   rejectStockRequest(id: Int!, message: String!): Delete!
   returnStock(id: Int!): Stock!
   updateHospital(deleted: Boolean!, hospitalAddressInput: HospitalAddressInputType!, hospitalBusinessFormInput: HospitalBusinessFormInputType!, hospitalCertificationOptionInput: HospitalCertificationOptionInputType!, hospitalInternalReputationInput: HospitalInternalReputationInputType!, hospitalNightServiceOptionInput: HospitalNightServiceOptionInputType!, hospitalNightUrgentActionOptionInput: HospitalNightUrgentActionOptionInputType!, hospitalReservationStatusInput: HospitalReservationStatusInputType!, id: BigInt!, internal_memo: String!, name: String!, url: String!): Hospital!
-  updateHospitalAddressGeoLocation(address: String!, id: BigInt!): HospitalAddressGeoLocation!
   updateInternalUser(discord_user_id: String!, email: String!, id: BigInt!, name: String!, password: String!, roleId: Int!): InternalUser!
   updateMaker(id: Int!, name: String!): Maker!
   updateProduct(file: Upload, id: Int!, makerId: Int!, name: String!, remark: String!): Product!
@@ -214,6 +213,7 @@ type Mutation {
   updateProductTagGroup(id: Int!, name: String!): ProductTagGroup!
   updateStockInternalUser(id: Int!, internalUserId: BigInt!): Stock!
   updateStockRequest(id: Int!, requestProducts: [CreateStockRequestRequestProductsInputType!]!): StockRequest!
+  upsertHospitalAddressGeoLocation(address: String!, hospitalAddressId: BigInt!): HospitalAddress!
 }
 
 """

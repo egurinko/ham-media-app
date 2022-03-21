@@ -25,4 +25,4 @@ export * from './updateProductTag';
 export * from './deleteProductTag';
 export * from './createProductTaggings';
 export * from './deleteProductTagging';
-export * from './updateHospitalAddressGeoLocation';
+export * from './upsertHospitalAddressGeoLocation';

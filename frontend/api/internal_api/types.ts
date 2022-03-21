@@ -227,7 +227,6 @@ export type Mutation = {
   rejectStockRequest: Delete;
   returnStock: Stock;
   updateHospital: Hospital;
-  updateHospitalAddressGeoLocation: HospitalAddressGeoLocation;
   updateInternalUser: InternalUser;
   updateMaker: Maker;
   updateProduct: Product;
@@ -235,6 +234,7 @@ export type Mutation = {
   updateProductTagGroup: ProductTagGroup;
   updateStockInternalUser: Stock;
   updateStockRequest: StockRequest;
+  upsertHospitalAddressGeoLocation: HospitalAddress;
 };
 
 
@@ -366,12 +366,6 @@ export type MutationUpdateHospitalArgs = {
 };
 
 
-export type MutationUpdateHospitalAddressGeoLocationArgs = {
-  address: Scalars['String'];
-  id: Scalars['BigInt'];
-};
-
-
 export type MutationUpdateInternalUserArgs = {
   discord_user_id: Scalars['String'];
   email: Scalars['String'];
@@ -418,6 +412,12 @@ export type MutationUpdateStockInternalUserArgs = {
 export type MutationUpdateStockRequestArgs = {
   id: Scalars['Int'];
   requestProducts: Array<CreateStockRequestRequestProductsInputType>;
+};
+
+
+export type MutationUpsertHospitalAddressGeoLocationArgs = {
+  address: Scalars['String'];
+  hospitalAddressId: Scalars['BigInt'];
 };
 
 /** PageInfo cursor, as defined in https://facebook.github.io/relay/graphql/connections.htm#sec-undefined.PageInfo */
@@ -1014,14 +1014,6 @@ export type InternalUpdateHospitalMutationVariables = Exact<{
 
 export type InternalUpdateHospitalMutation = { __typename?: 'Mutation', updateHospital: { __typename?: 'Hospital', name: string } };
 
-export type InternalUpdateHospitalAddressGeoLocationMutationVariables = Exact<{
-  id: Scalars['BigInt'];
-  address: Scalars['String'];
-}>;
-
-
-export type InternalUpdateHospitalAddressGeoLocationMutation = { __typename?: 'Mutation', updateHospitalAddressGeoLocation: { __typename?: 'HospitalAddressGeoLocation', id: BigInt, latitude: number, longitude: number } };
-
 export type InternalUpdateInternalUserMutationVariables = Exact<{
   id: Scalars['BigInt'];
   name: Scalars['String'];
@@ -1084,6 +1076,14 @@ export type InternalUpdateStockRequestMutationVariables = Exact<{
 
 
 export type InternalUpdateStockRequestMutation = { __typename?: 'Mutation', updateStockRequest: { __typename?: 'StockRequest', id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, productRegistrations: Array<{ __typename?: 'StockRequestProductRegistration', id: number, product: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: BigInt, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } } | null }> } }> } };
+
+export type InternalUpsertHospitalAddressGeoLocationMutationVariables = Exact<{
+  hospitalAddressId: Scalars['BigInt'];
+  address: Scalars['String'];
+}>;
+
+
+export type InternalUpsertHospitalAddressGeoLocationMutation = { __typename?: 'Mutation', upsertHospitalAddressGeoLocation: { __typename?: 'HospitalAddress', id: BigInt, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: BigInt }, hospitalAddressGeoLocation?: { __typename?: 'HospitalAddressGeoLocation', id: BigInt, latitude: number, longitude: number } | null } };
 
 export const HospitalAddressGeoLocationFieldsFragmentDoc = gql`
     fragment HospitalAddressGeoLocationFields on HospitalAddressGeoLocation {
@@ -2795,40 +2795,6 @@ export function useInternalUpdateHospitalMutation(baseOptions?: Apollo.MutationH
 export type InternalUpdateHospitalMutationHookResult = ReturnType<typeof useInternalUpdateHospitalMutation>;
 export type InternalUpdateHospitalMutationResult = Apollo.MutationResult<InternalUpdateHospitalMutation>;
 export type InternalUpdateHospitalMutationOptions = Apollo.BaseMutationOptions<InternalUpdateHospitalMutation, InternalUpdateHospitalMutationVariables>;
-export const InternalUpdateHospitalAddressGeoLocationDocument = gql`
-    mutation InternalUpdateHospitalAddressGeoLocation($id: BigInt!, $address: String!) {
-  updateHospitalAddressGeoLocation(id: $id, address: $address) {
-    ...HospitalAddressGeoLocationFields
-  }
-}
-    ${HospitalAddressGeoLocationFieldsFragmentDoc}`;
-export type InternalUpdateHospitalAddressGeoLocationMutationFn = Apollo.MutationFunction<InternalUpdateHospitalAddressGeoLocationMutation, InternalUpdateHospitalAddressGeoLocationMutationVariables>;
-
-/**
- * __useInternalUpdateHospitalAddressGeoLocationMutation__
- *
- * To run a mutation, you first call `useInternalUpdateHospitalAddressGeoLocationMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useInternalUpdateHospitalAddressGeoLocationMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [internalUpdateHospitalAddressGeoLocationMutation, { data, loading, error }] = useInternalUpdateHospitalAddressGeoLocationMutation({
- *   variables: {
- *      id: // value for 'id'
- *      address: // value for 'address'
- *   },
- * });
- */
-export function useInternalUpdateHospitalAddressGeoLocationMutation(baseOptions?: Apollo.MutationHookOptions<InternalUpdateHospitalAddressGeoLocationMutation, InternalUpdateHospitalAddressGeoLocationMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<InternalUpdateHospitalAddressGeoLocationMutation, InternalUpdateHospitalAddressGeoLocationMutationVariables>(InternalUpdateHospitalAddressGeoLocationDocument, options);
-      }
-export type InternalUpdateHospitalAddressGeoLocationMutationHookResult = ReturnType<typeof useInternalUpdateHospitalAddressGeoLocationMutation>;
-export type InternalUpdateHospitalAddressGeoLocationMutationResult = Apollo.MutationResult<InternalUpdateHospitalAddressGeoLocationMutation>;
-export type InternalUpdateHospitalAddressGeoLocationMutationOptions = Apollo.BaseMutationOptions<InternalUpdateHospitalAddressGeoLocationMutation, InternalUpdateHospitalAddressGeoLocationMutationVariables>;
 export const InternalUpdateInternalUserDocument = gql`
     mutation InternalUpdateInternalUser($id: BigInt!, $name: String!, $email: String!, $password: String!, $discord_user_id: String!, $roleId: Int!) {
   updateInternalUser(
@@ -3087,3 +3053,40 @@ export function useInternalUpdateStockRequestMutation(baseOptions?: Apollo.Mutat
 export type InternalUpdateStockRequestMutationHookResult = ReturnType<typeof useInternalUpdateStockRequestMutation>;
 export type InternalUpdateStockRequestMutationResult = Apollo.MutationResult<InternalUpdateStockRequestMutation>;
 export type InternalUpdateStockRequestMutationOptions = Apollo.BaseMutationOptions<InternalUpdateStockRequestMutation, InternalUpdateStockRequestMutationVariables>;
+export const InternalUpsertHospitalAddressGeoLocationDocument = gql`
+    mutation InternalUpsertHospitalAddressGeoLocation($hospitalAddressId: BigInt!, $address: String!) {
+  upsertHospitalAddressGeoLocation(
+    hospitalAddressId: $hospitalAddressId
+    address: $address
+  ) {
+    ...HospitalAddressFields
+  }
+}
+    ${HospitalAddressFieldsFragmentDoc}`;
+export type InternalUpsertHospitalAddressGeoLocationMutationFn = Apollo.MutationFunction<InternalUpsertHospitalAddressGeoLocationMutation, InternalUpsertHospitalAddressGeoLocationMutationVariables>;
+
+/**
+ * __useInternalUpsertHospitalAddressGeoLocationMutation__
+ *
+ * To run a mutation, you first call `useInternalUpsertHospitalAddressGeoLocationMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInternalUpsertHospitalAddressGeoLocationMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [internalUpsertHospitalAddressGeoLocationMutation, { data, loading, error }] = useInternalUpsertHospitalAddressGeoLocationMutation({
+ *   variables: {
+ *      hospitalAddressId: // value for 'hospitalAddressId'
+ *      address: // value for 'address'
+ *   },
+ * });
+ */
+export function useInternalUpsertHospitalAddressGeoLocationMutation(baseOptions?: Apollo.MutationHookOptions<InternalUpsertHospitalAddressGeoLocationMutation, InternalUpsertHospitalAddressGeoLocationMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<InternalUpsertHospitalAddressGeoLocationMutation, InternalUpsertHospitalAddressGeoLocationMutationVariables>(InternalUpsertHospitalAddressGeoLocationDocument, options);
+      }
+export type InternalUpsertHospitalAddressGeoLocationMutationHookResult = ReturnType<typeof useInternalUpsertHospitalAddressGeoLocationMutation>;
+export type InternalUpsertHospitalAddressGeoLocationMutationResult = Apollo.MutationResult<InternalUpsertHospitalAddressGeoLocationMutation>;
+export type InternalUpsertHospitalAddressGeoLocationMutationOptions = Apollo.BaseMutationOptions<InternalUpsertHospitalAddressGeoLocationMutation, InternalUpsertHospitalAddressGeoLocationMutationVariables>;
