@@ -1,6 +1,20 @@
 import { gql } from '@apollo/client';
+import { HOSPITAL_ADDRESS_FIELDS } from './hospital/address';
+import { HOSPITAL_BUSINESS_FORM_FIELDS } from './hospital/businessForm';
+import { HOSPITAL_CERTIFICATION_OPTION_FIELDS } from './hospital/certificationOption';
+import { HOSPITAL_INTERNAL_REPUTATION_FIELDS } from './hospital/internalReputation';
+import { HOSPITAL_NIGHT_SERVICE_OPTION_FIELDS } from './hospital/nightServiceOption';
+import { HOSPITAL_NIGHT_URGENT_ACTION_OPTION_FIELDS } from './hospital/nightUrgentActionOption';
+import { HOSPITAL_RESERVATION_STATUS_FIELDS } from './hospital/reservationStatus';
 
 export const HOSPITAL_FIELDS = gql`
+  ${HOSPITAL_ADDRESS_FIELDS}
+  ${HOSPITAL_BUSINESS_FORM_FIELDS}
+  ${HOSPITAL_CERTIFICATION_OPTION_FIELDS}
+  ${HOSPITAL_INTERNAL_REPUTATION_FIELDS}
+  ${HOSPITAL_NIGHT_SERVICE_OPTION_FIELDS}
+  ${HOSPITAL_NIGHT_URGENT_ACTION_OPTION_FIELDS}
+  ${HOSPITAL_RESERVATION_STATUS_FIELDS}
   fragment HospitalFields on Hospital {
     id
     name
@@ -8,49 +22,25 @@ export const HOSPITAL_FIELDS = gql`
     deleted
     internal_memo
     hospitalAddress {
-      id
-      address
-      phone_number
-      prefecture {
-        name
-        id
-      }
-      hospitalAddressGeoLocation {
-        latitude
-        longitude
-      }
+      ...HospitalAddressFields
     }
     hospitalBusinessForm {
-      id
-      business_hour
-      closed_day
-      insurance_enabled
-      remark
+      ...HospitalBusinessFormFields
     }
     hospitalCertificationOption {
-      id
-      nichiju_registered
-      jsava_registered
+      ...HospitalCertificationOptionFields
     }
     hospitalInternalReputation {
-      id
-      star
-      remark
+      ...HospitalInternalReputationFields
     }
     hospitalNightServiceOption {
-      id
-      status
-      remark
+      ...HospitalNightServiceOptionFields
     }
     hospitalNightUrgentActionOption {
-      id
-      status
+      ...HospitalNightUrgentActionOptionFields
     }
     hospitalReservationStatus {
-      id
-      required
-      reservable
-      remark
+      ...HospitalReservationStatusFields
     }
   }
 `;
