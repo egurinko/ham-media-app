@@ -1,4 +1,4 @@
-import { ChevronRightIcon } from '@chakra-ui/icons';
+import { ChevronRightIcon, LinkIcon } from '@chakra-ui/icons';
 import {
   Heading,
   Box,
@@ -15,19 +15,28 @@ import {
   Alert,
   AlertIcon,
   IconButton,
+  NumberInput,
+  NumberInputField,
 } from '@chakra-ui/react';
+import { Marker } from '@react-google-maps/api';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useCallback, useEffect, useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { getHospital } from '@/api/internal_api/getHospital';
 import {
   useInternalGetHospitalQuery,
   useLocalReadIsAdminQuery,
   useInternalUpdateHospitalMutation,
+  useInternalUpsertHospitalAddressGeoLocationMutation,
 } from '@/api/internal_api/types';
 import { usePublicGetPrefecturesQuery } from '@/api/public_api/types';
 import { Card } from '@/components/atoms/Card';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
+import { SecondaryButton } from '@/components/atoms/SecondaryButton';
 import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
+import { ErrorMessage } from '@/components/molecules/ErrorMessage';
+import { SuccessMessage } from '@/components/molecules/SuccessMessage';
+import { GoogleMap } from '@/components/organisms/GoogleMap';
 import { goAdminHospitals } from '@/utils/routes';
 import { scrollTo } from '@/utils/scroll';
 import type { GetStaticPaths, GetStaticProps } from 'next';
@@ -60,11 +69,48 @@ interface FormInput {
 
 const Edit: React.VFC<NoProps> = () => {
   const router = useRouter();
+
   const { id: hospitalId } = router.query;
-  const { data: hospitalData } = useInternalGetHospitalQuery({
+  const { data: hospitalData, fetchMore } = useInternalGetHospitalQuery({
     variables: { id: BigInt(typeof hospitalId === 'string' ? hospitalId : 1) },
   });
   const hospital = hospitalData?.hospital;
+  const [latitude, setLatitude] = useState(
+    hospital?.hospitalAddress?.hospitalAddressGeoLocation?.latitude || ''
+  );
+  const [longitude, setLongitude] = useState(
+    hospital?.hospitalAddress?.hospitalAddressGeoLocation?.longitude || ''
+  );
+
+  const [
+    upsertGeoLocation,
+    {
+      data: upsertGeoLocationData,
+      loading: upsertGeoLocationLoading,
+      error: upsertGeoLocationError,
+    },
+  ] = useInternalUpsertHospitalAddressGeoLocationMutation();
+  const handleGeoLocationClick = useCallback(async () => {
+    const hospitalAddress = hospital?.hospitalAddress;
+    if (hospitalAddress) {
+      try {
+        await upsertGeoLocation({
+          variables: {
+            hospitalAddressId: hospitalAddress.id,
+            address: hospitalAddress.prefecture.name + hospitalAddress.address,
+          },
+        });
+        await fetchMore({ variables: { id: hospital.id } });
+      } catch {}
+    }
+  }, [upsertGeoLocation, hospital, fetchMore]);
+  useEffect(() => {
+    const geoLocation = hospital?.hospitalAddress?.hospitalAddressGeoLocation;
+    if (geoLocation) {
+      setLatitude(geoLocation.latitude);
+      setLongitude(geoLocation.longitude);
+    }
+  }, [hospital]);
 
   const { data: prefectureData } = usePublicGetPrefecturesQuery();
   const { data: isAdminData } = useLocalReadIsAdminQuery();
@@ -122,10 +168,6 @@ const Edit: React.VFC<NoProps> = () => {
               remark: formInput.reservationRemark,
             },
           },
-          refetchQueries: [
-            { query: getHospital, variables: { id: BigInt(hospitalId) } },
-            'InternalGetHospital',
-          ],
         });
         setTimeout(() => {
           goAdminHospitals(router);
@@ -161,7 +203,14 @@ const Edit: React.VFC<NoProps> = () => {
         <Card>
           <form onSubmit={handleSubmit(onSubmit)}>
             <Box mb="8">
-              <Heading size="md">基本情報</Heading>
+              <Heading size="md">
+                基本情報
+                <Link href={`${location.origin}/hospitals/${hospital.id}`}>
+                  <a target="_blank">
+                    <LinkIcon ml="4" />
+                  </a>
+                </Link>
+              </Heading>
               <Divider mt="2" mb="4" />
               <Stack spacing={4}>
                 <FormControl id="name" isRequired isInvalid={!!errors.name}>
@@ -176,51 +225,6 @@ const Edit: React.VFC<NoProps> = () => {
                     )}
                   />
                   <FormErrorMessage>{errors.name?.message}</FormErrorMessage>
-                </FormControl>
-                {prefectureData ? (
-                  <FormControl
-                    id="prefectureId"
-                    isRequired
-                    isInvalid={!!errors.prefectureId}
-                  >
-                    <FormLabel>都道府県</FormLabel>
-                    <Controller
-                      name="prefectureId"
-                      defaultValue={String(
-                        hospital.hospitalAddress?.prefecture.id
-                      )}
-                      control={control}
-                      rules={{ required: '都道府県を入力してください' }}
-                      render={({ field }) => (
-                        <Select isInvalid={!!errors.prefectureId} {...field}>
-                          {prefectureData.prefectures.map((prefecture) => (
-                            <option
-                              key={String(prefecture.id)}
-                              value={String(prefecture.id)}
-                            >
-                              {prefecture.name}
-                            </option>
-                          ))}
-                        </Select>
-                      )}
-                    />
-                    <FormErrorMessage>
-                      {errors.prefectureId?.message}
-                    </FormErrorMessage>
-                  </FormControl>
-                ) : null}
-
-                <FormControl id="address">
-                  <FormLabel>住所</FormLabel>
-                  <Controller
-                    name="address"
-                    defaultValue={hospital.hospitalAddress?.address}
-                    control={control}
-                    render={({ field }) => <Input type="text" {...field} />}
-                  />
-                  <FormHelperText>
-                    ※不明な場合は未記入で入力してください
-                  </FormHelperText>
                 </FormControl>
                 <FormControl
                   id="phoneNumber"
@@ -306,6 +310,115 @@ const Edit: React.VFC<NoProps> = () => {
                     ※LINE等には露出しないデータです
                   </FormHelperText>
                 </FormControl>
+              </Stack>
+            </Box>
+            <Box mb="8">
+              <Heading size="md">住所</Heading>
+              <Divider mt="2" mb="4" />
+              <Stack spacing={4}>
+                {prefectureData ? (
+                  <FormControl
+                    id="prefectureId"
+                    isRequired
+                    isInvalid={!!errors.prefectureId}
+                  >
+                    <FormLabel>都道府県</FormLabel>
+                    <Controller
+                      name="prefectureId"
+                      defaultValue={String(
+                        hospital.hospitalAddress?.prefecture.id
+                      )}
+                      control={control}
+                      rules={{ required: '都道府県を入力してください' }}
+                      render={({ field }) => (
+                        <Select isInvalid={!!errors.prefectureId} {...field}>
+                          {prefectureData.prefectures.map((prefecture) => (
+                            <option
+                              key={String(prefecture.id)}
+                              value={String(prefecture.id)}
+                            >
+                              {prefecture.name}
+                            </option>
+                          ))}
+                        </Select>
+                      )}
+                    />
+                    <FormErrorMessage>
+                      {errors.prefectureId?.message}
+                    </FormErrorMessage>
+                  </FormControl>
+                ) : null}
+
+                <FormControl id="address">
+                  <FormLabel>住所</FormLabel>
+                  <Controller
+                    name="address"
+                    defaultValue={hospital.hospitalAddress?.address}
+                    control={control}
+                    render={({ field }) => <Input type="text" {...field} />}
+                  />
+                  <FormHelperText>
+                    ※不明な場合は未記入で入力してください
+                  </FormHelperText>
+                </FormControl>
+                <SecondaryButton
+                  isLoading={upsertGeoLocationLoading}
+                  onClick={handleGeoLocationClick}
+                >
+                  住所から緯度経度を作成/更新
+                </SecondaryButton>
+                <ErrorMessage error={upsertGeoLocationError} />
+                <SuccessMessage
+                  message="緯度経度が更新されました"
+                  data={upsertGeoLocationData}
+                />
+                {hospital.hospitalAddress?.hospitalAddressGeoLocation && (
+                  <>
+                    <FormControl>
+                      <FormLabel>緯度</FormLabel>
+                      <NumberInput
+                        value={latitude}
+                        step={0.000001}
+                        id="latitude"
+                      >
+                        <NumberInputField disabled={true} />
+                      </NumberInput>
+                    </FormControl>
+                    <FormControl>
+                      <FormLabel>経度</FormLabel>
+                      <NumberInput
+                        value={longitude}
+                        step={0.000001}
+                        id="longitude"
+                      >
+                        <NumberInputField disabled={true} />
+                      </NumberInput>
+                    </FormControl>
+                    <Box>
+                      <GoogleMap
+                        currentLat={
+                          hospital.hospitalAddress.hospitalAddressGeoLocation
+                            .latitude
+                        }
+                        currentLng={
+                          hospital.hospitalAddress.hospitalAddressGeoLocation
+                            .longitude
+                        }
+                        height={200}
+                      >
+                        <Marker
+                          position={{
+                            lat: hospital.hospitalAddress
+                              .hospitalAddressGeoLocation.latitude,
+                            lng: hospital.hospitalAddress
+                              .hospitalAddressGeoLocation.longitude,
+                          }}
+                          icon="https://user-images.githubusercontent.com/23233648/136685502-4bf03930-df2c-4194-8cc7-67f10699f5b8.png"
+                        />
+                      </GoogleMap>
+                    </Box>
+                  </>
+                )}
               </Stack>
             </Box>
             <Box mb="8">
