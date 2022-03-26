@@ -28,3 +28,9 @@ export const MODELS = {
     expired_at: '有効期限',
   },
 } as const;
+
+export const HOSPITAL_STATUSES = {
+  YES: '○',
+  NO: '×',
+  UNKNOWN: '不明',
+} as const;

@@ -1,4 +1,5 @@
 import { client } from '../../../../server/services/prisma';
+import { HOSPITAL_STATUSES } from '../../../../server/services/constant';
 
 export const seedHospitalBusinessForm = async () => {
   const hospital1 = await client.hospital.findFirst({
@@ -14,7 +15,7 @@ export const seedHospitalBusinessForm = async () => {
       09:00~12:00
       16:00~20:00`,
       closed_day: '日・祝',
-      insurance_enabled: '○',
+      insurance_enabled: HOSPITAL_STATUSES.YES,
       remark: `※ハムスターは非専門
       診察はしてくださるようなので要電話
       アニコム損害保険`,

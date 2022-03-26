@@ -6,9 +6,9 @@ import { SecondaryButton } from '@/components/atoms/SecondaryButton';
 import { InsuranceIcon } from '@/components/atoms/assets/InsuranceIcon';
 import { LinkIcon } from '@/components/atoms/assets/LinkIcon';
 import { MapPinIcon } from '@/components/atoms/assets/MapPinIcon';
-import { NightIcon } from '@/components/atoms/assets/NightIcon';
 import { PhoneIcon } from '@/components/atoms/assets/PhoneIcon';
 import { GoogleMap } from '@/components/organisms/GoogleMap';
+import { HOSPITAL_STATUSES } from '@/utils/constant';
 import { HospitalTags } from '../HospitalTags';
 
 type Props = {
@@ -93,12 +93,16 @@ const DetailCard: React.FC<Props> = ({ hospital }) => (
                 予約
               </Text>
               <Box my="2" mt="4">
-                {hospital.hospitalReservationStatus?.required === '○'
+                {hospital.hospitalReservationStatus?.required ===
+                HOSPITAL_STATUSES.YES
                   ? '■ 予約必須'
-                  : hospital.hospitalReservationStatus?.reservable === '×'
+                  : hospital.hospitalReservationStatus?.reservable ===
+                    HOSPITAL_STATUSES.NO
                   ? '■ 予約不可'
-                  : hospital.hospitalReservationStatus?.required === '×' &&
-                    hospital.hospitalReservationStatus?.reservable === '○'
+                  : hospital.hospitalReservationStatus?.required ===
+                      HOSPITAL_STATUSES.NO &&
+                    hospital.hospitalReservationStatus?.reservable ===
+                      HOSPITAL_STATUSES.YES
                   ? '■ 予約なしでOK'
                   : '■ 予約については公式HPを確認'}
               </Box>
@@ -124,16 +128,20 @@ const DetailCard: React.FC<Props> = ({ hospital }) => (
                 夜間営業
               </Text>
               <Box my="2" mt="4">
-                {hospital.hospitalNightServiceOption?.status === '○'
+                {hospital.hospitalNightServiceOption?.status ===
+                HOSPITAL_STATUSES.YES
                   ? '■ 夜間営業あり'
-                  : hospital.hospitalNightServiceOption?.status === '×'
+                  : hospital.hospitalNightServiceOption?.status ===
+                    HOSPITAL_STATUSES.NO
                   ? '■ 夜間営業なし'
                   : '■ 夜間営業については公式HPを確認'}
               </Box>
               <Box my="2">
-                {hospital.hospitalNightUrgentActionOption?.status === '○'
+                {hospital.hospitalNightUrgentActionOption?.status ===
+                HOSPITAL_STATUSES.YES
                   ? '■ 夜間救急対応あり'
-                  : hospital.hospitalNightUrgentActionOption?.status === '×'
+                  : hospital.hospitalNightUrgentActionOption?.status ===
+                    HOSPITAL_STATUSES.NO
                   ? '■ 夜間救急対応なし'
                   : '■ 夜間救急対応については公式HPを確認'}
               </Box>
@@ -152,16 +160,18 @@ const DetailCard: React.FC<Props> = ({ hospital }) => (
               <InsuranceIcon width={20} height={20} />
               <Text ml="2" fontSize="lg">
                 保険利用可否{' '}
-                {hospital.hospitalBusinessForm?.insurance_enabled === '○'
-                  ? '○'
+                {hospital.hospitalBusinessForm?.insurance_enabled ===
+                HOSPITAL_STATUSES.YES
+                  ? HOSPITAL_STATUSES.YES
                   : 'なし'}
               </Text>
             </Box>
             <Box display="flex" flexDirection="row" alignItems="center" mb="2">
               <Text ml="2" fontSize="lg">
                 日本小動物獣医師会(JSAVA)認定{' '}
-                {hospital.hospitalCertificationOption?.jsava_registered === '○'
-                  ? '○'
+                {hospital.hospitalCertificationOption?.jsava_registered ===
+                HOSPITAL_STATUSES.YES
+                  ? HOSPITAL_STATUSES.YES
                   : 'なし'}
               </Text>
             </Box>
@@ -169,8 +179,8 @@ const DetailCard: React.FC<Props> = ({ hospital }) => (
               <Text ml="2" fontSize="lg">
                 日本獣医師会認定{' '}
                 {hospital.hospitalCertificationOption?.nichiju_registered ===
-                '○'
-                  ? '○'
+                HOSPITAL_STATUSES.YES
+                  ? HOSPITAL_STATUSES.YES
                   : 'なし'}
               </Text>
             </Box>

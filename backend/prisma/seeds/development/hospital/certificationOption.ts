@@ -1,4 +1,5 @@
 import { client } from '../../../../server/services/prisma';
+import { HOSPITAL_STATUSES } from '../../../../server/services/constant';
 
 export const seedHospitalCertificationOption = async () => {
   const hospital1 = await client.hospital.findFirst({
@@ -10,8 +11,8 @@ export const seedHospitalCertificationOption = async () => {
     update: {},
     create: {
       hospital_id: hospital1.id,
-      nichiju_registered: '○',
-      jsava_registered: '○',
+      nichiju_registered: HOSPITAL_STATUSES.YES,
+      jsava_registered: HOSPITAL_STATUSES.YES,
     },
   });
 
@@ -23,8 +24,8 @@ export const seedHospitalCertificationOption = async () => {
     update: {},
     create: {
       hospital_id: hospital2.id,
-      nichiju_registered: '×',
-      jsava_registered: '×',
+      nichiju_registered: HOSPITAL_STATUSES.NO,
+      jsava_registered: HOSPITAL_STATUSES.NO,
     },
   });
 };
