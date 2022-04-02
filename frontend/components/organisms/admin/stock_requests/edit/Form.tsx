@@ -14,7 +14,9 @@ import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { Spinner } from '@/components/atoms/Spinner';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { SuccessMessage } from '@/components/molecules/SuccessMessage';
+import { SummaryLink } from '@/components/molecules/SummaryLink';
 import { ProductSummary } from '@/components/organisms/admin/products/ProductSummary';
+import { ADMIN_PRODUCTS_DETAIL_PATH } from '@/utils/routes';
 import { Note } from '../shared/Note';
 
 type Props = {
@@ -121,7 +123,13 @@ const Form: React.VFC<Props> = ({ stockRequestId }) => {
         <Box textAlign="center">
           {updatingStockRequest.map((updatingProductStockRequest) => (
             <Box key={updatingProductStockRequest.product.id} mb="2">
-              <ProductSummary product={updatingProductStockRequest.product} />
+              <SummaryLink
+                url={ADMIN_PRODUCTS_DETAIL_PATH(
+                  updatingProductStockRequest.product.id
+                )}
+              >
+                <ProductSummary product={updatingProductStockRequest.product} />
+              </SummaryLink>
               <Box display="flex" alignItems="center">
                 <Box flexShrink="0">
                   <Text>数量：</Text>
