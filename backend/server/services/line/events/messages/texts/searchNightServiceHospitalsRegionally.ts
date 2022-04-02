@@ -2,6 +2,7 @@ import type { FlexMessage } from '@line/bot-sdk';
 import type { Prefecture } from '@prisma/client';
 import { client } from '@/services/prisma';
 import { createSearchNightServiceHospitalsRegionallyReplyMessage } from '@/services/line/views';
+import { HOSPITAL_STATUSES } from '@/services/constant';
 import type { RegionalHospitals } from '@/services/line/views';
 
 export const getSearchNightServiceHospitalsRegionallyReplyMessage = async (
@@ -42,7 +43,7 @@ const getRegionalHospitals = async (
         },
       },
       hospitalNightServiceOption: {
-        status: '○',
+        status: HOSPITAL_STATUSES.YES,
       },
     },
     include: {

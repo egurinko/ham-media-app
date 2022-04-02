@@ -4,6 +4,7 @@ import React, { useState, useCallback } from 'react';
 import { useInternalGetProductQuery } from '@/api/internal_api/types';
 import type { Product } from '@/api/internal_api/types';
 import { Card } from '@/components/atoms/Card';
+import { CopyURL } from '@/components/atoms/CopyURL';
 import { SecondaryButton } from '@/components/atoms/SecondaryButton';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
@@ -48,6 +49,7 @@ const ProductCartItem: React.VFC<Props> = ({ productId }) => {
       ) : null}
       {data?.product ? (
         <>
+          <CopyURL />
           <ProductSummary product={data.product}></ProductSummary>
           <Box textAlign="center" mt="4">
             <Box mb="4" display="flex" alignItems="center">

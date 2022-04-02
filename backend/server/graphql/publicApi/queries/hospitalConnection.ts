@@ -11,11 +11,7 @@ import {
   inputObjectType,
 } from 'nexus';
 import { connectionFromArray } from 'graphql-relay';
-import {
-  Hospital,
-  HospitalAddress,
-  HospitalAddressGeoLocation,
-} from '@prisma/client';
+import { Hospital, Prisma } from '@prisma/client';
 import { hospitalType } from '../types';
 import { getGeoLocation } from '@/services/api/googleApi';
 
@@ -40,82 +36,61 @@ export const hospitalConnection = queryField((t) => {
       currentLocation: nullable(currentLocationInput),
     },
     resolve: async (_root, args, ctx) => {
-      const hospitals = await ctx.prisma.hospital.findMany({
-        where: {
-          deleted: false,
-          hospitalReservationStatus: {
-            reservable: args.reservable ? '○' : undefined,
-          },
-          hospitalNightServiceOption: {
-            status: args.nightServiceOption ? '○' : undefined,
-          },
-          hospitalBusinessForm: {
-            insurance_enabled: args.insuranceEnabled ? '○' : undefined,
-          },
-          hospitalCertificationOption: {
-            jsava_registered: args.jsavaOption ? '○' : undefined,
-            nichiju_registered: args.nichijuOption ? '○' : undefined,
-          },
-        },
-        include: {
-          hospitalAddress: {
-            include: {
-              hospitalAddressGeoLocation: true,
-            },
-          },
-        },
-      });
-
+      let currentLocation: { latitude: number; longitude: number } | undefined =
+        undefined;
       if (args.currentLocation) {
-        const sorted = sortHospital(hospitals, args.currentLocation);
-        return connectionFromArray(sorted, args);
+        currentLocation = args.currentLocation;
       } else if (args.searchText !== '') {
         const result = await getGeoLocation(args.searchText);
         const location = result.data.results[0]?.geometry.location;
         if (location) {
-          const sorted = sortHospital(hospitals, {
-            latitude: location.lat,
-            longitude: location.lng,
-          });
-          return connectionFromArray(sorted, args);
+          currentLocation = { latitude: location.lat, longitude: location.lng };
         }
       }
 
-      return connectionFromArray(hospitals, args);
+      return connectionFromArray(
+        await ctx.prisma.$queryRaw<Hospital[]>`
+        SELECT hospitals.id, hospitals.name, hospitals.url, hospitals.deleted, hospitals.internal_memo, hospitals.created_at, hospitals.updated_at FROM hospitals
+        JOIN hospital_reservation_statuses ON hospital_reservation_statuses.hospital_id = hospitals.id
+        JOIN hospital_night_service_options ON hospital_night_service_options.hospital_id = hospitals.id
+        JOIN hospital_business_forms ON hospital_business_forms.hospital_id = hospitals.id
+        JOIN hospital_certification_options ON hospital_certification_options.hospital_id = hospitals.id
+        JOIN hospital_addresses ON hospital_addresses.hospital_id = hospitals.id
+        JOIN hospital_address_geo_locations ON hospital_address_geo_locations.hospital_address_id = hospital_addresses.id
+        WHERE hospitals.deleted = false
+        ${
+          args.reservable
+            ? Prisma.sql`AND hospital_reservation_statuses.reservable = '○'`
+            : Prisma.empty
+        }
+        ${
+          args.nightServiceOption
+            ? Prisma.sql`AND hospital_night_service_options.status = '○'`
+            : Prisma.empty
+        }
+        ${
+          args.insuranceEnabled
+            ? Prisma.sql`AND hospital_business_forms.insurance_enabled = '○'`
+            : Prisma.empty
+        }
+        ${
+          args.jsavaOption
+            ? Prisma.sql`AND hospital_certification_options.jsava_registered = '○'`
+            : Prisma.empty
+        }
+        ${
+          args.nichijuOption
+            ? Prisma.sql`AND hospital_certification_options.nichiju_registered = '○'`
+            : Prisma.empty
+        }
+        ${
+          currentLocation
+            ? Prisma.sql`ORDER BY POW(${currentLocation.latitude} - hospital_address_geo_locations.latitude, 2) + POW(${currentLocation.longitude} - hospital_address_geo_locations.longitude, 2)`
+            : Prisma.empty
+        }
+      `,
+        args
+      );
     },
   });
 });
-
-type SortingHospital = Hospital & {
-  hospitalAddress: SortingHospitalAddress;
-};
-
-type SortingHospitalAddress =
-  | null
-  | (HospitalAddress & {
-      hospitalAddressGeoLocation: SortingHospitalAddressGeoLocation;
-    });
-type SortingHospitalAddressGeoLocation = HospitalAddressGeoLocation | null;
-
-const sortHospital = (
-  hospitals: SortingHospital[],
-  currentLocation: { latitude: number; longitude: number }
-): SortingHospital[] =>
-  hospitals
-    .filter(
-      (hospital) => !!hospital.hospitalAddress?.hospitalAddressGeoLocation
-    )
-    .sort((a, b) => {
-      const aLocation = a.hospitalAddress?.hospitalAddressGeoLocation;
-      const bLocation = b.hospitalAddress?.hospitalAddressGeoLocation;
-      if (aLocation && bLocation) {
-        const aDistance =
-          (aLocation.latitude - currentLocation.latitude) ** 2 +
-          (aLocation.longitude - currentLocation.longitude) ** 2;
-        const bDistance =
-          (bLocation.latitude - currentLocation.latitude) ** 2 +
-          (bLocation.longitude - currentLocation.longitude) ** 2;
-        return aDistance - bDistance;
-      }
-      return 0;
-    });

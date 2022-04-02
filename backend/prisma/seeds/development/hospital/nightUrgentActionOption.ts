@@ -1,4 +1,5 @@
 import { client } from '../../../../server/services/prisma';
+import { HOSPITAL_STATUSES } from '../../../../server/services/constant';
 
 export const seedHospitalNightUrgentActionOption = async () => {
   const hospital1 = await client.hospital.findFirst({
@@ -22,7 +23,7 @@ export const seedHospitalNightUrgentActionOption = async () => {
     update: {},
     create: {
       hospital_id: hospital2.id,
-      status: '○',
+      status: HOSPITAL_STATUSES.YES,
     },
   });
 };

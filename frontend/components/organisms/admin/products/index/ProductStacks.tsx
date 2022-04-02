@@ -25,6 +25,7 @@ import { Spinner } from '@/components/atoms/Spinner';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { SummaryLink } from '@/components/molecules/SummaryLink';
 import { useIntersectionObserver } from '@/utils/hooks/useIntersectionObserver';
+import { ADMIN_PRODUCTS_DETAIL_PATH } from '@/utils/routes';
 import { ProductSummary } from '../ProductSummary';
 
 const PRODUCT_STOCK = {
@@ -210,7 +211,7 @@ const ProductStacks: React.VFC<NoProps> = () => {
           <Divider />
           {nodes?.map((product) => (
             <Fragment key={product.id}>
-              <SummaryLink url={`/admin/products/${product.id}`}>
+              <SummaryLink url={ADMIN_PRODUCTS_DETAIL_PATH(product.id)}>
                 <ProductSummary product={product} />
               </SummaryLink>
               <Divider />

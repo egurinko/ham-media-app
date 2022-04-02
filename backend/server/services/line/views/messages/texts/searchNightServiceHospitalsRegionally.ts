@@ -13,6 +13,7 @@ import type {
   HospitalReservationStatus,
   HospitalAddressGeoLocation,
 } from '@prisma/client';
+import { HOSPITAL_STATUSES } from '@/services/constant';
 
 export type RegionalHospitals = RegionalHospital[];
 export type RegionalHospital = Hospital & {
@@ -265,10 +266,10 @@ const createHospitalRemarks = (hospital: RegionalHospital): FlexComponent => ({
     {
       type: 'text',
       text:
-        hospital.hospitalNightServiceOption?.status === '○'
+        hospital.hospitalNightServiceOption?.status === HOSPITAL_STATUSES.YES
           ? '■ 夜間営業しています\n' +
             hospital.hospitalNightServiceOption.remark
-          : hospital.hospitalNightServiceOption?.status === '×'
+          : hospital.hospitalNightServiceOption?.status === HOSPITAL_STATUSES.NO
           ? '■ 夜間営業していません'
           : '■ 夜間営業状況はわかりません',
       flex: 1,
@@ -279,9 +280,10 @@ const createHospitalRemarks = (hospital: RegionalHospital): FlexComponent => ({
     {
       type: 'text',
       text:
-        hospital.hospitalReservationStatus?.required === '○'
+        hospital.hospitalReservationStatus?.required === HOSPITAL_STATUSES.YES
           ? '■ 予約必須です'
-          : hospital.hospitalReservationStatus?.required === '×'
+          : hospital.hospitalReservationStatus?.required ===
+            HOSPITAL_STATUSES.NO
           ? '■ 予約なしで診療できます'
           : '■ 予約が必須か分かりません',
       flex: 1,
@@ -292,9 +294,11 @@ const createHospitalRemarks = (hospital: RegionalHospital): FlexComponent => ({
     {
       type: 'text',
       text:
-        hospital.hospitalBusinessForm?.insurance_enabled === '○'
+        hospital.hospitalBusinessForm?.insurance_enabled ===
+        HOSPITAL_STATUSES.YES
           ? '■ 保険適用できます'
-          : hospital.hospitalBusinessForm?.insurance_enabled === '×'
+          : hospital.hospitalBusinessForm?.insurance_enabled ===
+            HOSPITAL_STATUSES.NO
           ? '■ 保険適用できません'
           : '■ 保険適用状況は分かりません',
       flex: 1,
