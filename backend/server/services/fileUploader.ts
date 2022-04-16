@@ -1,5 +1,6 @@
 import { S3Client } from '@aws-sdk/client-s3';
 import { Upload } from '@aws-sdk/lib-storage';
+import { v4 as uuidv4 } from 'uuid';
 
 const client = new S3Client({ region: 'us-east-1' });
 
@@ -7,6 +8,7 @@ export const uploadFile = async (
   fileName: string,
   fileStream: any
 ): Promise<string> => {
+  const uniqFilename = `${uuidv4()}-${fileName}`;
   try {
     const parallelUploads3 = new Upload({
       /**
@@ -14,7 +16,7 @@ export const uploadFile = async (
        */
       params: {
         Bucket: process.env['AWS_BUCKET_NAME'],
-        Key: fileName,
+        Key: uniqFilename,
         Body: fileStream,
       },
       /**
@@ -48,7 +50,7 @@ export const uploadFile = async (
 
     return `https://${
       process.env['AWS_BUCKET_NAME']
-    }.s3.amazonaws.com/${encodeURI(fileName)}`;
+    }.s3.amazonaws.com/${encodeURI(uniqFilename)}`;
   } catch (error) {
     return Promise.reject(error);
   }
