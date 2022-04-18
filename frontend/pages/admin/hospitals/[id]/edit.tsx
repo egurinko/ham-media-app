@@ -73,6 +73,7 @@ const Edit: React.VFC<NoProps> = () => {
   const { id: hospitalId } = router.query;
   const { data: hospitalData, fetchMore } = useInternalGetHospitalQuery({
     variables: { id: BigInt(typeof hospitalId === 'string' ? hospitalId : 1) },
+    fetchPolicy: 'no-cache',
   });
   const hospital = hospitalData?.hospital;
   const [latitude, setLatitude] = useState(

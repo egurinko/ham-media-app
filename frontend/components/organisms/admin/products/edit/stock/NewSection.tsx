@@ -111,6 +111,7 @@ const NewSection: React.FC<Props> = ({ productId, fetchStocksMore }) => {
           })),
         },
       });
+      setAddingStocks([]);
       setAddingStocks([addingStockInitialState]);
       await fetchStocksMore({ variables: { productId } });
     } catch (_e) {}
