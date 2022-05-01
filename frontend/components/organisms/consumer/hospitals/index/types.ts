@@ -14,6 +14,8 @@ export type JsavaOption =
   PublicGetHospitalConnectionQueryVariables['jsavaOption'];
 export type NichijuOption =
   PublicGetHospitalConnectionQueryVariables['nichijuOption'];
+export type Recommended =
+  PublicGetHospitalConnectionQueryVariables['recommended'];
 
 export type SetSearchText = UseStateAction<SearchText>;
 export type SetCurrentLocation = UseStateAction<CurrentLocation>;
@@ -22,6 +24,7 @@ export type SetNightServiceOption = UseStateAction<NightServiceOption>;
 export type SetInsuranceEnabled = UseStateAction<InsuranceEnabled>;
 export type SetJsavaOption = UseStateAction<JsavaOption>;
 export type SetNichijuOption = UseStateAction<NichijuOption>;
+export type SetRecommended = UseStateAction<Recommended>;
 
 export type GetInitialHospitalConnection = (
   variables: Partial<PublicGetHospitalConnectionQueryVariables>

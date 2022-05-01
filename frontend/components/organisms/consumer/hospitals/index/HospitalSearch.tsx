@@ -17,6 +17,7 @@ import type {
   InsuranceEnabled,
   JsavaOption,
   NichijuOption,
+  Recommended,
   GetContinuousHospitalConnection,
 } from './types';
 
@@ -29,6 +30,7 @@ type PERSISTED = {
   insuranceEnabled?: InsuranceEnabled;
   jsavaOption?: JsavaOption;
   nichijuOption?: NichijuOption;
+  recommended?: Recommended;
 };
 
 const HospitalSearch: React.FC<NoProps> = () => {
@@ -39,6 +41,7 @@ const HospitalSearch: React.FC<NoProps> = () => {
   const [insuranceEnabled, setInsuranceEnabled] = useState(false);
   const [jsavaOption, setJsavaOption] = useState(false);
   const [nichijuOption, setNichijuOption] = useState(false);
+  const [recommended, setRecommended] = useState(false);
   const [getHospitalConnection, { data: hospitalData, loading, fetchMore }] =
     usePublicGetHospitalConnectionLazyQuery();
   const { setLocalStorage, getLocalStorage } =
@@ -55,6 +58,7 @@ const HospitalSearch: React.FC<NoProps> = () => {
         insuranceEnabled,
         jsavaOption,
         nichijuOption,
+        recommended,
         ...variables,
       };
       setLocalStorage(persisting);
@@ -66,6 +70,7 @@ const HospitalSearch: React.FC<NoProps> = () => {
       jsavaOption,
       nichijuOption,
       nightServiceOption,
+      recommended,
       reservable,
       searchText,
       setLocalStorage,
@@ -84,6 +89,7 @@ const HospitalSearch: React.FC<NoProps> = () => {
           insuranceEnabled,
           jsavaOption,
           nichijuOption,
+          recommended,
           ...variables,
         },
       });
@@ -100,6 +106,7 @@ const HospitalSearch: React.FC<NoProps> = () => {
       persistPage,
       reservable,
       searchText,
+      recommended,
     ]
   );
 
@@ -113,6 +120,7 @@ const HospitalSearch: React.FC<NoProps> = () => {
         nightServiceOption,
         jsavaOption,
         nichijuOption,
+        recommended,
       } = persisted;
       setSearchText(searchText || '');
       setCurrentLocation(currentLocation);
@@ -120,6 +128,7 @@ const HospitalSearch: React.FC<NoProps> = () => {
       setNightServiceOption(nightServiceOption || false);
       setJsavaOption(jsavaOption || false);
       setNichijuOption(nichijuOption || false);
+      setRecommended(recommended || false);
       getInitialHospitalConnection({
         searchText: searchText || '',
         currentLocation,
@@ -127,6 +136,7 @@ const HospitalSearch: React.FC<NoProps> = () => {
         nightServiceOption: nightServiceOption || false,
         jsavaOption: jsavaOption || false,
         nichijuOption: nichijuOption || false,
+        recommended: recommended || false,
       });
     }
   }, [getInitialHospitalConnection, getLocalStorage]);
@@ -152,6 +162,7 @@ const HospitalSearch: React.FC<NoProps> = () => {
               insuranceEnabled,
               jsavaOption,
               nichijuOption,
+              recommended,
             },
           });
           persistPage({});
@@ -209,6 +220,8 @@ const HospitalSearch: React.FC<NoProps> = () => {
         setJsavaOption={setJsavaOption}
         nichijuOption={nichijuOption}
         setNichijuOption={setNichijuOption}
+        recommended={recommended}
+        setRecommended={setRecommended}
         getInitialHospitalConnection={getInitialHospitalConnection}
       />
     </>

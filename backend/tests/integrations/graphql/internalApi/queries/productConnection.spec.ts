@@ -9,6 +9,7 @@ const QUERY = gql`
     $makerId: Int
     $productTagId: Int
     $allocatedInternalUserId: Int
+    $internalUserId: Int
     $hasStock: Boolean
   ) {
     productConnection(
@@ -17,6 +18,7 @@ const QUERY = gql`
       makerId: $makerId
       productTagId: $productTagId
       allocatedInternalUserId: $allocatedInternalUserId
+      internalUserId: $internalUserId
       hasStock: $hasStock
     ) {
       pageInfo {
@@ -229,6 +231,25 @@ describe('productConnection', () => {
 
       const result = await client.query(QUERY, {
         variables: { first: 5, allocatedInternalUserId: INTERNAL_USER_ID },
+      });
+
+      const productConnection = result.data['productConnection'];
+      expect(productConnection.edges.length).toEqual(1);
+
+      const product1 = productConnection.edges[0].node;
+      expect(product1.id).toEqual(PRODUCT_ID_1);
+      expect(product1.name).toEqual(PRODUCT_NAME_1);
+      expect(product1.remark).toEqual(PRODUCT_REMARK_1);
+      expect(product1.url).toEqual(PRODUCT_URL_1);
+    });
+  });
+
+  describe('with internalUserId params', () => {
+    it('returns filtered products', async () => {
+      const client = await setup();
+
+      const result = await client.query(QUERY, {
+        variables: { first: 5, internalUserId: INTERNAL_USER_ID },
       });
 
       const productConnection = result.data['productConnection'];

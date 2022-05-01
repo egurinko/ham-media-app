@@ -20,6 +20,7 @@ const QUERY = gql`
     $insuranceEnabled: Boolean!
     $jsavaOption: Boolean!
     $nichijuOption: Boolean!
+    $recommended: Boolean!
   ) {
     publicHospitalConnection(
       first: $first
@@ -31,6 +32,7 @@ const QUERY = gql`
       insuranceEnabled: $insuranceEnabled
       jsavaOption: $jsavaOption
       nichijuOption: $nichijuOption
+      recommended: $recommended
     ) {
       pageInfo {
         hasNextPage
@@ -71,6 +73,8 @@ const NIGHT_URGENT_ACTION_OPTION_STATUS_1 = HOSPITAL_STATUSES.YES;
 const RESERVATION_STATUS_REQUIRED_1 = HOSPITAL_STATUSES.YES;
 const RESERVATION_STATUS_REMARK_1 = 'reservationStatusRemark1';
 const RESERVATION_STATUS_RESERVABLE_1 = HOSPITAL_STATUSES.YES;
+const INTERNAL_REPUTATION_STAR_1 = 5;
+const INTERNAL_REPUTATION_REMARK_1 = '';
 
 const HOSPITAL_NAME_2 = 'name2';
 const HOSPITAL_URL_2 = 'https://test.com2';
@@ -91,6 +95,8 @@ const NIGHT_URGENT_ACTION_OPTION_STATUS_2 = 'nightUrgentActionOptionStatus2';
 const RESERVATION_STATUS_REQUIRED_2 = HOSPITAL_STATUSES.YES;
 const RESERVATION_STATUS_REMARK_2 = 'reservationStatusRemark2';
 const RESERVATION_STATUS_RESERVABLE_2 = HOSPITAL_STATUSES.YES;
+const INTERNAL_REPUTATION_STAR_2 = 5;
+const INTERNAL_REPUTATION_REMARK_2 = '';
 
 const init = async () => {
   const region = await db.region.create({ data: { name: REGION_NAME } });
@@ -157,6 +163,13 @@ const init = async () => {
       reservable: RESERVATION_STATUS_RESERVABLE_1,
     },
   });
+  await db.hospitalInternalReputation.create({
+    data: {
+      hospital_id: hospital1.id,
+      star: INTERNAL_REPUTATION_STAR_1,
+      remark: INTERNAL_REPUTATION_REMARK_1,
+    },
+  });
 
   const hospital2 = await db.hospital.create({
     data: {
@@ -209,7 +222,7 @@ const init = async () => {
       hospital_id: hospital2.id,
     },
   });
-  return db.hospitalReservationStatus.create({
+  await db.hospitalReservationStatus.create({
     data: {
       hospital_id: hospital2.id,
       required: RESERVATION_STATUS_REQUIRED_2,
@@ -217,11 +230,18 @@ const init = async () => {
       reservable: RESERVATION_STATUS_RESERVABLE_2,
     },
   });
+  await db.hospitalInternalReputation.create({
+    data: {
+      hospital_id: hospital2.id,
+      star: INTERNAL_REPUTATION_STAR_2,
+      remark: INTERNAL_REPUTATION_REMARK_2,
+    },
+  });
 };
 
 describe('hospitalConnection', () => {
-  beforeEach(() => {
-    return init();
+  beforeEach(async () => {
+    await init();
   });
 
   describe('with searchText params', () => {
@@ -237,6 +257,7 @@ describe('hospitalConnection', () => {
           insuranceEnabled: true,
           jsavaOption: true,
           nichijuOption: true,
+          recommended: true,
         },
       });
 
@@ -280,6 +301,7 @@ describe('hospitalConnection', () => {
             insuranceEnabled: true,
             jsavaOption: true,
             nichijuOption: true,
+            recommended: true,
           },
         });
 
@@ -318,6 +340,7 @@ describe('hospitalConnection', () => {
             insuranceEnabled: true,
             jsavaOption: true,
             nichijuOption: true,
+            recommended: true,
           },
         });
 
@@ -356,6 +379,7 @@ describe('hospitalConnection', () => {
             insuranceEnabled: true,
             jsavaOption: true,
             nichijuOption: true,
+            recommended: true,
           },
         });
 
@@ -396,6 +420,7 @@ describe('hospitalConnection', () => {
             insuranceEnabled: true,
             jsavaOption: true,
             nichijuOption: true,
+            recommended: true,
           },
         });
 
@@ -436,6 +461,48 @@ describe('hospitalConnection', () => {
             insuranceEnabled: true,
             jsavaOption: true,
             nichijuOption: true,
+            recommended: true,
+          },
+        });
+
+        expect(result.errors).toBeUndefined();
+        const hospitalConnection = result.data['publicHospitalConnection'];
+        expect(hospitalConnection.edges.length).toEqual(1);
+
+        const hospital2 = hospitalConnection.edges[0].node;
+        expect(hospital2.name).toEqual(HOSPITAL_NAME_2);
+        expect(hospital2.url).toEqual(HOSPITAL_URL_2);
+      });
+    });
+
+    describe('with recommended=true', () => {
+      beforeEach(async () => {
+        const hospital1 = await db.hospital.findFirst({
+          where: { name: HOSPITAL_NAME_1 },
+        });
+        await db.hospital.update({
+          where: { id: hospital1.id },
+          data: {
+            hospitalInternalReputation: {
+              update: { star: 3 },
+            },
+          },
+        });
+      });
+
+      it('returns five star hospitals', async () => {
+        const client = await setup();
+
+        const result = await client.query(QUERY, {
+          variables: {
+            first: 2,
+            searchText: '札幌',
+            reservable: true,
+            nightServiceOption: true,
+            insuranceEnabled: true,
+            jsavaOption: true,
+            nichijuOption: true,
+            recommended: true,
           },
         });
 
@@ -464,6 +531,7 @@ describe('hospitalConnection', () => {
           insuranceEnabled: true,
           jsavaOption: true,
           nichijuOption: true,
+          recommended: true,
         },
       });
 

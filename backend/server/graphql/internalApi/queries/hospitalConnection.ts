@@ -2,7 +2,7 @@
 // ref: https://github.com/prisma-labs/graphql-framework-experiment/issues/952#issuecomment-647865021
 // because ts-node-dev does not know nexus generated types, type injection is needed
 
-import { queryField, stringArg, booleanArg, arg, nonNull } from 'nexus';
+import { queryField, stringArg, booleanArg, arg, nonNull, intArg } from 'nexus';
 import { connectionFromArray } from 'graphql-relay';
 import { hospitalType } from '../types';
 
@@ -13,6 +13,7 @@ export const hospitalConnection = queryField((t) => {
       name: stringArg(),
       deleted: nonNull(booleanArg()),
       prefectureId: arg({ type: 'BigInt' }),
+      internalReputationStar: intArg(),
     },
     resolve: async (_root, args, ctx) => {
       return connectionFromArray(
@@ -26,6 +27,11 @@ export const hospitalConnection = queryField((t) => {
               prefecture: {
                 id: args.prefectureId,
               },
+            },
+            hospitalInternalReputation: {
+              star: args.internalReputationStar
+                ? args.internalReputationStar
+                : undefined,
             },
           },
         }),

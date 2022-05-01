@@ -535,6 +535,7 @@ export type QueryHospitalConnectionArgs = {
   before?: InputMaybe<Scalars['String']>;
   deleted: Scalars['Boolean'];
   first?: InputMaybe<Scalars['Int']>;
+  internalReputationStar?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
   name?: InputMaybe<Scalars['String']>;
   prefectureId?: InputMaybe<Scalars['BigInt']>;
@@ -856,6 +857,7 @@ export type InternalGetHospitalConnectionQueryVariables = Exact<{
   name?: InputMaybe<Scalars['String']>;
   deleted: Scalars['Boolean'];
   prefectureId?: InputMaybe<Scalars['BigInt']>;
+  internalReputationStar?: InputMaybe<Scalars['Int']>;
 }>;
 
 
@@ -1920,13 +1922,14 @@ export type InternalGetHospitalQueryHookResult = ReturnType<typeof useInternalGe
 export type InternalGetHospitalLazyQueryHookResult = ReturnType<typeof useInternalGetHospitalLazyQuery>;
 export type InternalGetHospitalQueryResult = Apollo.QueryResult<InternalGetHospitalQuery, InternalGetHospitalQueryVariables>;
 export const InternalGetHospitalConnectionDocument = gql`
-    query InternalGetHospitalConnection($first: Int, $after: String, $name: String, $deleted: Boolean!, $prefectureId: BigInt) {
+    query InternalGetHospitalConnection($first: Int, $after: String, $name: String, $deleted: Boolean!, $prefectureId: BigInt, $internalReputationStar: Int) {
   hospitalConnection(
     first: $first
     after: $after
     name: $name
     deleted: $deleted
     prefectureId: $prefectureId
+    internalReputationStar: $internalReputationStar
   ) {
     edges {
       node {
@@ -1960,6 +1963,7 @@ export const InternalGetHospitalConnectionDocument = gql`
  *      name: // value for 'name'
  *      deleted: // value for 'deleted'
  *      prefectureId: // value for 'prefectureId'
+ *      internalReputationStar: // value for 'internalReputationStar'
  *   },
  * });
  */

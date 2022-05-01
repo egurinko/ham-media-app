@@ -9,6 +9,7 @@ export const getHospitalConnection = gql`
     $name: String
     $deleted: Boolean!
     $prefectureId: BigInt
+    $internalReputationStar: Int
   ) {
     hospitalConnection(
       first: $first
@@ -16,6 +17,7 @@ export const getHospitalConnection = gql`
       name: $name
       deleted: $deleted
       prefectureId: $prefectureId
+      internalReputationStar: $internalReputationStar
     ) {
       edges {
         node {

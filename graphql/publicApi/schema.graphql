@@ -211,6 +211,7 @@ type Query {
     last: Int
     nichijuOption: Boolean!
     nightServiceOption: Boolean!
+    recommended: Boolean!
     reservable: Boolean!
     searchText: String!
   ): HospitalConnection

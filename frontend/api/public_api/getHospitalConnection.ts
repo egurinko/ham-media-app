@@ -13,6 +13,7 @@ export const getHospitalConnection = gql`
     $insuranceEnabled: Boolean!
     $jsavaOption: Boolean!
     $nichijuOption: Boolean!
+    $recommended: Boolean!
   ) {
     publicHospitalConnection(
       first: $first
@@ -24,6 +25,7 @@ export const getHospitalConnection = gql`
       insuranceEnabled: $insuranceEnabled
       jsavaOption: $jsavaOption
       nichijuOption: $nichijuOption
+      recommended: $recommended
     ) {
       edges {
         node {

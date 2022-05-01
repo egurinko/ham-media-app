@@ -8,12 +8,14 @@ const QUERY = gql`
     $deleted: Boolean!
     $name: String
     $prefectureId: BigInt
+    $internalReputationStar: Int
   ) {
     hospitalConnection(
       first: $first
       deleted: $deleted
       name: $name
       prefectureId: $prefectureId
+      internalReputationStar: $internalReputationStar
     ) {
       pageInfo {
         hasNextPage
@@ -190,6 +192,45 @@ describe('hospitalConnection', () => {
             first: 5,
             deleted: false,
             prefectureId: PREFECTURE_ID_1,
+          },
+        });
+        const hospitalConnection = result.data['hospitalConnection'];
+
+        expect(hospitalConnection.edges.length).toEqual(1);
+
+        const hospital1 = hospitalConnection.edges[0].node;
+        expect(hospital1.name).toEqual(HOSPITAL_NAME_1);
+        expect(hospital1.url).toEqual(HOSPITAL_URL_1);
+        expect(hospital1.deleted).toEqual(HOSPITAL_DELETED_1);
+        expect(hospital1.internal_memo).toEqual(HOSPITAL_INTERNAL_MEMO_1);
+      });
+    });
+
+    describe('with internalReputationStar filter param', () => {
+      beforeEach(async () => {
+        await db.hospitalInternalReputation.create({
+          data: {
+            hospital_id: HOSPITAL_ID_1,
+            star: 5,
+            remark: '',
+          },
+        });
+        await db.hospitalInternalReputation.create({
+          data: {
+            hospital_id: HOSPITAL_ID_2,
+            star: 1,
+            remark: '',
+          },
+        });
+      });
+      it('returns star filtered hospitals', async () => {
+        const client = await setup();
+
+        const result = await client.query(QUERY, {
+          variables: {
+            first: 5,
+            deleted: false,
+            internalReputationStar: 5,
           },
         });
         const hospitalConnection = result.data['hospitalConnection'];

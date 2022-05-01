@@ -234,6 +234,7 @@ export type QueryPublicHospitalConnectionArgs = {
   last?: InputMaybe<Scalars['Int']>;
   nichijuOption: Scalars['Boolean'];
   nightServiceOption: Scalars['Boolean'];
+  recommended: Scalars['Boolean'];
   reservable: Scalars['Boolean'];
   searchText: Scalars['String'];
 };
@@ -277,6 +278,7 @@ export type PublicGetHospitalConnectionQueryVariables = Exact<{
   insuranceEnabled: Scalars['Boolean'];
   jsavaOption: Scalars['Boolean'];
   nichijuOption: Scalars['Boolean'];
+  recommended: Scalars['Boolean'];
 }>;
 
 
@@ -421,7 +423,7 @@ export type PublicGetHospitalQueryHookResult = ReturnType<typeof usePublicGetHos
 export type PublicGetHospitalLazyQueryHookResult = ReturnType<typeof usePublicGetHospitalLazyQuery>;
 export type PublicGetHospitalQueryResult = Apollo.QueryResult<PublicGetHospitalQuery, PublicGetHospitalQueryVariables>;
 export const PublicGetHospitalConnectionDocument = gql`
-    query PublicGetHospitalConnection($first: Int, $after: String, $searchText: String!, $currentLocation: currentLocation, $reservable: Boolean!, $nightServiceOption: Boolean!, $insuranceEnabled: Boolean!, $jsavaOption: Boolean!, $nichijuOption: Boolean!) {
+    query PublicGetHospitalConnection($first: Int, $after: String, $searchText: String!, $currentLocation: currentLocation, $reservable: Boolean!, $nightServiceOption: Boolean!, $insuranceEnabled: Boolean!, $jsavaOption: Boolean!, $nichijuOption: Boolean!, $recommended: Boolean!) {
   publicHospitalConnection(
     first: $first
     after: $after
@@ -432,6 +434,7 @@ export const PublicGetHospitalConnectionDocument = gql`
     insuranceEnabled: $insuranceEnabled
     jsavaOption: $jsavaOption
     nichijuOption: $nichijuOption
+    recommended: $recommended
   ) {
     edges {
       node {
@@ -469,6 +472,7 @@ export const PublicGetHospitalConnectionDocument = gql`
  *      insuranceEnabled: // value for 'insuranceEnabled'
  *      jsavaOption: // value for 'jsavaOption'
  *      nichijuOption: // value for 'nichijuOption'
+ *      recommended: // value for 'recommended'
  *   },
  * });
  */
