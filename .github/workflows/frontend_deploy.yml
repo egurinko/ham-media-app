@@ -30,7 +30,7 @@ jobs:
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('./frontend/yarn.lock') }}
       - name: Install sls
-        run: yarn global add serverless
+        run: yarn global add serverless @serverless/cli
       - name: Deploy
         run: ENV=prd FRONT_DEPLOY_NOTIFICATION_URL=${{ secrets.FRONT_DEPLOY_NOTIFICATION_URL }} /bin/bash deploy.sh -y
         working-directory: ./frontend
