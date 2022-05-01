@@ -12,6 +12,7 @@ const HospitalsSearch: React.VFC<NoProps> = () => {
   const [name, setName] = useState('');
   const [deleted, setDeleted] = useState(false);
   const [prefectureId, setPrefectureId] = useState('');
+  const [internalReputationStar, setInternalReputationStar] = useState('');
   const infiniteScrollTarget = useRef<HTMLDivElement>(null);
   const { isIntersect } = useIntersectionObserver(infiniteScrollTarget);
 
@@ -34,10 +35,14 @@ const HospitalsSearch: React.VFC<NoProps> = () => {
           name,
           deleted,
           prefectureId: prefectureId !== '' ? BigInt(prefectureId) : undefined,
+          internalReputationStar:
+            internalReputationStar !== ''
+              ? Number(internalReputationStar)
+              : undefined,
         },
       });
     }
-  }, [name, deleted, prefectureId, fetchMore]);
+  }, [name, deleted, prefectureId, internalReputationStar, fetchMore]);
 
   useEffect(() => {
     if (isIntersect) {
@@ -51,6 +56,10 @@ const HospitalsSearch: React.VFC<NoProps> = () => {
               deleted,
               prefectureId:
                 prefectureId !== '' ? BigInt(prefectureId) : undefined,
+              internalReputationStar:
+                internalReputationStar !== ''
+                  ? Number(internalReputationStar)
+                  : undefined,
             },
           });
         }
@@ -64,6 +73,7 @@ const HospitalsSearch: React.VFC<NoProps> = () => {
     deleted,
     name,
     prefectureId,
+    internalReputationStar,
   ]);
 
   if (error) return <Text>エラーです</Text>;
@@ -78,6 +88,8 @@ const HospitalsSearch: React.VFC<NoProps> = () => {
           setDeleted={setDeleted}
           prefectureId={prefectureId}
           setPrefectureId={setPrefectureId}
+          internalReputationStar={internalReputationStar}
+          setInternalReputationStar={setInternalReputationStar}
           loading={loading}
           searchHospitals={searchHospitals}
         />

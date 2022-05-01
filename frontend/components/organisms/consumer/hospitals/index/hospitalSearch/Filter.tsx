@@ -1,4 +1,4 @@
-import { ArrowUpIcon } from '@chakra-ui/icons';
+import { ArrowUpIcon, StarIcon } from '@chakra-ui/icons';
 import {
   Button,
   Box,
@@ -28,6 +28,8 @@ import type {
   SetJsavaOption,
   NichijuOption,
   SetNichijuOption,
+  Recommended,
+  SetRecommended,
   GetInitialHospitalConnection,
 } from '../types';
 
@@ -42,6 +44,8 @@ type Props = {
   setJsavaOption: SetJsavaOption;
   nichijuOption: NichijuOption;
   setNichijuOption: SetNichijuOption;
+  recommended: Recommended;
+  setRecommended: SetRecommended;
   getInitialHospitalConnection: GetInitialHospitalConnection;
 };
 
@@ -56,6 +60,8 @@ const Filter: React.FC<Props> = ({
   setJsavaOption,
   nichijuOption,
   setNichijuOption,
+  recommended,
+  setRecommended,
   getInitialHospitalConnection,
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -66,6 +72,7 @@ const Filter: React.FC<Props> = ({
     useState(insuranceEnabled);
   const [modalJsavaOption, setModalJsavaOption] = useState(jsavaOption);
   const [modalNichijuOption, setModalNichijuOption] = useState(nichijuOption);
+  const [modalRecommended, setModalRecommended] = useState(recommended);
 
   const handleSearchClick = (): void => {
     copyModalState();
@@ -75,6 +82,7 @@ const Filter: React.FC<Props> = ({
       insuranceEnabled: modalInsuranceEnabled,
       jsavaOption: modalJsavaOption,
       nichijuOption: modalNichijuOption,
+      recommended: modalRecommended,
     });
     onClose();
   };
@@ -85,6 +93,7 @@ const Filter: React.FC<Props> = ({
     setInsuranceEnabled(modalInsuranceEnabled);
     setJsavaOption(modalJsavaOption);
     setNichijuOption(modalNichijuOption);
+    setRecommended(modalRecommended);
   };
 
   const handleCancel = (): void => {
@@ -98,6 +107,7 @@ const Filter: React.FC<Props> = ({
     setModalInsuranceEnabled(insuranceEnabled);
     setModalJsavaOption(jsavaOption);
     setModalNichijuOption(nichijuOption);
+    setModalRecommended(recommended);
   };
 
   return (
@@ -144,7 +154,7 @@ const Filter: React.FC<Props> = ({
           <ModalHeader>絞り込み検索</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Box mb="8">
+            <Box mb="6" display="flex" flexDir="column">
               <Text
                 borderLeft="4px"
                 borderColor="primary.main"
@@ -152,7 +162,32 @@ const Filter: React.FC<Props> = ({
                 pl="2"
                 mb="4"
               >
-                予約
+                ハムメディアセレクト
+              </Text>
+              <Checkbox
+                onChange={(e) => setModalRecommended(e.target.checked)}
+                checked={modalRecommended}
+                defaultChecked={modalRecommended}
+                colorScheme="primary"
+                p="2"
+                border="1px"
+                borderColor="border.gray"
+                borderRadius={5}
+                mb="4"
+                w="28"
+              >
+                おすすめ
+              </Checkbox>
+            </Box>
+            <Box mb="6" display="flex" flexDir="column">
+              <Text
+                borderLeft="4px"
+                borderColor="primary.main"
+                fontSize="lg"
+                pl="2"
+                mb="4"
+              >
+                営業形態
               </Text>
               <Checkbox
                 onChange={(e) => setModalReservable(e.target.checked)}
@@ -163,20 +198,11 @@ const Filter: React.FC<Props> = ({
                 border="1px"
                 borderColor="border.gray"
                 borderRadius={5}
+                mb="4"
+                w="24"
               >
                 予約可
               </Checkbox>
-            </Box>
-            <Box>
-              <Text
-                borderLeft="4px"
-                borderColor="primary.main"
-                fontSize="lg"
-                pl="2"
-                mb="4"
-              >
-                その他
-              </Text>
               <Checkbox
                 onChange={(e) => setModalNightServiceOption(e.target.checked)}
                 checked={modalNightServiceOption}
@@ -186,8 +212,8 @@ const Filter: React.FC<Props> = ({
                 border="1px"
                 borderColor="border.gray"
                 borderRadius={5}
-                mr="2"
-                mb="2"
+                mb="4"
+                w="28"
               >
                 夜間営業
               </Checkbox>
@@ -200,11 +226,22 @@ const Filter: React.FC<Props> = ({
                 border="1px"
                 borderColor="border.gray"
                 borderRadius={5}
-                mr="2"
-                mb="2"
+                mb="4"
+                w="32"
               >
                 保険適用可
               </Checkbox>
+            </Box>
+            <Box>
+              <Text
+                borderLeft="4px"
+                borderColor="primary.main"
+                fontSize="lg"
+                pl="2"
+                mb="4"
+              >
+                認定
+              </Text>
               <Checkbox
                 onChange={(e) => setModalJsavaOption(e.target.checked)}
                 checked={modalJsavaOption}
@@ -214,10 +251,10 @@ const Filter: React.FC<Props> = ({
                 border="1px"
                 borderColor="border.gray"
                 borderRadius={5}
-                mr="2"
-                mb="2"
+                mb="4"
+                w="72"
               >
-                日本小動物獣医師会 (JSAVA) 認定あり
+                日本小動物獣医師会 (JSAVA) 認定
               </Checkbox>
               <Checkbox
                 onChange={(e) => setModalNichijuOption(e.target.checked)}
@@ -228,10 +265,10 @@ const Filter: React.FC<Props> = ({
                 border="1px"
                 borderColor="border.gray"
                 borderRadius={5}
-                mr="2"
-                mb="2"
+                mb="4"
+                w="42"
               >
-                日本獣医師会認定あり
+                日本獣医師会認定
               </Checkbox>
             </Box>
           </ModalBody>

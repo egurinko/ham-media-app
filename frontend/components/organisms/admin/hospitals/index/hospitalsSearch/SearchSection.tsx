@@ -11,6 +11,8 @@ import type {
   SetDeleted,
   PrefectureId,
   SetPrefectureId,
+  InternalReputationStar,
+  SetInternalReputationStar,
   SearchHospitals,
 } from '../types';
 
@@ -21,6 +23,8 @@ type Props = {
   setDeleted: SetDeleted;
   prefectureId: PrefectureId;
   setPrefectureId: SetPrefectureId;
+  internalReputationStar: InternalReputationStar;
+  setInternalReputationStar: SetInternalReputationStar;
   loading: boolean;
   searchHospitals: SearchHospitals;
 };
@@ -33,6 +37,8 @@ const SearchSection: React.VFC<Props> = ({
   setDeleted,
   setName,
   setPrefectureId,
+  internalReputationStar,
+  setInternalReputationStar,
   searchHospitals,
 }) => {
   const { data: prefectures } = usePublicGetPrefecturesQuery();
@@ -147,6 +153,22 @@ const SearchSection: React.VFC<Props> = ({
                 {prefecture.name}
               </option>
             ))}
+          </Select>
+        </Box>
+        <Box mr="4">
+          <Text>星（☆）</Text>
+          <Select
+            placeholder="選択してください"
+            value={internalReputationStar}
+            onChange={(e) => setInternalReputationStar(e.target.value)}
+          >
+            {Array(5)
+              .fill('')
+              .map((_, i) => (
+                <option key={String(i)} value={String(i + 1)}>
+                  {i + 1}
+                </option>
+              ))}
           </Select>
         </Box>
         <Box mr="4">
