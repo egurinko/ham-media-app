@@ -78,7 +78,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
         variables: {
           id: BigInt(params.id),
         },
-        fetchPolicy: 'no-cache',
+        fetchPolicy: 'network-only',
       });
       return { props: { hospital: data.hospital }, revalidate: 60 };
     } catch {}

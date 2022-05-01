@@ -18,7 +18,7 @@ type Props = {
 const ProductCartItem: React.VFC<Props> = ({ productId }) => {
   const { data, error } = useInternalGetProductQuery({
     variables: { id: productId },
-    fetchPolicy: 'no-cache',
+    fetchPolicy: 'network-only',
   });
   const [count, setCount] = useState(1);
   const [message, setMessage] = useState('');
