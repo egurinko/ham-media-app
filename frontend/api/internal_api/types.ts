@@ -562,6 +562,7 @@ export type QueryProductConnectionArgs = {
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
   hasStock?: InputMaybe<Scalars['Boolean']>;
+  internalUserId?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
   makerId?: InputMaybe<Scalars['Int']>;
   name?: InputMaybe<Scalars['String']>;
@@ -907,6 +908,7 @@ export type InternalGetProductConnectionQueryVariables = Exact<{
   name?: InputMaybe<Scalars['String']>;
   makerId?: InputMaybe<Scalars['Int']>;
   productTagId?: InputMaybe<Scalars['Int']>;
+  internalUserId?: InputMaybe<Scalars['Int']>;
   allocatedInternalUserId?: InputMaybe<Scalars['Int']>;
   hasStock?: InputMaybe<Scalars['Boolean']>;
 }>;
@@ -2215,13 +2217,14 @@ export type LocalGetProductCartItemsQueryHookResult = ReturnType<typeof useLocal
 export type LocalGetProductCartItemsLazyQueryHookResult = ReturnType<typeof useLocalGetProductCartItemsLazyQuery>;
 export type LocalGetProductCartItemsQueryResult = Apollo.QueryResult<LocalGetProductCartItemsQuery, LocalGetProductCartItemsQueryVariables>;
 export const InternalGetProductConnectionDocument = gql`
-    query InternalGetProductConnection($first: Int, $after: String, $name: String, $makerId: Int, $productTagId: Int, $allocatedInternalUserId: Int, $hasStock: Boolean) {
+    query InternalGetProductConnection($first: Int, $after: String, $name: String, $makerId: Int, $productTagId: Int, $internalUserId: Int, $allocatedInternalUserId: Int, $hasStock: Boolean) {
   productConnection(
     first: $first
     after: $after
     name: $name
     makerId: $makerId
     productTagId: $productTagId
+    internalUserId: $internalUserId
     allocatedInternalUserId: $allocatedInternalUserId
     hasStock: $hasStock
   ) {
@@ -2257,6 +2260,7 @@ export const InternalGetProductConnectionDocument = gql`
  *      name: // value for 'name'
  *      makerId: // value for 'makerId'
  *      productTagId: // value for 'productTagId'
+ *      internalUserId: // value for 'internalUserId'
  *      allocatedInternalUserId: // value for 'allocatedInternalUserId'
  *      hasStock: // value for 'hasStock'
  *   },

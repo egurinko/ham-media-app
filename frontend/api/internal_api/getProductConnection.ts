@@ -9,6 +9,7 @@ export const getProductConnection = gql`
     $name: String
     $makerId: Int
     $productTagId: Int
+    $internalUserId: Int
     $allocatedInternalUserId: Int
     $hasStock: Boolean
   ) {
@@ -18,6 +19,7 @@ export const getProductConnection = gql`
       name: $name
       makerId: $makerId
       productTagId: $productTagId
+      internalUserId: $internalUserId
       allocatedInternalUserId: $allocatedInternalUserId
       hasStock: $hasStock
     ) {

@@ -42,6 +42,8 @@ const ProductStacks: React.VFC<NoProps> = () => {
   const [selectedTagId, setSelectedTagId] = useState<undefined | string>(
     undefined
   );
+  const [selectedAllocatedInternalUserId, setSelectedAllocatedInternalUserID] =
+    useState<undefined | string>(undefined);
   const [selectedInternalUserId, setSelectedInternalUserID] = useState<
     undefined | string
   >(undefined);
@@ -81,7 +83,8 @@ const ProductStacks: React.VFC<NoProps> = () => {
           name,
           makerId: Number(selectedMakerId),
           productTagId: Number(selectedTagId),
-          allocatedInternalUserId: Number(selectedInternalUserId),
+          internalUserId: Number(selectedInternalUserId),
+          allocatedInternalUserId: Number(selectedAllocatedInternalUserId),
           hasStock,
         },
       });
@@ -95,6 +98,7 @@ const ProductStacks: React.VFC<NoProps> = () => {
     selectedMakerId,
     selectedTagId,
     selectedInternalUserId,
+    selectedAllocatedInternalUserId,
     hasStock,
   ]);
 
@@ -105,7 +109,8 @@ const ProductStacks: React.VFC<NoProps> = () => {
         name,
         makerId: Number(selectedMakerId),
         productTagId: Number(selectedTagId),
-        allocatedInternalUserId: Number(selectedInternalUserId),
+        internalUserId: Number(selectedInternalUserId),
+        allocatedInternalUserId: Number(selectedAllocatedInternalUserId),
         hasStock,
       },
     });
@@ -171,6 +176,30 @@ const ProductStacks: React.VFC<NoProps> = () => {
             <FormControl w="32" id="allocatedInternalUser" mr="2" mb="2">
               <FormLabel mb="1" fontSize="sm">
                 在庫割当ユーザ
+              </FormLabel>
+              <Select
+                size="sm"
+                placeholder="選択してください"
+                value={selectedAllocatedInternalUserId}
+                onChange={(e) =>
+                  setSelectedAllocatedInternalUserID(e.target.value)
+                }
+              >
+                {internalUsersData.internalUsers.map((internalUser) => (
+                  <option
+                    key={Number(internalUser.id)}
+                    value={Number(internalUser.id)}
+                  >
+                    {internalUser.name}
+                  </option>
+                ))}
+              </Select>
+            </FormControl>
+          ) : null}
+          {internalUsersData ? (
+            <FormControl w="32" id="internalUser" mr="2" mb="2">
+              <FormLabel mb="1" fontSize="sm">
+                在庫責任者
               </FormLabel>
               <Select
                 size="sm"
