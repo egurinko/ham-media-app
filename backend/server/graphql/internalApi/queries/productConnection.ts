@@ -29,24 +29,29 @@ export const productConnection = queryField((t) => {
                 },
               }
             : undefined,
-          stocks: {
-            [args.hasStock === false ? 'none' : 'some']: {
-              AND: [
-                {
-                  internal_user_id: args.internalUserId
-                    ? args.internalUserId
-                    : undefined,
-                },
-                {
-                  stockAllocation: {
-                    internal_user_id: args.allocatedInternalUserId
-                      ? args.allocatedInternalUserId
-                      : undefined,
+          stocks:
+            args.hasStock === undefined &&
+            args.internalUserId === undefined &&
+            args.allocatedInternalUserId === undefined
+              ? undefined
+              : {
+                  [args.hasStock === false ? 'none' : 'some']: {
+                    AND: [
+                      {
+                        internal_user_id: args.internalUserId
+                          ? args.internalUserId
+                          : undefined,
+                      },
+                      {
+                        stockAllocation: {
+                          internal_user_id: args.allocatedInternalUserId
+                            ? args.allocatedInternalUserId
+                            : undefined,
+                        },
+                      },
+                    ],
                   },
                 },
-              ],
-            },
-          },
         },
       });
       return connectionFromArray(products, args);
