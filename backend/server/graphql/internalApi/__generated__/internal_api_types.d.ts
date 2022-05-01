@@ -853,6 +853,7 @@ export interface NexusGenArgTypes {
       before?: string | null; // String
       deleted: boolean; // Boolean!
       first?: number | null; // Int
+      internalReputationStar?: number | null; // Int
       last?: number | null; // Int
       name?: string | null; // String
       prefectureId?: NexusGenScalars['BigInt'] | null; // BigInt

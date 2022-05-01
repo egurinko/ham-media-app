@@ -34,6 +34,7 @@ export const hospitalConnection = queryField((t) => {
       jsavaOption: nonNull(booleanArg()),
       nichijuOption: nonNull(booleanArg()),
       currentLocation: nullable(currentLocationInput),
+      recommended: nonNull(booleanArg()),
     },
     resolve: async (_root, args, ctx) => {
       let currentLocation: { latitude: number; longitude: number } | undefined =
@@ -55,6 +56,7 @@ export const hospitalConnection = queryField((t) => {
         JOIN hospital_night_service_options ON hospital_night_service_options.hospital_id = hospitals.id
         JOIN hospital_business_forms ON hospital_business_forms.hospital_id = hospitals.id
         JOIN hospital_certification_options ON hospital_certification_options.hospital_id = hospitals.id
+        JOIN hospital_internal_reputations ON hospital_internal_reputations.hospital_id = hospitals.id
         JOIN hospital_addresses ON hospital_addresses.hospital_id = hospitals.id
         JOIN hospital_address_geo_locations ON hospital_address_geo_locations.hospital_address_id = hospital_addresses.id
         WHERE hospitals.deleted = false
@@ -81,6 +83,11 @@ export const hospitalConnection = queryField((t) => {
         ${
           args.nichijuOption
             ? Prisma.sql`AND hospital_certification_options.nichiju_registered = '○'`
+            : Prisma.empty
+        }
+        ${
+          args.recommended
+            ? Prisma.sql`AND hospital_internal_reputations.star = 5`
             : Prisma.empty
         }
         ${

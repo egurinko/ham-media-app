@@ -445,6 +445,7 @@ export interface NexusGenArgTypes {
       last?: number | null; // Int
       nichijuOption: boolean; // Boolean!
       nightServiceOption: boolean; // Boolean!
+      recommended: boolean; // Boolean!
       reservable: boolean; // Boolean!
       searchText: string; // String!
     }
