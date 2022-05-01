@@ -199,6 +199,8 @@ const HospitalSearch: React.FC<NoProps> = () => {
           setJsavaOption={setJsavaOption}
           nichijuOption={nichijuOption}
           setNichijuOption={setNichijuOption}
+          recommended={recommended}
+          setRecommended={setRecommended}
           getInitialHospitalConnection={getInitialHospitalConnection}
         />
       </Box>

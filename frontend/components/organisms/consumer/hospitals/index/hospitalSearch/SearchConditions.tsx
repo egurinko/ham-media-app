@@ -15,6 +15,8 @@ import type {
   SetNichijuOption,
   JsavaOption,
   SetJsavaOption,
+  Recommended,
+  SetRecommended,
   GetInitialHospitalConnection,
 } from '../types';
 
@@ -31,6 +33,8 @@ type Props = {
   setJsavaOption: SetJsavaOption;
   nichijuOption: NichijuOption;
   setNichijuOption: SetNichijuOption;
+  recommended: Recommended;
+  setRecommended: SetRecommended;
   getInitialHospitalConnection: GetInitialHospitalConnection;
 };
 
@@ -47,6 +51,8 @@ const SearchConditions: React.FC<Props> = ({
   setJsavaOption,
   nichijuOption,
   setNichijuOption,
+  recommended,
+  setRecommended,
   getInitialHospitalConnection,
 }) => {
   const clearAll = useCallback(() => {
@@ -57,6 +63,7 @@ const SearchConditions: React.FC<Props> = ({
     setInsuranceEnabled(false);
     setJsavaOption(false);
     setNichijuOption(false);
+    setRecommended(false);
   }, [
     setSearchText,
     setCurrentLocation,
@@ -65,6 +72,7 @@ const SearchConditions: React.FC<Props> = ({
     setInsuranceEnabled,
     setJsavaOption,
     setNichijuOption,
+    setRecommended,
   ]);
 
   const clearReservable = useCallback(() => {
@@ -101,6 +109,13 @@ const SearchConditions: React.FC<Props> = ({
       nichijuOption: false,
     });
   }, [getInitialHospitalConnection, setNichijuOption]);
+
+  const clearRecommended = useCallback(() => {
+    setRecommended(false);
+    getInitialHospitalConnection({
+      recommended: false,
+    });
+  }, [getInitialHospitalConnection, setRecommended]);
 
   return (
     <HStack spacing={2} wrap="wrap">
@@ -190,6 +205,21 @@ const SearchConditions: React.FC<Props> = ({
           rightIcon={<CloseIcon fontSize="xs" ml="1" />}
         >
           <Text fontSize="sm">日本獣医師会認定あり</Text>
+        </SecondaryButton>
+      )}
+      {!recommended || (
+        <SecondaryButton
+          onClick={clearRecommended}
+          borderRadius={100}
+          p="2"
+          my="2"
+          variant="outline"
+          borderColor="primary.main"
+          boxShadow="sm"
+          size="sm"
+          rightIcon={<CloseIcon fontSize="xs" ml="1" />}
+        >
+          <Text fontSize="sm">おすすめ</Text>
         </SecondaryButton>
       )}
     </HStack>
