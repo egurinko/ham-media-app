@@ -37,7 +37,7 @@ const SearchSection: React.VFC<Props> = ({
 }) => {
   const { data: prefectures } = usePublicGetPrefecturesQuery();
   const [getHospitailConnection, { data, loading: csvLoading }] =
-    useInternalGetHospitalConnectionLazyQuery({ fetchPolicy: 'no-cache' });
+    useInternalGetHospitalConnectionLazyQuery({ fetchPolicy: 'network-only' });
 
   const handleCsv = () => {
     getHospitailConnection({

@@ -872,6 +872,7 @@ export interface NexusGenArgTypes {
       before?: string | null; // String
       first?: number | null; // Int
       hasStock?: boolean | null; // Boolean
+      internalUserId?: number | null; // Int
       last?: number | null; // Int
       makerId?: number | null; // Int
       name?: string | null; // String

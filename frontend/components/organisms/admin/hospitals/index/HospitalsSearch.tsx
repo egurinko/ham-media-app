@@ -18,7 +18,7 @@ const HospitalsSearch: React.VFC<NoProps> = () => {
   const { data, loading, error, fetchMore } =
     useInternalGetHospitalConnectionQuery({
       variables: { first: 10, deleted },
-      fetchPolicy: 'no-cache',
+      fetchPolicy: 'network-only',
     });
 
   const nodes = data?.hospitalConnection?.edges

@@ -337,6 +337,7 @@ type Query {
     """Returns the first n elements from the list."""
     first: Int
     hasStock: Boolean
+    internalUserId: Int
 
     """Returns the last n elements from the list."""
     last: Int

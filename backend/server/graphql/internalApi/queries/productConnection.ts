@@ -13,15 +13,14 @@ export const productConnection = queryField((t) => {
       name: stringArg(),
       makerId: intArg(),
       productTagId: intArg(),
+      internalUserId: intArg(),
       allocatedInternalUserId: intArg(),
       hasStock: booleanArg(),
     },
     resolve: async (_root, args, ctx) => {
       const products = await ctx.prisma.product.findMany({
         where: {
-          name: {
-            contains: args.name ? args.name : undefined,
-          },
+          name: { contains: args.name ? args.name : undefined },
           maker_id: args.makerId ? args.makerId : undefined,
           productTaggings: args.productTagId
             ? {
@@ -30,28 +29,24 @@ export const productConnection = queryField((t) => {
                 },
               }
             : undefined,
-          stocks:
-            args.hasStock === undefined
-              ? args.allocatedInternalUserId
-                ? {
-                    some: {
-                      stockAllocation: {
-                        internal_user_id: args.allocatedInternalUserId,
-                      },
-                    },
-                  }
-                : undefined
-              : args.hasStock
-              ? args.allocatedInternalUserId
-                ? {
-                    some: {
-                      stockAllocation: {
-                        internal_user_id: args.allocatedInternalUserId,
-                      },
-                    },
-                  }
-                : { some: {} }
-              : { none: {} },
+          stocks: {
+            [args.hasStock === false ? 'none' : 'some']: {
+              AND: [
+                {
+                  internal_user_id: args.internalUserId
+                    ? args.internalUserId
+                    : undefined,
+                },
+                {
+                  stockAllocation: {
+                    internal_user_id: args.allocatedInternalUserId
+                      ? args.allocatedInternalUserId
+                      : undefined,
+                  },
+                },
+              ],
+            },
+          },
         },
       });
       return connectionFromArray(products, args);

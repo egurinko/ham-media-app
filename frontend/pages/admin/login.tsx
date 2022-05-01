@@ -8,7 +8,7 @@ import { setCookie } from '@/utils/cookies';
 import { goAdminProducts } from '@/utils/routes';
 
 const Login: React.VFC<NoProps> = () => {
-  const { data } = useInternalGetSessionQuery({ fetchPolicy: 'no-cache' });
+  const { data } = useInternalGetSessionQuery({ fetchPolicy: 'network-only' });
   const router = useRouter();
 
   if (data?.session.token) {
