@@ -1,11 +1,15 @@
 import { ClientOnly } from '@/components/organisms/ClientOnly';
 import { BaseLayout } from './BaseLayout';
+import type { FC, PropsWithChildren } from 'react';
 
 type Props = {
   title?: string;
 };
 
-const PublicLayout: React.FC<Props> = ({ title = 'Ham ω Media', children }) => (
+const PublicLayout: FC<PropsWithChildren<Props>> = ({
+  title = 'Ham ω Media',
+  children,
+}) => (
   <BaseLayout title={title}>
     <ClientOnly>
       <main>{children}</main>

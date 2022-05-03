@@ -8,12 +8,13 @@ import { Sidebar } from '@/components/organisms/admin/Sidebar';
 import { removeCookie } from '@/utils/cookies';
 import { goAdminLogin } from '@/utils/routes';
 import { BaseLayout } from './BaseLayout';
+import type { FC, PropsWithChildren } from 'react';
 
 type Props = {
   title?: string;
 };
 
-const InternalLayout: React.FC<Props> = ({
+const InternalLayout: FC<PropsWithChildren<Props>> = ({
   title = 'Ham ω Media',
   children,
 }) => {
