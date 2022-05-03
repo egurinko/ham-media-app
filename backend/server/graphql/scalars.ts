@@ -28,5 +28,6 @@ export const Upload = scalarType({
   description: GraphQLUpload.description,
   serialize: GraphQLUpload.serialize,
   parseValue: GraphQLUpload.parseValue,
+  // @ts-ignore
   parseLiteral: GraphQLUpload.parseLiteral,
 });
