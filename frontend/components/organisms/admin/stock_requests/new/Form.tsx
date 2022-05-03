@@ -113,7 +113,7 @@ const Form: React.VFC<NoProps> = () => {
             <Box key={requestProduct.product.id} mb="2">
               <ProductSummary product={requestProduct.product} />
               <Box display="flex" alignItems="center">
-                <Box flexShrink="0">
+                <Box flexShrink={0}>
                   <Text>数量：</Text>
                 </Box>
                 <Select

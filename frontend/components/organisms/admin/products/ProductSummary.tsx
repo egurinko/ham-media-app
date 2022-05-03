@@ -11,7 +11,7 @@ type Props = {
 const ProductSummary: React.VFC<Props> = ({ product }) => (
   <Box w="100%" display="flex" flexDirection="row" alignItems="center" p="2">
     <Box flex="1" display="flex" flexDir="row" alignItems="center">
-      <Box flexShrink="0" mr="1">
+      <Box flexShrink={0} mr="1">
         <Zoom>
           <img
             src={product.url}
@@ -26,7 +26,7 @@ const ProductSummary: React.VFC<Props> = ({ product }) => (
           />
         </Zoom>
       </Box>
-      <Box textAlign="left" flexShrink="1">
+      <Box textAlign="left" flexShrink={1}>
         <Text fontSize="xs">{product.maker.name}</Text>
         <Text fontSize="sm" mb="2" fontWeight="bold">
           {product.name}
