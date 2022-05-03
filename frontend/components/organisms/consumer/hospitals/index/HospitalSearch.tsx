@@ -78,38 +78,34 @@ const HospitalSearch: React.FC<NoProps> = () => {
     ]
   );
 
-  const getInitialHospitalConnection = useCallback(
-    (variables: GetInitialHospitalConnectionVariables) => {
-      getHospitalConnection({
-        variables: {
-          first: 20,
-          searchText,
-          currentLocation,
-          reservable,
-          nightServiceOption,
-          insuranceEnabled,
-          jsavaOption,
-          nichijuOption,
-          recommended,
-          ...variables,
-        },
-      });
-      scrollTo();
-      persistPage(variables);
-    },
-    [
+  useEffect(() => {
+    const variables = {
+      first: 20,
+      searchText,
       currentLocation,
-      getHospitalConnection,
+      reservable,
+      nightServiceOption,
       insuranceEnabled,
       jsavaOption,
       nichijuOption,
-      nightServiceOption,
-      persistPage,
-      reservable,
-      searchText,
       recommended,
-    ]
-  );
+    };
+
+    getHospitalConnection({ variables, fetchPolicy: 'network-only' });
+    scrollTo();
+    persistPage(variables);
+  }, [
+    searchText,
+    currentLocation,
+    reservable,
+    nightServiceOption,
+    insuranceEnabled,
+    jsavaOption,
+    nichijuOption,
+    recommended,
+    getHospitalConnection,
+    persistPage,
+  ]);
 
   const restorePage = useCallback(() => {
     const persisted = getLocalStorage();
@@ -130,17 +126,8 @@ const HospitalSearch: React.FC<NoProps> = () => {
       setJsavaOption(jsavaOption || false);
       setNichijuOption(nichijuOption || false);
       setRecommended(recommended || false);
-      getInitialHospitalConnection({
-        searchText: searchText || '',
-        currentLocation,
-        reservable: reservable || false,
-        nightServiceOption: nightServiceOption || false,
-        jsavaOption: jsavaOption || false,
-        nichijuOption: nichijuOption || false,
-        recommended: recommended || false,
-      });
     }
-  }, [getInitialHospitalConnection, getLocalStorage]);
+  }, [getLocalStorage]);
 
   useEffect(() => {
     restorePage();
@@ -175,15 +162,15 @@ const HospitalSearch: React.FC<NoProps> = () => {
     <>
       <Box>
         <TextSearch
-          searchText={searchText}
           setSearchText={setSearchText}
-          getInitialHospitalConnection={getInitialHospitalConnection}
+          setCurrentLocation={setCurrentLocation}
         />
       </Box>
       <Box my="2">
         <MapSearch
-          getInitialHospitalConnection={getInitialHospitalConnection}
+          currentLocation={currentLocation}
           setCurrentLocation={setCurrentLocation}
+          setSearchText={setSearchText}
         />
       </Box>
       <Box>

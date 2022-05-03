@@ -5,18 +5,21 @@ import { MapPinIcon } from '@/components/atoms/assets/MapPinIcon';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
 import { HospitalGoogleMap } from './HospitalGoogleMap';
 import type {
-  GetInitialHospitalConnection,
   SetCurrentLocation,
+  SetSearchText,
+  CurrentLocation,
 } from '../types';
 
 type Props = {
-  getInitialHospitalConnection: GetInitialHospitalConnection;
+  currentLocation: CurrentLocation;
   setCurrentLocation: SetCurrentLocation;
+  setSearchText: SetSearchText;
 };
 
 const MapSearch: React.FC<Props> = ({
-  getInitialHospitalConnection,
+  currentLocation,
   setCurrentLocation,
+  setSearchText,
 }) => {
   const [open, setOpen] = useState(false);
   const [currentLocationError, setCurrentLocationError] =
@@ -30,14 +33,11 @@ const MapSearch: React.FC<Props> = ({
       setCurrentLat(latitude);
       setCurrentLng(longitude);
       setCurrentLocation({ latitude, longitude });
-      getInitialHospitalConnection({
-        currentLocation: { latitude, longitude },
-        searchText: '',
-      });
+      setSearchText('');
       setCurrentLocationError(null);
       setOpen(true);
     },
-    [setCurrentLocation, getInitialHospitalConnection]
+    [setCurrentLocation, setSearchText]
   );
 
   const error = useCallback((error: GeolocationPositionError) => {
@@ -71,7 +71,7 @@ const MapSearch: React.FC<Props> = ({
           <Text fontSize="xs">現在地から探す</Text>
         </Button>
       </Card>
-      {open ? (
+      {!!currentLocation && open ? (
         <Box my="2">
           <HospitalGoogleMap
             height={200}
