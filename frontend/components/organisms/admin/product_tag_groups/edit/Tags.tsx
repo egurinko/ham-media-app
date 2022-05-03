@@ -134,7 +134,7 @@ const Tags: React.FC<Props> = ({ productTagGroupId }) => {
     }
   }, [data]);
   const handleProductTagNameChange = useCallback(
-    (newTagName, updateProductTagId) => {
+    (newTagName: string, updateProductTagId: number) => {
       const newTagNames = productTags.map((productTag) => {
         if (updateProductTagId === productTag.id) {
           return { ...productTag, name: newTagName };

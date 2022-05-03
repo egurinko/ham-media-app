@@ -19,6 +19,7 @@ import type {
   NichijuOption,
   Recommended,
   GetContinuousHospitalConnection,
+  GetInitialHospitalConnectionVariables,
 } from './types';
 
 const PAGE_STORED_KEY = 'hospitalsPage';
@@ -78,7 +79,7 @@ const HospitalSearch: React.FC<NoProps> = () => {
   );
 
   const getInitialHospitalConnection = useCallback(
-    (variables) => {
+    (variables: GetInitialHospitalConnectionVariables) => {
       getHospitalConnection({
         variables: {
           first: 20,

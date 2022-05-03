@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 
 export const useLocalStorage = <T = any>(key: string) => {
   const setLocalStorage = useCallback(
-    (value) => {
+    (value: any) => {
       window.localStorage.setItem(key, JSON.stringify(value));
     },
     [key]
