@@ -1,5 +1,5 @@
 import { Box, Text } from '@chakra-ui/react';
-import { Marker, InfoWindow } from '@react-google-maps/api';
+import { MarkerF, InfoWindowF } from '@react-google-maps/api';
 import { memo, useState, useCallback } from 'react';
 import type { PublicGetHospitalLocationsQuery } from '@/api/public_api/types';
 import { usePublicGetHospitalLocationsQuery } from '@/api/public_api/types';
@@ -38,14 +38,14 @@ const HospitalGoogleMapComponent: React.FC<Props> = ({
       currentLat={currentLat}
       currentLng={currentLng}
     >
-      <Marker
+      <MarkerF
         position={{ lat: currentLat, lng: currentLng }}
         icon="https://user-images.githubusercontent.com/23233648/136685502-4bf03930-df2c-4194-8cc7-67f10699f5b8.png"
       />
       {hospitalLoations?.hospitals.map((h) => {
         if (h.hospitalAddress && h.hospitalAddress.hospitalAddressGeoLocation) {
           return (
-            <Marker
+            <MarkerF
               key={String(h.id)}
               position={{
                 lat: h.hospitalAddress.hospitalAddressGeoLocation.latitude,
@@ -57,7 +57,7 @@ const HospitalGoogleMapComponent: React.FC<Props> = ({
         }
       })}
       {currentHospital ? (
-        <InfoWindow
+        <InfoWindowF
           position={{
             lat:
               currentHospital.hospitalAddress?.hospitalAddressGeoLocation
@@ -81,7 +81,7 @@ const HospitalGoogleMapComponent: React.FC<Props> = ({
               {currentHospital.hospitalAddress?.address}
             </Text>
           </Box>
-        </InfoWindow>
+        </InfoWindowF>
       ) : (
         <></>
       )}
