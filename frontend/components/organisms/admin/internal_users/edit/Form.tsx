@@ -206,7 +206,7 @@ const Form: React.VFC<Props> = ({ internalUserId }) => {
                   )}
                 </FormControl>
               </Stack>
-              <Box d="grid" justifyContent="center">
+              <Box display="grid" justifyContent="center">
                 <PrimaryButton
                   size="lg"
                   mt="16"

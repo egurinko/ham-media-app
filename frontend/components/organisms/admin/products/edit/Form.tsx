@@ -155,7 +155,7 @@ const Form: React.VFC<Props> = ({ productId }) => {
 
                 <FormControl id="image">
                   <FormLabel>商品画像</FormLabel>
-                  <Box flexShrink="0" mr="1" mb="2">
+                  <Box flexShrink={0} mr="1" mb="2">
                     <Zoom>
                       <img
                         src={productData.product.url}
@@ -178,7 +178,7 @@ const Form: React.VFC<Props> = ({ productId }) => {
                   />
                 </FormControl>
               </Stack>
-              <Box d="grid" justifyContent="center">
+              <Box display="grid" justifyContent="center">
                 <PrimaryButton
                   size="lg"
                   mt="6"

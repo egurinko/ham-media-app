@@ -111,7 +111,7 @@ const Form: React.VFC<NoProps> = () => {
               )}
             </FormControl>
           </Stack>
-          <Box d="grid" justifyContent="center">
+          <Box display="grid" justifyContent="center">
             <PrimaryButton size="lg" mt="16" type="submit">
               ログイン
             </PrimaryButton>

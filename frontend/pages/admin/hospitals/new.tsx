@@ -68,7 +68,7 @@ const New: React.VFC<NoProps> = () => {
 
   return (
     <InternalLayout>
-      <Box d="flex" mb="4">
+      <Box display="flex" mb="4">
         <IconButton
           aria-label="link"
           variant="link"
@@ -166,7 +166,7 @@ const New: React.VFC<NoProps> = () => {
               <FormHelperText>※LINE等には露出しないデータです</FormHelperText>
             </FormControl>
           </Stack>
-          <Box d="grid" justifyContent="center">
+          <Box display="grid" justifyContent="center">
             <PrimaryButton
               size="lg"
               mt="16"

@@ -10,7 +10,7 @@ const New: React.VFC<NoProps> = () => {
 
   return (
     <InternalLayout>
-      <Box d="flex" mb="4">
+      <Box display="flex" mb="4">
         <IconButton
           aria-label="link"
           variant="link"

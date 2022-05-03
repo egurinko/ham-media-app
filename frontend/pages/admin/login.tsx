@@ -20,7 +20,7 @@ const Login: React.VFC<NoProps> = () => {
     <PublicLayout>
       <Box
         p="2"
-        d="flex"
+        display="flex"
         flexDirection="column"
         alignItems="center"
         justifyContent="center"

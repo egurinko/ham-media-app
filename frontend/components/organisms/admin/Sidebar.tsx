@@ -15,7 +15,7 @@ const Sidebar: React.VFC<Props> = ({ internalUser, handleLogout }) => (
     bg="white"
     height="100vh"
     position="fixed"
-    d="flex"
+    display="flex"
     flexDirection="column"
     alignItems="center"
     as="aside"

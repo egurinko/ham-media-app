@@ -25,7 +25,7 @@ const Detail: React.VFC<NoProps> = () => {
         alignItems="center"
         mb="2"
       >
-        <Box d="flex" mb="4">
+        <Box display="flex" mb="4">
           <IconButton
             aria-label="link"
             variant="link"
