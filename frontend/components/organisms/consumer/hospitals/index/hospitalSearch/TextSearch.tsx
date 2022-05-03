@@ -1,62 +1,71 @@
 import { SearchIcon } from '@chakra-ui/icons';
 import { IconButton, Input, Box, Button } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { usePublicGetPlaceAutocompleteLazyQuery } from '@/api/public_api/types';
 import { Card } from '@/components/atoms/Card';
-import type {
-  SearchText,
-  SetSearchText,
-  GetInitialHospitalConnection,
-} from '../types';
+import type { SearchText, SetSearchText, SetCurrentLocation } from '../types';
 
 type Props = {
   searchText: SearchText;
   setSearchText: SetSearchText;
-  getInitialHospitalConnection: GetInitialHospitalConnection;
+  setCurrentLocation: SetCurrentLocation;
 };
 
 const TextSearch: React.FC<Props> = ({
   searchText,
   setSearchText,
-  getInitialHospitalConnection,
+  setCurrentLocation,
 }) => {
+  const [text, setText] = useState('');
   const [isCandidatesWindowOpen, setIsCandidatesWindowOpen] = useState(false);
   const [getPlaceAutocomplete, { data }] =
     usePublicGetPlaceAutocompleteLazyQuery();
 
-  const handleSearchTextChange = (e: GenericChangeEvent<string>): void => {
-    setSearchText(e.target.value);
-    getPlaceAutocomplete({ variables: { searchText: e.target.value } });
-  };
+  const copyApplied = useCallback(() => {
+    setText(searchText);
+  }, [searchText]);
+  const copyLocal = useCallback(() => {
+    setSearchText(text);
+  }, [text, setSearchText]);
 
-  const handleSearchTextFocus = (): void => {
+  useEffect(() => {
+    copyApplied();
+  }, [copyApplied]);
+
+  const handleTextChange = useCallback(
+    (e: GenericChangeEvent<string>): void => {
+      setText(e.target.value);
+      getPlaceAutocomplete({ variables: { searchText: e.target.value } });
+    },
+    [getPlaceAutocomplete]
+  );
+
+  const handleTextFocus = useCallback((): void => {
     setIsCandidatesWindowOpen(true);
-  };
+  }, []);
 
-  const handleSearchTextBlur = (): void => {
+  const handleTextBlur = useCallback((): void => {
     setIsCandidatesWindowOpen(false);
-  };
+  }, []);
 
-  const handleAutocompleteClick = (autocomplete: string): void => {
-    setSearchText(autocomplete);
-  };
+  const handleAutocompleteClick = useCallback((autocomplete: string): void => {
+    setText(autocomplete);
+  }, []);
 
-  const handleSearchClick = () => {
-    getInitialHospitalConnection({
-      searchText,
-      currentLocation: null,
-    });
-  };
+  const handleSearchClick = useCallback(() => {
+    copyLocal();
+    setCurrentLocation(null);
+  }, [copyLocal, setCurrentLocation]);
 
   return (
     <Card>
       <Box display="flex">
         <Box width="full">
           <Input
-            value={searchText}
-            onChange={handleSearchTextChange}
-            onFocus={handleSearchTextFocus}
-            onBlur={handleSearchTextBlur}
+            value={text}
+            onChange={handleTextChange}
+            onFocus={handleTextFocus}
+            onBlur={handleTextBlur}
             borderRightRadius={0}
             placeholder="エリア・駅から探す"
           />
@@ -92,7 +101,7 @@ const TextSearch: React.FC<Props> = ({
           onClick={handleSearchClick}
           icon={<SearchIcon />}
           borderLeftRadius={0}
-          disabled={searchText?.length === 0}
+          disabled={text.length === 0}
         />
       </Box>
     </Card>

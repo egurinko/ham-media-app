@@ -1,5 +1,5 @@
 import { CloseIcon } from '@chakra-ui/icons';
-import { Text, HStack, Button } from '@chakra-ui/react';
+import { Text, Flex, Button } from '@chakra-ui/react';
 import { useCallback } from 'react';
 import { SecondaryButton } from '@/components/atoms/SecondaryButton';
 import type {
@@ -17,7 +17,6 @@ import type {
   SetJsavaOption,
   Recommended,
   SetRecommended,
-  GetInitialHospitalConnection,
 } from '../types';
 
 type Props = {
@@ -35,7 +34,6 @@ type Props = {
   setNichijuOption: SetNichijuOption;
   recommended: Recommended;
   setRecommended: SetRecommended;
-  getInitialHospitalConnection: GetInitialHospitalConnection;
 };
 
 const SearchConditions: React.FC<Props> = ({
@@ -53,7 +51,6 @@ const SearchConditions: React.FC<Props> = ({
   setNichijuOption,
   recommended,
   setRecommended,
-  getInitialHospitalConnection,
 }) => {
   const clearAll = useCallback(() => {
     setSearchText('');
@@ -77,53 +74,35 @@ const SearchConditions: React.FC<Props> = ({
 
   const clearReservable = useCallback(() => {
     setReservable(false);
-    getInitialHospitalConnection({
-      reservable: false,
-    });
-  }, [getInitialHospitalConnection, setReservable]);
+  }, [setReservable]);
 
   const clearNightServiceOption = useCallback(() => {
     setNightServiceOption(false);
-    getInitialHospitalConnection({
-      nightServiceOption: false,
-    });
-  }, [getInitialHospitalConnection, setNightServiceOption]);
+  }, [setNightServiceOption]);
 
   const clearInsuranceEnabled = useCallback(() => {
     setInsuranceEnabled(false);
-    getInitialHospitalConnection({
-      insuranceEnabled: false,
-    });
-  }, [getInitialHospitalConnection, setInsuranceEnabled]);
+  }, [setInsuranceEnabled]);
 
   const clearJsavaOption = useCallback(() => {
     setJsavaOption(false);
-    getInitialHospitalConnection({
-      jsavaOption: false,
-    });
-  }, [getInitialHospitalConnection, setJsavaOption]);
+  }, [setJsavaOption]);
 
   const clearNichijuOption = useCallback(() => {
     setNichijuOption(false);
-    getInitialHospitalConnection({
-      nichijuOption: false,
-    });
-  }, [getInitialHospitalConnection, setNichijuOption]);
+  }, [setNichijuOption]);
 
   const clearRecommended = useCallback(() => {
     setRecommended(false);
-    getInitialHospitalConnection({
-      recommended: false,
-    });
-  }, [getInitialHospitalConnection, setRecommended]);
+  }, [setRecommended]);
 
   return (
-    <HStack spacing={2} wrap="wrap">
+    <Flex wrap="wrap">
       <Button
         onClick={clearAll}
         borderRadius={100}
         p="2"
-        my="2"
+        m="1"
         colorScheme="primary"
         boxShadow="sm"
         size="sm"
@@ -137,7 +116,7 @@ const SearchConditions: React.FC<Props> = ({
           onClick={clearReservable}
           borderRadius={100}
           p="2"
-          my="2"
+          m="1"
           variant="outline"
           borderColor="primary.main"
           boxShadow="sm"
@@ -152,7 +131,7 @@ const SearchConditions: React.FC<Props> = ({
           onClick={clearNightServiceOption}
           borderRadius={100}
           p="2"
-          my="2"
+          m="1"
           variant="outline"
           borderColor="primary.main"
           boxShadow="sm"
@@ -167,7 +146,7 @@ const SearchConditions: React.FC<Props> = ({
           onClick={clearInsuranceEnabled}
           borderRadius={100}
           p="2"
-          my="2"
+          m="1"
           variant="outline"
           borderColor="primary.main"
           boxShadow="sm"
@@ -182,7 +161,7 @@ const SearchConditions: React.FC<Props> = ({
           onClick={clearJsavaOption}
           borderRadius={100}
           p="2"
-          my="2"
+          m="1"
           variant="outline"
           borderColor="primary.main"
           boxShadow="sm"
@@ -197,7 +176,7 @@ const SearchConditions: React.FC<Props> = ({
           onClick={clearNichijuOption}
           borderRadius={100}
           p="2"
-          my="2"
+          m="1"
           variant="outline"
           borderColor="primary.main"
           boxShadow="sm"
@@ -212,7 +191,7 @@ const SearchConditions: React.FC<Props> = ({
           onClick={clearRecommended}
           borderRadius={100}
           p="2"
-          my="2"
+          m="1"
           variant="outline"
           borderColor="primary.main"
           boxShadow="sm"
@@ -222,7 +201,7 @@ const SearchConditions: React.FC<Props> = ({
           <Text fontSize="sm">おすすめ</Text>
         </SecondaryButton>
       )}
-    </HStack>
+    </Flex>
   );
 };
 

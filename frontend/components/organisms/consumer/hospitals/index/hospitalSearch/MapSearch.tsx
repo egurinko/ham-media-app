@@ -1,22 +1,25 @@
-import { Button, Text, Box } from '@chakra-ui/react';
-import { useState, useCallback } from 'react';
+import { Button, Text, Box, useEditable } from '@chakra-ui/react';
+import { useState, useCallback, useEffect } from 'react';
 import { Card } from '@/components/atoms/Card';
 import { MapPinIcon } from '@/components/atoms/assets/MapPinIcon';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
 import { HospitalGoogleMap } from './HospitalGoogleMap';
 import type {
-  GetInitialHospitalConnection,
   SetCurrentLocation,
+  SetSearchText,
+  CurrentLocation,
 } from '../types';
 
 type Props = {
-  getInitialHospitalConnection: GetInitialHospitalConnection;
+  currentLocation: CurrentLocation;
   setCurrentLocation: SetCurrentLocation;
+  setSearchText: SetSearchText;
 };
 
 const MapSearch: React.FC<Props> = ({
-  getInitialHospitalConnection,
+  currentLocation,
   setCurrentLocation,
+  setSearchText,
 }) => {
   const [open, setOpen] = useState(false);
   const [currentLocationError, setCurrentLocationError] =
@@ -24,20 +27,32 @@ const MapSearch: React.FC<Props> = ({
   const [currentLat, setCurrentLat] = useState(35.6602384);
   const [currentLng, setCurrentLng] = useState(139.727888);
 
+  const copyApplied = useCallback(() => {
+    if (currentLocation) {
+      setCurrentLat(currentLocation.latitude);
+      setCurrentLng(currentLocation.longitude);
+      setOpen(true);
+    }
+  }, [currentLocation]);
+  const copyLocal = useCallback(() => {
+    setCurrentLocation({ latitude: currentLat, longitude: currentLng });
+  }, [currentLat, currentLng, setCurrentLocation]);
+
+  useEffect(() => {
+    copyApplied();
+  }, [copyApplied]);
+
   const success = useCallback(
     (position: GeolocationPosition) => {
       const { latitude, longitude } = position.coords;
       setCurrentLat(latitude);
       setCurrentLng(longitude);
-      setCurrentLocation({ latitude, longitude });
-      getInitialHospitalConnection({
-        currentLocation: { latitude, longitude },
-        searchText: '',
-      });
+      copyLocal();
+      setSearchText('');
       setCurrentLocationError(null);
       setOpen(true);
     },
-    [setCurrentLocation, getInitialHospitalConnection]
+    [setSearchText, copyLocal]
   );
 
   const error = useCallback((error: GeolocationPositionError) => {
@@ -71,7 +86,7 @@ const MapSearch: React.FC<Props> = ({
           <Text fontSize="xs">現在地から探す</Text>
         </Button>
       </Card>
-      {open ? (
+      {!!currentLocation && open ? (
         <Box my="2">
           <HospitalGoogleMap
             height={200}
