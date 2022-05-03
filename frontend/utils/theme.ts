@@ -22,6 +22,15 @@ const theme = extendTheme({
     },
   },
   fonts,
+  components: {
+    Checkbox: {
+      baseStyle: {
+        label: {
+          touchAction: 'none',
+        },
+      },
+    },
+  },
 });
 
 export { theme };
