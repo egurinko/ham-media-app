@@ -1,5 +1,6 @@
 import { Box } from '@chakra-ui/react';
 import { Head } from '@/components/molecules/Head';
+import type { FC, PropsWithChildren } from 'react';
 
 type Props = {
   title?: string;
@@ -8,7 +9,7 @@ type Props = {
   ogpImageUrl?: string;
 };
 
-const BaseLayout: React.FC<Props> = ({
+const BaseLayout: FC<PropsWithChildren<Props>> = ({
   title = 'Ham ω Media',
   description = '１匹でも多くのハムスターのしあわせを未来につないでいきたい。様々な理由で助けが必要になったハムスターの里親を募集しています。',
   ogpUrl = 'https://ham-media.net/hospitals',

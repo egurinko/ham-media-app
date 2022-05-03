@@ -1,5 +1,5 @@
 import { Box, Text, Divider } from '@chakra-ui/react';
-import { Marker, InfoWindow } from '@react-google-maps/api';
+import { InfoWindowF, MarkerF } from '@react-google-maps/api';
 import type { HospitalFieldsFragment } from '@/api/public_api/types';
 import { Card } from '@/components/atoms/Card';
 import { SecondaryButton } from '@/components/atoms/SecondaryButton';
@@ -222,7 +222,7 @@ const DetailCard: React.FC<Props> = ({ hospital }) => (
               hospital.hospitalAddress.hospitalAddressGeoLocation.longitude
             }
           >
-            <Marker
+            <MarkerF
               position={{
                 lat: hospital.hospitalAddress.hospitalAddressGeoLocation
                   .latitude,
@@ -230,7 +230,7 @@ const DetailCard: React.FC<Props> = ({ hospital }) => (
                   .longitude,
               }}
             />
-            <InfoWindow
+            <InfoWindowF
               position={{
                 lat:
                   hospital.hospitalAddress.hospitalAddressGeoLocation.latitude +
@@ -250,7 +250,7 @@ const DetailCard: React.FC<Props> = ({ hospital }) => (
                 </Text>
                 <Text fontSize="xs">{hospital.hospitalAddress.address}</Text>
               </Box>
-            </InfoWindow>
+            </InfoWindowF>
           </GoogleMap>
         </Card>
       </Box>

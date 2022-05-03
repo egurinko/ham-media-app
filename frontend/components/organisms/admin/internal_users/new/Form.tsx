@@ -181,7 +181,7 @@ const Form: React.VFC<NoProps> = () => {
               </FormControl>
             ) : null}
           </Stack>
-          <Box d="grid" justifyContent="center">
+          <Box display="grid" justifyContent="center">
             <PrimaryButton
               size="lg"
               mt="16"

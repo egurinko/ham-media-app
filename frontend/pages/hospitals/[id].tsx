@@ -20,7 +20,7 @@ const Show: React.VFC<Props> = ({ hospital }) => {
 
   return (
     <Layout title={`${hospital.name} - Ham ω Media`}>
-      <Box d="flex" mb="4" mt="2">
+      <Box display="flex" mb="4" mt="2">
         <Button
           aria-label="link"
           variant="link"

@@ -131,7 +131,7 @@ const Form: React.VFC<Props> = ({ stockRequestId }) => {
                 <ProductSummary product={updatingProductStockRequest.product} />
               </SummaryLink>
               <Box display="flex" alignItems="center">
-                <Box flexShrink="0">
+                <Box flexShrink={0}>
                   <Text>数量：</Text>
                 </Box>
                 <Select

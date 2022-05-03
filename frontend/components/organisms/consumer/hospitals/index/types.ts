@@ -26,8 +26,10 @@ export type SetJsavaOption = UseStateAction<JsavaOption>;
 export type SetNichijuOption = UseStateAction<NichijuOption>;
 export type SetRecommended = UseStateAction<Recommended>;
 
+export type GetInitialHospitalConnectionVariables =
+  Partial<PublicGetHospitalConnectionQueryVariables>;
 export type GetInitialHospitalConnection = (
-  variables: Partial<PublicGetHospitalConnectionQueryVariables>
+  variables: GetInitialHospitalConnectionVariables
 ) => void;
 
 export type GetContinuousHospitalConnection = () => void;

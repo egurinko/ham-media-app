@@ -5,6 +5,7 @@ import {
 } from '@react-google-maps/api';
 import { Spinner } from '@/components/atoms/Spinner';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
+import type { FC, PropsWithChildren } from 'react';
 
 type Props = {
   width?: number;
@@ -13,7 +14,7 @@ type Props = {
   currentLng: number;
 };
 
-const GoogleMap: React.FC<Props> = ({
+const GoogleMap: FC<PropsWithChildren<Props>> = ({
   height,
   width,
   currentLat,
@@ -50,7 +51,7 @@ const GoogleMap: React.FC<Props> = ({
   );
 };
 
-const Map: React.FC<Props> = ({
+const Map: FC<PropsWithChildren<Props>> = ({
   height,
   width,
   currentLat,

@@ -54,7 +54,7 @@ const ProductCartItem: React.VFC<Props> = ({ productId }) => {
           <ProductSummary product={data.product}></ProductSummary>
           <Box textAlign="center" mt="4">
             <Box mb="4" display="flex" alignItems="center">
-              <Box flexShrink="0">
+              <Box flexShrink={0}>
                 <Text>数量：</Text>
               </Box>
               <Select
@@ -72,9 +72,9 @@ const ProductCartItem: React.VFC<Props> = ({ productId }) => {
             </Box>
             <SecondaryButton
               mb="2"
-              isFullWidth
               onClick={handleAddProductCartItem}
               disabled={data.product.remainingStockAmount === 0}
+              w="100%"
             >
               <AddIcon mr="1" />
               在庫リクエストに入れる
