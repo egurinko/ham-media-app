@@ -2,9 +2,9 @@ import { PrismaPromise, Prisma } from '@prisma/client';
 import { client } from '@/services/prisma';
 import { executeTest } from '../../prisma/seeds/test';
 
-const truncateTransactions: PrismaPromise<any>[] = [];
+const pushTruncateTransactionIfNeeded = (): PrismaPromise<any>[] => {
+  const truncateTransactions: PrismaPromise<any>[] = [];
 
-const pushTruncateTransactionIfNeeded = () => {
   if (truncateTransactions.length === 0) {
     truncateTransactions.push(client.$executeRaw`SET FOREIGN_KEY_CHECKS = 0;`);
 
@@ -26,14 +26,15 @@ const pushTruncateTransactionIfNeeded = () => {
 
     truncateTransactions.push(client.$executeRaw`SET FOREIGN_KEY_CHECKS = 1;`);
   }
+  return truncateTransactions;
 };
 
 const setup = async () => {
-  pushTruncateTransactionIfNeeded();
+  const truncateTransactions = pushTruncateTransactionIfNeeded();
   await client.$transaction(truncateTransactions);
   return executeTest();
 };
 
-beforeEach(() => {
-  return setup();
+beforeEach(async () => {
+  await setup();
 });
