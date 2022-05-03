@@ -1,7 +1,6 @@
 import { Box } from '@chakra-ui/react';
 import { useState, useEffect, useCallback } from 'react';
 import { usePublicGetHospitalConnectionLazyQuery } from '@/api/public_api/types';
-import type { PublicGetHospitalConnectionQueryVariables } from '@/api/public_api/types';
 import { useLocalStorage } from '@/utils/hooks';
 import { scrollTo } from '@/utils/scroll';
 import { Filter } from './hospitalSearch/Filter';
@@ -19,7 +18,6 @@ import type {
   NichijuOption,
   Recommended,
   GetContinuousHospitalConnection,
-  GetInitialHospitalConnectionVariables,
 } from './types';
 
 const PAGE_STORED_KEY = 'hospitalsPage';
@@ -48,39 +46,8 @@ const HospitalSearch: React.FC<NoProps> = () => {
   const { setLocalStorage, getLocalStorage } =
     useLocalStorage<PERSISTED>(PAGE_STORED_KEY);
 
-  const persistPage = useCallback(
-    (variables: Partial<PublicGetHospitalConnectionQueryVariables>) => {
-      const persisting: PERSISTED = {
-        after: hospitalData?.publicHospitalConnection?.pageInfo.endCursor,
-        searchText,
-        currentLocation,
-        reservable,
-        nightServiceOption,
-        insuranceEnabled,
-        jsavaOption,
-        nichijuOption,
-        recommended,
-        ...variables,
-      };
-      setLocalStorage(persisting);
-    },
-    [
-      currentLocation,
-      hospitalData?.publicHospitalConnection?.pageInfo.endCursor,
-      insuranceEnabled,
-      jsavaOption,
-      nichijuOption,
-      nightServiceOption,
-      recommended,
-      reservable,
-      searchText,
-      setLocalStorage,
-    ]
-  );
-
-  useEffect(() => {
-    const variables = {
-      first: 20,
+  const persistPage = useCallback(() => {
+    const persisting: PERSISTED = {
       searchText,
       currentLocation,
       reservable,
@@ -90,21 +57,17 @@ const HospitalSearch: React.FC<NoProps> = () => {
       nichijuOption,
       recommended,
     };
-
-    getHospitalConnection({ variables, fetchPolicy: 'network-only' });
-    scrollTo();
-    persistPage(variables);
+    setLocalStorage(persisting);
   }, [
-    searchText,
     currentLocation,
-    reservable,
-    nightServiceOption,
     insuranceEnabled,
     jsavaOption,
     nichijuOption,
+    nightServiceOption,
     recommended,
-    getHospitalConnection,
-    persistPage,
+    reservable,
+    searchText,
+    setLocalStorage,
   ]);
 
   const restorePage = useCallback(() => {
@@ -134,6 +97,34 @@ const HospitalSearch: React.FC<NoProps> = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    const variables = {
+      first: 20,
+      searchText,
+      currentLocation,
+      reservable,
+      nightServiceOption,
+      insuranceEnabled,
+      jsavaOption,
+      nichijuOption,
+      recommended,
+    };
+    getHospitalConnection({ variables, fetchPolicy: 'network-only' });
+    scrollTo();
+    persistPage();
+  }, [
+    searchText,
+    currentLocation,
+    reservable,
+    nightServiceOption,
+    insuranceEnabled,
+    jsavaOption,
+    nichijuOption,
+    recommended,
+    getHospitalConnection,
+    persistPage,
+  ]);
+
   const getContinuousHospitalConnection: GetContinuousHospitalConnection =
     () => {
       if (fetchMore) {
@@ -153,7 +144,7 @@ const HospitalSearch: React.FC<NoProps> = () => {
               recommended,
             },
           });
-          persistPage({});
+          persistPage();
         }
       }
     };
@@ -189,7 +180,6 @@ const HospitalSearch: React.FC<NoProps> = () => {
           setNichijuOption={setNichijuOption}
           recommended={recommended}
           setRecommended={setRecommended}
-          getInitialHospitalConnection={getInitialHospitalConnection}
         />
       </Box>
       <Box>
@@ -212,7 +202,6 @@ const HospitalSearch: React.FC<NoProps> = () => {
         setNichijuOption={setNichijuOption}
         recommended={recommended}
         setRecommended={setRecommended}
-        getInitialHospitalConnection={getInitialHospitalConnection}
       />
     </>
   );

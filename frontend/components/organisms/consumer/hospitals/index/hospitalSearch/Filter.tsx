@@ -1,4 +1,4 @@
-import { ArrowUpIcon, StarIcon } from '@chakra-ui/icons';
+import { ArrowUpIcon } from '@chakra-ui/icons';
 import {
   Button,
   Box,
@@ -13,7 +13,7 @@ import {
   useDisclosure,
   Text,
 } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { SecondaryButton } from '@/components/atoms/SecondaryButton';
 import { FilterIcon } from '@/components/atoms/assets/FilterIcon';
 import { scrollTo } from '@/utils/scroll';
@@ -30,7 +30,6 @@ import type {
   SetNichijuOption,
   Recommended,
   SetRecommended,
-  GetInitialHospitalConnection,
 } from '../types';
 
 type Props = {
@@ -46,7 +45,6 @@ type Props = {
   setNichijuOption: SetNichijuOption;
   recommended: Recommended;
   setRecommended: SetRecommended;
-  getInitialHospitalConnection: GetInitialHospitalConnection;
 };
 
 const Filter: React.FC<Props> = ({
@@ -62,7 +60,6 @@ const Filter: React.FC<Props> = ({
   setNichijuOption,
   recommended,
   setRecommended,
-  getInitialHospitalConnection,
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [modalReservable, setModalReservable] = useState(reservable);
@@ -74,41 +71,63 @@ const Filter: React.FC<Props> = ({
   const [modalNichijuOption, setModalNichijuOption] = useState(nichijuOption);
   const [modalRecommended, setModalRecommended] = useState(recommended);
 
-  const handleSearchClick = (): void => {
-    copyModalState();
-    getInitialHospitalConnection({
-      reservable: modalReservable,
-      nightServiceOption: modalNightServiceOption,
-      insuranceEnabled: modalInsuranceEnabled,
-      jsavaOption: modalJsavaOption,
-      nichijuOption: modalNichijuOption,
-      recommended: modalRecommended,
-    });
-    onClose();
-  };
-
-  const copyModalState = (): void => {
-    setReservable(modalReservable);
-    setNightServiceOption(modalNightServiceOption);
-    setInsuranceEnabled(modalInsuranceEnabled);
-    setJsavaOption(modalJsavaOption);
-    setNichijuOption(modalNichijuOption);
-    setRecommended(modalRecommended);
-  };
-
-  const handleCancel = (): void => {
-    revertModalState();
-    onClose();
-  };
-
-  const revertModalState = (): void => {
+  const copyApplied = useCallback((): void => {
     setModalReservable(reservable);
     setModalNightServiceOption(nightServiceOption);
     setModalInsuranceEnabled(insuranceEnabled);
     setModalJsavaOption(jsavaOption);
     setModalNichijuOption(nichijuOption);
     setModalRecommended(recommended);
-  };
+  }, [
+    reservable,
+    nightServiceOption,
+    insuranceEnabled,
+    jsavaOption,
+    nichijuOption,
+    recommended,
+    setModalReservable,
+    setModalNightServiceOption,
+    setModalJsavaOption,
+    setModalInsuranceEnabled,
+    setModalNichijuOption,
+    setModalRecommended,
+  ]);
+
+  const copyLocal = useCallback((): void => {
+    setReservable(modalReservable);
+    setNightServiceOption(modalNightServiceOption);
+    setInsuranceEnabled(modalInsuranceEnabled);
+    setJsavaOption(modalJsavaOption);
+    setNichijuOption(modalNichijuOption);
+    setRecommended(modalRecommended);
+  }, [
+    modalReservable,
+    modalNightServiceOption,
+    modalInsuranceEnabled,
+    modalJsavaOption,
+    modalNichijuOption,
+    modalRecommended,
+    setReservable,
+    setNightServiceOption,
+    setJsavaOption,
+    setInsuranceEnabled,
+    setNichijuOption,
+    setRecommended,
+  ]);
+
+  useEffect(() => {
+    copyApplied;
+  }, [copyApplied]);
+
+  const handleSearchClick = useCallback((): void => {
+    copyLocal();
+    onClose();
+  }, [onClose, copyLocal]);
+
+  const handleCancel = useCallback((): void => {
+    copyApplied();
+    onClose();
+  }, [onClose, copyApplied]);
 
   return (
     <>

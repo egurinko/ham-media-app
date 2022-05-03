@@ -17,7 +17,6 @@ import type {
   SetJsavaOption,
   Recommended,
   SetRecommended,
-  GetInitialHospitalConnection,
 } from '../types';
 
 type Props = {
@@ -35,7 +34,6 @@ type Props = {
   setNichijuOption: SetNichijuOption;
   recommended: Recommended;
   setRecommended: SetRecommended;
-  getInitialHospitalConnection: GetInitialHospitalConnection;
 };
 
 const SearchConditions: React.FC<Props> = ({
@@ -53,7 +51,6 @@ const SearchConditions: React.FC<Props> = ({
   setNichijuOption,
   recommended,
   setRecommended,
-  getInitialHospitalConnection,
 }) => {
   const clearAll = useCallback(() => {
     setSearchText('');
@@ -77,45 +74,27 @@ const SearchConditions: React.FC<Props> = ({
 
   const clearReservable = useCallback(() => {
     setReservable(false);
-    getInitialHospitalConnection({
-      reservable: false,
-    });
-  }, [getInitialHospitalConnection, setReservable]);
+  }, [setReservable]);
 
   const clearNightServiceOption = useCallback(() => {
     setNightServiceOption(false);
-    getInitialHospitalConnection({
-      nightServiceOption: false,
-    });
-  }, [getInitialHospitalConnection, setNightServiceOption]);
+  }, [setNightServiceOption]);
 
   const clearInsuranceEnabled = useCallback(() => {
     setInsuranceEnabled(false);
-    getInitialHospitalConnection({
-      insuranceEnabled: false,
-    });
-  }, [getInitialHospitalConnection, setInsuranceEnabled]);
+  }, [setInsuranceEnabled]);
 
   const clearJsavaOption = useCallback(() => {
     setJsavaOption(false);
-    getInitialHospitalConnection({
-      jsavaOption: false,
-    });
-  }, [getInitialHospitalConnection, setJsavaOption]);
+  }, [setJsavaOption]);
 
   const clearNichijuOption = useCallback(() => {
     setNichijuOption(false);
-    getInitialHospitalConnection({
-      nichijuOption: false,
-    });
-  }, [getInitialHospitalConnection, setNichijuOption]);
+  }, [setNichijuOption]);
 
   const clearRecommended = useCallback(() => {
     setRecommended(false);
-    getInitialHospitalConnection({
-      recommended: false,
-    });
-  }, [getInitialHospitalConnection, setRecommended]);
+  }, [setRecommended]);
 
   return (
     <HStack spacing={2} wrap="wrap">
