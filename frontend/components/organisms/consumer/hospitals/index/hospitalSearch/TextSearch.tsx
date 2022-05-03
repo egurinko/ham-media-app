@@ -1,20 +1,36 @@
 import { SearchIcon } from '@chakra-ui/icons';
 import { IconButton, Input, Box, Button } from '@chakra-ui/react';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { usePublicGetPlaceAutocompleteLazyQuery } from '@/api/public_api/types';
 import { Card } from '@/components/atoms/Card';
-import type { SetSearchText, SetCurrentLocation } from '../types';
+import type { SearchText, SetSearchText, SetCurrentLocation } from '../types';
 
 type Props = {
+  searchText: SearchText;
   setSearchText: SetSearchText;
   setCurrentLocation: SetCurrentLocation;
 };
 
-const TextSearch: React.FC<Props> = ({ setSearchText, setCurrentLocation }) => {
+const TextSearch: React.FC<Props> = ({
+  searchText,
+  setSearchText,
+  setCurrentLocation,
+}) => {
   const [text, setText] = useState('');
   const [isCandidatesWindowOpen, setIsCandidatesWindowOpen] = useState(false);
   const [getPlaceAutocomplete, { data }] =
     usePublicGetPlaceAutocompleteLazyQuery();
+
+  const copyApplied = useCallback(() => {
+    setText(searchText);
+  }, [searchText]);
+  const copyLocal = useCallback(() => {
+    setSearchText(text);
+  }, [text, setSearchText]);
+
+  useEffect(() => {
+    copyApplied();
+  }, [copyApplied]);
 
   const handleTextChange = useCallback(
     (e: GenericChangeEvent<string>): void => {
@@ -37,9 +53,9 @@ const TextSearch: React.FC<Props> = ({ setSearchText, setCurrentLocation }) => {
   }, []);
 
   const handleSearchClick = useCallback(() => {
-    setSearchText(text);
+    copyLocal();
     setCurrentLocation(null);
-  }, [text, setSearchText, setCurrentLocation]);
+  }, [copyLocal, setCurrentLocation]);
 
   return (
     <Card>

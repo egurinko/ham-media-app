@@ -153,6 +153,7 @@ const HospitalSearch: React.FC<NoProps> = () => {
     <>
       <Box>
         <TextSearch
+          searchText={searchText}
           setSearchText={setSearchText}
           setCurrentLocation={setCurrentLocation}
         />

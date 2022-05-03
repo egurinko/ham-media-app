@@ -1,5 +1,5 @@
-import { Button, Text, Box } from '@chakra-ui/react';
-import { useState, useCallback } from 'react';
+import { Button, Text, Box, useEditable } from '@chakra-ui/react';
+import { useState, useCallback, useEffect } from 'react';
 import { Card } from '@/components/atoms/Card';
 import { MapPinIcon } from '@/components/atoms/assets/MapPinIcon';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
@@ -27,17 +27,32 @@ const MapSearch: React.FC<Props> = ({
   const [currentLat, setCurrentLat] = useState(35.6602384);
   const [currentLng, setCurrentLng] = useState(139.727888);
 
+  const copyApplied = useCallback(() => {
+    if (currentLocation) {
+      setCurrentLat(currentLocation.latitude);
+      setCurrentLng(currentLocation.longitude);
+      setOpen(true);
+    }
+  }, [currentLocation]);
+  const copyLocal = useCallback(() => {
+    setCurrentLocation({ latitude: currentLat, longitude: currentLng });
+  }, [currentLat, currentLng, setCurrentLocation]);
+
+  useEffect(() => {
+    copyApplied();
+  }, [copyApplied]);
+
   const success = useCallback(
     (position: GeolocationPosition) => {
       const { latitude, longitude } = position.coords;
       setCurrentLat(latitude);
       setCurrentLng(longitude);
-      setCurrentLocation({ latitude, longitude });
+      copyLocal();
       setSearchText('');
       setCurrentLocationError(null);
       setOpen(true);
     },
-    [setCurrentLocation, setSearchText]
+    [setSearchText, copyLocal]
   );
 
   const error = useCallback((error: GeolocationPositionError) => {
