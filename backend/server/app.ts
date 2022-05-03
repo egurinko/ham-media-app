@@ -1,6 +1,6 @@
 import fastify from 'fastify';
-import cors from 'fastify-cors';
-import helmet from 'fastify-helmet';
+import cors from '@fastify/cors';
+import helmet from '@fastify/helmet';
 import fastifyCron from 'fastify-cron';
 import MercuriusGQLUpload from 'mercurius-upload';
 import 'json-bigint-patch';
