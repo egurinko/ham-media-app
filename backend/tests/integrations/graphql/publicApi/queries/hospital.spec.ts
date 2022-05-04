@@ -1,5 +1,5 @@
 import gql from 'graphql-tag';
-import { client as db } from '@/services/prisma';
+import { client, client as db } from '@/services/prisma';
 import { setup } from '@tests/utils/setupPublicApi';
 
 const QUERY = gql`
@@ -51,10 +51,12 @@ const QUERY = gql`
         required
         reservable
       }
+      recommended
     }
   }
 `;
 
+const HOSPITAL_ID = 1;
 const HOSPITAL_NAME = 'name';
 const HOSPITAL_URL = 'https://test.com';
 const HOSPITAL_INTERNAL_MEMO = 'internalMemo';
@@ -80,6 +82,7 @@ const RESERVATION_STATUS_RESERVABLE = 'reservationStatusReservable';
 const init = async () => {
   const hospital = await db.hospital.create({
     data: {
+      id: HOSPITAL_ID,
       name: HOSPITAL_NAME,
       url: HOSPITAL_URL,
       internal_memo: HOSPITAL_INTERNAL_MEMO,
@@ -133,7 +136,7 @@ const init = async () => {
       hospital_id: hospital.id,
     },
   });
-  return db.hospitalReservationStatus.create({
+  await db.hospitalReservationStatus.create({
     data: {
       hospital_id: hospital.id,
       required: RESERVATION_STATUS_REQUIRED,
@@ -141,18 +144,24 @@ const init = async () => {
       reservable: RESERVATION_STATUS_RESERVABLE,
     },
   });
+
+  await db.hospitalInternalReputation.create({
+    data: { hospital_id: hospital.id, star: 3, remark: '' },
+  });
 };
 
 describe('hospital', () => {
-  beforeEach(() => {
-    return init();
+  beforeEach(async () => {
+    await init();
   });
 
   describe('with valid params', () => {
     it('returns hospital', async () => {
       const client = await setup();
 
-      const result = await client.query(QUERY, { variables: { id: 1 } });
+      const result = await client.query(QUERY, {
+        variables: { id: HOSPITAL_ID },
+      });
 
       expect(result.errors).toBeUndefined();
       const hospital = result.data['hospital'];
@@ -201,6 +210,49 @@ describe('hospital', () => {
       expect(reservationStatus.reservable).toEqual(
         RESERVATION_STATUS_RESERVABLE
       );
+
+      expect(hospital.recommended).toEqual(false);
+    });
+
+    describe('with 5 star internalReputation', () => {
+      beforeEach(async () => {
+        await client.hospitalInternalReputation.update({
+          where: { hospital_id: HOSPITAL_ID },
+          data: { star: 5 },
+        });
+      });
+
+      it('returns recommended hospital', async () => {
+        const client = await setup();
+
+        const result = await client.query(QUERY, { variables: { id: 1 } });
+
+        expect(result.errors).toBeUndefined();
+        const hospital = result.data['hospital'];
+        expect(hospital.name).toEqual(HOSPITAL_NAME);
+        expect(hospital.url).toEqual(HOSPITAL_URL);
+        expect(hospital.recommended).toEqual(true);
+      });
+    });
+    describe('with less then 5 star internalReputation', () => {
+      beforeEach(async () => {
+        await client.hospitalInternalReputation.update({
+          where: { hospital_id: HOSPITAL_ID },
+          data: { star: 3 },
+        });
+      });
+
+      it('returns not recommended hospital', async () => {
+        const client = await setup();
+
+        const result = await client.query(QUERY, { variables: { id: 1 } });
+
+        expect(result.errors).toBeUndefined();
+        const hospital = result.data['hospital'];
+        expect(hospital.name).toEqual(HOSPITAL_NAME);
+        expect(hospital.url).toEqual(HOSPITAL_URL);
+        expect(hospital.recommended).toEqual(false);
+      });
     });
   });
 

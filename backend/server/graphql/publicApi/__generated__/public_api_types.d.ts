@@ -200,6 +200,7 @@ export interface NexusGenFieldTypes {
     hospitalReservationStatus: NexusGenRootTypes['HospitalReservationStatus'] | null; // HospitalReservationStatus
     id: NexusGenScalars['BigInt']; // BigInt!
     name: string; // String!
+    recommended: boolean; // Boolean!
     url: string; // String!
   }
   HospitalAddress: { // field return type
@@ -317,6 +318,7 @@ export interface NexusGenFieldTypeNames {
     hospitalReservationStatus: 'HospitalReservationStatus'
     id: 'BigInt'
     name: 'String'
+    recommended: 'Boolean'
     url: 'String'
   }
   HospitalAddress: { // field return type name

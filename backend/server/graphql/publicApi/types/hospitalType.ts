@@ -14,5 +14,16 @@ export const hospitalType = objectType({
     t.field(Hospital.hospitalNightServiceOption);
     t.field(Hospital.hospitalNightUrgentActionOption);
     t.field(Hospital.hospitalReservationStatus);
+    t.nonNull.boolean('recommended', {
+      resolve: async (root, _args, ctx) => {
+        const internalReputation = await ctx.prisma.hospital
+          .findUnique({
+            where: { id: root.id },
+          })
+          .hospitalInternalReputation();
+
+        return internalReputation?.star === 5;
+      },
+    });
   },
 });
