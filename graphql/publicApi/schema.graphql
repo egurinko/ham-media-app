@@ -27,6 +27,7 @@ type Hospital {
   hospitalReservationStatus: HospitalReservationStatus
   id: BigInt!
   name: String!
+  recommended: Boolean!
   url: String!
 }
 
