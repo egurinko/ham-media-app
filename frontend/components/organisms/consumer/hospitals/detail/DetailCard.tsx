@@ -8,8 +8,8 @@ import { LinkIcon } from '@/components/atoms/assets/LinkIcon';
 import { MapPinIcon } from '@/components/atoms/assets/MapPinIcon';
 import { PhoneIcon } from '@/components/atoms/assets/PhoneIcon';
 import { GoogleMap } from '@/components/organisms/GoogleMap';
+import { HospitalTags } from '@/components/organisms/consumer/hospitals/HospitalTags';
 import { HOSPITAL_STATUSES } from '@/utils/constant';
-import { HospitalTags } from '../HospitalTags';
 
 type Props = {
   hospital: HospitalFieldsFragment;
