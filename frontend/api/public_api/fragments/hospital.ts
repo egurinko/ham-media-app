@@ -5,6 +5,7 @@ export const HOSPITAL_FIELDS = gql`
     id
     name
     url
+    recommended
     hospitalAddress {
       id
       address

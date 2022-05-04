@@ -6,9 +6,9 @@ import type { PublicGetHospitalConnectionQuery } from '@/api/public_api/types';
 import { Card } from '@/components/atoms/Card';
 import { MapPinIcon } from '@/components/atoms/assets/MapPinIcon';
 import { PhoneIcon } from '@/components/atoms/assets/PhoneIcon';
+import { HospitalTags } from '@/components/organisms/consumer/hospitals/HospitalTags';
 import { useIntersectionObserver } from '@/utils/hooks/useIntersectionObserver';
 import { goHospitalDetail } from '@/utils/routes';
-import { HospitalTags } from '../../HospitalTags';
 import type { GetContinuousHospitalConnection } from '../types';
 
 type Props = {
