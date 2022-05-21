@@ -12,6 +12,7 @@ const theme = extendTheme({
     background: {
       main: '#F9FAFB',
       hover: '#FFF0EE',
+      gray: defaultTheme.colors.gray[200],
     },
     text: {
       main: '#6F6F6F',
