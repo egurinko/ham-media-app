@@ -14,10 +14,7 @@ type Props = {
   title?: string;
 };
 
-const InternalLayout: FC<PropsWithChildren<Props>> = ({
-  title = 'Ham ω Media',
-  children,
-}) => {
+const InternalLayout: FC<PropsWithChildren<Props>> = ({ title, children }) => {
   const [isMobile] = useMediaQuery('(max-width: 30em)');
   const router = useRouter();
   const { data, error } = useInternalGetSessionQuery();
