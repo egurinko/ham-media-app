@@ -7,13 +7,14 @@ import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
 import { StockRequestCartButton } from '@/components/organisms/admin/products/StockRequestCartButton';
 import { ProductStacks } from '@/components/organisms/admin/products/index/ProductStacks';
 import { goAdminProductsNew } from '@/utils/routes';
+import type { ReactElement } from 'react';
 
-const Index: React.VFC<NoProps> = () => {
+const Index = () => {
   const router = useRouter();
   const { data: isAdminData } = useLocalReadIsAdminQuery();
 
   return (
-    <InternalLayout>
+    <>
       <Box
         display="flex"
         justifyContent="space-between"
@@ -32,8 +33,12 @@ const Index: React.VFC<NoProps> = () => {
       </Box>
       <ProductStacks />
       <StockRequestCartButton />
-    </InternalLayout>
+    </>
   );
 };
+
+Index.getLayout = (page: ReactElement) => (
+  <InternalLayout>{page}</InternalLayout>
+);
 
 export default Index;

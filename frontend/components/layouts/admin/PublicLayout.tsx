@@ -6,10 +6,7 @@ type Props = {
   title?: string;
 };
 
-const PublicLayout: FC<PropsWithChildren<Props>> = ({
-  title = 'Ham ω Media',
-  children,
-}) => (
+const PublicLayout: FC<PropsWithChildren<Props>> = ({ title, children }) => (
   <BaseLayout title={title}>
     <ClientOnly>
       <main>{children}</main>

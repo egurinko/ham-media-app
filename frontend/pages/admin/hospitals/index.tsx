@@ -6,13 +6,14 @@ import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
 import { HospitalsSearch } from '@/components/organisms/admin/hospitals/index/HospitalsSearch';
 import { goAdminHospitalsNew } from '@/utils/routes';
+import type { ReactElement } from 'react';
 
-const Index: React.VFC<NoProps> = () => {
+const Index = () => {
   const router = useRouter();
   const { data: isAdminData } = useLocalReadIsAdminQuery();
 
   return (
-    <InternalLayout>
+    <>
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Heading size="sm">病院一覧</Heading>
         <PrimaryButton
@@ -25,8 +26,12 @@ const Index: React.VFC<NoProps> = () => {
         </PrimaryButton>
       </Box>
       <HospitalsSearch />
-    </InternalLayout>
+    </>
   );
 };
+
+Index.getLayout = (page: ReactElement) => (
+  <InternalLayout>{page}</InternalLayout>
+);
 
 export default Index;

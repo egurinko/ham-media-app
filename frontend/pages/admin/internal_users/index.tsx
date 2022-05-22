@@ -6,13 +6,14 @@ import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
 import { InternalUsersStack } from '@/components/organisms/admin/internal_users/index/InternalUsersStack';
 import { goAdminInternalUserNew } from '@/utils/routes';
+import type { ReactElement } from 'react';
 
-const Index: React.VFC<NoProps> = () => {
+const Index = () => {
   const router = useRouter();
   const { data: isAdminData } = useLocalReadIsAdminQuery();
 
   return (
-    <InternalLayout>
+    <>
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Heading size="sm">ユーザ一覧</Heading>
         <PrimaryButton
@@ -25,8 +26,12 @@ const Index: React.VFC<NoProps> = () => {
         </PrimaryButton>
       </Box>
       <InternalUsersStack />
-    </InternalLayout>
+    </>
   );
 };
+
+Index.getLayout = (page: ReactElement) => (
+  <InternalLayout>{page}</InternalLayout>
+);
 
 export default Index;

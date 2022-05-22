@@ -7,13 +7,14 @@ import { Tags } from '@/components/organisms/admin/product_tag_groups/edit/Tags'
 import { goAdminProductTagGroups } from '@/utils/routes';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import type { ParsedUrlQuery } from 'querystring';
+import type { ReactElement } from 'react';
 
-const Edit: React.VFC<NoProps> = () => {
+const Edit = () => {
   const router = useRouter();
   const { id: productTagGroupId } = router.query;
 
   return (
-    <InternalLayout>
+    <>
       <Box display="flex" mb="4">
         <IconButton
           aria-label="link"
@@ -31,9 +32,13 @@ const Edit: React.VFC<NoProps> = () => {
           <Tags productTagGroupId={Number(productTagGroupId)} />
         </>
       ) : null}
-    </InternalLayout>
+    </>
   );
 };
+
+Edit.getLayout = (page: ReactElement) => (
+  <InternalLayout>{page}</InternalLayout>
+);
 
 interface Params extends ParsedUrlQuery {
   id: string;

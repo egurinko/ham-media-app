@@ -4,12 +4,13 @@ import { useRouter } from 'next/router';
 import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
 import { Form } from '@/components/organisms/admin/internal_users/new/Form';
 import { goAdminInternalUsers } from '@/utils/routes';
+import type { ReactElement } from 'react';
 
-const New: React.VFC<NoProps> = () => {
+const New = () => {
   const router = useRouter();
 
   return (
-    <InternalLayout>
+    <>
       <Box display="flex" mb="4">
         <IconButton
           aria-label="link"
@@ -20,8 +21,10 @@ const New: React.VFC<NoProps> = () => {
         <Heading size="sm">ユーザ登録</Heading>
       </Box>
       <Form />
-    </InternalLayout>
+    </>
   );
 };
+
+New.getLayout = (page: ReactElement) => <InternalLayout>{page}</InternalLayout>;
 
 export default New;
