@@ -5,8 +5,8 @@ on:
     paths:
       - frontend/**
       - .github/workflows/frontend.yml
-      - ./package.json
-      - ./yarn.lock
+      - package.json
+      - yarn.lock
 
 jobs:
   tscheck:

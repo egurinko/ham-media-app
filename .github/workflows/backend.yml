@@ -5,8 +5,8 @@ on:
     paths:
       - backend/**
       - .github/workflows/backend.yml
-      - ./package.json
-      - ./yarn.lock
+      - package.json
+      - yarn.lock
 
 jobs:
   test:
