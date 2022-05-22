@@ -37,5 +37,10 @@ export const productType = objectType({
         return stocks.length;
       },
     });
+    t.nonNull.int('test', {
+      resolve: () => {
+        return 0;
+      },
+    });
   },
 });
