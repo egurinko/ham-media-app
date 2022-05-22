@@ -2,6 +2,10 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=16.0.0 <17.0.0",
+    "yarn": ">=1.22.17 <2.0.0"
+  },
   "scripts": {
     "dev": "next dev -p 8080",
     "build": "next build",
