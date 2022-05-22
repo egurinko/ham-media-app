@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "engines": {
+    "node": ">=16.0.0 <17.0.0",
+    "yarn": ">=1.22.17 <2.0.0"
+  },
   "scripts": {
     "console": "yarn --cwd ../ prisma-repl",
     "build": "yarn tsc -p tsconfig.json && tsc-alias -p tsconfig.json",
