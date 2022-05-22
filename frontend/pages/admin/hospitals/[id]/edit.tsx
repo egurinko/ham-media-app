@@ -41,6 +41,7 @@ import { goAdminHospitals } from '@/utils/routes';
 import { scrollTo } from '@/utils/scroll';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import type { ParsedUrlQuery } from 'querystring';
+import type { ReactElement } from 'react';
 import type { SubmitHandler } from 'react-hook-form';
 
 interface FormInput {
@@ -67,7 +68,7 @@ interface FormInput {
   nichijuRegistered: string;
 }
 
-const Edit: React.VFC<NoProps> = () => {
+const Edit = () => {
   const router = useRouter();
 
   const { id: hospitalId } = router.query;
@@ -179,7 +180,7 @@ const Edit: React.VFC<NoProps> = () => {
   };
 
   return (
-    <InternalLayout>
+    <>
       <Box display="flex" mb="4">
         <IconButton
           aria-label="link"
@@ -756,9 +757,13 @@ const Edit: React.VFC<NoProps> = () => {
           </form>
         </Card>
       ) : null}
-    </InternalLayout>
+    </>
   );
 };
+
+Edit.getLayout = (page: ReactElement) => (
+  <InternalLayout>{page}</InternalLayout>
+);
 
 interface Params extends ParsedUrlQuery {
   id: string;

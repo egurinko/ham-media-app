@@ -5,12 +5,13 @@ import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
 import { StockRequestsStack } from '@/components/organisms/admin/stock_requests/index/StockRequestsStack';
 import { goAdminStockRequestsNew } from '@/utils/routes';
+import type { ReactElement } from 'react';
 
-const Index: React.VFC<NoProps> = () => {
+const Index = () => {
   const router = useRouter();
 
   return (
-    <InternalLayout>
+    <>
       <Box
         display="flex"
         justifyContent="space-between"
@@ -27,8 +28,12 @@ const Index: React.VFC<NoProps> = () => {
         </PrimaryButton>
       </Box>
       <StockRequestsStack />
-    </InternalLayout>
+    </>
   );
 };
+
+Index.getLayout = (page: ReactElement) => (
+  <InternalLayout>{page}</InternalLayout>
+);
 
 export default Index;

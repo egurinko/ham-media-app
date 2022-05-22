@@ -6,13 +6,14 @@ import { Form } from '@/components/organisms/admin/internal_users/edit/Form';
 import { goAdminInternalUsers } from '@/utils/routes';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import type { ParsedUrlQuery } from 'querystring';
+import type { ReactElement } from 'react';
 
-const Edit: React.VFC<NoProps> = () => {
+const Edit = () => {
   const router = useRouter();
   const { id: internalUserId } = router.query;
 
   return (
-    <InternalLayout>
+    <>
       <Box display="flex" mb="4">
         <IconButton
           aria-label="link"
@@ -25,9 +26,13 @@ const Edit: React.VFC<NoProps> = () => {
       {typeof internalUserId === 'string' ? (
         <Form internalUserId={BigInt(internalUserId)} />
       ) : null}
-    </InternalLayout>
+    </>
   );
 };
+
+Edit.getLayout = (page: ReactElement) => (
+  <InternalLayout>{page}</InternalLayout>
+);
 
 interface Params extends ParsedUrlQuery {
   id: string;

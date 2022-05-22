@@ -11,14 +11,15 @@ import { Stocks } from '@/components/organisms/admin/products/edit/Stocks';
 import { goAdminProducts, ADMIN_PRODUCTS_EDIT_PATH } from '@/utils/routes';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import type { ParsedUrlQuery } from 'querystring';
+import type { ReactElement } from 'react';
 
-const Detail: React.VFC<NoProps> = () => {
+const Detail = () => {
   const router = useRouter();
   const { id: productId } = router.query;
   const { data: isAdminData } = useLocalReadIsAdminQuery();
 
   return (
-    <InternalLayout>
+    <>
       <Box
         display="flex"
         justifyContent="space-between"
@@ -58,9 +59,13 @@ const Detail: React.VFC<NoProps> = () => {
         </>
       ) : null}
       <StockRequestCartButton />
-    </InternalLayout>
+    </>
   );
 };
+
+Detail.getLayout = (page: ReactElement) => (
+  <InternalLayout>{page}</InternalLayout>
+);
 
 interface Params extends ParsedUrlQuery {
   id: string;

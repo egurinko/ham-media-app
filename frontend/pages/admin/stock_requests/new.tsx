@@ -4,12 +4,13 @@ import { useRouter } from 'next/router';
 import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
 import { Form } from '@/components/organisms/admin/stock_requests/new/Form';
 import { goAdminStockRequests } from '@/utils/routes';
+import type { ReactElement } from 'react';
 
-const New: React.VFC<NoProps> = () => {
+const New = () => {
   const router = useRouter();
 
   return (
-    <InternalLayout>
+    <>
       <Box display="flex" mb="4">
         <IconButton
           aria-label="link"
@@ -20,8 +21,10 @@ const New: React.VFC<NoProps> = () => {
         <Heading size="sm">在庫リクエスト</Heading>
       </Box>
       <Form />
-    </InternalLayout>
+    </>
   );
 };
+
+New.getLayout = (page: ReactElement) => <InternalLayout>{page}</InternalLayout>;
 
 export default New;

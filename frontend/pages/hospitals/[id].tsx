@@ -9,17 +9,20 @@ import type {
   PublicGetHospitalQueryVariables,
 } from '@/api/public_api/types';
 import { Layout } from '@/components/layouts/consumer/Layout';
+import { Head } from '@/components/molecules/Head';
 import { DetailCard } from '@/components/organisms/consumer/hospitals/detail/DetailCard';
 import { apiClient } from '@/utils/apollo';
 import { goHospitals } from '@/utils/routes';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import type { ParsedUrlQuery } from 'querystring';
+import type { ReactElement } from 'react';
 
-const Show: React.VFC<Props> = ({ hospital }) => {
+const Show = ({ hospital }: Props) => {
   const router = useRouter();
 
   return (
-    <Layout title={`${hospital.name} - Ham ω Media`}>
+    <>
+      <Head title={`${hospital.name} - Ham ω Media`} />
       <Box display="flex" mb="4" mt="2">
         <Button
           aria-label="link"
@@ -33,9 +36,11 @@ const Show: React.VFC<Props> = ({ hospital }) => {
       <Box>
         <DetailCard hospital={hospital} />
       </Box>
-    </Layout>
+    </>
   );
 };
+
+Show.getLayout = (page: ReactElement) => <Layout>{page}</Layout>;
 
 interface Params extends ParsedUrlQuery {
   id: string;

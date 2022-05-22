@@ -21,6 +21,7 @@ import { Card } from '@/components/atoms/Card';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
 import { goAdminHospitalsEdit, goAdminHospitals } from '@/utils/routes';
+import type { ReactElement } from 'react';
 import type { SubmitHandler } from 'react-hook-form';
 
 interface FormInput {
@@ -30,7 +31,7 @@ interface FormInput {
   internalMemo: string;
 }
 
-const New: React.VFC<NoProps> = () => {
+const New = () => {
   const router = useRouter();
   const {
     control,
@@ -67,7 +68,7 @@ const New: React.VFC<NoProps> = () => {
   };
 
   return (
-    <InternalLayout>
+    <>
       <Box display="flex" mb="4">
         <IconButton
           aria-label="link"
@@ -179,8 +180,10 @@ const New: React.VFC<NoProps> = () => {
           </Box>
         </form>
       </Card>
-    </InternalLayout>
+    </>
   );
 };
+
+New.getLayout = (page: ReactElement) => <InternalLayout>{page}</InternalLayout>;
 
 export default New;
