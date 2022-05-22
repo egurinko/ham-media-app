@@ -6,11 +6,9 @@ import {
   FormLabel,
   FormErrorMessage,
   Select,
-  Text,
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { FileUploader } from 'react-drag-drop-files';
 import { useForm, Controller } from 'react-hook-form';
 import {
   useInternalUpdateProductMutation,
@@ -21,8 +19,8 @@ import type { InternalUpdateProductMutationVariables } from '@/api/internal_api/
 import { Card } from '@/components/atoms/Card';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { Zoom } from '@/components/atoms/Zoom';
-import { ImageIcon } from '@/components/atoms/assets/ImageIcon';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
+import { FileUploader } from '@/components/molecules/FileUploader';
 import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 import { goAdminProducts } from '@/utils/routes';
 import validators from '@/validators/index';
@@ -171,57 +169,9 @@ const Form: React.VFC<Props> = ({ productId }) => {
                     </Zoom>
                   </Box>
                   <FileUploader
-                    handleChange={handleFileChange}
-                    hoverTitle="ドロップしてください"
-                    types={['JPG', 'JPEG', 'PNG', 'GIF']}
-                  >
-                    <Box
-                      sx={{
-                        borderColor: 'border.gray',
-                        borderStyle: 'solid',
-                        borderWidth: 1,
-                        borderRadius: 4,
-                        p: 4,
-                      }}
-                      _hover={{
-                        opacity: 0.7,
-                        cursor: 'pointer',
-                      }}
-                    >
-                      <Box
-                        sx={{
-                          backgroundColor: 'background.gray',
-                          p: 4,
-                          borderRadius: 4,
-                          display: 'flex',
-                          flexDirection: 'column',
-                          justifyContent: 'center',
-                          alignItems: 'center',
-                        }}
-                      >
-                        <ImageIcon width={90} height={70} />
-                        <Text fontSize="xl">
-                          ファイルを選択するかドロップしてください
-                        </Text>
-                        <Text fontSize="md">
-                          フォーマットはJPG/JPEG/PNG/GIF
-                        </Text>
-                      </Box>
-                    </Box>
-                  </FileUploader>
-                  <Text mt={2}>
-                    {image ? (
-                      <>
-                        ファイル名: {image.name}
-                        <img
-                          src={URL.createObjectURL(image)}
-                          alt="アップロードするファイル"
-                        />
-                      </>
-                    ) : (
-                      'ファイルは選択されていません'
-                    )}
-                  </Text>
+                    handleFileChange={handleFileChange}
+                    image={image}
+                  />
                 </FormControl>
               </Stack>
               <Box display="grid" justifyContent="center">
