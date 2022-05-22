@@ -9,7 +9,7 @@ import {
 } from '@chakra-ui/react';
 import { CUIAutoComplete } from 'chakra-ui-autocomplete';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import {
   useInternalGetMakersQuery,
@@ -19,6 +19,7 @@ import {
 import { Card } from '@/components/atoms/Card';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
+import { FileUploader } from '@/components/molecules/FileUploader';
 import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 import { goAdminProducts } from '@/utils/routes';
 import validators from '@/validators/index';
@@ -75,12 +76,9 @@ const Form: React.VFC<NoProps> = () => {
     } catch (e) {}
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      const file = e.target.files[0];
-      setImage(file);
-    }
-  };
+  const handleFileChange = useCallback((file: File) => {
+    setImage(file);
+  }, []);
 
   const { data: productTagGroupData } = useInternalGetProductTagGroupsQuery();
   const [productTags, setProductTags] = useState<AutoCompleteItem[]>([]);
@@ -166,13 +164,7 @@ const Form: React.VFC<NoProps> = () => {
 
             <FormControl id="image" isRequired>
               <FormLabel>商品画像</FormLabel>
-              <input
-                name="image"
-                type="file"
-                onChange={handleFileChange}
-                accept="image/png, image/jpeg, image/gif"
-                required
-              />
+              <FileUploader handleFileChange={handleFileChange} image={image} />
             </FormControl>
 
             {productTagGroupData ? (

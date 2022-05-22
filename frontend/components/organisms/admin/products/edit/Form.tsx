@@ -8,7 +8,7 @@ import {
   Select,
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import {
   useInternalUpdateProductMutation,
@@ -74,9 +74,9 @@ const Form: React.VFC<Props> = ({ productId }) => {
   };
 
   const [image, setImage] = useState<File | null>(null);
-  const handleFileChange = (file: File) => {
+  const handleFileChange = useCallback((file: File) => {
     setImage(file);
-  };
+  }, []);
 
   return (
     <>
