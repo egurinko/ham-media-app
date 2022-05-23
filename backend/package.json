@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.82.0",
-    "@aws-sdk/lib-storage": "^3.82.0",
+    "@aws-sdk/lib-storage": "^3.95.0",
     "@fastify/cors": "^7.0.0",
     "@fastify/helmet": "^8.0.1",
     "@line/bot-sdk": "^7.5.0",
