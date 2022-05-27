@@ -22,6 +22,6 @@
     "typescript": "^4.6.4"
   },
   "dependencies": {
-    "graphql": "^16.4.0"
+    "graphql": "^16.5.0"
   }
 }
