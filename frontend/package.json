@@ -19,12 +19,12 @@
     "lint": "next lint --fix"
   },
   "dependencies": {
-    "@apollo/client": "^3.6.2",
+    "@apollo/client": "^3.6.5",
     "@chakra-ui/icons": "^2.0.1",
     "@chakra-ui/react": "2.1.2",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
-    "@react-google-maps/api": "^2.10.2",
+    "@react-google-maps/api": "^2.11.8",
     "apollo-upload-client": "^17.0.0",
     "chakra-ui-autocomplete": "^1.4.5",
     "dayjs": "^1.11.2",
