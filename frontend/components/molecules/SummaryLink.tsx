@@ -9,7 +9,9 @@ type Props = {
 const SummaryLink: FC<PropsWithChildren<Props>> = ({ url, children }) => (
   <SummaryRow>
     <Link href={url}>
-      <a>{children}</a>
+      <a target="_blank" rel="noreferrer">
+        {children}
+      </a>
     </Link>
   </SummaryRow>
 );
