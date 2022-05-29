@@ -20,7 +20,7 @@ jobs:
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_DEFAULT_REGION: 'ap-northeast-1'
       NEXT_PUBLIC_GOOGLE_MAP_API_KEY: ${{ secrets.NEXT_PUBLIC_GOOGLE_MAP_API_KEY }}
-      GTM_CONTAINER_ID: ${{ secrets.GTM_CONTAINER_ID }}
+      NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID: ${{ secrets.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
