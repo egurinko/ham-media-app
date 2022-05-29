@@ -1,0 +1,57 @@
+name: Check GraphQL Schema
+
+on:
+  push:
+    paths:
+      - graphql/**
+      - backend/server/graphql/**
+      - frontend/api/**
+      - yarn.lock
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set up node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.13.1'
+      - name: Cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('./yarn.lock') }}
+      - name: Install dependencies
+        run: yarn install
+        working-directory: ./backend
+      - name: Generate GraphQL Schema
+        run: yarn dev &
+        working-directory: ./backend
+      - name: Check schema diff
+        run: bash check_code_diff.sh
+  frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set up node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.13.1'
+      - name: Cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('./yarn.lock') }}
+      - name: Install dependencies
+        run: yarn install
+        working-directory: ./frontend
+      - name: Generate GraphQL Schema
+        run: yarn generate
+        working-directory: ./frontend
+      - name: Check schema diff
+        run: bash check_code_diff.sh
