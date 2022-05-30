@@ -4844,16 +4844,16 @@
     chalk "4.1.2"
     cross-spawn "7.0.3"
 
-"@react-google-maps/api@^2.11.8":
-  version "2.11.8"
-  resolved "https://registry.yarnpkg.com/@react-google-maps/api/-/api-2.11.8.tgz#b8cdde7765546b145f18f39030d23a2115fb87b6"
-  integrity sha512-Tf/BQ6deNQaYeziL9cysbwO90TJKU6GF6VMu0GlyGRO90Yesty4WJnnqM5a8Hdk9bmMYtQCqZwmrtjhWE9ql8Q==
+"@react-google-maps/api@^2.11.9":
+  version "2.11.9"
+  resolved "https://registry.yarnpkg.com/@react-google-maps/api/-/api-2.11.9.tgz#bc483e66f421b99abfa192c2cf0547015ea9be7d"
+  integrity sha512-YomxBo7nlLo1AXWejheuq8Kia1Zc3VtdnNRAJgsZU5HO6zLQo7/jZzb3x1nWtpBS8pCLEoqAE6SJTzZDIvop7A==
   dependencies:
     "@googlemaps/js-api-loader" "1.14.3"
     "@googlemaps/markerclusterer" "2.0.7"
     "@react-google-maps/infobox" "2.11.8"
     "@react-google-maps/marker-clusterer" "2.11.8"
-    "@types/google.maps" "3.49.0"
+    "@types/google.maps" "3.49.1"
     invariant "2.2.4"
 
 "@react-google-maps/infobox@2.11.8":
@@ -5413,10 +5413,10 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
-"@types/google.maps@3.49.0":
-  version "3.49.0"
-  resolved "https://registry.yarnpkg.com/@types/google.maps/-/google.maps-3.49.0.tgz#26fcf3d86ecbc6545db0e6691a434ec8132df48b"
-  integrity sha512-hFGEX4srYvWf2+WiJ7OX2ehgEzx88HcXMBa+RIW8vF3oyPShZ9pcU2ZZAM9oIlomWdJ0pC89ibalJ77ioTGVEA==
+"@types/google.maps@3.49.1":
+  version "3.49.1"
+  resolved "https://registry.yarnpkg.com/@types/google.maps/-/google.maps-3.49.1.tgz#863cc43e11008eed5eed22eb2153528fac6cd435"
+  integrity sha512-Sbl5anucT7LUcUxXsRxkCozHdXIkUiY+Tyru+OVl5rot0+VIZuuulmABC7X+nF7rL7BRTAguSBSAD/e/AfIkkA==
 
 "@types/graceful-fs@^4.1.3":
   version "4.1.5"
