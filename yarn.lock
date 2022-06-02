@@ -4844,16 +4844,16 @@
     chalk "4.1.2"
     cross-spawn "7.0.3"
 
-"@react-google-maps/api@^2.11.8":
-  version "2.11.8"
-  resolved "https://registry.yarnpkg.com/@react-google-maps/api/-/api-2.11.8.tgz#b8cdde7765546b145f18f39030d23a2115fb87b6"
-  integrity sha512-Tf/BQ6deNQaYeziL9cysbwO90TJKU6GF6VMu0GlyGRO90Yesty4WJnnqM5a8Hdk9bmMYtQCqZwmrtjhWE9ql8Q==
+"@react-google-maps/api@^2.12.0":
+  version "2.12.0"
+  resolved "https://registry.yarnpkg.com/@react-google-maps/api/-/api-2.12.0.tgz#1509ca9697e06b0bf20a038695f3a543943f1783"
+  integrity sha512-BqsclJ9p2I6yZa++0R3oEcneECcH7PFsULhn8UDlWQ9uNAQR/aqvqGb9SXYvdpIAOJdk3E737iTrGhFg4j5Ucw==
   dependencies:
     "@googlemaps/js-api-loader" "1.14.3"
     "@googlemaps/markerclusterer" "2.0.7"
     "@react-google-maps/infobox" "2.11.8"
     "@react-google-maps/marker-clusterer" "2.11.8"
-    "@types/google.maps" "3.49.0"
+    "@types/google.maps" "3.49.1"
     invariant "2.2.4"
 
 "@react-google-maps/infobox@2.11.8":
@@ -5413,10 +5413,10 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
-"@types/google.maps@3.49.0":
-  version "3.49.0"
-  resolved "https://registry.yarnpkg.com/@types/google.maps/-/google.maps-3.49.0.tgz#26fcf3d86ecbc6545db0e6691a434ec8132df48b"
-  integrity sha512-hFGEX4srYvWf2+WiJ7OX2ehgEzx88HcXMBa+RIW8vF3oyPShZ9pcU2ZZAM9oIlomWdJ0pC89ibalJ77ioTGVEA==
+"@types/google.maps@3.49.1":
+  version "3.49.1"
+  resolved "https://registry.yarnpkg.com/@types/google.maps/-/google.maps-3.49.1.tgz#863cc43e11008eed5eed22eb2153528fac6cd435"
+  integrity sha512-Sbl5anucT7LUcUxXsRxkCozHdXIkUiY+Tyru+OVl5rot0+VIZuuulmABC7X+nF7rL7BRTAguSBSAD/e/AfIkkA==
 
 "@types/graceful-fs@^4.1.3":
   version "4.1.5"
@@ -5643,9 +5643,9 @@
     csstype "^3.0.2"
 
 "@types/react@^18.0.1", "@types/react@^18.0.9":
-  version "18.0.9"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.9.tgz#d6712a38bd6cd83469603e7359511126f122e878"
-  integrity sha512-9bjbg1hJHUm4De19L1cHiW0Jvx3geel6Qczhjd0qY5VKVE2X5+x77YxAepuCwVh4vrgZJdgEJw48zrhRIeF4Nw==
+  version "18.0.10"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.10.tgz#5692944d4a45e204fb7a981eb1388afe919cf4d0"
+  integrity sha512-dIugadZuIPrRzvIEevIu7A1smqOAjkSMv8qOfwPt9Ve6i6JT/FQcCHyk2qIAxwsQNKZt5/oGR0T4z9h2dXRAkg==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
