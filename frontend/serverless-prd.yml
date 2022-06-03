@@ -11,3 +11,4 @@ ham-media-front-app-prd:
     build:
       env:
         NEXT_PUBLIC_API_URL: https://ham-media-app.herokuapp.com
+        NEXT_PUBLIC_ORIGIN: https://ham-media-app.net
