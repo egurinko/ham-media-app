@@ -12,7 +12,7 @@ import { Layout } from '@/components/layouts/consumer/Layout';
 import { Head } from '@/components/molecules/Head';
 import { DetailCard } from '@/components/organisms/consumer/hospitals/detail/DetailCard';
 import { apiClient } from '@/utils/apollo';
-import { goHospitals } from '@/utils/routes';
+import { goHospitals, HOSPITALS_DETAIL_PATH } from '@/utils/routes';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import type { ParsedUrlQuery } from 'querystring';
 import type { ReactElement } from 'react';
@@ -22,7 +22,14 @@ const Show = ({ hospital }: Props) => {
 
   return (
     <>
-      <Head title={`${hospital.name} - Ham ω Media`} />
+      <Head
+        title={`${hospital.name} - Ham ω Media：ハムスター受付病院検索`}
+        description={`【Ham ω Media公式病院検索】${hospital.name}（${hospital.hospitalAddress?.prefecture.name}${hospital.hospitalAddress?.address}）の診療時間や予約情報などを確認できます。Ham ω Mediaが厳選したハムスター受付病院になります。`}
+        ogpUrl={`https://ham-media-app.net${HOSPITALS_DETAIL_PATH(
+          hospital.id
+        )}`}
+        keywords={`${hospital.name},${hospital.hospitalAddress?.prefecture.name},ハムスター受付病院,動物病院,ハムスター,ハムメディア,Ham ω Media`}
+      />
       <Box display="flex" mb="4" mt="2">
         <Button
           aria-label="link"
