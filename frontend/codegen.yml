@@ -17,4 +17,4 @@ generates:
       - typescript-react-apollo
 config:
   scalars:
-    BigInt: BigInt
+    BigInt: bigint

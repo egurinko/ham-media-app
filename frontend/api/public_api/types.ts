@@ -17,7 +17,7 @@ export type Scalars = {
    * The `BigInt` scalar type represents non-fractional signed whole numeric values.
    * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt
    */
-  BigInt: BigInt;
+  BigInt: bigint;
   /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
   DateTime: any;
   /** The `Upload` scalar type represents a file upload. */
@@ -260,14 +260,14 @@ export type PublicCreateSessionMutationVariables = Exact<{
 
 export type PublicCreateSessionMutation = { __typename?: 'Mutation', createSession: { __typename?: 'CreateSessionType', token: string } };
 
-export type HospitalFieldsFragment = { __typename?: 'Hospital', id: BigInt, name: string, url: string, recommended: boolean, hospitalAddress?: { __typename?: 'HospitalAddress', id: BigInt, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: BigInt }, hospitalAddressGeoLocation?: { __typename?: 'HospitalAddressGeoLocation', latitude: number, longitude: number } | null } | null, hospitalBusinessForm?: { __typename?: 'HospitalBusinessForm', id: BigInt, business_hour: string, closed_day: string, insurance_enabled: string, remark: string } | null, hospitalCertificationOption?: { __typename?: 'HospitalCertificationOption', id: BigInt, nichiju_registered: string, jsava_registered: string } | null, hospitalNightServiceOption?: { __typename?: 'HospitalNightServiceOption', id: BigInt, status: string, remark: string } | null, hospitalNightUrgentActionOption?: { __typename?: 'HospitalNightUrgentActionOption', id: BigInt, status: string } | null, hospitalReservationStatus?: { __typename?: 'HospitalReservationStatus', id: BigInt, required: string, reservable: string, remark: string } | null };
+export type HospitalFieldsFragment = { __typename?: 'Hospital', id: bigint, name: string, url: string, recommended: boolean, hospitalAddress?: { __typename?: 'HospitalAddress', id: bigint, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: bigint }, hospitalAddressGeoLocation?: { __typename?: 'HospitalAddressGeoLocation', latitude: number, longitude: number } | null } | null, hospitalBusinessForm?: { __typename?: 'HospitalBusinessForm', id: bigint, business_hour: string, closed_day: string, insurance_enabled: string, remark: string } | null, hospitalCertificationOption?: { __typename?: 'HospitalCertificationOption', id: bigint, nichiju_registered: string, jsava_registered: string } | null, hospitalNightServiceOption?: { __typename?: 'HospitalNightServiceOption', id: bigint, status: string, remark: string } | null, hospitalNightUrgentActionOption?: { __typename?: 'HospitalNightUrgentActionOption', id: bigint, status: string } | null, hospitalReservationStatus?: { __typename?: 'HospitalReservationStatus', id: bigint, required: string, reservable: string, remark: string } | null };
 
 export type PublicGetHospitalQueryVariables = Exact<{
   id: Scalars['BigInt'];
 }>;
 
 
-export type PublicGetHospitalQuery = { __typename?: 'Query', hospital: { __typename?: 'Hospital', id: BigInt, name: string, url: string, recommended: boolean, hospitalAddress?: { __typename?: 'HospitalAddress', id: BigInt, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: BigInt }, hospitalAddressGeoLocation?: { __typename?: 'HospitalAddressGeoLocation', latitude: number, longitude: number } | null } | null, hospitalBusinessForm?: { __typename?: 'HospitalBusinessForm', id: BigInt, business_hour: string, closed_day: string, insurance_enabled: string, remark: string } | null, hospitalCertificationOption?: { __typename?: 'HospitalCertificationOption', id: BigInt, nichiju_registered: string, jsava_registered: string } | null, hospitalNightServiceOption?: { __typename?: 'HospitalNightServiceOption', id: BigInt, status: string, remark: string } | null, hospitalNightUrgentActionOption?: { __typename?: 'HospitalNightUrgentActionOption', id: BigInt, status: string } | null, hospitalReservationStatus?: { __typename?: 'HospitalReservationStatus', id: BigInt, required: string, reservable: string, remark: string } | null } };
+export type PublicGetHospitalQuery = { __typename?: 'Query', hospital: { __typename?: 'Hospital', id: bigint, name: string, url: string, recommended: boolean, hospitalAddress?: { __typename?: 'HospitalAddress', id: bigint, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: bigint }, hospitalAddressGeoLocation?: { __typename?: 'HospitalAddressGeoLocation', latitude: number, longitude: number } | null } | null, hospitalBusinessForm?: { __typename?: 'HospitalBusinessForm', id: bigint, business_hour: string, closed_day: string, insurance_enabled: string, remark: string } | null, hospitalCertificationOption?: { __typename?: 'HospitalCertificationOption', id: bigint, nichiju_registered: string, jsava_registered: string } | null, hospitalNightServiceOption?: { __typename?: 'HospitalNightServiceOption', id: bigint, status: string, remark: string } | null, hospitalNightUrgentActionOption?: { __typename?: 'HospitalNightUrgentActionOption', id: bigint, status: string } | null, hospitalReservationStatus?: { __typename?: 'HospitalReservationStatus', id: bigint, required: string, reservable: string, remark: string } | null } };
 
 export type PublicGetHospitalConnectionQueryVariables = Exact<{
   first?: InputMaybe<Scalars['Int']>;
@@ -283,17 +283,17 @@ export type PublicGetHospitalConnectionQueryVariables = Exact<{
 }>;
 
 
-export type PublicGetHospitalConnectionQuery = { __typename?: 'Query', publicHospitalConnection?: { __typename?: 'HospitalConnection', edges?: Array<{ __typename?: 'HospitalEdge', node?: { __typename?: 'Hospital', id: BigInt, name: string, url: string, recommended: boolean, hospitalAddress?: { __typename?: 'HospitalAddress', id: BigInt, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: BigInt }, hospitalAddressGeoLocation?: { __typename?: 'HospitalAddressGeoLocation', latitude: number, longitude: number } | null } | null, hospitalBusinessForm?: { __typename?: 'HospitalBusinessForm', id: BigInt, business_hour: string, closed_day: string, insurance_enabled: string, remark: string } | null, hospitalCertificationOption?: { __typename?: 'HospitalCertificationOption', id: BigInt, nichiju_registered: string, jsava_registered: string } | null, hospitalNightServiceOption?: { __typename?: 'HospitalNightServiceOption', id: BigInt, status: string, remark: string } | null, hospitalNightUrgentActionOption?: { __typename?: 'HospitalNightUrgentActionOption', id: BigInt, status: string } | null, hospitalReservationStatus?: { __typename?: 'HospitalReservationStatus', id: BigInt, required: string, reservable: string, remark: string } | null } | null } | null> | null, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, hasPreviousPage: boolean, startCursor?: string | null, endCursor?: string | null } } | null };
+export type PublicGetHospitalConnectionQuery = { __typename?: 'Query', publicHospitalConnection?: { __typename?: 'HospitalConnection', edges?: Array<{ __typename?: 'HospitalEdge', node?: { __typename?: 'Hospital', id: bigint, name: string, url: string, recommended: boolean, hospitalAddress?: { __typename?: 'HospitalAddress', id: bigint, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: bigint }, hospitalAddressGeoLocation?: { __typename?: 'HospitalAddressGeoLocation', latitude: number, longitude: number } | null } | null, hospitalBusinessForm?: { __typename?: 'HospitalBusinessForm', id: bigint, business_hour: string, closed_day: string, insurance_enabled: string, remark: string } | null, hospitalCertificationOption?: { __typename?: 'HospitalCertificationOption', id: bigint, nichiju_registered: string, jsava_registered: string } | null, hospitalNightServiceOption?: { __typename?: 'HospitalNightServiceOption', id: bigint, status: string, remark: string } | null, hospitalNightUrgentActionOption?: { __typename?: 'HospitalNightUrgentActionOption', id: bigint, status: string } | null, hospitalReservationStatus?: { __typename?: 'HospitalReservationStatus', id: bigint, required: string, reservable: string, remark: string } | null } | null } | null> | null, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, hasPreviousPage: boolean, startCursor?: string | null, endCursor?: string | null } } | null };
 
 export type PublicGetHospitalIdsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type PublicGetHospitalIdsQuery = { __typename?: 'Query', hospitals: Array<{ __typename?: 'Hospital', id: BigInt }> };
+export type PublicGetHospitalIdsQuery = { __typename?: 'Query', hospitals: Array<{ __typename?: 'Hospital', id: bigint }> };
 
 export type PublicGetHospitalLocationsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type PublicGetHospitalLocationsQuery = { __typename?: 'Query', hospitals: Array<{ __typename?: 'Hospital', id: BigInt, name: string, url: string, hospitalAddress?: { __typename?: 'HospitalAddress', id: BigInt, address: string, phone_number: string, hospitalAddressGeoLocation?: { __typename?: 'HospitalAddressGeoLocation', latitude: number, longitude: number } | null } | null }> };
+export type PublicGetHospitalLocationsQuery = { __typename?: 'Query', hospitals: Array<{ __typename?: 'Hospital', id: bigint, name: string, url: string, hospitalAddress?: { __typename?: 'HospitalAddress', id: bigint, address: string, phone_number: string, hospitalAddressGeoLocation?: { __typename?: 'HospitalAddressGeoLocation', latitude: number, longitude: number } | null } | null }> };
 
 export type PublicGetPlaceAutocompleteQueryVariables = Exact<{
   searchText: Scalars['String'];
@@ -305,7 +305,7 @@ export type PublicGetPlaceAutocompleteQuery = { __typename?: 'Query', placeAutoc
 export type PublicGetPrefecturesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type PublicGetPrefecturesQuery = { __typename?: 'Query', prefectures: Array<{ __typename?: 'Prefecture', id: BigInt, name: string }> };
+export type PublicGetPrefecturesQuery = { __typename?: 'Query', prefectures: Array<{ __typename?: 'Prefecture', id: bigint, name: string }> };
 
 export const HospitalFieldsFragmentDoc = gql`
     fragment HospitalFields on Hospital {
