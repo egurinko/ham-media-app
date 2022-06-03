@@ -1,13 +1,19 @@
 import { Box, Text } from '@chakra-ui/react';
 import Image from 'next/image';
 import { Layout } from '@/components/layouts/consumer/Layout';
-import { SERVICE_NAME } from '@/utils/constant';
+import { Head } from '@/components/molecules/Head';
+import { SERVICE_NAME, ORIGIN_URL } from '@/utils/constant';
+import { NOTFOUND_PATH } from '@/utils/routes';
+import type { ReactElement } from 'react';
 
-const NotFound: React.FC<NoProps> = () => (
-  <Layout
-    title={`ページが見つかりませんでした - ${SERVICE_NAME}`}
-    description=""
-  >
+const NotFound = () => (
+  <>
+    <Head
+      title={`お探しのページが見つかりませんでした - ${SERVICE_NAME}`}
+      description=""
+      ogpUrl={`${ORIGIN_URL}${NOTFOUND_PATH}`}
+      keywords={`NotFound,ハムスター,ハムメディア,${SERVICE_NAME}`}
+    />
     <Box
       display="flex"
       flexWrap="wrap"
@@ -39,7 +45,9 @@ const NotFound: React.FC<NoProps> = () => (
         />
       </Box>
     </Box>
-  </Layout>
+  </>
 );
+
+NotFound.getLayout = (page: ReactElement) => <Layout>{page}</Layout>;
 
 export default NotFound;
