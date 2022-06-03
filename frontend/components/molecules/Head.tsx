@@ -1,4 +1,5 @@
 import NextHead from 'next/head';
+import { SERVICE_NAME } from '@/utils/constant';
 
 type Props = {
   title?: string;
@@ -9,11 +10,11 @@ type Props = {
 };
 
 const Head: React.FC<Props> = ({
-  title = 'Ham ω Media',
+  title = SERVICE_NAME,
   description = '１匹でも多くのハムスターのしあわせを未来につないでいきたい。様々な理由で助けが必要になったハムスターの里親を募集しています。',
   ogpUrl = 'https://ham-media.net/hospitals',
   ogpImageUrl = 'https://user-images.githubusercontent.com/23233648/138548265-89dbff65-9737-42db-8d4e-591168374f88.jpeg',
-  keywords = '動物病院,ハムスター受付病院,ハムスター,ハムメディア,Ham ω Media',
+  keywords = `動物病院,ハムスター受付病院,ハムスター,ハムメディア,${SERVICE_NAME}`,
 }) => (
   <NextHead>
     <title>{title}</title>

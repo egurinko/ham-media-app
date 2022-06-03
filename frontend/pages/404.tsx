@@ -1,9 +1,13 @@
 import { Box, Text } from '@chakra-ui/react';
 import Image from 'next/image';
 import { Layout } from '@/components/layouts/consumer/Layout';
+import { SERVICE_NAME } from '@/utils/constant';
 
 const NotFound: React.FC<NoProps> = () => (
-  <Layout title="ページが見つかりませんでした - Ham ω Media" description="">
+  <Layout
+    title={`ページが見つかりませんでした - ${SERVICE_NAME}`}
+    description=""
+  >
     <Box
       display="flex"
       flexWrap="wrap"

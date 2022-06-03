@@ -11,3 +11,4 @@ ham-media-front-app-stg:
     build:
       env:
         NEXT_PUBLIC_API_URL: https://ham-media-app-stg.herokuapp.com
+        NEXT_PUBLIC_ORIGIN: https://ham-media-stg-app.link
