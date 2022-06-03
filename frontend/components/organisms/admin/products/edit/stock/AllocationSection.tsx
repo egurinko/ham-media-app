@@ -79,7 +79,7 @@ const AllocationSection: React.FC<Props> = ({
     },
   ] = useInternalUpdateStockInternalUserMutation();
 
-  const handleAllocate = async (id: number, internalUserId: BigInt) => {
+  const handleAllocate = async (id: number, internalUserId: bigint) => {
     try {
       await allocateStock({
         variables: { id, internalUserId },
