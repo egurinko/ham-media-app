@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import UserProfileSvg from '../../../assets/user_profile.svg';
 
 type Props = {
@@ -9,4 +10,6 @@ const UserProfileIcon: React.VFC<Props> = ({ width, height }) => (
   <UserProfileSvg width={width} height={height} />
 );
 
-export { UserProfileIcon };
+const Memoed = memo(UserProfileIcon);
+
+export { Memoed as UserProfileIcon };

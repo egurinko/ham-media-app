@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import InventorySvg from '../../../assets/inventory.svg';
 
 type Props = {
@@ -9,4 +10,6 @@ const InventoryIcon: React.VFC<Props> = ({ width, height }) => (
   <InventorySvg width={width} height={height} />
 );
 
-export { InventoryIcon };
+const Memoed = memo(InventoryIcon);
+
+export { Memoed as InventoryIcon };

@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import NightSvg from '../../../assets/night.svg';
 
 type Props = {
@@ -9,4 +10,6 @@ const NightIcon: React.VFC<Props> = ({ width, height }) => (
   <NightSvg width={width} height={height} />
 );
 
-export { NightIcon };
+const Memoed = memo(NightIcon);
+
+export { Memoed as NightIcon };

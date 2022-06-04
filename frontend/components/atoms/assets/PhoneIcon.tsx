@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import PhoneSvg from '../../../assets/phone.svg';
 
 type Props = {
@@ -9,4 +10,6 @@ const PhoneIcon: React.VFC<Props> = ({ width, height }) => (
   <PhoneSvg width={width} height={height} />
 );
 
-export { PhoneIcon };
+const Memoed = memo(PhoneIcon);
+
+export { Memoed as PhoneIcon };

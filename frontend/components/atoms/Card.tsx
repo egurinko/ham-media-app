@@ -1,4 +1,5 @@
 import { Box } from '@chakra-ui/react';
+import { memo } from 'react';
 import type { CSSObject } from '@chakra-ui/react';
 import type { FC, PropsWithChildren } from 'react';
 
@@ -12,4 +13,6 @@ const Card: FC<PropsWithChildren<Props>> = ({ children, _hover }) => (
   </Box>
 );
 
-export { Card };
+const Memoed = memo(Card);
+
+export { Memoed as Card };

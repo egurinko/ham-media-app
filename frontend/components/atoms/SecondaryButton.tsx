@@ -1,4 +1,5 @@
 import { Button } from '@chakra-ui/react';
+import { memo } from 'react';
 import type { ButtonProps } from '@chakra-ui/react';
 
 const SecondaryButton: React.FC<ButtonProps> = ({ children, ...props }) => (
@@ -7,4 +8,6 @@ const SecondaryButton: React.FC<ButtonProps> = ({ children, ...props }) => (
   </Button>
 );
 
-export { SecondaryButton };
+const Memoed = memo(SecondaryButton);
+
+export { Memoed as SecondaryButton };

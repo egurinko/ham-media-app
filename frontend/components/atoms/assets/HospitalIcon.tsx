@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import HospitalSvg from '../../../assets/hospital.svg';
 
 type Props = {
@@ -9,4 +10,6 @@ const HospitalIcon: React.VFC<Props> = ({ width, height }) => (
   <HospitalSvg width={width} height={height} />
 );
 
-export { HospitalIcon };
+const Memoed = memo(HospitalIcon);
+
+export { Memoed as HospitalIcon };

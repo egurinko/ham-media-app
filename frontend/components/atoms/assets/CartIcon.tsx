@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import CartSvg from '../../../assets/cart.svg';
 
 type Props = {
@@ -9,4 +10,6 @@ const CartIcon: React.VFC<Props> = ({ width, height }) => (
   <CartSvg width={width} height={height} />
 );
 
-export { CartIcon };
+const Memoed = memo(CartIcon);
+
+export { Memoed as CartIcon };

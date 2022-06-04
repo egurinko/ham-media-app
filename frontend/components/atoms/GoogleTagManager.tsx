@@ -1,4 +1,5 @@
 import Script from 'next/script';
+import { memo } from 'react';
 import type { FC } from 'react';
 
 type Props = {
@@ -22,4 +23,6 @@ const GoogleTagManager: FC<Props> = ({ containerId }) =>
     />
   ) : null;
 
-export { GoogleTagManager };
+const Memoed = memo(GoogleTagManager);
+
+export { Memoed as GoogleTagManager };

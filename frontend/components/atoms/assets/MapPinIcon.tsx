@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import MapPinSvg from '../../../assets/map_pin.svg';
 
 type Props = {
@@ -9,4 +10,6 @@ const MapPinIcon: React.VFC<Props> = ({ width, height }) => (
   <MapPinSvg width={width} height={height} />
 );
 
-export { MapPinIcon };
+const Memoed = memo(MapPinIcon);
+
+export { Memoed as MapPinIcon };

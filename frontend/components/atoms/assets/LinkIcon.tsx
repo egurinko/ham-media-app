@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import LinkSvg from '../../../assets/link.svg';
 
 type Props = {
@@ -9,4 +10,6 @@ const LinkIcon: React.VFC<Props> = ({ width, height }) => (
   <LinkSvg width={width} height={height} />
 );
 
-export { LinkIcon };
+const Memoed = memo(LinkIcon);
+
+export { Memoed as LinkIcon };

@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import RedirectSvg from '../../../assets/redirect.svg';
 
 type Props = {
@@ -9,4 +10,6 @@ const RedirectIcon: React.VFC<Props> = ({ width, height }) => (
   <RedirectSvg width={width} height={height} />
 );
 
-export { RedirectIcon };
+const Memoed = memo(RedirectIcon);
+
+export { Memoed as RedirectIcon };
