@@ -5,10 +5,13 @@ import type {
   Session,
   RoleFieldsFragment,
 } from '@/api/internal_api/types';
+import type { HospitalSearch } from '@/api/local_api/types';
 
 const productCartItemsVar = makeVar<
   CreateStockRequestRequestProductsInputType[]
 >([]);
+
+const hospitalSearchVar = makeVar<HospitalSearch>({});
 
 const getCache = () =>
   new InMemoryCache({
@@ -43,6 +46,11 @@ const getCache = () =>
                 RoleFieldsFragment['name']
               >('name', currentInternalUserRoleRef);
               return { isAdmin: currentInternalUserRoleName === 'admin' };
+            },
+          },
+          hospitalSearch: {
+            read() {
+              return hospitalSearchVar();
             },
           },
         },

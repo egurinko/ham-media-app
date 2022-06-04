@@ -7,7 +7,18 @@ type ReadIsAdmin {
   isAdmin: Boolean!
 }
 
+type CurrentLocation {
+  latitude: Float
+  longitude: Float
+}
+
+type HospitalSearch {
+  searchText: String
+  currentLocation: CurrentLocation
+}
+
 extend type Query {
   productCartItems: [ProductCartItem!]!
   readIsAdmin: ReadIsAdmin!
+  hospitalSearch: HospitalSearch!
 }
