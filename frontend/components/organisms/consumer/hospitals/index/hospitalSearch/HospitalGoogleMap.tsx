@@ -4,6 +4,7 @@ import { memo, useState, useCallback } from 'react';
 import type { PublicGetHospitalLocationsQuery } from '@/api/public_api/types';
 import { usePublicGetHospitalLocationsQuery } from '@/api/public_api/types';
 import { GoogleMap } from '@/components/organisms/GoogleMap';
+import type { FC } from 'react';
 
 type HospitalLocation = PublicGetHospitalLocationsQuery['hospitals'][number];
 
@@ -14,7 +15,7 @@ type Props = {
   currentLng: number;
 };
 
-const HospitalGoogleMap: React.FC<Props> = ({
+const HospitalGoogleMap: FC<Props> = ({
   height,
   width,
   currentLat,

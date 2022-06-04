@@ -31,6 +31,7 @@ import type {
   Recommended,
   SetRecommended,
 } from '../types';
+import type { FC } from 'react';
 
 type Props = {
   reservable: Reservable;
@@ -47,7 +48,7 @@ type Props = {
   setRecommended: SetRecommended;
 };
 
-const Filter: React.FC<Props> = ({
+const Filter: FC<Props> = ({
   reservable,
   setReservable,
   nightServiceOption,

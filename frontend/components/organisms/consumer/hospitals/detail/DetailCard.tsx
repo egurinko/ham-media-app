@@ -11,12 +11,13 @@ import { PhoneIcon } from '@/components/atoms/assets/PhoneIcon';
 import { GoogleMap } from '@/components/organisms/GoogleMap';
 import { HospitalTags } from '@/components/organisms/consumer/hospitals/HospitalTags';
 import { HOSPITAL_STATUSES } from '@/utils/constant';
+import type { FC } from 'react';
 
 type Props = {
   hospital: HospitalFieldsFragment;
 };
 
-const DetailCard: React.FC<Props> = ({ hospital }) => (
+const DetailCard: FC<Props> = ({ hospital }) => (
   <Box my="4">
     <Card>
       <Box my="2">

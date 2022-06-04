@@ -1,6 +1,7 @@
 import { Text, Box } from '@chakra-ui/react';
 import { memo } from 'react';
 import { UserProfileIcon } from '@/components/atoms/assets/UserProfileIcon';
+import type { FC } from 'react';
 
 type Props = {
   name: string;

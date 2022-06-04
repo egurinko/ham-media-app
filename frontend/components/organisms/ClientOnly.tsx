@@ -1,8 +1,12 @@
 import { useEffect, useState } from 'react';
+import type { FC, PropsWithChildren } from 'react';
 
 // ref: https://www.joshwcomeau.com/react/the-perils-of-rehydration/
 
-const ClientOnly: React.FC<NoProps> = ({ children, ...delegated }) => {
+const ClientOnly: FC<PropsWithChildren<NoProps>> = ({
+  children,
+  ...delegated
+}) => {
   const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {

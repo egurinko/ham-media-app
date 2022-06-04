@@ -1,5 +1,6 @@
 import NextHead from 'next/head';
 import { SERVICE_NAME } from '@/utils/constant';
+import type { FC } from 'react';
 
 type Props = {
   title?: string;
@@ -9,7 +10,7 @@ type Props = {
   keywords?: string;
 };
 
-const Head: React.FC<Props> = ({
+const Head: FC<Props> = ({
   title = SERVICE_NAME,
   description = '１匹でも多くのハムスターのしあわせを未来につないでいきたい。様々な理由で助けが必要になったハムスターの里親を募集しています。',
   ogpUrl = 'https://ham-media.net/hospitals',

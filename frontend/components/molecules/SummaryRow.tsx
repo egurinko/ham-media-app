@@ -1,7 +1,8 @@
 import { Box } from '@chakra-ui/react';
 import { memo } from 'react';
+import type { FC, PropsWithChildren } from 'react';
 
-const SummaryRow: React.FC<NoProps> = ({ children }) => (
+const SummaryRow: FC<PropsWithChildren<NoProps>> = ({ children }) => (
   <Box
     w="100%"
     _hover={{

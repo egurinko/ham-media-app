@@ -3,13 +3,14 @@ import { memo } from 'react';
 import type { HospitalFieldsFragment } from '@/api/public_api/types';
 import { PrimaryTag } from '@/components/atoms/PrimaryTag';
 import { HOSPITAL_STATUSES } from '@/utils/constant';
+import type { FC } from 'react';
 
 type Props = {
   hospital: HospitalFieldsFragment;
   spacing: number;
 };
 
-const HospitalTags: React.FC<Props> = ({ hospital, spacing }) => (
+const HospitalTags: FC<Props> = ({ hospital, spacing }) => (
   <HStack spacing={spacing}>
     {hospital.recommended ? <PrimaryTag>おすすめ</PrimaryTag> : null}
     {hospital.hospitalNightServiceOption?.status === HOSPITAL_STATUSES.YES ? (

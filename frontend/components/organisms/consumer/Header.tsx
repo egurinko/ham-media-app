@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { memo } from 'react';
 import { RedirectIcon } from '@/components/atoms/assets/RedirectIcon';
+import type { FC } from 'react';
 
 type Props = Record<string, never>;
 

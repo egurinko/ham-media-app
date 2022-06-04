@@ -4,6 +4,7 @@ import { memo } from 'react';
 import type { InternalGetSessionQuery } from '@/api/internal_api/types';
 import { UserCard } from '@/components/molecules/UserCard';
 import { Navigation } from './Navigation';
+import type { FC } from 'react';
 
 type Props = {
   internalUser: InternalGetSessionQuery['session']['internalUser'];

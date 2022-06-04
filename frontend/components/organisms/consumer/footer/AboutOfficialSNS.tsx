@@ -2,6 +2,7 @@ import { Box } from '@chakra-ui/react';
 import Image from 'next/image';
 import { memo } from 'react';
 import { TitleCard } from '@/components/molecules/TitleCard';
+import type { FC } from 'react';
 
 type Props = Record<string, never>;
 
