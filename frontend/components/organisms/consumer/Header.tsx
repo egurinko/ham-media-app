@@ -6,7 +6,7 @@ import { RedirectIcon } from '@/components/atoms/assets/RedirectIcon';
 
 type Props = Record<string, never>;
 
-const Header: React.VFC<Props> = () => (
+const Header: FC<Props> = () => (
   <header>
     <Box
       as="nav"

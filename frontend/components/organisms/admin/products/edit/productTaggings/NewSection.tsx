@@ -1,7 +1,7 @@
 import { AddIcon } from '@chakra-ui/icons';
 import { Box } from '@chakra-ui/react';
 import { CUIAutoComplete } from 'chakra-ui-autocomplete';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState, memo } from 'react';
 import {
   useInternalGetProductTagGroupsQuery,
   useInternalCreateProductTaggingsMutation,
@@ -12,6 +12,7 @@ import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { Spinner } from '@/components/atoms/Spinner';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { SuccessMessage } from '@/components/molecules/SuccessMessage';
+import type { FC } from 'react';
 
 interface Props {
   productId: InternalGetProductQuery['product']['id'];
@@ -22,7 +23,7 @@ interface AutoCompleteItem {
   value: string;
 }
 
-const NewSection: React.FC<Props> = ({ productId }) => {
+const NewSection: FC<Props> = ({ productId }) => {
   const { data, loading, error } = useInternalGetProductTagGroupsQuery();
   const [
     createProductTaggings,
@@ -112,4 +113,6 @@ const NewSection: React.FC<Props> = ({ productId }) => {
   );
 };
 
-export { NewSection };
+const Memoed = memo(NewSection);
+
+export { Memoed as NewSection };

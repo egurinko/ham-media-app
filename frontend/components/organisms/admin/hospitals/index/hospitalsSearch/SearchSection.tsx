@@ -1,5 +1,5 @@
 import { Text, Box, Input, Switch, Select } from '@chakra-ui/react';
-import { useEffect } from 'react';
+import { useEffect, memo } from 'react';
 import { useInternalGetHospitalConnectionLazyQuery } from '@/api/internal_api/types';
 import { usePublicGetPrefecturesQuery } from '@/api/public_api/types';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
@@ -15,6 +15,7 @@ import type {
   SetInternalReputationStar,
   SearchHospitals,
 } from '../types';
+import type { FC } from 'react';
 
 type Props = {
   name: Name;
@@ -29,7 +30,7 @@ type Props = {
   searchHospitals: SearchHospitals;
 };
 
-const SearchSection: React.VFC<Props> = ({
+const SearchSection: FC<Props> = ({
   name,
   deleted,
   prefectureId,
@@ -200,4 +201,6 @@ const SearchSection: React.VFC<Props> = ({
   );
 };
 
-export { SearchSection };
+const Memoed = memo(SearchSection);
+
+export { Memoed as SearchSection };

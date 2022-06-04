@@ -13,7 +13,7 @@ import {
   useDisclosure,
   Box,
 } from '@chakra-ui/react';
-import { useCallback, useState, Fragment } from 'react';
+import { useCallback, useState, Fragment, memo } from 'react';
 import {
   useInternalGetInternalUsersQuery,
   useInternalDeleteInternalUserMutation,
@@ -25,10 +25,11 @@ import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 import { scrollTo } from '@/utils/scroll';
 import { InternalUserSummary } from './internalUsersStack/InternalUserSummary';
+import type { FC } from 'react';
 
 type InternalUser = InternalGetInternalUsersQuery['internalUsers'][number];
 
-const InternalUsersStack: React.VFC<NoProps> = () => {
+const InternalUsersStack: FC<NoProps> = () => {
   const { data, loading, error, fetchMore } = useInternalGetInternalUsersQuery({
     fetchPolicy: 'network-only',
   });
@@ -101,4 +102,6 @@ const InternalUsersStack: React.VFC<NoProps> = () => {
   );
 };
 
-export { InternalUsersStack };
+const Memoed = memo(InternalUsersStack);
+
+export { Memoed as InternalUsersStack };

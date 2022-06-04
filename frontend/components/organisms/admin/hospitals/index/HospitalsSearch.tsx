@@ -1,5 +1,5 @@
 import { Text, Box } from '@chakra-ui/react';
-import { useCallback, useRef, useEffect, useState } from 'react';
+import { useCallback, useRef, useEffect, useState, memo } from 'react';
 import { useInternalGetHospitalConnectionQuery } from '@/api/internal_api/types';
 import type { Hospital } from '@/api/internal_api/types';
 import { Spinner } from '@/components/atoms/Spinner';
@@ -7,8 +7,9 @@ import { useIntersectionObserver } from '@/utils/hooks/useIntersectionObserver';
 import { HospitalsStack } from './hospitalsSearch/HospitalsStack';
 import { SearchSection } from './hospitalsSearch/SearchSection';
 import type { SearchHospitals } from './types';
+import type { FC } from 'react';
 
-const HospitalsSearch: React.VFC<NoProps> = () => {
+const HospitalsSearch: FC<NoProps> = () => {
   const [name, setName] = useState('');
   const [deleted, setDeleted] = useState(false);
   const [prefectureId, setPrefectureId] = useState('');
@@ -103,4 +104,6 @@ const HospitalsSearch: React.VFC<NoProps> = () => {
   );
 };
 
-export { HospitalsSearch };
+const Memoed = memo(HospitalsSearch);
+
+export { Memoed as HospitalsSearch };

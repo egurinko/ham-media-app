@@ -1,11 +1,12 @@
 import { Divider, Box } from '@chakra-ui/react';
-import { Fragment } from 'react';
+import { Fragment, memo } from 'react';
 import { useInternalGetProductTagGroupsQuery } from '@/api/internal_api/types';
 import { Spinner } from '@/components/atoms/Spinner';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { ProductTagGroupSummary } from './productTagGroupsStack/ProductTagGroupSummary';
+import type { FC } from 'react';
 
-const ProductTagGroupsStack: React.VFC<NoProps> = () => {
+const ProductTagGroupsStack: FC<NoProps> = () => {
   const { data, loading, error } = useInternalGetProductTagGroupsQuery({
     fetchPolicy: 'network-only',
   });
@@ -29,5 +30,6 @@ const ProductTagGroupsStack: React.VFC<NoProps> = () => {
     </>
   );
 };
+const Memoed = memo(ProductTagGroupsStack);
 
-export { ProductTagGroupsStack };
+export { Memoed as ProductTagGroupsStack };

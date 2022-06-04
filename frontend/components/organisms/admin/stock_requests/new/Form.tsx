@@ -1,7 +1,7 @@
 import { DeleteIcon } from '@chakra-ui/icons';
 import { Box, Text, Select, Button } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, memo } from 'react';
 import {
   useInternalGetProductsQuery,
   useInternalCreateStockRequestMutation,
@@ -18,13 +18,14 @@ import { productCartItemsVar } from '@/utils/apollo/cache';
 import { goAdminStockRequests } from '@/utils/routes';
 import { Note } from '../shared/Note';
 import { Empty } from './Empty';
+import type { FC } from 'react';
 
 type RequestProduct = {
   count: number;
   product: ProductFieldsFragment;
 };
 
-const Form: React.VFC<NoProps> = () => {
+const Form: FC<NoProps> = () => {
   const router = useRouter();
   const { data: cartItemsData } = useLocalGetProductCartItemsQuery();
   const productIds =
@@ -160,4 +161,6 @@ const Form: React.VFC<NoProps> = () => {
   );
 };
 
-export { Form };
+const Memoed = memo(Form);
+
+export { Memoed as Form };

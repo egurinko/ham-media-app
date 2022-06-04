@@ -1,10 +1,11 @@
 import { DeleteIcon } from '@chakra-ui/icons';
 import { Text, Box, IconButton } from '@chakra-ui/react';
-import React from 'react';
-import { useLocalReadIsAdminQuery } from '@/api/local_api/types';
+import React, { memo } from 'react';
 import type { InternalGetMakersQuery } from '@/api/internal_api/types';
+import { useLocalReadIsAdminQuery } from '@/api/local_api/types';
 import { SummaryLink } from '@/components/molecules/SummaryLink';
 import { ADMIN_MAKERS_EDIT_PATH } from '@/utils/routes';
+import type { FC } from 'react';
 
 type Maker = InternalGetMakersQuery['makers'][number];
 type Props = {
@@ -12,7 +13,7 @@ type Props = {
   handleDeleteOpen: (e: React.MouseEvent, maker: Maker) => void;
 };
 
-const MakerSummary: React.VFC<Props> = ({ maker, handleDeleteOpen }) => {
+const MakerSummary: FC<Props> = ({ maker, handleDeleteOpen }) => {
   const { data: isAdminData } = useLocalReadIsAdminQuery();
   return (
     <SummaryLink url={ADMIN_MAKERS_EDIT_PATH(maker.id)}>
@@ -36,4 +37,6 @@ const MakerSummary: React.VFC<Props> = ({ maker, handleDeleteOpen }) => {
   );
 };
 
-export { MakerSummary };
+const Memoed = memo(MakerSummary);
+
+export { Memoed as MakerSummary };

@@ -1,7 +1,7 @@
 import { SmallCloseIcon, AddIcon } from '@chakra-ui/icons';
 import { Box, Text, Input, IconButton, Select } from '@chakra-ui/react';
 import dayjs from 'dayjs';
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import {
   useInternalCreateStocksMutation,
   useInternalGetInternalUsersQuery,
@@ -14,6 +14,7 @@ import { useLocalReadIsAdminQuery } from '@/api/local_api/types';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { SuccessMessage } from '@/components/molecules/SuccessMessage';
+import type { FC } from 'react';
 
 type FetchStocksMoreArgs = { variables: InternalGetStocksQueryVariables };
 
@@ -33,7 +34,7 @@ const addingStockInitialState: AddingStock = {
   internal_user_id: undefined,
 };
 
-const NewSection: React.FC<Props> = ({ productId, fetchStocksMore }) => {
+const NewSection: FC<Props> = ({ productId, fetchStocksMore }) => {
   const { data: isAdminData } = useLocalReadIsAdminQuery();
   const { data: internalUsersData } = useInternalGetInternalUsersQuery();
   const [addingStocks, setAddingStocks] = useState([addingStockInitialState]);
@@ -231,4 +232,6 @@ const NewSection: React.FC<Props> = ({ productId, fetchStocksMore }) => {
   );
 };
 
-export { NewSection };
+const Memoed = memo(NewSection);
+
+export { Memoed as NewSection };

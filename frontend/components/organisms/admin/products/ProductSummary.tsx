@@ -1,14 +1,15 @@
 import { Text, Box } from '@chakra-ui/react';
-import React from 'react';
+import { memo } from 'react';
 import type { ProductFieldsFragment } from '@/api/internal_api/types';
 import { SecondaryTag } from '@/components/atoms/SecondaryTag';
 import { Zoom } from '@/components/atoms/Zoom';
+import type { FC } from 'react';
 
 type Props = {
   product: ProductFieldsFragment;
 };
 
-const ProductSummary: React.VFC<Props> = ({ product }) => (
+const ProductSummary: FC<Props> = ({ product }) => (
   <Box w="100%" display="flex" flexDirection="row" alignItems="center" p="2">
     <Box flex="1" display="flex" flexDir="row" alignItems="center">
       <Box flexShrink={0} mr="1">
@@ -56,4 +57,6 @@ const ProductSummary: React.VFC<Props> = ({ product }) => (
   </Box>
 );
 
-export { ProductSummary };
+const Memoed = memo(ProductSummary);
+
+export { Memoed as ProductSummary };

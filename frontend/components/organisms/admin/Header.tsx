@@ -10,19 +10,21 @@ import {
   DrawerContent,
   DrawerCloseButton,
   Button,
- useDisclosure } from '@chakra-ui/react';
+  useDisclosure,
+} from '@chakra-ui/react';
 import Image from 'next/image';
-import { useCallback } from 'react';
+import { useCallback, memo } from 'react';
 import type { InternalGetSessionQuery } from '@/api/internal_api/types';
 import { UserCard } from '@/components/molecules/UserCard';
 import { Navigation } from './Navigation';
+import type { FC } from 'react';
 
 type Props = {
   internalUser: InternalGetSessionQuery['session']['internalUser'];
   handleLogout: () => void;
 };
 
-const Header: React.VFC<Props> = ({ internalUser, handleLogout }) => {
+const Header: FC<Props> = ({ internalUser, handleLogout }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const handleToggle = useCallback(
     () => (isOpen ? onClose() : onOpen()),
@@ -82,4 +84,6 @@ const Header: React.VFC<Props> = ({ internalUser, handleLogout }) => {
   );
 };
 
-export { Header };
+const Memoed = memo(Header);
+
+export { Memoed as Header };

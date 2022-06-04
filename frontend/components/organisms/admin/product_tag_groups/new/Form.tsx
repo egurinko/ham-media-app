@@ -7,6 +7,7 @@ import {
   FormErrorMessage,
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
+import { memo } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { useInternalCreateProductTagGroupMutation } from '@/api/internal_api/types';
 import { Card } from '@/components/atoms/Card';
@@ -15,13 +16,14 @@ import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 import { goAdminProductTagGroups } from '@/utils/routes';
 import validators from '@/validators/index';
+import type { FC } from 'react';
 import type { SubmitHandler } from 'react-hook-form';
 
 interface FormInput {
   name: string;
 }
 
-const Form: React.VFC<NoProps> = () => {
+const Form: FC<NoProps> = () => {
   const router = useRouter();
 
   const {
@@ -83,4 +85,6 @@ const Form: React.VFC<NoProps> = () => {
   );
 };
 
-export { Form };
+const Memoed = memo(Form);
+
+export { Memoed as Form };

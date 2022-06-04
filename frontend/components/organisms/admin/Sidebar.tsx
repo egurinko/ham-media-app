@@ -1,5 +1,6 @@
 import { Box, Divider, Button } from '@chakra-ui/react';
 import Image from 'next/image';
+import { memo } from 'react';
 import type { InternalGetSessionQuery } from '@/api/internal_api/types';
 import { UserCard } from '@/components/molecules/UserCard';
 import { Navigation } from './Navigation';
@@ -9,7 +10,7 @@ type Props = {
   handleLogout: () => void;
 };
 
-const Sidebar: React.VFC<Props> = ({ internalUser, handleLogout }) => (
+const Sidebar: FC<Props> = ({ internalUser, handleLogout }) => (
   <Box
     w={250}
     bg="white"
@@ -35,4 +36,6 @@ const Sidebar: React.VFC<Props> = ({ internalUser, handleLogout }) => (
   </Box>
 );
 
-export { Sidebar };
+const Memoed = memo(Sidebar);
+
+export { Memoed as Sidebar };

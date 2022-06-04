@@ -16,7 +16,7 @@ import {
   Button,
   Input,
 } from '@chakra-ui/react';
-import { Fragment, useEffect, useState, useCallback } from 'react';
+import { Fragment, useEffect, useState, useCallback, memo } from 'react';
 import {
   useInternalDeleteProductTagMutation,
   useInternalGetProductTagGroupQuery,
@@ -33,6 +33,7 @@ import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { Spinner } from '@/components/atoms/Spinner';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { SuccessMessage } from '@/components/molecules/SuccessMessage';
+import type { FC } from 'react';
 
 interface Props {
   productTagGroupId: InternalUpdateProductTagGroupMutationVariables['id'];
@@ -48,7 +49,7 @@ const addingTagInitialState: AddingTag = {
 type ProductTag =
   InternalGetProductTagGroupQuery['productTagGroup']['productTags'][number];
 
-const Tags: React.FC<Props> = ({ productTagGroupId }) => {
+const Tags: FC<Props> = ({ productTagGroupId }) => {
   const { data: isAdminData } = useLocalReadIsAdminQuery();
   const [addingTags, setAddingTags] = useState([addingTagInitialState]);
 
@@ -325,4 +326,6 @@ const Tags: React.FC<Props> = ({ productTagGroupId }) => {
   );
 };
 
-export { Tags };
+const Memoed = memo(Tags);
+
+export { Memoed as Tags };

@@ -8,7 +8,7 @@ import {
   Select,
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import { useState, useCallback } from 'react';
+import { useState, useCallback, memo } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import {
   useInternalUpdateProductMutation,
@@ -24,6 +24,7 @@ import { FileUploader } from '@/components/molecules/FileUploader';
 import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 import { goAdminProducts } from '@/utils/routes';
 import validators from '@/validators/index';
+import type { FC } from 'react';
 import type { SubmitHandler } from 'react-hook-form';
 
 interface FormInput {
@@ -36,7 +37,7 @@ interface Props {
   productId: InternalUpdateProductMutationVariables['id'];
 }
 
-const Form: React.VFC<Props> = ({ productId }) => {
+const Form: FC<Props> = ({ productId }) => {
   const { data: makerData, error: makerError } = useInternalGetMakersQuery();
   const { data: productData } = useInternalGetProductQuery({
     variables: { id: productId },
@@ -195,4 +196,6 @@ const Form: React.VFC<Props> = ({ productId }) => {
   );
 };
 
-export { Form };
+const Memoed = memo(Form);
+
+export { Memoed as Form };

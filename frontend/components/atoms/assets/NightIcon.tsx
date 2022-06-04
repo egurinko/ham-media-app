@@ -1,12 +1,13 @@
 import { memo } from 'react';
 import NightSvg from '../../../assets/night.svg';
+import type { FC } from 'react';
 
 type Props = {
   width: number;
   height: number;
 };
 
-const NightIcon: React.VFC<Props> = ({ width, height }) => (
+const NightIcon: FC<Props> = ({ width, height }) => (
   <NightSvg width={width} height={height} />
 );
 

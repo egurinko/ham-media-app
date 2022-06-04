@@ -7,7 +7,7 @@ type Props = {
   email: string;
 };
 
-const UserCard: React.VFC<Props> = ({ name, email }) => (
+const UserCard: FC<Props> = ({ name, email }) => (
   <Box m="4" p="2" fill="primary.main" display="flex" alignItems="center">
     <UserProfileIcon width={35} height={35} />
     <Box>

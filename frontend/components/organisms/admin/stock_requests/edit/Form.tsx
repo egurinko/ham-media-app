@@ -1,6 +1,6 @@
 import { DeleteIcon } from '@chakra-ui/icons';
 import { Box, Text, Select, Button } from '@chakra-ui/react';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, memo } from 'react';
 import {
   useInternalGetStockRequestQuery,
   useInternalUpdateStockRequestMutation,
@@ -18,6 +18,7 @@ import { SummaryLink } from '@/components/molecules/SummaryLink';
 import { ProductSummary } from '@/components/organisms/admin/products/ProductSummary';
 import { ADMIN_PRODUCTS_DETAIL_PATH } from '@/utils/routes';
 import { Note } from '../shared/Note';
+import type { FC } from 'react';
 
 type Props = {
   stockRequestId: StockRequestFieldsFragment['id'];
@@ -28,7 +29,7 @@ type UpdatingStockRequest = {
   product: StockRequestFieldsFragment['productRegistrations'][number]['product'];
 }[];
 
-const Form: React.VFC<Props> = ({ stockRequestId }) => {
+const Form: FC<Props> = ({ stockRequestId }) => {
   const {
     data: getStockRequestData,
     error: getStockRequestError,
@@ -180,4 +181,6 @@ const Form: React.VFC<Props> = ({ stockRequestId }) => {
   );
 };
 
-export { Form };
+const Memoed = memo(Form);
+
+export { Memoed as Form };

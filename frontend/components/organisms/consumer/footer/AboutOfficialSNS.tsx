@@ -5,7 +5,7 @@ import { TitleCard } from '@/components/molecules/TitleCard';
 
 type Props = Record<string, never>;
 
-const AboutOfficialSNS: React.VFC<Props> = () => (
+const AboutOfficialSNS: FC<Props> = () => (
   <TitleCard title="公式SNS">
     <Box display="flex" justifyContent="center">
       <Box m="2">

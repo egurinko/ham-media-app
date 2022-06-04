@@ -11,7 +11,14 @@ import {
   RadioGroup,
   Stack,
 } from '@chakra-ui/react';
-import React, { useEffect, useRef, useState, useMemo, Fragment } from 'react';
+import React, {
+  useEffect,
+  useRef,
+  useState,
+  useMemo,
+  Fragment,
+  memo,
+} from 'react';
 import {
   useInternalGetProductConnectionQuery,
   useInternalGetMakersQuery,
@@ -27,6 +34,7 @@ import { SummaryLink } from '@/components/molecules/SummaryLink';
 import { useIntersectionObserver } from '@/utils/hooks/useIntersectionObserver';
 import { ADMIN_PRODUCTS_DETAIL_PATH } from '@/utils/routes';
 import { ProductSummary } from '../ProductSummary';
+import type { FC } from 'react';
 
 const PRODUCT_STOCK = {
   HAS: 'has',
@@ -34,7 +42,7 @@ const PRODUCT_STOCK = {
   ALL: 'all',
 } as const;
 
-const ProductStacks: React.VFC<NoProps> = () => {
+const ProductStacks: FC<NoProps> = () => {
   const [name, setName] = useState('');
   const [selectedMakerId, setSelectedMakerId] = useState<undefined | string>(
     undefined
@@ -256,4 +264,6 @@ const ProductStacks: React.VFC<NoProps> = () => {
   );
 };
 
-export { ProductStacks };
+const Memoed = memo(ProductStacks);
+
+export { Memoed as ProductStacks };

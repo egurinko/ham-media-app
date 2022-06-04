@@ -16,12 +16,13 @@ import {
   ModalCloseButton,
   useDisclosure,
 } from '@chakra-ui/react';
-import React, {
+import {
   useEffect,
   useRef,
   useState,
   Fragment,
   useCallback,
+  memo,
 } from 'react';
 import {
   useInternalGetStockRequestConnectionQuery,
@@ -37,8 +38,9 @@ import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 import { useIntersectionObserver } from '@/utils/hooks/useIntersectionObserver';
 import { scrollTo } from '@/utils/scroll';
 import { StockRequestSummary } from './stockRequestsStack/StockRequestSummary';
+import type { FC, MouseEvent } from 'react';
 
-const StockRequestsStack: React.VFC<NoProps> = () => {
+const StockRequestsStack: FC<NoProps> = () => {
   const [selectedInternalUserId, setSelectedInternalUserId] = useState<
     undefined | string
   >(undefined);
@@ -95,7 +97,7 @@ const StockRequestsStack: React.VFC<NoProps> = () => {
   const [selectedStockRequest, setSelectedStockRequest] =
     useState<null | StockRequestFieldsFragment>(null);
   const handleDeleteModalOpen = useCallback(
-    (e: React.MouseEvent, stockRequest: StockRequestFieldsFragment) => {
+    (e: MouseEvent, stockRequest: StockRequestFieldsFragment) => {
       e.preventDefault();
       onOpen();
       setSelectedStockRequest(stockRequest);
@@ -197,28 +199,28 @@ const StockRequestsStack: React.VFC<NoProps> = () => {
             <Box my="4">
               {selectedStockRequest?.productRegistrations.map(
                 (productRegistration) => (
-                    <Box
-                      m="1"
-                      key={productRegistration.id}
-                      display="flex"
-                      alignItems="center"
-                    >
-                      <img
-                        src={productRegistration.product.url}
-                        alt={productRegistration.product.name}
-                        width="40"
-                        height="40"
-                        style={{
-                          objectFit: 'contain',
-                          width: '40px',
-                          height: '40px',
-                        }}
-                      />
-                      <Text ml="2" size="sm">
-                        {productRegistration.product.name}
-                      </Text>
-                    </Box>
-                  )
+                  <Box
+                    m="1"
+                    key={productRegistration.id}
+                    display="flex"
+                    alignItems="center"
+                  >
+                    <img
+                      src={productRegistration.product.url}
+                      alt={productRegistration.product.name}
+                      width="40"
+                      height="40"
+                      style={{
+                        objectFit: 'contain',
+                        width: '40px',
+                        height: '40px',
+                      }}
+                    />
+                    <Text ml="2" size="sm">
+                      {productRegistration.product.name}
+                    </Text>
+                  </Box>
+                )
               )}
             </Box>
           </ModalBody>
@@ -239,4 +241,6 @@ const StockRequestsStack: React.VFC<NoProps> = () => {
   );
 };
 
-export { StockRequestsStack };
+const Memoed = memo(StockRequestsStack);
+
+export { Memoed as StockRequestsStack };

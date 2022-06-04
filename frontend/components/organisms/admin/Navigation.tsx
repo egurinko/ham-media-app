@@ -1,6 +1,6 @@
 import { Box, VStack, UnorderedList, ListItem } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import { useMemo } from 'react';
+import { useMemo, memo } from 'react';
 import { useLocalReadIsAdminQuery } from '@/api/local_api/types';
 import { HospitalIcon } from '@/components/atoms/assets/HospitalIcon';
 import { InventoryIcon } from '@/components/atoms/assets/InventoryIcon';
@@ -14,8 +14,9 @@ import {
   ADMIN_STOCK_REQUESTS_PATH,
   ADMIN_PRODUCT_TAG_GROUPS_PATH,
 } from '@/utils/routes';
+import type { FC } from 'react';
 
-const Navigation: React.VFC<NoProps> = () => {
+const Navigation: FC<NoProps> = () => {
   const { data: isAdminData } = useLocalReadIsAdminQuery();
   const router = useRouter();
   const isAdminInternalUsersPath = useMemo(
@@ -105,4 +106,6 @@ const Navigation: React.VFC<NoProps> = () => {
   );
 };
 
-export { Navigation };
+const Memoed = memo(Navigation);
+
+export { Memoed as Navigation };

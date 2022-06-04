@@ -4,7 +4,7 @@ import { TitleCard } from '@/components/molecules/TitleCard';
 
 type Props = Record<string, never>;
 
-const AbountInformationProvide: React.VFC<Props> = () => (
+const AbountInformationProvide: FC<Props> = () => (
   <TitleCard title="情報提供について">
     <Box>
       <Text as="span">

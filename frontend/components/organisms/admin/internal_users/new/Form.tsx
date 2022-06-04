@@ -9,6 +9,7 @@ import {
   Select,
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
+import { memo } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import {
   useInternalCreateInternalUserMutation,
@@ -20,6 +21,7 @@ import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 import { goAdminInternalUsers } from '@/utils/routes';
 import validators from '@/validators/index';
+import type { FC } from 'react';
 import type { SubmitHandler } from 'react-hook-form';
 
 interface FormInput {
@@ -30,7 +32,7 @@ interface FormInput {
   roleId: string;
 }
 
-const Form: React.VFC<NoProps> = () => {
+const Form: FC<NoProps> = () => {
   const router = useRouter();
   const {
     control,
@@ -203,4 +205,6 @@ const Form: React.VFC<NoProps> = () => {
   );
 };
 
-export { Form };
+const Memoed = memo(Form);
+
+export { Memoed as Form };

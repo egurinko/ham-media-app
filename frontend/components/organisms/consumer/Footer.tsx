@@ -6,7 +6,7 @@ import { AboutOfficialSNS } from './footer/AboutOfficialSNS';
 
 type Props = Record<string, never>;
 
-const Footer: React.VFC<Props> = () => (
+const Footer: FC<Props> = () => (
   <footer>
     <Box mb="4">
       <AbountInformationProvide />

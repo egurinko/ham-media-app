@@ -1,20 +1,20 @@
 import { DeleteIcon } from '@chakra-ui/icons';
 import { Text, Box, Badge, IconButton } from '@chakra-ui/react';
-import Image from 'next/image';
-import React from 'react';
+import { memo } from 'react';
 import type { StockRequestFieldsFragment } from '@/api/internal_api/types';
 import { SummaryLink } from '@/components/molecules/SummaryLink';
 import { ADMIN_STOCK_REQUESTS_EDIT_PATH } from '@/utils/routes';
+import type { FC, MouseEvent } from 'react';
 
 type Props = {
   stockRequest: StockRequestFieldsFragment;
   handleDeleteModalOpen: (
-    e: React.MouseEvent,
+    e: MouseEvent,
     stockRequest: StockRequestFieldsFragment
   ) => void;
 };
 
-const StockRequestSummary: React.VFC<Props> = ({
+const StockRequestSummary: FC<Props> = ({
   stockRequest,
   handleDeleteModalOpen,
 }) => (
@@ -70,4 +70,6 @@ const StockRequestSummary: React.VFC<Props> = ({
   </SummaryLink>
 );
 
-export { StockRequestSummary };
+const Memoed = memo(StockRequestSummary);
+
+export { Memoed as StockRequestSummary };

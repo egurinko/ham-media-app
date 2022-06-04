@@ -1,14 +1,16 @@
 import { Box, StatGroup, Stat, StatLabel, StatNumber } from '@chakra-ui/react';
+import { memo } from 'react';
 import { useInternalGetProductQuery } from '@/api/internal_api/types';
 import type { InternalGetProductQuery } from '@/api/internal_api/types';
 import { Spinner } from '@/components/atoms/Spinner';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
+import type { FC } from 'react';
 
 interface Props {
   productId: InternalGetProductQuery['product']['id'];
 }
 
-const ProductSummary: React.FC<Props> = ({ productId }) => {
+const ProductSummary: FC<Props> = ({ productId }) => {
   const { data, error, loading } = useInternalGetProductQuery({
     variables: { id: productId },
   });
@@ -42,4 +44,6 @@ const ProductSummary: React.FC<Props> = ({ productId }) => {
   );
 };
 
-export { ProductSummary };
+const Memoed = memo(ProductSummary);
+
+export { Memoed as ProductSummary };
