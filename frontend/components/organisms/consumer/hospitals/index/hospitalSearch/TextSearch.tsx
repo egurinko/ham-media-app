@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState, memo } from 'react';
 import { usePublicGetPlaceAutocompleteLazyQuery } from '@/api/public_api/types';
 import { Card } from '@/components/atoms/Card';
 import type { SearchText, SetSearchText, SetCurrentLocation } from '../types';
+import type { FC } from 'react';
 
 type Props = {
   searchText: SearchText;
@@ -11,7 +12,7 @@ type Props = {
   setCurrentLocation: SetCurrentLocation;
 };
 
-const TextSearch: React.FC<Props> = ({
+const TextSearch: FC<Props> = ({
   searchText,
   setSearchText,
   setCurrentLocation,

@@ -3,6 +3,7 @@ import { memo } from 'react';
 import { RedirectIcon } from '@/components/atoms/assets/RedirectIcon';
 import { AbountInformationProvide } from './footer/AboutInformationProvide';
 import { AboutOfficialSNS } from './footer/AboutOfficialSNS';
+import type { FC } from 'react';
 
 type Props = Record<string, never>;
 

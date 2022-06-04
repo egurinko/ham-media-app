@@ -9,6 +9,7 @@ import type {
   SetSearchText,
   CurrentLocation,
 } from '../types';
+import type { FC } from 'react';
 
 type Props = {
   currentLocation: CurrentLocation;
@@ -16,7 +17,7 @@ type Props = {
   setSearchText: SetSearchText;
 };
 
-const MapSearch: React.FC<Props> = ({
+const MapSearch: FC<Props> = ({
   currentLocation,
   setCurrentLocation,
   setSearchText,

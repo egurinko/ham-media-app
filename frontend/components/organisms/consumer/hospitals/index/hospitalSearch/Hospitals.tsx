@@ -10,6 +10,7 @@ import { HospitalTags } from '@/components/organisms/consumer/hospitals/Hospital
 import { useIntersectionObserver } from '@/utils/hooks/useIntersectionObserver';
 import { HOSPITALS_DETAIL_PATH } from '@/utils/routes';
 import type { GetContinuousHospitalConnection } from '../types';
+import type { FC } from 'react';
 
 type Props = {
   hospitalConnection?: PublicGetHospitalConnectionQuery['publicHospitalConnection'];
@@ -17,7 +18,7 @@ type Props = {
   getContinuousHospitalConnection: GetContinuousHospitalConnection;
 };
 
-const Hospitals: React.FC<Props> = ({
+const Hospitals: FC<Props> = ({
   hospitalConnection,
   loading,
   getContinuousHospitalConnection,

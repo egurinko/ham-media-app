@@ -1,6 +1,7 @@
 import { Text, Box, UnorderedList, ListItem } from '@chakra-ui/react';
 import { memo } from 'react';
 import { TitleCard } from '@/components/molecules/TitleCard';
+import type { FC } from 'react';
 
 type Props = Record<string, never>;
 

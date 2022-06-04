@@ -7,7 +7,7 @@ import { GOOGLE_TAG_MANAGER_ID } from '@/utils/googleTagManager';
 import { theme } from '@/utils/theme';
 import type { NextPage } from 'next';
 import type { AppProps } from 'next/app';
-import type { ReactElement } from 'react';
+import type { ReactElement, FC } from 'react';
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactElement;
@@ -16,7 +16,7 @@ type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
 
-const App: React.FC<AppPropsWithLayout> = ({ Component, pageProps }) => {
+const App: FC<AppPropsWithLayout> = ({ Component, pageProps }) => {
   const getLayout = Component.getLayout ?? ((page) => page);
 
   return (

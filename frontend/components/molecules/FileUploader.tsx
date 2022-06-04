@@ -2,13 +2,14 @@ import { Box, Text } from '@chakra-ui/react';
 import { memo } from 'react';
 import { FileUploader as ReactDragDropFileUploader } from 'react-drag-drop-files';
 import { ImageIcon } from '@/components/atoms/assets/ImageIcon';
+import type { FC } from 'react';
 
 type Props = {
   image: File | null;
   handleFileChange: (file: File) => void;
 };
 
-const FileUploader: React.FC<Props> = ({ image, handleFileChange }) => (
+const FileUploader: FC<Props> = ({ image, handleFileChange }) => (
   <>
     <ReactDragDropFileUploader
       handleChange={handleFileChange}

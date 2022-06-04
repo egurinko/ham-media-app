@@ -18,6 +18,7 @@ import type {
   Recommended,
   SetRecommended,
 } from '../types';
+import type { FC } from 'react';
 
 type Props = {
   setSearchText: SetSearchText;
@@ -36,7 +37,7 @@ type Props = {
   setRecommended: SetRecommended;
 };
 
-const SearchConditions: React.FC<Props> = ({
+const SearchConditions: FC<Props> = ({
   setSearchText,
   setCurrentLocation,
   reservable,

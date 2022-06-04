@@ -19,6 +19,7 @@ import type {
   Recommended,
   GetContinuousHospitalConnection,
 } from './types';
+import type { FC } from 'react';
 
 const PAGE_STORED_KEY = 'hospitalsPage';
 type PERSISTED = {
@@ -32,7 +33,7 @@ type PERSISTED = {
   recommended?: Recommended;
 };
 
-const HospitalSearch: React.FC<NoProps> = () => {
+const HospitalSearch: FC<NoProps> = () => {
   const [searchText, setSearchText] = useState('');
   const [currentLocation, setCurrentLocation] = useState<CurrentLocation>(null);
   const [reservable, setReservable] = useState(false);
