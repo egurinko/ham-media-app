@@ -20,13 +20,13 @@ import {
   useInternalReturnStockMutation,
   useInternalDeleteStockMutation,
   useInternalUpdateStockInternalUserMutation,
-  useLocalReadIsAdminQuery,
 } from '@/api/internal_api/types';
 import type {
   InternalGetProductQuery,
   InternalGetStocksQuery,
   InternalGetStocksQueryVariables,
 } from '@/api/internal_api/types';
+import { useLocalReadIsAdminQuery } from '@/api/local_api/types';
 import { Spinner } from '@/components/atoms/Spinner';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { SuccessMessage } from '@/components/molecules/SuccessMessage';

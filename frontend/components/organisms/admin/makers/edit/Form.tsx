@@ -11,9 +11,9 @@ import { useForm, Controller } from 'react-hook-form';
 import {
   useInternalUpdateMakerMutation,
   useInternalGetMakerQuery,
-  useLocalReadIsAdminQuery,
 } from '@/api/internal_api/types';
 import type { InternalUpdateMakerMutation } from '@/api/internal_api/types';
+import { useLocalReadIsAdminQuery } from '@/api/local_api/types';
 import { Card } from '@/components/atoms/Card';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';

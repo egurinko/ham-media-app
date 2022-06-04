@@ -25,10 +25,10 @@ import { useCallback, useEffect, useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import {
   useInternalGetHospitalQuery,
-  useLocalReadIsAdminQuery,
   useInternalUpdateHospitalMutation,
   useInternalUpsertHospitalAddressGeoLocationMutation,
 } from '@/api/internal_api/types';
+import { useLocalReadIsAdminQuery } from '@/api/local_api/types';
 import { usePublicGetPrefecturesQuery } from '@/api/public_api/types';
 import { Card } from '@/components/atoms/Card';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';

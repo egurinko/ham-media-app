@@ -3,11 +3,11 @@ import { Box, Text, Select, Button } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { useState, useEffect, useCallback } from 'react';
 import {
-  useLocalGetProductCartItemsQuery,
   useInternalGetProductsQuery,
   useInternalCreateStockRequestMutation,
 } from '@/api/internal_api/types';
 import type { ProductFieldsFragment } from '@/api/internal_api/types';
+import { useLocalGetProductCartItemsQuery } from '@/api/local_api/types';
 import { Card } from '@/components/atoms/Card';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { Spinner } from '@/components/atoms/Spinner';

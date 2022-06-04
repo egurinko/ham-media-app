@@ -22,12 +22,12 @@ import {
   useInternalGetProductTagGroupQuery,
   useInternalCreateProductTagsMutation,
   useInternalUpdateProductTagMutation,
-  useLocalReadIsAdminQuery,
 } from '@/api/internal_api/types';
 import type {
   InternalUpdateProductTagGroupMutationVariables,
   InternalGetProductTagGroupQuery,
 } from '@/api/internal_api/types';
+import { useLocalReadIsAdminQuery } from '@/api/local_api/types';
 import { Card } from '@/components/atoms/Card';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { Spinner } from '@/components/atoms/Spinner';
