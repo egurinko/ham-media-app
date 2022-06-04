@@ -1,4 +1,5 @@
 import { Text, Box, UnorderedList, ListItem } from '@chakra-ui/react';
+import { memo } from 'react';
 import { TitleCard } from '@/components/molecules/TitleCard';
 
 type Props = Record<string, never>;
@@ -34,4 +35,6 @@ const AbountInformationProvide: React.VFC<Props> = () => (
   </TitleCard>
 );
 
-export { AbountInformationProvide };
+const Memoed = memo(AbountInformationProvide);
+
+export { Memoed as AbountInformationProvide };

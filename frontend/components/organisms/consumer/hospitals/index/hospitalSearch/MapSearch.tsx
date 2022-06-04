@@ -1,5 +1,5 @@
-import { Button, Text, Box, useEditable } from '@chakra-ui/react';
-import { useState, useCallback, useEffect } from 'react';
+import { Button, Text, Box } from '@chakra-ui/react';
+import { useState, useCallback, useEffect, memo } from 'react';
 import { Card } from '@/components/atoms/Card';
 import { MapPinIcon } from '@/components/atoms/assets/MapPinIcon';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
@@ -105,4 +105,6 @@ const MapSearch: React.FC<Props> = ({
   );
 };
 
-export { MapSearch };
+const Memoed = memo(MapSearch);
+
+export { Memoed as MapSearch };

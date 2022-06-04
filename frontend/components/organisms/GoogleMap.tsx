@@ -3,6 +3,7 @@ import {
   GoogleMap as ReactGoogleMap,
   useJsApiLoader,
 } from '@react-google-maps/api';
+import { memo } from 'react';
 import { Spinner } from '@/components/atoms/Spinner';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
 import type { FC, PropsWithChildren } from 'react';
@@ -73,4 +74,6 @@ const Map: FC<PropsWithChildren<Props>> = ({
   </ReactGoogleMap>
 );
 
-export { GoogleMap };
+const Memoed = memo(GoogleMap);
+
+export { Memoed as GoogleMap };

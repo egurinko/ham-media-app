@@ -1,7 +1,6 @@
 import { InfoOutlineIcon } from '@chakra-ui/icons';
 import { Box, Text, SkeletonCircle, SkeletonText } from '@chakra-ui/react';
-import { useRouter } from 'next/router';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, memo } from 'react';
 import type { PublicGetHospitalConnectionQuery } from '@/api/public_api/types';
 import { Card } from '@/components/atoms/Card';
 import { MapPinIcon } from '@/components/atoms/assets/MapPinIcon';
@@ -23,8 +22,6 @@ const Hospitals: React.FC<Props> = ({
   loading,
   getContinuousHospitalConnection,
 }) => {
-  const router = useRouter();
-
   const infiniteScrollTarget = useRef<HTMLDivElement>(null);
   const { isIntersect } = useIntersectionObserver(infiniteScrollTarget);
 
@@ -141,4 +138,6 @@ const Hospitals: React.FC<Props> = ({
   );
 };
 
-export { Hospitals };
+const Memoed = memo(Hospitals);
+
+export { Memoed as Hospitals };

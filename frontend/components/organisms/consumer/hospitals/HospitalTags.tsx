@@ -1,4 +1,5 @@
 import { HStack } from '@chakra-ui/react';
+import { memo } from 'react';
 import type { HospitalFieldsFragment } from '@/api/public_api/types';
 import { PrimaryTag } from '@/components/atoms/PrimaryTag';
 import { HOSPITAL_STATUSES } from '@/utils/constant';
@@ -28,4 +29,6 @@ const HospitalTags: React.FC<Props> = ({ hospital, spacing }) => (
   </HStack>
 );
 
-export { HospitalTags };
+const Memoed = memo(HospitalTags);
+
+export { Memoed as HospitalTags };

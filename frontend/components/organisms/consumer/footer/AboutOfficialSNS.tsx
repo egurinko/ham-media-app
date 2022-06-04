@@ -1,5 +1,6 @@
 import { Box } from '@chakra-ui/react';
 import Image from 'next/image';
+import { memo } from 'react';
 import { TitleCard } from '@/components/molecules/TitleCard';
 
 type Props = Record<string, never>;
@@ -46,4 +47,6 @@ const AboutOfficialSNS: React.VFC<Props> = () => (
   </TitleCard>
 );
 
-export { AboutOfficialSNS };
+const Memoed = memo(AboutOfficialSNS);
+
+export { Memoed as AboutOfficialSNS };
