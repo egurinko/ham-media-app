@@ -1,6 +1,6 @@
 import { AddIcon } from '@chakra-ui/icons';
 import { Text, Box, Select } from '@chakra-ui/react';
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, memo } from 'react';
 import { useInternalGetProductQuery } from '@/api/internal_api/types';
 import type { Product } from '@/api/internal_api/types';
 import { Card } from '@/components/atoms/Card';
@@ -10,12 +10,13 @@ import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
 import { ProductSummary } from '@/components/organisms/admin/products/ProductSummary';
 import { productCartItemsVar } from '@/utils/apollo/cache';
+import type { FC } from 'react';
 
 type Props = {
   productId: Product['id'];
 };
 
-const ProductCartItem: React.VFC<Props> = ({ productId }) => {
+const ProductCartItem: FC<Props> = ({ productId }) => {
   const { data, error } = useInternalGetProductQuery({
     variables: { id: productId },
     fetchPolicy: 'network-only',
@@ -88,5 +89,6 @@ const ProductCartItem: React.VFC<Props> = ({ productId }) => {
     </Card>
   );
 };
+const Memoed = memo(ProductCartItem);
 
-export { ProductCartItem };
+export { Memoed as ProductCartItem };

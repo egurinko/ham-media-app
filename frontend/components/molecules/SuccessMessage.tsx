@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { FlashMessage } from './FlashMessage';
 
 type Props = {
@@ -8,4 +9,6 @@ type Props = {
 const SuccessMessage: React.FC<Props> = ({ message, data }) =>
   data ? <FlashMessage message={message} status="success" /> : null;
 
-export { SuccessMessage };
+const Memoed = memo(SuccessMessage);
+
+export { Memoed as SuccessMessage };

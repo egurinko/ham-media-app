@@ -1,4 +1,5 @@
 import { Text, Box } from '@chakra-ui/react';
+import { memo } from 'react';
 import { UserProfileIcon } from '@/components/atoms/assets/UserProfileIcon';
 
 type Props = {
@@ -6,7 +7,7 @@ type Props = {
   email: string;
 };
 
-const UserCard: React.VFC<Props> = ({ name, email }) => (
+const UserCard: FC<Props> = ({ name, email }) => (
   <Box m="4" p="2" fill="primary.main" display="flex" alignItems="center">
     <UserProfileIcon width={35} height={35} />
     <Box>
@@ -20,4 +21,6 @@ const UserCard: React.VFC<Props> = ({ name, email }) => (
   </Box>
 );
 
-export { UserCard };
+const Memoed = memo(UserCard);
+
+export { Memoed as UserCard };

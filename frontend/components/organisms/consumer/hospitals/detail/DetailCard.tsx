@@ -1,5 +1,6 @@
 import { Box, Text, Divider } from '@chakra-ui/react';
 import { InfoWindowF, MarkerF } from '@react-google-maps/api';
+import { memo } from 'react';
 import type { HospitalFieldsFragment } from '@/api/public_api/types';
 import { Card } from '@/components/atoms/Card';
 import { SecondaryButton } from '@/components/atoms/SecondaryButton';
@@ -258,4 +259,6 @@ const DetailCard: React.FC<Props> = ({ hospital }) => (
   </Box>
 );
 
-export { DetailCard };
+const Memoed = memo(DetailCard);
+
+export { Memoed as DetailCard };

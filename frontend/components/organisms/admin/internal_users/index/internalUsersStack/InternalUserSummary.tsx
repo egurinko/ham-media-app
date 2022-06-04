@@ -1,11 +1,12 @@
 import { DeleteIcon, StarIcon } from '@chakra-ui/icons';
 import { Text, Box, IconButton } from '@chakra-ui/react';
-import React from 'react';
-import { useLocalReadIsAdminQuery } from '@/api/internal_api/types';
+import { memo } from 'react';
 import type { InternalGetInternalUsersQuery } from '@/api/internal_api/types';
+import { useLocalReadIsAdminQuery } from '@/api/local_api/types';
 import { UserProfileIcon } from '@/components/atoms/assets/UserProfileIcon';
 import { SummaryLink } from '@/components/molecules/SummaryLink';
 import { ADMIN_INTERNAL_USERS_EDIT_PATH } from '@/utils/routes';
+import type { FC } from 'react';
 
 type InternalUser = InternalGetInternalUsersQuery['internalUsers'][number];
 
@@ -14,10 +15,7 @@ type Props = {
   handleDeleteOpen: (e: React.MouseEvent, internalUser: InternalUser) => void;
 };
 
-const InternalUserSummary: React.VFC<Props> = ({
-  internalUser,
-  handleDeleteOpen,
-}) => {
+const InternalUserSummary: FC<Props> = ({ internalUser, handleDeleteOpen }) => {
   const { data: isAdminData } = useLocalReadIsAdminQuery();
 
   return (
@@ -59,4 +57,6 @@ const InternalUserSummary: React.VFC<Props> = ({
   );
 };
 
-export { InternalUserSummary };
+const Memoed = memo(InternalUserSummary);
+
+export { Memoed as InternalUserSummary };

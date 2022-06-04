@@ -1,4 +1,5 @@
 import { Text, Box } from '@chakra-ui/react';
+import { memo } from 'react';
 import { Card } from '@/components/atoms/Card';
 import type { FC, PropsWithChildren } from 'react';
 
@@ -17,4 +18,6 @@ const TitleCard: FC<PropsWithChildren<Props>> = ({ title, children }) => (
   </Card>
 );
 
-export { TitleCard };
+const Memoed = memo(TitleCard);
+
+export { Memoed as TitleCard };

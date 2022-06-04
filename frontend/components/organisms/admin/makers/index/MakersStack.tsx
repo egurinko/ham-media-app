@@ -13,7 +13,7 @@ import {
   ModalCloseButton,
   useDisclosure,
 } from '@chakra-ui/react';
-import { useCallback, useState, Fragment } from 'react';
+import { useCallback, useState, Fragment, memo } from 'react';
 import {
   useInternalGetMakersQuery,
   useInternalDeleteMakerMutation,
@@ -24,10 +24,11 @@ import { Spinner } from '@/components/atoms/Spinner';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 import { MakerSummary } from './makersStack/MakerSummary';
+import type { FC } from 'react';
 
 type Maker = InternalGetMakersQuery['makers'][number];
 
-const MakersStack: React.VFC<NoProps> = () => {
+const MakersStack: FC<NoProps> = () => {
   const { data, loading, error, fetchMore } = useInternalGetMakersQuery({
     fetchPolicy: 'network-only',
   });
@@ -96,4 +97,6 @@ const MakersStack: React.VFC<NoProps> = () => {
   );
 };
 
-export { MakersStack };
+const Memoed = memo(MakersStack);
+
+export { Memoed as MakersStack };

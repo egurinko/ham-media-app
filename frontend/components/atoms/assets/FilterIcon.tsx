@@ -1,12 +1,16 @@
+import { memo } from 'react';
 import FilterSvg from '../../../assets/filter.svg';
+import type { FC } from 'react';
 
 type Props = {
   width: number;
   height: number;
 };
 
-const FilterIcon: React.VFC<Props> = ({ width, height }) => (
+const FilterIcon: FC<Props> = ({ width, height }) => (
   <FilterSvg width={width} height={height} />
 );
 
-export { FilterIcon };
+const Memoed = memo(FilterIcon);
+
+export { Memoed as FilterIcon };

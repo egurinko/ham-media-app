@@ -1,5 +1,5 @@
 import { Box } from '@chakra-ui/react';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, memo } from 'react';
 import { usePublicGetHospitalConnectionLazyQuery } from '@/api/public_api/types';
 import { useLocalStorage } from '@/utils/hooks';
 import { scrollTo } from '@/utils/scroll';
@@ -208,4 +208,6 @@ const HospitalSearch: React.FC<NoProps> = () => {
   );
 };
 
-export { HospitalSearch };
+const Memoed = memo(HospitalSearch);
+
+export { Memoed as HospitalSearch };

@@ -7,19 +7,21 @@ import {
   FormErrorMessage,
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
+import { memo } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import {
   useInternalUpdateProductTagGroupMutation,
   useInternalGetProductTagGroupQuery,
-  useLocalReadIsAdminQuery,
 } from '@/api/internal_api/types';
 import type { InternalUpdateProductTagGroupMutationVariables } from '@/api/internal_api/types';
+import { useLocalReadIsAdminQuery } from '@/api/local_api/types';
 import { Card } from '@/components/atoms/Card';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 import { goAdminProductTagGroups } from '@/utils/routes';
 import validators from '@/validators/index';
+import type { FC } from 'react';
 import type { SubmitHandler } from 'react-hook-form';
 
 interface FormInput {
@@ -30,7 +32,7 @@ interface Props {
   productTagGroupId: InternalUpdateProductTagGroupMutationVariables['id'];
 }
 
-const Form: React.VFC<Props> = ({ productTagGroupId }) => {
+const Form: FC<Props> = ({ productTagGroupId }) => {
   const { data: isAdminData } = useLocalReadIsAdminQuery();
   const { data: productTagGroupData } = useInternalGetProductTagGroupQuery({
     variables: { id: productTagGroupId },
@@ -101,4 +103,6 @@ const Form: React.VFC<Props> = ({ productTagGroupId }) => {
   ) : null;
 };
 
-export { Form };
+const Memoed = memo(Form);
+
+export { Memoed as Form };

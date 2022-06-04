@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { memo } from 'react';
 import { SummaryRow } from './SummaryRow';
 import type { FC, PropsWithChildren } from 'react';
 
@@ -16,4 +17,6 @@ const SummaryLink: FC<PropsWithChildren<Props>> = ({ url, children }) => (
   </SummaryRow>
 );
 
-export { SummaryLink };
+const Memoed = memo(SummaryLink);
+
+export { Memoed as SummaryLink };

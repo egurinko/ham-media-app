@@ -14,22 +14,24 @@ import {
   Td,
 } from '@chakra-ui/react';
 import dayjs from 'dayjs';
+import { memo } from 'react';
 import {
   useInternalGetInternalUsersQuery,
   useInternalAllocateStockMutation,
   useInternalReturnStockMutation,
   useInternalDeleteStockMutation,
   useInternalUpdateStockInternalUserMutation,
-  useLocalReadIsAdminQuery,
 } from '@/api/internal_api/types';
 import type {
   InternalGetProductQuery,
   InternalGetStocksQuery,
   InternalGetStocksQueryVariables,
 } from '@/api/internal_api/types';
+import { useLocalReadIsAdminQuery } from '@/api/local_api/types';
 import { Spinner } from '@/components/atoms/Spinner';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { SuccessMessage } from '@/components/molecules/SuccessMessage';
+import type { FC } from 'react';
 
 type FetchStocksMoreArgs = { variables: InternalGetStocksQueryVariables };
 
@@ -39,7 +41,7 @@ interface Props {
   fetchStocksMore: (args: FetchStocksMoreArgs) => Promise<unknown>;
 }
 
-const AllocationSection: React.FC<Props> = ({
+const AllocationSection: FC<Props> = ({
   productId,
   stocks,
   fetchStocksMore,
@@ -260,4 +262,6 @@ const AllocationSection: React.FC<Props> = ({
   );
 };
 
-export { AllocationSection };
+const Memoed = memo(AllocationSection);
+
+export { Memoed as AllocationSection };

@@ -9,20 +9,22 @@ import {
   Select,
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
+import { memo } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import {
   useInternalUpdateInternalUserMutation,
   useInternalGetInternalUserQuery,
   useInternalGetRolesQuery,
-  useLocalReadIsAdminQuery,
 } from '@/api/internal_api/types';
 import type { InternalGetInternalUserQuery } from '@/api/internal_api/types';
+import { useLocalReadIsAdminQuery } from '@/api/local_api/types';
 import { Card } from '@/components/atoms/Card';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 import { goAdminInternalUsers } from '@/utils/routes';
 import validators from '@/validators/index';
+import type { FC } from 'react';
 import type { SubmitHandler } from 'react-hook-form';
 
 interface FormInput {
@@ -37,7 +39,7 @@ interface Props {
   internalUserId: InternalGetInternalUserQuery['internalUser']['id'];
 }
 
-const Form: React.VFC<Props> = ({ internalUserId }) => {
+const Form: FC<Props> = ({ internalUserId }) => {
   const { data: isAdminData } = useLocalReadIsAdminQuery();
   const { data: internalUserData, error: internalUserError } =
     useInternalGetInternalUserQuery({
@@ -231,4 +233,6 @@ const Form: React.VFC<Props> = ({ internalUserId }) => {
   );
 };
 
-export { Form };
+const Memoed = memo(Form);
+
+export { Memoed as Form };

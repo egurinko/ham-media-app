@@ -1,4 +1,5 @@
 import { Box } from '@chakra-ui/react';
+import { memo } from 'react';
 
 const SummaryRow: React.FC<NoProps> = ({ children }) => (
   <Box
@@ -13,4 +14,6 @@ const SummaryRow: React.FC<NoProps> = ({ children }) => (
   </Box>
 );
 
-export { SummaryRow };
+const Memoed = memo(SummaryRow);
+
+export { Memoed as SummaryRow };

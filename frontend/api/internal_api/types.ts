@@ -456,12 +456,6 @@ export type Product = {
   url: Scalars['String'];
 };
 
-export type ProductCartItem = {
-  __typename?: 'ProductCartItem';
-  count: Scalars['Int'];
-  productId: Scalars['Int'];
-};
-
 export type ProductConnection = {
   __typename?: 'ProductConnection';
   /** https://facebook.github.io/relay/graphql/connections.htm#sec-Edge-Types */
@@ -511,12 +505,10 @@ export type Query = {
   maker: Maker;
   makers: Array<Maker>;
   product: Product;
-  productCartItems: Array<ProductCartItem>;
   productConnection?: Maybe<ProductConnection>;
   productTagGroup: ProductTagGroup;
   productTagGroups: Array<ProductTagGroup>;
   products: Array<Product>;
-  readIsAdmin: ReadIsAdmin;
   roles: Array<Role>;
   session: Session;
   stockRequest: StockRequest;
@@ -597,11 +589,6 @@ export type QueryStockRequestConnectionArgs = {
 
 export type QueryStocksArgs = {
   productId: Scalars['Int'];
-};
-
-export type ReadIsAdmin = {
-  __typename?: 'ReadIsAdmin';
-  isAdmin: Scalars['Boolean'];
 };
 
 /** A region */
@@ -899,11 +886,6 @@ export type InternalGetProductQueryVariables = Exact<{
 
 export type InternalGetProductQuery = { __typename?: 'Query', product: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } } | null }> } };
 
-export type LocalGetProductCartItemsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type LocalGetProductCartItemsQuery = { __typename?: 'Query', productCartItems: Array<{ __typename?: 'ProductCartItem', count: number, productId: number }> };
-
 export type InternalGetProductConnectionQueryVariables = Exact<{
   first?: InputMaybe<Scalars['Int']>;
   after?: InputMaybe<Scalars['String']>;
@@ -979,11 +961,6 @@ export type InternalGetStocksQueryVariables = Exact<{
 
 
 export type InternalGetStocksQuery = { __typename?: 'Query', stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } } | null }> };
-
-export type LocalReadIsAdminQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type LocalReadIsAdminQuery = { __typename?: 'Query', readIsAdmin: { __typename?: 'ReadIsAdmin', isAdmin: boolean } };
 
 export type InternalRejectStockRequestMutationVariables = Exact<{
   id: Scalars['Int'];
@@ -2185,41 +2162,6 @@ export function useInternalGetProductLazyQuery(baseOptions?: Apollo.LazyQueryHoo
 export type InternalGetProductQueryHookResult = ReturnType<typeof useInternalGetProductQuery>;
 export type InternalGetProductLazyQueryHookResult = ReturnType<typeof useInternalGetProductLazyQuery>;
 export type InternalGetProductQueryResult = Apollo.QueryResult<InternalGetProductQuery, InternalGetProductQueryVariables>;
-export const LocalGetProductCartItemsDocument = gql`
-    query LocalGetProductCartItems {
-  productCartItems {
-    count
-    productId
-  }
-}
-    `;
-
-/**
- * __useLocalGetProductCartItemsQuery__
- *
- * To run a query within a React component, call `useLocalGetProductCartItemsQuery` and pass it any options that fit your needs.
- * When your component renders, `useLocalGetProductCartItemsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useLocalGetProductCartItemsQuery({
- *   variables: {
- *   },
- * });
- */
-export function useLocalGetProductCartItemsQuery(baseOptions?: Apollo.QueryHookOptions<LocalGetProductCartItemsQuery, LocalGetProductCartItemsQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<LocalGetProductCartItemsQuery, LocalGetProductCartItemsQueryVariables>(LocalGetProductCartItemsDocument, options);
-      }
-export function useLocalGetProductCartItemsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<LocalGetProductCartItemsQuery, LocalGetProductCartItemsQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<LocalGetProductCartItemsQuery, LocalGetProductCartItemsQueryVariables>(LocalGetProductCartItemsDocument, options);
-        }
-export type LocalGetProductCartItemsQueryHookResult = ReturnType<typeof useLocalGetProductCartItemsQuery>;
-export type LocalGetProductCartItemsLazyQueryHookResult = ReturnType<typeof useLocalGetProductCartItemsLazyQuery>;
-export type LocalGetProductCartItemsQueryResult = Apollo.QueryResult<LocalGetProductCartItemsQuery, LocalGetProductCartItemsQueryVariables>;
 export const InternalGetProductConnectionDocument = gql`
     query InternalGetProductConnection($first: Int, $after: String, $name: String, $makerId: Int, $productTagId: Int, $internalUserId: Int, $allocatedInternalUserId: Int, $hasStock: Boolean) {
   productConnection(
@@ -2645,40 +2587,6 @@ export function useInternalGetStocksLazyQuery(baseOptions?: Apollo.LazyQueryHook
 export type InternalGetStocksQueryHookResult = ReturnType<typeof useInternalGetStocksQuery>;
 export type InternalGetStocksLazyQueryHookResult = ReturnType<typeof useInternalGetStocksLazyQuery>;
 export type InternalGetStocksQueryResult = Apollo.QueryResult<InternalGetStocksQuery, InternalGetStocksQueryVariables>;
-export const LocalReadIsAdminDocument = gql`
-    query LocalReadIsAdmin {
-  readIsAdmin {
-    isAdmin
-  }
-}
-    `;
-
-/**
- * __useLocalReadIsAdminQuery__
- *
- * To run a query within a React component, call `useLocalReadIsAdminQuery` and pass it any options that fit your needs.
- * When your component renders, `useLocalReadIsAdminQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useLocalReadIsAdminQuery({
- *   variables: {
- *   },
- * });
- */
-export function useLocalReadIsAdminQuery(baseOptions?: Apollo.QueryHookOptions<LocalReadIsAdminQuery, LocalReadIsAdminQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<LocalReadIsAdminQuery, LocalReadIsAdminQueryVariables>(LocalReadIsAdminDocument, options);
-      }
-export function useLocalReadIsAdminLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<LocalReadIsAdminQuery, LocalReadIsAdminQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<LocalReadIsAdminQuery, LocalReadIsAdminQueryVariables>(LocalReadIsAdminDocument, options);
-        }
-export type LocalReadIsAdminQueryHookResult = ReturnType<typeof useLocalReadIsAdminQuery>;
-export type LocalReadIsAdminLazyQueryHookResult = ReturnType<typeof useLocalReadIsAdminLazyQuery>;
-export type LocalReadIsAdminQueryResult = Apollo.QueryResult<LocalReadIsAdminQuery, LocalReadIsAdminQueryVariables>;
 export const InternalRejectStockRequestDocument = gql`
     mutation InternalRejectStockRequest($id: Int!, $message: String!) {
   rejectStockRequest(id: $id, message: $message) {

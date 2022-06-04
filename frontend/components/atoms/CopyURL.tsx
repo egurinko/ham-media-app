@@ -1,6 +1,6 @@
 import { LinkIcon } from '@chakra-ui/icons';
 import { useClipboard, Button } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useState, memo } from 'react';
 
 const CopyURL: React.FC<NoProps> = () => {
   const [copyingText, _setCopyingText] = useState(location.href);
@@ -13,4 +13,6 @@ const CopyURL: React.FC<NoProps> = () => {
   );
 };
 
-export { CopyURL };
+const Memoed = memo(CopyURL);
+
+export { Memoed as CopyURL };

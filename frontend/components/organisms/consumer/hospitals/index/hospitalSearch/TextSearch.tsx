@@ -1,6 +1,6 @@
 import { SearchIcon } from '@chakra-ui/icons';
 import { IconButton, Input, Box, Button } from '@chakra-ui/react';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState, memo } from 'react';
 import { usePublicGetPlaceAutocompleteLazyQuery } from '@/api/public_api/types';
 import { Card } from '@/components/atoms/Card';
 import type { SearchText, SetSearchText, SetCurrentLocation } from '../types';
@@ -108,4 +108,6 @@ const TextSearch: React.FC<Props> = ({
   );
 };
 
-export { TextSearch };
+const Memoed = memo(TextSearch);
+
+export { Memoed as TextSearch };

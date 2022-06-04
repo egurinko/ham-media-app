@@ -7,7 +7,7 @@ import {
   FormErrorMessage,
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useEffect, memo } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { usePublicCreateSessionMutation } from '@/api/public_api/types';
 import { Card } from '@/components/atoms/Card';
@@ -17,6 +17,7 @@ import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 import { setCookie } from '@/utils/cookies';
 import { goAdminProducts } from '@/utils/routes';
 import validators from '@/validators/index';
+import type { FC } from 'react';
 import type { SubmitHandler } from 'react-hook-form';
 
 export interface FormInput {
@@ -24,7 +25,7 @@ export interface FormInput {
   password: string;
 }
 
-const Form: React.VFC<NoProps> = () => {
+const Form: FC<NoProps> = () => {
   const router = useRouter();
   const {
     control,
@@ -122,4 +123,6 @@ const Form: React.VFC<NoProps> = () => {
   );
 };
 
-export { Form };
+const Memoed = memo(Form);
+
+export { Memoed as Form };

@@ -1,11 +1,12 @@
 import { Text, Box } from '@chakra-ui/react';
+import { memo } from 'react';
 import { RedirectIcon } from '@/components/atoms/assets/RedirectIcon';
 import { AbountInformationProvide } from './footer/AboutInformationProvide';
 import { AboutOfficialSNS } from './footer/AboutOfficialSNS';
 
 type Props = Record<string, never>;
 
-const Footer: React.VFC<Props> = () => (
+const Footer: FC<Props> = () => (
   <footer>
     <Box mb="4">
       <AbountInformationProvide />
@@ -31,4 +32,6 @@ const Footer: React.VFC<Props> = () => (
   </footer>
 );
 
-export { Footer };
+const Memoed = memo(Footer);
+
+export { Memoed as Footer };

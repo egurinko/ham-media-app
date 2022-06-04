@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useInternalGetStocksQuery } from '@/api/internal_api/types';
 import type { InternalGetProductQuery } from '@/api/internal_api/types';
 import { Card } from '@/components/atoms/Card';
@@ -5,12 +6,13 @@ import { Spinner } from '@/components/atoms/Spinner';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { AllocationSection } from './stock/AllocationSection';
 import { NewSection } from './stock/NewSection';
+import type { FC } from 'react';
 
 interface Props {
   productId: InternalGetProductQuery['product']['id'];
 }
 
-const Stocks: React.FC<Props> = ({ productId }) => {
+const Stocks: FC<Props> = ({ productId }) => {
   const { data, error, loading, fetchMore } = useInternalGetStocksQuery({
     variables: { productId: productId },
   });
@@ -31,4 +33,6 @@ const Stocks: React.FC<Props> = ({ productId }) => {
   );
 };
 
-export { Stocks };
+const Memoed = memo(Stocks);
+
+export { Memoed as Stocks };

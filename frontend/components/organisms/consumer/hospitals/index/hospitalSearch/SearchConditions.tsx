@@ -1,6 +1,6 @@
 import { CloseIcon } from '@chakra-ui/icons';
 import { Text, Flex, Button } from '@chakra-ui/react';
-import { useCallback } from 'react';
+import { useCallback, memo } from 'react';
 import { SecondaryButton } from '@/components/atoms/SecondaryButton';
 import type {
   SetSearchText,
@@ -205,4 +205,6 @@ const SearchConditions: React.FC<Props> = ({
   );
 };
 
-export { SearchConditions };
+const Memoed = memo(SearchConditions);
+
+export { Memoed as SearchConditions };

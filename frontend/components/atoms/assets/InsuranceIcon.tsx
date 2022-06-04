@@ -1,12 +1,16 @@
+import { memo } from 'react';
 import InsuranceSvg from '../../../assets/insurance.svg';
+import type { FC } from 'react';
 
 type Props = {
   width: number;
   height: number;
 };
 
-const InsuranceIcon: React.VFC<Props> = ({ width, height }) => (
+const InsuranceIcon: FC<Props> = ({ width, height }) => (
   <InsuranceSvg width={width} height={height} />
 );
 
-export { InsuranceIcon };
+const Memoed = memo(InsuranceIcon);
+
+export { Memoed as InsuranceIcon };

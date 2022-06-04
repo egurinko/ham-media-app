@@ -1,6 +1,7 @@
 import { Box } from '@chakra-ui/react';
 import Link from 'next/link';
-import React from 'react';
+import { memo } from 'react';
+import type { FC } from 'react';
 
 type Props = {
   href: string;
@@ -9,12 +10,7 @@ type Props = {
   icon?: React.ReactElement;
 };
 
-const NavigationLink: React.VFC<Props> = ({
-  href,
-  title,
-  isCurrentPath,
-  icon,
-}) => (
+const NavigationLink: FC<Props> = ({ href, title, isCurrentPath, icon }) => (
   <Link href={href}>
     <a>
       <Box
@@ -34,4 +30,6 @@ const NavigationLink: React.VFC<Props> = ({
   </Link>
 );
 
-export { NavigationLink };
+const Memoed = memo(NavigationLink);
+
+export { Memoed as NavigationLink };

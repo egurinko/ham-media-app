@@ -1,11 +1,12 @@
 import { Flex, Box, Text } from '@chakra-ui/react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { memo } from 'react';
 import { RedirectIcon } from '@/components/atoms/assets/RedirectIcon';
 
 type Props = Record<string, never>;
 
-const Header: React.VFC<Props> = () => (
+const Header: FC<Props> = () => (
   <header>
     <Box
       as="nav"
@@ -50,4 +51,6 @@ const Header: React.VFC<Props> = () => (
   </header>
 );
 
-export { Header };
+const Memoed = memo(Header);
+
+export { Memoed as Header };

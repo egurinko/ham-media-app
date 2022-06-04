@@ -1,4 +1,5 @@
 import { Box, Text } from '@chakra-ui/react';
+import { memo } from 'react';
 import { FileUploader as ReactDragDropFileUploader } from 'react-drag-drop-files';
 import { ImageIcon } from '@/components/atoms/assets/ImageIcon';
 
@@ -60,4 +61,6 @@ const FileUploader: React.FC<Props> = ({ image, handleFileChange }) => (
   </>
 );
 
-export { FileUploader };
+const Memoed = memo(FileUploader);
+
+export { Memoed as FileUploader };

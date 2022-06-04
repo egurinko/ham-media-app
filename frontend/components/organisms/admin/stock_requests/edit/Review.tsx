@@ -17,7 +17,7 @@ import {
   FormHelperText,
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import { useCallback, useState } from 'react';
+import { useCallback, useState, memo } from 'react';
 import {
   useInternalGetStockRequestQuery,
   useInternalRejectStockRequestMutation,
@@ -28,12 +28,13 @@ import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 import { goAdminStockRequests } from '@/utils/routes';
+import type { FC } from 'react';
 
 type Props = {
   stockRequestId: StockRequest['id'];
 };
 
-const Review: React.VFC<Props> = ({ stockRequestId }) => {
+const Review: FC<Props> = ({ stockRequestId }) => {
   const router = useRouter();
   const [message, setMessage] = useState('');
   const {
@@ -232,4 +233,6 @@ const Review: React.VFC<Props> = ({ stockRequestId }) => {
   );
 };
 
-export { Review };
+const Memoed = memo(Review);
+
+export { Memoed as Review };

@@ -1,12 +1,13 @@
 import { Box, Badge } from '@chakra-ui/react';
 import Link from 'next/link';
-import React from 'react';
-import { useLocalGetProductCartItemsQuery } from '@/api/internal_api/types';
+import { memo } from 'react';
+import { useLocalGetProductCartItemsQuery } from '@/api/local_api/types';
 import { SecondaryButton } from '@/components/atoms/SecondaryButton';
 import { CartIcon } from '@/components/atoms/assets/CartIcon';
 import { ADMIN_STOCK_REQUESTS_NEW_PATH } from '@/utils/routes';
+import type { FC } from 'react';
 
-const StockRequestCartButton: React.VFC<NoProps> = () => {
+const StockRequestCartButton: FC<NoProps> = () => {
   const { data } = useLocalGetProductCartItemsQuery();
   const count = data?.productCartItems.reduce(
     (count, item) => count + item.count,
@@ -42,4 +43,6 @@ const StockRequestCartButton: React.VFC<NoProps> = () => {
   );
 };
 
-export { StockRequestCartButton };
+const Memoed = memo(StockRequestCartButton);
+
+export { Memoed as StockRequestCartButton };

@@ -7,19 +7,21 @@ import {
   FormErrorMessage,
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
+import { memo } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import {
   useInternalUpdateMakerMutation,
   useInternalGetMakerQuery,
-  useLocalReadIsAdminQuery,
 } from '@/api/internal_api/types';
 import type { InternalUpdateMakerMutation } from '@/api/internal_api/types';
+import { useLocalReadIsAdminQuery } from '@/api/local_api/types';
 import { Card } from '@/components/atoms/Card';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 import { goAdminMakers } from '@/utils/routes';
 import validators from '@/validators/index';
+import type { FC } from 'react';
 import type { SubmitHandler } from 'react-hook-form';
 
 interface FormInput {
@@ -30,7 +32,7 @@ interface Props {
   makerId: InternalUpdateMakerMutation['updateMaker']['id'];
 }
 
-const Form: React.VFC<Props> = ({ makerId }) => {
+const Form: FC<Props> = ({ makerId }) => {
   const { data: isAdminData } = useLocalReadIsAdminQuery();
   const { data: makerData, error: makerError } = useInternalGetMakerQuery({
     variables: { id: makerId },
@@ -108,4 +110,6 @@ const Form: React.VFC<Props> = ({ makerId }) => {
   );
 };
 
-export { Form };
+const Memoed = memo(Form);
+
+export { Memoed as Form };

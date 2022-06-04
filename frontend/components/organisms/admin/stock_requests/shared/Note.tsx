@@ -1,7 +1,9 @@
 import { CheckCircleIcon } from '@chakra-ui/icons';
 import { Box, Alert, ListItem, List, ListIcon } from '@chakra-ui/react';
+import { memo } from 'react';
+import type { FC } from 'react';
 
-const Note: React.VFC<NoProps> = () => (
+const Note: FC<NoProps> = () => (
   <Alert fontSize="xs" mt="4" status="warning">
     <Box>
       <List textAlign="left">
@@ -22,4 +24,6 @@ const Note: React.VFC<NoProps> = () => (
   </Alert>
 );
 
-export { Note };
+const Memoed = memo(Note);
+
+export { Memoed as Note };

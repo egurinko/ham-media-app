@@ -1,4 +1,5 @@
 import { SmallCloseIcon } from '@chakra-ui/icons';
+import { memo } from 'react';
 import {
   useInternalGetProductQuery,
   useInternalDeleteProductTaggingMutation,
@@ -8,12 +9,13 @@ import { PrimaryTag } from '@/components/atoms/PrimaryTag';
 import { Spinner } from '@/components/atoms/Spinner';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { SuccessMessage } from '@/components/molecules/SuccessMessage';
+import type { FC } from 'react';
 
 interface Props {
   productId: InternalGetProductQuery['product']['id'];
 }
 
-const IndexSection: React.FC<Props> = ({ productId }) => {
+const IndexSection: FC<Props> = ({ productId }) => {
   const { data, error, loading, fetchMore } = useInternalGetProductQuery({
     variables: { id: productId },
     fetchPolicy: 'network-only',
@@ -62,4 +64,6 @@ const IndexSection: React.FC<Props> = ({ productId }) => {
   );
 };
 
-export { IndexSection };
+const Memoed = memo(IndexSection);
+
+export { Memoed as IndexSection };

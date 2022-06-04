@@ -13,7 +13,7 @@ import {
   useDisclosure,
   Text,
 } from '@chakra-ui/react';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState, memo } from 'react';
 import { SecondaryButton } from '@/components/atoms/SecondaryButton';
 import { FilterIcon } from '@/components/atoms/assets/FilterIcon';
 import { scrollTo } from '@/utils/scroll';
@@ -306,4 +306,6 @@ const Filter: React.FC<Props> = ({
   );
 };
 
-export { Filter };
+const Memoed = memo(Filter);
+
+export { Memoed as Filter };

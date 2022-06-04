@@ -14,7 +14,7 @@ type Props = {
   currentLng: number;
 };
 
-const HospitalGoogleMapComponent: React.FC<Props> = ({
+const HospitalGoogleMap: React.FC<Props> = ({
   height,
   width,
   currentLat,
@@ -89,5 +89,6 @@ const HospitalGoogleMapComponent: React.FC<Props> = ({
   );
 };
 
-const HospitalGoogleMap = memo(HospitalGoogleMapComponent);
-export { HospitalGoogleMap };
+const Memoed = memo(HospitalGoogleMap);
+
+export { Memoed as HospitalGoogleMap };
