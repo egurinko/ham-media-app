@@ -1,3 +1,4 @@
+import { Box } from '@chakra-ui/react';
 import { Layout } from '@/components/layouts/consumer/Layout';
 import { Head } from '@/components/molecules/Head';
 import { ClientOnly } from '@/components/organisms/ClientOnly';
@@ -17,7 +18,9 @@ const Index = () => (
     />
     <TitleSection />
     <ClientOnly>
-      <HospitalSearch />
+      <Box my="4">
+        <HospitalSearch />
+      </Box>
     </ClientOnly>
   </>
 );

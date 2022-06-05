@@ -1,43 +1,35 @@
-import { Button, Text, Box } from '@chakra-ui/react';
+import { Button, Text } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
 import { useState, useCallback, useEffect, memo } from 'react';
-import { Card } from '@/components/atoms/Card';
+import { useLocalGetHospitalSearchQuery } from '@/api/local_api/types';
 import { MapPinIcon } from '@/components/atoms/assets/MapPinIcon';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
-import { HospitalGoogleMap } from './HospitalGoogleMap';
-import type {
-  SetCurrentLocation,
-  SetSearchText,
-  CurrentLocation,
-} from '../types';
+import { hospitalSearchVar } from '@/utils/apollo/cache';
+import { goHospitalsResult } from '@/utils/routes';
 import type { FC } from 'react';
 
-type Props = {
-  currentLocation: CurrentLocation;
-  setCurrentLocation: SetCurrentLocation;
-  setSearchText: SetSearchText;
-};
-
-const MapSearch: FC<Props> = ({
-  currentLocation,
-  setCurrentLocation,
-  setSearchText,
-}) => {
-  const [open, setOpen] = useState(false);
+const CurrentLocationSearch: FC<NoProps> = () => {
+  const router = useRouter();
   const [currentLocationError, setCurrentLocationError] =
     useState<null | GeolocationPositionError>(null);
   const [currentLat, setCurrentLat] = useState(35.6602384);
   const [currentLng, setCurrentLng] = useState(139.727888);
+  const { data: hospitalSearchData } = useLocalGetHospitalSearchQuery();
 
   const copyApplied = useCallback(() => {
+    const currentLocation = hospitalSearchData?.hospitalSearch.currentLocation;
     if (currentLocation) {
       setCurrentLat(currentLocation.latitude);
       setCurrentLng(currentLocation.longitude);
-      setOpen(true);
     }
-  }, [currentLocation]);
+  }, [hospitalSearchData]);
+
   const copyLocal = useCallback(() => {
-    setCurrentLocation({ latitude: currentLat, longitude: currentLng });
-  }, [currentLat, currentLng, setCurrentLocation]);
+    hospitalSearchVar({
+      currentLocation: { latitude: currentLat, longitude: currentLng },
+      searchText: null,
+    });
+  }, [currentLat, currentLng]);
 
   useEffect(() => {
     copyApplied();
@@ -49,11 +41,10 @@ const MapSearch: FC<Props> = ({
       setCurrentLat(latitude);
       setCurrentLng(longitude);
       copyLocal();
-      setSearchText('');
       setCurrentLocationError(null);
-      setOpen(true);
+      goHospitalsResult(router);
     },
-    [setSearchText, copyLocal]
+    [copyLocal, router]
   );
 
   const error = useCallback((error: GeolocationPositionError) => {
@@ -70,32 +61,20 @@ const MapSearch: FC<Props> = ({
 
   return (
     <>
-      <Card>
-        <Button
-          onClick={handleMapSearch}
-          variant="outline"
-          mr="auto"
-          fill="primary.main"
-          display="flex"
-          flexDir="column"
-          alignItems="center"
-          justifyContent="center"
-          width="100px"
-          height="80px"
-        >
-          <MapPinIcon width={20} height={20} />
-          <Text fontSize="xs">現在地から探す</Text>
-        </Button>
-      </Card>
-      {!!currentLocation && open ? (
-        <Box my="2">
-          <HospitalGoogleMap
-            height={200}
-            currentLat={currentLat}
-            currentLng={currentLng}
-          />
-        </Box>
-      ) : null}
+      <Button
+        onClick={handleMapSearch}
+        variant="outline"
+        mr="auto"
+        fill="primary.main"
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <MapPinIcon width={20} height={20} />
+        <Text ml={1} fontSize="xs">
+          現在地から探す
+        </Text>
+      </Button>
       {currentLocationError ? (
         <FlashMessage
           status="error"
@@ -106,6 +85,6 @@ const MapSearch: FC<Props> = ({
   );
 };
 
-const Memoed = memo(MapSearch);
+const Memoed = memo(CurrentLocationSearch);
 
-export { Memoed as MapSearch };
+export { Memoed as CurrentLocationSearch };
