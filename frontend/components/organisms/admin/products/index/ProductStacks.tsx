@@ -18,6 +18,7 @@ import React, {
   useMemo,
   Fragment,
   memo,
+  useCallback,
 } from 'react';
 import {
   useInternalGetProductConnectionQuery,
@@ -28,6 +29,7 @@ import {
 import type { ProductFieldsFragment } from '@/api/internal_api/types';
 import { Card } from '@/components/atoms/Card';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
+import { SecondaryButton } from '@/components/atoms/SecondaryButton';
 import { Spinner } from '@/components/atoms/Spinner';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { SummaryLink } from '@/components/molecules/SummaryLink';
@@ -44,17 +46,12 @@ const PRODUCT_STOCK = {
 
 const ProductStacks: FC<NoProps> = () => {
   const [name, setName] = useState('');
-  const [selectedMakerId, setSelectedMakerId] = useState<undefined | string>(
-    undefined
-  );
-  const [selectedTagId, setSelectedTagId] = useState<undefined | string>(
-    undefined
-  );
+  const [selectedMakerId, setSelectedMakerId] = useState<string>('');
+  const [selectedTagId, setSelectedTagId] = useState<string>('');
   const [selectedAllocatedInternalUserId, setSelectedAllocatedInternalUserID] =
-    useState<undefined | string>(undefined);
-  const [selectedInternalUserId, setSelectedInternalUserID] = useState<
-    undefined | string
-  >(undefined);
+    useState<string>('');
+  const [selectedInternalUserId, setSelectedInternalUserID] =
+    useState<string>('');
   const [productStock, setProductStock] = useState<string>(PRODUCT_STOCK.HAS);
   const hasStock = useMemo(
     () =>
@@ -123,6 +120,25 @@ const ProductStacks: FC<NoProps> = () => {
       },
     });
   };
+
+  const handleClear = useCallback(() => {
+    setName('');
+    setSelectedMakerId('');
+    setSelectedTagId('');
+    setSelectedAllocatedInternalUserID('');
+    setSelectedInternalUserID('');
+    fetchMore({
+      variables: {
+        first: 10,
+        name: '',
+        makerId: undefined,
+        productTagId: undefined,
+        internalUserId: undefined,
+        allocatedInternalUserId: undefined,
+        hasStock,
+      },
+    });
+  }, [fetchMore, hasStock]);
 
   return (
     <>
@@ -237,6 +253,9 @@ const ProductStacks: FC<NoProps> = () => {
           </RadioGroup>
         </Box>
         <Box textAlign="center">
+          <SecondaryButton onClick={handleClear} mt="4" mr="8">
+            クリア
+          </SecondaryButton>
           <PrimaryButton onClick={handleSearch} mt="4">
             検索
           </PrimaryButton>
