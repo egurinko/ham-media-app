@@ -3,6 +3,8 @@ import { Layout } from '@/components/layouts/consumer/Layout';
 import { Head } from '@/components/molecules/Head';
 import { ClientOnly } from '@/components/organisms/ClientOnly';
 import { HospitalSearch } from '@/components/organisms/consumer/hospitals/index/HospitalSearch';
+import { NightServiceHospitals } from '@/components/organisms/consumer/hospitals/index/NightServiceHospitals';
+import { RecommendedHospitals } from '@/components/organisms/consumer/hospitals/index/RecommendedHospitals';
 import { TitleSection } from '@/components/organisms/consumer/hospitals/index/TitleSection';
 import { SERVICE_NAME, ORIGIN_URL } from '@/utils/constant';
 import { HOSPITALS_PATH } from '@/utils/routes';
@@ -20,6 +22,12 @@ const Index = () => (
     <ClientOnly>
       <Box my="4">
         <HospitalSearch />
+      </Box>
+      <Box my="4">
+        <RecommendedHospitals />
+      </Box>
+      <Box my="4">
+        <NightServiceHospitals />
       </Box>
     </ClientOnly>
   </>
