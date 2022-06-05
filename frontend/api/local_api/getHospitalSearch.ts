@@ -8,6 +8,12 @@ export const getHospitalSearch = gql`
         latitude
         longitude
       }
+      reservable
+      nightServiceOption
+      insuranceEnabled
+      jsavaOption
+      nichijuOption
+      recommended
     }
   }
 `;

@@ -14,6 +14,12 @@ const productCartItemsVar = makeVar<
 const hospitalSearchVar = makeVar<HospitalSearch>({
   currentLocation: null,
   searchText: null,
+  reservable: false,
+  nightServiceOption: false,
+  insuranceEnabled: false,
+  jsavaOption: false,
+  nichijuOption: false,
+  recommended: false,
 });
 
 const getCache = () =>

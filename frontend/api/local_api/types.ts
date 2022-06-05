@@ -24,6 +24,12 @@ export type CurrentLocation = {
 export type HospitalSearch = {
   __typename?: 'HospitalSearch';
   currentLocation?: Maybe<CurrentLocation>;
+  insuranceEnabled: Scalars['Boolean'];
+  jsavaOption: Scalars['Boolean'];
+  nichijuOption: Scalars['Boolean'];
+  nightServiceOption: Scalars['Boolean'];
+  recommended: Scalars['Boolean'];
+  reservable: Scalars['Boolean'];
   searchText?: Maybe<Scalars['String']>;
 };
 
@@ -48,7 +54,7 @@ export type ReadIsAdmin = {
 export type LocalGetHospitalSearchQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type LocalGetHospitalSearchQuery = { __typename?: 'Query', hospitalSearch: { __typename?: 'HospitalSearch', searchText?: string | null, currentLocation?: { __typename?: 'CurrentLocation', latitude: number, longitude: number } | null } };
+export type LocalGetHospitalSearchQuery = { __typename?: 'Query', hospitalSearch: { __typename?: 'HospitalSearch', searchText?: string | null, reservable: boolean, nightServiceOption: boolean, insuranceEnabled: boolean, jsavaOption: boolean, nichijuOption: boolean, recommended: boolean, currentLocation?: { __typename?: 'CurrentLocation', latitude: number, longitude: number } | null } };
 
 export type LocalGetProductCartItemsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -69,6 +75,12 @@ export const LocalGetHospitalSearchDocument = gql`
       latitude
       longitude
     }
+    reservable
+    nightServiceOption
+    insuranceEnabled
+    jsavaOption
+    nichijuOption
+    recommended
   }
 }
     `;
