@@ -13,7 +13,7 @@ import { Head } from '@/components/molecules/Head';
 import { DetailCard } from '@/components/organisms/consumer/hospitals/detail/DetailCard';
 import { apiClient } from '@/utils/apollo';
 import { SERVICE_NAME, ORIGIN_URL } from '@/utils/constant';
-import { goHospitals, HOSPITALS_DETAIL_PATH } from '@/utils/routes';
+import { HOSPITALS_DETAIL_PATH, goHospitalsResult } from '@/utils/routes';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import type { ParsedUrlQuery } from 'querystring';
 import type { ReactElement } from 'react';
@@ -33,10 +33,10 @@ const Show = ({ hospital }: Props) => {
         <Button
           aria-label="link"
           variant="link"
-          onClick={() => goHospitals(router)}
+          onClick={() => goHospitalsResult(router)}
           leftIcon={<ChevronRightIcon />}
         >
-          <Heading size="sm">他の病院を探す</Heading>
+          <Heading size="sm">検索結果に戻る</Heading>
         </Button>
       </Box>
       <Box>

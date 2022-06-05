@@ -17,19 +17,21 @@ export type NichijuOption =
 export type Recommended =
   PublicGetHospitalConnectionQueryVariables['recommended'];
 
-export type SetSearchText = UseStateAction<SearchText>;
-export type SetCurrentLocation = UseStateAction<CurrentLocation>;
-export type SetReservable = UseStateAction<Reservable>;
-export type SetNightServiceOption = UseStateAction<NightServiceOption>;
-export type SetInsuranceEnabled = UseStateAction<InsuranceEnabled>;
-export type SetJsavaOption = UseStateAction<JsavaOption>;
-export type SetNichijuOption = UseStateAction<NichijuOption>;
-export type SetRecommended = UseStateAction<Recommended>;
-
 export type GetInitialHospitalConnectionVariables =
   Partial<PublicGetHospitalConnectionQueryVariables>;
 export type GetInitialHospitalConnection = (
   variables: GetInitialHospitalConnectionVariables
 ) => void;
+
+export type PERSISTED = {
+  searchText?: SearchText;
+  currentLocation?: CurrentLocation;
+  reservable?: Reservable;
+  nightServiceOption?: NightServiceOption;
+  insuranceEnabled?: InsuranceEnabled;
+  jsavaOption?: JsavaOption;
+  nichijuOption?: NichijuOption;
+  recommended?: Recommended;
+};
 
 export type GetContinuousHospitalConnection = () => void;

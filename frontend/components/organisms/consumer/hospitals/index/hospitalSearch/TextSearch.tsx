@@ -5,10 +5,17 @@ import { useCallback, useEffect, useState, memo } from 'react';
 import { useLocalGetHospitalSearchQuery } from '@/api/local_api/types';
 import { usePublicGetPlaceAutocompleteLazyQuery } from '@/api/public_api/types';
 import { hospitalSearchVar } from '@/utils/apollo/cache';
+import { LOCAL_STORAGE_HOSPITAL_SEARCH_KEY } from '@/utils/constant';
+import { useLocalStorage } from '@/utils/hooks';
 import { goHospitalsResult } from '@/utils/routes';
+import type { PERSISTED } from '../../types';
 import type { FC } from 'react';
 
 const TextSearch: FC<NoProps> = () => {
+  const { setLocalStorage } = useLocalStorage<PERSISTED>(
+    LOCAL_STORAGE_HOSPITAL_SEARCH_KEY
+  );
+
   const router = useRouter();
   const [text, setText] = useState('');
   const [isCandidatesWindowOpen, setIsCandidatesWindowOpen] = useState(false);
@@ -23,8 +30,22 @@ const TextSearch: FC<NoProps> = () => {
   }, [hospitalSearchData]);
 
   const copyLocal = useCallback(async () => {
-    hospitalSearchVar({ searchText: text, currentLocation: null });
-  }, [text]);
+    hospitalSearchVar({
+      ...hospitalSearchVar(),
+      searchText: text,
+      currentLocation: null,
+    });
+    setLocalStorage({
+      searchText: text,
+      currentLocation: null,
+      reservable: false,
+      nightServiceOption: false,
+      insuranceEnabled: false,
+      jsavaOption: false,
+      nichijuOption: false,
+      recommended: false,
+    });
+  }, [text, setLocalStorage]);
 
   useEffect(() => {
     copyApplied();

@@ -8,3 +8,5 @@ export const SERVICE_NAME = 'Ham ω Media' as const;
 
 export const ORIGIN_URL =
   process.env['NEXT_PUBLIC_ORIGIN'] || 'http://localhost:8080';
+
+export const LOCAL_STORAGE_HOSPITAL_SEARCH_KEY = 'hospitalsPage';
