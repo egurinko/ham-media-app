@@ -11,7 +11,10 @@ const productCartItemsVar = makeVar<
   CreateStockRequestRequestProductsInputType[]
 >([]);
 
-const hospitalSearchVar = makeVar<HospitalSearch>({});
+const hospitalSearchVar = makeVar<HospitalSearch>({
+  currentLocation: null,
+  searchText: null,
+});
 
 const getCache = () =>
   new InMemoryCache({
@@ -58,4 +61,4 @@ const getCache = () =>
     },
   });
 
-export { getCache, productCartItemsVar };
+export { getCache, productCartItemsVar, hospitalSearchVar };

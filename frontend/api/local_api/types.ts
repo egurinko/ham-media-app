@@ -17,8 +17,8 @@ export type Scalars = {
 
 export type CurrentLocation = {
   __typename?: 'CurrentLocation';
-  latitude?: Maybe<Scalars['Float']>;
-  longitude?: Maybe<Scalars['Float']>;
+  latitude: Scalars['Float'];
+  longitude: Scalars['Float'];
 };
 
 export type HospitalSearch = {
@@ -48,7 +48,7 @@ export type ReadIsAdmin = {
 export type LocalGetHospitalSearchQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type LocalGetHospitalSearchQuery = { __typename?: 'Query', hospitalSearch: { __typename?: 'HospitalSearch', searchText?: string | null, currentLocation?: { __typename?: 'CurrentLocation', latitude?: number | null, longitude?: number | null } | null } };
+export type LocalGetHospitalSearchQuery = { __typename?: 'Query', hospitalSearch: { __typename?: 'HospitalSearch', searchText?: string | null, currentLocation?: { __typename?: 'CurrentLocation', latitude: number, longitude: number } | null } };
 
 export type LocalGetProductCartItemsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -63,7 +63,7 @@ export type LocalReadIsAdminQuery = { __typename?: 'Query', readIsAdmin: { __typ
 
 export const LocalGetHospitalSearchDocument = gql`
     query LocalGetHospitalSearch {
-  hospitalSearch {
+  hospitalSearch @client {
     searchText
     currentLocation {
       latitude

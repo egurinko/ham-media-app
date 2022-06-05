@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 
 export const getHospitalSearch = gql`
   query LocalGetHospitalSearch {
-    hospitalSearch {
+    hospitalSearch @client {
       searchText
       currentLocation {
         latitude
