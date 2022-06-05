@@ -1,101 +1,68 @@
 import { CloseIcon } from '@chakra-ui/icons';
 import { Text, Flex, Button } from '@chakra-ui/react';
-import { useCallback, memo } from 'react';
+import { useCallback, memo, useMemo } from 'react';
+import { useLocalGetHospitalSearchQuery } from '@/api/local_api/types';
 import { SecondaryButton } from '@/components/atoms/SecondaryButton';
-import type {
-  SetSearchText,
-  SetCurrentLocation,
-  Reservable,
-  SetReservable,
-  NightServiceOption,
-  SetNightServiceOption,
-  InsuranceEnabled,
-  SetInsuranceEnabled,
-  NichijuOption,
-  SetNichijuOption,
-  JsavaOption,
-  SetJsavaOption,
-  Recommended,
-  SetRecommended,
-} from '../types';
+import { hospitalSearchVar } from '@/utils/apollo/cache';
 import type { FC } from 'react';
 
-type Props = {
-  setSearchText: SetSearchText;
-  setCurrentLocation: SetCurrentLocation;
-  reservable: Reservable;
-  setReservable: SetReservable;
-  nightServiceOption: NightServiceOption;
-  setNightServiceOption: SetNightServiceOption;
-  insuranceEnabled: InsuranceEnabled;
-  setInsuranceEnabled: SetInsuranceEnabled;
-  jsavaOption: JsavaOption;
-  setJsavaOption: SetJsavaOption;
-  nichijuOption: NichijuOption;
-  setNichijuOption: SetNichijuOption;
-  recommended: Recommended;
-  setRecommended: SetRecommended;
-};
-
-const SearchConditions: FC<Props> = ({
-  setSearchText,
-  setCurrentLocation,
-  reservable,
-  setReservable,
-  nightServiceOption,
-  setNightServiceOption,
-  insuranceEnabled,
-  setInsuranceEnabled,
-  jsavaOption,
-  setJsavaOption,
-  nichijuOption,
-  setNichijuOption,
-  recommended,
-  setRecommended,
-}) => {
+const SearchConditions: FC<NoProps> = () => {
+  const { data } = useLocalGetHospitalSearchQuery();
+  const hospitalSearch = useMemo(() => data?.hospitalSearch, [data]);
   const clearAll = useCallback(() => {
-    setSearchText('');
-    setCurrentLocation(null);
-    setReservable(false);
-    setNightServiceOption(false);
-    setInsuranceEnabled(false);
-    setJsavaOption(false);
-    setNichijuOption(false);
-    setRecommended(false);
-  }, [
-    setSearchText,
-    setCurrentLocation,
-    setReservable,
-    setNightServiceOption,
-    setInsuranceEnabled,
-    setJsavaOption,
-    setNichijuOption,
-    setRecommended,
-  ]);
+    hospitalSearchVar({
+      searchText: '',
+      currentLocation: null,
+      reservable: false,
+      nightServiceOption: false,
+      insuranceEnabled: false,
+      jsavaOption: false,
+      nichijuOption: false,
+      recommended: false,
+    });
+  }, []);
 
   const clearReservable = useCallback(() => {
-    setReservable(false);
-  }, [setReservable]);
+    hospitalSearchVar({
+      ...hospitalSearchVar(),
+      reservable: false,
+    });
+  }, []);
 
   const clearNightServiceOption = useCallback(() => {
-    setNightServiceOption(false);
-  }, [setNightServiceOption]);
+    hospitalSearchVar({
+      ...hospitalSearchVar(),
+      nightServiceOption: false,
+    });
+  }, []);
 
   const clearInsuranceEnabled = useCallback(() => {
-    setInsuranceEnabled(false);
-  }, [setInsuranceEnabled]);
+    hospitalSearchVar({
+      ...hospitalSearchVar(),
+      insuranceEnabled: false,
+    });
+  }, []);
 
   const clearJsavaOption = useCallback(() => {
-    setJsavaOption(false);
-  }, [setJsavaOption]);
+    hospitalSearchVar({
+      ...hospitalSearchVar(),
+      jsavaOption: false,
+    });
+  }, []);
 
   const clearNichijuOption = useCallback(() => {
-    setNichijuOption(false);
-  }, [setNichijuOption]);
+    hospitalSearchVar({
+      ...hospitalSearchVar(),
+      nichijuOption: false,
+    });
+  }, []);
 
   const clearRecommended = useCallback(() => {
-    setRecommended(false);
-  }, [setRecommended]);
+    hospitalSearchVar({
+      ...hospitalSearchVar(),
+      recommended: false,
+    });
+  }, []);
 
   return (
     <Flex wrap="wrap">
@@ -112,7 +79,7 @@ const SearchConditions: FC<Props> = ({
         <Text fontSize="sm">全条件クリア</Text>
       </Button>
 
-      {!reservable || (
+      {!hospitalSearch?.reservable || (
         <SecondaryButton
           onClick={clearReservable}
           borderRadius={100}
@@ -127,7 +94,7 @@ const SearchConditions: FC<Props> = ({
           <Text fontSize="sm">予約可</Text>
         </SecondaryButton>
       )}
-      {!nightServiceOption || (
+      {!hospitalSearch?.nightServiceOption || (
         <SecondaryButton
           onClick={clearNightServiceOption}
           borderRadius={100}
@@ -142,7 +109,7 @@ const SearchConditions: FC<Props> = ({
           <Text fontSize="sm">夜間営業</Text>
         </SecondaryButton>
       )}
-      {!insuranceEnabled || (
+      {!hospitalSearch?.insuranceEnabled || (
         <SecondaryButton
           onClick={clearInsuranceEnabled}
           borderRadius={100}
@@ -157,7 +124,7 @@ const SearchConditions: FC<Props> = ({
           <Text fontSize="sm">保険適用可</Text>
         </SecondaryButton>
       )}
-      {!jsavaOption || (
+      {!hospitalSearch?.jsavaOption || (
         <SecondaryButton
           onClick={clearJsavaOption}
           borderRadius={100}
@@ -172,7 +139,7 @@ const SearchConditions: FC<Props> = ({
           <Text fontSize="sm">日本小動物獣医師会 (JSAVA) 認定あり</Text>
         </SecondaryButton>
       )}
-      {!nichijuOption || (
+      {!hospitalSearch?.nichijuOption || (
         <SecondaryButton
           onClick={clearNichijuOption}
           borderRadius={100}
@@ -187,7 +154,7 @@ const SearchConditions: FC<Props> = ({
           <Text fontSize="sm">日本獣医師会認定あり</Text>
         </SecondaryButton>
       )}
-      {!recommended || (
+      {!hospitalSearch?.recommended || (
         <SecondaryButton
           onClick={clearRecommended}
           borderRadius={100}

@@ -8,13 +8,19 @@ type ReadIsAdmin {
 }
 
 type CurrentLocation {
-  latitude: Float
-  longitude: Float
+  latitude: Float!
+  longitude: Float!
 }
 
 type HospitalSearch {
   searchText: String
   currentLocation: CurrentLocation
+  reservable: Boolean!
+  nightServiceOption: Boolean!
+  insuranceEnabled: Boolean!
+  jsavaOption: Boolean!
+  nichijuOption: Boolean!
+  recommended: Boolean!
 }
 
 extend type Query {

@@ -1,6 +1,6 @@
 import { ApolloClient } from '@apollo/client';
-import { getLink } from './apollo/link';
 import { getCache } from './apollo/cache';
+import { getLink } from './apollo/link';
 
 const apiClient = new ApolloClient({
   link: getLink(),

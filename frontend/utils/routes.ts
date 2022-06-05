@@ -30,6 +30,7 @@ export const ADMIN_PRODUCT_TAG_GROUPS_EDIT_PATH = (id: number) =>
   `/admin/product_tag_groups/${id}/edit`;
 
 export const HOSPITALS_PATH = '/hospitals';
+export const HOSPITALS_RESULT_PATH = '/hospitals/result';
 export const HOSPITALS_DETAIL_PATH = (id: bigint) => `/hospitals/${id}`;
 
 export const NOTFOUND_PATH = '/404';
@@ -97,6 +98,7 @@ export const goAdminProductTagGroupsEdit = (
 
 export const goHospitals = (router: NextRouter) =>
   pushRouter(router, HOSPITALS_PATH);
-
+export const goHospitalsResult = (router: NextRouter) =>
+  pushRouter(router, HOSPITALS_RESULT_PATH);
 export const goHospitalDetail = (router: NextRouter, { id }: { id: bigint }) =>
   pushRouter(router, HOSPITALS_DETAIL_PATH(id));

@@ -14,78 +14,35 @@ import {
   Text,
 } from '@chakra-ui/react';
 import { useCallback, useEffect, useState, memo } from 'react';
+import { useLocalGetHospitalSearchQuery } from '@/api/local_api/types';
 import { SecondaryButton } from '@/components/atoms/SecondaryButton';
 import { FilterIcon } from '@/components/atoms/assets/FilterIcon';
+import { hospitalSearchVar } from '@/utils/apollo/cache';
 import { scrollTo } from '@/utils/scroll';
-import type {
-  Reservable,
-  SetReservable,
-  NightServiceOption,
-  SetNightServiceOption,
-  InsuranceEnabled,
-  SetInsuranceEnabled,
-  JsavaOption,
-  SetJsavaOption,
-  NichijuOption,
-  SetNichijuOption,
-  Recommended,
-  SetRecommended,
-} from '../types';
 import type { FC } from 'react';
 
-type Props = {
-  reservable: Reservable;
-  setReservable: SetReservable;
-  nightServiceOption: NightServiceOption;
-  setNightServiceOption: SetNightServiceOption;
-  insuranceEnabled: InsuranceEnabled;
-  setInsuranceEnabled: SetInsuranceEnabled;
-  jsavaOption: JsavaOption;
-  setJsavaOption: SetJsavaOption;
-  nichijuOption: NichijuOption;
-  setNichijuOption: SetNichijuOption;
-  recommended: Recommended;
-  setRecommended: SetRecommended;
-};
+const Filter: FC<NoProps> = () => {
+  const { data: searchData } = useLocalGetHospitalSearchQuery();
 
-const Filter: FC<Props> = ({
-  reservable,
-  setReservable,
-  nightServiceOption,
-  setNightServiceOption,
-  insuranceEnabled,
-  setInsuranceEnabled,
-  jsavaOption,
-  setJsavaOption,
-  nichijuOption,
-  setNichijuOption,
-  recommended,
-  setRecommended,
-}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [modalReservable, setModalReservable] = useState(reservable);
-  const [modalNightServiceOption, setModalNightServiceOption] =
-    useState(nightServiceOption);
-  const [modalInsuranceEnabled, setModalInsuranceEnabled] =
-    useState(insuranceEnabled);
-  const [modalJsavaOption, setModalJsavaOption] = useState(jsavaOption);
-  const [modalNichijuOption, setModalNichijuOption] = useState(nichijuOption);
-  const [modalRecommended, setModalRecommended] = useState(recommended);
+  const [modalReservable, setModalReservable] = useState(false);
+  const [modalNightServiceOption, setModalNightServiceOption] = useState(false);
+  const [modalInsuranceEnabled, setModalInsuranceEnabled] = useState(false);
+  const [modalJsavaOption, setModalJsavaOption] = useState(false);
+  const [modalNichijuOption, setModalNichijuOption] = useState(false);
+  const [modalRecommended, setModalRecommended] = useState(false);
 
   const copyApplied = useCallback((): void => {
-    setModalReservable(reservable);
-    setModalNightServiceOption(nightServiceOption);
-    setModalInsuranceEnabled(insuranceEnabled);
-    setModalJsavaOption(jsavaOption);
-    setModalNichijuOption(nichijuOption);
-    setModalRecommended(recommended);
+    if (searchData?.hospitalSearch) {
+      setModalReservable(searchData.hospitalSearch.reservable);
+      setModalNightServiceOption(searchData.hospitalSearch.nightServiceOption);
+      setModalInsuranceEnabled(searchData.hospitalSearch.insuranceEnabled);
+      setModalJsavaOption(searchData.hospitalSearch.jsavaOption);
+      setModalNichijuOption(searchData.hospitalSearch.nichijuOption);
+      setModalRecommended(searchData.hospitalSearch.recommended);
+    }
   }, [
-    reservable,
-    nightServiceOption,
-    insuranceEnabled,
-    jsavaOption,
-    nichijuOption,
-    recommended,
+    searchData,
     setModalReservable,
     setModalNightServiceOption,
     setModalJsavaOption,
@@ -95,12 +52,15 @@ const Filter: FC<Props> = ({
   ]);
 
   const copyLocal = useCallback((): void => {
-    setReservable(modalReservable);
-    setNightServiceOption(modalNightServiceOption);
-    setInsuranceEnabled(modalInsuranceEnabled);
-    setJsavaOption(modalJsavaOption);
-    setNichijuOption(modalNichijuOption);
-    setRecommended(modalRecommended);
+    hospitalSearchVar({
+      ...hospitalSearchVar(),
+      reservable: modalReservable,
+      nightServiceOption: modalNightServiceOption,
+      insuranceEnabled: modalInsuranceEnabled,
+      jsavaOption: modalJsavaOption,
+      nichijuOption: modalNichijuOption,
+      recommended: modalRecommended,
+    });
   }, [
     modalReservable,
     modalNightServiceOption,
@@ -108,12 +68,6 @@ const Filter: FC<Props> = ({
     modalJsavaOption,
     modalNichijuOption,
     modalRecommended,
-    setReservable,
-    setNightServiceOption,
-    setJsavaOption,
-    setInsuranceEnabled,
-    setNichijuOption,
-    setRecommended,
   ]);
 
   useEffect(() => {
