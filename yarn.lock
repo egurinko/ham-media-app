@@ -893,10 +893,10 @@
   dependencies:
     tslib "^2.3.1"
 
-"@aws-sdk/lib-storage@^3.100.0":
-  version "3.100.0"
-  resolved "https://registry.yarnpkg.com/@aws-sdk/lib-storage/-/lib-storage-3.100.0.tgz#88d7976dbee04ed0dcccccb6100b680279f02296"
-  integrity sha512-IP8Y310+24FOI3bZqdx9mTef1fKUa5YFfMa+Zmfj4+cxMB5/5wrAc2MacyQdPshmdOCIfJ8Izikop6SqeEQqcg==
+"@aws-sdk/lib-storage@^3.107.0":
+  version "3.107.0"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/lib-storage/-/lib-storage-3.107.0.tgz#c108d6427887312b6e1e38c4d71c7908b93ced24"
+  integrity sha512-v2LvItHd4woeoqMU/fg7HtBjlh6OUedQ20DfbTksF0x2FqPP1wgiC90rbohbO6MglePGZM8KXYr7L+eDD3dSIw==
   dependencies:
     buffer "5.6.0"
     events "3.3.0"
