@@ -42,7 +42,7 @@
     "@graphql-codegen/cli": "^2.6.2",
     "@graphql-codegen/typescript": "^2.5.0",
     "@graphql-codegen/typescript-operations": "^2.4.2",
-    "@graphql-codegen/typescript-react-apollo": "^3.2.14",
+    "@graphql-codegen/typescript-react-apollo": "^3.2.16",
     "@serverless/core": "^1.1.2",
     "@serverless/template": "^1.1.4",
     "@sls-next/serverless-component": "^3.7.0",
