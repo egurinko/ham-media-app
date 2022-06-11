@@ -26,6 +26,7 @@ const Header: FC<Props> = () => (
               alt="ハムメディアロゴ"
               width={160}
               height={35}
+              priority={true}
             />
           </a>
         </Link>
