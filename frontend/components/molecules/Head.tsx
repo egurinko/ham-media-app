@@ -19,7 +19,10 @@ const Head: FC<Props> = ({
 }) => (
   <NextHead>
     <title>{title}</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
     <meta name="description" content={description} />
     <meta property="og:url" content={ogpUrl} />
     <meta property="og:title" content={title} />
