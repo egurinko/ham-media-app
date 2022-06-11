@@ -21,6 +21,7 @@ const TitleSection: FC<NoProps> = () => {
         alt="ハムスターの読書"
         width={imageWidth || 80}
         height={imageHeight || 60}
+        priority={true}
       />
       <Box>
         <Text fontWeight="bold" mb="1" fontSize={{ base: 'lg', md: '2xl' }}>
