@@ -57,7 +57,11 @@ const NightServiceHospitals: FC<Props> = ({
           <MoonIcon mb="1" mr="1" fontSize="md" color="blue.700" />
           夜間営業病院
         </Heading>
-        <Text onClick={handleReadMore} fontSize="xs">
+        <Text
+          onClick={handleReadMore}
+          fontSize="xs"
+          sx={{ _hover: { cursor: 'pointer' } }}
+        >
           詳しくみる <ChevronRightIcon mb="1" />
         </Text>
       </Box>

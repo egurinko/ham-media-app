@@ -55,7 +55,11 @@ const RecommendedHospitals: FC<Props> = ({ recommendedHospitalConnection }) => {
           <StarIcon mb="1" mr="1" fontSize="md" color="yellow.300" />
           ハムメディアおすすめ病院
         </Heading>
-        <Text onClick={handleReadMore} fontSize="xs">
+        <Text
+          onClick={handleReadMore}
+          fontSize="xs"
+          sx={{ _hover: { cursor: 'pointer' } }}
+        >
           詳しくみる <ChevronRightIcon mb="1" />
         </Text>
       </Box>
