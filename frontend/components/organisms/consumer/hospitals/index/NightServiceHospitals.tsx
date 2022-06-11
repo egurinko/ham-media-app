@@ -2,7 +2,7 @@ import { MoonIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import { Heading, Box, Text } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { memo, useMemo, useCallback } from 'react';
-import { usePublicGetHospitalConnectionQuery } from '@/api/public_api/types';
+import type { PublicGetHospitalConnectionQuery } from '@/api/public_api/types';
 import { Card } from '@/components/atoms/Card';
 import { hospitalSearchVar } from '@/utils/apollo/cache';
 import { LOCAL_STORAGE_HOSPITAL_SEARCH_KEY } from '@/utils/constant';
@@ -12,20 +12,17 @@ import { HospitalMiniBox } from './HospitalMiniBox';
 import type { PERSISTED } from '../types';
 import type { FC } from 'react';
 
-const NightServiceHospitals: FC<NoProps> = () => {
-  const { data } = usePublicGetHospitalConnectionQuery({
-    variables: {
-      first: 100,
-      searchText: '',
-      reservable: false,
-      nightServiceOption: true,
-      insuranceEnabled: false,
-      jsavaOption: false,
-      nichijuOption: false,
-      recommended: false,
-    },
-  });
-  const edges = useMemo(() => data?.publicHospitalConnection?.edges, [data]);
+type Props = {
+  nightServiceHospitalConnection: PublicGetHospitalConnectionQuery['publicHospitalConnection'];
+};
+
+const NightServiceHospitals: FC<Props> = ({
+  nightServiceHospitalConnection,
+}) => {
+  const edges = useMemo(
+    () => nightServiceHospitalConnection?.edges,
+    [nightServiceHospitalConnection]
+  );
 
   const router = useRouter();
   const { setLocalStorage } = useLocalStorage<PERSISTED>(
