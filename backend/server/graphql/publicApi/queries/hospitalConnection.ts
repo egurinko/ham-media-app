@@ -93,7 +93,7 @@ export const hospitalConnection = queryField((t) => {
         ${
           currentLocation
             ? Prisma.sql`ORDER BY POW(${currentLocation.latitude} - hospital_address_geo_locations.latitude, 2) + POW(${currentLocation.longitude} - hospital_address_geo_locations.longitude, 2)`
-            : Prisma.empty
+            : Prisma.sql`ORDER BY hospital_addresses.prefecture_id`
         }
       `,
         args

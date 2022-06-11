@@ -1,4 +1,9 @@
 import { Box } from '@chakra-ui/react';
+import { getHospitalConnection } from '@/api/public_api/getHospitalConnection';
+import type {
+  PublicGetHospitalConnectionQuery,
+  PublicGetHospitalConnectionQueryVariables,
+} from '@/api/public_api/types';
 import { Layout } from '@/components/layouts/consumer/Layout';
 import { Head } from '@/components/molecules/Head';
 import { ClientOnly } from '@/components/organisms/ClientOnly';
@@ -6,11 +11,16 @@ import { HospitalSearch } from '@/components/organisms/consumer/hospitals/index/
 import { NightServiceHospitals } from '@/components/organisms/consumer/hospitals/index/NightServiceHospitals';
 import { RecommendedHospitals } from '@/components/organisms/consumer/hospitals/index/RecommendedHospitals';
 import { TitleSection } from '@/components/organisms/consumer/hospitals/index/TitleSection';
+import { apiClient } from '@/utils/apollo';
 import { SERVICE_NAME, ORIGIN_URL } from '@/utils/constant';
 import { HOSPITALS_PATH } from '@/utils/routes';
+import type { GetStaticProps } from 'next';
 import type { ReactElement } from 'react';
 
-const Index = () => (
+const Index = ({
+  nightServiceHospitalConnection,
+  recommendedHospitalConnection,
+}: Props) => (
   <>
     <Head
       title={`ハムスター受付病院検索 | ${SERVICE_NAME}`}
@@ -19,20 +29,88 @@ const Index = () => (
       keywords={`ハムスター受付病院,動物病院,ハムスター,ハムメディア,${SERVICE_NAME}`}
     />
     <TitleSection />
+
     <ClientOnly>
       <Box my="4">
         <HospitalSearch />
       </Box>
       <Box my="4">
-        <RecommendedHospitals />
+        <RecommendedHospitals
+          recommendedHospitalConnection={recommendedHospitalConnection}
+        />
       </Box>
       <Box my="4">
-        <NightServiceHospitals />
+        <NightServiceHospitals
+          nightServiceHospitalConnection={nightServiceHospitalConnection}
+        />
       </Box>
     </ClientOnly>
   </>
 );
 
 Index.getLayout = (page: ReactElement) => <Layout>{page}</Layout>;
+
+interface Props {
+  recommendedHospitalConnection: PublicGetHospitalConnectionQuery['publicHospitalConnection'];
+  nightServiceHospitalConnection: PublicGetHospitalConnectionQuery['publicHospitalConnection'];
+}
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  try {
+    const { data: recommendedHospitalData } = await apiClient.query<
+      PublicGetHospitalConnectionQuery,
+      PublicGetHospitalConnectionQueryVariables
+    >({
+      query: getHospitalConnection,
+      variables: {
+        first: 100,
+        searchText: '',
+        reservable: false,
+        nightServiceOption: false,
+        insuranceEnabled: false,
+        jsavaOption: false,
+        nichijuOption: false,
+        recommended: true,
+      },
+      fetchPolicy: 'network-only',
+    });
+
+    const { data: nightServiceHospitalData } = await apiClient.query<
+      PublicGetHospitalConnectionQuery,
+      PublicGetHospitalConnectionQueryVariables
+    >({
+      query: getHospitalConnection,
+      variables: {
+        first: 100,
+        searchText: '',
+        reservable: false,
+        nightServiceOption: true,
+        insuranceEnabled: false,
+        jsavaOption: false,
+        nichijuOption: false,
+        recommended: false,
+      },
+      fetchPolicy: 'network-only',
+    });
+
+    return {
+      props: {
+        recommendedHospitalConnection:
+          recommendedHospitalData.publicHospitalConnection,
+        nightServiceHospitalConnection:
+          nightServiceHospitalData.publicHospitalConnection,
+      },
+      revalidate: 600,
+    };
+  } catch {}
+
+  return {
+    props: {
+      recommendedHospitalConnection: null,
+      nightServiceHospitalConnection: null,
+    },
+    revalidate: 600,
+  };
+};
 
 export default Index;

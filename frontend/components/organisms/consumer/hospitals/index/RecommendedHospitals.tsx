@@ -2,7 +2,7 @@ import { StarIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import { Heading, Box, Text } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { memo, useCallback, useMemo } from 'react';
-import { usePublicGetHospitalConnectionQuery } from '@/api/public_api/types';
+import type { PublicGetHospitalConnectionQuery } from '@/api/public_api/types';
 import { Card } from '@/components/atoms/Card';
 import { hospitalSearchVar } from '@/utils/apollo/cache';
 import { LOCAL_STORAGE_HOSPITAL_SEARCH_KEY } from '@/utils/constant';
@@ -12,25 +12,19 @@ import { HospitalMiniBox } from './HospitalMiniBox';
 import type { PERSISTED } from '../types';
 import type { FC } from 'react';
 
-const RecommendedHospitals: FC<NoProps> = () => {
+type Props = {
+  recommendedHospitalConnection: PublicGetHospitalConnectionQuery['publicHospitalConnection'];
+};
+
+const RecommendedHospitals: FC<Props> = ({ recommendedHospitalConnection }) => {
   const router = useRouter();
   const { setLocalStorage } = useLocalStorage<PERSISTED>(
     LOCAL_STORAGE_HOSPITAL_SEARCH_KEY
   );
-
-  const { data } = usePublicGetHospitalConnectionQuery({
-    variables: {
-      first: 100,
-      searchText: '',
-      reservable: false,
-      nightServiceOption: false,
-      insuranceEnabled: false,
-      jsavaOption: false,
-      nichijuOption: false,
-      recommended: true,
-    },
-  });
-  const edges = useMemo(() => data?.publicHospitalConnection?.edges, [data]);
+  const edges = useMemo(
+    () => recommendedHospitalConnection?.edges,
+    [recommendedHospitalConnection]
+  );
 
   const copyLocal = useCallback(async () => {
     hospitalSearchVar({
@@ -61,7 +55,11 @@ const RecommendedHospitals: FC<NoProps> = () => {
           <StarIcon mb="1" mr="1" fontSize="md" color="yellow.300" />
           ハムメディアおすすめ病院
         </Heading>
-        <Text onClick={handleReadMore} fontSize="xs">
+        <Text
+          onClick={handleReadMore}
+          fontSize="xs"
+          sx={{ _hover: { cursor: 'pointer' } }}
+        >
           詳しくみる <ChevronRightIcon mb="1" />
         </Text>
       </Box>
