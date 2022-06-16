@@ -6,7 +6,6 @@ import type {
 } from '@/api/public_api/types';
 import { Layout } from '@/components/layouts/consumer/Layout';
 import { Head } from '@/components/molecules/Head';
-import { ClientOnly } from '@/components/organisms/ClientOnly';
 import { HospitalSearch } from '@/components/organisms/consumer/hospitals/index/HospitalSearch';
 import { NightServiceHospitals } from '@/components/organisms/consumer/hospitals/index/NightServiceHospitals';
 import { RecommendedHospitals } from '@/components/organisms/consumer/hospitals/index/RecommendedHospitals';
@@ -30,21 +29,19 @@ const Index = ({
     />
     <TitleSection />
 
-    <ClientOnly>
-      <Box my="4">
-        <HospitalSearch />
-      </Box>
-      <Box my="4">
-        <RecommendedHospitals
-          recommendedHospitalConnection={recommendedHospitalConnection}
-        />
-      </Box>
-      <Box my="4">
-        <NightServiceHospitals
-          nightServiceHospitalConnection={nightServiceHospitalConnection}
-        />
-      </Box>
-    </ClientOnly>
+    <Box my="4">
+      <HospitalSearch />
+    </Box>
+    <Box my="4">
+      <RecommendedHospitals
+        recommendedHospitalConnection={recommendedHospitalConnection}
+      />
+    </Box>
+    <Box my="4">
+      <NightServiceHospitals
+        nightServiceHospitalConnection={nightServiceHospitalConnection}
+      />
+    </Box>
   </>
 );
 
