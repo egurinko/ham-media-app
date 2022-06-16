@@ -8,7 +8,7 @@ on:
       - package.json
       - yarn.lock
     branches:
-      - master
+      - main
     types: ['closed']
 
 jobs:

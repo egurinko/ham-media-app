@@ -2,10 +2,9 @@ name: Release Drafter
 
 on:
   push:
-    branches:
-      - master
+    branches: [main]
   pull_request:
-    types: [opened, edited]
+    branches: [main]
 
 permissions:
   contents: read
