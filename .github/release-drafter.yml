@@ -1,0 +1,48 @@
+name-template: 'v$RESOLVED_VERSION 🐹'
+tag-template: 'v$RESOLVED_VERSION'
+categories:
+  - title: '🚀 Features'
+    labels:
+      - 'feature'
+  - title: '🐛 Bug Fixes'
+    labels:
+      - 'bugfix'
+  - title: '🧰 Maintenance'
+    label: 'chore'
+  - title: '⛓️ Dependency update'
+    label: 'dependencies'
+change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
+change-title-escapes: '\<*_&'
+version-resolver:
+  major:
+    labels:
+      - 'major'
+  minor:
+    labels:
+      - 'minor'
+  patch:
+    labels:
+      - 'patch'
+  default: patch
+template: |
+  ## Changes
+
+  $CHANGES
+
+autolabeler:
+  - label: feature
+    branch:
+      - '/^feat(ure)?[/-].+/'
+  - label: bugfix
+    branch:
+      - '/^fix[/-].+/'
+  - label: chore
+    branch:
+      - '/^chore[/-].+/'
+  - label: frontend
+    files:
+      - frontend/**/*
+  - label: backend
+    files:
+      - backend/**/*
+      - graphql/**/*
