@@ -10,10 +10,10 @@
     "@jridgewell/gen-mapping" "^0.1.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
-"@apollo/client@^3.0.0", "@apollo/client@^3.6.6":
-  version "3.6.6"
-  resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.6.6.tgz#3fb1f5b11da9a64b51b5a86b62450bee034e7f41"
-  integrity sha512-AzNLN043wy0bDTTR9wzKYSu+I1IT2Ox3+vWckxgIt88Jfw5jHBvumf3lXE1JlgvbFCTiKS/Sa66AadQXWMVBRQ==
+"@apollo/client@^3.0.0", "@apollo/client@^3.6.8":
+  version "3.6.8"
+  resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.6.8.tgz#97e876fdbc4c287652a61895fd2b6f0b157a7667"
+  integrity sha512-p/J6KRHZZPGX0bZtMLvRFAIcReYsRYGg+Jz9MkgabWPy0L8rwgyolq9fvKsNqkH888Tj9Yvwrxz9V84KfcORJA==
   dependencies:
     "@graphql-typed-document-node/core" "^3.1.1"
     "@wry/context" "^0.6.0"
@@ -5644,18 +5644,18 @@
   integrity sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==
 
 "@types/react@^17.0.15":
-  version "17.0.45"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.45.tgz#9b3d5b661fd26365fefef0e766a1c6c30ccf7b3f"
-  integrity sha512-YfhQ22Lah2e3CHPsb93tRwIGNiSwkuz1/blk4e6QrWS0jQzCSNbGLtOEYhPg02W0yGTTmpajp7dCTbBAMN3qsg==
+  version "17.0.46"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.46.tgz#887b8a2360cc915fe5dec763c8a764bf3124f9e9"
+  integrity sha512-zNAJVEO9dBEQLPa/OuedGfx92/UlD+1rNxSv2qVWUQZ+orEtLUWFgZ08xfyI9TAZLnmWzZDtssAsgtbXT7Ew0g==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
     csstype "^3.0.2"
 
 "@types/react@^18.0.1", "@types/react@^18.0.9":
-  version "18.0.12"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.12.tgz#cdaa209d0a542b3fcf69cf31a03976ec4cdd8840"
-  integrity sha512-duF1OTASSBQtcigUvhuiTB1Ya3OvSy+xORCiEf20H0P0lzx+/KeVsA99U5UjLXSbyo1DRJDlLKqTeM1ngosqtg==
+  version "18.0.13"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.13.tgz#0f5bd24a5f26593e04e450fe85ff43f51c1524ff"
+  integrity sha512-psqptIYQxGUFuGYwP3KCFVtPTkMpIcrqFmtKblWEUQhLuYLpHBwJkXhjp6eHfDM5IbyskY4x7qQpLedEsPkHlA==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
