@@ -267,7 +267,10 @@ const ProductStacks: FC<NoProps> = () => {
           <Divider />
           {nodes?.map((product) => (
             <Fragment key={product.id}>
-              <SummaryLink url={ADMIN_PRODUCTS_DETAIL_PATH(product.id)}>
+              <SummaryLink
+                url={ADMIN_PRODUCTS_DETAIL_PATH(product.id)}
+                openNewWindow={false}
+              >
                 <ProductSummary product={product} />
               </SummaryLink>
               <Divider />

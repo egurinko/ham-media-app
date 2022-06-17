@@ -5,14 +5,23 @@ import type { FC, PropsWithChildren } from 'react';
 
 type Props = {
   url: string;
+  openNewWindow?: boolean;
 };
 
-const SummaryLink: FC<PropsWithChildren<Props>> = ({ url, children }) => (
+const SummaryLink: FC<PropsWithChildren<Props>> = ({
+  url,
+  openNewWindow = true,
+  children,
+}) => (
   <SummaryRow>
     <Link href={url}>
-      <a target="_blank" rel="noreferrer">
-        {children}
-      </a>
+      {openNewWindow ? (
+        <a target="_blank" rel="noreferrer">
+          {children}
+        </a>
+      ) : (
+        <a>{children}</a>
+      )}
     </Link>
   </SummaryRow>
 );

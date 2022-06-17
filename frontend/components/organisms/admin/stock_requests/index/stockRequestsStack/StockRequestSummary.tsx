@@ -18,7 +18,10 @@ const StockRequestSummary: FC<Props> = ({
   stockRequest,
   handleDeleteModalOpen,
 }) => (
-  <SummaryLink url={ADMIN_STOCK_REQUESTS_EDIT_PATH(stockRequest.id)}>
+  <SummaryLink
+    openNewWindow={false}
+    url={ADMIN_STOCK_REQUESTS_EDIT_PATH(stockRequest.id)}
+  >
     <Box
       display="flex"
       justifyContent="space-between"
