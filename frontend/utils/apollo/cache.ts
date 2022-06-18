@@ -5,7 +5,7 @@ import type {
   Session,
   RoleFieldsFragment,
 } from '@/api/internal_api/types';
-import type { HospitalSearch } from '@/api/local_api/types';
+import type { HospitalSearch, ProductSearch } from '@/api/local_api/types';
 
 const productCartItemsVar = makeVar<
   CreateStockRequestRequestProductsInputType[]
@@ -20,6 +20,15 @@ const hospitalSearchVar = makeVar<HospitalSearch>({
   jsavaOption: false,
   nichijuOption: false,
   recommended: false,
+});
+
+const productSearchVar = makeVar<ProductSearch>({
+  name: '',
+  makerId: undefined,
+  productTagId: undefined,
+  internalUserId: undefined,
+  allocatedInternalUserId: undefined,
+  hasStock: true,
 });
 
 const getCache = () =>
@@ -62,9 +71,14 @@ const getCache = () =>
               return hospitalSearchVar();
             },
           },
+          productSearch: {
+            read() {
+              return productSearchVar();
+            },
+          },
         },
       },
     },
   });
 
-export { getCache, productCartItemsVar, hospitalSearchVar };
+export { getCache, productCartItemsVar, hospitalSearchVar, productSearchVar };

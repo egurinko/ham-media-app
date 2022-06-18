@@ -39,10 +39,21 @@ export type ProductCartItem = {
   productId: Scalars['Int'];
 };
 
+export type ProductSearch = {
+  __typename?: 'ProductSearch';
+  allocatedInternalUserId?: Maybe<Scalars['Int']>;
+  hasStock?: Maybe<Scalars['Boolean']>;
+  internalUserId?: Maybe<Scalars['Int']>;
+  makerId?: Maybe<Scalars['Int']>;
+  name: Scalars['String'];
+  productTagId?: Maybe<Scalars['Int']>;
+};
+
 export type Query = {
   __typename?: 'Query';
   hospitalSearch: HospitalSearch;
   productCartItems: Array<ProductCartItem>;
+  productSearch: ProductSearch;
   readIsAdmin: ReadIsAdmin;
 };
 
