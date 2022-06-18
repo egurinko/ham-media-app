@@ -23,8 +23,18 @@ type HospitalSearch {
   recommended: Boolean!
 }
 
+type ProductSearch {
+  name: String!
+  makerId: Int
+  productTagId: Int
+  internalUserId: Int
+  allocatedInternalUserId: Int
+  hasStock: Boolean
+}
+
 extend type Query {
   productCartItems: [ProductCartItem!]!
   readIsAdmin: ReadIsAdmin!
   hospitalSearch: HospitalSearch!
+  productSearch: ProductSearch!
 }
