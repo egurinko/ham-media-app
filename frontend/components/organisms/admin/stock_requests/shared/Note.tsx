@@ -17,7 +17,7 @@ const Note: FC<NoProps> = () => (
         </ListItem>
         <ListItem>
           <ListIcon as={CheckCircleIcon} />
-          1回のリクエスト内容が送料を上回るようにしてください
+          1回のリクエスト内容が送料を上回るようにしてください.送料は安くても1100円〜1400円くらいかかります
         </ListItem>
       </List>
     </Box>
