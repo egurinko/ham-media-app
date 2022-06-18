@@ -38,6 +38,12 @@ const ProductSummary: FC<Props> = ({ product }) => (
           </SecondaryTag>
         ))}
         <Text fontSize="xs" mb="2">
+          責任者：
+          {Array.from(
+            new Set(product.stocks.map((s) => s.internalUser.name))
+          ).join(', ')}
+        </Text>
+        <Text fontSize="xs" mb="2">
           割当：
           {Array.from(
             new Set(
