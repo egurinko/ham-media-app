@@ -47,11 +47,33 @@ const PRODUCT_STOCK = {
 const ProductStacks: FC<NoProps> = () => {
   const [name, setName] = useState('');
   const [selectedMakerId, setSelectedMakerId] = useState<string>('');
+  const requestMakerId = useMemo(
+    () => (selectedMakerId === '' ? undefined : Number(selectedMakerId)),
+    [selectedMakerId]
+  );
   const [selectedTagId, setSelectedTagId] = useState<string>('');
+  const requestTagId = useMemo(
+    () => (selectedTagId === '' ? undefined : Number(selectedTagId)),
+    [selectedTagId]
+  );
   const [selectedAllocatedInternalUserId, setSelectedAllocatedInternalUserID] =
     useState<string>('');
+  const requestAllocatedInternalUserId = useMemo(
+    () =>
+      selectedAllocatedInternalUserId === ''
+        ? undefined
+        : Number(selectedAllocatedInternalUserId),
+    [selectedAllocatedInternalUserId]
+  );
   const [selectedInternalUserId, setSelectedInternalUserID] =
     useState<string>('');
+  const requestInternalUserId = useMemo(
+    () =>
+      selectedInternalUserId === ''
+        ? undefined
+        : Number(selectedInternalUserId),
+    [selectedInternalUserId]
+  );
   const [productStock, setProductStock] = useState<string>(PRODUCT_STOCK.HAS);
   const hasStock = useMemo(
     () =>
@@ -86,10 +108,10 @@ const ProductStacks: FC<NoProps> = () => {
           first: 10,
           after: pageInfo?.endCursor,
           name,
-          makerId: Number(selectedMakerId),
-          productTagId: Number(selectedTagId),
-          internalUserId: Number(selectedInternalUserId),
-          allocatedInternalUserId: Number(selectedAllocatedInternalUserId),
+          makerId: requestMakerId,
+          productTagId: requestTagId,
+          internalUserId: requestInternalUserId,
+          allocatedInternalUserId: requestAllocatedInternalUserId,
           hasStock,
         },
       });
@@ -100,26 +122,34 @@ const ProductStacks: FC<NoProps> = () => {
     loading,
     fetchMore,
     name,
-    selectedMakerId,
-    selectedTagId,
-    selectedInternalUserId,
-    selectedAllocatedInternalUserId,
+    requestMakerId,
+    requestTagId,
+    requestInternalUserId,
+    requestAllocatedInternalUserId,
     hasStock,
   ]);
 
-  const handleSearch = () => {
+  const handleSearch = useCallback(() => {
     fetchMore({
       variables: {
         first: 10,
         name,
-        makerId: Number(selectedMakerId),
-        productTagId: Number(selectedTagId),
-        internalUserId: Number(selectedInternalUserId),
-        allocatedInternalUserId: Number(selectedAllocatedInternalUserId),
+        makerId: requestMakerId,
+        productTagId: requestTagId,
+        internalUserId: requestInternalUserId,
+        allocatedInternalUserId: requestAllocatedInternalUserId,
         hasStock,
       },
     });
-  };
+  }, [
+    fetchMore,
+    name,
+    requestMakerId,
+    requestTagId,
+    requestInternalUserId,
+    requestAllocatedInternalUserId,
+    hasStock,
+  ]);
 
   const handleClear = useCallback(() => {
     setName('');
