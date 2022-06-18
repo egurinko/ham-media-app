@@ -15,7 +15,6 @@ import React, {
   useEffect,
   useRef,
   useState,
-  useMemo,
   Fragment,
   memo,
   useCallback,
@@ -33,6 +32,7 @@ import { SecondaryButton } from '@/components/atoms/SecondaryButton';
 import { Spinner } from '@/components/atoms/Spinner';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { SummaryLink } from '@/components/molecules/SummaryLink';
+import { productSearchVar } from '@/utils/apollo/cache';
 import { useIntersectionObserver } from '@/utils/hooks/useIntersectionObserver';
 import { ADMIN_PRODUCTS_DETAIL_PATH } from '@/utils/routes';
 import { ProductSummary } from '../ProductSummary';
@@ -47,43 +47,12 @@ const PRODUCT_STOCK = {
 const ProductStacks: FC<NoProps> = () => {
   const [name, setName] = useState('');
   const [selectedMakerId, setSelectedMakerId] = useState<string>('');
-  const requestMakerId = useMemo(
-    () => (selectedMakerId === '' ? undefined : Number(selectedMakerId)),
-    [selectedMakerId]
-  );
   const [selectedTagId, setSelectedTagId] = useState<string>('');
-  const requestTagId = useMemo(
-    () => (selectedTagId === '' ? undefined : Number(selectedTagId)),
-    [selectedTagId]
-  );
   const [selectedAllocatedInternalUserId, setSelectedAllocatedInternalUserID] =
     useState<string>('');
-  const requestAllocatedInternalUserId = useMemo(
-    () =>
-      selectedAllocatedInternalUserId === ''
-        ? undefined
-        : Number(selectedAllocatedInternalUserId),
-    [selectedAllocatedInternalUserId]
-  );
   const [selectedInternalUserId, setSelectedInternalUserID] =
     useState<string>('');
-  const requestInternalUserId = useMemo(
-    () =>
-      selectedInternalUserId === ''
-        ? undefined
-        : Number(selectedInternalUserId),
-    [selectedInternalUserId]
-  );
   const [productStock, setProductStock] = useState<string>(PRODUCT_STOCK.HAS);
-  const hasStock = useMemo(
-    () =>
-      productStock === PRODUCT_STOCK.HAS
-        ? true
-        : productStock === PRODUCT_STOCK.NOT
-        ? false
-        : undefined,
-    [productStock]
-  );
 
   const { data: makersData } = useInternalGetMakersQuery();
   const { data: productTagGroupsData } = useInternalGetProductTagGroupsQuery();
@@ -93,7 +62,7 @@ const ProductStacks: FC<NoProps> = () => {
 
   const { data, loading, error, fetchMore } =
     useInternalGetProductConnectionQuery({
-      variables: { first: 10, hasStock: true },
+      variables: { first: 10, ...productSearchVar() },
       fetchPolicy: 'network-only',
     });
   const nodes = data?.productConnection?.edges
@@ -101,54 +70,82 @@ const ProductStacks: FC<NoProps> = () => {
     .filter((node): node is ProductFieldsFragment => !!node);
   const pageInfo = data?.productConnection?.pageInfo;
 
+  const restorePage = useCallback(() => {
+    const productSearch = productSearchVar();
+    setName(productSearch.name);
+    setSelectedMakerId(
+      productSearch.makerId ? String(productSearch.makerId) : ''
+    );
+    setSelectedTagId(
+      productSearch.productTagId ? String(productSearch.productTagId) : ''
+    );
+    setSelectedAllocatedInternalUserID(
+      productSearch.allocatedInternalUserId
+        ? String(productSearch.allocatedInternalUserId)
+        : ''
+    );
+    setSelectedInternalUserID(
+      productSearch.internalUserId ? String(productSearch.internalUserId) : ''
+    );
+    setProductStock(
+      productSearch.hasStock
+        ? PRODUCT_STOCK.HAS
+        : productSearch.hasStock === false
+        ? PRODUCT_STOCK.NOT
+        : PRODUCT_STOCK.ALL
+    );
+  }, []);
+
+  useEffect(() => {
+    restorePage();
+  }, [restorePage]);
+
   useEffect(() => {
     if (isIntersect && pageInfo?.hasNextPage && !loading) {
       fetchMore({
         variables: {
           first: 10,
           after: pageInfo?.endCursor,
-          name,
-          makerId: requestMakerId,
-          productTagId: requestTagId,
-          internalUserId: requestInternalUserId,
-          allocatedInternalUserId: requestAllocatedInternalUserId,
-          hasStock,
+          ...productSearchVar(),
         },
       });
     }
-  }, [
-    isIntersect,
-    pageInfo,
-    loading,
-    fetchMore,
-    name,
-    requestMakerId,
-    requestTagId,
-    requestInternalUserId,
-    requestAllocatedInternalUserId,
-    hasStock,
-  ]);
+  }, [isIntersect, pageInfo, loading, fetchMore]);
 
   const handleSearch = useCallback(() => {
+    productSearchVar({
+      name,
+      makerId: selectedMakerId === '' ? undefined : Number(selectedMakerId),
+      productTagId: selectedTagId === '' ? undefined : Number(selectedTagId),
+      allocatedInternalUserId:
+        selectedAllocatedInternalUserId === ''
+          ? undefined
+          : Number(selectedAllocatedInternalUserId),
+      internalUserId:
+        selectedInternalUserId === ''
+          ? undefined
+          : Number(selectedInternalUserId),
+      hasStock:
+        productStock === PRODUCT_STOCK.HAS
+          ? true
+          : productStock === PRODUCT_STOCK.NOT
+          ? false
+          : undefined,
+    });
     fetchMore({
       variables: {
         first: 10,
-        name,
-        makerId: requestMakerId,
-        productTagId: requestTagId,
-        internalUserId: requestInternalUserId,
-        allocatedInternalUserId: requestAllocatedInternalUserId,
-        hasStock,
+        ...productSearchVar(),
       },
     });
   }, [
     fetchMore,
     name,
-    requestMakerId,
-    requestTagId,
-    requestInternalUserId,
-    requestAllocatedInternalUserId,
-    hasStock,
+    selectedMakerId,
+    selectedTagId,
+    selectedAllocatedInternalUserId,
+    selectedInternalUserId,
+    productStock,
   ]);
 
   const handleClear = useCallback(() => {
@@ -157,18 +154,22 @@ const ProductStacks: FC<NoProps> = () => {
     setSelectedTagId('');
     setSelectedAllocatedInternalUserID('');
     setSelectedInternalUserID('');
+    setProductStock(PRODUCT_STOCK.HAS);
+    productSearchVar({
+      name: '',
+      makerId: undefined,
+      productTagId: undefined,
+      internalUserId: undefined,
+      allocatedInternalUserId: undefined,
+      hasStock: undefined,
+    });
     fetchMore({
       variables: {
         first: 10,
-        name: '',
-        makerId: undefined,
-        productTagId: undefined,
-        internalUserId: undefined,
-        allocatedInternalUserId: undefined,
-        hasStock,
+        ...productSearchVar(),
       },
     });
-  }, [fetchMore, hasStock]);
+  }, [fetchMore]);
 
   return (
     <>
