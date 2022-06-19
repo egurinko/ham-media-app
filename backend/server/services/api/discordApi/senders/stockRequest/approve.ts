@@ -12,7 +12,7 @@ export const postStockRequestApprovalAlert = (
   const lines = stockRequestCounts
     .map(
       (stockRequestCount) =>
-        `\n・${stockRequestCount.product.name}（https://ham-media-app.net/admin/products/${stockRequestCount.product.id}）：${stockRequestCount.count}つ`
+        `\n・${stockRequestCount.product.name}（ https://ham-media-app.net/admin/products/${stockRequestCount.product.id} ）：${stockRequestCount.count}つ`
     )
     .join();
   const content = `<@${stockRequest.internalUser.discord_user_id}> さんの在庫リクエストが <@${approvingInternalUser.discord_user_id}> さんに承認されたよ <:ok:776668642976071730> \n <@${approvingInternalUser.discord_user_id}> さんは在庫の割り当てをやってね🙊 ${lines} \n[承認メッセージ]\n${message}\n`;
