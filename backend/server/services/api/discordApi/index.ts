@@ -1,8 +1,5 @@
 export { postStockExpirationAlert } from './senders/stock/expirationAlert';
-export {
-  postStockExpiringInWeekAlert,
-  postStockExpiringInMonthAlert,
-} from './senders/stock/expiringAlert';
+export { postStockExpiringAlert } from './senders/stock/expiringAlert';
 export { postStockRequestCreateAlert } from './senders/stockRequest/create';
 export { postStockRequestUpdateAlert } from './senders/stockRequest/update';
 export { postStockRequestRejectionAlert } from './senders/stockRequest/reject';

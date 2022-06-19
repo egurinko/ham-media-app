@@ -1,5 +1,5 @@
 import { scalarType } from 'nexus';
-import GraphQLUpload from 'graphql-upload/GraphQLUpload.js';
+import { GraphQLUpload } from 'graphql-upload';
 import { GraphQLScalarType } from 'graphql';
 import { BigIntResolver, DateTimeResolver } from 'graphql-scalars';
 import { asNexusMethod } from 'nexus';
@@ -28,5 +28,6 @@ export const Upload = scalarType({
   description: GraphQLUpload.description,
   serialize: GraphQLUpload.serialize,
   parseValue: GraphQLUpload.parseValue,
+  // @ts-ignore
   parseLiteral: GraphQLUpload.parseLiteral,
 });
