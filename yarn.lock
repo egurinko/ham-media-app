@@ -272,10 +272,10 @@
     fast-xml-parser "3.19.0"
     tslib "^2.3.0"
 
-"@aws-sdk/client-s3@^3.112.0":
-  version "3.112.0"
-  resolved "https://registry.yarnpkg.com/@aws-sdk/client-s3/-/client-s3-3.112.0.tgz#ee3e35a34f80d133e4a3d42bba099678e4945bf4"
-  integrity sha512-vB7+tnYSmyfa0qL0fLkKRgtmZVbAdpyTz/YNL8JYGwcc7jvYjEyGVIgvYMqE3VVE6VMlgMl5ZBlhBFL2XXSAJg==
+"@aws-sdk/client-s3@^3.113.0":
+  version "3.113.0"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/client-s3/-/client-s3-3.113.0.tgz#fc416139a1d1f5a8e07ac6f3d453042c6d84c4f9"
+  integrity sha512-QHynLFWwhQFB2bULxMOlnIYzKPmE6ky5yRo0NPGklz4bnWc8RY/vSvlaii4JBxPee9TGxNM1/NCF0oMLUdXK3Q==
   dependencies:
     "@aws-crypto/sha1-browser" "2.0.0"
     "@aws-crypto/sha256-browser" "2.0.0"
@@ -294,7 +294,7 @@
     "@aws-sdk/md5-js" "3.110.0"
     "@aws-sdk/middleware-bucket-endpoint" "3.110.0"
     "@aws-sdk/middleware-content-length" "3.110.0"
-    "@aws-sdk/middleware-expect-continue" "3.110.0"
+    "@aws-sdk/middleware-expect-continue" "3.113.0"
     "@aws-sdk/middleware-flexible-checksums" "3.110.0"
     "@aws-sdk/middleware-host-header" "3.110.0"
     "@aws-sdk/middleware-location-constraint" "3.110.0"
@@ -987,12 +987,11 @@
     "@aws-sdk/types" "3.54.0"
     tslib "^2.3.0"
 
-"@aws-sdk/middleware-expect-continue@3.110.0":
-  version "3.110.0"
-  resolved "https://registry.yarnpkg.com/@aws-sdk/middleware-expect-continue/-/middleware-expect-continue-3.110.0.tgz#a61fb4a2947012060e74095b5f0808c12f06c866"
-  integrity sha512-agRV/Z2C6St0oVB/giKTDdq46xw2bPY2xwvd44PfPMi6KkPW1Ri2ZPrzwBevLFUpbzDcRj8Je9mgdl706HFIig==
+"@aws-sdk/middleware-expect-continue@3.113.0":
+  version "3.113.0"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/middleware-expect-continue/-/middleware-expect-continue-3.113.0.tgz#0129967f40ef57eec922ef8e126d77b90853a0fe"
+  integrity sha512-LLtSunCYVWeAhRP+6enn0kYF119WooV6gepMGOWeRCpKXO2iyi8YOx2Mtgc3T8ybiAG/dVlmZoX47Y1HINcuqg==
   dependencies:
-    "@aws-sdk/middleware-header-default" "3.110.0"
     "@aws-sdk/protocol-http" "3.110.0"
     "@aws-sdk/types" "3.110.0"
     tslib "^2.3.1"
@@ -1030,15 +1029,6 @@
     "@aws-sdk/protocol-http" "3.54.0"
     "@aws-sdk/types" "3.54.0"
     tslib "^2.3.0"
-
-"@aws-sdk/middleware-header-default@3.110.0":
-  version "3.110.0"
-  resolved "https://registry.yarnpkg.com/@aws-sdk/middleware-header-default/-/middleware-header-default-3.110.0.tgz#62955e315ce58cc32a1123ba1e2e37becc8a3fd2"
-  integrity sha512-aezdkU/O8eWDNL9XEs9DG1MTS4EVaUEyz25+TrPPRBzCFccMnGf5tUHDG62I59NLtWjtipxQ7QOqyA3jF5WTFQ==
-  dependencies:
-    "@aws-sdk/protocol-http" "3.110.0"
-    "@aws-sdk/types" "3.110.0"
-    tslib "^2.3.1"
 
 "@aws-sdk/middleware-header-default@3.54.0":
   version "3.54.0"
