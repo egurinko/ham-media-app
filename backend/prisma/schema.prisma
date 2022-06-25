@@ -7,7 +7,7 @@ generator nexusPrisma {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -16,9 +16,9 @@ model HospitalAddressGeoLocation {
 
   id                  BigInt          @id @default(autoincrement())
   hospital_address_id BigInt          @unique
-  latitude            Float           @db.Float
-  longitude           Float           @db.Float
-  created_at          DateTime        @default(now()) @db.DateTime(0)
+  latitude            Float           @db.Real
+  longitude           Float           @db.Real
+  created_at          DateTime        @default(now()) @db.Timestamptz(0)
   updated_at          DateTime        @default(now()) @updatedAt
   hospitalAddress     HospitalAddress @relation(fields: [hospital_address_id], references: [id], onDelete: Cascade)
   @@map(name: "hospital_address_geo_locations")
@@ -32,7 +32,7 @@ model HospitalAddress {
   prefecture_id              BigInt
   address                    String                      @db.VarChar(255)
   phone_number               String                      @db.VarChar(255)
-  created_at                 DateTime                    @default(now()) @db.DateTime(0)
+  created_at                 DateTime                    @default(now()) @db.Timestamptz(0)
   updated_at                 DateTime                    @default(now()) @updatedAt
   hospital                   Hospital                    @relation(fields: [hospital_id], references: [id], onDelete: Cascade)
   prefecture                 Prefecture                  @relation(fields: [prefecture_id], references: [id])
@@ -53,7 +53,7 @@ model HospitalBusinessForm {
   closed_day        String   @db.VarChar(255)
   insurance_enabled String   @db.VarChar(255)
   remark            String   @db.Text
-  created_at        DateTime @default(now()) @db.DateTime(0)
+  created_at        DateTime @default(now()) @db.Timestamptz(0)
   updated_at        DateTime @default(now()) @updatedAt
   hospital          Hospital @relation(fields: [hospital_id], references: [id], onDelete: Cascade)
 
@@ -70,7 +70,7 @@ model HospitalCertificationOption {
   hospital_id        BigInt   @unique
   nichiju_registered String   @db.VarChar(255)
   jsava_registered   String   @db.VarChar(255)
-  created_at         DateTime @default(now()) @db.DateTime(0)
+  created_at         DateTime @default(now()) @db.Timestamptz(0)
   updated_at         DateTime @default(now()) @updatedAt
   hospital           Hospital @relation(fields: [hospital_id], references: [id], onDelete: Cascade)
 
@@ -86,7 +86,7 @@ model HospitalInternalReputation {
   hospital_id BigInt   @unique
   star        Int
   remark      String   @db.Text
-  created_at  DateTime @default(now()) @db.DateTime(0)
+  created_at  DateTime @default(now()) @db.Timestamptz(0)
   updated_at  DateTime @default(now()) @updatedAt
   hospital    Hospital @relation(fields: [hospital_id], references: [id], onDelete: Cascade)
 
@@ -101,7 +101,7 @@ model HospitalNightServiceOption {
   hospital_id BigInt   @unique
   status      String   @db.VarChar(255)
   remark      String   @db.Text
-  created_at  DateTime @default(now()) @db.DateTime(0)
+  created_at  DateTime @default(now()) @db.Timestamptz(0)
   updated_at  DateTime @default(now()) @updatedAt
   hospital    Hospital @relation(fields: [hospital_id], references: [id], onDelete: Cascade)
 
@@ -115,7 +115,7 @@ model HospitalNightUrgentActionOption {
   id          BigInt   @id @default(autoincrement())
   hospital_id BigInt   @unique
   status      String   @db.VarChar(255)
-  created_at  DateTime @default(now()) @db.DateTime(0)
+  created_at  DateTime @default(now()) @db.Timestamptz(0)
   updated_at  DateTime @default(now()) @updatedAt
   hospital    Hospital @relation(fields: [hospital_id], references: [id], onDelete: Cascade)
 
@@ -131,7 +131,7 @@ model HospitalReservationStatus {
   required    String   @db.VarChar(255)
   reservable  String   @db.VarChar(255)
   remark      String   @db.Text
-  created_at  DateTime @default(now()) @db.DateTime(0)
+  created_at  DateTime @default(now()) @db.Timestamptz(0)
   updated_at  DateTime @default(now()) @updatedAt
   hospital    Hospital @relation(fields: [hospital_id], references: [id], onDelete: Cascade)
 
@@ -148,7 +148,7 @@ model Hospital {
   url                             String                           @db.VarChar(255)
   deleted                         Boolean                          @default(false)
   internal_memo                   String                           @db.Text
-  created_at                      DateTime                         @default(now()) @db.DateTime(0)
+  created_at                      DateTime                         @default(now()) @db.Timestamptz(0)
   updated_at                      DateTime                         @default(now()) @updatedAt
   hospitalAddress                 HospitalAddress?
   hospitalBusinessForm            HospitalBusinessForm?
@@ -170,7 +170,7 @@ model Role {
   id            Int            @id @default(autoincrement())
   name          String         @unique @db.VarChar(100)
   internalUsers InternalUser[]
-  created_at    DateTime       @default(now()) @db.DateTime(0)
+  created_at    DateTime       @default(now()) @db.Timestamptz(0)
   updated_at    DateTime       @default(now()) @updatedAt
 
   @@index([name], name: "idx_role_1")
@@ -191,7 +191,7 @@ model InternalUser {
   stockRequests    StockRequest[]
   stocks           Stock[]
 
-  created_at DateTime @default(now()) @db.DateTime(0)
+  created_at DateTime @default(now()) @db.Timestamptz(0)
   updated_at DateTime @default(now()) @updatedAt
 
   @@index([name], name: "idx_internal_users_1")
@@ -205,7 +205,7 @@ model Maker {
   id         Int       @id @default(autoincrement())
   name       String    @unique @db.VarChar(100)
   products   Product[]
-  created_at DateTime  @default(now()) @db.DateTime(0)
+  created_at DateTime  @default(now()) @db.Timestamptz(0)
   updated_at DateTime  @default(now()) @updatedAt
 
   @@index([name], name: "idx_makers_1")
@@ -224,7 +224,7 @@ model Product {
   stocks                           Stock[]
   productTaggings                  ProductTagging[]
   stockRequestProductRegistrations StockRequestProductRegistration[]
-  created_at                       DateTime                          @default(now()) @db.DateTime(0)
+  created_at                       DateTime                          @default(now()) @db.Timestamptz(0)
   updated_at                       DateTime                          @default(now()) @updatedAt
 
   @@index([name], name: "idx_products_1")
@@ -240,8 +240,8 @@ model Stock {
   internal_user_id BigInt
   internalUser     InternalUser     @relation(fields: [internal_user_id], references: [id])
   stockAllocation  StockAllocation?
-  expired_at       DateTime         @db.DateTime(0)
-  created_at       DateTime         @default(now()) @db.DateTime(0)
+  expired_at       DateTime         @db.Timestamptz(0)
+  created_at       DateTime         @default(now()) @db.Timestamptz(0)
   updated_at       DateTime         @default(now()) @updatedAt
 
   @@map(name: "stocks")
@@ -255,7 +255,7 @@ model StockAllocation {
   stock            Stock        @relation(fields: [stock_id], references: [id], onDelete: Cascade)
   internal_user_id BigInt
   internalUser     InternalUser @relation(fields: [internal_user_id], references: [id])
-  created_at       DateTime     @default(now()) @db.DateTime(0)
+  created_at       DateTime     @default(now()) @db.Timestamptz(0)
   updated_at       DateTime     @default(now()) @updatedAt
 
   @@map(name: "stock_allocations")
@@ -268,7 +268,7 @@ model StockRequest {
   internal_user_id     BigInt
   internalUser         InternalUser                      @relation(fields: [internal_user_id], references: [id])
   productRegistrations StockRequestProductRegistration[]
-  created_at           DateTime                          @default(now()) @db.DateTime(0)
+  created_at           DateTime                          @default(now()) @db.Timestamptz(0)
   updated_at           DateTime                          @default(now()) @updatedAt
 
   @@map(name: "stock_requests")
@@ -282,7 +282,7 @@ model StockRequestProductRegistration {
   stockRequest     StockRequest @relation(fields: [stock_request_id], references: [id], onDelete: Cascade)
   product_id       Int
   product          Product      @relation(fields: [product_id], references: [id])
-  created_at       DateTime     @default(now()) @db.DateTime(0)
+  created_at       DateTime     @default(now()) @db.Timestamptz(0)
   updated_at       DateTime     @default(now()) @updatedAt
 
   @@map(name: "stock_request_product_registrations")
@@ -293,7 +293,7 @@ model ProductTag {
 
   id                   Int              @id @default(autoincrement())
   name                 String           @unique @db.VarChar(100)
-  created_at           DateTime         @default(now()) @db.DateTime(0)
+  created_at           DateTime         @default(now()) @db.Timestamptz(0)
   updated_at           DateTime         @default(now()) @updatedAt
   product_tag_group_id Int
   productTagGroup      ProductTagGroup  @relation(fields: [product_tag_group_id], references: [id])
@@ -309,7 +309,7 @@ model ProductTagGroup {
   id          Int          @id @default(autoincrement())
   name        String       @unique @db.VarChar(100)
   productTags ProductTag[]
-  created_at  DateTime     @default(now()) @db.DateTime(0)
+  created_at  DateTime     @default(now()) @db.Timestamptz(0)
   updated_at  DateTime     @default(now()) @updatedAt
 
   @@index([name], name: "idx_product_tag_groups_1")
@@ -324,7 +324,7 @@ model ProductTagging {
   product        Product    @relation(fields: [product_id], references: [id])
   product_tag_id Int
   productTag     ProductTag @relation(fields: [product_tag_id], references: [id])
-  created_at     DateTime   @default(now()) @db.DateTime(0)
+  created_at     DateTime   @default(now()) @db.Timestamptz(0)
   updated_at     DateTime   @default(now()) @updatedAt
 
   @@unique([product_id, product_tag_id], name: "idx_product_taggings_1")
@@ -337,7 +337,7 @@ model Prefecture {
   id              BigInt            @id @default(autoincrement())
   region_id       BigInt
   name            String            @unique @db.VarChar(255)
-  created_at      DateTime          @default(now()) @db.DateTime(0)
+  created_at      DateTime          @default(now()) @db.Timestamptz(0)
   updated_at      DateTime          @default(now()) @updatedAt
   region          Region            @relation(fields: [region_id], references: [id])
   hospitalAddress HospitalAddress[]
@@ -351,7 +351,7 @@ model Region {
 
   id          BigInt       @id @default(autoincrement())
   name        String       @unique @db.VarChar(255)
-  created_at  DateTime     @default(now()) @db.DateTime(0)
+  created_at  DateTime     @default(now()) @db.Timestamptz(0)
   updated_at  DateTime     @default(now()) @updatedAt
   prefectures Prefecture[]
   @@map(name: "regions")
