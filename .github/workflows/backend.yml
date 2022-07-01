@@ -12,21 +12,21 @@ jobs:
   test:
     runs-on: ubuntu-latest
     services:
-      mysql:
-        image: mysql:5.7
-        env:
-          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+      postgres:
+        image: postgres
         ports:
-          - 3306:3306
+          - 5432:5432
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: ham_media_app_test
         options: >-
-          --health-cmd="mysqladmin ping"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=3
-      db:
-        image: mysql:5.7
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     env:
-      DATABASE_URL: mysql://root:@localhost:3306/ham_media_app_test
+      DATABASE_URL: postgresql://postgres:postgres@localhost/ham_media_app_test
       JWT_TOKEN: test
       PORT: 3000
       GOOGLE_API_KEY: test
