@@ -12,7 +12,10 @@ initSentry();
 
 const app = fastify({
   logger: {
-    prettyPrint: true,
+    transport: {
+      target: 'pino-pretty',
+      options: { destination: 1 },
+    },
   },
 });
 
