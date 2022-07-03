@@ -1,10 +1,12 @@
 import { app } from './app';
 
-const PORT = process.env['PORT'] || 3000;
+const PORT = Number(process.env['PORT']) || 3000;
 
 const start = async () => {
   try {
-    await app.listen(PORT, '0.0.0.0');
+    await app.listen({ port: PORT });
+    console.log(`server start listening in port:${PORT}`);
+
     app.cron.startAllJobs();
   } catch (err) {
     app.log.error(err);
