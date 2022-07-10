@@ -63,7 +63,7 @@
     "@types/sanitize-html": "^2.6.2",
     "@types/uuid": "^8.3.4",
     "dotenv": "^16.0.1",
-    "dotenv-cli": "^5.1.0",
+    "dotenv-cli": "^6.0.0",
     "mercurius-integration-testing": "^4.0.0",
     "tsc-alias": "^1.6.11",
     "tsconfig-paths": "^4.0.0"
