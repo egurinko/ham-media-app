@@ -50,3 +50,13 @@ export const postStockExpiringInWeekAlert = (
     `===== 今週はこの在庫の期限が切れちゃうよ <:doyouebest:844132000788643860> ===== ${lines}\n`
   );
 };
+
+export const postStockExpiringInMonthAlert = (
+  stocks: PostStockAlertVariables
+): void => {
+  const lines = getProductLines(stocks);
+
+  postStockAlert(
+    `===== 3ヶ月以内にこの在庫の期限が切れちゃうよ <:doyouebest:913298500861698058> ===== ${lines}\n`
+  );
+};
