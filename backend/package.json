@@ -20,7 +20,8 @@
     "db:seed:dev": "NODE_ENV=development prisma db seed",
     "db:seed:test": "NODE_ENV=test dotenv -e .env.test prisma db seed",
     "tsc": "tsc",
-    "test": "NODE_ENV=test dotenv -e .env.test -- jest --runInBand"
+    "test": "NODE_ENV=test dotenv -e .env.test -- jest --runInBand",
+    "test:ci": "NODE_ENV=test dotenv -e .env.test -- jest --runInBand --coverage --silent --testLocationInResults --ci --json --outputFile=\"report.json\""
   },
   "prisma": {
     "seed": "ts-node-dev prisma/seed.ts"
@@ -58,12 +59,12 @@
     "@types/bcrypt": "^5.0.0",
     "@types/graphql-relay": "^0.7.0",
     "@types/jsonwebtoken": "^8.5.8",
-    "@types/node": "^18.0.0",
+    "@types/node": "^18.0.3",
     "@types/node-cron": "^3.0.2",
     "@types/sanitize-html": "^2.6.2",
     "@types/uuid": "^8.3.4",
     "dotenv": "^16.0.1",
-    "dotenv-cli": "^5.1.0",
+    "dotenv-cli": "^6.0.0",
     "mercurius-integration-testing": "^5.0.0",
     "tsc-alias": "^1.6.11",
     "tsconfig-paths": "^4.0.0"

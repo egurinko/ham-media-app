@@ -56,5 +56,10 @@ jobs:
         run: yarn db:reflect
         working-directory: ./backend
       - name: Run tests
-        run: yarn test
+        run: yarn test:ci
         working-directory: ./backend
+      - name: Coverage
+        uses: ArtiomTr/jest-coverage-report-action@v2
+        with:
+          coverage-file: ./report.json
+          working-directory: ./backend
