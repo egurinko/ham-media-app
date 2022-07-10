@@ -9179,10 +9179,10 @@ fastest-stable-stringify@^2.0.2:
   resolved "https://registry.yarnpkg.com/fastest-stable-stringify/-/fastest-stable-stringify-2.0.2.tgz#3757a6774f6ec8de40c4e86ec28ea02417214c76"
   integrity sha512-bijHueCGd0LqqNK9b5oCMHc0MluJAx0cwqASgbWMvkO01lCYgIhacVRLcaDz3QnyYIRNJRDwMb41VuT6pHJ91Q==
 
-fastify-cli@^4.2.0:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/fastify-cli/-/fastify-cli-4.2.0.tgz#2f62b996e045c9664109e97e73f92c0cafe0841f"
-  integrity sha512-LIk6TSueOuUABua9b1yvSi/N4zrbDUG1NEEozvm23Cz5NQ4jAkoXOSXl5pJ6cL1APQSjL73ObT/8RAvatud0cA==
+fastify-cli@^4.3.0:
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/fastify-cli/-/fastify-cli-4.3.0.tgz#e396d3a03902c77696c25ee394b4b5e8a20a4429"
+  integrity sha512-68e4zu5SVRt4JbT8+ro/LlsLDg2eCQ6+arvFt5ZdQM/AIWY1hbE8lNUjMuwvrZPy6iljj9jeCOdQlQi3XeCocA==
   dependencies:
     chalk "^4.1.2"
     chokidar "^3.5.2"
