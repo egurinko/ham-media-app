@@ -26,7 +26,7 @@ export const createStockExpirationAlert = cron.schedule(
       where: { expired_at: { gte: today, lte: alertDate } },
       include: { product: true },
     });
-    discordApi.postStockExpiringAlert(expiringStocks);
+    discordApi.postStockExpiringInWeekAlert(expiringStocks);
 
     console.log('在庫期限アラートが終了です。');
   }

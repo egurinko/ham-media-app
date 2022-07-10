@@ -1,7 +1,7 @@
 import { postStockAlert } from '@/services/api/discordApi/notifiers/stock';
 import type { PostStockAlertVariables } from './types';
 
-export const postStockExpiringAlert = (
+export const postStockExpiringInWeekAlert = (
   variables: PostStockAlertVariables
 ): void => {
   const lines = variables
