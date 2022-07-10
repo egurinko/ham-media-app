@@ -1,4 +1,2 @@
-import { createGeoLocationJob } from './createGeoLocations';
-import { createStockExpirationAlert } from './createStockExpirationAlert';
-
-export const jobs = [createGeoLocationJob, createStockExpirationAlert];
+export { createGeoLocationJob } from './createGeoLocations';
+export { createStockExpirationAlert } from './createStockExpirationAlert';

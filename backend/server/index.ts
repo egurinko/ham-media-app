@@ -1,4 +1,8 @@
 import { app } from './app';
+import {
+  createGeoLocationJob,
+  createStockExpirationAlert,
+} from '@/services/jobs';
 
 const PORT = Number(process.env['PORT']) || 3000;
 
@@ -7,7 +11,8 @@ const start = async () => {
     await app.listen({ port: PORT });
     console.log(`server start listening in port:${PORT}`);
 
-    app.cron.startAllJobs();
+    createGeoLocationJob.start();
+    createStockExpirationAlert.start();
   } catch (err) {
     app.log.error(err);
     process.exit(1);
