@@ -12075,10 +12075,10 @@ mercurius-upload@^5.0.0:
     fastify-plugin "^3.0.1"
     graphql-upload "^15.0.1"
 
-mercurius@^10.0.0:
-  version "10.0.0"
-  resolved "https://registry.yarnpkg.com/mercurius/-/mercurius-10.0.0.tgz#9d302d70b2c21298529fc11a699f80a13585f542"
-  integrity sha512-qLhiKCaIg1oF6wMcegMIzjx0S6JmwLWV+6Z+z6zSiZpSnivHnaIrI5BQUMSdqiJQ3jbvzc4wMXQFJAYApA7qEw==
+mercurius@^10.1.0:
+  version "10.1.0"
+  resolved "https://registry.yarnpkg.com/mercurius/-/mercurius-10.1.0.tgz#c05b839335dea0c0eb99f5270a83bebecc1d3129"
+  integrity sha512-7CBxRcxRELyGDz2FernU2dogyJ2b7Vp4JBUx68Pn082xNH97Oel/Mt4yPpn7V2V1bY7MyuxSF+oZLzFlG+5jCw==
   dependencies:
     "@fastify/error" "^3.0.0"
     "@fastify/static" "^6.0.0"
@@ -12089,7 +12089,7 @@ mercurius@^10.0.0:
     graphql-jit "^0.7.3"
     mqemitter "^5.0.0"
     p-map "^4.0.0"
-    readable-stream "^3.6.0"
+    readable-stream "^4.0.0"
     safe-stable-stringify "^2.3.0"
     secure-json-parse "^2.4.0"
     single-user-cache "^0.6.0"
