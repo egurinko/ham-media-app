@@ -1,11 +1,11 @@
-import { Params } from 'fastify-cron';
+import cron from 'node-cron';
 import { client } from '@/services/prisma';
 import { discordApi } from '@/services/api';
 
-export const createStockExpirationAlert: Params = {
-  cronTime: '0 0 * * 1', // heroku設定(UTC),
-  // cronTime: '25 17 * * *', // ローカル設定(JST),
-  onTick: async () => {
+export const createStockExpirationAlert = cron.schedule(
+  '0 0 * * 1', // heroku設定(UTC),
+  // '25 17 * * *', // ローカル設定(JST),
+  async () => {
     console.log('在庫期限アラートを開始します。');
 
     const today = new Date();
@@ -29,5 +29,5 @@ export const createStockExpirationAlert: Params = {
     discordApi.postStockExpiringAlert(expiringStocks);
 
     console.log('在庫期限アラートが終了です。');
-  },
-};
+  }
+);
