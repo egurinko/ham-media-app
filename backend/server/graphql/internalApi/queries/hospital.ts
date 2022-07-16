@@ -8,7 +8,7 @@ export const hospital = queryField((t) => {
       id: nonNull(arg({ type: 'BigInt' })),
     },
     resolve: async (_root, args, ctx) => {
-      return await ctx.prisma.hospital.findUnique({
+      return await ctx.prisma.hospital.findUniqueOrThrow({
         where: { id: args.id },
       });
     },

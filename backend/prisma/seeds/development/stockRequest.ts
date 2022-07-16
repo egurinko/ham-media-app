@@ -1,9 +1,9 @@
 import { client } from '../../../server/services/prisma';
 
 export const seedStockRequest = async () => {
-  const user = await client.role.findUnique({ where: { name: 'user' } });
+  const user = await client.role.findUniqueOrThrow({ where: { name: 'user' } });
 
-  const sankoProduct = await client.product.findUnique({
+  const sankoProduct = await client.product.findUniqueOrThrow({
     where: { name: 'パーテーションケース ミニ' },
   });
   await client.stockRequest.upsert({

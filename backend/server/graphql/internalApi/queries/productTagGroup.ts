@@ -8,7 +8,7 @@ export const productTagGroup = queryField((t) => {
       id: nonNull(intArg()),
     },
     resolve: async (_root, args, ctx) => {
-      return await ctx.prisma.productTagGroup.findUnique({
+      return await ctx.prisma.productTagGroup.findUniqueOrThrow({
         where: { id: args.id },
         include: { productTags: true },
       });

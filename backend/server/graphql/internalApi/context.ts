@@ -31,7 +31,7 @@ const getCurrentInternalUser = async (authorizationHeader?: string) => {
 
     try {
       const decoded = await verify(token);
-      return await client.internalUser.findUnique({
+      return await client.internalUser.findUniqueOrThrow({
         where: { email: decoded.email },
       });
     } catch (error) {

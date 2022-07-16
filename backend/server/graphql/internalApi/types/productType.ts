@@ -15,7 +15,7 @@ export const productType = objectType({
     t.nonNull.int('totalStockAmount', {
       resolve: async (root, _args, ctx) => {
         const stocks = await ctx.prisma.product
-          .findUnique({ where: { id: root.id } })
+          .findUniqueOrThrow({ where: { id: root.id } })
           .stocks();
 
         return stocks.length;
@@ -24,7 +24,7 @@ export const productType = objectType({
     t.nonNull.int('allocatedStockAmount', {
       resolve: async (root, _args, ctx) => {
         const stocks = await ctx.prisma.product
-          .findUnique({ where: { id: root.id } })
+          .findUniqueOrThrow({ where: { id: root.id } })
           .stocks({ where: { stockAllocation: { isNot: null } } });
         return stocks.length;
       },
@@ -32,7 +32,7 @@ export const productType = objectType({
     t.nonNull.int('remainingStockAmount', {
       resolve: async (root, _args, ctx) => {
         const stocks = await ctx.prisma.product
-          .findUnique({ where: { id: root.id } })
+          .findUniqueOrThrow({ where: { id: root.id } })
           .stocks({ where: { stockAllocation: { is: null } } });
         return stocks.length;
       },

@@ -2,7 +2,7 @@ import { client } from '../../../../server/services/prisma';
 import { HOSPITAL_STATUSES } from '../../../../server/services/constant';
 
 export const seedHospitalCertificationOption = async () => {
-  const hospital1 = await client.hospital.findFirst({
+  const hospital1 = await client.hospital.findFirstOrThrow({
     where: { name: 'ひかり動物病院' },
   });
 
@@ -16,7 +16,7 @@ export const seedHospitalCertificationOption = async () => {
     },
   });
 
-  const hospital2 = await client.hospital.findFirst({
+  const hospital2 = await client.hospital.findFirstOrThrow({
     where: { name: 'ひがし東京夜間救急動物医療センター' },
   });
   await client.hospitalCertificationOption.upsert({

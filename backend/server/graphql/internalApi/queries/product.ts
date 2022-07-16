@@ -6,7 +6,7 @@ export const product = queryField((t) => {
     type: productType,
     args: { id: nonNull(intArg()) },
     resolve: async (_root, args, ctx) => {
-      return await ctx.prisma.product.findUnique({
+      return await ctx.prisma.product.findUniqueOrThrow({
         where: { id: args.id },
         include: { maker: true, stocks: true },
       });

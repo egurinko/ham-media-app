@@ -95,7 +95,7 @@ describe('allocateStock', () => {
   });
 
   it('update stockAllocation', async () => {
-    const stock = await db.stock.findUnique({
+    const stock = await db.stock.findUniqueOrThrow({
       where: { id: STOCK_ID },
       include: { stockAllocation: { include: { internalUser: true } } },
     });
@@ -106,7 +106,7 @@ describe('allocateStock', () => {
       variables: { id: STOCK_ID, internalUserId: UPDATED_INTERNAL_USER_ID },
     });
 
-    const updatedStock = await db.stock.findUnique({
+    const updatedStock = await db.stock.findUniqueOrThrow({
       where: { id: STOCK_ID },
       include: { stockAllocation: { include: { internalUser: true } } },
     });

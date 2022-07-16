@@ -1,7 +1,7 @@
 import { client } from '../../../server/services/prisma';
 
 export const seedProductTag = async () => {
-  const foodTagGroup = await client.productTagGroup.findUnique({
+  const foodTagGroup = await client.productTagGroup.findUniqueOrThrow({
     where: { name: '消耗品（食品）' },
   });
 

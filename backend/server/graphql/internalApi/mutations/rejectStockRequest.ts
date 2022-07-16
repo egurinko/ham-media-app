@@ -12,7 +12,7 @@ export const rejectStockRequestField = mutationField((t) => {
       message: nonNull(stringArg()),
     },
     resolve: async (_, args, ctx) => {
-      const stockRequest = await ctx.prisma.stockRequest.findUnique({
+      const stockRequest = await ctx.prisma.stockRequest.findUniqueOrThrow({
         where: { id: args.id },
         include: {
           productRegistrations: { include: { product: true } },

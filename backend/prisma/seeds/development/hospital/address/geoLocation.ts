@@ -1,10 +1,10 @@
 import { client } from '../../../../../server/services/prisma';
 
 export const seedHospitalAddressGeoLocation = async () => {
-  const hospital1 = await client.hospital.findFirst({
+  const hospital1 = await client.hospital.findFirstOrThrow({
     where: { name: 'ひかり動物病院' },
   });
-  const hospitalAddress1 = await client.hospitalAddress.findFirst({
+  const hospitalAddress1 = await client.hospitalAddress.findFirstOrThrow({
     where: { hospital_id: hospital1.id },
   });
 
@@ -18,10 +18,10 @@ export const seedHospitalAddressGeoLocation = async () => {
     },
   });
 
-  const hospital2 = await client.hospital.findFirst({
+  const hospital2 = await client.hospital.findFirstOrThrow({
     where: { name: 'ひがし東京夜間救急動物医療センター' },
   });
-  const hospitalAddress2 = await client.hospitalAddress.findFirst({
+  const hospitalAddress2 = await client.hospitalAddress.findFirstOrThrow({
     where: { hospital_id: hospital2.id },
   });
 

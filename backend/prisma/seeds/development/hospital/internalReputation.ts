@@ -1,7 +1,7 @@
 import { client } from '../../../../server/services/prisma';
 
 export const seedHospitalInternalReputation = async () => {
-  const hospital1 = await client.hospital.findFirst({
+  const hospital1 = await client.hospital.findFirstOrThrow({
     where: { name: 'ひかり動物病院' },
   });
 
@@ -15,7 +15,7 @@ export const seedHospitalInternalReputation = async () => {
     },
   });
 
-  const hospital2 = await client.hospital.findFirst({
+  const hospital2 = await client.hospital.findFirstOrThrow({
     where: { name: 'ひがし東京夜間救急動物医療センター' },
   });
   await client.hospitalInternalReputation.upsert({
