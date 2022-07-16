@@ -106,7 +106,7 @@ describe('updateStockRequest', () => {
   });
 
   it('update stockRequest record', async () => {
-    const beforeStockRequest = await db.stockRequest.findFirst({
+    const beforeStockRequest = await db.stockRequest.findFirstOrThrow({
       include: {
         productRegistrations: {
           include: { product: true },
@@ -132,7 +132,7 @@ describe('updateStockRequest', () => {
       },
     });
 
-    const afterStockRequest = await db.stockRequest.findFirst({
+    const afterStockRequest = await db.stockRequest.findFirstOrThrow({
       include: {
         productRegistrations: {
           include: { product: true },

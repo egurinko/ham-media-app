@@ -280,7 +280,7 @@ describe('hospitalConnection', () => {
 
     describe('with deleted', () => {
       beforeEach(async () => {
-        const hospital1 = await db.hospital.findFirst({
+        const hospital1 = await db.hospital.findFirstOrThrow({
           where: { name: HOSPITAL_NAME_1 },
         });
         await db.hospital.update({
@@ -317,7 +317,7 @@ describe('hospitalConnection', () => {
 
     describe('with reservable=true', () => {
       beforeEach(async () => {
-        const hospital1 = await db.hospital.findFirst({
+        const hospital1 = await db.hospital.findFirstOrThrow({
           where: { name: HOSPITAL_NAME_1 },
         });
         await db.hospital.update({
@@ -356,7 +356,7 @@ describe('hospitalConnection', () => {
 
     describe('with insuranceEnabled=true', () => {
       beforeEach(async () => {
-        const hospital1 = await db.hospital.findFirst({
+        const hospital1 = await db.hospital.findFirstOrThrow({
           where: { name: HOSPITAL_NAME_1 },
         });
         await db.hospital.update({
@@ -395,7 +395,7 @@ describe('hospitalConnection', () => {
 
     describe('with jsavaOption=true', () => {
       beforeEach(async () => {
-        const hospital1 = await db.hospital.findFirst({
+        const hospital1 = await db.hospital.findFirstOrThrow({
           where: { name: HOSPITAL_NAME_1 },
         });
         await db.hospital.update({
@@ -436,7 +436,7 @@ describe('hospitalConnection', () => {
 
     describe('with nichijuOption=true', () => {
       beforeEach(async () => {
-        const hospital1 = await db.hospital.findFirst({
+        const hospital1 = await db.hospital.findFirstOrThrow({
           where: { name: HOSPITAL_NAME_1 },
         });
         await db.hospital.update({
@@ -477,7 +477,7 @@ describe('hospitalConnection', () => {
 
     describe('with recommended=true', () => {
       beforeEach(async () => {
-        const hospital1 = await db.hospital.findFirst({
+        const hospital1 = await db.hospital.findFirstOrThrow({
           where: { name: HOSPITAL_NAME_1 },
         });
         await db.hospital.update({

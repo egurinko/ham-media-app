@@ -160,7 +160,7 @@ describe('createHospital', () => {
     expect(await db.hospitalNightUrgentActionOption.count()).toEqual(1);
     expect(await db.hospitalReservationStatus.count()).toEqual(1);
 
-    const hospital = await db.hospital.findFirst({
+    const hospital = await db.hospital.findFirstOrThrow({
       include: {
         hospitalAddress: {
           include: { hospitalAddressGeoLocation: true, prefecture: true },

@@ -99,7 +99,7 @@ describe('createStockRequest', () => {
     const afterStockRequestCount = await db.stockRequest.count();
     expect(afterStockRequestCount).toBe(1);
 
-    const afterStockRequest = await db.stockRequest.findFirst({
+    const afterStockRequest = await db.stockRequest.findFirstOrThrow({
       include: {
         productRegistrations: {
           include: { product: true },
