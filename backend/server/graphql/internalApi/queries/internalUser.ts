@@ -8,7 +8,7 @@ export const internalUser = queryField((t) => {
       id: nonNull(arg({ type: 'BigInt' })),
     },
     resolve: async (_root, args, ctx) => {
-      return await ctx.prisma.internalUser.findUnique({
+      return await ctx.prisma.internalUser.findUniqueOrThrow({
         where: { id: args.id },
         include: { role: true },
       });

@@ -11,7 +11,7 @@ export const createSessionField = mutationField((t) => {
       password: nonNull(stringArg()),
     },
     resolve: async (_, args, ctx) => {
-      const internalUser = await ctx.prisma.internalUser.findUnique({
+      const internalUser = await ctx.prisma.internalUser.findUniqueOrThrow({
         where: {
           email: args.email,
         },

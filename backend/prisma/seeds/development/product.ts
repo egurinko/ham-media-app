@@ -1,7 +1,7 @@
 import { client } from '../../../server/services/prisma';
 
 export const seedProduct = async () => {
-  const sanko = await client.maker.findUnique({
+  const sanko = await client.maker.findUniqueOrThrow({
     where: { name: '三晃商会' },
   });
 
@@ -27,7 +27,7 @@ export const seedProduct = async () => {
     },
   });
 
-  const gex = await client.maker.findUnique({
+  const gex = await client.maker.findUniqueOrThrow({
     where: { name: 'GEX' },
   });
 

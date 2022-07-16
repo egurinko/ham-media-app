@@ -12,7 +12,6 @@ export const deleteStockField = mutationField((t) => {
     resolve: async (_, args, ctx) => {
       const stockAllocation = await ctx.prisma.stockAllocation.findUnique({
         where: { stock_id: args.id },
-        rejectOnNotFound: false,
       });
 
       try {

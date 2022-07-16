@@ -1,10 +1,10 @@
 import { client } from '../../../server/services/prisma';
 
 export const seedProductTagging = async () => {
-  const sankoProduct1 = await client.product.findUnique({
+  const sankoProduct1 = await client.product.findUniqueOrThrow({
     where: { name: 'ハムスタープラスダイエットメンテンス' },
   });
-  const pelletTag = await client.productTag.findUnique({
+  const pelletTag = await client.productTag.findUniqueOrThrow({
     where: { name: 'ペレット' },
   });
   await client.productTagging.upsert({
@@ -16,10 +16,10 @@ export const seedProductTagging = async () => {
     },
   });
 
-  const sankoProduct2 = await client.product.findUnique({
+  const sankoProduct2 = await client.product.findUniqueOrThrow({
     where: { name: 'パーテーションケース ミニ' },
   });
-  const cageTag = await client.productTag.findUnique({
+  const cageTag = await client.productTag.findUniqueOrThrow({
     where: { name: 'ケージ' },
   });
   await client.productTagging.upsert({
@@ -31,10 +31,10 @@ export const seedProductTagging = async () => {
     },
   });
 
-  const gexWhile = await client.product.findUnique({
+  const gexWhile = await client.product.findUniqueOrThrow({
     where: { name: 'ハーモニーホイールDS14' },
   });
-  const wheelTag = await client.productTag.findUnique({
+  const wheelTag = await client.productTag.findUniqueOrThrow({
     where: { name: '回し車' },
   });
   await client.productTagging.upsert({
@@ -46,10 +46,10 @@ export const seedProductTagging = async () => {
     },
   });
 
-  const toilet = await client.product.findUnique({
+  const toilet = await client.product.findUniqueOrThrow({
     where: { name: 'ハーモニートイレ' },
   });
-  const toiletTag = await client.productTag.findUnique({
+  const toiletTag = await client.productTag.findUniqueOrThrow({
     where: { name: 'トイレ' },
   });
   await client.productTagging.upsert({

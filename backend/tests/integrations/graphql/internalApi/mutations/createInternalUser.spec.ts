@@ -82,7 +82,7 @@ describe('createInternalUser', () => {
     });
 
     expect(await db.internalUser.count()).toEqual(2);
-    const internalUser = await db.internalUser.findUnique({
+    const internalUser = await db.internalUser.findUniqueOrThrow({
       where: { email: INTERNAL_USER_EMAIL },
       include: { role: true },
     });

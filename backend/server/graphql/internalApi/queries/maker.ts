@@ -8,7 +8,7 @@ export const maker = queryField((t) => {
       id: nonNull(intArg()),
     },
     resolve: async (_root, args, ctx) => {
-      return await ctx.prisma.maker.findUnique({
+      return await ctx.prisma.maker.findUniqueOrThrow({
         where: { id: args.id },
       });
     },

@@ -1,8 +1,10 @@
 import { client } from '../../../server/services/prisma';
 
 export const seedInternalUser = async () => {
-  const admin = await client.role.findUnique({ where: { name: 'admin' } });
-  const user = await client.role.findUnique({ where: { name: 'user' } });
+  const admin = await client.role.findUniqueOrThrow({
+    where: { name: 'admin' },
+  });
+  const user = await client.role.findUniqueOrThrow({ where: { name: 'user' } });
 
   await client.internalUser.upsert({
     where: { email: 'admin@example.com' },

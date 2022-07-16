@@ -41,7 +41,7 @@ describe('createMaker', () => {
     });
 
     expect(await db.maker.count()).toEqual(1);
-    const maker = await db.maker.findUnique({
+    const maker = await db.maker.findUniqueOrThrow({
       where: { name: MAKER_NAME },
     });
     expect(maker.id).toBeDefined();

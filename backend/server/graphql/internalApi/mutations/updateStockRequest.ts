@@ -19,7 +19,7 @@ export const updateStockRequestField = mutationField((t) => {
       let productRegistrations: ProductRegistrations = [];
       for (const requestProduct of args.requestProducts) {
         const stocks = await ctx.prisma.product
-          .findUnique({ where: { id: requestProduct.productId } })
+          .findUniqueOrThrow({ where: { id: requestProduct.productId } })
           .stocks({
             where: { stockAllocation: null },
             include: { product: true },

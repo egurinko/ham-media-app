@@ -1,10 +1,12 @@
 import { client } from '../../../server/services/prisma';
 
 export const seedStock = async () => {
-  const admin = await client.role.findUnique({ where: { name: 'admin' } });
-  const user = await client.role.findUnique({ where: { name: 'user' } });
+  const admin = await client.role.findUniqueOrThrow({
+    where: { name: 'admin' },
+  });
+  const user = await client.role.findUniqueOrThrow({ where: { name: 'user' } });
 
-  const sankoProduct1 = await client.product.findUnique({
+  const sankoProduct1 = await client.product.findUniqueOrThrow({
     where: { name: 'ハムスタープラスダイエットメンテンス' },
   });
   const stock1 = await client.stock.upsert({
@@ -45,7 +47,7 @@ export const seedStock = async () => {
     },
   });
 
-  const sankoProduct2 = await client.product.findUnique({
+  const sankoProduct2 = await client.product.findUniqueOrThrow({
     where: { name: 'パーテーションケース ミニ' },
   });
   await client.stock.upsert({

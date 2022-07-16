@@ -12,7 +12,7 @@ export const stockRequest = queryField((t) => {
       id: nonNull(intArg()),
     },
     resolve: async (_root, args, ctx) => {
-      return await ctx.prisma.stockRequest.findUnique({
+      return await ctx.prisma.stockRequest.findUniqueOrThrow({
         where: { id: args.id },
       });
     },
