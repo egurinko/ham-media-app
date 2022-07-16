@@ -37,6 +37,7 @@ jobs:
       LINE_CHANNEL_ACCESS_TOKEN: test
       LINE_CHANNEL_SECRET: test
       AWS_BUCKET_NAME: test
+      NODE_OPTIONS: '--max_old_space_size=4096'
     steps:
       - name: Checkout
         uses: actions/checkout@v3
