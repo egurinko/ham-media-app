@@ -9,6 +9,36 @@ on:
       - yarn.lock
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: postgresql://postgres:postgres@localhost/ham_media_app_test
+      JWT_TOKEN: test
+      PORT: 3000
+      GOOGLE_API_KEY: test
+      LINE_CHANNEL_ACCESS_TOKEN: test
+      LINE_CHANNEL_SECRET: test
+      AWS_BUCKET_NAME: test
+      NODE_OPTIONS: '--max_old_space_size=4096'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set up node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.13.1'
+      - name: Cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('./yarn.lock') }}
+      - name: Install dependencies
+        run: yarn install
+        working-directory: ./backend
+      - name: Build
+        run: yarn build
+        working-directory: ./backend
   test:
     permissions:
       checks: write
