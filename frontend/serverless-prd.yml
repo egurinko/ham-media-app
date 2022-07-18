@@ -8,6 +8,7 @@ ham-media-front-app-prd:
     name:
       defaultLambda: default-ham-media-app-prd
       apiLambda: api-ham-media-app-prd
+      imageLambda: mpbfsxw-ue71g7g
     build:
       env:
         NEXT_PUBLIC_API_URL: https://ham-media-app.herokuapp.com
