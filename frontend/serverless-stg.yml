@@ -8,6 +8,8 @@ ham-media-front-app-stg:
     name:
       defaultLambda: default-ham-media-app-stg
       apiLambda: api-ham-media-app-stg
+      imageLambda: p67h12-pnudskg
+    roleArn: arn:aws:iam::281874503448:role/p67h12-tmnd3i
     build:
       env:
         NEXT_PUBLIC_API_URL: https://ham-media-app-stg.herokuapp.com
