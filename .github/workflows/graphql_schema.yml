@@ -18,12 +18,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '16.13.1'
-      - name: Cache
-        uses: actions/cache@v3
-        with:
-          path: |
-            */*/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('./yarn.lock') }}
+          cache: yarn
+          cache-dependency-path: yarn.lock
       - name: Install dependencies
         run: yarn install
         working-directory: ./backend
@@ -41,12 +37,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '16.13.1'
-      - name: Cache
-        uses: actions/cache@v3
-        with:
-          path: |
-            */*/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('./yarn.lock') }}
+          cache: yarn
+          cache-dependency-path: yarn.lock
       - name: Install dependencies
         run: yarn install
         working-directory: ./frontend
