@@ -61,8 +61,8 @@ describe('createProductTags', () => {
       include: { productTags: true },
     });
     expect(afterCount).toBe(1);
-    expect(productTagGroup.id).toBe(PRODUCT_TAG_GROUP_ID);
-    expect(productTagGroup.productTags.length).toBe(1);
-    expect(productTagGroup.productTags[0]?.name).toBe(PRODUCT_TAG_NAME);
+    expect(productTagGroup?.id).toBe(PRODUCT_TAG_GROUP_ID);
+    expect(productTagGroup?.productTags.length).toBe(1);
+    expect(productTagGroup?.productTags[0]?.name).toBe(PRODUCT_TAG_NAME);
   });
 });

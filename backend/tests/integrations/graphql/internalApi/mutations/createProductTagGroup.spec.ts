@@ -45,6 +45,6 @@ describe('createProductTagGroup', () => {
     const afterCount = await db.productTagGroup.count();
     const productTagGroup = await db.productTagGroup.findFirst();
     expect(afterCount).toBe(1);
-    expect(productTagGroup.name).toBe(PRODUCT_TAG_GROUP_NAME);
+    expect(productTagGroup?.name).toBe(PRODUCT_TAG_GROUP_NAME);
   });
 });

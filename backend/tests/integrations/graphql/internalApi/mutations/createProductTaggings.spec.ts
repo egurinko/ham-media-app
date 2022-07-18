@@ -73,7 +73,7 @@ describe('createProductTaggings', () => {
       include: { productTaggings: true },
     });
     expect(beforeProductTaggingsCount).toBe(0);
-    expect(beforeProduct.productTaggings.length).toBe(0);
+    expect(beforeProduct?.productTaggings.length).toBe(0);
 
     const client = await setup();
 
@@ -90,9 +90,9 @@ describe('createProductTaggings', () => {
       include: { productTaggings: { include: { productTag: true } } },
     });
     expect(afterProductTaggingsCount).toBe(1);
-    expect(afterProduct.productTaggings.length).toBe(1);
-    expect(afterProduct.productTaggings[0]?.product_id).toBe(PRODUCT_ID);
-    expect(afterProduct.productTaggings[0]?.product_tag_id).toBe(
+    expect(afterProduct?.productTaggings.length).toBe(1);
+    expect(afterProduct?.productTaggings[0]?.product_id).toBe(PRODUCT_ID);
+    expect(afterProduct?.productTaggings[0]?.product_tag_id).toBe(
       PRODUCT_TAG_ID
     );
   });
