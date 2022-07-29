@@ -37,7 +37,7 @@
     "axios": "^0.27.2",
     "bcrypt": "^5.0.1",
     "fastify": "^4.3.0",
-    "fastify-cli": "^4.2.0",
+    "fastify-cli": "^4.4.0",
     "fastify-plugin": "^4.0.0",
     "graphql-relay": "^0.10.0",
     "json-bigint-patch": "^0.0.8",
