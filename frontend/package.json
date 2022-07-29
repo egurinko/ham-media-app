@@ -35,13 +35,13 @@
     "react": "18.1.0",
     "react-dom": "18.2.0",
     "react-drag-drop-files": "^2.3.7",
-    "react-hook-form": "^7.33.1",
+    "react-hook-form": "^7.34.0",
     "react-medium-image-zoom": "^4.4.3"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "^2.8.1",
+    "@graphql-codegen/cli": "^2.11.2",
     "@graphql-codegen/typescript": "^2.7.2",
-    "@graphql-codegen/typescript-operations": "^2.5.1",
+    "@graphql-codegen/typescript-operations": "^2.5.2",
     "@graphql-codegen/typescript-react-apollo": "^3.3.2",
     "@serverless/core": "^1.1.2",
     "@serverless/template": "^1.1.4",
