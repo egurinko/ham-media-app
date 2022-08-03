@@ -9564,11 +9564,6 @@ focus-lock@^0.11.2:
   dependencies:
     tslib "^2.0.3"
 
-focus-options-polyfill@1.5.1:
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/focus-options-polyfill/-/focus-options-polyfill-1.5.1.tgz#0f422580d9d1fb65651f2968b547032eb17dab3c"
-  integrity sha512-7yH20IePROHJLLbJvqqtsG420jE6DuukccapiB/WagtUpnc98r9NzHbX5rnjCDgdZqLgcqlzGjn+8l0Zb8Zf9w==
-
 follow-redirects@^1.14.0:
   version "1.14.8"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.14.8.tgz#016996fb9a11a100566398b1c6839337d7bfa8fc"
@@ -14019,13 +14014,10 @@ react-is@^18.0.0:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.1.0.tgz#61aaed3096d30eacf2a2127118b5b41387d32a67"
   integrity sha512-Fl7FuabXsJnV5Q1qIOQwx/sagGF18kogb4gpfcG4gjLBWO0WDiiz1ko/ExayuxE7InyQkBLkxRFG5oxY6Uu3Kg==
 
-react-medium-image-zoom@^4.4.3:
-  version "4.4.3"
-  resolved "https://registry.yarnpkg.com/react-medium-image-zoom/-/react-medium-image-zoom-4.4.3.tgz#d5e3074becef7be4bfe35ebcd291eac462093bf5"
-  integrity sha512-I928Z6mEMRUup4CPa+XtASiSuFzdVb1ecztXpF7xAJddXv4XZSE4n5gleZNYCn5wEU1LQY5LiN4aNW4KgrOVIA==
-  dependencies:
-    focus-options-polyfill "1.5.1"
-    tslib "^2.4.0"
+react-medium-image-zoom@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/react-medium-image-zoom/-/react-medium-image-zoom-5.0.0.tgz#5abc0ce37b8f78f26e38821c349d6feac005aedf"
+  integrity sha512-kfiwur4DECuFR6cconhisuPmWbqCupW39dHNgmh2ZIYcas8liCp57VeU2AXOaShmRK8AqgPs7oGNlZAWgZRMMg==
 
 react-refresh@0.8.3:
   version "0.8.3"
