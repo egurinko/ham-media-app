@@ -3772,13 +3772,13 @@
     ajv-formats "^2.1.1"
     fast-uri "^2.0.0"
 
-"@fastify/cors@^8.0.0":
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/@fastify/cors/-/cors-8.0.0.tgz#0b1f6559dad4b4291a4413ffb5b7ace760aad19d"
-  integrity sha512-mB2GsA7aVwq7XG6B2OM1FMpcaiXY69ZbM1h/xDJxLEVu5ITGcs5XYrBIYTMNU2dQtzO6mzXhGd2dEKaCnB7UgQ==
+"@fastify/cors@^8.1.0":
+  version "8.1.0"
+  resolved "https://registry.yarnpkg.com/@fastify/cors/-/cors-8.1.0.tgz#af29ddb32675310dfcbbe3aa0af4b7ed29fdb956"
+  integrity sha512-1OmjwyxQZ8GePxa5t1Rpsn2qS56+1ouKMvZufpgJWhXtoCeM/ffA+PsNW8pyslPr4W0E27gVoFqtvHwhXW1U2w==
   dependencies:
-    fastify-plugin "^3.0.0"
-    vary "^1.1.2"
+    fastify-plugin "^4.0.0"
+    mnemonist "0.39.2"
 
 "@fastify/error@^3.0.0":
   version "3.0.0"
@@ -12543,6 +12543,13 @@ mkdirp@^0.5.1, mkdirp@^0.5.5:
   dependencies:
     minimist "^1.2.5"
 
+mnemonist@0.39.2:
+  version "0.39.2"
+  resolved "https://registry.yarnpkg.com/mnemonist/-/mnemonist-0.39.2.tgz#7e6a0bd5c7199460ee12a651103c7007adc6225a"
+  integrity sha512-n3ZCEosuMH03DVivZ9N0fcXPWiZrBLEdfSlEJ+S/mJxmk3zuo1ur0dj9URDczFyP1VS3wfiyKzqLLDXoPJ6rPA==
+  dependencies:
+    obliterator "^2.0.1"
+
 moment@2.29.3:
   version "2.29.3"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.3.tgz#edd47411c322413999f7a5940d526de183c031f3"
@@ -13137,6 +13144,11 @@ objectorarray@^1.0.4:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/objectorarray/-/objectorarray-1.0.5.tgz#2c05248bbefabd8f43ad13b41085951aac5e68a5"
   integrity sha512-eJJDYkhJFFbBBAxeh8xW+weHlkI28n2ZdQV/J/DNfWfSKlGEf2xcfAbZTv3riEXHAhL9SVOTs2pRmXiSTf78xg==
+
+obliterator@^2.0.1:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/obliterator/-/obliterator-2.0.4.tgz#fa650e019b2d075d745e44f1effeb13a2adbe816"
+  integrity sha512-lgHwxlxV1qIg1Eap7LgIeoBWIMFibOjbrYPIPJZcI1mmGAI2m3lNYpK12Y+GBdPQ0U1hRwSord7GIaawz962qQ==
 
 on-exit-leak-free@^1.0.0:
   version "1.0.0"
@@ -16242,11 +16254,6 @@ value-or-promise@1.0.11, value-or-promise@^1.0.11:
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/value-or-promise/-/value-or-promise-1.0.11.tgz#3e90299af31dd014fe843fe309cefa7c1d94b140"
   integrity sha512-41BrgH+dIbCFXClcSapVs5M6GkENd3gQOJpEfPDNa71LsUGMXDL0jMWpI/Rh7WhX+Aalfz2TTS3Zt5pUsbnhLg==
-
-vary@^1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
-  integrity sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==
 
 vm-browserify@1.1.2, vm-browserify@^1.0.1:
   version "1.1.2"
