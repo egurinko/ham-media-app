@@ -7856,13 +7856,10 @@ commander@^9.0.0:
   resolved "https://registry.yarnpkg.com/commander/-/commander-9.0.0.tgz#86d58f24ee98126568936bd1d3574e0308a99a40"
   integrity sha512-JJfP2saEKbQqvW+FI93OYUB4ByV5cizMpFMiiJI8xDbBvQvSkIk0VvQdn1CZ8mqAO8Loq2h0gYTYtDFUZUeERw==
 
-commist@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/commist/-/commist-2.0.0.tgz#09b465b6bc9b0afd167b360c2d2c009cd9422c93"
-  integrity sha512-FOz6gc7VRNFV+SYjGv0ZPfgG1afGqJfKg2/aVtiDP6kF1ZPpo7NvUOGHuVNQ2YgMoCVglEUo0O3WzcD63yczVA==
-  dependencies:
-    leven "^3.1.0"
-    minimist "^1.1.0"
+commist@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/commist/-/commist-3.0.0.tgz#bf95793dc9a6c326045e6dc69fed08f439017b52"
+  integrity sha512-gngQzOlgxylBCTyzVrrd7xyUJCHQPGid77nCMe7omm+V6E0+t1jT7EHaZj+iBA6aRGAaug+Ajx8SrF67ql1JZw==
 
 common-tags@1.8.2, common-tags@^1.5.1:
   version "1.8.2"
@@ -9387,26 +9384,26 @@ fastest-stable-stringify@^2.0.2:
   resolved "https://registry.yarnpkg.com/fastest-stable-stringify/-/fastest-stable-stringify-2.0.2.tgz#3757a6774f6ec8de40c4e86ec28ea02417214c76"
   integrity sha512-bijHueCGd0LqqNK9b5oCMHc0MluJAx0cwqASgbWMvkO01lCYgIhacVRLcaDz3QnyYIRNJRDwMb41VuT6pHJ91Q==
 
-fastify-cli@^4.4.0:
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/fastify-cli/-/fastify-cli-4.4.0.tgz#857592bfef65a65c7e964b4903cba83fad021524"
-  integrity sha512-+tYGwKqGSNKH55Q8iroDir0JBLQIwMqUe+Z3/pk4vp7bC340QS/zLI27Cdlb26hcNCuYvjH1keCW9fTVlmMh0Q==
+fastify-cli@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/fastify-cli/-/fastify-cli-5.0.0.tgz#c5d4d5ef1c54e0765a815dc65155c69ee2612618"
+  integrity sha512-1qnBxKUo83fJ78iIMWE8+RK4hv2kuiAiSr/pouL+MfmdJomAiKrMGQknqVq1ehV7QEj7aGBg45z283ARD7vhHg==
   dependencies:
     chalk "^4.1.2"
     chokidar "^3.5.2"
     close-with-grace "^1.1.0"
-    commist "^2.0.0"
+    commist "^3.0.0"
     dotenv "^16.0.0"
     fastify "^4.0.0"
     generify "^4.0.0"
-    help-me "^2.0.1"
+    help-me "^4.0.1"
     is-docker "^2.0.0"
     make-promises-safe "^5.1.0"
     pino-pretty "^8.0.0"
     pkg-up "^3.1.0"
     resolve-from "^5.0.0"
     semver "^7.3.5"
-    yargs-parser "^20.0.0"
+    yargs-parser "^21.1.1"
 
 fastify-plugin@^3.0.0, fastify-plugin@^3.0.1:
   version "3.0.1"
@@ -10088,18 +10085,6 @@ glob@^7.0.0, glob@^7.1.1, glob@^7.1.3, glob@^7.1.4, glob@^7.2.0:
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
-glob@^7.1.6:
-  version "7.2.3"
-  resolved "https://registry.yarnpkg.com/glob/-/glob-7.2.3.tgz#b8df0fb802bbfa8e89bd1d938b4e16578ed44f2b"
-  integrity sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==
-  dependencies:
-    fs.realpath "^1.0.0"
-    inflight "^1.0.4"
-    inherits "2"
-    minimatch "^3.1.1"
-    once "^1.3.0"
-    path-is-absolute "^1.0.0"
-
 glob@^8.0.0, glob@^8.0.1:
   version "8.0.3"
   resolved "https://registry.yarnpkg.com/glob/-/glob-8.0.3.tgz#415c6eb2deed9e502c68fa44a272e6da6eeca42e"
@@ -10457,14 +10442,6 @@ helmet@^5.0.1:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/helmet/-/helmet-5.1.0.tgz#e98a5d4bf89ab8119c856018a3bcc82addadcd47"
   integrity sha512-klsunXs8rgNSZoaUrNeuCiWUxyc+wzucnEnFejUg3/A+CaF589k9qepLZZ1Jehnzig7YbD4hEuscGXuBY3fq+g==
-
-help-me@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/help-me/-/help-me-2.0.1.tgz#5044b80472422c1759bb606d9c5bfefb21fe0d3f"
-  integrity sha512-M0zuH7YG7t6xeLDllblPQkBfuI4MVz1teOJ+JCKBAiOzVXy3FmseeQ87Zt50fM1hTX9627iO/P1oWEwvykGlPQ==
-  dependencies:
-    glob "^7.1.6"
-    readable-stream "^3.6.0"
 
 help-me@^4.0.1:
   version "4.0.1"
@@ -12505,7 +12482,7 @@ minimatch@4.2.1:
   dependencies:
     brace-expansion "^1.1.7"
 
-minimatch@^3.0.2, minimatch@^3.0.4, minimatch@^3.1.1, minimatch@^3.1.2:
+minimatch@^3.0.2, minimatch@^3.0.4, minimatch@^3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-3.1.2.tgz#19cd194bfd3e428f049a70817c038d89ab4be35b"
   integrity sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==
@@ -12526,7 +12503,7 @@ minimatch@~3.0.2:
   dependencies:
     brace-expansion "^1.1.7"
 
-minimist@^1.1.0, minimist@^1.2.0, minimist@^1.2.3, minimist@^1.2.5, minimist@^1.2.6:
+minimist@^1.2.0, minimist@^1.2.3, minimist@^1.2.5, minimist@^1.2.6:
   version "1.2.6"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.6.tgz#8637a5b759ea0d6e98702cfb3a9283323c93af44"
   integrity sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==
@@ -16625,15 +16602,10 @@ yargs-parser@^18.1.2:
     camelcase "^5.0.0"
     decamelize "^1.2.0"
 
-yargs-parser@^20.0.0:
-  version "20.2.9"
-  resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-20.2.9.tgz#2eb7dc3b0289718fc295f362753845c41a0c94ee"
-  integrity sha512-y11nGElTIV+CT3Zv9t7VKl+Q3hTQoT9a1Qzezhhl6Rp21gJ/IVTW7Z3y9EWXhuUBC2Shnf+DX0antecpAwSP8w==
-
-yargs-parser@^21.0.0, yargs-parser@^21.0.1:
-  version "21.0.1"
-  resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-21.0.1.tgz#0267f286c877a4f0f728fceb6f8a3e4cb95c6e35"
-  integrity sha512-9BK1jFpLzJROCI5TzwZL/TU4gqjK5xiHV/RfWLOahrjAko/e4DJkRDZQXfvqAsiZzzYhgAzbgz6lg48jcm4GLg==
+yargs-parser@^21.0.0, yargs-parser@^21.0.1, yargs-parser@^21.1.1:
+  version "21.1.1"
+  resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-21.1.1.tgz#9096bceebf990d21bb31fa9516e0ede294a77d35"
+  integrity sha512-tVpsJW7DdjecAiFpbIB1e3qxIQsE6NoPc5/eTdrbbIC4h0LVsWhnoa3g+m2HclBIujHzsxZ4VJVA+GUuc2/LBw==
 
 yargs@^15.3.1:
   version "15.4.1"
