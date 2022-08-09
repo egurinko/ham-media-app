@@ -921,12 +921,12 @@
   dependencies:
     tslib "^2.3.1"
 
-"@aws-sdk/lib-storage@^3.137.0":
-  version "3.137.0"
-  resolved "https://registry.yarnpkg.com/@aws-sdk/lib-storage/-/lib-storage-3.137.0.tgz#fcacc2abad5d00b62a95f5aa21df0c03db8cb150"
-  integrity sha512-xLs4AeXuuOvLo3fPSmKSIS6G3KPA5TaAKmk7sF99XCXKnkk+TEGfEBIdwp+O+AacLw44l8H+bpSV/hqIV7Fkzg==
+"@aws-sdk/lib-storage@^3.145.0":
+  version "3.145.0"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/lib-storage/-/lib-storage-3.145.0.tgz#30c54ca8e1c3d7338882cd6e8c8cc2a4c76cf1c2"
+  integrity sha512-CTDM6ZK4Dtyaw6dL0QIct1Wfr9s2L+ymt+08TwbABOpq6zH2C2m3TaMX+6JF13PopzMluOsdsvEHvi4RNWqkWw==
   dependencies:
-    "@aws-sdk/smithy-client" "3.137.0"
+    "@aws-sdk/smithy-client" "3.142.0"
     buffer "5.6.0"
     events "3.3.0"
     stream-browserify "3.0.0"
@@ -1432,15 +1432,6 @@
     "@aws-sdk/util-hex-encoding" "3.52.0"
     "@aws-sdk/util-uri-escape" "3.52.0"
     tslib "^2.3.0"
-
-"@aws-sdk/smithy-client@3.137.0":
-  version "3.137.0"
-  resolved "https://registry.yarnpkg.com/@aws-sdk/smithy-client/-/smithy-client-3.137.0.tgz#cf0b639330dd1b4eb9b350e8d0e216c399290bd4"
-  integrity sha512-YAuWiSzHJGV9jQCjmcBWxbWRoq/3INEpdtfAdpR+X+sEZaRJESDGPt4or7WbQ9Tmbd/uZ0uQLYIed/NDSyJLLQ==
-  dependencies:
-    "@aws-sdk/middleware-stack" "3.127.0"
-    "@aws-sdk/types" "3.127.0"
-    tslib "^2.3.1"
 
 "@aws-sdk/smithy-client@3.142.0":
   version "3.142.0"
