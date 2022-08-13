@@ -12,5 +12,9 @@
       "matchPackagePatterns": ["lint", "prettier"],
       "automerge": true
     }
-  ]
+  ],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true
+  }
 }
