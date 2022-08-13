@@ -6,6 +6,11 @@
     {
       "matchPackagePrefixes": ["@types/"],
       "automerge": true
+    },
+    {
+      "matchDepTypes": ["devDependencies"],
+      "matchPackagePatterns": ["lint", "prettier"],
+      "automerge": true
     }
   ]
 }
