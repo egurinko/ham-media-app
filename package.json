@@ -10,18 +10,18 @@
     "start": "yarn workspace backend db:reflect && yarn workspace backend start"
   },
   "devDependencies": {
-    "@types/graphql": "^14.5.0",
-    "@types/jest": "^28.1.6",
+    "@types/graphql": "14.5.0",
+    "@types/jest": "28.1.6",
     "@typescript-eslint/eslint-plugin": "5.33.0",
-    "@typescript-eslint/parser": "^5.33.0",
+    "@typescript-eslint/parser": "5.33.0",
     "eslint": "8.22.0",
-    "eslint-config-prettier": "^8.5.0",
-    "jest": "^28.1.3",
-    "prettier": "^2.7.1",
-    "ts-jest": "^28.0.7",
-    "typescript": "^4.7.4"
+    "eslint-config-prettier": "8.5.0",
+    "jest": "28.1.3",
+    "prettier": "2.7.1",
+    "ts-jest": "28.0.7",
+    "typescript": "4.7.4"
   },
   "dependencies": {
-    "graphql": "^16.5.0"
+    "graphql": "16.5.0"
   }
 }
