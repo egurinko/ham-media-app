@@ -19,7 +19,7 @@
     "lint": "next lint --fix"
   },
   "dependencies": {
-    "@apollo/client": "^3.6.9",
+    "@apollo/client": "3.6.9",
     "@chakra-ui/icons": "^2.0.6",
     "@chakra-ui/react": "2.2.4",
     "@emotion/react": "^11.10.0",
@@ -49,7 +49,7 @@
     "@types/apollo-upload-client": "^17.0.1",
     "@types/js-cookie": "^3.0.2",
     "@types/react": "^18.0.9",
-    "apollo": "^2.34.0",
+    "apollo": "2.34.0",
     "babel-plugin-inline-react-svg": "^2.0.1",
     "dotenv": "^16.0.1",
     "eslint-config-next": "^12.2.5",
