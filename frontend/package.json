@@ -27,7 +27,7 @@
     "@react-google-maps/api": "^2.12.1",
     "apollo-upload-client": "^17.0.0",
     "chakra-ui-autocomplete": "^1.4.5",
-    "dayjs": "^1.11.4",
+    "dayjs": "^1.11.5",
     "framer-motion": "^7.1.0",
     "js-cookie": "^3.0.1",
     "json-bigint-patch": "^0.0.8",
