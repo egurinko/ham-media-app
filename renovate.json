@@ -3,6 +3,7 @@
   "extends": ["config:base", "schedule:daily", ":disableRateLimiting"],
   "timezone": "Japan",
   "labels": ["dependencies"],
+  "rangeStrategy": "bump",
   "packageRules": [
     {
       "matchPackagePrefixes": ["@types/"],
