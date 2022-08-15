@@ -21,7 +21,7 @@
   "dependencies": {
     "@apollo/client": "^3.6.9",
     "@chakra-ui/icons": "2.0.8",
-    "@chakra-ui/react": "2.2.4",
+    "@chakra-ui/react": "2.2.8",
     "@emotion/react": "11.10.0",
     "@emotion/styled": "11.10.0",
     "@react-google-maps/api": "2.12.1",
