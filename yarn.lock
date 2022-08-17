@@ -12725,7 +12725,7 @@ pino-abstract-transport@^1.0.0, pino-abstract-transport@v1.0.0:
     readable-stream "^4.0.0"
     split2 "^4.0.0"
 
-pino-pretty@^8.0.0, pino-pretty@^8.1.0:
+pino-pretty@^8.0.0:
   version "8.1.0"
   resolved "https://registry.yarnpkg.com/pino-pretty/-/pino-pretty-8.1.0.tgz#1dda4ca71701dfeaf1f72057da1b5b718a0d0f04"
   integrity sha512-oKfI8qKXR2a3haHs/X8iB6QSnWLqoOGAjwxIAXem4+XOGIGNw7IKpozId1uE7j89Rj46HIfWnGbAgmQmr8+yRw==
@@ -12738,6 +12738,26 @@ pino-pretty@^8.0.0, pino-pretty@^8.1.0:
     joycon "^3.1.1"
     minimist "^1.2.6"
     on-exit-leak-free "^1.0.0"
+    pino-abstract-transport "^1.0.0"
+    pump "^3.0.0"
+    readable-stream "^4.0.0"
+    secure-json-parse "^2.4.0"
+    sonic-boom "^3.0.0"
+    strip-json-comments "^3.1.1"
+
+pino-pretty@^9.0.1:
+  version "9.0.1"
+  resolved "https://registry.yarnpkg.com/pino-pretty/-/pino-pretty-9.0.1.tgz#25711c49a874950a894f5953929da11b9845cce6"
+  integrity sha512-5gFIIeDu1niFlL0pBACerwDR8Ts+i4gO0W9S0jRoHVvaQluvGOW4cUaDmC+/dSTCoG4VqfOQhP0dwuDLd0qJ6A==
+  dependencies:
+    colorette "^2.0.7"
+    dateformat "^4.6.3"
+    fast-copy "^2.1.1"
+    fast-safe-stringify "^2.1.1"
+    help-me "^4.0.1"
+    joycon "^3.1.1"
+    minimist "^1.2.6"
+    on-exit-leak-free "^2.1.0"
     pino-abstract-transport "^1.0.0"
     pump "^3.0.0"
     readable-stream "^4.0.0"
