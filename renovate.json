@@ -13,6 +13,10 @@
       "matchDepTypes": ["devDependencies"],
       "matchPackagePatterns": ["lint", "prettier"],
       "automerge": true
+    },
+    {
+      "matchPackagePrefixes": ["@graphql-codegen/"],
+      "automerge": true
     }
   ],
   "lockFileMaintenance": {
