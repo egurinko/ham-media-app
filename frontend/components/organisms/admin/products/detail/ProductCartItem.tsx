@@ -53,7 +53,9 @@ const ProductCartItem: FC<Props> = ({ productId }) => {
         <>
           <CopyURL />
           <ProductSummary product={data.product}></ProductSummary>
-          <Text color="text.secondary">※ {data.product.remark}</Text>
+          {data.product.remark !== '' ? (
+            <Text color="text.secondary">※ {data.product.remark}</Text>
+          ) : null}
           <Box textAlign="center" mt="4">
             <Box mb="4" display="flex" alignItems="center">
               <Box flexShrink={0}>
