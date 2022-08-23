@@ -170,7 +170,7 @@ const DetailCard: FC<Props> = ({ hospital }) => (
             </Box>
             <Box display="flex" flexDirection="row" alignItems="center" mb="2">
               <Text ml="2" fontSize="lg">
-                日本小動物獣医師会(JSAVA)認定{' '}
+                日本小動物獣医師会(JSAVA)所属{' '}
                 {hospital.hospitalCertificationOption?.jsava_registered ===
                 HOSPITAL_STATUSES.YES
                   ? HOSPITAL_STATUSES.YES
@@ -179,7 +179,7 @@ const DetailCard: FC<Props> = ({ hospital }) => (
             </Box>
             <Box display="flex" flexDirection="row" alignItems="center" mb="2">
               <Text ml="2" fontSize="lg">
-                日本獣医師会認定{' '}
+                日本獣医師会所属{' '}
                 {hospital.hospitalCertificationOption?.nichiju_registered ===
                 HOSPITAL_STATUSES.YES
                   ? HOSPITAL_STATUSES.YES
