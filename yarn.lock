@@ -11667,7 +11667,7 @@ mercurius-upload@^5.0.0:
     fastify-plugin "^3.0.1"
     graphql-upload "^15.0.1"
 
-mercurius@^10.3.0:
+mercurius@^10.5.1:
   version "10.5.1"
   resolved "https://registry.yarnpkg.com/mercurius/-/mercurius-10.5.1.tgz#696ea3cba3d8715b43eeb8e5e56f10b93ea892d7"
   integrity sha512-TbG8XOTgw6XfPr3VCOvm2rAr3M8vSMbfhbroLXQ9vBS4NdSxpSAcDaq2WE8vdJIsP5XrVHxv94jCj8/0AQmPJg==
