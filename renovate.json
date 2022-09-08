@@ -6,6 +6,11 @@
   "rangeStrategy": "bump",
   "packageRules": [
     {
+      "matchPackageNames": ["jest", "ts-jest"],
+      "matchPackagePrefixes": ["jest-"],
+      "automerge": true
+    },
+    {
       "matchPackagePrefixes": ["@types/"],
       "automerge": true
     },
