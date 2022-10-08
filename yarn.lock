@@ -4614,7 +4614,7 @@
     chalk "4.1.2"
     cross-spawn "7.0.3"
 
-"@react-google-maps/api@^2.12.2":
+"@react-google-maps/api@^2.13.1":
   version "2.13.1"
   resolved "https://registry.yarnpkg.com/@react-google-maps/api/-/api-2.13.1.tgz#2e04afc2674eb1e869032f822c0ced8df19ea024"
   integrity sha512-5P8H3GJpCy9th5u6OUzw36WD5NUAl3hDmcPDaVvowRb9Cn2Zf7b1wLCZ4If+k+gX4o2apsSjD+JtWiRogLOMdQ==
