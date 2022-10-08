@@ -12,5 +12,5 @@ ham-media-front-app-prd:
     roleArn: arn:aws:iam::281874503448:role/8tua43o-l658ek9
     build:
       env:
-        NEXT_PUBLIC_API_URL: https://ham-media-app.herokuapp.com
+        NEXT_PUBLIC_API_URL: https://ham-prd.herokuapp.com
         NEXT_PUBLIC_ORIGIN: https://ham-media-app.net
