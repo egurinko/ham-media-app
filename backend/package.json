@@ -63,7 +63,7 @@
     "@types/node-cron": "^3.0.4",
     "@types/sanitize-html": "^2.6.2",
     "@types/uuid": "^8.3.4",
-    "dotenv": "^16.0.2",
+    "dotenv": "^16.0.3",
     "dotenv-cli": "^6.0.0",
     "mercurius-integration-testing": "^5.0.0",
     "tsc-alias": "^1.7.0",
