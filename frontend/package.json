@@ -24,7 +24,7 @@
     "@chakra-ui/react": "2.3.4",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
-    "@react-google-maps/api": "^2.12.2",
+    "@react-google-maps/api": "^2.13.1",
     "apollo-upload-client": "^17.0.0",
     "chakra-ui-autocomplete": "^1.4.5",
     "dayjs": "^1.11.5",
