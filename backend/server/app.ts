@@ -2,6 +2,7 @@ import fastify from 'fastify';
 import cors from '@fastify/cors';
 import helmet from '@fastify/helmet';
 import MercuriusGQLUpload from 'mercurius-upload';
+import fastifyHealthcheck from 'fastify-healthcheck';
 import 'json-bigint-patch';
 import { router } from './routes';
 import { initSentry } from './services/sentry';
@@ -18,6 +19,7 @@ const app = fastify({
   },
 });
 
+app.register(fastifyHealthcheck);
 app.register(helmet, {
   contentSecurityPolicy: false,
 });
