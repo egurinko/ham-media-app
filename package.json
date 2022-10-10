@@ -5,9 +5,10 @@
     "backend"
   ],
   "scripts": {
-    "postinstall": "NODE_ENV=development yarn workspace backend install",
     "build": "yarn workspace backend db:reflect && yarn workspace backend build",
-    "start": "yarn workspace backend db:reflect && yarn workspace backend start"
+    "start": "yarn workspace backend db:reflect && yarn workspace backend start",
+    "build:backend": "yarn workspace backend db:reflect && yarn workspace backend build",
+    "start:backend": "yarn workspace backend start"
   },
   "devDependencies": {
     "@types/graphql": "^14.5.0",
