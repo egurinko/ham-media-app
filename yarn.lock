@@ -4591,7 +4591,7 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.6.tgz#cee20bd55e68a1720bdab363ecf0c821ded4cd45"
   integrity sha512-50/17A98tWUfQ176raKiOGXuYpLyyVMkxxG6oylzL3BPOlA6ADGdK7EYunSa4I064xerltq9TGXs8HmOk5E+vw==
 
-"@prisma/client@^4.3.1":
+"@prisma/client@^4.4.0":
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/@prisma/client/-/client-4.4.0.tgz#45f59c172dd3621ecc92d7cf9bc765d85e6c7d56"
   integrity sha512-ciKOP246x1xwr04G9ajHlJ4pkmtu9Q6esVyqVBO0QJihaKQIUvbPjClp17IsRJyxqNpFm4ScbOc/s9DUzKHINQ==
@@ -13098,7 +13098,7 @@ prisma-repl@^1.4.0:
   resolved "https://registry.yarnpkg.com/prisma-repl/-/prisma-repl-1.4.0.tgz#aa0ce8f14b686691286c8a407a3f592d3c724d5e"
   integrity sha512-jlvD9Y0T0+h0FlWGqZ1F5mPk91gTWgkOwkLWj2WRdExngxMUX4XJJE46h6in+WIF6tIF7YI7WHtjeOubRTx5+g==
 
-prisma@^4.3.1:
+prisma@^4.4.0:
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/prisma/-/prisma-4.4.0.tgz#0c53324bf6a29474636b3e1964e0d72e0277bf8f"
   integrity sha512-l/QKLmLcKJQFuc+X02LyICo0NWTUVaNNZ00jKJBqwDyhwMAhboD1FWwYV50rkH4Wls0RviAJSFzkC2ZrfawpfA==
