@@ -267,7 +267,7 @@ const Edit = () => {
                     )}
                   />
                 </FormControl>
-                <FormControl id="published" isRequired>
+                <FormControl id="published">
                   <FormLabel>公開状態</FormLabel>
                   <Controller
                     name="published"
@@ -275,12 +275,9 @@ const Edit = () => {
                     defaultValue={!hospital.deleted}
                     render={({ field }) => (
                       <Switch
-                        ref={field.ref}
-                        name={field.name}
-                        onBlur={field.onBlur}
-                        onChange={field.onChange}
-                        checked={field.value}
+                        onChange={(e) => field.onChange(e.target.checked)}
                         defaultChecked={!hospital.deleted}
+                        checked={field.value}
                         colorScheme="green"
                       />
                     )}
