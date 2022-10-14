@@ -39,10 +39,10 @@
     "react-medium-image-zoom": "^5.0.3"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "^2.13.5",
-    "@graphql-codegen/typescript": "^2.7.3",
-    "@graphql-codegen/typescript-operations": "^2.5.3",
-    "@graphql-codegen/typescript-react-apollo": "^3.3.3",
+    "@graphql-codegen/cli": "^2.13.7",
+    "@graphql-codegen/typescript": "^2.7.4",
+    "@graphql-codegen/typescript-operations": "^2.5.4",
+    "@graphql-codegen/typescript-react-apollo": "^3.3.4",
     "@serverless/core": "^1.1.2",
     "@serverless/template": "^1.1.4",
     "@sls-next/serverless-component": "^3.7.0",
