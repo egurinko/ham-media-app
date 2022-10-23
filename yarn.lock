@@ -302,7 +302,7 @@
     fast-xml-parser "3.19.0"
     tslib "^2.3.0"
 
-"@aws-sdk/client-s3@^3.186.0":
+"@aws-sdk/client-s3@^3.194.0":
   version "3.194.0"
   resolved "https://registry.yarnpkg.com/@aws-sdk/client-s3/-/client-s3-3.194.0.tgz#680bb82dcfaafc2a647dd0fb08e3b292250d8ea4"
   integrity sha512-vrC5Pj15T3jgErEOViNObaLpFBtjWk4YKs/P2HqkcQciXjikyafoUMx8GOb5edJbDlCnZSvdjJxIQT0V21fFUw==
@@ -946,7 +946,7 @@
   dependencies:
     tslib "^2.3.0"
 
-"@aws-sdk/lib-storage@^3.186.0":
+"@aws-sdk/lib-storage@^3.194.0":
   version "3.194.0"
   resolved "https://registry.yarnpkg.com/@aws-sdk/lib-storage/-/lib-storage-3.194.0.tgz#a74bc64f8f9d51bc9ff181e387e4d27897bc9a8c"
   integrity sha512-APfUsk9HSO8c3k9MBMDwg+oG96C7sBMha/7ksYIOiXz3VoWxmr+h2l+CIKs4vnEyg79R50Rt/cUhkW/qKz2UUQ==
