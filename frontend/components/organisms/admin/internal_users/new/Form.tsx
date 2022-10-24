@@ -130,7 +130,7 @@ const Form: FC<NoProps> = () => {
                 )}
               />
               <FormHelperText>
-                通知のメンションに必要です。18桁の数字が有効です
+                通知のメンションに必要です。18~19桁の数字が有効です
               </FormHelperText>
               {errors.discordUserId && (
                 <FormErrorMessage>
