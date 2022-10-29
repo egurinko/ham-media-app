@@ -19,7 +19,7 @@
     "lint": "next lint --fix"
   },
   "dependencies": {
-    "@apollo/client": "^3.7.0",
+    "@apollo/client": "^3.7.1",
     "@chakra-ui/icons": "^2.0.11",
     "@chakra-ui/react": "2.3.6",
     "@emotion/react": "^11.10.4",
