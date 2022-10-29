@@ -5283,10 +5283,10 @@
   resolved "https://registry.yarnpkg.com/@types/ms/-/ms-0.7.31.tgz#31b7ca6407128a3d2bbc27fe2d21b345397f6197"
   integrity sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==
 
-"@types/node-cron@^3.0.4":
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/@types/node-cron/-/node-cron-3.0.4.tgz#ade755125a5b9e409ba9598e04c7132a05c108db"
-  integrity sha512-A2H+uz5ry4hohYjRe5mQSE/8Dx/HGw4WZ728JxhKUZ7z8CMvRuG2tpbzGHRGQCuQzz5aCNB1iXzPZYHd4BPHvw==
+"@types/node-cron@^3.0.5":
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/@types/node-cron/-/node-cron-3.0.5.tgz#5609fe5ecbf936150d483ab44ee74b08ce8014cf"
+  integrity sha512-uoDOALlHFxcPzRJR/M2L8478OqLcuGsx+SPjIKkp7cdWh9y2risWtC2M0KPjrwV8wvcj6eyYB/HozizbgvzumA==
 
 "@types/node-fetch@^2.5.10":
   version "2.6.2"
