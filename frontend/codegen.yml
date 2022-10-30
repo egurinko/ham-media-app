@@ -1,23 +1,23 @@
 generates:
-  ./api/internal_api/types.ts:
+  ./services/api/internal_api/types.ts:
     schema:
       - ../graphql/internalApi/schema.graphql
-    documents: ./api/internal_api/**/*.ts
+    documents: ./services/api/internal_api/**/*.ts
     plugins:
       - typescript
       - typescript-operations
       - typescript-react-apollo
-  ./api/public_api/types.ts:
+  ./services/api/public_api/types.ts:
     schema: ../graphql/publicApi/schema.graphql
-    documents: ./api/public_api/**/*.ts
+    documents: ./services/api/public_api/**/*.ts
     plugins:
       - typescript
       - typescript-operations
       - typescript-react-apollo
-  ./api/local_api/types.ts:
+  ./services/api/local_api/types.ts:
     schema:
       - utils/apollo/schema.graphql
-    documents: ./api/local_api/**/*.ts
+    documents: ./services/api/local_api/**/*.ts
     plugins:
       - typescript
       - typescript-operations
