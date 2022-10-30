@@ -11,16 +11,16 @@ import { CUIAutoComplete } from 'chakra-ui-autocomplete';
 import { useRouter } from 'next/router';
 import { useCallback, useEffect, useState, memo } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import {
-  useInternalGetMakersQuery,
-  useInternalCreateProductMutation,
-  useInternalGetProductTagGroupsQuery,
-} from '@/api/internal_api/types';
 import { Card } from '@/components/atoms/Card';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { FileUploader } from '@/components/molecules/FileUploader';
 import { SuccessMessage } from '@/components/molecules/SuccessMessage';
+import {
+  useInternalGetMakersQuery,
+  useInternalCreateProductMutation,
+  useInternalGetProductTagGroupsQuery,
+} from '@/services/api/internal_api/types';
 import { goAdminProducts } from '@/utils/routes';
 import validators from '@/validators/index';
 import type { FC } from 'react';

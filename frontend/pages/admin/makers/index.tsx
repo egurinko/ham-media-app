@@ -1,10 +1,10 @@
 import { AddIcon } from '@chakra-ui/icons';
 import { Heading, Box } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import { useLocalReadIsAdminQuery } from '@/api/local_api/types';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
 import { MakersStack } from '@/components/organisms/admin/makers/index/MakersStack';
+import { useLocalReadIsAdminQuery } from '@/services/api/local_api/types';
 import { goAdminMakersNew } from '@/utils/routes';
 import type { ReactElement } from 'react';
 

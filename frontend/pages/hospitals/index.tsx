@@ -1,15 +1,15 @@
 import { Box } from '@chakra-ui/react';
-import { getHospitalConnection } from '@/api/public_api/getHospitalConnection';
-import type {
-  PublicGetHospitalConnectionQuery,
-  PublicGetHospitalConnectionQueryVariables,
-} from '@/api/public_api/types';
 import { Layout } from '@/components/layouts/consumer/Layout';
 import { Head } from '@/components/molecules/Head';
 import { HospitalSearch } from '@/components/organisms/consumer/hospitals/index/HospitalSearch';
 import { NightServiceHospitals } from '@/components/organisms/consumer/hospitals/index/NightServiceHospitals';
 import { RecommendedHospitals } from '@/components/organisms/consumer/hospitals/index/RecommendedHospitals';
 import { TitleSection } from '@/components/organisms/consumer/hospitals/index/TitleSection';
+import { getHospitalConnection } from '@/services/api/public_api/getHospitalConnection';
+import type {
+  PublicGetHospitalConnectionQuery,
+  PublicGetHospitalConnectionQueryVariables,
+} from '@/services/api/public_api/types';
 import { apiClient } from '@/utils/apollo';
 import { SERVICE_NAME, ORIGIN_URL } from '@/utils/constant';
 import { HOSPITALS_PATH } from '@/utils/routes';

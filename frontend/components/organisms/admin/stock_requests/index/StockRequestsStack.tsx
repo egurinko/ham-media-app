@@ -24,17 +24,17 @@ import {
   useCallback,
   memo,
 } from 'react';
-import {
-  useInternalGetStockRequestConnectionQuery,
-  useInternalGetInternalUsersQuery,
-  useInternalDeleteStockRequestMutation,
-} from '@/api/internal_api/types';
-import type { StockRequestFieldsFragment } from '@/api/internal_api/types';
 import { Card } from '@/components/atoms/Card';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { Spinner } from '@/components/atoms/Spinner';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { SuccessMessage } from '@/components/molecules/SuccessMessage';
+import type { StockRequestFieldsFragment } from '@/services/api/internal_api/types';
+import {
+  useInternalGetStockRequestConnectionQuery,
+  useInternalGetInternalUsersQuery,
+  useInternalDeleteStockRequestMutation,
+} from '@/services/api/internal_api/types';
 import { useIntersectionObserver } from '@/utils/hooks/useIntersectionObserver';
 import { scrollTo } from '@/utils/scroll';
 import { StockRequestSummary } from './stockRequestsStack/StockRequestSummary';

@@ -2,18 +2,18 @@ import { SmallCloseIcon, AddIcon } from '@chakra-ui/icons';
 import { Box, Text, Input, IconButton, Select } from '@chakra-ui/react';
 import dayjs from 'dayjs';
 import { useState, memo } from 'react';
-import {
-  useInternalCreateStocksMutation,
-  useInternalGetInternalUsersQuery,
-} from '@/api/internal_api/types';
-import type {
-  InternalGetProductQuery,
-  InternalGetStocksQueryVariables,
-} from '@/api/internal_api/types';
-import { useLocalReadIsAdminQuery } from '@/api/local_api/types';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { SuccessMessage } from '@/components/molecules/SuccessMessage';
+import {
+  useInternalCreateStocksMutation,
+  useInternalGetInternalUsersQuery,
+} from '@/services/api/internal_api/types';
+import type {
+  InternalGetProductQuery,
+  InternalGetStocksQueryVariables,
+} from '@/services/api/internal_api/types';
+import { useLocalReadIsAdminQuery } from '@/services/api/local_api/types';
 import type { FC } from 'react';
 
 type FetchStocksMoreArgs = { variables: InternalGetStocksQueryVariables };

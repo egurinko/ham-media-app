@@ -1,8 +1,8 @@
 import { Divider, Box } from '@chakra-ui/react';
 import { Fragment, memo } from 'react';
-import { useInternalGetProductTagGroupsQuery } from '@/api/internal_api/types';
 import { Spinner } from '@/components/atoms/Spinner';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
+import { useInternalGetProductTagGroupsQuery } from '@/services/api/internal_api/types';
 import { ProductTagGroupSummary } from './productTagGroupsStack/ProductTagGroupSummary';
 import type { FC } from 'react';
 

@@ -1,9 +1,9 @@
 import { Button, Text } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { useState, useCallback, useEffect, memo } from 'react';
-import { useLocalGetHospitalSearchQuery } from '@/api/local_api/types';
 import { MapPinIcon } from '@/components/atoms/assets/MapPinIcon';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
+import { useLocalGetHospitalSearchQuery } from '@/services/api/local_api/types';
 import { hospitalSearchVar } from '@/utils/apollo/cache';
 import { LOCAL_STORAGE_HOSPITAL_SEARCH_KEY } from '@/utils/constant';
 import { useLocalStorage } from '@/utils/hooks';

@@ -1,7 +1,7 @@
 import { Text, Box, Input, Switch, Select } from '@chakra-ui/react';
 import { useEffect, memo } from 'react';
-import { useInternalGetHospitalConnectionLazyQuery } from '@/api/internal_api/types';
-import { usePublicGetPrefecturesQuery } from '@/api/public_api/types';
+import { useInternalGetHospitalConnectionLazyQuery } from '@/services/api/internal_api/types';
+import { usePublicGetPrefecturesQuery } from '@/services/api/public_api/types';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { SecondaryButton } from '@/components/atoms/SecondaryButton';
 import type {

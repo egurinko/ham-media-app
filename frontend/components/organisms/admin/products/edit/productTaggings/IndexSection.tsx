@@ -1,14 +1,14 @@
 import { SmallCloseIcon } from '@chakra-ui/icons';
 import { memo } from 'react';
-import {
-  useInternalGetProductQuery,
-  useInternalDeleteProductTaggingMutation,
-} from '@/api/internal_api/types';
-import type { InternalGetProductQuery } from '@/api/internal_api/types';
 import { PrimaryTag } from '@/components/atoms/PrimaryTag';
 import { Spinner } from '@/components/atoms/Spinner';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { SuccessMessage } from '@/components/molecules/SuccessMessage';
+import type { InternalGetProductQuery } from '@/services/api/internal_api/types';
+import {
+  useInternalGetProductQuery,
+  useInternalDeleteProductTaggingMutation,
+} from '@/services/api/internal_api/types';
 import type { FC } from 'react';
 
 interface Props {

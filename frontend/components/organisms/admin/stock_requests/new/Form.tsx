@@ -2,18 +2,18 @@ import { DeleteIcon } from '@chakra-ui/icons';
 import { Box, Text, Select, Button } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { useState, useEffect, useCallback, memo } from 'react';
-import {
-  useInternalGetProductsQuery,
-  useInternalCreateStockRequestMutation,
-} from '@/api/internal_api/types';
-import type { ProductFieldsFragment } from '@/api/internal_api/types';
-import { useLocalGetProductCartItemsQuery } from '@/api/local_api/types';
 import { Card } from '@/components/atoms/Card';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { Spinner } from '@/components/atoms/Spinner';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 import { ProductSummary } from '@/components/organisms/admin/products/ProductSummary';
+import type { ProductFieldsFragment } from '@/services/api/internal_api/types';
+import {
+  useInternalGetProductsQuery,
+  useInternalCreateStockRequestMutation,
+} from '@/services/api/internal_api/types';
+import { useLocalGetProductCartItemsQuery } from '@/services/api/local_api/types';
 import { productCartItemsVar } from '@/utils/apollo/cache';
 import { goAdminStockRequests } from '@/utils/routes';
 import { Note } from '../shared/Note';

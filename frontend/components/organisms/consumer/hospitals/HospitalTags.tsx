@@ -1,7 +1,7 @@
 import { HStack } from '@chakra-ui/react';
 import { memo } from 'react';
-import type { HospitalFieldsFragment } from '@/api/public_api/types';
 import { PrimaryTag } from '@/components/atoms/PrimaryTag';
+import type { HospitalFieldsFragment } from '@/services/api/public_api/types';
 import { HOSPITAL_STATUSES } from '@/utils/constant';
 import type { FC } from 'react';
 

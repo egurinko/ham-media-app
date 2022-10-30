@@ -1,9 +1,9 @@
 import { Box, Text } from '@chakra-ui/react';
 import { useEffect, memo, useCallback } from 'react';
-import { useLocalGetHospitalSearchQuery } from '@/api/local_api/types';
-import { usePublicGetHospitalConnectionLazyQuery } from '@/api/public_api/types';
 import { Card } from '@/components/atoms/Card';
 import { TextSearch } from '@/components/organisms/consumer/hospitals/index/hospitalSearch/TextSearch';
+import { useLocalGetHospitalSearchQuery } from '@/services/api/local_api/types';
+import { usePublicGetHospitalConnectionLazyQuery } from '@/services/api/public_api/types';
 import { hospitalSearchVar } from '@/utils/apollo/cache';
 import { LOCAL_STORAGE_HOSPITAL_SEARCH_KEY } from '@/utils/constant';
 import { useLocalStorage } from '@/utils/hooks';

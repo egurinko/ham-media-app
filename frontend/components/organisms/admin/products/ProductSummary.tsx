@@ -1,8 +1,8 @@
 import { Text, Box } from '@chakra-ui/react';
 import { memo } from 'react';
-import type { ProductFieldsFragment } from '@/api/internal_api/types';
 import { SecondaryTag } from '@/components/atoms/SecondaryTag';
 import { Zoom } from '@/components/atoms/Zoom';
+import type { ProductFieldsFragment } from '@/services/api/internal_api/types';
 import type { FC } from 'react';
 
 type Props = {

@@ -17,8 +17,8 @@ import { useCallback, useState, Fragment, memo } from 'react';
 import {
   useInternalGetMakersQuery,
   useInternalDeleteMakerMutation,
-} from '@/api/internal_api/types';
-import type { InternalGetMakersQuery } from '@/api/internal_api/types';
+} from '@/services/api/internal_api/types';
+import type { InternalGetMakersQuery } from '@/services/api/internal_api/types';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { Spinner } from '@/components/atoms/Spinner';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';

@@ -4,8 +4,11 @@ import type {
   CreateStockRequestRequestProductsInputType,
   Session,
   RoleFieldsFragment,
-} from '@/api/internal_api/types';
-import type { HospitalSearch, ProductSearch } from '@/api/local_api/types';
+} from '@/services/api/internal_api/types';
+import type {
+  HospitalSearch,
+  ProductSearch,
+} from '@/services/api/local_api/types';
 
 const productCartItemsVar = makeVar<
   CreateStockRequestRequestProductsInputType[]

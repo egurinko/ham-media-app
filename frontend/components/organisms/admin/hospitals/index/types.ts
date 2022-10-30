@@ -1,4 +1,4 @@
-import type { Hospital } from '@/api/internal_api/types';
+import type { Hospital } from '@/services/api/internal_api/types';
 
 export type Name = string;
 export type Deleted = boolean;

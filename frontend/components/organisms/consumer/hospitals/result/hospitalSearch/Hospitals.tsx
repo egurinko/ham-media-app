@@ -1,12 +1,12 @@
 import { InfoOutlineIcon } from '@chakra-ui/icons';
 import { Box, Text, SkeletonCircle, SkeletonText } from '@chakra-ui/react';
 import { useRef, useEffect, memo } from 'react';
-import type { PublicGetHospitalConnectionQuery } from '@/api/public_api/types';
 import { Card } from '@/components/atoms/Card';
 import { MapPinIcon } from '@/components/atoms/assets/MapPinIcon';
 import { PhoneIcon } from '@/components/atoms/assets/PhoneIcon';
 import { SummaryLink } from '@/components/molecules/SummaryLink';
 import { HospitalTags } from '@/components/organisms/consumer/hospitals/HospitalTags';
+import type { PublicGetHospitalConnectionQuery } from '@/services/api/public_api/types';
 import { useIntersectionObserver } from '@/utils/hooks/useIntersectionObserver';
 import { HOSPITALS_DETAIL_PATH } from '@/utils/routes';
 import type { GetContinuousHospitalConnection } from '../../types';

@@ -1,9 +1,9 @@
 import { Box, Badge } from '@chakra-ui/react';
 import Link from 'next/link';
 import { memo } from 'react';
-import { useLocalGetProductCartItemsQuery } from '@/api/local_api/types';
 import { SecondaryButton } from '@/components/atoms/SecondaryButton';
 import { CartIcon } from '@/components/atoms/assets/CartIcon';
+import { useLocalGetProductCartItemsQuery } from '@/services/api/local_api/types';
 import { ADMIN_STOCK_REQUESTS_NEW_PATH } from '@/utils/routes';
 import type { FC } from 'react';
 

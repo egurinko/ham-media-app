@@ -15,22 +15,22 @@ import {
 } from '@chakra-ui/react';
 import dayjs from 'dayjs';
 import { memo } from 'react';
+import { Spinner } from '@/components/atoms/Spinner';
+import { ErrorMessage } from '@/components/molecules/ErrorMessage';
+import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 import {
   useInternalGetInternalUsersQuery,
   useInternalAllocateStockMutation,
   useInternalReturnStockMutation,
   useInternalDeleteStockMutation,
   useInternalUpdateStockInternalUserMutation,
-} from '@/api/internal_api/types';
+} from '@/services/api/internal_api/types';
 import type {
   InternalGetProductQuery,
   InternalGetStocksQuery,
   InternalGetStocksQueryVariables,
-} from '@/api/internal_api/types';
-import { useLocalReadIsAdminQuery } from '@/api/local_api/types';
-import { Spinner } from '@/components/atoms/Spinner';
-import { ErrorMessage } from '@/components/molecules/ErrorMessage';
-import { SuccessMessage } from '@/components/molecules/SuccessMessage';
+} from '@/services/api/internal_api/types';
+import { useLocalReadIsAdminQuery } from '@/services/api/local_api/types';
 import type { FC } from 'react';
 
 type FetchStocksMoreArgs = { variables: InternalGetStocksQueryVariables };

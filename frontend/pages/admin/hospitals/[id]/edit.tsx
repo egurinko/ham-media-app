@@ -23,13 +23,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useCallback, useEffect, useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import {
-  useInternalGetHospitalQuery,
-  useInternalUpdateHospitalMutation,
-  useInternalUpsertHospitalAddressGeoLocationMutation,
-} from '@/api/internal_api/types';
-import { useLocalReadIsAdminQuery } from '@/api/local_api/types';
-import { usePublicGetPrefecturesQuery } from '@/api/public_api/types';
 import { Card } from '@/components/atoms/Card';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { SecondaryButton } from '@/components/atoms/SecondaryButton';
@@ -37,6 +30,13 @@ import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 import { GoogleMap } from '@/components/organisms/GoogleMap';
+import {
+  useInternalGetHospitalQuery,
+  useInternalUpdateHospitalMutation,
+  useInternalUpsertHospitalAddressGeoLocationMutation,
+} from '@/services/api/internal_api/types';
+import { useLocalReadIsAdminQuery } from '@/services/api/local_api/types';
+import { usePublicGetPrefecturesQuery } from '@/services/api/public_api/types';
 import { goAdminHospitals } from '@/utils/routes';
 import { scrollTo } from '@/utils/scroll';
 import type { GetStaticPaths, GetStaticProps } from 'next';

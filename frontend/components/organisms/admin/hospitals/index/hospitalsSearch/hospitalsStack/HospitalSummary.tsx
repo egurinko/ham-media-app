@@ -1,11 +1,11 @@
 import { Text, Box, Badge } from '@chakra-ui/react';
 import { memo } from 'react';
-import type { Hospital } from '@/api/internal_api/types';
 import { MapPinIcon } from '@/components/atoms/assets/MapPinIcon';
 import { PhoneIcon } from '@/components/atoms/assets/PhoneIcon';
 import { SummaryLink } from '@/components/molecules/SummaryLink';
 import { ADMIN_HOSPIALS_EDIT_PATH } from '@/utils/routes';
 import type { FC } from 'react';
+import type { Hospital } from '@/services/api/internal_api/types';
 
 type Props = {
   hospital: Hospital;

@@ -1,8 +1,8 @@
 import { DeleteIcon } from '@chakra-ui/icons';
 import { Text, Box, Badge, IconButton } from '@chakra-ui/react';
 import { memo } from 'react';
-import type { StockRequestFieldsFragment } from '@/api/internal_api/types';
 import { SummaryLink } from '@/components/molecules/SummaryLink';
+import type { StockRequestFieldsFragment } from '@/services/api/internal_api/types';
 import { ADMIN_STOCK_REQUESTS_EDIT_PATH } from '@/utils/routes';
 import type { FC, MouseEvent } from 'react';
 

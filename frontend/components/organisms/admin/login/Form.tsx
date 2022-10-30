@@ -9,11 +9,11 @@ import {
 import { useRouter } from 'next/router';
 import { useEffect, memo } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { usePublicCreateSessionMutation } from '@/api/public_api/types';
 import { Card } from '@/components/atoms/Card';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
 import { SuccessMessage } from '@/components/molecules/SuccessMessage';
+import { usePublicCreateSessionMutation } from '@/services/api/public_api/types';
 import { setCookie } from '@/utils/cookies';
 import { goAdminProducts } from '@/utils/routes';
 import validators from '@/validators/index';

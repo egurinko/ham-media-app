@@ -14,9 +14,9 @@ import {
   Text,
 } from '@chakra-ui/react';
 import { useCallback, useEffect, useState, memo } from 'react';
-import { useLocalGetHospitalSearchQuery } from '@/api/local_api/types';
 import { SecondaryButton } from '@/components/atoms/SecondaryButton';
 import { FilterIcon } from '@/components/atoms/assets/FilterIcon';
+import { useLocalGetHospitalSearchQuery } from '@/services/api/local_api/types';
 import { hospitalSearchVar } from '@/utils/apollo/cache';
 import { scrollTo } from '@/utils/scroll';
 import type { FC } from 'react';

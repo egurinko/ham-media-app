@@ -1,9 +1,9 @@
 import { Box, Text } from '@chakra-ui/react';
 import { MarkerF, InfoWindowF } from '@react-google-maps/api';
 import { memo, useState, useCallback } from 'react';
-import type { PublicGetHospitalLocationsQuery } from '@/api/public_api/types';
-import { usePublicGetHospitalLocationsQuery } from '@/api/public_api/types';
 import { GoogleMap } from '@/components/organisms/GoogleMap';
+import type { PublicGetHospitalLocationsQuery } from '@/services/api/public_api/types';
+import { usePublicGetHospitalLocationsQuery } from '@/services/api/public_api/types';
 import type { FC } from 'react';
 
 type HospitalLocation = PublicGetHospitalLocationsQuery['hospitals'][number];
