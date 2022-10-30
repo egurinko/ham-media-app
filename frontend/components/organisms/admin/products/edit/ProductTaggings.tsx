@@ -1,7 +1,7 @@
 import { Text } from '@chakra-ui/react';
 import { memo } from 'react';
-import type { InternalGetProductQuery } from '@/api/internal_api/types';
 import { Card } from '@/components/atoms/Card';
+import type { InternalGetProductQuery } from '@/services/api/internal_api/types';
 import { IndexSection } from './productTaggings/IndexSection';
 import { NewSection } from './productTaggings/NewSection';
 import type { FC } from 'react';

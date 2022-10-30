@@ -1,14 +1,6 @@
 import { DeleteIcon } from '@chakra-ui/icons';
 import { Box, Text, Select, Button } from '@chakra-ui/react';
 import { useState, useEffect, useCallback, memo } from 'react';
-import {
-  useInternalGetStockRequestQuery,
-  useInternalUpdateStockRequestMutation,
-} from '@/api/internal_api/types';
-import type {
-  StockRequestFieldsFragment,
-  CreateStockRequestRequestProductsInputType,
-} from '@/api/internal_api/types';
 import { Card } from '@/components/atoms/Card';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { Spinner } from '@/components/atoms/Spinner';
@@ -16,6 +8,14 @@ import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 import { SummaryLink } from '@/components/molecules/SummaryLink';
 import { ProductSummary } from '@/components/organisms/admin/products/ProductSummary';
+import type {
+  StockRequestFieldsFragment,
+  CreateStockRequestRequestProductsInputType,
+} from '@/services/api/internal_api/types';
+import {
+  useInternalGetStockRequestQuery,
+  useInternalUpdateStockRequestMutation,
+} from '@/services/api/internal_api/types';
 import { ADMIN_PRODUCTS_DETAIL_PATH } from '@/utils/routes';
 import { Note } from '../shared/Note';
 import type { FC } from 'react';

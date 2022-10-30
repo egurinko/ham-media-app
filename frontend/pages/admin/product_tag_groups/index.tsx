@@ -1,10 +1,10 @@
 import { AddIcon } from '@chakra-ui/icons';
 import { Heading, Box } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import { useLocalReadIsAdminQuery } from '@/api/local_api/types';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
 import { ProductTagGroupsStack } from '@/components/organisms/admin/product_tag_groups/index/ProductTagGroupsStack';
+import { useLocalReadIsAdminQuery } from '@/services/api/local_api/types';
 import { goAdminProductTagGroupsNew } from '@/utils/routes';
 import type { ReactElement } from 'react';
 

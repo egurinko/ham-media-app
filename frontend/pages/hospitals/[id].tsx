@@ -1,16 +1,16 @@
 import { ChevronRightIcon } from '@chakra-ui/icons';
 import { Heading, Box, Button } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import { getHospital } from '@/api/public_api/getHospital';
-import { getHospitalIds } from '@/api/public_api/getHospitalIds';
+import { Layout } from '@/components/layouts/consumer/Layout';
+import { Head } from '@/components/molecules/Head';
+import { DetailCard } from '@/components/organisms/consumer/hospitals/detail/DetailCard';
+import { getHospital } from '@/services/api/public_api/getHospital';
+import { getHospitalIds } from '@/services/api/public_api/getHospitalIds';
 import type {
   PublicGetHospitalIdsQuery,
   PublicGetHospitalQuery,
   PublicGetHospitalQueryVariables,
-} from '@/api/public_api/types';
-import { Layout } from '@/components/layouts/consumer/Layout';
-import { Head } from '@/components/molecules/Head';
-import { DetailCard } from '@/components/organisms/consumer/hospitals/detail/DetailCard';
+} from '@/services/api/public_api/types';
 import { apiClient } from '@/utils/apollo';
 import { SERVICE_NAME, ORIGIN_URL } from '@/utils/constant';
 import { HOSPITALS_DETAIL_PATH, goHospitalsResult } from '@/utils/routes';

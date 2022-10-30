@@ -18,15 +18,15 @@ import {
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { useCallback, useState, memo } from 'react';
+import { PrimaryButton } from '@/components/atoms/PrimaryButton';
+import { ErrorMessage } from '@/components/molecules/ErrorMessage';
+import { SuccessMessage } from '@/components/molecules/SuccessMessage';
+import type { StockRequest } from '@/services/api/internal_api/types';
 import {
   useInternalGetStockRequestQuery,
   useInternalRejectStockRequestMutation,
   useInternalApproveStockRequestMutation,
-} from '@/api/internal_api/types';
-import type { StockRequest } from '@/api/internal_api/types';
-import { PrimaryButton } from '@/components/atoms/PrimaryButton';
-import { ErrorMessage } from '@/components/molecules/ErrorMessage';
-import { SuccessMessage } from '@/components/molecules/SuccessMessage';
+} from '@/services/api/internal_api/types';
 import { goAdminStockRequests } from '@/utils/routes';
 import type { FC } from 'react';
 

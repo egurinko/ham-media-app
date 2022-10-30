@@ -1,8 +1,8 @@
 import { Box, Divider, Button } from '@chakra-ui/react';
 import Image from 'next/image';
 import { memo } from 'react';
-import type { InternalGetSessionQuery } from '@/api/internal_api/types';
 import { UserCard } from '@/components/molecules/UserCard';
+import type { InternalGetSessionQuery } from '@/services/api/internal_api/types';
 import { Navigation } from './Navigation';
 import type { FC } from 'react';
 

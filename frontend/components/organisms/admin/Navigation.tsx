@@ -1,11 +1,11 @@
 import { Box, VStack, UnorderedList, ListItem } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { useMemo, memo } from 'react';
-import { useLocalReadIsAdminQuery } from '@/api/local_api/types';
 import { HospitalIcon } from '@/components/atoms/assets/HospitalIcon';
 import { InventoryIcon } from '@/components/atoms/assets/InventoryIcon';
 import { UserProfileIcon } from '@/components/atoms/assets/UserProfileIcon';
 import { NavigationLink } from '@/components/molecules/NavigationLink';
+import { useLocalReadIsAdminQuery } from '@/services/api/local_api/types';
 import {
   ADMIN_INTERNAL_USERS_PATH,
   ADMIN_HOSPIALS_PATH,

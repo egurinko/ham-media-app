@@ -1,9 +1,9 @@
 import { memo } from 'react';
-import { useInternalGetStocksQuery } from '@/api/internal_api/types';
-import type { InternalGetProductQuery } from '@/api/internal_api/types';
 import { Card } from '@/components/atoms/Card';
 import { Spinner } from '@/components/atoms/Spinner';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
+import type { InternalGetProductQuery } from '@/services/api/internal_api/types';
+import { useInternalGetStocksQuery } from '@/services/api/internal_api/types';
 import { AllocationSection } from './stock/AllocationSection';
 import { NewSection } from './stock/NewSection';
 import type { FC } from 'react';

@@ -1,9 +1,9 @@
 import { Box, Text } from '@chakra-ui/react';
 import Link from 'next/link';
 import { memo } from 'react';
-import type { PublicGetHospitalConnectionQuery } from '@/api/public_api/types';
 import { MapPinIcon } from '@/components/atoms/assets/MapPinIcon';
 import { PhoneIcon } from '@/components/atoms/assets/PhoneIcon';
+import type { PublicGetHospitalConnectionQuery } from '@/services/api/public_api/types';
 import { HOSPITALS_DETAIL_PATH } from '@/utils/routes';
 import type { FC } from 'react';
 

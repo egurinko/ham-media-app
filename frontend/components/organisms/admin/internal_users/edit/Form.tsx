@@ -15,9 +15,9 @@ import {
   useInternalUpdateInternalUserMutation,
   useInternalGetInternalUserQuery,
   useInternalGetRolesQuery,
-} from '@/api/internal_api/types';
-import type { InternalGetInternalUserQuery } from '@/api/internal_api/types';
-import { useLocalReadIsAdminQuery } from '@/api/local_api/types';
+} from '@/services/api/internal_api/types';
+import type { InternalGetInternalUserQuery } from '@/services/api/internal_api/types';
+import { useLocalReadIsAdminQuery } from '@/services/api/local_api/types';
 import { Card } from '@/components/atoms/Card';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';

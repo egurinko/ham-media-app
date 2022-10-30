@@ -1,7 +1,6 @@
 import { Box, Text, Divider } from '@chakra-ui/react';
 import { InfoWindowF, MarkerF } from '@react-google-maps/api';
 import { memo } from 'react';
-import type { HospitalFieldsFragment } from '@/api/public_api/types';
 import { Card } from '@/components/atoms/Card';
 import { SecondaryButton } from '@/components/atoms/SecondaryButton';
 import { InsuranceIcon } from '@/components/atoms/assets/InsuranceIcon';
@@ -10,6 +9,7 @@ import { MapPinIcon } from '@/components/atoms/assets/MapPinIcon';
 import { PhoneIcon } from '@/components/atoms/assets/PhoneIcon';
 import { GoogleMap } from '@/components/organisms/GoogleMap';
 import { HospitalTags } from '@/components/organisms/consumer/hospitals/HospitalTags';
+import type { HospitalFieldsFragment } from '@/services/api/public_api/types';
 import { HOSPITAL_STATUSES } from '@/utils/constant';
 import type { FC } from 'react';
 

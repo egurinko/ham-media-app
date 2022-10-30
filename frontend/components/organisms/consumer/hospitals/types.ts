@@ -1,4 +1,4 @@
-import type { PublicGetHospitalConnectionQueryVariables } from '@/api/public_api/types';
+import type { PublicGetHospitalConnectionQueryVariables } from '@/services/api/public_api/types';
 
 export type SearchText =
   PublicGetHospitalConnectionQueryVariables['searchText'];

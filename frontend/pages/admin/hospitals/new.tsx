@@ -16,10 +16,10 @@ import {
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { useForm, Controller } from 'react-hook-form';
-import { useInternalCreateHospitalMutation } from '@/api/internal_api/types';
 import { Card } from '@/components/atoms/Card';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
+import { useInternalCreateHospitalMutation } from '@/services/api/internal_api/types';
 import { goAdminHospitalsEdit, goAdminHospitals } from '@/utils/routes';
 import type { ReactElement } from 'react';
 import type { SubmitHandler } from 'react-hook-form';

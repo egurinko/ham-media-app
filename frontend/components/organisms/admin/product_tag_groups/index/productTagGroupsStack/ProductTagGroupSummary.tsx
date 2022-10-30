@@ -1,7 +1,7 @@
 import { Text, Box, UnorderedList, ListItem } from '@chakra-ui/react';
 import { memo } from 'react';
-import type { InternalGetProductTagGroupsQuery } from '@/api/internal_api/types';
 import { SummaryLink } from '@/components/molecules/SummaryLink';
+import type { InternalGetProductTagGroupsQuery } from '@/services/api/internal_api/types';
 import { ADMIN_PRODUCT_TAG_GROUPS_EDIT_PATH } from '@/utils/routes';
 import type { FC } from 'react';
 

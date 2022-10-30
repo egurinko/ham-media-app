@@ -19,19 +19,19 @@ import React, {
   memo,
   useCallback,
 } from 'react';
-import {
-  useInternalGetProductConnectionQuery,
-  useInternalGetMakersQuery,
-  useInternalGetProductTagGroupsQuery,
-  useInternalGetInternalUsersQuery,
-} from '@/api/internal_api/types';
-import type { ProductFieldsFragment } from '@/api/internal_api/types';
 import { Card } from '@/components/atoms/Card';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { SecondaryButton } from '@/components/atoms/SecondaryButton';
 import { Spinner } from '@/components/atoms/Spinner';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { SummaryLink } from '@/components/molecules/SummaryLink';
+import type { ProductFieldsFragment } from '@/services/api/internal_api/types';
+import {
+  useInternalGetProductConnectionQuery,
+  useInternalGetMakersQuery,
+  useInternalGetProductTagGroupsQuery,
+  useInternalGetInternalUsersQuery,
+} from '@/services/api/internal_api/types';
 import { productSearchVar } from '@/utils/apollo/cache';
 import { useIntersectionObserver } from '@/utils/hooks/useIntersectionObserver';
 import { ADMIN_PRODUCTS_DETAIL_PATH } from '@/utils/routes';

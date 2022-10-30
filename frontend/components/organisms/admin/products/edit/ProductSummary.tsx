@@ -1,9 +1,9 @@
 import { Box, StatGroup, Stat, StatLabel, StatNumber } from '@chakra-ui/react';
 import { memo } from 'react';
-import { useInternalGetProductQuery } from '@/api/internal_api/types';
-import type { InternalGetProductQuery } from '@/api/internal_api/types';
 import { Spinner } from '@/components/atoms/Spinner';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
+import { useInternalGetProductQuery } from '@/services/api/internal_api/types';
+import type { InternalGetProductQuery } from '@/services/api/internal_api/types';
 import type { FC } from 'react';
 
 interface Props {

@@ -1,11 +1,11 @@
 import { AddIcon } from '@chakra-ui/icons';
 import { Heading, Box } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import { useLocalReadIsAdminQuery } from '@/api/local_api/types';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
 import { StockRequestCartButton } from '@/components/organisms/admin/products/StockRequestCartButton';
 import { ProductStacks } from '@/components/organisms/admin/products/index/ProductStacks';
+import { useLocalReadIsAdminQuery } from '@/services/api/local_api/types';
 import { goAdminProductsNew } from '@/utils/routes';
 import type { ReactElement } from 'react';
 

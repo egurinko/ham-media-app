@@ -10,18 +10,18 @@ import {
 import { useRouter } from 'next/router';
 import { useState, useCallback, memo } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import {
-  useInternalUpdateProductMutation,
-  useInternalGetMakersQuery,
-  useInternalGetProductQuery,
-} from '@/api/internal_api/types';
-import type { InternalUpdateProductMutationVariables } from '@/api/internal_api/types';
 import { Card } from '@/components/atoms/Card';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { Zoom } from '@/components/atoms/Zoom';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { FileUploader } from '@/components/molecules/FileUploader';
 import { SuccessMessage } from '@/components/molecules/SuccessMessage';
+import type { InternalUpdateProductMutationVariables } from '@/services/api/internal_api/types';
+import {
+  useInternalUpdateProductMutation,
+  useInternalGetMakersQuery,
+  useInternalGetProductQuery,
+} from '@/services/api/internal_api/types';
 import { goAdminProducts } from '@/utils/routes';
 import validators from '@/validators/index';
 import type { FC } from 'react';

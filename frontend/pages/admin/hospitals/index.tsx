@@ -1,10 +1,10 @@
 import { AddIcon } from '@chakra-ui/icons';
 import { Heading, Box } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import { useLocalReadIsAdminQuery } from '@/api/local_api/types';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
 import { HospitalsSearch } from '@/components/organisms/admin/hospitals/index/HospitalsSearch';
+import { useLocalReadIsAdminQuery } from '@/services/api/local_api/types';
 import { goAdminHospitalsNew } from '@/utils/routes';
 import type { ReactElement } from 'react';
 

@@ -2,16 +2,16 @@ import { AddIcon } from '@chakra-ui/icons';
 import { Box } from '@chakra-ui/react';
 import { CUIAutoComplete } from 'chakra-ui-autocomplete';
 import { useEffect, useState, memo } from 'react';
-import {
-  useInternalGetProductTagGroupsQuery,
-  useInternalCreateProductTaggingsMutation,
-  useInternalGetProductLazyQuery,
-} from '@/api/internal_api/types';
-import type { InternalGetProductQuery } from '@/api/internal_api/types';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { Spinner } from '@/components/atoms/Spinner';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { SuccessMessage } from '@/components/molecules/SuccessMessage';
+import type { InternalGetProductQuery } from '@/services/api/internal_api/types';
+import {
+  useInternalGetProductTagGroupsQuery,
+  useInternalCreateProductTaggingsMutation,
+  useInternalGetProductLazyQuery,
+} from '@/services/api/internal_api/types';
 import type { FC } from 'react';
 
 interface Props {

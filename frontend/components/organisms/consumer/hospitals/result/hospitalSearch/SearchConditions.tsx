@@ -1,8 +1,8 @@
 import { CloseIcon } from '@chakra-ui/icons';
 import { Text, Flex, Button } from '@chakra-ui/react';
 import { useCallback, memo, useMemo } from 'react';
-import { useLocalGetHospitalSearchQuery } from '@/api/local_api/types';
 import { SecondaryButton } from '@/components/atoms/SecondaryButton';
+import { useLocalGetHospitalSearchQuery } from '@/services/api/local_api/types';
 import { hospitalSearchVar } from '@/utils/apollo/cache';
 import type { FC } from 'react';
 
