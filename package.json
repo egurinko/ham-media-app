@@ -4,6 +4,10 @@
     "frontend",
     "backend"
   ],
+  "engines": {
+    "node": ">=16.0.0 <17.0.0",
+    "yarn": ">=1.22.17 <2.0.0"
+  },
   "scripts": {
     "build": "yarn workspace backend db:reflect && yarn workspace backend build",
     "start": "yarn workspace backend db:reflect && yarn workspace backend start",
