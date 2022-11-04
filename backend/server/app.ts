@@ -23,10 +23,10 @@ app.register(fastifyHealthcheck);
 app.register(helmet, {
   contentSecurityPolicy: false,
 });
-// TODO: set cors after infrastructure change
+
 app.register(cors, {
   origin: isProduction
-    ? ['https://ham-media-app.net', 'https://ham-media-stg-app.link']
+    ? ['https://ham-media-app.net', /\.vercel\.app$/]
     : ['http://localhost:8080'],
   methods: ['POST', 'OPTIONS'],
 });
