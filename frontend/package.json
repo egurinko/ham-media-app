@@ -13,9 +13,7 @@
     "tscheck": "yarn tsc -p ./tsconfig.json --noEmit",
     "generate": "graphql-codegen",
     "deploy:prd": "sls --stage=prd",
-    "deploy:stg": "sls --stage=stg",
     "remove:prd": "sls remove --stage=prd",
-    "remove:stg": "sls remove --stage=stg",
     "lint": "next lint --fix"
   },
   "dependencies": {
