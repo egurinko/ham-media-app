@@ -1,6 +1,6 @@
 ##########################################################
 #### ビルドステージ
-FROM node:16.18-alpine3.15 as builder
+FROM node:19.0-alpine3.15 as builder
 WORKDIR /work
 
 COPY package.json yarn.lock ./
@@ -16,7 +16,7 @@ RUN yarn build:backend
 
 ##########################################################
 #### 実行用イメージの作成
-FROM node:16.18-alpine3.15 as runner
+FROM node:19.0-alpine3.15 as runner
 WORKDIR /work
 
 ENV NODE_ENV production
