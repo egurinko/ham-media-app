@@ -4758,27 +4758,27 @@
     chalk "4.1.2"
     cross-spawn "7.0.3"
 
-"@react-google-maps/api@^2.13.1":
-  version "2.15.0"
-  resolved "https://registry.yarnpkg.com/@react-google-maps/api/-/api-2.15.0.tgz#5e19fdbcdbdc067e33c3864e13f4fa8bc6be1d09"
-  integrity sha512-kcVtALbjtW9soc2y3mEOhe5S2/AEnQCJfrGsS5WtJQ1XhgGhf2mpPDXro7m/Gs4JxO+wtqO7qJ2Wdr6zdcksog==
+"@react-google-maps/api@^2.17.0":
+  version "2.17.0"
+  resolved "https://registry.yarnpkg.com/@react-google-maps/api/-/api-2.17.0.tgz#6ef004081878583fe92c03da420417f9c83ed6c9"
+  integrity sha512-b4HYlWsS6w3B9QXNWoQd6pfc7eUyAOyBNu+Z10u2ouBTeWkKw5kTCDhjsPc9prhg1o+eS3UC3raJVBg88XbUtQ==
   dependencies:
     "@googlemaps/js-api-loader" "1.15.1"
     "@googlemaps/markerclusterer" "2.0.13"
-    "@react-google-maps/infobox" "2.14.0"
-    "@react-google-maps/marker-clusterer" "2.14.0"
+    "@react-google-maps/infobox" "2.16.0"
+    "@react-google-maps/marker-clusterer" "2.16.1"
     "@types/google.maps" "3.50.5"
     invariant "2.2.4"
 
-"@react-google-maps/infobox@2.14.0":
-  version "2.14.0"
-  resolved "https://registry.yarnpkg.com/@react-google-maps/infobox/-/infobox-2.14.0.tgz#483422237a37a763cdba49d94ffcdf35d2d2fc1f"
-  integrity sha512-9LSFn312a1aTtjk0u1r4tv68OvK++I+P517VJmY8ywXlQJvnpZsogBrmk4mGdXYeFGcBbiIJre5X4Da27aZHKA==
+"@react-google-maps/infobox@2.16.0":
+  version "2.16.0"
+  resolved "https://registry.yarnpkg.com/@react-google-maps/infobox/-/infobox-2.16.0.tgz#871423de1a1ffb08518927b083b239d92e58ce4e"
+  integrity sha512-ZojiMS25388RcUHQPycUAerSqdHDom+3dHczVcXHdT/i8fka3O8InkHxXwMhvBoM143ips7mv2BPaYOAJ5f4Nw==
 
-"@react-google-maps/marker-clusterer@2.14.0":
-  version "2.14.0"
-  resolved "https://registry.yarnpkg.com/@react-google-maps/marker-clusterer/-/marker-clusterer-2.14.0.tgz#7a34f79c169c7921c48f2279aadc22aa99c1932d"
-  integrity sha512-4VpX0OkK676AzTElnZeiICyjg4f98yFYqLnpDB6IFK+YXhv08UW2zfXnrvpEWE9y2aLYNSrJMQSic7sDMX528Q==
+"@react-google-maps/marker-clusterer@2.16.1":
+  version "2.16.1"
+  resolved "https://registry.yarnpkg.com/@react-google-maps/marker-clusterer/-/marker-clusterer-2.16.1.tgz#882878a7b49ce9ae44c7b02ff6fbc4c2aeb77c95"
+  integrity sha512-jOuyqzWLeXvQcoAu6TCVWHAuko+sDt0JjawNHBGqUNLywMtTCvYP0L0PiqJZOUCUeRYGdUy0AKxQ+30vAkvwag==
 
 "@repeaterjs/repeater@3.0.4":
   version "3.0.4"
