@@ -57,6 +57,6 @@ export const postStockExpiringInMonthAlert = (
   const lines = getProductLines(stocks);
 
   postStockAlert(
-    `===== 3ヶ月以内にこの在庫の期限が切れちゃうよ <:doyouebest:913298500861698058> ===== ${lines}\n`
+    `===== 3ヶ月以内にこの在庫の期限が切れちゃうよ <:__:990474403185836062> ===== ${lines}\n`
   );
 };
