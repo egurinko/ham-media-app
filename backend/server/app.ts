@@ -6,7 +6,7 @@ import fastifyHealthcheck from 'fastify-healthcheck';
 import 'json-bigint-patch';
 import { router } from './routes';
 import { initSentry } from './services/sentry';
-import { isProduction } from '@/services/environments';
+// import { isProduction } from '@/services/environments';
 
 initSentry();
 
@@ -25,7 +25,7 @@ app.register(helmet, {
 });
 
 app.register(cors, {
-    origin: '*',
+  origin: '*',
 //  origin: isProduction
 //    ? [
 //        'https://www.ham-media-app.net',
