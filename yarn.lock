@@ -2625,7 +2625,7 @@
   dependencies:
     fast-json-stringify "^5.0.0"
 
-"@fastify/helmet@^10.0.2":
+"@fastify/helmet@^10.1.0":
   version "10.1.0"
   resolved "https://registry.yarnpkg.com/@fastify/helmet/-/helmet-10.1.0.tgz#8b124c807d9528680e6dcef8ca3e2e614eb547e5"
   integrity sha512-v7QJPYf1uVcCwzyHzkDGcHTqDPscXj/61JKxOdvczyDPAKTxSeb9Sc2OBActXaj7zUELiAdgnkKkzNwmCNzBLQ==
