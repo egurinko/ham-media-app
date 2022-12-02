@@ -25,15 +25,14 @@ app.register(helmet, {
 });
 
 app.register(cors, {
-  origin: isProduction
-    ? [
-        'https://www.ham-media-app.net',
-        'https://ham-media-app.net',
-        'https://www.ham-media-app.net/',
-        'https://ham-media-app.net/',
-        /\.vercel\.app$/,
-      ]
-    : ['http://localhost:8080'],
+    origin: *,
+//  origin: isProduction
+//    ? [
+//        'https://www.ham-media-app.net',
+//        'https://ham-media-app.net',
+//        /\.vercel\.app$/,
+//      ]
+//    : ['http://localhost:8080'],
   methods: ['POST', 'OPTIONS'],
 });
 app.register(MercuriusGQLUpload, {});
