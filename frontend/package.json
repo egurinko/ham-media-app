@@ -41,7 +41,7 @@
     "@graphql-codegen/typescript-react-apollo": "^3.3.7",
     "@types/apollo-upload-client": "^17.0.2",
     "@types/js-cookie": "^3.0.2",
-    "@types/react": "^18.0.25",
+    "@types/react": "^18.0.26",
     "apollo": "^2.34.0",
     "babel-plugin-inline-react-svg": "^2.0.1",
     "dotenv": "^16.0.3",
