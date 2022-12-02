@@ -25,7 +25,7 @@ app.register(helmet, {
 });
 
 app.register(cors, {
-    origin: *,
+    origin: '*',
 //  origin: isProduction
 //    ? [
 //        'https://www.ham-media-app.net',
