@@ -9106,7 +9106,7 @@ mercurius-upload@^6.0.0:
     fastify-plugin "^4.2.0"
     graphql-upload "^15.0.1"
 
-mercurius@^11.3.0:
+mercurius@^11.4.0:
   version "11.4.0"
   resolved "https://registry.yarnpkg.com/mercurius/-/mercurius-11.4.0.tgz#e77e21b39196414a02528504ea842c17edd03737"
   integrity sha512-w3MsYMJE57eSvPm9tVo1uW4J9Woy0jSHC44RrNf7AQID40hflQ9Cm49u1kYnPBqF6903In8kaXzpW3ykhGRJOw==
