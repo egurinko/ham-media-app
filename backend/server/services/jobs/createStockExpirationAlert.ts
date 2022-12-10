@@ -19,14 +19,14 @@ export const createStockExpirationAlert = cron.schedule(
       where: { expired_at: { lt: today } },
       include: { product: true },
     });
-    discordApi.postStockExpirationAlert(expiredStocks);
+    await discordApi.postStockExpirationAlert(expiredStocks);
 
     // 一週間以内に期限が切れる在庫
     const expiringStocks = await client.stock.findMany({
       where: { expired_at: { gte: today, lte: weekAlertDate } },
       include: { product: true },
     });
-    discordApi.postStockExpiringInWeekAlert(expiringStocks);
+    await discordApi.postStockExpiringInWeekAlert(expiringStocks);
 
     // ３ヶ月以内に期限が切れる在庫
     const monthAlertDate = new Date();
@@ -37,7 +37,7 @@ export const createStockExpirationAlert = cron.schedule(
       where: { expired_at: { gte: weekAlertDate, lte: monthAlertDate } },
       include: { product: true },
     });
-    discordApi.postStockExpiringInMonthAlert(expiringStocksInMonthTerm);
+    await discordApi.postStockExpiringInMonthAlert(expiringStocksInMonthTerm);
 
     console.log('在庫期限アラートが終了です。');
   }
