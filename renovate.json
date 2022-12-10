@@ -11,16 +11,27 @@
       "automerge": true
     },
     {
-      "matchPackagePrefixes": ["@types/"],
-      "automerge": true
-    },
-    {
       "matchDepTypes": ["devDependencies"],
       "matchPackagePatterns": ["lint", "prettier"],
       "automerge": true
     },
     {
       "matchPackagePrefixes": ["@graphql-codegen/"],
+      "automerge": true
+    },
+    {
+      "matchPackagePrefixes": ["@types/"],
+      "automerge": true
+    },
+    {
+      "matchPackagePrefixes": [
+        "typescript",
+        "tsc-alias",
+        "tsconfig-paths",
+        "dotenv",
+        "dotenv-cli",
+        "mercurius-integration-testing"
+      ],
       "automerge": true
     }
   ],
