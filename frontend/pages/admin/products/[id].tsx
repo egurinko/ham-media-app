@@ -37,14 +37,12 @@ const Detail = () => {
         </Box>
         {typeof productId === 'string' ? (
           <Link href={ADMIN_PRODUCTS_EDIT_PATH(Number(productId))}>
-            <a>
-              <PrimaryButton
-                disabled={!isAdminData?.readIsAdmin.isAdmin}
-                size="md"
-              >
-                商品編集
-              </PrimaryButton>
-            </a>
+            <PrimaryButton
+              disabled={!isAdminData?.readIsAdmin.isAdmin}
+              size="md"
+            >
+              商品編集
+            </PrimaryButton>
           </Link>
         ) : null}
       </Box>

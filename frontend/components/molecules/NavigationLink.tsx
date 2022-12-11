@@ -12,21 +12,19 @@ type Props = {
 
 const NavigationLink: FC<Props> = ({ href, title, isCurrentPath, icon }) => (
   <Link href={href}>
-    <a>
-      <Box
-        display="flex"
-        alignItems="center"
-        fill={isCurrentPath ? 'primary.main' : 'text.main'}
-        color={isCurrentPath ? 'primary.main' : undefined}
-        _hover={{
-          fill: 'primary.main',
-          color: 'primary.main',
-        }}
-      >
-        {icon ? <Box mr="2">{icon}</Box> : null}
-        {title}
-      </Box>
-    </a>
+    <Box
+      display="flex"
+      alignItems="center"
+      fill={isCurrentPath ? 'primary.main' : 'text.main'}
+      color={isCurrentPath ? 'primary.main' : undefined}
+      _hover={{
+        fill: 'primary.main',
+        color: 'primary.main',
+      }}
+    >
+      {icon ? <Box mr="2">{icon}</Box> : null}
+      {title}
+    </Box>
   </Link>
 );
 

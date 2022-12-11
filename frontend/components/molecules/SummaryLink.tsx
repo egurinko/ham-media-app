@@ -14,14 +14,8 @@ const SummaryLink: FC<PropsWithChildren<Props>> = ({
   children,
 }) => (
   <SummaryRow>
-    <Link href={url}>
-      {openNewWindow ? (
-        <a target="_blank" rel="noreferrer">
-          {children}
-        </a>
-      ) : (
-        <a>{children}</a>
-      )}
+    <Link href={url} target={openNewWindow ? '_blank' : '_self'}>
+      {children}
     </Link>
   </SummaryRow>
 );

@@ -207,10 +207,11 @@ const Edit = () => {
             <Box mb="8">
               <Heading size="md">
                 基本情報
-                <Link href={`${location.origin}/hospitals/${hospital.id}`}>
-                  <a target="_blank">
-                    <LinkIcon ml="4" />
-                  </a>
+                <Link
+                  href={`${location.origin}/hospitals/${hospital.id}`}
+                  target="_blank"
+                >
+                  <LinkIcon ml="4" />
                 </Link>
               </Heading>
               <Divider mt="2" mb="4" />

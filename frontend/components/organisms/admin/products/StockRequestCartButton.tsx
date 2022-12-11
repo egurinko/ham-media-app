@@ -16,28 +16,26 @@ const StockRequestCartButton: FC<NoProps> = () => {
   return (
     <Box position="fixed" right="3" bottom="3">
       <Link href={ADMIN_STOCK_REQUESTS_NEW_PATH}>
-        <a>
-          <SecondaryButton
-            w="16"
-            height="16"
-            fill="primary.main"
+        <SecondaryButton
+          w="16"
+          height="16"
+          fill="primary.main"
+          borderRadius="50%"
+          boxShadow="lg"
+        >
+          <Box ml="-2">
+            <CartIcon width={45} height={45} />
+          </Box>
+          <Badge
+            ml="-8"
+            mb="1"
+            colorScheme="unset"
             borderRadius="50%"
-            boxShadow="lg"
+            fontSize="md"
           >
-            <Box ml="-2">
-              <CartIcon width={45} height={45} />
-            </Box>
-            <Badge
-              ml="-8"
-              mb="1"
-              colorScheme="unset"
-              borderRadius="50%"
-              fontSize="md"
-            >
-              {count || 0}
-            </Badge>
-          </SecondaryButton>
-        </a>
+            {count || 0}
+          </Badge>
+        </SecondaryButton>
       </Link>
     </Box>
   );
