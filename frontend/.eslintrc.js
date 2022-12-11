@@ -58,5 +58,13 @@ module.exports = {
       },
     ],
     'no-empty': ['error', { allowEmptyCatch: true }],
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      {
+        argsIgnorePattern: '^_',
+        destructuredArrayIgnorePattern: '^_',
+        ignoreRestSiblings: true,
+      },
+    ],
   },
 };
