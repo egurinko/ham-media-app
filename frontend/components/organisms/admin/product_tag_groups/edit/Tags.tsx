@@ -17,22 +17,22 @@ import {
   Input,
 } from '@chakra-ui/react';
 import { Fragment, useEffect, useState, useCallback, memo } from 'react';
+import { Card } from '@/components/atoms/Card';
+import { PrimaryButton } from '@/components/atoms/PrimaryButton';
+import { Spinner } from '@/components/atoms/Spinner';
+import { ErrorMessage } from '@/components/molecules/ErrorMessage';
+import { SuccessMessage } from '@/components/molecules/SuccessMessage';
+import type {
+  InternalUpdateProductTagGroupMutationVariables,
+  InternalGetProductTagGroupQuery,
+} from '@/services/api/internal_api/types';
 import {
   useInternalDeleteProductTagMutation,
   useInternalGetProductTagGroupQuery,
   useInternalCreateProductTagsMutation,
   useInternalUpdateProductTagMutation,
 } from '@/services/api/internal_api/types';
-import type {
-  InternalUpdateProductTagGroupMutationVariables,
-  InternalGetProductTagGroupQuery,
-} from '@/services/api/internal_api/types';
 import { useLocalReadIsAdminQuery } from '@/services/api/local_api/types';
-import { Card } from '@/components/atoms/Card';
-import { PrimaryButton } from '@/components/atoms/PrimaryButton';
-import { Spinner } from '@/components/atoms/Spinner';
-import { ErrorMessage } from '@/components/molecules/ErrorMessage';
-import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 import type { FC } from 'react';
 
 interface Props {

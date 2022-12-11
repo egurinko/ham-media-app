@@ -14,15 +14,15 @@ import {
   Box,
 } from '@chakra-ui/react';
 import { useCallback, useState, Fragment, memo } from 'react';
-import {
-  useInternalGetInternalUsersQuery,
-  useInternalDeleteInternalUserMutation,
-} from '@/services/api/internal_api/types';
-import type { InternalGetInternalUsersQuery } from '@/services/api/internal_api/types';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { Spinner } from '@/components/atoms/Spinner';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { SuccessMessage } from '@/components/molecules/SuccessMessage';
+import type { InternalGetInternalUsersQuery } from '@/services/api/internal_api/types';
+import {
+  useInternalGetInternalUsersQuery,
+  useInternalDeleteInternalUserMutation,
+} from '@/services/api/internal_api/types';
 import { scrollTo } from '@/utils/scroll';
 import { InternalUserSummary } from './internalUsersStack/InternalUserSummary';
 import type { FC } from 'react';
