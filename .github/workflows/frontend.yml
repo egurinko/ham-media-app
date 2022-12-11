@@ -26,3 +26,20 @@ jobs:
       - name: Type Check
         run: yarn tscheck
         working-directory: ./frontend
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set up node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.13.1'
+          cache: yarn
+          cache-dependency-path: yarn.lock
+      - name: Install dependencies
+        run: yarn install
+        working-directory: ./frontend
+      - name: Lint
+        run: yarn lint
+        working-directory: ./frontend
