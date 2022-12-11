@@ -20,7 +20,10 @@ export const productConnection = queryField((t) => {
     resolve: async (_root, args, ctx) => {
       const products = await ctx.prisma.product.findMany({
         where: {
-          name: { contains: args.name ? args.name : undefined },
+          name: {
+            contains: args.name ? args.name : undefined,
+            mode: 'insensitive',
+          },
           maker_id: args.makerId ? args.makerId : undefined,
           productTaggings: args.productTagId
             ? {
