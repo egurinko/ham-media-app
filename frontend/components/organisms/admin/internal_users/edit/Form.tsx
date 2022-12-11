@@ -11,17 +11,17 @@ import {
 import { useRouter } from 'next/router';
 import { memo } from 'react';
 import { useForm, Controller } from 'react-hook-form';
+import { Card } from '@/components/atoms/Card';
+import { PrimaryButton } from '@/components/atoms/PrimaryButton';
+import { ErrorMessage } from '@/components/molecules/ErrorMessage';
+import { SuccessMessage } from '@/components/molecules/SuccessMessage';
+import type { InternalGetInternalUserQuery } from '@/services/api/internal_api/types';
 import {
   useInternalUpdateInternalUserMutation,
   useInternalGetInternalUserQuery,
   useInternalGetRolesQuery,
 } from '@/services/api/internal_api/types';
-import type { InternalGetInternalUserQuery } from '@/services/api/internal_api/types';
 import { useLocalReadIsAdminQuery } from '@/services/api/local_api/types';
-import { Card } from '@/components/atoms/Card';
-import { PrimaryButton } from '@/components/atoms/PrimaryButton';
-import { ErrorMessage } from '@/components/molecules/ErrorMessage';
-import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 import { goAdminInternalUsers } from '@/utils/routes';
 import validators from '@/validators/index';
 import type { FC } from 'react';

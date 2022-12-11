@@ -1,8 +1,8 @@
 import { Text, Box } from '@chakra-ui/react';
 import { useCallback, useRef, useEffect, useState, memo } from 'react';
+import { Spinner } from '@/components/atoms/Spinner';
 import { useInternalGetHospitalConnectionQuery } from '@/services/api/internal_api/types';
 import type { Hospital } from '@/services/api/internal_api/types';
-import { Spinner } from '@/components/atoms/Spinner';
 import { useIntersectionObserver } from '@/utils/hooks/useIntersectionObserver';
 import { HospitalsStack } from './hospitalsSearch/HospitalsStack';
 import { SearchSection } from './hospitalsSearch/SearchSection';

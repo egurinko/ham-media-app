@@ -14,15 +14,15 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 import { useCallback, useState, Fragment, memo } from 'react';
-import {
-  useInternalGetMakersQuery,
-  useInternalDeleteMakerMutation,
-} from '@/services/api/internal_api/types';
-import type { InternalGetMakersQuery } from '@/services/api/internal_api/types';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { Spinner } from '@/components/atoms/Spinner';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { SuccessMessage } from '@/components/molecules/SuccessMessage';
+import type { InternalGetMakersQuery } from '@/services/api/internal_api/types';
+import {
+  useInternalGetMakersQuery,
+  useInternalDeleteMakerMutation,
+} from '@/services/api/internal_api/types';
 import { MakerSummary } from './makersStack/MakerSummary';
 import type { FC } from 'react';
 

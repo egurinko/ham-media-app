@@ -1,9 +1,9 @@
 import { DeleteIcon } from '@chakra-ui/icons';
 import { Text, Box, IconButton } from '@chakra-ui/react';
 import React, { memo } from 'react';
+import { SummaryLink } from '@/components/molecules/SummaryLink';
 import type { InternalGetMakersQuery } from '@/services/api/internal_api/types';
 import { useLocalReadIsAdminQuery } from '@/services/api/local_api/types';
-import { SummaryLink } from '@/components/molecules/SummaryLink';
 import { ADMIN_MAKERS_EDIT_PATH } from '@/utils/routes';
 import type { FC } from 'react';
 

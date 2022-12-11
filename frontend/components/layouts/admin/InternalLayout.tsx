@@ -1,10 +1,10 @@
 import { useMediaQuery, Fade, HStack, Box } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { useEffect, useCallback } from 'react';
-import { useInternalGetSessionQuery } from '@/services/api/internal_api/types';
 import { ClientOnly } from '@/components/organisms/ClientOnly';
 import { Header } from '@/components/organisms/admin/Header';
 import { Sidebar } from '@/components/organisms/admin/Sidebar';
+import { useInternalGetSessionQuery } from '@/services/api/internal_api/types';
 import { removeCookie } from '@/utils/cookies';
 import { goAdminLogin } from '@/utils/routes';
 import { BaseLayout } from './BaseLayout';

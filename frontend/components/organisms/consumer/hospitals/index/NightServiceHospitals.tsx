@@ -70,7 +70,8 @@ const NightServiceHospitals: FC<Props> = ({
         {edges
           .filter((edge) => !!edge?.node)
           .map((edge) => {
-            const hospital = edge!.node!;
+            if (!edge?.node) return null;
+            const hospital = edge.node;
             return (
               <HospitalMiniBox hospital={hospital} key={Number(hospital.id)} />
             );
