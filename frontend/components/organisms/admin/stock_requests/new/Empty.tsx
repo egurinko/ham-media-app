@@ -18,11 +18,9 @@ const Empty: FC<NoProps> = () => (
       カートは空です。追加する商品を選んでください
     </Box>
     <Link as="button" href={ADMIN_PRODUCTS_PATH}>
-      <a>
-        <Text color="text.main" textDecoration="underline">
-          商品管理へ
-        </Text>
-      </a>
+      <Text color="text.main" textDecoration="underline">
+        商品管理へ
+      </Text>
     </Link>
   </Box>
 );

@@ -20,33 +20,29 @@ const Header: FC<Props> = () => (
     >
       <Flex align="center" mr={5} cursor="pointer">
         <Link href="/hospitals">
-          <a>
-            <Image
-              src="/ham_media_logo.png"
-              alt="ハムメディアロゴ"
-              width={160}
-              height={35}
-              priority={true}
-            />
-          </a>
+          <Image
+            src="/ham_media_logo.png"
+            alt="ハムメディアロゴ"
+            width={160}
+            height={35}
+            priority={true}
+          />
         </Link>
       </Flex>
       <Box position="absolute" right="0">
         <Link href="https://ham-media.net">
-          <a>
-            <Box
-              display="flex"
-              flexDir="column"
-              alignItems="center"
-              fill="primary.main"
-              p="1"
-              mr="2"
-              textAlign="center"
-            >
-              <RedirectIcon width={20} height={20} />
-              <Text fontSize="xs">HPへ</Text>
-            </Box>
-          </a>
+          <Box
+            display="flex"
+            flexDir="column"
+            alignItems="center"
+            fill="primary.main"
+            p="1"
+            mr="2"
+            textAlign="center"
+          >
+            <RedirectIcon width={20} height={20} />
+            <Text fontSize="xs">HPへ</Text>
+          </Box>
         </Link>
       </Box>
     </Box>

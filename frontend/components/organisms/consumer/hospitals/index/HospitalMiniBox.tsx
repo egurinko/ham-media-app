@@ -20,55 +20,58 @@ type Props = {
 };
 
 const HospitalMiniBox: FC<Props> = ({ hospital }) => (
-  <Link key={Number(hospital.id)} href={HOSPITALS_DETAIL_PATH(hospital.id)}>
-    <a target="_blank" rel="noreferrer">
-      <Box
-        borderStyle="solid"
-        borderWidth={1}
-        borderColor="border.gray"
-        borderRadius="md"
-        width="32"
-        height="28"
-        mr="3"
-        p="2"
-        cursor="pointer"
-        _hover={{
-          opacity: 0.7,
-        }}
-      >
-        <Box height="12" position="relative">
-          <Text
-            position="absolute"
-            top="50%"
-            transform="translate(0, -50%)"
-            overflow="hidden"
-            noOfLines={2}
-            fontSize="sm"
-          >
-            {hospital.name}
+  <Link
+    key={Number(hospital.id)}
+    href={HOSPITALS_DETAIL_PATH(hospital.id)}
+    target="_blank"
+    rel="noreferrer"
+  >
+    <Box
+      borderStyle="solid"
+      borderWidth={1}
+      borderColor="border.gray"
+      borderRadius="md"
+      width="32"
+      height="28"
+      mr="3"
+      p="2"
+      cursor="pointer"
+      _hover={{
+        opacity: 0.7,
+      }}
+    >
+      <Box height="12" position="relative">
+        <Text
+          position="absolute"
+          top="50%"
+          transform="translate(0, -50%)"
+          overflow="hidden"
+          noOfLines={2}
+          fontSize="sm"
+        >
+          {hospital.name}
+        </Text>
+      </Box>
+      <Box mt="2" fill="primary.main">
+        <Box display="flex" flexDirection="row" alignItems="center">
+          <Box flexShrink={0}>
+            <MapPinIcon width={12} height={12} />
+          </Box>
+          <Text noOfLines={1} fontSize="xs" color="text.secondary" ml="1">
+            {hospital.hospitalAddress?.prefecture.name}
+            {hospital.hospitalAddress?.address}
           </Text>
         </Box>
-        <Box mt="2" fill="primary.main">
-          <Box display="flex" flexDirection="row" alignItems="center">
-            <Box flexShrink={0}>
-              <MapPinIcon width={12} height={12} />
-            </Box>
-            <Text noOfLines={1} fontSize="xs" color="text.secondary" ml="1">
-              {hospital.hospitalAddress?.prefecture.name}
-              {hospital.hospitalAddress?.address}
-            </Text>
+        <Box display="flex" flexDirection="row" alignItems="center">
+          <Box flexShrink={0}>
+            <PhoneIcon width={12} height={12} />
           </Box>
-          <Box display="flex" flexDirection="row" alignItems="center">
-            <Box flexShrink={0}>
-              <PhoneIcon width={12} height={12} />
-            </Box>
-            <Text noOfLines={1} fontSize="xs" color="text.secondary" ml="1">
-              {hospital.hospitalAddress?.phone_number}
-            </Text>
-          </Box>
+          <Text noOfLines={1} fontSize="xs" color="text.secondary" ml="1">
+            {hospital.hospitalAddress?.phone_number}
+          </Text>
         </Box>
       </Box>
-    </a>
+    </Box>
   </Link>
 );
 
