@@ -2641,7 +2641,7 @@
     readable-stream "^4.0.0"
     send "^0.18.0"
 
-"@fastify/under-pressure@^8.1.0":
+"@fastify/under-pressure@^8.2.0":
   version "8.2.0"
   resolved "https://registry.yarnpkg.com/@fastify/under-pressure/-/under-pressure-8.2.0.tgz#0a8998739657daa043ffa9b891194b09e926679d"
   integrity sha512-tqhWBhE6blM3jDn9dmxl5yhyoRWGFGwdihLmyek5pRN3KIOEcRQVtAoX5WKSbeEZ51clnDfCNqm96YC4cEUI7g==
@@ -6905,12 +6905,12 @@ fastify-cli@^5.7.0:
     semver "^7.3.5"
     yargs-parser "^21.1.1"
 
-fastify-healthcheck@^4.2.0:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/fastify-healthcheck/-/fastify-healthcheck-4.2.0.tgz#f94314e1c19d7efefbdae7794d22657f8fc725c3"
-  integrity sha512-nw5kkU7SdglTffaeo1UtWpRF0faKyp4ecbNddVGqHVgAnOuvhLM1vhBmFTrBG8CtdDv0UMEf6V4+ysfFjlQTEA==
+fastify-healthcheck@^4.3.0:
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/fastify-healthcheck/-/fastify-healthcheck-4.3.0.tgz#dd4655a81dcd3a5ee060fdfbd07b2afdeaf242ab"
+  integrity sha512-3ZTUpp62+boofo8H1IBZhXq84qr4v7iApw77+rxDE8Gn26zRsuKYjGWpSWDJQ3hiV7vD8buAmXUCyZ2TbWVkvA==
   dependencies:
-    "@fastify/under-pressure" "^8.1.0"
+    "@fastify/under-pressure" "^8.2.0"
 
 fastify-plugin@^4.0.0, fastify-plugin@^4.2.0, fastify-plugin@^4.2.1, fastify-plugin@^4.4.0:
   version "4.4.0"
