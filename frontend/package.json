@@ -27,7 +27,7 @@
     "framer-motion": "^7.10.2",
     "js-cookie": "^3.0.1",
     "json-bigint-patch": "^0.0.8",
-    "next": "^13.0.7",
+    "next": "^13.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-drag-drop-files": "^2.3.8",
@@ -45,7 +45,7 @@
     "apollo": "^2.34.0",
     "babel-plugin-inline-react-svg": "^2.0.1",
     "dotenv": "^16.0.3",
-    "eslint-config-next": "^13.0.7",
+    "eslint-config-next": "^13.1.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-react": "^7.31.11",
     "eslint-plugin-react-hooks": "^4.6.0"
