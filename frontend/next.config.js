@@ -1,3 +1,4 @@
+/** @type {import('next').NextConfig} */
 module.exports = {
   webpack(config) {
     config.module.rules.push({
@@ -10,5 +11,8 @@ module.exports = {
   },
   images: {
     disableStaticImages: true,
+  },
+  experimental: {
+    appDir: true,
   },
 };
