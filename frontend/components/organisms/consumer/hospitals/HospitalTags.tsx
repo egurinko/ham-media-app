@@ -1,12 +1,12 @@
 import { HStack } from '@chakra-ui/react';
 import { memo } from 'react';
 import { PrimaryTag } from '@/components/atoms/PrimaryTag';
-import type { HospitalFieldsFragment } from '@/services/api/public_api/types';
+import type { PublicApiHospitalFieldsFragment } from '@/services/api/public_api/types';
 import { HOSPITAL_STATUSES } from '@/utils/constant';
 import type { FC } from 'react';
 
 type Props = {
-  hospital: HospitalFieldsFragment;
+  hospital: PublicApiHospitalFieldsFragment;
   spacing: number;
 };
 

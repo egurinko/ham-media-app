@@ -9,12 +9,12 @@ import { MapPinIcon } from '@/components/atoms/assets/MapPinIcon';
 import { PhoneIcon } from '@/components/atoms/assets/PhoneIcon';
 import { GoogleMap } from '@/components/organisms/GoogleMap';
 import { HospitalTags } from '@/components/organisms/consumer/hospitals/HospitalTags';
-import type { HospitalFieldsFragment } from '@/services/api/public_api/types';
+import type { PublicApiHospitalFieldsFragment } from '@/services/api/public_api/types';
 import { HOSPITAL_STATUSES } from '@/utils/constant';
 import type { FC } from 'react';
 
 type Props = {
-  hospital: HospitalFieldsFragment;
+  hospital: PublicApiHospitalFieldsFragment;
 };
 
 const DetailCard: FC<Props> = ({ hospital }) => (
