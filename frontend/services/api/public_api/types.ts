@@ -260,7 +260,7 @@ export type PublicCreateSessionMutationVariables = Exact<{
 
 export type PublicCreateSessionMutation = { __typename?: 'Mutation', createSession: { __typename?: 'CreateSessionType', token: string } };
 
-export type HospitalFieldsFragment = { __typename?: 'Hospital', id: bigint, name: string, url: string, recommended: boolean, hospitalAddress?: { __typename?: 'HospitalAddress', id: bigint, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: bigint }, hospitalAddressGeoLocation?: { __typename?: 'HospitalAddressGeoLocation', latitude: number, longitude: number } | null } | null, hospitalBusinessForm?: { __typename?: 'HospitalBusinessForm', id: bigint, business_hour: string, closed_day: string, insurance_enabled: string, remark: string } | null, hospitalCertificationOption?: { __typename?: 'HospitalCertificationOption', id: bigint, nichiju_registered: string, jsava_registered: string } | null, hospitalNightServiceOption?: { __typename?: 'HospitalNightServiceOption', id: bigint, status: string, remark: string } | null, hospitalNightUrgentActionOption?: { __typename?: 'HospitalNightUrgentActionOption', id: bigint, status: string } | null, hospitalReservationStatus?: { __typename?: 'HospitalReservationStatus', id: bigint, required: string, reservable: string, remark: string } | null };
+export type PublicApiHospitalFieldsFragment = { __typename?: 'Hospital', id: bigint, name: string, url: string, recommended: boolean, hospitalAddress?: { __typename?: 'HospitalAddress', id: bigint, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: bigint }, hospitalAddressGeoLocation?: { __typename?: 'HospitalAddressGeoLocation', latitude: number, longitude: number } | null } | null, hospitalBusinessForm?: { __typename?: 'HospitalBusinessForm', id: bigint, business_hour: string, closed_day: string, insurance_enabled: string, remark: string } | null, hospitalCertificationOption?: { __typename?: 'HospitalCertificationOption', id: bigint, nichiju_registered: string, jsava_registered: string } | null, hospitalNightServiceOption?: { __typename?: 'HospitalNightServiceOption', id: bigint, status: string, remark: string } | null, hospitalNightUrgentActionOption?: { __typename?: 'HospitalNightUrgentActionOption', id: bigint, status: string } | null, hospitalReservationStatus?: { __typename?: 'HospitalReservationStatus', id: bigint, required: string, reservable: string, remark: string } | null };
 
 export type PublicGetHospitalQueryVariables = Exact<{
   id: Scalars['BigInt'];
@@ -307,8 +307,8 @@ export type PublicGetPrefecturesQueryVariables = Exact<{ [key: string]: never; }
 
 export type PublicGetPrefecturesQuery = { __typename?: 'Query', prefectures: Array<{ __typename?: 'Prefecture', id: bigint, name: string }> };
 
-export const HospitalFieldsFragmentDoc = gql`
-    fragment HospitalFields on Hospital {
+export const PublicApiHospitalFieldsFragmentDoc = gql`
+    fragment PublicApiHospitalFields on Hospital {
   id
   name
   url
@@ -392,10 +392,10 @@ export type PublicCreateSessionMutationOptions = Apollo.BaseMutationOptions<Publ
 export const PublicGetHospitalDocument = gql`
     query PublicGetHospital($id: BigInt!) {
   hospital(id: $id) {
-    ...HospitalFields
+    ...PublicApiHospitalFields
   }
 }
-    ${HospitalFieldsFragmentDoc}`;
+    ${PublicApiHospitalFieldsFragmentDoc}`;
 
 /**
  * __usePublicGetHospitalQuery__
@@ -440,7 +440,7 @@ export const PublicGetHospitalConnectionDocument = gql`
   ) {
     edges {
       node {
-        ...HospitalFields
+        ...PublicApiHospitalFields
       }
     }
     pageInfo {
@@ -451,7 +451,7 @@ export const PublicGetHospitalConnectionDocument = gql`
     }
   }
 }
-    ${HospitalFieldsFragmentDoc}`;
+    ${PublicApiHospitalFieldsFragmentDoc}`;
 
 /**
  * __usePublicGetHospitalConnectionQuery__

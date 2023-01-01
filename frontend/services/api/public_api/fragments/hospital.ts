@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const HOSPITAL_FIELDS = gql`
-  fragment HospitalFields on Hospital {
+  fragment PublicApiHospitalFields on Hospital {
     id
     name
     url

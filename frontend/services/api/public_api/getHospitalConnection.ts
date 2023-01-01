@@ -29,7 +29,7 @@ export const getHospitalConnection = gql`
     ) {
       edges {
         node {
-          ...HospitalFields
+          ...PublicApiHospitalFields
         }
       }
       pageInfo {
