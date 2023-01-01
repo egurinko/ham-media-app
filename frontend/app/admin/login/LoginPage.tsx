@@ -1,14 +1,14 @@
+'use client';
+
 import { Box } from '@chakra-ui/react';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
-import { PublicLayout } from '@/components/layouts/admin/PublicLayout';
+import { useRouter } from 'next/navigation';
 import { Form } from '@/components/organisms/admin/login/Form';
 import { useInternalGetSessionQuery } from '@/services/api/internal_api/types';
 import { setCookie } from '@/utils/cookies';
 import { goAdminProducts } from '@/utils/routes';
-import type { ReactElement } from 'react';
 
-const Login = () => {
+export const Login = () => {
   const { data } = useInternalGetSessionQuery({ fetchPolicy: 'network-only' });
   const router = useRouter();
 
@@ -39,7 +39,3 @@ const Login = () => {
     </Box>
   );
 };
-
-Login.getLayout = (page: ReactElement) => <PublicLayout>{page}</PublicLayout>;
-
-export default Login;

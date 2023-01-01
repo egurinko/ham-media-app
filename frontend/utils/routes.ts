@@ -1,3 +1,4 @@
+import type { AppRouterInstance } from 'next/dist/shared/lib/app-router-context';
 import type { NextRouter } from 'next/router';
 
 export const ADMIN_LOGIN_PATH = '/admin/login';
@@ -35,70 +36,79 @@ export const HOSPITALS_DETAIL_PATH = (id: bigint) => `/hospitals/${id}`;
 
 export const NOTFOUND_PATH = '/404';
 
-const pushRouter = (router: NextRouter, path: string) => router.push(path);
+const pushRouter = (router: NextRouter | AppRouterInstance, path: string) =>
+  router.push(path);
 
-export const goAdminLogin = (router: NextRouter) =>
+export const goAdminLogin = (router: NextRouter | AppRouterInstance) =>
   pushRouter(router, ADMIN_LOGIN_PATH);
 
-export const goAdminInternalUsers = (router: NextRouter) =>
+export const goAdminInternalUsers = (router: NextRouter | AppRouterInstance) =>
   pushRouter(router, ADMIN_INTERNAL_USERS_PATH);
-export const goAdminInternalUserNew = (router: NextRouter) =>
-  pushRouter(router, ADMIN_INTERNAL_USERS_NEW_PATH);
+export const goAdminInternalUserNew = (
+  router: NextRouter | AppRouterInstance
+) => pushRouter(router, ADMIN_INTERNAL_USERS_NEW_PATH);
 export const goAdminInternalUserEdit = (
-  router: NextRouter,
+  router: NextRouter | AppRouterInstance,
   { id }: { id: bigint }
 ) => pushRouter(router, ADMIN_INTERNAL_USERS_EDIT_PATH(id));
 
-export const goAdminHospitals = (router: NextRouter) =>
+export const goAdminHospitals = (router: NextRouter | AppRouterInstance) =>
   pushRouter(router, ADMIN_HOSPIALS_PATH);
-export const goAdminHospitalsNew = (router: NextRouter) =>
+export const goAdminHospitalsNew = (router: NextRouter | AppRouterInstance) =>
   pushRouter(router, ADMIN_HOSPIALS_NEW_PATH);
 export const goAdminHospitalsEdit = (
-  router: NextRouter,
+  router: NextRouter | AppRouterInstance,
   { id }: { id: bigint }
 ) => pushRouter(router, ADMIN_HOSPIALS_EDIT_PATH(id));
 
-export const goAdminMakers = (router: NextRouter) =>
+export const goAdminMakers = (router: NextRouter | AppRouterInstance) =>
   pushRouter(router, ADMIN_MAKERS_PATH);
-export const goAdminMakersNew = (router: NextRouter) =>
+export const goAdminMakersNew = (router: NextRouter | AppRouterInstance) =>
   pushRouter(router, ADMIN_MAKERS_NEW_PATH);
-export const goAdminMakersEdit = (router: NextRouter, { id }: { id: number }) =>
-  pushRouter(router, ADMIN_MAKERS_EDIT_PATH(id));
+export const goAdminMakersEdit = (
+  router: NextRouter | AppRouterInstance,
+  { id }: { id: number }
+) => pushRouter(router, ADMIN_MAKERS_EDIT_PATH(id));
 
-export const goAdminProducts = (router: NextRouter) =>
+export const goAdminProducts = (router: NextRouter | AppRouterInstance) =>
   pushRouter(router, ADMIN_PRODUCTS_PATH);
-export const goAdminProductsNew = (router: NextRouter) =>
+export const goAdminProductsNew = (router: NextRouter | AppRouterInstance) =>
   pushRouter(router, ADMIN_PRODUCTS_NEW_PATH);
 export const goAdminProductsDetail = (
-  router: NextRouter,
+  router: NextRouter | AppRouterInstance,
   { id }: { id: number }
 ) => pushRouter(router, ADMIN_PRODUCTS_DETAIL_PATH(id));
 export const goAdminProductsEdit = (
-  router: NextRouter,
+  router: NextRouter | AppRouterInstance,
   { id }: { id: number }
 ) => pushRouter(router, ADMIN_PRODUCTS_EDIT_PATH(id));
 
-export const goAdminStockRequests = (router: NextRouter) =>
+export const goAdminStockRequests = (router: NextRouter | AppRouterInstance) =>
   pushRouter(router, ADMIN_STOCK_REQUESTS_PATH);
-export const goAdminStockRequestsNew = (router: NextRouter) =>
-  pushRouter(router, ADMIN_STOCK_REQUESTS_NEW_PATH);
+export const goAdminStockRequestsNew = (
+  router: NextRouter | AppRouterInstance
+) => pushRouter(router, ADMIN_STOCK_REQUESTS_NEW_PATH);
 export const goAdminStockRequestsEdit = (
-  router: NextRouter,
+  router: NextRouter | AppRouterInstance,
   { id }: { id: number }
 ) => pushRouter(router, ADMIN_STOCK_REQUESTS_EDIT_PATH(id));
 
-export const goAdminProductTagGroups = (router: NextRouter) =>
-  pushRouter(router, ADMIN_PRODUCT_TAG_GROUPS_PATH);
-export const goAdminProductTagGroupsNew = (router: NextRouter) =>
-  pushRouter(router, ADMIN_PRODUCT_TAG_GROUPS_NEW_PATH);
+export const goAdminProductTagGroups = (
+  router: NextRouter | AppRouterInstance
+) => pushRouter(router, ADMIN_PRODUCT_TAG_GROUPS_PATH);
+export const goAdminProductTagGroupsNew = (
+  router: NextRouter | AppRouterInstance
+) => pushRouter(router, ADMIN_PRODUCT_TAG_GROUPS_NEW_PATH);
 export const goAdminProductTagGroupsEdit = (
-  router: NextRouter,
+  router: NextRouter | AppRouterInstance,
   { id }: { id: number }
 ) => pushRouter(router, ADMIN_PRODUCT_TAG_GROUPS_EDIT_PATH(id));
 
-export const goHospitals = (router: NextRouter) =>
+export const goHospitals = (router: NextRouter | AppRouterInstance) =>
   pushRouter(router, HOSPITALS_PATH);
-export const goHospitalsResult = (router: NextRouter) =>
+export const goHospitalsResult = (router: NextRouter | AppRouterInstance) =>
   pushRouter(router, HOSPITALS_RESULT_PATH);
-export const goHospitalDetail = (router: NextRouter, { id }: { id: bigint }) =>
-  pushRouter(router, HOSPITALS_DETAIL_PATH(id));
+export const goHospitalDetail = (
+  router: NextRouter | AppRouterInstance,
+  { id }: { id: bigint }
+) => pushRouter(router, HOSPITALS_DETAIL_PATH(id));

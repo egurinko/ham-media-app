@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Box,
   Input,
@@ -6,7 +8,7 @@ import {
   FormLabel,
   FormErrorMessage,
 } from '@chakra-ui/react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { useEffect, memo } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { Card } from '@/components/atoms/Card';
