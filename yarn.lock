@@ -7574,7 +7574,7 @@ fastify-cli@^5.7.0:
     semver "^7.3.5"
     yargs-parser "^21.1.1"
 
-fastify-healthcheck@^4.3.0:
+fastify-healthcheck@^4.4.0:
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/fastify-healthcheck/-/fastify-healthcheck-4.4.0.tgz#f5550b9af13913369aa7e0da03cf303a743ffe06"
   integrity sha512-goP2YYBp+inqrEFixZDxsoxFN8h219ZOzCFv1sMpleaxwbo5CmoLrVzrja6vCMa1LNx6aEvOcGaqLX5Oev1q/A==
