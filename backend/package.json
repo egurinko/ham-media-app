@@ -39,7 +39,7 @@
     "fastify": "^4.11.0",
     "fastify-cli": "^5.7.0",
     "fastify-healthcheck": "^4.4.0",
-    "fastify-plugin": "^4.4.0",
+    "fastify-plugin": "^4.5.0",
     "graphql-relay": "^0.10.0",
     "json-bigint-patch": "^0.0.8",
     "jsonwebtoken": "^9.0.0",
