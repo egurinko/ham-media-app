@@ -7965,10 +7965,10 @@ forwarded@0.2.0:
   resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.2.0.tgz#2269936428aad4c15c7ebe9779a84bf0b2a81811"
   integrity sha512-buRG0fpBtRHSTCOASe6hD258tEubFoRLb4ZNA6NxMVHNw2gOcwHo9wyablzMzOA5z9xA9L1KNjk/Nt6MT9aYow==
 
-framer-motion@^8.4.1:
-  version "8.4.1"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-8.4.1.tgz#9f48755a2fef4ada806e84dcb1fdedf80fd016c9"
-  integrity sha512-stfK7cpF7rBvfEXzwEjAle/MmCx2K0CWpNFMKp8i1bNUddGOYkAaSnvdV8gDd5ZkLeNu3AWYiosHx2D/3+bH/w==
+framer-motion@^8.4.3:
+  version "8.4.3"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-8.4.3.tgz#382bc016c1a957b4144eeed1bb186410b0d821fc"
+  integrity sha512-UMfJ8hEOlIObdJgI+U/VgaSSKY+W9/E0YtnFHPDsIE9rNPglaFZ+oycB0gj8ERuRBInGaIgNCFsil8iaJHZFgA==
   dependencies:
     "@motionone/dom" "^10.15.3"
     hey-listen "^1.0.8"
