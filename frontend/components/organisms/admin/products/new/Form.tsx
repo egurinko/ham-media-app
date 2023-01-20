@@ -14,7 +14,9 @@ import { useForm, Controller } from 'react-hook-form';
 import { Card } from '@/components/atoms/Card';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
+import type { FC } from 'react';
 import { FileUploader } from '@/components/molecules/FileUploader';
+import type { SubmitHandler } from 'react-hook-form';
 import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 import {
   useInternalGetMakersQuery,
@@ -23,8 +25,6 @@ import {
 } from '@/services/api/internal_api/types';
 import { goAdminProducts } from '@/utils/routes';
 import validators from '@/validators/index';
-import type { FC } from 'react';
-import type { SubmitHandler } from 'react-hook-form';
 
 interface FormInput {
   makerId: string;

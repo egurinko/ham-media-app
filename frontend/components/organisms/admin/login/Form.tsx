@@ -13,12 +13,12 @@ import { Card } from '@/components/atoms/Card';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
 import { SuccessMessage } from '@/components/molecules/SuccessMessage';
+import type { FC } from 'react';
 import { usePublicCreateSessionMutation } from '@/services/api/public_api/types';
+import type { SubmitHandler } from 'react-hook-form';
 import { setCookie } from '@/utils/cookies';
 import { goAdminProducts } from '@/utils/routes';
 import validators from '@/validators/index';
-import type { FC } from 'react';
-import type { SubmitHandler } from 'react-hook-form';
 
 export interface FormInput {
   email: string;

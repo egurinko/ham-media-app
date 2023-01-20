@@ -24,8 +24,8 @@ import {
   useInternalDeleteInternalUserMutation,
 } from '@/services/api/internal_api/types';
 import { scrollTo } from '@/utils/scroll';
-import { InternalUserSummary } from './internalUsersStack/InternalUserSummary';
 import type { FC } from 'react';
+import { InternalUserSummary } from './internalUsersStack/InternalUserSummary';
 
 type InternalUser = InternalGetInternalUsersQuery['internalUsers'][number];
 
