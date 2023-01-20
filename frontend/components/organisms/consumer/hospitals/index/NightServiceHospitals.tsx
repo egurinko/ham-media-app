@@ -6,11 +6,11 @@ import { Card } from '@/components/atoms/Card';
 import type { PublicGetHospitalConnectionQuery } from '@/services/api/public_api/types';
 import { hospitalSearchVar } from '@/utils/apollo/cache';
 import { LOCAL_STORAGE_HOSPITAL_SEARCH_KEY } from '@/utils/constant';
+import type { PERSISTED } from '../types';
 import { useLocalStorage } from '@/utils/hooks';
+import type { FC } from 'react';
 import { goHospitalsResult } from '@/utils/routes';
 import { HospitalMiniBox } from './HospitalMiniBox';
-import type { PERSISTED } from '../types';
-import type { FC } from 'react';
 
 type Props = {
   nightServiceHospitalConnection: PublicGetHospitalConnectionQuery['publicHospitalConnection'];

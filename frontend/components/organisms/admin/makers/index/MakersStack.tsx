@@ -23,8 +23,8 @@ import {
   useInternalGetMakersQuery,
   useInternalDeleteMakerMutation,
 } from '@/services/api/internal_api/types';
-import { MakerSummary } from './makersStack/MakerSummary';
 import type { FC } from 'react';
+import { MakerSummary } from './makersStack/MakerSummary';
 
 type Maker = InternalGetMakersQuery['makers'][number];
 

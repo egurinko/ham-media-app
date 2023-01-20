@@ -26,6 +26,7 @@ import { Spinner } from '@/components/atoms/Spinner';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { SummaryLink } from '@/components/molecules/SummaryLink';
 import type { ProductFieldsFragment } from '@/services/api/internal_api/types';
+import type { FC } from 'react';
 import {
   useInternalGetProductConnectionQuery,
   useInternalGetMakersQuery,
@@ -36,7 +37,6 @@ import { productSearchVar } from '@/utils/apollo/cache';
 import { useIntersectionObserver } from '@/utils/hooks/useIntersectionObserver';
 import { ADMIN_PRODUCTS_DETAIL_PATH } from '@/utils/routes';
 import { ProductSummary } from '../ProductSummary';
-import type { FC } from 'react';
 
 const PRODUCT_STOCK = {
   HAS: 'has',

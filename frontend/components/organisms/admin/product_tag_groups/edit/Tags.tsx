@@ -26,6 +26,7 @@ import type {
   InternalUpdateProductTagGroupMutationVariables,
   InternalGetProductTagGroupQuery,
 } from '@/services/api/internal_api/types';
+import type { FC } from 'react';
 import {
   useInternalDeleteProductTagMutation,
   useInternalGetProductTagGroupQuery,
@@ -33,7 +34,6 @@ import {
   useInternalUpdateProductTagMutation,
 } from '@/services/api/internal_api/types';
 import { useLocalReadIsAdminQuery } from '@/services/api/local_api/types';
-import type { FC } from 'react';
 
 interface Props {
   productTagGroupId: InternalUpdateProductTagGroupMutationVariables['id'];

@@ -7,10 +7,10 @@ import { SecondaryButton } from '@/components/atoms/SecondaryButton';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
 import { ProductSummary } from '@/components/organisms/admin/products/ProductSummary';
+import type { FC } from 'react';
 import type { Product } from '@/services/api/internal_api/types';
 import { useInternalGetProductQuery } from '@/services/api/internal_api/types';
 import { productCartItemsVar } from '@/utils/apollo/cache';
-import type { FC } from 'react';
 
 type Props = {
   productId: Product['id'];

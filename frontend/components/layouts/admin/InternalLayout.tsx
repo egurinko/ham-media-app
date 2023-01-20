@@ -7,8 +7,8 @@ import { Sidebar } from '@/components/organisms/admin/Sidebar';
 import { useInternalGetSessionQuery } from '@/services/api/internal_api/types';
 import { removeCookie } from '@/utils/cookies';
 import { goAdminLogin } from '@/utils/routes';
-import { BaseLayout } from './BaseLayout';
 import type { FC, PropsWithChildren } from 'react';
+import { BaseLayout } from './BaseLayout';
 
 type Props = {
   title?: string;

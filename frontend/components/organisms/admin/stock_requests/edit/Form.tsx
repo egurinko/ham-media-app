@@ -7,6 +7,7 @@ import { Spinner } from '@/components/atoms/Spinner';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { SuccessMessage } from '@/components/molecules/SuccessMessage';
 import { SummaryLink } from '@/components/molecules/SummaryLink';
+import type { FC } from 'react';
 import { ProductSummary } from '@/components/organisms/admin/products/ProductSummary';
 import type {
   StockRequestFieldsFragment,
@@ -18,7 +19,6 @@ import {
 } from '@/services/api/internal_api/types';
 import { ADMIN_PRODUCTS_DETAIL_PATH } from '@/utils/routes';
 import { Note } from '../shared/Note';
-import type { FC } from 'react';
 
 type Props = {
   stockRequestId: StockRequestFieldsFragment['id'];

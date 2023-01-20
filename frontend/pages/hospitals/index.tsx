@@ -6,15 +6,15 @@ import { NightServiceHospitals } from '@/components/organisms/consumer/hospitals
 import { RecommendedHospitals } from '@/components/organisms/consumer/hospitals/index/RecommendedHospitals';
 import { TitleSection } from '@/components/organisms/consumer/hospitals/index/TitleSection';
 import { getHospitalConnection } from '@/services/api/public_api/getHospitalConnection';
+import type { GetStaticProps } from 'next';
 import type {
   PublicGetHospitalConnectionQuery,
   PublicGetHospitalConnectionQueryVariables,
 } from '@/services/api/public_api/types';
+import type { ReactElement } from 'react';
 import { apiClient } from '@/utils/apollo';
 import { SERVICE_NAME, ORIGIN_URL } from '@/utils/constant';
 import { HOSPITALS_PATH } from '@/utils/routes';
-import type { GetStaticProps } from 'next';
-import type { ReactElement } from 'react';
 
 const Index = ({
   nightServiceHospitalConnection,

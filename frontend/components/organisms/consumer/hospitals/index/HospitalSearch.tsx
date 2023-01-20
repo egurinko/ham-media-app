@@ -3,10 +3,10 @@ import { memo, useEffect } from 'react';
 import { Card } from '@/components/atoms/Card';
 import { LOCAL_STORAGE_HOSPITAL_SEARCH_KEY } from '@/utils/constant';
 import { useLocalStorage } from '@/utils/hooks';
-import { CurrentLocationSearch } from './hospitalSearch/CurrentLocationSearch';
-import { TextSearch } from './hospitalSearch/TextSearch';
 import type { PERSISTED } from '../types';
+import { CurrentLocationSearch } from './hospitalSearch/CurrentLocationSearch';
 import type { FC } from 'react';
+import { TextSearch } from './hospitalSearch/TextSearch';
 
 const HospitalSearch: FC<NoProps> = () => {
   const { setLocalStorage } = useLocalStorage<PERSISTED>(
