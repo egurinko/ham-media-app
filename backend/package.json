@@ -20,6 +20,7 @@
     "db:seed:dev": "NODE_ENV=development prisma db seed",
     "db:seed:test": "NODE_ENV=test dotenv -e .env.test prisma db seed",
     "tsc": "tsc",
+    "tscheck": "yarn tsc -p ./tsconfig.json --noEmit",
     "test": "NODE_ENV=test dotenv -e .env.test -- jest --runInBand",
     "test:ci": "NODE_ENV=test dotenv -e .env.test -- jest --runInBand --coverage --silent --testLocationInResults --ci --json --outputFile=\"report.json\""
   },
@@ -34,7 +35,7 @@
     "@line/bot-sdk": "^7.5.2",
     "@prisma/client": "^4.9.0",
     "@sentry/node": "^7.31.1",
-    "axios": "^1.2.2",
+    "axios": "^1.2.3",
     "bcrypt": "^5.1.0",
     "fastify": "^4.11.0",
     "fastify-cli": "^5.7.1",
