@@ -20,6 +20,7 @@
     "db:seed:dev": "NODE_ENV=development prisma db seed",
     "db:seed:test": "NODE_ENV=test dotenv -e .env.test prisma db seed",
     "tsc": "tsc",
+    "tscheck": "yarn tsc -p ./tsconfig.json --noEmit",
     "test": "NODE_ENV=test dotenv -e .env.test -- jest --runInBand",
     "test:ci": "NODE_ENV=test dotenv -e .env.test -- jest --runInBand --coverage --silent --testLocationInResults --ci --json --outputFile=\"report.json\""
   },
