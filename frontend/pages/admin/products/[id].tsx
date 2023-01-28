@@ -5,13 +5,13 @@ import { useRouter } from 'next/router';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
 import { StockRequestCartButton } from '@/components/organisms/admin/products/StockRequestCartButton';
-import type { GetStaticPaths, GetStaticProps } from 'next';
 import { ProductCartItem } from '@/components/organisms/admin/products/detail/ProductCartItem';
-import type { ParsedUrlQuery } from 'querystring';
 import { Stocks } from '@/components/organisms/admin/products/edit/Stocks';
-import type { ReactElement } from 'react';
 import { useLocalReadIsAdminQuery } from '@/services/api/local_api/types';
 import { goAdminProducts, ADMIN_PRODUCTS_EDIT_PATH } from '@/utils/routes';
+import type { GetStaticPaths, GetStaticProps } from 'next';
+import type { ParsedUrlQuery } from 'querystring';
+import type { ReactElement } from 'react';
 
 const Detail = () => {
   const router = useRouter();

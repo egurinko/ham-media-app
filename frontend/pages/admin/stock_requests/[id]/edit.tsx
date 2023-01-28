@@ -5,8 +5,8 @@ import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
 import { StockRequestCartButton } from '@/components/organisms/admin/products/StockRequestCartButton';
 import { Form } from '@/components/organisms/admin/stock_requests/edit/Form';
 import { Review } from '@/components/organisms/admin/stock_requests/edit/Review';
-import type { GetStaticPaths, GetStaticProps } from 'next';
 import { goAdminStockRequests } from '@/utils/routes';
+import type { GetStaticPaths, GetStaticProps } from 'next';
 import type { ParsedUrlQuery } from 'querystring';
 import type { ReactElement } from 'react';
 

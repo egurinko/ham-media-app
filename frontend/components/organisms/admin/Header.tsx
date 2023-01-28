@@ -16,8 +16,8 @@ import Image from 'next/image';
 import { useCallback, memo } from 'react';
 import { UserCard } from '@/components/molecules/UserCard';
 import type { InternalGetSessionQuery } from '@/services/api/internal_api/types';
-import type { FC } from 'react';
 import { Navigation } from './Navigation';
+import type { FC } from 'react';
 
 type Props = {
   internalUser: InternalGetSessionQuery['session']['internalUser'];

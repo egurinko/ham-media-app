@@ -6,14 +6,14 @@ import { useLocalGetHospitalSearchQuery } from '@/services/api/local_api/types';
 import { usePublicGetHospitalConnectionLazyQuery } from '@/services/api/public_api/types';
 import { hospitalSearchVar } from '@/utils/apollo/cache';
 import { LOCAL_STORAGE_HOSPITAL_SEARCH_KEY } from '@/utils/constant';
-import type { PERSISTED, GetContinuousHospitalConnection } from '../types';
 import { useLocalStorage } from '@/utils/hooks';
-import type { FC } from 'react';
 import { scrollTo } from '@/utils/scroll';
 import { Filter } from './hospitalSearch/Filter';
 import { HospitalGoogleMap } from './hospitalSearch/HospitalGoogleMap';
 import { Hospitals } from './hospitalSearch/Hospitals';
 import { SearchConditions } from './hospitalSearch/SearchConditions';
+import type { PERSISTED, GetContinuousHospitalConnection } from '../types';
+import type { FC } from 'react';
 
 const HospitalSearch: FC<NoProps> = () => {
   const { data } = useLocalGetHospitalSearchQuery();

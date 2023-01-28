@@ -6,11 +6,11 @@ import { MapPinIcon } from '@/components/atoms/assets/MapPinIcon';
 import { PhoneIcon } from '@/components/atoms/assets/PhoneIcon';
 import { SummaryLink } from '@/components/molecules/SummaryLink';
 import { HospitalTags } from '@/components/organisms/consumer/hospitals/HospitalTags';
-import type { GetContinuousHospitalConnection } from '../../types';
 import type { PublicGetHospitalConnectionQuery } from '@/services/api/public_api/types';
-import type { FC } from 'react';
 import { useIntersectionObserver } from '@/utils/hooks/useIntersectionObserver';
 import { HOSPITALS_DETAIL_PATH } from '@/utils/routes';
+import type { GetContinuousHospitalConnection } from '../../types';
+import type { FC } from 'react';
 
 type Props = {
   hospitalConnection?: PublicGetHospitalConnectionQuery['publicHospitalConnection'];

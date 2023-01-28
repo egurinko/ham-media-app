@@ -7,7 +7,6 @@ import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { Spinner } from '@/components/atoms/Spinner';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { SuccessMessage } from '@/components/molecules/SuccessMessage';
-import type { FC } from 'react';
 import { ProductSummary } from '@/components/organisms/admin/products/ProductSummary';
 import type { ProductFieldsFragment } from '@/services/api/internal_api/types';
 import {
@@ -19,6 +18,7 @@ import { productCartItemsVar } from '@/utils/apollo/cache';
 import { goAdminStockRequests } from '@/utils/routes';
 import { Note } from '../shared/Note';
 import { Empty } from './Empty';
+import type { FC } from 'react';
 
 type RequestProduct = {
   count: number;

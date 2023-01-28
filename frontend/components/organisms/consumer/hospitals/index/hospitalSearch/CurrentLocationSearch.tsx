@@ -6,10 +6,10 @@ import { FlashMessage } from '@/components/molecules/FlashMessage';
 import { useLocalGetHospitalSearchQuery } from '@/services/api/local_api/types';
 import { hospitalSearchVar } from '@/utils/apollo/cache';
 import { LOCAL_STORAGE_HOSPITAL_SEARCH_KEY } from '@/utils/constant';
-import type { PERSISTED } from '../../types';
 import { useLocalStorage } from '@/utils/hooks';
-import type { FC } from 'react';
 import { goHospitalsResult } from '@/utils/routes';
+import type { PERSISTED } from '../../types';
+import type { FC } from 'react';
 
 const CurrentLocationSearch: FC<NoProps> = () => {
   const { setLocalStorage } = useLocalStorage<PERSISTED>(

@@ -5,12 +5,12 @@ import { InternalLayout } from '@/components/layouts/admin/InternalLayout';
 import { StockRequestCartButton } from '@/components/organisms/admin/products/StockRequestCartButton';
 import { Form } from '@/components/organisms/admin/products/edit/Form';
 import { ProductSummary } from '@/components/organisms/admin/products/edit/ProductSummary';
-import type { GetStaticPaths, GetStaticProps } from 'next';
 import { ProductTaggings } from '@/components/organisms/admin/products/edit/ProductTaggings';
-import type { ParsedUrlQuery } from 'querystring';
 import { Stocks } from '@/components/organisms/admin/products/edit/Stocks';
-import type { ReactElement } from 'react';
 import { goAdminProducts } from '@/utils/routes';
+import type { GetStaticPaths, GetStaticProps } from 'next';
+import type { ParsedUrlQuery } from 'querystring';
+import type { ReactElement } from 'react';
 
 const Edit = () => {
   const router = useRouter();

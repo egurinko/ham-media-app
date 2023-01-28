@@ -2,9 +2,15 @@ import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+export type Exact<T extends { [key: string]: unknown }> = {
+  [K in keyof T]: T[K];
+};
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]?: Maybe<T[SubKey]>;
+};
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]: Maybe<T[SubKey]>;
+};
 const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
@@ -125,7 +131,6 @@ export type Mutation = {
   createSession: CreateSessionType;
 };
 
-
 export type MutationCreateSessionArgs = {
   email: Scalars['String'];
   password: Scalars['String'];
@@ -194,7 +199,7 @@ export enum PlaceAutocompleteStatus {
   OverQueryLimit = 'OVER_QUERY_LIMIT',
   RequestDenied = 'REQUEST_DENIED',
   UnknownError = 'UNKNOWN_ERROR',
-  ZeroResults = 'ZERO_RESULTS'
+  ZeroResults = 'ZERO_RESULTS',
 }
 
 /** A prefecture */
@@ -214,16 +219,13 @@ export type Query = {
   publicHospitalConnection?: Maybe<HospitalConnection>;
 };
 
-
 export type QueryHospitalArgs = {
   id: Scalars['BigInt'];
 };
 
-
 export type QueryPlaceAutocompleteArgs = {
   searchText: Scalars['String'];
 };
-
 
 export type QueryPublicHospitalConnectionArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -257,17 +259,121 @@ export type PublicCreateSessionMutationVariables = Exact<{
   password: Scalars['String'];
 }>;
 
+export type PublicCreateSessionMutation = {
+  __typename?: 'Mutation';
+  createSession: { __typename?: 'CreateSessionType'; token: string };
+};
 
-export type PublicCreateSessionMutation = { __typename?: 'Mutation', createSession: { __typename?: 'CreateSessionType', token: string } };
-
-export type PublicApiHospitalFieldsFragment = { __typename?: 'Hospital', id: bigint, name: string, url: string, recommended: boolean, hospitalAddress?: { __typename?: 'HospitalAddress', id: bigint, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: bigint }, hospitalAddressGeoLocation?: { __typename?: 'HospitalAddressGeoLocation', latitude: number, longitude: number } | null } | null, hospitalBusinessForm?: { __typename?: 'HospitalBusinessForm', id: bigint, business_hour: string, closed_day: string, insurance_enabled: string, remark: string } | null, hospitalCertificationOption?: { __typename?: 'HospitalCertificationOption', id: bigint, nichiju_registered: string, jsava_registered: string } | null, hospitalNightServiceOption?: { __typename?: 'HospitalNightServiceOption', id: bigint, status: string, remark: string } | null, hospitalNightUrgentActionOption?: { __typename?: 'HospitalNightUrgentActionOption', id: bigint, status: string } | null, hospitalReservationStatus?: { __typename?: 'HospitalReservationStatus', id: bigint, required: string, reservable: string, remark: string } | null };
+export type PublicApiHospitalFieldsFragment = {
+  __typename?: 'Hospital';
+  id: bigint;
+  name: string;
+  url: string;
+  recommended: boolean;
+  hospitalAddress?: {
+    __typename?: 'HospitalAddress';
+    id: bigint;
+    address: string;
+    phone_number: string;
+    prefecture: { __typename?: 'Prefecture'; name: string; id: bigint };
+    hospitalAddressGeoLocation?: {
+      __typename?: 'HospitalAddressGeoLocation';
+      latitude: number;
+      longitude: number;
+    } | null;
+  } | null;
+  hospitalBusinessForm?: {
+    __typename?: 'HospitalBusinessForm';
+    id: bigint;
+    business_hour: string;
+    closed_day: string;
+    insurance_enabled: string;
+    remark: string;
+  } | null;
+  hospitalCertificationOption?: {
+    __typename?: 'HospitalCertificationOption';
+    id: bigint;
+    nichiju_registered: string;
+    jsava_registered: string;
+  } | null;
+  hospitalNightServiceOption?: {
+    __typename?: 'HospitalNightServiceOption';
+    id: bigint;
+    status: string;
+    remark: string;
+  } | null;
+  hospitalNightUrgentActionOption?: {
+    __typename?: 'HospitalNightUrgentActionOption';
+    id: bigint;
+    status: string;
+  } | null;
+  hospitalReservationStatus?: {
+    __typename?: 'HospitalReservationStatus';
+    id: bigint;
+    required: string;
+    reservable: string;
+    remark: string;
+  } | null;
+};
 
 export type PublicGetHospitalQueryVariables = Exact<{
   id: Scalars['BigInt'];
 }>;
 
-
-export type PublicGetHospitalQuery = { __typename?: 'Query', hospital: { __typename?: 'Hospital', id: bigint, name: string, url: string, recommended: boolean, hospitalAddress?: { __typename?: 'HospitalAddress', id: bigint, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: bigint }, hospitalAddressGeoLocation?: { __typename?: 'HospitalAddressGeoLocation', latitude: number, longitude: number } | null } | null, hospitalBusinessForm?: { __typename?: 'HospitalBusinessForm', id: bigint, business_hour: string, closed_day: string, insurance_enabled: string, remark: string } | null, hospitalCertificationOption?: { __typename?: 'HospitalCertificationOption', id: bigint, nichiju_registered: string, jsava_registered: string } | null, hospitalNightServiceOption?: { __typename?: 'HospitalNightServiceOption', id: bigint, status: string, remark: string } | null, hospitalNightUrgentActionOption?: { __typename?: 'HospitalNightUrgentActionOption', id: bigint, status: string } | null, hospitalReservationStatus?: { __typename?: 'HospitalReservationStatus', id: bigint, required: string, reservable: string, remark: string } | null } };
+export type PublicGetHospitalQuery = {
+  __typename?: 'Query';
+  hospital: {
+    __typename?: 'Hospital';
+    id: bigint;
+    name: string;
+    url: string;
+    recommended: boolean;
+    hospitalAddress?: {
+      __typename?: 'HospitalAddress';
+      id: bigint;
+      address: string;
+      phone_number: string;
+      prefecture: { __typename?: 'Prefecture'; name: string; id: bigint };
+      hospitalAddressGeoLocation?: {
+        __typename?: 'HospitalAddressGeoLocation';
+        latitude: number;
+        longitude: number;
+      } | null;
+    } | null;
+    hospitalBusinessForm?: {
+      __typename?: 'HospitalBusinessForm';
+      id: bigint;
+      business_hour: string;
+      closed_day: string;
+      insurance_enabled: string;
+      remark: string;
+    } | null;
+    hospitalCertificationOption?: {
+      __typename?: 'HospitalCertificationOption';
+      id: bigint;
+      nichiju_registered: string;
+      jsava_registered: string;
+    } | null;
+    hospitalNightServiceOption?: {
+      __typename?: 'HospitalNightServiceOption';
+      id: bigint;
+      status: string;
+      remark: string;
+    } | null;
+    hospitalNightUrgentActionOption?: {
+      __typename?: 'HospitalNightUrgentActionOption';
+      id: bigint;
+      status: string;
+    } | null;
+    hospitalReservationStatus?: {
+      __typename?: 'HospitalReservationStatus';
+      id: bigint;
+      required: string;
+      reservable: string;
+      remark: string;
+    } | null;
+  };
+};
 
 export type PublicGetHospitalConnectionQueryVariables = Exact<{
   first?: InputMaybe<Scalars['Int']>;
@@ -282,87 +388,195 @@ export type PublicGetHospitalConnectionQueryVariables = Exact<{
   recommended: Scalars['Boolean'];
 }>;
 
+export type PublicGetHospitalConnectionQuery = {
+  __typename?: 'Query';
+  publicHospitalConnection?: {
+    __typename?: 'HospitalConnection';
+    edges?: Array<{
+      __typename?: 'HospitalEdge';
+      node?: {
+        __typename?: 'Hospital';
+        id: bigint;
+        name: string;
+        url: string;
+        recommended: boolean;
+        hospitalAddress?: {
+          __typename?: 'HospitalAddress';
+          id: bigint;
+          address: string;
+          phone_number: string;
+          prefecture: { __typename?: 'Prefecture'; name: string; id: bigint };
+          hospitalAddressGeoLocation?: {
+            __typename?: 'HospitalAddressGeoLocation';
+            latitude: number;
+            longitude: number;
+          } | null;
+        } | null;
+        hospitalBusinessForm?: {
+          __typename?: 'HospitalBusinessForm';
+          id: bigint;
+          business_hour: string;
+          closed_day: string;
+          insurance_enabled: string;
+          remark: string;
+        } | null;
+        hospitalCertificationOption?: {
+          __typename?: 'HospitalCertificationOption';
+          id: bigint;
+          nichiju_registered: string;
+          jsava_registered: string;
+        } | null;
+        hospitalNightServiceOption?: {
+          __typename?: 'HospitalNightServiceOption';
+          id: bigint;
+          status: string;
+          remark: string;
+        } | null;
+        hospitalNightUrgentActionOption?: {
+          __typename?: 'HospitalNightUrgentActionOption';
+          id: bigint;
+          status: string;
+        } | null;
+        hospitalReservationStatus?: {
+          __typename?: 'HospitalReservationStatus';
+          id: bigint;
+          required: string;
+          reservable: string;
+          remark: string;
+        } | null;
+      } | null;
+    } | null> | null;
+    pageInfo: {
+      __typename?: 'PageInfo';
+      hasNextPage: boolean;
+      hasPreviousPage: boolean;
+      startCursor?: string | null;
+      endCursor?: string | null;
+    };
+  } | null;
+};
 
-export type PublicGetHospitalConnectionQuery = { __typename?: 'Query', publicHospitalConnection?: { __typename?: 'HospitalConnection', edges?: Array<{ __typename?: 'HospitalEdge', node?: { __typename?: 'Hospital', id: bigint, name: string, url: string, recommended: boolean, hospitalAddress?: { __typename?: 'HospitalAddress', id: bigint, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: bigint }, hospitalAddressGeoLocation?: { __typename?: 'HospitalAddressGeoLocation', latitude: number, longitude: number } | null } | null, hospitalBusinessForm?: { __typename?: 'HospitalBusinessForm', id: bigint, business_hour: string, closed_day: string, insurance_enabled: string, remark: string } | null, hospitalCertificationOption?: { __typename?: 'HospitalCertificationOption', id: bigint, nichiju_registered: string, jsava_registered: string } | null, hospitalNightServiceOption?: { __typename?: 'HospitalNightServiceOption', id: bigint, status: string, remark: string } | null, hospitalNightUrgentActionOption?: { __typename?: 'HospitalNightUrgentActionOption', id: bigint, status: string } | null, hospitalReservationStatus?: { __typename?: 'HospitalReservationStatus', id: bigint, required: string, reservable: string, remark: string } | null } | null } | null> | null, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, hasPreviousPage: boolean, startCursor?: string | null, endCursor?: string | null } } | null };
+export type PublicGetHospitalIdsQueryVariables = Exact<{
+  [key: string]: never;
+}>;
 
-export type PublicGetHospitalIdsQueryVariables = Exact<{ [key: string]: never; }>;
+export type PublicGetHospitalIdsQuery = {
+  __typename?: 'Query';
+  hospitals: Array<{ __typename?: 'Hospital'; id: bigint }>;
+};
 
+export type PublicGetHospitalLocationsQueryVariables = Exact<{
+  [key: string]: never;
+}>;
 
-export type PublicGetHospitalIdsQuery = { __typename?: 'Query', hospitals: Array<{ __typename?: 'Hospital', id: bigint }> };
-
-export type PublicGetHospitalLocationsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type PublicGetHospitalLocationsQuery = { __typename?: 'Query', hospitals: Array<{ __typename?: 'Hospital', id: bigint, name: string, url: string, hospitalAddress?: { __typename?: 'HospitalAddress', id: bigint, address: string, phone_number: string, hospitalAddressGeoLocation?: { __typename?: 'HospitalAddressGeoLocation', latitude: number, longitude: number } | null } | null }> };
+export type PublicGetHospitalLocationsQuery = {
+  __typename?: 'Query';
+  hospitals: Array<{
+    __typename?: 'Hospital';
+    id: bigint;
+    name: string;
+    url: string;
+    hospitalAddress?: {
+      __typename?: 'HospitalAddress';
+      id: bigint;
+      address: string;
+      phone_number: string;
+      hospitalAddressGeoLocation?: {
+        __typename?: 'HospitalAddressGeoLocation';
+        latitude: number;
+        longitude: number;
+      } | null;
+    } | null;
+  }>;
+};
 
 export type PublicGetPlaceAutocompleteQueryVariables = Exact<{
   searchText: Scalars['String'];
 }>;
 
+export type PublicGetPlaceAutocompleteQuery = {
+  __typename?: 'Query';
+  placeAutocomplete: {
+    __typename?: 'PlaceAutocomplete';
+    predictions: Array<{
+      __typename?: 'PlaceAutocompletePrediction';
+      place_id: string;
+      structured_formatting: {
+        __typename?: 'PlaceAutocompletePredictionStructuredFormatting';
+        main_text: string;
+      };
+    }>;
+  };
+};
 
-export type PublicGetPlaceAutocompleteQuery = { __typename?: 'Query', placeAutocomplete: { __typename?: 'PlaceAutocomplete', predictions: Array<{ __typename?: 'PlaceAutocompletePrediction', place_id: string, structured_formatting: { __typename?: 'PlaceAutocompletePredictionStructuredFormatting', main_text: string } }> } };
+export type PublicGetPrefecturesQueryVariables = Exact<{
+  [key: string]: never;
+}>;
 
-export type PublicGetPrefecturesQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type PublicGetPrefecturesQuery = { __typename?: 'Query', prefectures: Array<{ __typename?: 'Prefecture', id: bigint, name: string }> };
+export type PublicGetPrefecturesQuery = {
+  __typename?: 'Query';
+  prefectures: Array<{ __typename?: 'Prefecture'; id: bigint; name: string }>;
+};
 
 export const PublicApiHospitalFieldsFragmentDoc = gql`
-    fragment PublicApiHospitalFields on Hospital {
-  id
-  name
-  url
-  recommended
-  hospitalAddress {
+  fragment PublicApiHospitalFields on Hospital {
     id
-    address
-    phone_number
-    prefecture {
-      name
+    name
+    url
+    recommended
+    hospitalAddress {
       id
+      address
+      phone_number
+      prefecture {
+        name
+        id
+      }
+      hospitalAddressGeoLocation {
+        latitude
+        longitude
+      }
     }
-    hospitalAddressGeoLocation {
-      latitude
-      longitude
+    hospitalBusinessForm {
+      id
+      business_hour
+      closed_day
+      insurance_enabled
+      remark
+    }
+    hospitalCertificationOption {
+      id
+      nichiju_registered
+      jsava_registered
+    }
+    hospitalNightServiceOption {
+      id
+      status
+      remark
+    }
+    hospitalNightUrgentActionOption {
+      id
+      status
+    }
+    hospitalReservationStatus {
+      id
+      required
+      reservable
+      remark
     }
   }
-  hospitalBusinessForm {
-    id
-    business_hour
-    closed_day
-    insurance_enabled
-    remark
-  }
-  hospitalCertificationOption {
-    id
-    nichiju_registered
-    jsava_registered
-  }
-  hospitalNightServiceOption {
-    id
-    status
-    remark
-  }
-  hospitalNightUrgentActionOption {
-    id
-    status
-  }
-  hospitalReservationStatus {
-    id
-    required
-    reservable
-    remark
-  }
-}
-    `;
+`;
 export const PublicCreateSessionDocument = gql`
-    mutation PublicCreateSession($email: String!, $password: String!) {
-  createSession(email: $email, password: $password) {
-    token
+  mutation PublicCreateSession($email: String!, $password: String!) {
+    createSession(email: $email, password: $password) {
+      token
+    }
   }
-}
-    `;
-export type PublicCreateSessionMutationFn = Apollo.MutationFunction<PublicCreateSessionMutation, PublicCreateSessionMutationVariables>;
+`;
+export type PublicCreateSessionMutationFn = Apollo.MutationFunction<
+  PublicCreateSessionMutation,
+  PublicCreateSessionMutationVariables
+>;
 
 /**
  * __usePublicCreateSessionMutation__
@@ -382,20 +596,35 @@ export type PublicCreateSessionMutationFn = Apollo.MutationFunction<PublicCreate
  *   },
  * });
  */
-export function usePublicCreateSessionMutation(baseOptions?: Apollo.MutationHookOptions<PublicCreateSessionMutation, PublicCreateSessionMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<PublicCreateSessionMutation, PublicCreateSessionMutationVariables>(PublicCreateSessionDocument, options);
-      }
-export type PublicCreateSessionMutationHookResult = ReturnType<typeof usePublicCreateSessionMutation>;
-export type PublicCreateSessionMutationResult = Apollo.MutationResult<PublicCreateSessionMutation>;
-export type PublicCreateSessionMutationOptions = Apollo.BaseMutationOptions<PublicCreateSessionMutation, PublicCreateSessionMutationVariables>;
-export const PublicGetHospitalDocument = gql`
-    query PublicGetHospital($id: BigInt!) {
-  hospital(id: $id) {
-    ...PublicApiHospitalFields
-  }
+export function usePublicCreateSessionMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    PublicCreateSessionMutation,
+    PublicCreateSessionMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    PublicCreateSessionMutation,
+    PublicCreateSessionMutationVariables
+  >(PublicCreateSessionDocument, options);
 }
-    ${PublicApiHospitalFieldsFragmentDoc}`;
+export type PublicCreateSessionMutationHookResult = ReturnType<
+  typeof usePublicCreateSessionMutation
+>;
+export type PublicCreateSessionMutationResult =
+  Apollo.MutationResult<PublicCreateSessionMutation>;
+export type PublicCreateSessionMutationOptions = Apollo.BaseMutationOptions<
+  PublicCreateSessionMutation,
+  PublicCreateSessionMutationVariables
+>;
+export const PublicGetHospitalDocument = gql`
+  query PublicGetHospital($id: BigInt!) {
+    hospital(id: $id) {
+      ...PublicApiHospitalFields
+    }
+  }
+  ${PublicApiHospitalFieldsFragmentDoc}
+`;
 
 /**
  * __usePublicGetHospitalQuery__
@@ -413,45 +642,80 @@ export const PublicGetHospitalDocument = gql`
  *   },
  * });
  */
-export function usePublicGetHospitalQuery(baseOptions: Apollo.QueryHookOptions<PublicGetHospitalQuery, PublicGetHospitalQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<PublicGetHospitalQuery, PublicGetHospitalQueryVariables>(PublicGetHospitalDocument, options);
-      }
-export function usePublicGetHospitalLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PublicGetHospitalQuery, PublicGetHospitalQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<PublicGetHospitalQuery, PublicGetHospitalQueryVariables>(PublicGetHospitalDocument, options);
-        }
-export type PublicGetHospitalQueryHookResult = ReturnType<typeof usePublicGetHospitalQuery>;
-export type PublicGetHospitalLazyQueryHookResult = ReturnType<typeof usePublicGetHospitalLazyQuery>;
-export type PublicGetHospitalQueryResult = Apollo.QueryResult<PublicGetHospitalQuery, PublicGetHospitalQueryVariables>;
+export function usePublicGetHospitalQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    PublicGetHospitalQuery,
+    PublicGetHospitalQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    PublicGetHospitalQuery,
+    PublicGetHospitalQueryVariables
+  >(PublicGetHospitalDocument, options);
+}
+export function usePublicGetHospitalLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    PublicGetHospitalQuery,
+    PublicGetHospitalQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    PublicGetHospitalQuery,
+    PublicGetHospitalQueryVariables
+  >(PublicGetHospitalDocument, options);
+}
+export type PublicGetHospitalQueryHookResult = ReturnType<
+  typeof usePublicGetHospitalQuery
+>;
+export type PublicGetHospitalLazyQueryHookResult = ReturnType<
+  typeof usePublicGetHospitalLazyQuery
+>;
+export type PublicGetHospitalQueryResult = Apollo.QueryResult<
+  PublicGetHospitalQuery,
+  PublicGetHospitalQueryVariables
+>;
 export const PublicGetHospitalConnectionDocument = gql`
-    query PublicGetHospitalConnection($first: Int, $after: String, $searchText: String!, $currentLocation: currentLocation, $reservable: Boolean!, $nightServiceOption: Boolean!, $insuranceEnabled: Boolean!, $jsavaOption: Boolean!, $nichijuOption: Boolean!, $recommended: Boolean!) {
-  publicHospitalConnection(
-    first: $first
-    after: $after
-    searchText: $searchText
-    currentLocation: $currentLocation
-    reservable: $reservable
-    nightServiceOption: $nightServiceOption
-    insuranceEnabled: $insuranceEnabled
-    jsavaOption: $jsavaOption
-    nichijuOption: $nichijuOption
-    recommended: $recommended
+  query PublicGetHospitalConnection(
+    $first: Int
+    $after: String
+    $searchText: String!
+    $currentLocation: currentLocation
+    $reservable: Boolean!
+    $nightServiceOption: Boolean!
+    $insuranceEnabled: Boolean!
+    $jsavaOption: Boolean!
+    $nichijuOption: Boolean!
+    $recommended: Boolean!
   ) {
-    edges {
-      node {
-        ...PublicApiHospitalFields
+    publicHospitalConnection(
+      first: $first
+      after: $after
+      searchText: $searchText
+      currentLocation: $currentLocation
+      reservable: $reservable
+      nightServiceOption: $nightServiceOption
+      insuranceEnabled: $insuranceEnabled
+      jsavaOption: $jsavaOption
+      nichijuOption: $nichijuOption
+      recommended: $recommended
+    ) {
+      edges {
+        node {
+          ...PublicApiHospitalFields
+        }
       }
-    }
-    pageInfo {
-      hasNextPage
-      hasPreviousPage
-      startCursor
-      endCursor
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+        startCursor
+        endCursor
+      }
     }
   }
-}
-    ${PublicApiHospitalFieldsFragmentDoc}`;
+  ${PublicApiHospitalFieldsFragmentDoc}
+`;
 
 /**
  * __usePublicGetHospitalConnectionQuery__
@@ -478,24 +742,47 @@ export const PublicGetHospitalConnectionDocument = gql`
  *   },
  * });
  */
-export function usePublicGetHospitalConnectionQuery(baseOptions: Apollo.QueryHookOptions<PublicGetHospitalConnectionQuery, PublicGetHospitalConnectionQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<PublicGetHospitalConnectionQuery, PublicGetHospitalConnectionQueryVariables>(PublicGetHospitalConnectionDocument, options);
-      }
-export function usePublicGetHospitalConnectionLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PublicGetHospitalConnectionQuery, PublicGetHospitalConnectionQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<PublicGetHospitalConnectionQuery, PublicGetHospitalConnectionQueryVariables>(PublicGetHospitalConnectionDocument, options);
-        }
-export type PublicGetHospitalConnectionQueryHookResult = ReturnType<typeof usePublicGetHospitalConnectionQuery>;
-export type PublicGetHospitalConnectionLazyQueryHookResult = ReturnType<typeof usePublicGetHospitalConnectionLazyQuery>;
-export type PublicGetHospitalConnectionQueryResult = Apollo.QueryResult<PublicGetHospitalConnectionQuery, PublicGetHospitalConnectionQueryVariables>;
-export const PublicGetHospitalIdsDocument = gql`
-    query PublicGetHospitalIds {
-  hospitals {
-    id
-  }
+export function usePublicGetHospitalConnectionQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    PublicGetHospitalConnectionQuery,
+    PublicGetHospitalConnectionQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    PublicGetHospitalConnectionQuery,
+    PublicGetHospitalConnectionQueryVariables
+  >(PublicGetHospitalConnectionDocument, options);
 }
-    `;
+export function usePublicGetHospitalConnectionLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    PublicGetHospitalConnectionQuery,
+    PublicGetHospitalConnectionQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    PublicGetHospitalConnectionQuery,
+    PublicGetHospitalConnectionQueryVariables
+  >(PublicGetHospitalConnectionDocument, options);
+}
+export type PublicGetHospitalConnectionQueryHookResult = ReturnType<
+  typeof usePublicGetHospitalConnectionQuery
+>;
+export type PublicGetHospitalConnectionLazyQueryHookResult = ReturnType<
+  typeof usePublicGetHospitalConnectionLazyQuery
+>;
+export type PublicGetHospitalConnectionQueryResult = Apollo.QueryResult<
+  PublicGetHospitalConnectionQuery,
+  PublicGetHospitalConnectionQueryVariables
+>;
+export const PublicGetHospitalIdsDocument = gql`
+  query PublicGetHospitalIds {
+    hospitals {
+      id
+    }
+  }
+`;
 
 /**
  * __usePublicGetHospitalIdsQuery__
@@ -512,35 +799,58 @@ export const PublicGetHospitalIdsDocument = gql`
  *   },
  * });
  */
-export function usePublicGetHospitalIdsQuery(baseOptions?: Apollo.QueryHookOptions<PublicGetHospitalIdsQuery, PublicGetHospitalIdsQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<PublicGetHospitalIdsQuery, PublicGetHospitalIdsQueryVariables>(PublicGetHospitalIdsDocument, options);
-      }
-export function usePublicGetHospitalIdsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PublicGetHospitalIdsQuery, PublicGetHospitalIdsQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<PublicGetHospitalIdsQuery, PublicGetHospitalIdsQueryVariables>(PublicGetHospitalIdsDocument, options);
-        }
-export type PublicGetHospitalIdsQueryHookResult = ReturnType<typeof usePublicGetHospitalIdsQuery>;
-export type PublicGetHospitalIdsLazyQueryHookResult = ReturnType<typeof usePublicGetHospitalIdsLazyQuery>;
-export type PublicGetHospitalIdsQueryResult = Apollo.QueryResult<PublicGetHospitalIdsQuery, PublicGetHospitalIdsQueryVariables>;
+export function usePublicGetHospitalIdsQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    PublicGetHospitalIdsQuery,
+    PublicGetHospitalIdsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    PublicGetHospitalIdsQuery,
+    PublicGetHospitalIdsQueryVariables
+  >(PublicGetHospitalIdsDocument, options);
+}
+export function usePublicGetHospitalIdsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    PublicGetHospitalIdsQuery,
+    PublicGetHospitalIdsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    PublicGetHospitalIdsQuery,
+    PublicGetHospitalIdsQueryVariables
+  >(PublicGetHospitalIdsDocument, options);
+}
+export type PublicGetHospitalIdsQueryHookResult = ReturnType<
+  typeof usePublicGetHospitalIdsQuery
+>;
+export type PublicGetHospitalIdsLazyQueryHookResult = ReturnType<
+  typeof usePublicGetHospitalIdsLazyQuery
+>;
+export type PublicGetHospitalIdsQueryResult = Apollo.QueryResult<
+  PublicGetHospitalIdsQuery,
+  PublicGetHospitalIdsQueryVariables
+>;
 export const PublicGetHospitalLocationsDocument = gql`
-    query PublicGetHospitalLocations {
-  hospitals {
-    id
-    name
-    url
-    hospitalAddress {
+  query PublicGetHospitalLocations {
+    hospitals {
       id
-      address
-      phone_number
-      hospitalAddressGeoLocation {
-        latitude
-        longitude
+      name
+      url
+      hospitalAddress {
+        id
+        address
+        phone_number
+        hospitalAddressGeoLocation {
+          latitude
+          longitude
+        }
       }
     }
   }
-}
-    `;
+`;
 
 /**
  * __usePublicGetHospitalLocationsQuery__
@@ -557,29 +867,52 @@ export const PublicGetHospitalLocationsDocument = gql`
  *   },
  * });
  */
-export function usePublicGetHospitalLocationsQuery(baseOptions?: Apollo.QueryHookOptions<PublicGetHospitalLocationsQuery, PublicGetHospitalLocationsQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<PublicGetHospitalLocationsQuery, PublicGetHospitalLocationsQueryVariables>(PublicGetHospitalLocationsDocument, options);
-      }
-export function usePublicGetHospitalLocationsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PublicGetHospitalLocationsQuery, PublicGetHospitalLocationsQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<PublicGetHospitalLocationsQuery, PublicGetHospitalLocationsQueryVariables>(PublicGetHospitalLocationsDocument, options);
-        }
-export type PublicGetHospitalLocationsQueryHookResult = ReturnType<typeof usePublicGetHospitalLocationsQuery>;
-export type PublicGetHospitalLocationsLazyQueryHookResult = ReturnType<typeof usePublicGetHospitalLocationsLazyQuery>;
-export type PublicGetHospitalLocationsQueryResult = Apollo.QueryResult<PublicGetHospitalLocationsQuery, PublicGetHospitalLocationsQueryVariables>;
+export function usePublicGetHospitalLocationsQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    PublicGetHospitalLocationsQuery,
+    PublicGetHospitalLocationsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    PublicGetHospitalLocationsQuery,
+    PublicGetHospitalLocationsQueryVariables
+  >(PublicGetHospitalLocationsDocument, options);
+}
+export function usePublicGetHospitalLocationsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    PublicGetHospitalLocationsQuery,
+    PublicGetHospitalLocationsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    PublicGetHospitalLocationsQuery,
+    PublicGetHospitalLocationsQueryVariables
+  >(PublicGetHospitalLocationsDocument, options);
+}
+export type PublicGetHospitalLocationsQueryHookResult = ReturnType<
+  typeof usePublicGetHospitalLocationsQuery
+>;
+export type PublicGetHospitalLocationsLazyQueryHookResult = ReturnType<
+  typeof usePublicGetHospitalLocationsLazyQuery
+>;
+export type PublicGetHospitalLocationsQueryResult = Apollo.QueryResult<
+  PublicGetHospitalLocationsQuery,
+  PublicGetHospitalLocationsQueryVariables
+>;
 export const PublicGetPlaceAutocompleteDocument = gql`
-    query PublicGetPlaceAutocomplete($searchText: String!) {
-  placeAutocomplete(searchText: $searchText) {
-    predictions {
-      place_id
-      structured_formatting {
-        main_text
+  query PublicGetPlaceAutocomplete($searchText: String!) {
+    placeAutocomplete(searchText: $searchText) {
+      predictions {
+        place_id
+        structured_formatting {
+          main_text
+        }
       }
     }
   }
-}
-    `;
+`;
 
 /**
  * __usePublicGetPlaceAutocompleteQuery__
@@ -597,25 +930,48 @@ export const PublicGetPlaceAutocompleteDocument = gql`
  *   },
  * });
  */
-export function usePublicGetPlaceAutocompleteQuery(baseOptions: Apollo.QueryHookOptions<PublicGetPlaceAutocompleteQuery, PublicGetPlaceAutocompleteQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<PublicGetPlaceAutocompleteQuery, PublicGetPlaceAutocompleteQueryVariables>(PublicGetPlaceAutocompleteDocument, options);
-      }
-export function usePublicGetPlaceAutocompleteLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PublicGetPlaceAutocompleteQuery, PublicGetPlaceAutocompleteQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<PublicGetPlaceAutocompleteQuery, PublicGetPlaceAutocompleteQueryVariables>(PublicGetPlaceAutocompleteDocument, options);
-        }
-export type PublicGetPlaceAutocompleteQueryHookResult = ReturnType<typeof usePublicGetPlaceAutocompleteQuery>;
-export type PublicGetPlaceAutocompleteLazyQueryHookResult = ReturnType<typeof usePublicGetPlaceAutocompleteLazyQuery>;
-export type PublicGetPlaceAutocompleteQueryResult = Apollo.QueryResult<PublicGetPlaceAutocompleteQuery, PublicGetPlaceAutocompleteQueryVariables>;
-export const PublicGetPrefecturesDocument = gql`
-    query PublicGetPrefectures {
-  prefectures {
-    id
-    name
-  }
+export function usePublicGetPlaceAutocompleteQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    PublicGetPlaceAutocompleteQuery,
+    PublicGetPlaceAutocompleteQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    PublicGetPlaceAutocompleteQuery,
+    PublicGetPlaceAutocompleteQueryVariables
+  >(PublicGetPlaceAutocompleteDocument, options);
 }
-    `;
+export function usePublicGetPlaceAutocompleteLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    PublicGetPlaceAutocompleteQuery,
+    PublicGetPlaceAutocompleteQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    PublicGetPlaceAutocompleteQuery,
+    PublicGetPlaceAutocompleteQueryVariables
+  >(PublicGetPlaceAutocompleteDocument, options);
+}
+export type PublicGetPlaceAutocompleteQueryHookResult = ReturnType<
+  typeof usePublicGetPlaceAutocompleteQuery
+>;
+export type PublicGetPlaceAutocompleteLazyQueryHookResult = ReturnType<
+  typeof usePublicGetPlaceAutocompleteLazyQuery
+>;
+export type PublicGetPlaceAutocompleteQueryResult = Apollo.QueryResult<
+  PublicGetPlaceAutocompleteQuery,
+  PublicGetPlaceAutocompleteQueryVariables
+>;
+export const PublicGetPrefecturesDocument = gql`
+  query PublicGetPrefectures {
+    prefectures {
+      id
+      name
+    }
+  }
+`;
 
 /**
  * __usePublicGetPrefecturesQuery__
@@ -632,14 +988,37 @@ export const PublicGetPrefecturesDocument = gql`
  *   },
  * });
  */
-export function usePublicGetPrefecturesQuery(baseOptions?: Apollo.QueryHookOptions<PublicGetPrefecturesQuery, PublicGetPrefecturesQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<PublicGetPrefecturesQuery, PublicGetPrefecturesQueryVariables>(PublicGetPrefecturesDocument, options);
-      }
-export function usePublicGetPrefecturesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PublicGetPrefecturesQuery, PublicGetPrefecturesQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<PublicGetPrefecturesQuery, PublicGetPrefecturesQueryVariables>(PublicGetPrefecturesDocument, options);
-        }
-export type PublicGetPrefecturesQueryHookResult = ReturnType<typeof usePublicGetPrefecturesQuery>;
-export type PublicGetPrefecturesLazyQueryHookResult = ReturnType<typeof usePublicGetPrefecturesLazyQuery>;
-export type PublicGetPrefecturesQueryResult = Apollo.QueryResult<PublicGetPrefecturesQuery, PublicGetPrefecturesQueryVariables>;
+export function usePublicGetPrefecturesQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    PublicGetPrefecturesQuery,
+    PublicGetPrefecturesQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    PublicGetPrefecturesQuery,
+    PublicGetPrefecturesQueryVariables
+  >(PublicGetPrefecturesDocument, options);
+}
+export function usePublicGetPrefecturesLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    PublicGetPrefecturesQuery,
+    PublicGetPrefecturesQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    PublicGetPrefecturesQuery,
+    PublicGetPrefecturesQueryVariables
+  >(PublicGetPrefecturesDocument, options);
+}
+export type PublicGetPrefecturesQueryHookResult = ReturnType<
+  typeof usePublicGetPrefecturesQuery
+>;
+export type PublicGetPrefecturesLazyQueryHookResult = ReturnType<
+  typeof usePublicGetPrefecturesLazyQuery
+>;
+export type PublicGetPrefecturesQueryResult = Apollo.QueryResult<
+  PublicGetPrefecturesQuery,
+  PublicGetPrefecturesQueryVariables
+>;
