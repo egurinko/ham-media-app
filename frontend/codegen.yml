@@ -1,3 +1,6 @@
+hooks:
+  afterAllFileWrite:
+    - yarn lint --fix && yarn format:write
 generates:
   ./services/api/internal_api/types.ts:
     schema:
