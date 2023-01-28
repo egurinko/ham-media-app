@@ -43,3 +43,6 @@ jobs:
       - name: Lint
         run: yarn lint
         working-directory: ./frontend
+      - name: Format
+        run: yarn format:check
+        working-directory: ./frontend
