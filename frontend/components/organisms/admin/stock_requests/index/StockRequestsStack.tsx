@@ -35,10 +35,10 @@ import {
   useInternalGetInternalUsersQuery,
   useInternalDeleteStockRequestMutation,
 } from '@/services/api/internal_api/types';
-import type { FC, MouseEvent } from 'react';
 import { useIntersectionObserver } from '@/utils/hooks/useIntersectionObserver';
 import { scrollTo } from '@/utils/scroll';
 import { StockRequestSummary } from './stockRequestsStack/StockRequestSummary';
+import type { FC, MouseEvent } from 'react';
 
 const StockRequestsStack: FC<NoProps> = () => {
   const [selectedInternalUserId, setSelectedInternalUserId] = useState<

@@ -27,8 +27,8 @@ import {
   useInternalRejectStockRequestMutation,
   useInternalApproveStockRequestMutation,
 } from '@/services/api/internal_api/types';
-import type { FC } from 'react';
 import { goAdminStockRequests } from '@/utils/routes';
+import type { FC } from 'react';
 
 type Props = {
   stockRequestId: StockRequest['id'];

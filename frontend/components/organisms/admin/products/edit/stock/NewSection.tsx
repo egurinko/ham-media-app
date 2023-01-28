@@ -13,8 +13,8 @@ import type {
   InternalGetProductQuery,
   InternalGetStocksQueryVariables,
 } from '@/services/api/internal_api/types';
-import type { FC } from 'react';
 import { useLocalReadIsAdminQuery } from '@/services/api/local_api/types';
+import type { FC } from 'react';
 
 type FetchStocksMoreArgs = { variables: InternalGetStocksQueryVariables };
 

@@ -4,10 +4,10 @@ import { Spinner } from '@/components/atoms/Spinner';
 import { useInternalGetHospitalConnectionQuery } from '@/services/api/internal_api/types';
 import type { Hospital } from '@/services/api/internal_api/types';
 import { useIntersectionObserver } from '@/utils/hooks/useIntersectionObserver';
-import type { SearchHospitals } from './types';
-import type { FC } from 'react';
 import { HospitalsStack } from './hospitalsSearch/HospitalsStack';
 import { SearchSection } from './hospitalsSearch/SearchSection';
+import type { SearchHospitals } from './types';
+import type { FC } from 'react';
 
 const HospitalsSearch: FC<NoProps> = () => {
   const [name, setName] = useState('');

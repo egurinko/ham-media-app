@@ -5,18 +5,18 @@ import { Layout } from '@/components/layouts/consumer/Layout';
 import { Head } from '@/components/molecules/Head';
 import { DetailCard } from '@/components/organisms/consumer/hospitals/detail/DetailCard';
 import { getHospital } from '@/services/api/public_api/getHospital';
-import type { GetStaticPaths, GetStaticProps } from 'next';
 import { getHospitalIds } from '@/services/api/public_api/getHospitalIds';
-import type { ParsedUrlQuery } from 'querystring';
 import type {
   PublicGetHospitalIdsQuery,
   PublicGetHospitalQuery,
   PublicGetHospitalQueryVariables,
 } from '@/services/api/public_api/types';
-import type { ReactElement } from 'react';
 import { apiClient } from '@/utils/apollo';
 import { SERVICE_NAME, ORIGIN_URL } from '@/utils/constant';
 import { HOSPITALS_DETAIL_PATH, goHospitalsResult } from '@/utils/routes';
+import type { GetStaticPaths, GetStaticProps } from 'next';
+import type { ParsedUrlQuery } from 'querystring';
+import type { ReactElement } from 'react';
 
 const Show = ({ hospital }: Props) => {
   const router = useRouter();

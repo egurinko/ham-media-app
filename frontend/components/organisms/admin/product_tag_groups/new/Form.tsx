@@ -13,11 +13,11 @@ import { Card } from '@/components/atoms/Card';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { SuccessMessage } from '@/components/molecules/SuccessMessage';
-import type { FC } from 'react';
 import { useInternalCreateProductTagGroupMutation } from '@/services/api/internal_api/types';
-import type { SubmitHandler } from 'react-hook-form';
 import { goAdminProductTagGroups } from '@/utils/routes';
 import validators from '@/validators/index';
+import type { FC } from 'react';
+import type { SubmitHandler } from 'react-hook-form';
 
 interface FormInput {
   name: string;

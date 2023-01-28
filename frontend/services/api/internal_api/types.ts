@@ -2,9 +2,15 @@ import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+export type Exact<T extends { [key: string]: unknown }> = {
+  [K in keyof T]: T[K];
+};
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]?: Maybe<T[SubKey]>;
+};
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]: Maybe<T[SubKey]>;
+};
 const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
@@ -237,18 +243,15 @@ export type Mutation = {
   upsertHospitalAddressGeoLocation: HospitalAddress;
 };
 
-
 export type MutationAllocateStockArgs = {
   id: Scalars['Int'];
   internalUserId: Scalars['BigInt'];
 };
 
-
 export type MutationApproveStockRequestArgs = {
   id: Scalars['Int'];
   message: Scalars['String'];
 };
-
 
 export type MutationCreateHospitalArgs = {
   deleted: Scalars['Boolean'];
@@ -256,7 +259,6 @@ export type MutationCreateHospitalArgs = {
   name: Scalars['String'];
   url?: InputMaybe<Scalars['String']>;
 };
-
 
 export type MutationCreateInternalUserArgs = {
   discord_user_id: Scalars['String'];
@@ -266,11 +268,9 @@ export type MutationCreateInternalUserArgs = {
   roleId: Scalars['Int'];
 };
 
-
 export type MutationCreateMakerArgs = {
   name: Scalars['String'];
 };
-
 
 export type MutationCreateProductArgs = {
   file: Scalars['Upload'];
@@ -280,75 +280,61 @@ export type MutationCreateProductArgs = {
   remark: Scalars['String'];
 };
 
-
 export type MutationCreateProductTagGroupArgs = {
   name: Scalars['String'];
 };
-
 
 export type MutationCreateProductTaggingsArgs = {
   productId: Scalars['Int'];
   productTagIds: Array<Scalars['Int']>;
 };
 
-
 export type MutationCreateProductTagsArgs = {
   productTagGroupId: Scalars['Int'];
   productTags: Array<CreateProductTagsProductTagInputType>;
 };
 
-
 export type MutationCreateStockRequestArgs = {
   requestProducts: Array<CreateStockRequestRequestProductsInputType>;
 };
-
 
 export type MutationCreateStocksArgs = {
   productId: Scalars['Int'];
   stocks: Array<CreateStocksStocksInputType>;
 };
 
-
 export type MutationDeleteInternalUserArgs = {
   id: Scalars['BigInt'];
 };
-
 
 export type MutationDeleteMakerArgs = {
   id: Scalars['Int'];
 };
 
-
 export type MutationDeleteProductTagArgs = {
   id: Scalars['Int'];
 };
-
 
 export type MutationDeleteProductTaggingArgs = {
   id: Scalars['Int'];
 };
 
-
 export type MutationDeleteStockArgs = {
   id: Scalars['Int'];
 };
 
-
 export type MutationDeleteStockRequestArgs = {
   id: Scalars['Int'];
 };
-
 
 export type MutationRejectStockRequestArgs = {
   id: Scalars['Int'];
   message: Scalars['String'];
 };
 
-
 export type MutationReturnStockArgs = {
   id: Scalars['Int'];
 };
-
 
 export type MutationUpdateHospitalArgs = {
   deleted: Scalars['Boolean'];
@@ -365,7 +351,6 @@ export type MutationUpdateHospitalArgs = {
   url: Scalars['String'];
 };
 
-
 export type MutationUpdateInternalUserArgs = {
   discord_user_id: Scalars['String'];
   email: Scalars['String'];
@@ -375,12 +360,10 @@ export type MutationUpdateInternalUserArgs = {
   roleId: Scalars['Int'];
 };
 
-
 export type MutationUpdateMakerArgs = {
   id: Scalars['Int'];
   name: Scalars['String'];
 };
-
 
 export type MutationUpdateProductArgs = {
   file?: InputMaybe<Scalars['Upload']>;
@@ -390,30 +373,25 @@ export type MutationUpdateProductArgs = {
   remark: Scalars['String'];
 };
 
-
 export type MutationUpdateProductTagArgs = {
   id: Scalars['Int'];
   name: Scalars['String'];
 };
-
 
 export type MutationUpdateProductTagGroupArgs = {
   id: Scalars['Int'];
   name: Scalars['String'];
 };
 
-
 export type MutationUpdateStockInternalUserArgs = {
   id: Scalars['Int'];
   internalUserId: Scalars['BigInt'];
 };
 
-
 export type MutationUpdateStockRequestArgs = {
   id: Scalars['Int'];
   requestProducts: Array<CreateStockRequestRequestProductsInputType>;
 };
-
 
 export type MutationUpsertHospitalAddressGeoLocationArgs = {
   address: Scalars['String'];
@@ -516,11 +494,9 @@ export type Query = {
   stocks: Array<Stock>;
 };
 
-
 export type QueryHospitalArgs = {
   id: Scalars['BigInt'];
 };
-
 
 export type QueryHospitalConnectionArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -533,21 +509,17 @@ export type QueryHospitalConnectionArgs = {
   prefectureId?: InputMaybe<Scalars['BigInt']>;
 };
 
-
 export type QueryInternalUserArgs = {
   id: Scalars['BigInt'];
 };
-
 
 export type QueryMakerArgs = {
   id: Scalars['Int'];
 };
 
-
 export type QueryProductArgs = {
   id: Scalars['Int'];
 };
-
 
 export type QueryProductConnectionArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -562,21 +534,17 @@ export type QueryProductConnectionArgs = {
   productTagId?: InputMaybe<Scalars['Int']>;
 };
 
-
 export type QueryProductTagGroupArgs = {
   id: Scalars['Int'];
 };
-
 
 export type QueryProductsArgs = {
   ids?: InputMaybe<Array<Scalars['Int']>>;
 };
 
-
 export type QueryStockRequestArgs = {
   id: Scalars['Int'];
 };
-
 
 export type QueryStockRequestConnectionArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -585,7 +553,6 @@ export type QueryStockRequestConnectionArgs = {
   internalUserId?: InputMaybe<Scalars['BigInt']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 export type QueryStocksArgs = {
   productId: Scalars['Int'];
@@ -665,16 +632,45 @@ export type InternalAllocateStockMutationVariables = Exact<{
   internalUserId: Scalars['BigInt'];
 }>;
 
-
-export type InternalAllocateStockMutation = { __typename?: 'Mutation', allocateStock: { __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } } | null } };
+export type InternalAllocateStockMutation = {
+  __typename?: 'Mutation';
+  allocateStock: {
+    __typename?: 'Stock';
+    id: number;
+    expired_at: any;
+    internalUser: {
+      __typename?: 'InternalUser';
+      id: bigint;
+      email: string;
+      name: string;
+      discord_user_id: string;
+      role: { __typename?: 'Role'; id: number; name: string };
+    };
+    stockAllocation?: {
+      __typename?: 'StockAllocation';
+      created_at: any;
+      id: number;
+      internalUser: {
+        __typename?: 'InternalUser';
+        id: bigint;
+        email: string;
+        name: string;
+        discord_user_id: string;
+        role: { __typename?: 'Role'; id: number; name: string };
+      };
+    } | null;
+  };
+};
 
 export type InternalApproveStockRequestMutationVariables = Exact<{
   id: Scalars['Int'];
   message: Scalars['String'];
 }>;
 
-
-export type InternalApproveStockRequestMutation = { __typename?: 'Mutation', approveStockRequest: { __typename?: 'Delete', deleted: boolean } };
+export type InternalApproveStockRequestMutation = {
+  __typename?: 'Mutation';
+  approveStockRequest: { __typename?: 'Delete'; deleted: boolean };
+};
 
 export type InternalCreateHospitalMutationVariables = Exact<{
   name: Scalars['String'];
@@ -683,8 +679,68 @@ export type InternalCreateHospitalMutationVariables = Exact<{
   internal_memo: Scalars['String'];
 }>;
 
-
-export type InternalCreateHospitalMutation = { __typename?: 'Mutation', createHospital: { __typename?: 'Hospital', id: bigint, name: string, url: string, deleted: boolean, internal_memo: string, hospitalAddress?: { __typename?: 'HospitalAddress', id: bigint, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: bigint }, hospitalAddressGeoLocation?: { __typename?: 'HospitalAddressGeoLocation', id: bigint, latitude: number, longitude: number } | null } | null, hospitalBusinessForm?: { __typename?: 'HospitalBusinessForm', id: bigint, business_hour: string, closed_day: string, insurance_enabled: string, remark: string } | null, hospitalCertificationOption?: { __typename?: 'HospitalCertificationOption', id: bigint, nichiju_registered: string, jsava_registered: string } | null, hospitalInternalReputation?: { __typename?: 'HospitalInternalReputation', id: bigint, star: number, remark: string } | null, hospitalNightServiceOption?: { __typename?: 'HospitalNightServiceOption', id: bigint, status: string, remark: string } | null, hospitalNightUrgentActionOption?: { __typename?: 'HospitalNightUrgentActionOption', id: bigint, status: string } | null, hospitalReservationStatus?: { __typename?: 'HospitalReservationStatus', id: bigint, required: string, reservable: string, remark: string } | null } };
+export type InternalCreateHospitalMutation = {
+  __typename?: 'Mutation';
+  createHospital: {
+    __typename?: 'Hospital';
+    id: bigint;
+    name: string;
+    url: string;
+    deleted: boolean;
+    internal_memo: string;
+    hospitalAddress?: {
+      __typename?: 'HospitalAddress';
+      id: bigint;
+      address: string;
+      phone_number: string;
+      prefecture: { __typename?: 'Prefecture'; name: string; id: bigint };
+      hospitalAddressGeoLocation?: {
+        __typename?: 'HospitalAddressGeoLocation';
+        id: bigint;
+        latitude: number;
+        longitude: number;
+      } | null;
+    } | null;
+    hospitalBusinessForm?: {
+      __typename?: 'HospitalBusinessForm';
+      id: bigint;
+      business_hour: string;
+      closed_day: string;
+      insurance_enabled: string;
+      remark: string;
+    } | null;
+    hospitalCertificationOption?: {
+      __typename?: 'HospitalCertificationOption';
+      id: bigint;
+      nichiju_registered: string;
+      jsava_registered: string;
+    } | null;
+    hospitalInternalReputation?: {
+      __typename?: 'HospitalInternalReputation';
+      id: bigint;
+      star: number;
+      remark: string;
+    } | null;
+    hospitalNightServiceOption?: {
+      __typename?: 'HospitalNightServiceOption';
+      id: bigint;
+      status: string;
+      remark: string;
+    } | null;
+    hospitalNightUrgentActionOption?: {
+      __typename?: 'HospitalNightUrgentActionOption';
+      id: bigint;
+      status: string;
+    } | null;
+    hospitalReservationStatus?: {
+      __typename?: 'HospitalReservationStatus';
+      id: bigint;
+      required: string;
+      reservable: string;
+      remark: string;
+    } | null;
+  };
+};
 
 export type InternalCreateInternalUserMutationVariables = Exact<{
   name: Scalars['String'];
@@ -694,15 +750,26 @@ export type InternalCreateInternalUserMutationVariables = Exact<{
   roleId: Scalars['Int'];
 }>;
 
-
-export type InternalCreateInternalUserMutation = { __typename?: 'Mutation', createInternalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } };
+export type InternalCreateInternalUserMutation = {
+  __typename?: 'Mutation';
+  createInternalUser: {
+    __typename?: 'InternalUser';
+    id: bigint;
+    email: string;
+    name: string;
+    discord_user_id: string;
+    role: { __typename?: 'Role'; id: number; name: string };
+  };
+};
 
 export type InternalCreateMakerMutationVariables = Exact<{
   name: Scalars['String'];
 }>;
 
-
-export type InternalCreateMakerMutation = { __typename?: 'Mutation', createMaker: { __typename?: 'Maker', id: number, name: string } };
+export type InternalCreateMakerMutation = {
+  __typename?: 'Mutation';
+  createMaker: { __typename?: 'Maker'; id: number; name: string };
+};
 
 export type InternalCreateProductMutationVariables = Exact<{
   makerId: Scalars['Int'];
@@ -712,131 +779,605 @@ export type InternalCreateProductMutationVariables = Exact<{
   productTagIds: Array<Scalars['Int']> | Scalars['Int'];
 }>;
 
-
-export type InternalCreateProductMutation = { __typename?: 'Mutation', createProduct: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } } | null }> } };
+export type InternalCreateProductMutation = {
+  __typename?: 'Mutation';
+  createProduct: {
+    __typename?: 'Product';
+    id: number;
+    name: string;
+    remark: string;
+    url: string;
+    totalStockAmount: number;
+    allocatedStockAmount: number;
+    remainingStockAmount: number;
+    productTaggings: Array<{
+      __typename?: 'ProductTagging';
+      id: number;
+      productTag: { __typename?: 'ProductTag'; id: number; name: string };
+    }>;
+    maker: { __typename?: 'Maker'; id: number; name: string };
+    stocks: Array<{
+      __typename?: 'Stock';
+      id: number;
+      expired_at: any;
+      internalUser: {
+        __typename?: 'InternalUser';
+        id: bigint;
+        email: string;
+        name: string;
+        discord_user_id: string;
+        role: { __typename?: 'Role'; id: number; name: string };
+      };
+      stockAllocation?: {
+        __typename?: 'StockAllocation';
+        created_at: any;
+        id: number;
+        internalUser: {
+          __typename?: 'InternalUser';
+          id: bigint;
+          email: string;
+          name: string;
+          discord_user_id: string;
+          role: { __typename?: 'Role'; id: number; name: string };
+        };
+      } | null;
+    }>;
+  };
+};
 
 export type InternalCreateProductTagGroupMutationVariables = Exact<{
   name: Scalars['String'];
 }>;
 
-
-export type InternalCreateProductTagGroupMutation = { __typename?: 'Mutation', createProductTagGroup: { __typename?: 'ProductTagGroup', id: number, name: string, productTags: Array<{ __typename?: 'ProductTag', id: number, name: string }> } };
+export type InternalCreateProductTagGroupMutation = {
+  __typename?: 'Mutation';
+  createProductTagGroup: {
+    __typename?: 'ProductTagGroup';
+    id: number;
+    name: string;
+    productTags: Array<{ __typename?: 'ProductTag'; id: number; name: string }>;
+  };
+};
 
 export type InternalCreateProductTaggingsMutationVariables = Exact<{
   productId: Scalars['Int'];
   productTagIds: Array<Scalars['Int']> | Scalars['Int'];
 }>;
 
-
-export type InternalCreateProductTaggingsMutation = { __typename?: 'Mutation', createProductTaggings: { __typename?: 'Product', id: number } };
+export type InternalCreateProductTaggingsMutation = {
+  __typename?: 'Mutation';
+  createProductTaggings: { __typename?: 'Product'; id: number };
+};
 
 export type InternalCreateProductTagsMutationVariables = Exact<{
   productTagGroupId: Scalars['Int'];
-  productTags: Array<CreateProductTagsProductTagInputType> | CreateProductTagsProductTagInputType;
+  productTags:
+    | Array<CreateProductTagsProductTagInputType>
+    | CreateProductTagsProductTagInputType;
 }>;
 
-
-export type InternalCreateProductTagsMutation = { __typename?: 'Mutation', createProductTags: { __typename?: 'BatchPayload', count: number } };
+export type InternalCreateProductTagsMutation = {
+  __typename?: 'Mutation';
+  createProductTags: { __typename?: 'BatchPayload'; count: number };
+};
 
 export type InternalCreateStockRequestMutationVariables = Exact<{
-  requestProducts: Array<CreateStockRequestRequestProductsInputType> | CreateStockRequestRequestProductsInputType;
+  requestProducts:
+    | Array<CreateStockRequestRequestProductsInputType>
+    | CreateStockRequestRequestProductsInputType;
 }>;
 
-
-export type InternalCreateStockRequestMutation = { __typename?: 'Mutation', createStockRequest: { __typename?: 'StockRequest', id: number, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, productRegistrations: Array<{ __typename?: 'StockRequestProductRegistration', id: number, product: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } } | null }> } }> } };
+export type InternalCreateStockRequestMutation = {
+  __typename?: 'Mutation';
+  createStockRequest: {
+    __typename?: 'StockRequest';
+    id: number;
+    internalUser: {
+      __typename?: 'InternalUser';
+      id: bigint;
+      email: string;
+      name: string;
+      discord_user_id: string;
+      role: { __typename?: 'Role'; id: number; name: string };
+    };
+    productRegistrations: Array<{
+      __typename?: 'StockRequestProductRegistration';
+      id: number;
+      product: {
+        __typename?: 'Product';
+        id: number;
+        name: string;
+        remark: string;
+        url: string;
+        totalStockAmount: number;
+        allocatedStockAmount: number;
+        remainingStockAmount: number;
+        productTaggings: Array<{
+          __typename?: 'ProductTagging';
+          id: number;
+          productTag: { __typename?: 'ProductTag'; id: number; name: string };
+        }>;
+        maker: { __typename?: 'Maker'; id: number; name: string };
+        stocks: Array<{
+          __typename?: 'Stock';
+          id: number;
+          expired_at: any;
+          internalUser: {
+            __typename?: 'InternalUser';
+            id: bigint;
+            email: string;
+            name: string;
+            discord_user_id: string;
+            role: { __typename?: 'Role'; id: number; name: string };
+          };
+          stockAllocation?: {
+            __typename?: 'StockAllocation';
+            created_at: any;
+            id: number;
+            internalUser: {
+              __typename?: 'InternalUser';
+              id: bigint;
+              email: string;
+              name: string;
+              discord_user_id: string;
+              role: { __typename?: 'Role'; id: number; name: string };
+            };
+          } | null;
+        }>;
+      };
+    }>;
+  };
+};
 
 export type InternalCreateStocksMutationVariables = Exact<{
   productId: Scalars['Int'];
   stocks: Array<CreateStocksStocksInputType> | CreateStocksStocksInputType;
 }>;
 
-
-export type InternalCreateStocksMutation = { __typename?: 'Mutation', createStocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } } | null }> };
+export type InternalCreateStocksMutation = {
+  __typename?: 'Mutation';
+  createStocks: Array<{
+    __typename?: 'Stock';
+    id: number;
+    expired_at: any;
+    internalUser: {
+      __typename?: 'InternalUser';
+      id: bigint;
+      email: string;
+      name: string;
+      discord_user_id: string;
+      role: { __typename?: 'Role'; id: number; name: string };
+    };
+    stockAllocation?: {
+      __typename?: 'StockAllocation';
+      created_at: any;
+      id: number;
+      internalUser: {
+        __typename?: 'InternalUser';
+        id: bigint;
+        email: string;
+        name: string;
+        discord_user_id: string;
+        role: { __typename?: 'Role'; id: number; name: string };
+      };
+    } | null;
+  }>;
+};
 
 export type InternalDeleteInternalUserMutationVariables = Exact<{
   id: Scalars['BigInt'];
 }>;
 
-
-export type InternalDeleteInternalUserMutation = { __typename?: 'Mutation', deleteInternalUser: { __typename?: 'Delete', deleted: boolean } };
+export type InternalDeleteInternalUserMutation = {
+  __typename?: 'Mutation';
+  deleteInternalUser: { __typename?: 'Delete'; deleted: boolean };
+};
 
 export type InternalDeleteMakerMutationVariables = Exact<{
   id: Scalars['Int'];
 }>;
 
-
-export type InternalDeleteMakerMutation = { __typename?: 'Mutation', deleteMaker: { __typename?: 'Delete', deleted: boolean } };
+export type InternalDeleteMakerMutation = {
+  __typename?: 'Mutation';
+  deleteMaker: { __typename?: 'Delete'; deleted: boolean };
+};
 
 export type InternalDeleteProductTagMutationVariables = Exact<{
   id: Scalars['Int'];
 }>;
 
-
-export type InternalDeleteProductTagMutation = { __typename?: 'Mutation', deleteProductTag: { __typename?: 'Delete', deleted: boolean } };
+export type InternalDeleteProductTagMutation = {
+  __typename?: 'Mutation';
+  deleteProductTag: { __typename?: 'Delete'; deleted: boolean };
+};
 
 export type InternalDeleteProductTaggingMutationVariables = Exact<{
   id: Scalars['Int'];
 }>;
 
-
-export type InternalDeleteProductTaggingMutation = { __typename?: 'Mutation', deleteProductTagging: { __typename?: 'Delete', deleted: boolean } };
+export type InternalDeleteProductTaggingMutation = {
+  __typename?: 'Mutation';
+  deleteProductTagging: { __typename?: 'Delete'; deleted: boolean };
+};
 
 export type InternalDeleteStockMutationVariables = Exact<{
   id: Scalars['Int'];
 }>;
 
-
-export type InternalDeleteStockMutation = { __typename?: 'Mutation', deleteStock: { __typename?: 'Delete', deleted: boolean } };
+export type InternalDeleteStockMutation = {
+  __typename?: 'Mutation';
+  deleteStock: { __typename?: 'Delete'; deleted: boolean };
+};
 
 export type InternalDeleteStockRequestMutationVariables = Exact<{
   id: Scalars['Int'];
 }>;
 
+export type InternalDeleteStockRequestMutation = {
+  __typename?: 'Mutation';
+  deleteStockRequest: { __typename?: 'Delete'; deleted: boolean };
+};
 
-export type InternalDeleteStockRequestMutation = { __typename?: 'Mutation', deleteStockRequest: { __typename?: 'Delete', deleted: boolean } };
+export type HospitalFieldsFragment = {
+  __typename?: 'Hospital';
+  id: bigint;
+  name: string;
+  url: string;
+  deleted: boolean;
+  internal_memo: string;
+  hospitalAddress?: {
+    __typename?: 'HospitalAddress';
+    id: bigint;
+    address: string;
+    phone_number: string;
+    prefecture: { __typename?: 'Prefecture'; name: string; id: bigint };
+    hospitalAddressGeoLocation?: {
+      __typename?: 'HospitalAddressGeoLocation';
+      id: bigint;
+      latitude: number;
+      longitude: number;
+    } | null;
+  } | null;
+  hospitalBusinessForm?: {
+    __typename?: 'HospitalBusinessForm';
+    id: bigint;
+    business_hour: string;
+    closed_day: string;
+    insurance_enabled: string;
+    remark: string;
+  } | null;
+  hospitalCertificationOption?: {
+    __typename?: 'HospitalCertificationOption';
+    id: bigint;
+    nichiju_registered: string;
+    jsava_registered: string;
+  } | null;
+  hospitalInternalReputation?: {
+    __typename?: 'HospitalInternalReputation';
+    id: bigint;
+    star: number;
+    remark: string;
+  } | null;
+  hospitalNightServiceOption?: {
+    __typename?: 'HospitalNightServiceOption';
+    id: bigint;
+    status: string;
+    remark: string;
+  } | null;
+  hospitalNightUrgentActionOption?: {
+    __typename?: 'HospitalNightUrgentActionOption';
+    id: bigint;
+    status: string;
+  } | null;
+  hospitalReservationStatus?: {
+    __typename?: 'HospitalReservationStatus';
+    id: bigint;
+    required: string;
+    reservable: string;
+    remark: string;
+  } | null;
+};
 
-export type HospitalFieldsFragment = { __typename?: 'Hospital', id: bigint, name: string, url: string, deleted: boolean, internal_memo: string, hospitalAddress?: { __typename?: 'HospitalAddress', id: bigint, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: bigint }, hospitalAddressGeoLocation?: { __typename?: 'HospitalAddressGeoLocation', id: bigint, latitude: number, longitude: number } | null } | null, hospitalBusinessForm?: { __typename?: 'HospitalBusinessForm', id: bigint, business_hour: string, closed_day: string, insurance_enabled: string, remark: string } | null, hospitalCertificationOption?: { __typename?: 'HospitalCertificationOption', id: bigint, nichiju_registered: string, jsava_registered: string } | null, hospitalInternalReputation?: { __typename?: 'HospitalInternalReputation', id: bigint, star: number, remark: string } | null, hospitalNightServiceOption?: { __typename?: 'HospitalNightServiceOption', id: bigint, status: string, remark: string } | null, hospitalNightUrgentActionOption?: { __typename?: 'HospitalNightUrgentActionOption', id: bigint, status: string } | null, hospitalReservationStatus?: { __typename?: 'HospitalReservationStatus', id: bigint, required: string, reservable: string, remark: string } | null };
+export type HospitalAddressFieldsFragment = {
+  __typename?: 'HospitalAddress';
+  id: bigint;
+  address: string;
+  phone_number: string;
+  prefecture: { __typename?: 'Prefecture'; name: string; id: bigint };
+  hospitalAddressGeoLocation?: {
+    __typename?: 'HospitalAddressGeoLocation';
+    id: bigint;
+    latitude: number;
+    longitude: number;
+  } | null;
+};
 
-export type HospitalAddressFieldsFragment = { __typename?: 'HospitalAddress', id: bigint, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: bigint }, hospitalAddressGeoLocation?: { __typename?: 'HospitalAddressGeoLocation', id: bigint, latitude: number, longitude: number } | null };
+export type HospitalAddressGeoLocationFieldsFragment = {
+  __typename?: 'HospitalAddressGeoLocation';
+  id: bigint;
+  latitude: number;
+  longitude: number;
+};
 
-export type HospitalAddressGeoLocationFieldsFragment = { __typename?: 'HospitalAddressGeoLocation', id: bigint, latitude: number, longitude: number };
+export type HospitalBusinessFormFieldsFragment = {
+  __typename?: 'HospitalBusinessForm';
+  id: bigint;
+  business_hour: string;
+  closed_day: string;
+  insurance_enabled: string;
+  remark: string;
+};
 
-export type HospitalBusinessFormFieldsFragment = { __typename?: 'HospitalBusinessForm', id: bigint, business_hour: string, closed_day: string, insurance_enabled: string, remark: string };
+export type HospitalCertificationOptionFieldsFragment = {
+  __typename?: 'HospitalCertificationOption';
+  id: bigint;
+  nichiju_registered: string;
+  jsava_registered: string;
+};
 
-export type HospitalCertificationOptionFieldsFragment = { __typename?: 'HospitalCertificationOption', id: bigint, nichiju_registered: string, jsava_registered: string };
+export type HospitalInternalReputationFieldsFragment = {
+  __typename?: 'HospitalInternalReputation';
+  id: bigint;
+  star: number;
+  remark: string;
+};
 
-export type HospitalInternalReputationFieldsFragment = { __typename?: 'HospitalInternalReputation', id: bigint, star: number, remark: string };
+export type HospitalNightServiceOptionFieldsFragment = {
+  __typename?: 'HospitalNightServiceOption';
+  id: bigint;
+  status: string;
+  remark: string;
+};
 
-export type HospitalNightServiceOptionFieldsFragment = { __typename?: 'HospitalNightServiceOption', id: bigint, status: string, remark: string };
+export type HospitalNightUrgentActionOptionFieldsFragment = {
+  __typename?: 'HospitalNightUrgentActionOption';
+  id: bigint;
+  status: string;
+};
 
-export type HospitalNightUrgentActionOptionFieldsFragment = { __typename?: 'HospitalNightUrgentActionOption', id: bigint, status: string };
+export type HospitalReservationStatusFieldsFragment = {
+  __typename?: 'HospitalReservationStatus';
+  id: bigint;
+  required: string;
+  reservable: string;
+  remark: string;
+};
 
-export type HospitalReservationStatusFieldsFragment = { __typename?: 'HospitalReservationStatus', id: bigint, required: string, reservable: string, remark: string };
+export type InternalUserFieldsFragment = {
+  __typename?: 'InternalUser';
+  id: bigint;
+  email: string;
+  name: string;
+  discord_user_id: string;
+  role: { __typename?: 'Role'; id: number; name: string };
+};
 
-export type InternalUserFieldsFragment = { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } };
+export type MakerFieldsFragment = {
+  __typename?: 'Maker';
+  id: number;
+  name: string;
+};
 
-export type MakerFieldsFragment = { __typename?: 'Maker', id: number, name: string };
+export type ProductFieldsFragment = {
+  __typename?: 'Product';
+  id: number;
+  name: string;
+  remark: string;
+  url: string;
+  totalStockAmount: number;
+  allocatedStockAmount: number;
+  remainingStockAmount: number;
+  productTaggings: Array<{
+    __typename?: 'ProductTagging';
+    id: number;
+    productTag: { __typename?: 'ProductTag'; id: number; name: string };
+  }>;
+  maker: { __typename?: 'Maker'; id: number; name: string };
+  stocks: Array<{
+    __typename?: 'Stock';
+    id: number;
+    expired_at: any;
+    internalUser: {
+      __typename?: 'InternalUser';
+      id: bigint;
+      email: string;
+      name: string;
+      discord_user_id: string;
+      role: { __typename?: 'Role'; id: number; name: string };
+    };
+    stockAllocation?: {
+      __typename?: 'StockAllocation';
+      created_at: any;
+      id: number;
+      internalUser: {
+        __typename?: 'InternalUser';
+        id: bigint;
+        email: string;
+        name: string;
+        discord_user_id: string;
+        role: { __typename?: 'Role'; id: number; name: string };
+      };
+    } | null;
+  }>;
+};
 
-export type ProductFieldsFragment = { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } } | null }> };
+export type StockFieldsFragment = {
+  __typename?: 'Stock';
+  id: number;
+  expired_at: any;
+  internalUser: {
+    __typename?: 'InternalUser';
+    id: bigint;
+    email: string;
+    name: string;
+    discord_user_id: string;
+    role: { __typename?: 'Role'; id: number; name: string };
+  };
+  stockAllocation?: {
+    __typename?: 'StockAllocation';
+    created_at: any;
+    id: number;
+    internalUser: {
+      __typename?: 'InternalUser';
+      id: bigint;
+      email: string;
+      name: string;
+      discord_user_id: string;
+      role: { __typename?: 'Role'; id: number; name: string };
+    };
+  } | null;
+};
 
-export type StockFieldsFragment = { __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } } | null };
+export type ProductTaggingFieldsFragment = {
+  __typename?: 'ProductTagging';
+  id: number;
+  productTag: { __typename?: 'ProductTag'; id: number; name: string };
+};
 
-export type ProductTaggingFieldsFragment = { __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } };
+export type ProductTagFieldsFragment = {
+  __typename?: 'ProductTag';
+  id: number;
+  name: string;
+};
 
-export type ProductTagFieldsFragment = { __typename?: 'ProductTag', id: number, name: string };
+export type ProductTagGroupFieldsFragment = {
+  __typename?: 'ProductTagGroup';
+  id: number;
+  name: string;
+  productTags: Array<{ __typename?: 'ProductTag'; id: number; name: string }>;
+};
 
-export type ProductTagGroupFieldsFragment = { __typename?: 'ProductTagGroup', id: number, name: string, productTags: Array<{ __typename?: 'ProductTag', id: number, name: string }> };
+export type RoleFieldsFragment = {
+  __typename?: 'Role';
+  id: number;
+  name: string;
+};
 
-export type RoleFieldsFragment = { __typename?: 'Role', id: number, name: string };
-
-export type StockRequestFieldsFragment = { __typename?: 'StockRequest', id: number, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, productRegistrations: Array<{ __typename?: 'StockRequestProductRegistration', id: number, product: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } } | null }> } }> };
+export type StockRequestFieldsFragment = {
+  __typename?: 'StockRequest';
+  id: number;
+  internalUser: {
+    __typename?: 'InternalUser';
+    id: bigint;
+    email: string;
+    name: string;
+    discord_user_id: string;
+    role: { __typename?: 'Role'; id: number; name: string };
+  };
+  productRegistrations: Array<{
+    __typename?: 'StockRequestProductRegistration';
+    id: number;
+    product: {
+      __typename?: 'Product';
+      id: number;
+      name: string;
+      remark: string;
+      url: string;
+      totalStockAmount: number;
+      allocatedStockAmount: number;
+      remainingStockAmount: number;
+      productTaggings: Array<{
+        __typename?: 'ProductTagging';
+        id: number;
+        productTag: { __typename?: 'ProductTag'; id: number; name: string };
+      }>;
+      maker: { __typename?: 'Maker'; id: number; name: string };
+      stocks: Array<{
+        __typename?: 'Stock';
+        id: number;
+        expired_at: any;
+        internalUser: {
+          __typename?: 'InternalUser';
+          id: bigint;
+          email: string;
+          name: string;
+          discord_user_id: string;
+          role: { __typename?: 'Role'; id: number; name: string };
+        };
+        stockAllocation?: {
+          __typename?: 'StockAllocation';
+          created_at: any;
+          id: number;
+          internalUser: {
+            __typename?: 'InternalUser';
+            id: bigint;
+            email: string;
+            name: string;
+            discord_user_id: string;
+            role: { __typename?: 'Role'; id: number; name: string };
+          };
+        } | null;
+      }>;
+    };
+  }>;
+};
 
 export type InternalGetHospitalQueryVariables = Exact<{
   id: Scalars['BigInt'];
 }>;
 
-
-export type InternalGetHospitalQuery = { __typename?: 'Query', hospital: { __typename?: 'Hospital', id: bigint, name: string, url: string, deleted: boolean, internal_memo: string, hospitalAddress?: { __typename?: 'HospitalAddress', id: bigint, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: bigint }, hospitalAddressGeoLocation?: { __typename?: 'HospitalAddressGeoLocation', id: bigint, latitude: number, longitude: number } | null } | null, hospitalBusinessForm?: { __typename?: 'HospitalBusinessForm', id: bigint, business_hour: string, closed_day: string, insurance_enabled: string, remark: string } | null, hospitalCertificationOption?: { __typename?: 'HospitalCertificationOption', id: bigint, nichiju_registered: string, jsava_registered: string } | null, hospitalInternalReputation?: { __typename?: 'HospitalInternalReputation', id: bigint, star: number, remark: string } | null, hospitalNightServiceOption?: { __typename?: 'HospitalNightServiceOption', id: bigint, status: string, remark: string } | null, hospitalNightUrgentActionOption?: { __typename?: 'HospitalNightUrgentActionOption', id: bigint, status: string } | null, hospitalReservationStatus?: { __typename?: 'HospitalReservationStatus', id: bigint, required: string, reservable: string, remark: string } | null } };
+export type InternalGetHospitalQuery = {
+  __typename?: 'Query';
+  hospital: {
+    __typename?: 'Hospital';
+    id: bigint;
+    name: string;
+    url: string;
+    deleted: boolean;
+    internal_memo: string;
+    hospitalAddress?: {
+      __typename?: 'HospitalAddress';
+      id: bigint;
+      address: string;
+      phone_number: string;
+      prefecture: { __typename?: 'Prefecture'; name: string; id: bigint };
+      hospitalAddressGeoLocation?: {
+        __typename?: 'HospitalAddressGeoLocation';
+        id: bigint;
+        latitude: number;
+        longitude: number;
+      } | null;
+    } | null;
+    hospitalBusinessForm?: {
+      __typename?: 'HospitalBusinessForm';
+      id: bigint;
+      business_hour: string;
+      closed_day: string;
+      insurance_enabled: string;
+      remark: string;
+    } | null;
+    hospitalCertificationOption?: {
+      __typename?: 'HospitalCertificationOption';
+      id: bigint;
+      nichiju_registered: string;
+      jsava_registered: string;
+    } | null;
+    hospitalInternalReputation?: {
+      __typename?: 'HospitalInternalReputation';
+      id: bigint;
+      star: number;
+      remark: string;
+    } | null;
+    hospitalNightServiceOption?: {
+      __typename?: 'HospitalNightServiceOption';
+      id: bigint;
+      status: string;
+      remark: string;
+    } | null;
+    hospitalNightUrgentActionOption?: {
+      __typename?: 'HospitalNightUrgentActionOption';
+      id: bigint;
+      status: string;
+    } | null;
+    hospitalReservationStatus?: {
+      __typename?: 'HospitalReservationStatus';
+      id: bigint;
+      required: string;
+      reservable: string;
+      remark: string;
+    } | null;
+  };
+};
 
 export type InternalGetHospitalConnectionQueryVariables = Exact<{
   first?: InputMaybe<Scalars['Int']>;
@@ -847,44 +1388,188 @@ export type InternalGetHospitalConnectionQueryVariables = Exact<{
   internalReputationStar?: InputMaybe<Scalars['Int']>;
 }>;
 
+export type InternalGetHospitalConnectionQuery = {
+  __typename?: 'Query';
+  hospitalConnection?: {
+    __typename?: 'HospitalConnection';
+    edges?: Array<{
+      __typename?: 'HospitalEdge';
+      node?: {
+        __typename?: 'Hospital';
+        id: bigint;
+        name: string;
+        url: string;
+        deleted: boolean;
+        internal_memo: string;
+        hospitalAddress?: {
+          __typename?: 'HospitalAddress';
+          id: bigint;
+          address: string;
+          phone_number: string;
+          prefecture: { __typename?: 'Prefecture'; name: string; id: bigint };
+          hospitalAddressGeoLocation?: {
+            __typename?: 'HospitalAddressGeoLocation';
+            id: bigint;
+            latitude: number;
+            longitude: number;
+          } | null;
+        } | null;
+        hospitalBusinessForm?: {
+          __typename?: 'HospitalBusinessForm';
+          id: bigint;
+          business_hour: string;
+          closed_day: string;
+          insurance_enabled: string;
+          remark: string;
+        } | null;
+        hospitalCertificationOption?: {
+          __typename?: 'HospitalCertificationOption';
+          id: bigint;
+          nichiju_registered: string;
+          jsava_registered: string;
+        } | null;
+        hospitalInternalReputation?: {
+          __typename?: 'HospitalInternalReputation';
+          id: bigint;
+          star: number;
+          remark: string;
+        } | null;
+        hospitalNightServiceOption?: {
+          __typename?: 'HospitalNightServiceOption';
+          id: bigint;
+          status: string;
+          remark: string;
+        } | null;
+        hospitalNightUrgentActionOption?: {
+          __typename?: 'HospitalNightUrgentActionOption';
+          id: bigint;
+          status: string;
+        } | null;
+        hospitalReservationStatus?: {
+          __typename?: 'HospitalReservationStatus';
+          id: bigint;
+          required: string;
+          reservable: string;
+          remark: string;
+        } | null;
+      } | null;
+    } | null> | null;
+    pageInfo: {
+      __typename?: 'PageInfo';
+      hasNextPage: boolean;
+      hasPreviousPage: boolean;
+      startCursor?: string | null;
+      endCursor?: string | null;
+    };
+  } | null;
+};
 
-export type InternalGetHospitalConnectionQuery = { __typename?: 'Query', hospitalConnection?: { __typename?: 'HospitalConnection', edges?: Array<{ __typename?: 'HospitalEdge', node?: { __typename?: 'Hospital', id: bigint, name: string, url: string, deleted: boolean, internal_memo: string, hospitalAddress?: { __typename?: 'HospitalAddress', id: bigint, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: bigint }, hospitalAddressGeoLocation?: { __typename?: 'HospitalAddressGeoLocation', id: bigint, latitude: number, longitude: number } | null } | null, hospitalBusinessForm?: { __typename?: 'HospitalBusinessForm', id: bigint, business_hour: string, closed_day: string, insurance_enabled: string, remark: string } | null, hospitalCertificationOption?: { __typename?: 'HospitalCertificationOption', id: bigint, nichiju_registered: string, jsava_registered: string } | null, hospitalInternalReputation?: { __typename?: 'HospitalInternalReputation', id: bigint, star: number, remark: string } | null, hospitalNightServiceOption?: { __typename?: 'HospitalNightServiceOption', id: bigint, status: string, remark: string } | null, hospitalNightUrgentActionOption?: { __typename?: 'HospitalNightUrgentActionOption', id: bigint, status: string } | null, hospitalReservationStatus?: { __typename?: 'HospitalReservationStatus', id: bigint, required: string, reservable: string, remark: string } | null } | null } | null> | null, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, hasPreviousPage: boolean, startCursor?: string | null, endCursor?: string | null } } | null };
+export type InternalGetHospitalIdsQueryVariables = Exact<{
+  [key: string]: never;
+}>;
 
-export type InternalGetHospitalIdsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type InternalGetHospitalIdsQuery = { __typename?: 'Query', hospitals: Array<{ __typename?: 'Hospital', id: bigint }> };
+export type InternalGetHospitalIdsQuery = {
+  __typename?: 'Query';
+  hospitals: Array<{ __typename?: 'Hospital'; id: bigint }>;
+};
 
 export type InternalGetInternalUserQueryVariables = Exact<{
   id: Scalars['BigInt'];
 }>;
 
+export type InternalGetInternalUserQuery = {
+  __typename?: 'Query';
+  internalUser: {
+    __typename?: 'InternalUser';
+    id: bigint;
+    email: string;
+    name: string;
+    discord_user_id: string;
+    role: { __typename?: 'Role'; id: number; name: string };
+  };
+};
 
-export type InternalGetInternalUserQuery = { __typename?: 'Query', internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } };
+export type InternalGetInternalUsersQueryVariables = Exact<{
+  [key: string]: never;
+}>;
 
-export type InternalGetInternalUsersQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type InternalGetInternalUsersQuery = { __typename?: 'Query', internalUsers: Array<{ __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }> };
+export type InternalGetInternalUsersQuery = {
+  __typename?: 'Query';
+  internalUsers: Array<{
+    __typename?: 'InternalUser';
+    id: bigint;
+    email: string;
+    name: string;
+    discord_user_id: string;
+    role: { __typename?: 'Role'; id: number; name: string };
+  }>;
+};
 
 export type InternalGetMakerQueryVariables = Exact<{
   id: Scalars['Int'];
 }>;
 
+export type InternalGetMakerQuery = {
+  __typename?: 'Query';
+  maker: { __typename?: 'Maker'; id: number; name: string };
+};
 
-export type InternalGetMakerQuery = { __typename?: 'Query', maker: { __typename?: 'Maker', id: number, name: string } };
+export type InternalGetMakersQueryVariables = Exact<{ [key: string]: never }>;
 
-export type InternalGetMakersQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type InternalGetMakersQuery = { __typename?: 'Query', makers: Array<{ __typename?: 'Maker', id: number, name: string }> };
+export type InternalGetMakersQuery = {
+  __typename?: 'Query';
+  makers: Array<{ __typename?: 'Maker'; id: number; name: string }>;
+};
 
 export type InternalGetProductQueryVariables = Exact<{
   id: Scalars['Int'];
 }>;
 
-
-export type InternalGetProductQuery = { __typename?: 'Query', product: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } } | null }> } };
+export type InternalGetProductQuery = {
+  __typename?: 'Query';
+  product: {
+    __typename?: 'Product';
+    id: number;
+    name: string;
+    remark: string;
+    url: string;
+    totalStockAmount: number;
+    allocatedStockAmount: number;
+    remainingStockAmount: number;
+    productTaggings: Array<{
+      __typename?: 'ProductTagging';
+      id: number;
+      productTag: { __typename?: 'ProductTag'; id: number; name: string };
+    }>;
+    maker: { __typename?: 'Maker'; id: number; name: string };
+    stocks: Array<{
+      __typename?: 'Stock';
+      id: number;
+      expired_at: any;
+      internalUser: {
+        __typename?: 'InternalUser';
+        id: bigint;
+        email: string;
+        name: string;
+        discord_user_id: string;
+        role: { __typename?: 'Role'; id: number; name: string };
+      };
+      stockAllocation?: {
+        __typename?: 'StockAllocation';
+        created_at: any;
+        id: number;
+        internalUser: {
+          __typename?: 'InternalUser';
+          id: bigint;
+          email: string;
+          name: string;
+          discord_user_id: string;
+          role: { __typename?: 'Role'; id: number; name: string };
+        };
+      } | null;
+    }>;
+  };
+};
 
 export type InternalGetProductConnectionQueryVariables = Exact<{
   first?: InputMaybe<Scalars['Int']>;
@@ -897,54 +1582,251 @@ export type InternalGetProductConnectionQueryVariables = Exact<{
   hasStock?: InputMaybe<Scalars['Boolean']>;
 }>;
 
+export type InternalGetProductConnectionQuery = {
+  __typename?: 'Query';
+  productConnection?: {
+    __typename?: 'ProductConnection';
+    edges?: Array<{
+      __typename?: 'ProductEdge';
+      node?: {
+        __typename?: 'Product';
+        id: number;
+        name: string;
+        remark: string;
+        url: string;
+        totalStockAmount: number;
+        allocatedStockAmount: number;
+        remainingStockAmount: number;
+        productTaggings: Array<{
+          __typename?: 'ProductTagging';
+          id: number;
+          productTag: { __typename?: 'ProductTag'; id: number; name: string };
+        }>;
+        maker: { __typename?: 'Maker'; id: number; name: string };
+        stocks: Array<{
+          __typename?: 'Stock';
+          id: number;
+          expired_at: any;
+          internalUser: {
+            __typename?: 'InternalUser';
+            id: bigint;
+            email: string;
+            name: string;
+            discord_user_id: string;
+            role: { __typename?: 'Role'; id: number; name: string };
+          };
+          stockAllocation?: {
+            __typename?: 'StockAllocation';
+            created_at: any;
+            id: number;
+            internalUser: {
+              __typename?: 'InternalUser';
+              id: bigint;
+              email: string;
+              name: string;
+              discord_user_id: string;
+              role: { __typename?: 'Role'; id: number; name: string };
+            };
+          } | null;
+        }>;
+      } | null;
+    } | null> | null;
+    pageInfo: {
+      __typename?: 'PageInfo';
+      hasNextPage: boolean;
+      hasPreviousPage: boolean;
+      startCursor?: string | null;
+      endCursor?: string | null;
+    };
+  } | null;
+};
 
-export type InternalGetProductConnectionQuery = { __typename?: 'Query', productConnection?: { __typename?: 'ProductConnection', edges?: Array<{ __typename?: 'ProductEdge', node?: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } } | null }> } | null } | null> | null, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, hasPreviousPage: boolean, startCursor?: string | null, endCursor?: string | null } } | null };
+export type InternalGetProductIdsQueryVariables = Exact<{
+  [key: string]: never;
+}>;
 
-export type InternalGetProductIdsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type InternalGetProductIdsQuery = { __typename?: 'Query', products: Array<{ __typename?: 'Product', id: number }> };
+export type InternalGetProductIdsQuery = {
+  __typename?: 'Query';
+  products: Array<{ __typename?: 'Product'; id: number }>;
+};
 
 export type InternalGetProductTagGroupQueryVariables = Exact<{
   id: Scalars['Int'];
 }>;
 
+export type InternalGetProductTagGroupQuery = {
+  __typename?: 'Query';
+  productTagGroup: {
+    __typename?: 'ProductTagGroup';
+    id: number;
+    name: string;
+    productTags: Array<{ __typename?: 'ProductTag'; id: number; name: string }>;
+  };
+};
 
-export type InternalGetProductTagGroupQuery = { __typename?: 'Query', productTagGroup: { __typename?: 'ProductTagGroup', id: number, name: string, productTags: Array<{ __typename?: 'ProductTag', id: number, name: string }> } };
+export type InternalGetProductTagGroupIdsQueryVariables = Exact<{
+  [key: string]: never;
+}>;
 
-export type InternalGetProductTagGroupIdsQueryVariables = Exact<{ [key: string]: never; }>;
+export type InternalGetProductTagGroupIdsQuery = {
+  __typename?: 'Query';
+  productTagGroups: Array<{ __typename?: 'ProductTagGroup'; id: number }>;
+};
 
+export type InternalGetProductTagGroupsQueryVariables = Exact<{
+  [key: string]: never;
+}>;
 
-export type InternalGetProductTagGroupIdsQuery = { __typename?: 'Query', productTagGroups: Array<{ __typename?: 'ProductTagGroup', id: number }> };
-
-export type InternalGetProductTagGroupsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type InternalGetProductTagGroupsQuery = { __typename?: 'Query', productTagGroups: Array<{ __typename?: 'ProductTagGroup', id: number, name: string, productTags: Array<{ __typename?: 'ProductTag', id: number, name: string }> }> };
+export type InternalGetProductTagGroupsQuery = {
+  __typename?: 'Query';
+  productTagGroups: Array<{
+    __typename?: 'ProductTagGroup';
+    id: number;
+    name: string;
+    productTags: Array<{ __typename?: 'ProductTag'; id: number; name: string }>;
+  }>;
+};
 
 export type InternalGetProductsQueryVariables = Exact<{
   ids?: InputMaybe<Array<Scalars['Int']> | Scalars['Int']>;
 }>;
 
+export type InternalGetProductsQuery = {
+  __typename?: 'Query';
+  products: Array<{
+    __typename?: 'Product';
+    id: number;
+    name: string;
+    remark: string;
+    url: string;
+    totalStockAmount: number;
+    allocatedStockAmount: number;
+    remainingStockAmount: number;
+    productTaggings: Array<{
+      __typename?: 'ProductTagging';
+      id: number;
+      productTag: { __typename?: 'ProductTag'; id: number; name: string };
+    }>;
+    maker: { __typename?: 'Maker'; id: number; name: string };
+    stocks: Array<{
+      __typename?: 'Stock';
+      id: number;
+      expired_at: any;
+      internalUser: {
+        __typename?: 'InternalUser';
+        id: bigint;
+        email: string;
+        name: string;
+        discord_user_id: string;
+        role: { __typename?: 'Role'; id: number; name: string };
+      };
+      stockAllocation?: {
+        __typename?: 'StockAllocation';
+        created_at: any;
+        id: number;
+        internalUser: {
+          __typename?: 'InternalUser';
+          id: bigint;
+          email: string;
+          name: string;
+          discord_user_id: string;
+          role: { __typename?: 'Role'; id: number; name: string };
+        };
+      } | null;
+    }>;
+  }>;
+};
 
-export type InternalGetProductsQuery = { __typename?: 'Query', products: Array<{ __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } } | null }> }> };
+export type InternalGetRolesQueryVariables = Exact<{ [key: string]: never }>;
 
-export type InternalGetRolesQueryVariables = Exact<{ [key: string]: never; }>;
+export type InternalGetRolesQuery = {
+  __typename?: 'Query';
+  roles: Array<{ __typename?: 'Role'; id: number; name: string }>;
+};
 
+export type InternalGetSessionQueryVariables = Exact<{ [key: string]: never }>;
 
-export type InternalGetRolesQuery = { __typename?: 'Query', roles: Array<{ __typename?: 'Role', id: number, name: string }> };
-
-export type InternalGetSessionQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type InternalGetSessionQuery = { __typename?: 'Query', session: { __typename?: 'Session', token: string, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } } };
+export type InternalGetSessionQuery = {
+  __typename?: 'Query';
+  session: {
+    __typename?: 'Session';
+    token: string;
+    internalUser: {
+      __typename?: 'InternalUser';
+      id: bigint;
+      email: string;
+      name: string;
+      discord_user_id: string;
+      role: { __typename?: 'Role'; id: number; name: string };
+    };
+  };
+};
 
 export type InternalGetStockRequestQueryVariables = Exact<{
   id: Scalars['Int'];
 }>;
 
-
-export type InternalGetStockRequestQuery = { __typename?: 'Query', stockRequest: { __typename?: 'StockRequest', id: number, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, productRegistrations: Array<{ __typename?: 'StockRequestProductRegistration', id: number, product: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } } | null }> } }> } };
+export type InternalGetStockRequestQuery = {
+  __typename?: 'Query';
+  stockRequest: {
+    __typename?: 'StockRequest';
+    id: number;
+    internalUser: {
+      __typename?: 'InternalUser';
+      id: bigint;
+      email: string;
+      name: string;
+      discord_user_id: string;
+      role: { __typename?: 'Role'; id: number; name: string };
+    };
+    productRegistrations: Array<{
+      __typename?: 'StockRequestProductRegistration';
+      id: number;
+      product: {
+        __typename?: 'Product';
+        id: number;
+        name: string;
+        remark: string;
+        url: string;
+        totalStockAmount: number;
+        allocatedStockAmount: number;
+        remainingStockAmount: number;
+        productTaggings: Array<{
+          __typename?: 'ProductTagging';
+          id: number;
+          productTag: { __typename?: 'ProductTag'; id: number; name: string };
+        }>;
+        maker: { __typename?: 'Maker'; id: number; name: string };
+        stocks: Array<{
+          __typename?: 'Stock';
+          id: number;
+          expired_at: any;
+          internalUser: {
+            __typename?: 'InternalUser';
+            id: bigint;
+            email: string;
+            name: string;
+            discord_user_id: string;
+            role: { __typename?: 'Role'; id: number; name: string };
+          };
+          stockAllocation?: {
+            __typename?: 'StockAllocation';
+            created_at: any;
+            id: number;
+            internalUser: {
+              __typename?: 'InternalUser';
+              id: bigint;
+              email: string;
+              name: string;
+              discord_user_id: string;
+              role: { __typename?: 'Role'; id: number; name: string };
+            };
+          } | null;
+        }>;
+      };
+    }>;
+  };
+};
 
 export type InternalGetStockRequestConnectionQueryVariables = Exact<{
   first?: InputMaybe<Scalars['Int']>;
@@ -952,30 +1834,162 @@ export type InternalGetStockRequestConnectionQueryVariables = Exact<{
   internalUserId?: InputMaybe<Scalars['BigInt']>;
 }>;
 
-
-export type InternalGetStockRequestConnectionQuery = { __typename?: 'Query', stockRequestConnection?: { __typename?: 'StockRequestConnection', edges?: Array<{ __typename?: 'StockRequestEdge', node?: { __typename?: 'StockRequest', id: number, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, productRegistrations: Array<{ __typename?: 'StockRequestProductRegistration', id: number, product: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } } | null }> } }> } | null } | null> | null, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, hasPreviousPage: boolean, startCursor?: string | null, endCursor?: string | null } } | null };
+export type InternalGetStockRequestConnectionQuery = {
+  __typename?: 'Query';
+  stockRequestConnection?: {
+    __typename?: 'StockRequestConnection';
+    edges?: Array<{
+      __typename?: 'StockRequestEdge';
+      node?: {
+        __typename?: 'StockRequest';
+        id: number;
+        internalUser: {
+          __typename?: 'InternalUser';
+          id: bigint;
+          email: string;
+          name: string;
+          discord_user_id: string;
+          role: { __typename?: 'Role'; id: number; name: string };
+        };
+        productRegistrations: Array<{
+          __typename?: 'StockRequestProductRegistration';
+          id: number;
+          product: {
+            __typename?: 'Product';
+            id: number;
+            name: string;
+            remark: string;
+            url: string;
+            totalStockAmount: number;
+            allocatedStockAmount: number;
+            remainingStockAmount: number;
+            productTaggings: Array<{
+              __typename?: 'ProductTagging';
+              id: number;
+              productTag: {
+                __typename?: 'ProductTag';
+                id: number;
+                name: string;
+              };
+            }>;
+            maker: { __typename?: 'Maker'; id: number; name: string };
+            stocks: Array<{
+              __typename?: 'Stock';
+              id: number;
+              expired_at: any;
+              internalUser: {
+                __typename?: 'InternalUser';
+                id: bigint;
+                email: string;
+                name: string;
+                discord_user_id: string;
+                role: { __typename?: 'Role'; id: number; name: string };
+              };
+              stockAllocation?: {
+                __typename?: 'StockAllocation';
+                created_at: any;
+                id: number;
+                internalUser: {
+                  __typename?: 'InternalUser';
+                  id: bigint;
+                  email: string;
+                  name: string;
+                  discord_user_id: string;
+                  role: { __typename?: 'Role'; id: number; name: string };
+                };
+              } | null;
+            }>;
+          };
+        }>;
+      } | null;
+    } | null> | null;
+    pageInfo: {
+      __typename?: 'PageInfo';
+      hasNextPage: boolean;
+      hasPreviousPage: boolean;
+      startCursor?: string | null;
+      endCursor?: string | null;
+    };
+  } | null;
+};
 
 export type InternalGetStocksQueryVariables = Exact<{
   productId: Scalars['Int'];
 }>;
 
-
-export type InternalGetStocksQuery = { __typename?: 'Query', stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } } | null }> };
+export type InternalGetStocksQuery = {
+  __typename?: 'Query';
+  stocks: Array<{
+    __typename?: 'Stock';
+    id: number;
+    expired_at: any;
+    internalUser: {
+      __typename?: 'InternalUser';
+      id: bigint;
+      email: string;
+      name: string;
+      discord_user_id: string;
+      role: { __typename?: 'Role'; id: number; name: string };
+    };
+    stockAllocation?: {
+      __typename?: 'StockAllocation';
+      created_at: any;
+      id: number;
+      internalUser: {
+        __typename?: 'InternalUser';
+        id: bigint;
+        email: string;
+        name: string;
+        discord_user_id: string;
+        role: { __typename?: 'Role'; id: number; name: string };
+      };
+    } | null;
+  }>;
+};
 
 export type InternalRejectStockRequestMutationVariables = Exact<{
   id: Scalars['Int'];
   message: Scalars['String'];
 }>;
 
-
-export type InternalRejectStockRequestMutation = { __typename?: 'Mutation', rejectStockRequest: { __typename?: 'Delete', deleted: boolean } };
+export type InternalRejectStockRequestMutation = {
+  __typename?: 'Mutation';
+  rejectStockRequest: { __typename?: 'Delete'; deleted: boolean };
+};
 
 export type InternalReturnStockMutationVariables = Exact<{
   id: Scalars['Int'];
 }>;
 
-
-export type InternalReturnStockMutation = { __typename?: 'Mutation', returnStock: { __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } } | null } };
+export type InternalReturnStockMutation = {
+  __typename?: 'Mutation';
+  returnStock: {
+    __typename?: 'Stock';
+    id: number;
+    expired_at: any;
+    internalUser: {
+      __typename?: 'InternalUser';
+      id: bigint;
+      email: string;
+      name: string;
+      discord_user_id: string;
+      role: { __typename?: 'Role'; id: number; name: string };
+    };
+    stockAllocation?: {
+      __typename?: 'StockAllocation';
+      created_at: any;
+      id: number;
+      internalUser: {
+        __typename?: 'InternalUser';
+        id: bigint;
+        email: string;
+        name: string;
+        discord_user_id: string;
+        role: { __typename?: 'Role'; id: number; name: string };
+      };
+    } | null;
+  };
+};
 
 export type InternalUpdateHospitalMutationVariables = Exact<{
   id: Scalars['BigInt'];
@@ -992,8 +2006,10 @@ export type InternalUpdateHospitalMutationVariables = Exact<{
   hospitalReservationStatusInput: HospitalReservationStatusInputType;
 }>;
 
-
-export type InternalUpdateHospitalMutation = { __typename?: 'Mutation', updateHospital: { __typename?: 'Hospital', name: string } };
+export type InternalUpdateHospitalMutation = {
+  __typename?: 'Mutation';
+  updateHospital: { __typename?: 'Hospital'; name: string };
+};
 
 export type InternalUpdateInternalUserMutationVariables = Exact<{
   id: Scalars['BigInt'];
@@ -1004,16 +2020,27 @@ export type InternalUpdateInternalUserMutationVariables = Exact<{
   roleId: Scalars['Int'];
 }>;
 
-
-export type InternalUpdateInternalUserMutation = { __typename?: 'Mutation', updateInternalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } };
+export type InternalUpdateInternalUserMutation = {
+  __typename?: 'Mutation';
+  updateInternalUser: {
+    __typename?: 'InternalUser';
+    id: bigint;
+    email: string;
+    name: string;
+    discord_user_id: string;
+    role: { __typename?: 'Role'; id: number; name: string };
+  };
+};
 
 export type InternalUpdateMakerMutationVariables = Exact<{
   id: Scalars['Int'];
   name: Scalars['String'];
 }>;
 
-
-export type InternalUpdateMakerMutation = { __typename?: 'Mutation', updateMaker: { __typename?: 'Maker', id: number, name: string } };
+export type InternalUpdateMakerMutation = {
+  __typename?: 'Mutation';
+  updateMaker: { __typename?: 'Maker'; id: number; name: string };
+};
 
 export type InternalUpdateProductMutationVariables = Exact<{
   id: Scalars['Int'];
@@ -1023,257 +2050,423 @@ export type InternalUpdateProductMutationVariables = Exact<{
   file?: InputMaybe<Scalars['Upload']>;
 }>;
 
-
-export type InternalUpdateProductMutation = { __typename?: 'Mutation', updateProduct: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } } | null }> } };
+export type InternalUpdateProductMutation = {
+  __typename?: 'Mutation';
+  updateProduct: {
+    __typename?: 'Product';
+    id: number;
+    name: string;
+    remark: string;
+    url: string;
+    totalStockAmount: number;
+    allocatedStockAmount: number;
+    remainingStockAmount: number;
+    productTaggings: Array<{
+      __typename?: 'ProductTagging';
+      id: number;
+      productTag: { __typename?: 'ProductTag'; id: number; name: string };
+    }>;
+    maker: { __typename?: 'Maker'; id: number; name: string };
+    stocks: Array<{
+      __typename?: 'Stock';
+      id: number;
+      expired_at: any;
+      internalUser: {
+        __typename?: 'InternalUser';
+        id: bigint;
+        email: string;
+        name: string;
+        discord_user_id: string;
+        role: { __typename?: 'Role'; id: number; name: string };
+      };
+      stockAllocation?: {
+        __typename?: 'StockAllocation';
+        created_at: any;
+        id: number;
+        internalUser: {
+          __typename?: 'InternalUser';
+          id: bigint;
+          email: string;
+          name: string;
+          discord_user_id: string;
+          role: { __typename?: 'Role'; id: number; name: string };
+        };
+      } | null;
+    }>;
+  };
+};
 
 export type InternalUpdateProductTagMutationVariables = Exact<{
   id: Scalars['Int'];
   name: Scalars['String'];
 }>;
 
-
-export type InternalUpdateProductTagMutation = { __typename?: 'Mutation', updateProductTag: { __typename?: 'ProductTag', id: number, name: string } };
+export type InternalUpdateProductTagMutation = {
+  __typename?: 'Mutation';
+  updateProductTag: { __typename?: 'ProductTag'; id: number; name: string };
+};
 
 export type InternalUpdateProductTagGroupMutationVariables = Exact<{
   id: Scalars['Int'];
   name: Scalars['String'];
 }>;
 
-
-export type InternalUpdateProductTagGroupMutation = { __typename?: 'Mutation', updateProductTagGroup: { __typename?: 'ProductTagGroup', id: number, name: string, productTags: Array<{ __typename?: 'ProductTag', id: number, name: string }> } };
+export type InternalUpdateProductTagGroupMutation = {
+  __typename?: 'Mutation';
+  updateProductTagGroup: {
+    __typename?: 'ProductTagGroup';
+    id: number;
+    name: string;
+    productTags: Array<{ __typename?: 'ProductTag'; id: number; name: string }>;
+  };
+};
 
 export type InternalUpdateStockInternalUserMutationVariables = Exact<{
   id: Scalars['Int'];
   internalUserId: Scalars['BigInt'];
 }>;
 
-
-export type InternalUpdateStockInternalUserMutation = { __typename?: 'Mutation', updateStockInternalUser: { __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } } | null } };
+export type InternalUpdateStockInternalUserMutation = {
+  __typename?: 'Mutation';
+  updateStockInternalUser: {
+    __typename?: 'Stock';
+    id: number;
+    expired_at: any;
+    internalUser: {
+      __typename?: 'InternalUser';
+      id: bigint;
+      email: string;
+      name: string;
+      discord_user_id: string;
+      role: { __typename?: 'Role'; id: number; name: string };
+    };
+    stockAllocation?: {
+      __typename?: 'StockAllocation';
+      created_at: any;
+      id: number;
+      internalUser: {
+        __typename?: 'InternalUser';
+        id: bigint;
+        email: string;
+        name: string;
+        discord_user_id: string;
+        role: { __typename?: 'Role'; id: number; name: string };
+      };
+    } | null;
+  };
+};
 
 export type InternalUpdateStockRequestMutationVariables = Exact<{
   id: Scalars['Int'];
-  requestProducts: Array<CreateStockRequestRequestProductsInputType> | CreateStockRequestRequestProductsInputType;
+  requestProducts:
+    | Array<CreateStockRequestRequestProductsInputType>
+    | CreateStockRequestRequestProductsInputType;
 }>;
 
-
-export type InternalUpdateStockRequestMutation = { __typename?: 'Mutation', updateStockRequest: { __typename?: 'StockRequest', id: number, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, productRegistrations: Array<{ __typename?: 'StockRequestProductRegistration', id: number, product: { __typename?: 'Product', id: number, name: string, remark: string, url: string, totalStockAmount: number, allocatedStockAmount: number, remainingStockAmount: number, productTaggings: Array<{ __typename?: 'ProductTagging', id: number, productTag: { __typename?: 'ProductTag', id: number, name: string } }>, maker: { __typename?: 'Maker', id: number, name: string }, stocks: Array<{ __typename?: 'Stock', id: number, expired_at: any, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } }, stockAllocation?: { __typename?: 'StockAllocation', created_at: any, id: number, internalUser: { __typename?: 'InternalUser', id: bigint, email: string, name: string, discord_user_id: string, role: { __typename?: 'Role', id: number, name: string } } } | null }> } }> } };
+export type InternalUpdateStockRequestMutation = {
+  __typename?: 'Mutation';
+  updateStockRequest: {
+    __typename?: 'StockRequest';
+    id: number;
+    internalUser: {
+      __typename?: 'InternalUser';
+      id: bigint;
+      email: string;
+      name: string;
+      discord_user_id: string;
+      role: { __typename?: 'Role'; id: number; name: string };
+    };
+    productRegistrations: Array<{
+      __typename?: 'StockRequestProductRegistration';
+      id: number;
+      product: {
+        __typename?: 'Product';
+        id: number;
+        name: string;
+        remark: string;
+        url: string;
+        totalStockAmount: number;
+        allocatedStockAmount: number;
+        remainingStockAmount: number;
+        productTaggings: Array<{
+          __typename?: 'ProductTagging';
+          id: number;
+          productTag: { __typename?: 'ProductTag'; id: number; name: string };
+        }>;
+        maker: { __typename?: 'Maker'; id: number; name: string };
+        stocks: Array<{
+          __typename?: 'Stock';
+          id: number;
+          expired_at: any;
+          internalUser: {
+            __typename?: 'InternalUser';
+            id: bigint;
+            email: string;
+            name: string;
+            discord_user_id: string;
+            role: { __typename?: 'Role'; id: number; name: string };
+          };
+          stockAllocation?: {
+            __typename?: 'StockAllocation';
+            created_at: any;
+            id: number;
+            internalUser: {
+              __typename?: 'InternalUser';
+              id: bigint;
+              email: string;
+              name: string;
+              discord_user_id: string;
+              role: { __typename?: 'Role'; id: number; name: string };
+            };
+          } | null;
+        }>;
+      };
+    }>;
+  };
+};
 
 export type InternalUpsertHospitalAddressGeoLocationMutationVariables = Exact<{
   hospitalAddressId: Scalars['BigInt'];
   address: Scalars['String'];
 }>;
 
-
-export type InternalUpsertHospitalAddressGeoLocationMutation = { __typename?: 'Mutation', upsertHospitalAddressGeoLocation: { __typename?: 'HospitalAddress', id: bigint, address: string, phone_number: string, prefecture: { __typename?: 'Prefecture', name: string, id: bigint }, hospitalAddressGeoLocation?: { __typename?: 'HospitalAddressGeoLocation', id: bigint, latitude: number, longitude: number } | null } };
+export type InternalUpsertHospitalAddressGeoLocationMutation = {
+  __typename?: 'Mutation';
+  upsertHospitalAddressGeoLocation: {
+    __typename?: 'HospitalAddress';
+    id: bigint;
+    address: string;
+    phone_number: string;
+    prefecture: { __typename?: 'Prefecture'; name: string; id: bigint };
+    hospitalAddressGeoLocation?: {
+      __typename?: 'HospitalAddressGeoLocation';
+      id: bigint;
+      latitude: number;
+      longitude: number;
+    } | null;
+  };
+};
 
 export const HospitalAddressGeoLocationFieldsFragmentDoc = gql`
-    fragment HospitalAddressGeoLocationFields on HospitalAddressGeoLocation {
-  id
-  latitude
-  longitude
-}
-    `;
-export const HospitalAddressFieldsFragmentDoc = gql`
-    fragment HospitalAddressFields on HospitalAddress {
-  id
-  address
-  phone_number
-  prefecture {
-    name
+  fragment HospitalAddressGeoLocationFields on HospitalAddressGeoLocation {
     id
+    latitude
+    longitude
   }
-  hospitalAddressGeoLocation {
-    ...HospitalAddressGeoLocationFields
+`;
+export const HospitalAddressFieldsFragmentDoc = gql`
+  fragment HospitalAddressFields on HospitalAddress {
+    id
+    address
+    phone_number
+    prefecture {
+      name
+      id
+    }
+    hospitalAddressGeoLocation {
+      ...HospitalAddressGeoLocationFields
+    }
   }
-}
-    ${HospitalAddressGeoLocationFieldsFragmentDoc}`;
+  ${HospitalAddressGeoLocationFieldsFragmentDoc}
+`;
 export const HospitalBusinessFormFieldsFragmentDoc = gql`
-    fragment HospitalBusinessFormFields on HospitalBusinessForm {
-  id
-  business_hour
-  closed_day
-  insurance_enabled
-  remark
-}
-    `;
+  fragment HospitalBusinessFormFields on HospitalBusinessForm {
+    id
+    business_hour
+    closed_day
+    insurance_enabled
+    remark
+  }
+`;
 export const HospitalCertificationOptionFieldsFragmentDoc = gql`
-    fragment HospitalCertificationOptionFields on HospitalCertificationOption {
-  id
-  nichiju_registered
-  jsava_registered
-}
-    `;
+  fragment HospitalCertificationOptionFields on HospitalCertificationOption {
+    id
+    nichiju_registered
+    jsava_registered
+  }
+`;
 export const HospitalInternalReputationFieldsFragmentDoc = gql`
-    fragment HospitalInternalReputationFields on HospitalInternalReputation {
-  id
-  star
-  remark
-}
-    `;
+  fragment HospitalInternalReputationFields on HospitalInternalReputation {
+    id
+    star
+    remark
+  }
+`;
 export const HospitalNightServiceOptionFieldsFragmentDoc = gql`
-    fragment HospitalNightServiceOptionFields on HospitalNightServiceOption {
-  id
-  status
-  remark
-}
-    `;
+  fragment HospitalNightServiceOptionFields on HospitalNightServiceOption {
+    id
+    status
+    remark
+  }
+`;
 export const HospitalNightUrgentActionOptionFieldsFragmentDoc = gql`
-    fragment HospitalNightUrgentActionOptionFields on HospitalNightUrgentActionOption {
-  id
-  status
-}
-    `;
+  fragment HospitalNightUrgentActionOptionFields on HospitalNightUrgentActionOption {
+    id
+    status
+  }
+`;
 export const HospitalReservationStatusFieldsFragmentDoc = gql`
-    fragment HospitalReservationStatusFields on HospitalReservationStatus {
-  id
-  required
-  reservable
-  remark
-}
-    `;
+  fragment HospitalReservationStatusFields on HospitalReservationStatus {
+    id
+    required
+    reservable
+    remark
+  }
+`;
 export const HospitalFieldsFragmentDoc = gql`
-    fragment HospitalFields on Hospital {
-  id
-  name
-  url
-  deleted
-  internal_memo
-  hospitalAddress {
-    ...HospitalAddressFields
+  fragment HospitalFields on Hospital {
+    id
+    name
+    url
+    deleted
+    internal_memo
+    hospitalAddress {
+      ...HospitalAddressFields
+    }
+    hospitalBusinessForm {
+      ...HospitalBusinessFormFields
+    }
+    hospitalCertificationOption {
+      ...HospitalCertificationOptionFields
+    }
+    hospitalInternalReputation {
+      ...HospitalInternalReputationFields
+    }
+    hospitalNightServiceOption {
+      ...HospitalNightServiceOptionFields
+    }
+    hospitalNightUrgentActionOption {
+      ...HospitalNightUrgentActionOptionFields
+    }
+    hospitalReservationStatus {
+      ...HospitalReservationStatusFields
+    }
   }
-  hospitalBusinessForm {
-    ...HospitalBusinessFormFields
-  }
-  hospitalCertificationOption {
-    ...HospitalCertificationOptionFields
-  }
-  hospitalInternalReputation {
-    ...HospitalInternalReputationFields
-  }
-  hospitalNightServiceOption {
-    ...HospitalNightServiceOptionFields
-  }
-  hospitalNightUrgentActionOption {
-    ...HospitalNightUrgentActionOptionFields
-  }
-  hospitalReservationStatus {
-    ...HospitalReservationStatusFields
-  }
-}
-    ${HospitalAddressFieldsFragmentDoc}
-${HospitalBusinessFormFieldsFragmentDoc}
-${HospitalCertificationOptionFieldsFragmentDoc}
-${HospitalInternalReputationFieldsFragmentDoc}
-${HospitalNightServiceOptionFieldsFragmentDoc}
-${HospitalNightUrgentActionOptionFieldsFragmentDoc}
-${HospitalReservationStatusFieldsFragmentDoc}`;
+  ${HospitalAddressFieldsFragmentDoc}
+  ${HospitalBusinessFormFieldsFragmentDoc}
+  ${HospitalCertificationOptionFieldsFragmentDoc}
+  ${HospitalInternalReputationFieldsFragmentDoc}
+  ${HospitalNightServiceOptionFieldsFragmentDoc}
+  ${HospitalNightUrgentActionOptionFieldsFragmentDoc}
+  ${HospitalReservationStatusFieldsFragmentDoc}
+`;
 export const ProductTagFieldsFragmentDoc = gql`
-    fragment ProductTagFields on ProductTag {
-  id
-  name
-}
-    `;
+  fragment ProductTagFields on ProductTag {
+    id
+    name
+  }
+`;
 export const ProductTagGroupFieldsFragmentDoc = gql`
-    fragment ProductTagGroupFields on ProductTagGroup {
-  id
-  name
-  productTags {
-    ...ProductTagFields
+  fragment ProductTagGroupFields on ProductTagGroup {
+    id
+    name
+    productTags {
+      ...ProductTagFields
+    }
   }
-}
-    ${ProductTagFieldsFragmentDoc}`;
+  ${ProductTagFieldsFragmentDoc}
+`;
 export const RoleFieldsFragmentDoc = gql`
-    fragment RoleFields on Role {
-  id
-  name
-}
-    `;
+  fragment RoleFields on Role {
+    id
+    name
+  }
+`;
 export const InternalUserFieldsFragmentDoc = gql`
-    fragment InternalUserFields on InternalUser {
-  id
-  email
-  name
-  discord_user_id
-  role {
-    ...RoleFields
+  fragment InternalUserFields on InternalUser {
+    id
+    email
+    name
+    discord_user_id
+    role {
+      ...RoleFields
+    }
   }
-}
-    ${RoleFieldsFragmentDoc}`;
+  ${RoleFieldsFragmentDoc}
+`;
 export const ProductTaggingFieldsFragmentDoc = gql`
-    fragment ProductTaggingFields on ProductTagging {
-  id
-  productTag {
-    ...ProductTagFields
+  fragment ProductTaggingFields on ProductTagging {
+    id
+    productTag {
+      ...ProductTagFields
+    }
   }
-}
-    ${ProductTagFieldsFragmentDoc}`;
+  ${ProductTagFieldsFragmentDoc}
+`;
 export const MakerFieldsFragmentDoc = gql`
-    fragment MakerFields on Maker {
-  id
-  name
-}
-    `;
-export const StockFieldsFragmentDoc = gql`
-    fragment StockFields on Stock {
-  id
-  expired_at
-  internalUser {
-    ...InternalUserFields
+  fragment MakerFields on Maker {
+    id
+    name
   }
-  stockAllocation {
-    created_at
+`;
+export const StockFieldsFragmentDoc = gql`
+  fragment StockFields on Stock {
+    id
+    expired_at
+    internalUser {
+      ...InternalUserFields
+    }
+    stockAllocation {
+      created_at
+      id
+      internalUser {
+        ...InternalUserFields
+      }
+    }
+  }
+  ${InternalUserFieldsFragmentDoc}
+`;
+export const ProductFieldsFragmentDoc = gql`
+  fragment ProductFields on Product {
+    id
+    name
+    remark
+    url
+    productTaggings {
+      ...ProductTaggingFields
+    }
+    maker {
+      ...MakerFields
+    }
+    stocks {
+      ...StockFields
+    }
+    totalStockAmount
+    allocatedStockAmount
+    remainingStockAmount
+  }
+  ${ProductTaggingFieldsFragmentDoc}
+  ${MakerFieldsFragmentDoc}
+  ${StockFieldsFragmentDoc}
+`;
+export const StockRequestFieldsFragmentDoc = gql`
+  fragment StockRequestFields on StockRequest {
     id
     internalUser {
       ...InternalUserFields
     }
-  }
-}
-    ${InternalUserFieldsFragmentDoc}`;
-export const ProductFieldsFragmentDoc = gql`
-    fragment ProductFields on Product {
-  id
-  name
-  remark
-  url
-  productTaggings {
-    ...ProductTaggingFields
-  }
-  maker {
-    ...MakerFields
-  }
-  stocks {
-    ...StockFields
-  }
-  totalStockAmount
-  allocatedStockAmount
-  remainingStockAmount
-}
-    ${ProductTaggingFieldsFragmentDoc}
-${MakerFieldsFragmentDoc}
-${StockFieldsFragmentDoc}`;
-export const StockRequestFieldsFragmentDoc = gql`
-    fragment StockRequestFields on StockRequest {
-  id
-  internalUser {
-    ...InternalUserFields
-  }
-  productRegistrations {
-    id
-    product {
-      ...ProductFields
+    productRegistrations {
+      id
+      product {
+        ...ProductFields
+      }
     }
   }
-}
-    ${InternalUserFieldsFragmentDoc}
-${ProductFieldsFragmentDoc}`;
+  ${InternalUserFieldsFragmentDoc}
+  ${ProductFieldsFragmentDoc}
+`;
 export const InternalAllocateStockDocument = gql`
-    mutation InternalAllocateStock($id: Int!, $internalUserId: BigInt!) {
-  allocateStock(id: $id, internalUserId: $internalUserId) {
-    ...StockFields
+  mutation InternalAllocateStock($id: Int!, $internalUserId: BigInt!) {
+    allocateStock(id: $id, internalUserId: $internalUserId) {
+      ...StockFields
+    }
   }
-}
-    ${StockFieldsFragmentDoc}`;
-export type InternalAllocateStockMutationFn = Apollo.MutationFunction<InternalAllocateStockMutation, InternalAllocateStockMutationVariables>;
+  ${StockFieldsFragmentDoc}
+`;
+export type InternalAllocateStockMutationFn = Apollo.MutationFunction<
+  InternalAllocateStockMutation,
+  InternalAllocateStockMutationVariables
+>;
 
 /**
  * __useInternalAllocateStockMutation__
@@ -1293,21 +2486,38 @@ export type InternalAllocateStockMutationFn = Apollo.MutationFunction<InternalAl
  *   },
  * });
  */
-export function useInternalAllocateStockMutation(baseOptions?: Apollo.MutationHookOptions<InternalAllocateStockMutation, InternalAllocateStockMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<InternalAllocateStockMutation, InternalAllocateStockMutationVariables>(InternalAllocateStockDocument, options);
-      }
-export type InternalAllocateStockMutationHookResult = ReturnType<typeof useInternalAllocateStockMutation>;
-export type InternalAllocateStockMutationResult = Apollo.MutationResult<InternalAllocateStockMutation>;
-export type InternalAllocateStockMutationOptions = Apollo.BaseMutationOptions<InternalAllocateStockMutation, InternalAllocateStockMutationVariables>;
-export const InternalApproveStockRequestDocument = gql`
-    mutation InternalApproveStockRequest($id: Int!, $message: String!) {
-  approveStockRequest(id: $id, message: $message) {
-    deleted
-  }
+export function useInternalAllocateStockMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    InternalAllocateStockMutation,
+    InternalAllocateStockMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    InternalAllocateStockMutation,
+    InternalAllocateStockMutationVariables
+  >(InternalAllocateStockDocument, options);
 }
-    `;
-export type InternalApproveStockRequestMutationFn = Apollo.MutationFunction<InternalApproveStockRequestMutation, InternalApproveStockRequestMutationVariables>;
+export type InternalAllocateStockMutationHookResult = ReturnType<
+  typeof useInternalAllocateStockMutation
+>;
+export type InternalAllocateStockMutationResult =
+  Apollo.MutationResult<InternalAllocateStockMutation>;
+export type InternalAllocateStockMutationOptions = Apollo.BaseMutationOptions<
+  InternalAllocateStockMutation,
+  InternalAllocateStockMutationVariables
+>;
+export const InternalApproveStockRequestDocument = gql`
+  mutation InternalApproveStockRequest($id: Int!, $message: String!) {
+    approveStockRequest(id: $id, message: $message) {
+      deleted
+    }
+  }
+`;
+export type InternalApproveStockRequestMutationFn = Apollo.MutationFunction<
+  InternalApproveStockRequestMutation,
+  InternalApproveStockRequestMutationVariables
+>;
 
 /**
  * __useInternalApproveStockRequestMutation__
@@ -1327,26 +2537,50 @@ export type InternalApproveStockRequestMutationFn = Apollo.MutationFunction<Inte
  *   },
  * });
  */
-export function useInternalApproveStockRequestMutation(baseOptions?: Apollo.MutationHookOptions<InternalApproveStockRequestMutation, InternalApproveStockRequestMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<InternalApproveStockRequestMutation, InternalApproveStockRequestMutationVariables>(InternalApproveStockRequestDocument, options);
-      }
-export type InternalApproveStockRequestMutationHookResult = ReturnType<typeof useInternalApproveStockRequestMutation>;
-export type InternalApproveStockRequestMutationResult = Apollo.MutationResult<InternalApproveStockRequestMutation>;
-export type InternalApproveStockRequestMutationOptions = Apollo.BaseMutationOptions<InternalApproveStockRequestMutation, InternalApproveStockRequestMutationVariables>;
-export const InternalCreateHospitalDocument = gql`
-    mutation InternalCreateHospital($name: String!, $url: String, $deleted: Boolean!, $internal_memo: String!) {
-  createHospital(
-    name: $name
-    url: $url
-    deleted: $deleted
-    internal_memo: $internal_memo
-  ) {
-    ...HospitalFields
-  }
+export function useInternalApproveStockRequestMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    InternalApproveStockRequestMutation,
+    InternalApproveStockRequestMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    InternalApproveStockRequestMutation,
+    InternalApproveStockRequestMutationVariables
+  >(InternalApproveStockRequestDocument, options);
 }
-    ${HospitalFieldsFragmentDoc}`;
-export type InternalCreateHospitalMutationFn = Apollo.MutationFunction<InternalCreateHospitalMutation, InternalCreateHospitalMutationVariables>;
+export type InternalApproveStockRequestMutationHookResult = ReturnType<
+  typeof useInternalApproveStockRequestMutation
+>;
+export type InternalApproveStockRequestMutationResult =
+  Apollo.MutationResult<InternalApproveStockRequestMutation>;
+export type InternalApproveStockRequestMutationOptions =
+  Apollo.BaseMutationOptions<
+    InternalApproveStockRequestMutation,
+    InternalApproveStockRequestMutationVariables
+  >;
+export const InternalCreateHospitalDocument = gql`
+  mutation InternalCreateHospital(
+    $name: String!
+    $url: String
+    $deleted: Boolean!
+    $internal_memo: String!
+  ) {
+    createHospital(
+      name: $name
+      url: $url
+      deleted: $deleted
+      internal_memo: $internal_memo
+    ) {
+      ...HospitalFields
+    }
+  }
+  ${HospitalFieldsFragmentDoc}
+`;
+export type InternalCreateHospitalMutationFn = Apollo.MutationFunction<
+  InternalCreateHospitalMutation,
+  InternalCreateHospitalMutationVariables
+>;
 
 /**
  * __useInternalCreateHospitalMutation__
@@ -1368,27 +2602,51 @@ export type InternalCreateHospitalMutationFn = Apollo.MutationFunction<InternalC
  *   },
  * });
  */
-export function useInternalCreateHospitalMutation(baseOptions?: Apollo.MutationHookOptions<InternalCreateHospitalMutation, InternalCreateHospitalMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<InternalCreateHospitalMutation, InternalCreateHospitalMutationVariables>(InternalCreateHospitalDocument, options);
-      }
-export type InternalCreateHospitalMutationHookResult = ReturnType<typeof useInternalCreateHospitalMutation>;
-export type InternalCreateHospitalMutationResult = Apollo.MutationResult<InternalCreateHospitalMutation>;
-export type InternalCreateHospitalMutationOptions = Apollo.BaseMutationOptions<InternalCreateHospitalMutation, InternalCreateHospitalMutationVariables>;
-export const InternalCreateInternalUserDocument = gql`
-    mutation InternalCreateInternalUser($name: String!, $email: String!, $password: String!, $discord_user_id: String!, $roleId: Int!) {
-  createInternalUser(
-    name: $name
-    email: $email
-    password: $password
-    discord_user_id: $discord_user_id
-    roleId: $roleId
-  ) {
-    ...InternalUserFields
-  }
+export function useInternalCreateHospitalMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    InternalCreateHospitalMutation,
+    InternalCreateHospitalMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    InternalCreateHospitalMutation,
+    InternalCreateHospitalMutationVariables
+  >(InternalCreateHospitalDocument, options);
 }
-    ${InternalUserFieldsFragmentDoc}`;
-export type InternalCreateInternalUserMutationFn = Apollo.MutationFunction<InternalCreateInternalUserMutation, InternalCreateInternalUserMutationVariables>;
+export type InternalCreateHospitalMutationHookResult = ReturnType<
+  typeof useInternalCreateHospitalMutation
+>;
+export type InternalCreateHospitalMutationResult =
+  Apollo.MutationResult<InternalCreateHospitalMutation>;
+export type InternalCreateHospitalMutationOptions = Apollo.BaseMutationOptions<
+  InternalCreateHospitalMutation,
+  InternalCreateHospitalMutationVariables
+>;
+export const InternalCreateInternalUserDocument = gql`
+  mutation InternalCreateInternalUser(
+    $name: String!
+    $email: String!
+    $password: String!
+    $discord_user_id: String!
+    $roleId: Int!
+  ) {
+    createInternalUser(
+      name: $name
+      email: $email
+      password: $password
+      discord_user_id: $discord_user_id
+      roleId: $roleId
+    ) {
+      ...InternalUserFields
+    }
+  }
+  ${InternalUserFieldsFragmentDoc}
+`;
+export type InternalCreateInternalUserMutationFn = Apollo.MutationFunction<
+  InternalCreateInternalUserMutation,
+  InternalCreateInternalUserMutationVariables
+>;
 
 /**
  * __useInternalCreateInternalUserMutation__
@@ -1411,21 +2669,40 @@ export type InternalCreateInternalUserMutationFn = Apollo.MutationFunction<Inter
  *   },
  * });
  */
-export function useInternalCreateInternalUserMutation(baseOptions?: Apollo.MutationHookOptions<InternalCreateInternalUserMutation, InternalCreateInternalUserMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<InternalCreateInternalUserMutation, InternalCreateInternalUserMutationVariables>(InternalCreateInternalUserDocument, options);
-      }
-export type InternalCreateInternalUserMutationHookResult = ReturnType<typeof useInternalCreateInternalUserMutation>;
-export type InternalCreateInternalUserMutationResult = Apollo.MutationResult<InternalCreateInternalUserMutation>;
-export type InternalCreateInternalUserMutationOptions = Apollo.BaseMutationOptions<InternalCreateInternalUserMutation, InternalCreateInternalUserMutationVariables>;
-export const InternalCreateMakerDocument = gql`
-    mutation InternalCreateMaker($name: String!) {
-  createMaker(name: $name) {
-    ...MakerFields
-  }
+export function useInternalCreateInternalUserMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    InternalCreateInternalUserMutation,
+    InternalCreateInternalUserMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    InternalCreateInternalUserMutation,
+    InternalCreateInternalUserMutationVariables
+  >(InternalCreateInternalUserDocument, options);
 }
-    ${MakerFieldsFragmentDoc}`;
-export type InternalCreateMakerMutationFn = Apollo.MutationFunction<InternalCreateMakerMutation, InternalCreateMakerMutationVariables>;
+export type InternalCreateInternalUserMutationHookResult = ReturnType<
+  typeof useInternalCreateInternalUserMutation
+>;
+export type InternalCreateInternalUserMutationResult =
+  Apollo.MutationResult<InternalCreateInternalUserMutation>;
+export type InternalCreateInternalUserMutationOptions =
+  Apollo.BaseMutationOptions<
+    InternalCreateInternalUserMutation,
+    InternalCreateInternalUserMutationVariables
+  >;
+export const InternalCreateMakerDocument = gql`
+  mutation InternalCreateMaker($name: String!) {
+    createMaker(name: $name) {
+      ...MakerFields
+    }
+  }
+  ${MakerFieldsFragmentDoc}
+`;
+export type InternalCreateMakerMutationFn = Apollo.MutationFunction<
+  InternalCreateMakerMutation,
+  InternalCreateMakerMutationVariables
+>;
 
 /**
  * __useInternalCreateMakerMutation__
@@ -1444,27 +2721,51 @@ export type InternalCreateMakerMutationFn = Apollo.MutationFunction<InternalCrea
  *   },
  * });
  */
-export function useInternalCreateMakerMutation(baseOptions?: Apollo.MutationHookOptions<InternalCreateMakerMutation, InternalCreateMakerMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<InternalCreateMakerMutation, InternalCreateMakerMutationVariables>(InternalCreateMakerDocument, options);
-      }
-export type InternalCreateMakerMutationHookResult = ReturnType<typeof useInternalCreateMakerMutation>;
-export type InternalCreateMakerMutationResult = Apollo.MutationResult<InternalCreateMakerMutation>;
-export type InternalCreateMakerMutationOptions = Apollo.BaseMutationOptions<InternalCreateMakerMutation, InternalCreateMakerMutationVariables>;
-export const InternalCreateProductDocument = gql`
-    mutation InternalCreateProduct($makerId: Int!, $name: String!, $remark: String!, $file: Upload!, $productTagIds: [Int!]!) {
-  createProduct(
-    makerId: $makerId
-    name: $name
-    remark: $remark
-    file: $file
-    productTagIds: $productTagIds
-  ) {
-    ...ProductFields
-  }
+export function useInternalCreateMakerMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    InternalCreateMakerMutation,
+    InternalCreateMakerMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    InternalCreateMakerMutation,
+    InternalCreateMakerMutationVariables
+  >(InternalCreateMakerDocument, options);
 }
-    ${ProductFieldsFragmentDoc}`;
-export type InternalCreateProductMutationFn = Apollo.MutationFunction<InternalCreateProductMutation, InternalCreateProductMutationVariables>;
+export type InternalCreateMakerMutationHookResult = ReturnType<
+  typeof useInternalCreateMakerMutation
+>;
+export type InternalCreateMakerMutationResult =
+  Apollo.MutationResult<InternalCreateMakerMutation>;
+export type InternalCreateMakerMutationOptions = Apollo.BaseMutationOptions<
+  InternalCreateMakerMutation,
+  InternalCreateMakerMutationVariables
+>;
+export const InternalCreateProductDocument = gql`
+  mutation InternalCreateProduct(
+    $makerId: Int!
+    $name: String!
+    $remark: String!
+    $file: Upload!
+    $productTagIds: [Int!]!
+  ) {
+    createProduct(
+      makerId: $makerId
+      name: $name
+      remark: $remark
+      file: $file
+      productTagIds: $productTagIds
+    ) {
+      ...ProductFields
+    }
+  }
+  ${ProductFieldsFragmentDoc}
+`;
+export type InternalCreateProductMutationFn = Apollo.MutationFunction<
+  InternalCreateProductMutation,
+  InternalCreateProductMutationVariables
+>;
 
 /**
  * __useInternalCreateProductMutation__
@@ -1487,21 +2788,39 @@ export type InternalCreateProductMutationFn = Apollo.MutationFunction<InternalCr
  *   },
  * });
  */
-export function useInternalCreateProductMutation(baseOptions?: Apollo.MutationHookOptions<InternalCreateProductMutation, InternalCreateProductMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<InternalCreateProductMutation, InternalCreateProductMutationVariables>(InternalCreateProductDocument, options);
-      }
-export type InternalCreateProductMutationHookResult = ReturnType<typeof useInternalCreateProductMutation>;
-export type InternalCreateProductMutationResult = Apollo.MutationResult<InternalCreateProductMutation>;
-export type InternalCreateProductMutationOptions = Apollo.BaseMutationOptions<InternalCreateProductMutation, InternalCreateProductMutationVariables>;
-export const InternalCreateProductTagGroupDocument = gql`
-    mutation InternalCreateProductTagGroup($name: String!) {
-  createProductTagGroup(name: $name) {
-    ...ProductTagGroupFields
-  }
+export function useInternalCreateProductMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    InternalCreateProductMutation,
+    InternalCreateProductMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    InternalCreateProductMutation,
+    InternalCreateProductMutationVariables
+  >(InternalCreateProductDocument, options);
 }
-    ${ProductTagGroupFieldsFragmentDoc}`;
-export type InternalCreateProductTagGroupMutationFn = Apollo.MutationFunction<InternalCreateProductTagGroupMutation, InternalCreateProductTagGroupMutationVariables>;
+export type InternalCreateProductMutationHookResult = ReturnType<
+  typeof useInternalCreateProductMutation
+>;
+export type InternalCreateProductMutationResult =
+  Apollo.MutationResult<InternalCreateProductMutation>;
+export type InternalCreateProductMutationOptions = Apollo.BaseMutationOptions<
+  InternalCreateProductMutation,
+  InternalCreateProductMutationVariables
+>;
+export const InternalCreateProductTagGroupDocument = gql`
+  mutation InternalCreateProductTagGroup($name: String!) {
+    createProductTagGroup(name: $name) {
+      ...ProductTagGroupFields
+    }
+  }
+  ${ProductTagGroupFieldsFragmentDoc}
+`;
+export type InternalCreateProductTagGroupMutationFn = Apollo.MutationFunction<
+  InternalCreateProductTagGroupMutation,
+  InternalCreateProductTagGroupMutationVariables
+>;
 
 /**
  * __useInternalCreateProductTagGroupMutation__
@@ -1520,21 +2839,45 @@ export type InternalCreateProductTagGroupMutationFn = Apollo.MutationFunction<In
  *   },
  * });
  */
-export function useInternalCreateProductTagGroupMutation(baseOptions?: Apollo.MutationHookOptions<InternalCreateProductTagGroupMutation, InternalCreateProductTagGroupMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<InternalCreateProductTagGroupMutation, InternalCreateProductTagGroupMutationVariables>(InternalCreateProductTagGroupDocument, options);
-      }
-export type InternalCreateProductTagGroupMutationHookResult = ReturnType<typeof useInternalCreateProductTagGroupMutation>;
-export type InternalCreateProductTagGroupMutationResult = Apollo.MutationResult<InternalCreateProductTagGroupMutation>;
-export type InternalCreateProductTagGroupMutationOptions = Apollo.BaseMutationOptions<InternalCreateProductTagGroupMutation, InternalCreateProductTagGroupMutationVariables>;
-export const InternalCreateProductTaggingsDocument = gql`
-    mutation InternalCreateProductTaggings($productId: Int!, $productTagIds: [Int!]!) {
-  createProductTaggings(productId: $productId, productTagIds: $productTagIds) {
-    id
-  }
+export function useInternalCreateProductTagGroupMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    InternalCreateProductTagGroupMutation,
+    InternalCreateProductTagGroupMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    InternalCreateProductTagGroupMutation,
+    InternalCreateProductTagGroupMutationVariables
+  >(InternalCreateProductTagGroupDocument, options);
 }
-    `;
-export type InternalCreateProductTaggingsMutationFn = Apollo.MutationFunction<InternalCreateProductTaggingsMutation, InternalCreateProductTaggingsMutationVariables>;
+export type InternalCreateProductTagGroupMutationHookResult = ReturnType<
+  typeof useInternalCreateProductTagGroupMutation
+>;
+export type InternalCreateProductTagGroupMutationResult =
+  Apollo.MutationResult<InternalCreateProductTagGroupMutation>;
+export type InternalCreateProductTagGroupMutationOptions =
+  Apollo.BaseMutationOptions<
+    InternalCreateProductTagGroupMutation,
+    InternalCreateProductTagGroupMutationVariables
+  >;
+export const InternalCreateProductTaggingsDocument = gql`
+  mutation InternalCreateProductTaggings(
+    $productId: Int!
+    $productTagIds: [Int!]!
+  ) {
+    createProductTaggings(
+      productId: $productId
+      productTagIds: $productTagIds
+    ) {
+      id
+    }
+  }
+`;
+export type InternalCreateProductTaggingsMutationFn = Apollo.MutationFunction<
+  InternalCreateProductTaggingsMutation,
+  InternalCreateProductTaggingsMutationVariables
+>;
 
 /**
  * __useInternalCreateProductTaggingsMutation__
@@ -1554,24 +2897,45 @@ export type InternalCreateProductTaggingsMutationFn = Apollo.MutationFunction<In
  *   },
  * });
  */
-export function useInternalCreateProductTaggingsMutation(baseOptions?: Apollo.MutationHookOptions<InternalCreateProductTaggingsMutation, InternalCreateProductTaggingsMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<InternalCreateProductTaggingsMutation, InternalCreateProductTaggingsMutationVariables>(InternalCreateProductTaggingsDocument, options);
-      }
-export type InternalCreateProductTaggingsMutationHookResult = ReturnType<typeof useInternalCreateProductTaggingsMutation>;
-export type InternalCreateProductTaggingsMutationResult = Apollo.MutationResult<InternalCreateProductTaggingsMutation>;
-export type InternalCreateProductTaggingsMutationOptions = Apollo.BaseMutationOptions<InternalCreateProductTaggingsMutation, InternalCreateProductTaggingsMutationVariables>;
-export const InternalCreateProductTagsDocument = gql`
-    mutation InternalCreateProductTags($productTagGroupId: Int!, $productTags: [CreateProductTagsProductTagInputType!]!) {
-  createProductTags(
-    productTagGroupId: $productTagGroupId
-    productTags: $productTags
-  ) {
-    count
-  }
+export function useInternalCreateProductTaggingsMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    InternalCreateProductTaggingsMutation,
+    InternalCreateProductTaggingsMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    InternalCreateProductTaggingsMutation,
+    InternalCreateProductTaggingsMutationVariables
+  >(InternalCreateProductTaggingsDocument, options);
 }
-    `;
-export type InternalCreateProductTagsMutationFn = Apollo.MutationFunction<InternalCreateProductTagsMutation, InternalCreateProductTagsMutationVariables>;
+export type InternalCreateProductTaggingsMutationHookResult = ReturnType<
+  typeof useInternalCreateProductTaggingsMutation
+>;
+export type InternalCreateProductTaggingsMutationResult =
+  Apollo.MutationResult<InternalCreateProductTaggingsMutation>;
+export type InternalCreateProductTaggingsMutationOptions =
+  Apollo.BaseMutationOptions<
+    InternalCreateProductTaggingsMutation,
+    InternalCreateProductTaggingsMutationVariables
+  >;
+export const InternalCreateProductTagsDocument = gql`
+  mutation InternalCreateProductTags(
+    $productTagGroupId: Int!
+    $productTags: [CreateProductTagsProductTagInputType!]!
+  ) {
+    createProductTags(
+      productTagGroupId: $productTagGroupId
+      productTags: $productTags
+    ) {
+      count
+    }
+  }
+`;
+export type InternalCreateProductTagsMutationFn = Apollo.MutationFunction<
+  InternalCreateProductTagsMutation,
+  InternalCreateProductTagsMutationVariables
+>;
 
 /**
  * __useInternalCreateProductTagsMutation__
@@ -1591,21 +2955,42 @@ export type InternalCreateProductTagsMutationFn = Apollo.MutationFunction<Intern
  *   },
  * });
  */
-export function useInternalCreateProductTagsMutation(baseOptions?: Apollo.MutationHookOptions<InternalCreateProductTagsMutation, InternalCreateProductTagsMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<InternalCreateProductTagsMutation, InternalCreateProductTagsMutationVariables>(InternalCreateProductTagsDocument, options);
-      }
-export type InternalCreateProductTagsMutationHookResult = ReturnType<typeof useInternalCreateProductTagsMutation>;
-export type InternalCreateProductTagsMutationResult = Apollo.MutationResult<InternalCreateProductTagsMutation>;
-export type InternalCreateProductTagsMutationOptions = Apollo.BaseMutationOptions<InternalCreateProductTagsMutation, InternalCreateProductTagsMutationVariables>;
-export const InternalCreateStockRequestDocument = gql`
-    mutation InternalCreateStockRequest($requestProducts: [CreateStockRequestRequestProductsInputType!]!) {
-  createStockRequest(requestProducts: $requestProducts) {
-    ...StockRequestFields
-  }
+export function useInternalCreateProductTagsMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    InternalCreateProductTagsMutation,
+    InternalCreateProductTagsMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    InternalCreateProductTagsMutation,
+    InternalCreateProductTagsMutationVariables
+  >(InternalCreateProductTagsDocument, options);
 }
-    ${StockRequestFieldsFragmentDoc}`;
-export type InternalCreateStockRequestMutationFn = Apollo.MutationFunction<InternalCreateStockRequestMutation, InternalCreateStockRequestMutationVariables>;
+export type InternalCreateProductTagsMutationHookResult = ReturnType<
+  typeof useInternalCreateProductTagsMutation
+>;
+export type InternalCreateProductTagsMutationResult =
+  Apollo.MutationResult<InternalCreateProductTagsMutation>;
+export type InternalCreateProductTagsMutationOptions =
+  Apollo.BaseMutationOptions<
+    InternalCreateProductTagsMutation,
+    InternalCreateProductTagsMutationVariables
+  >;
+export const InternalCreateStockRequestDocument = gql`
+  mutation InternalCreateStockRequest(
+    $requestProducts: [CreateStockRequestRequestProductsInputType!]!
+  ) {
+    createStockRequest(requestProducts: $requestProducts) {
+      ...StockRequestFields
+    }
+  }
+  ${StockRequestFieldsFragmentDoc}
+`;
+export type InternalCreateStockRequestMutationFn = Apollo.MutationFunction<
+  InternalCreateStockRequestMutation,
+  InternalCreateStockRequestMutationVariables
+>;
 
 /**
  * __useInternalCreateStockRequestMutation__
@@ -1624,21 +3009,43 @@ export type InternalCreateStockRequestMutationFn = Apollo.MutationFunction<Inter
  *   },
  * });
  */
-export function useInternalCreateStockRequestMutation(baseOptions?: Apollo.MutationHookOptions<InternalCreateStockRequestMutation, InternalCreateStockRequestMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<InternalCreateStockRequestMutation, InternalCreateStockRequestMutationVariables>(InternalCreateStockRequestDocument, options);
-      }
-export type InternalCreateStockRequestMutationHookResult = ReturnType<typeof useInternalCreateStockRequestMutation>;
-export type InternalCreateStockRequestMutationResult = Apollo.MutationResult<InternalCreateStockRequestMutation>;
-export type InternalCreateStockRequestMutationOptions = Apollo.BaseMutationOptions<InternalCreateStockRequestMutation, InternalCreateStockRequestMutationVariables>;
-export const InternalCreateStocksDocument = gql`
-    mutation InternalCreateStocks($productId: Int!, $stocks: [CreateStocksStocksInputType!]!) {
-  createStocks(productId: $productId, stocks: $stocks) {
-    ...StockFields
-  }
+export function useInternalCreateStockRequestMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    InternalCreateStockRequestMutation,
+    InternalCreateStockRequestMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    InternalCreateStockRequestMutation,
+    InternalCreateStockRequestMutationVariables
+  >(InternalCreateStockRequestDocument, options);
 }
-    ${StockFieldsFragmentDoc}`;
-export type InternalCreateStocksMutationFn = Apollo.MutationFunction<InternalCreateStocksMutation, InternalCreateStocksMutationVariables>;
+export type InternalCreateStockRequestMutationHookResult = ReturnType<
+  typeof useInternalCreateStockRequestMutation
+>;
+export type InternalCreateStockRequestMutationResult =
+  Apollo.MutationResult<InternalCreateStockRequestMutation>;
+export type InternalCreateStockRequestMutationOptions =
+  Apollo.BaseMutationOptions<
+    InternalCreateStockRequestMutation,
+    InternalCreateStockRequestMutationVariables
+  >;
+export const InternalCreateStocksDocument = gql`
+  mutation InternalCreateStocks(
+    $productId: Int!
+    $stocks: [CreateStocksStocksInputType!]!
+  ) {
+    createStocks(productId: $productId, stocks: $stocks) {
+      ...StockFields
+    }
+  }
+  ${StockFieldsFragmentDoc}
+`;
+export type InternalCreateStocksMutationFn = Apollo.MutationFunction<
+  InternalCreateStocksMutation,
+  InternalCreateStocksMutationVariables
+>;
 
 /**
  * __useInternalCreateStocksMutation__
@@ -1658,21 +3065,38 @@ export type InternalCreateStocksMutationFn = Apollo.MutationFunction<InternalCre
  *   },
  * });
  */
-export function useInternalCreateStocksMutation(baseOptions?: Apollo.MutationHookOptions<InternalCreateStocksMutation, InternalCreateStocksMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<InternalCreateStocksMutation, InternalCreateStocksMutationVariables>(InternalCreateStocksDocument, options);
-      }
-export type InternalCreateStocksMutationHookResult = ReturnType<typeof useInternalCreateStocksMutation>;
-export type InternalCreateStocksMutationResult = Apollo.MutationResult<InternalCreateStocksMutation>;
-export type InternalCreateStocksMutationOptions = Apollo.BaseMutationOptions<InternalCreateStocksMutation, InternalCreateStocksMutationVariables>;
-export const InternalDeleteInternalUserDocument = gql`
-    mutation InternalDeleteInternalUser($id: BigInt!) {
-  deleteInternalUser(id: $id) {
-    deleted
-  }
+export function useInternalCreateStocksMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    InternalCreateStocksMutation,
+    InternalCreateStocksMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    InternalCreateStocksMutation,
+    InternalCreateStocksMutationVariables
+  >(InternalCreateStocksDocument, options);
 }
-    `;
-export type InternalDeleteInternalUserMutationFn = Apollo.MutationFunction<InternalDeleteInternalUserMutation, InternalDeleteInternalUserMutationVariables>;
+export type InternalCreateStocksMutationHookResult = ReturnType<
+  typeof useInternalCreateStocksMutation
+>;
+export type InternalCreateStocksMutationResult =
+  Apollo.MutationResult<InternalCreateStocksMutation>;
+export type InternalCreateStocksMutationOptions = Apollo.BaseMutationOptions<
+  InternalCreateStocksMutation,
+  InternalCreateStocksMutationVariables
+>;
+export const InternalDeleteInternalUserDocument = gql`
+  mutation InternalDeleteInternalUser($id: BigInt!) {
+    deleteInternalUser(id: $id) {
+      deleted
+    }
+  }
+`;
+export type InternalDeleteInternalUserMutationFn = Apollo.MutationFunction<
+  InternalDeleteInternalUserMutation,
+  InternalDeleteInternalUserMutationVariables
+>;
 
 /**
  * __useInternalDeleteInternalUserMutation__
@@ -1691,21 +3115,39 @@ export type InternalDeleteInternalUserMutationFn = Apollo.MutationFunction<Inter
  *   },
  * });
  */
-export function useInternalDeleteInternalUserMutation(baseOptions?: Apollo.MutationHookOptions<InternalDeleteInternalUserMutation, InternalDeleteInternalUserMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<InternalDeleteInternalUserMutation, InternalDeleteInternalUserMutationVariables>(InternalDeleteInternalUserDocument, options);
-      }
-export type InternalDeleteInternalUserMutationHookResult = ReturnType<typeof useInternalDeleteInternalUserMutation>;
-export type InternalDeleteInternalUserMutationResult = Apollo.MutationResult<InternalDeleteInternalUserMutation>;
-export type InternalDeleteInternalUserMutationOptions = Apollo.BaseMutationOptions<InternalDeleteInternalUserMutation, InternalDeleteInternalUserMutationVariables>;
-export const InternalDeleteMakerDocument = gql`
-    mutation InternalDeleteMaker($id: Int!) {
-  deleteMaker(id: $id) {
-    deleted
-  }
+export function useInternalDeleteInternalUserMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    InternalDeleteInternalUserMutation,
+    InternalDeleteInternalUserMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    InternalDeleteInternalUserMutation,
+    InternalDeleteInternalUserMutationVariables
+  >(InternalDeleteInternalUserDocument, options);
 }
-    `;
-export type InternalDeleteMakerMutationFn = Apollo.MutationFunction<InternalDeleteMakerMutation, InternalDeleteMakerMutationVariables>;
+export type InternalDeleteInternalUserMutationHookResult = ReturnType<
+  typeof useInternalDeleteInternalUserMutation
+>;
+export type InternalDeleteInternalUserMutationResult =
+  Apollo.MutationResult<InternalDeleteInternalUserMutation>;
+export type InternalDeleteInternalUserMutationOptions =
+  Apollo.BaseMutationOptions<
+    InternalDeleteInternalUserMutation,
+    InternalDeleteInternalUserMutationVariables
+  >;
+export const InternalDeleteMakerDocument = gql`
+  mutation InternalDeleteMaker($id: Int!) {
+    deleteMaker(id: $id) {
+      deleted
+    }
+  }
+`;
+export type InternalDeleteMakerMutationFn = Apollo.MutationFunction<
+  InternalDeleteMakerMutation,
+  InternalDeleteMakerMutationVariables
+>;
 
 /**
  * __useInternalDeleteMakerMutation__
@@ -1724,21 +3166,38 @@ export type InternalDeleteMakerMutationFn = Apollo.MutationFunction<InternalDele
  *   },
  * });
  */
-export function useInternalDeleteMakerMutation(baseOptions?: Apollo.MutationHookOptions<InternalDeleteMakerMutation, InternalDeleteMakerMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<InternalDeleteMakerMutation, InternalDeleteMakerMutationVariables>(InternalDeleteMakerDocument, options);
-      }
-export type InternalDeleteMakerMutationHookResult = ReturnType<typeof useInternalDeleteMakerMutation>;
-export type InternalDeleteMakerMutationResult = Apollo.MutationResult<InternalDeleteMakerMutation>;
-export type InternalDeleteMakerMutationOptions = Apollo.BaseMutationOptions<InternalDeleteMakerMutation, InternalDeleteMakerMutationVariables>;
-export const InternalDeleteProductTagDocument = gql`
-    mutation InternalDeleteProductTag($id: Int!) {
-  deleteProductTag(id: $id) {
-    deleted
-  }
+export function useInternalDeleteMakerMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    InternalDeleteMakerMutation,
+    InternalDeleteMakerMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    InternalDeleteMakerMutation,
+    InternalDeleteMakerMutationVariables
+  >(InternalDeleteMakerDocument, options);
 }
-    `;
-export type InternalDeleteProductTagMutationFn = Apollo.MutationFunction<InternalDeleteProductTagMutation, InternalDeleteProductTagMutationVariables>;
+export type InternalDeleteMakerMutationHookResult = ReturnType<
+  typeof useInternalDeleteMakerMutation
+>;
+export type InternalDeleteMakerMutationResult =
+  Apollo.MutationResult<InternalDeleteMakerMutation>;
+export type InternalDeleteMakerMutationOptions = Apollo.BaseMutationOptions<
+  InternalDeleteMakerMutation,
+  InternalDeleteMakerMutationVariables
+>;
+export const InternalDeleteProductTagDocument = gql`
+  mutation InternalDeleteProductTag($id: Int!) {
+    deleteProductTag(id: $id) {
+      deleted
+    }
+  }
+`;
+export type InternalDeleteProductTagMutationFn = Apollo.MutationFunction<
+  InternalDeleteProductTagMutation,
+  InternalDeleteProductTagMutationVariables
+>;
 
 /**
  * __useInternalDeleteProductTagMutation__
@@ -1757,21 +3216,39 @@ export type InternalDeleteProductTagMutationFn = Apollo.MutationFunction<Interna
  *   },
  * });
  */
-export function useInternalDeleteProductTagMutation(baseOptions?: Apollo.MutationHookOptions<InternalDeleteProductTagMutation, InternalDeleteProductTagMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<InternalDeleteProductTagMutation, InternalDeleteProductTagMutationVariables>(InternalDeleteProductTagDocument, options);
-      }
-export type InternalDeleteProductTagMutationHookResult = ReturnType<typeof useInternalDeleteProductTagMutation>;
-export type InternalDeleteProductTagMutationResult = Apollo.MutationResult<InternalDeleteProductTagMutation>;
-export type InternalDeleteProductTagMutationOptions = Apollo.BaseMutationOptions<InternalDeleteProductTagMutation, InternalDeleteProductTagMutationVariables>;
-export const InternalDeleteProductTaggingDocument = gql`
-    mutation InternalDeleteProductTagging($id: Int!) {
-  deleteProductTagging(id: $id) {
-    deleted
-  }
+export function useInternalDeleteProductTagMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    InternalDeleteProductTagMutation,
+    InternalDeleteProductTagMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    InternalDeleteProductTagMutation,
+    InternalDeleteProductTagMutationVariables
+  >(InternalDeleteProductTagDocument, options);
 }
-    `;
-export type InternalDeleteProductTaggingMutationFn = Apollo.MutationFunction<InternalDeleteProductTaggingMutation, InternalDeleteProductTaggingMutationVariables>;
+export type InternalDeleteProductTagMutationHookResult = ReturnType<
+  typeof useInternalDeleteProductTagMutation
+>;
+export type InternalDeleteProductTagMutationResult =
+  Apollo.MutationResult<InternalDeleteProductTagMutation>;
+export type InternalDeleteProductTagMutationOptions =
+  Apollo.BaseMutationOptions<
+    InternalDeleteProductTagMutation,
+    InternalDeleteProductTagMutationVariables
+  >;
+export const InternalDeleteProductTaggingDocument = gql`
+  mutation InternalDeleteProductTagging($id: Int!) {
+    deleteProductTagging(id: $id) {
+      deleted
+    }
+  }
+`;
+export type InternalDeleteProductTaggingMutationFn = Apollo.MutationFunction<
+  InternalDeleteProductTaggingMutation,
+  InternalDeleteProductTaggingMutationVariables
+>;
 
 /**
  * __useInternalDeleteProductTaggingMutation__
@@ -1790,21 +3267,39 @@ export type InternalDeleteProductTaggingMutationFn = Apollo.MutationFunction<Int
  *   },
  * });
  */
-export function useInternalDeleteProductTaggingMutation(baseOptions?: Apollo.MutationHookOptions<InternalDeleteProductTaggingMutation, InternalDeleteProductTaggingMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<InternalDeleteProductTaggingMutation, InternalDeleteProductTaggingMutationVariables>(InternalDeleteProductTaggingDocument, options);
-      }
-export type InternalDeleteProductTaggingMutationHookResult = ReturnType<typeof useInternalDeleteProductTaggingMutation>;
-export type InternalDeleteProductTaggingMutationResult = Apollo.MutationResult<InternalDeleteProductTaggingMutation>;
-export type InternalDeleteProductTaggingMutationOptions = Apollo.BaseMutationOptions<InternalDeleteProductTaggingMutation, InternalDeleteProductTaggingMutationVariables>;
-export const InternalDeleteStockDocument = gql`
-    mutation InternalDeleteStock($id: Int!) {
-  deleteStock(id: $id) {
-    deleted
-  }
+export function useInternalDeleteProductTaggingMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    InternalDeleteProductTaggingMutation,
+    InternalDeleteProductTaggingMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    InternalDeleteProductTaggingMutation,
+    InternalDeleteProductTaggingMutationVariables
+  >(InternalDeleteProductTaggingDocument, options);
 }
-    `;
-export type InternalDeleteStockMutationFn = Apollo.MutationFunction<InternalDeleteStockMutation, InternalDeleteStockMutationVariables>;
+export type InternalDeleteProductTaggingMutationHookResult = ReturnType<
+  typeof useInternalDeleteProductTaggingMutation
+>;
+export type InternalDeleteProductTaggingMutationResult =
+  Apollo.MutationResult<InternalDeleteProductTaggingMutation>;
+export type InternalDeleteProductTaggingMutationOptions =
+  Apollo.BaseMutationOptions<
+    InternalDeleteProductTaggingMutation,
+    InternalDeleteProductTaggingMutationVariables
+  >;
+export const InternalDeleteStockDocument = gql`
+  mutation InternalDeleteStock($id: Int!) {
+    deleteStock(id: $id) {
+      deleted
+    }
+  }
+`;
+export type InternalDeleteStockMutationFn = Apollo.MutationFunction<
+  InternalDeleteStockMutation,
+  InternalDeleteStockMutationVariables
+>;
 
 /**
  * __useInternalDeleteStockMutation__
@@ -1823,21 +3318,38 @@ export type InternalDeleteStockMutationFn = Apollo.MutationFunction<InternalDele
  *   },
  * });
  */
-export function useInternalDeleteStockMutation(baseOptions?: Apollo.MutationHookOptions<InternalDeleteStockMutation, InternalDeleteStockMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<InternalDeleteStockMutation, InternalDeleteStockMutationVariables>(InternalDeleteStockDocument, options);
-      }
-export type InternalDeleteStockMutationHookResult = ReturnType<typeof useInternalDeleteStockMutation>;
-export type InternalDeleteStockMutationResult = Apollo.MutationResult<InternalDeleteStockMutation>;
-export type InternalDeleteStockMutationOptions = Apollo.BaseMutationOptions<InternalDeleteStockMutation, InternalDeleteStockMutationVariables>;
-export const InternalDeleteStockRequestDocument = gql`
-    mutation InternalDeleteStockRequest($id: Int!) {
-  deleteStockRequest(id: $id) {
-    deleted
-  }
+export function useInternalDeleteStockMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    InternalDeleteStockMutation,
+    InternalDeleteStockMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    InternalDeleteStockMutation,
+    InternalDeleteStockMutationVariables
+  >(InternalDeleteStockDocument, options);
 }
-    `;
-export type InternalDeleteStockRequestMutationFn = Apollo.MutationFunction<InternalDeleteStockRequestMutation, InternalDeleteStockRequestMutationVariables>;
+export type InternalDeleteStockMutationHookResult = ReturnType<
+  typeof useInternalDeleteStockMutation
+>;
+export type InternalDeleteStockMutationResult =
+  Apollo.MutationResult<InternalDeleteStockMutation>;
+export type InternalDeleteStockMutationOptions = Apollo.BaseMutationOptions<
+  InternalDeleteStockMutation,
+  InternalDeleteStockMutationVariables
+>;
+export const InternalDeleteStockRequestDocument = gql`
+  mutation InternalDeleteStockRequest($id: Int!) {
+    deleteStockRequest(id: $id) {
+      deleted
+    }
+  }
+`;
+export type InternalDeleteStockRequestMutationFn = Apollo.MutationFunction<
+  InternalDeleteStockRequestMutation,
+  InternalDeleteStockRequestMutationVariables
+>;
 
 /**
  * __useInternalDeleteStockRequestMutation__
@@ -1856,20 +3368,36 @@ export type InternalDeleteStockRequestMutationFn = Apollo.MutationFunction<Inter
  *   },
  * });
  */
-export function useInternalDeleteStockRequestMutation(baseOptions?: Apollo.MutationHookOptions<InternalDeleteStockRequestMutation, InternalDeleteStockRequestMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<InternalDeleteStockRequestMutation, InternalDeleteStockRequestMutationVariables>(InternalDeleteStockRequestDocument, options);
-      }
-export type InternalDeleteStockRequestMutationHookResult = ReturnType<typeof useInternalDeleteStockRequestMutation>;
-export type InternalDeleteStockRequestMutationResult = Apollo.MutationResult<InternalDeleteStockRequestMutation>;
-export type InternalDeleteStockRequestMutationOptions = Apollo.BaseMutationOptions<InternalDeleteStockRequestMutation, InternalDeleteStockRequestMutationVariables>;
-export const InternalGetHospitalDocument = gql`
-    query InternalGetHospital($id: BigInt!) {
-  hospital(id: $id) {
-    ...HospitalFields
-  }
+export function useInternalDeleteStockRequestMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    InternalDeleteStockRequestMutation,
+    InternalDeleteStockRequestMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    InternalDeleteStockRequestMutation,
+    InternalDeleteStockRequestMutationVariables
+  >(InternalDeleteStockRequestDocument, options);
 }
-    ${HospitalFieldsFragmentDoc}`;
+export type InternalDeleteStockRequestMutationHookResult = ReturnType<
+  typeof useInternalDeleteStockRequestMutation
+>;
+export type InternalDeleteStockRequestMutationResult =
+  Apollo.MutationResult<InternalDeleteStockRequestMutation>;
+export type InternalDeleteStockRequestMutationOptions =
+  Apollo.BaseMutationOptions<
+    InternalDeleteStockRequestMutation,
+    InternalDeleteStockRequestMutationVariables
+  >;
+export const InternalGetHospitalDocument = gql`
+  query InternalGetHospital($id: BigInt!) {
+    hospital(id: $id) {
+      ...HospitalFields
+    }
+  }
+  ${HospitalFieldsFragmentDoc}
+`;
 
 /**
  * __useInternalGetHospitalQuery__
@@ -1887,41 +3415,72 @@ export const InternalGetHospitalDocument = gql`
  *   },
  * });
  */
-export function useInternalGetHospitalQuery(baseOptions: Apollo.QueryHookOptions<InternalGetHospitalQuery, InternalGetHospitalQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<InternalGetHospitalQuery, InternalGetHospitalQueryVariables>(InternalGetHospitalDocument, options);
-      }
-export function useInternalGetHospitalLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InternalGetHospitalQuery, InternalGetHospitalQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<InternalGetHospitalQuery, InternalGetHospitalQueryVariables>(InternalGetHospitalDocument, options);
-        }
-export type InternalGetHospitalQueryHookResult = ReturnType<typeof useInternalGetHospitalQuery>;
-export type InternalGetHospitalLazyQueryHookResult = ReturnType<typeof useInternalGetHospitalLazyQuery>;
-export type InternalGetHospitalQueryResult = Apollo.QueryResult<InternalGetHospitalQuery, InternalGetHospitalQueryVariables>;
+export function useInternalGetHospitalQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    InternalGetHospitalQuery,
+    InternalGetHospitalQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    InternalGetHospitalQuery,
+    InternalGetHospitalQueryVariables
+  >(InternalGetHospitalDocument, options);
+}
+export function useInternalGetHospitalLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    InternalGetHospitalQuery,
+    InternalGetHospitalQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    InternalGetHospitalQuery,
+    InternalGetHospitalQueryVariables
+  >(InternalGetHospitalDocument, options);
+}
+export type InternalGetHospitalQueryHookResult = ReturnType<
+  typeof useInternalGetHospitalQuery
+>;
+export type InternalGetHospitalLazyQueryHookResult = ReturnType<
+  typeof useInternalGetHospitalLazyQuery
+>;
+export type InternalGetHospitalQueryResult = Apollo.QueryResult<
+  InternalGetHospitalQuery,
+  InternalGetHospitalQueryVariables
+>;
 export const InternalGetHospitalConnectionDocument = gql`
-    query InternalGetHospitalConnection($first: Int, $after: String, $name: String, $deleted: Boolean!, $prefectureId: BigInt, $internalReputationStar: Int) {
-  hospitalConnection(
-    first: $first
-    after: $after
-    name: $name
-    deleted: $deleted
-    prefectureId: $prefectureId
-    internalReputationStar: $internalReputationStar
+  query InternalGetHospitalConnection(
+    $first: Int
+    $after: String
+    $name: String
+    $deleted: Boolean!
+    $prefectureId: BigInt
+    $internalReputationStar: Int
   ) {
-    edges {
-      node {
-        ...HospitalFields
+    hospitalConnection(
+      first: $first
+      after: $after
+      name: $name
+      deleted: $deleted
+      prefectureId: $prefectureId
+      internalReputationStar: $internalReputationStar
+    ) {
+      edges {
+        node {
+          ...HospitalFields
+        }
       }
-    }
-    pageInfo {
-      hasNextPage
-      hasPreviousPage
-      startCursor
-      endCursor
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+        startCursor
+        endCursor
+      }
     }
   }
-}
-    ${HospitalFieldsFragmentDoc}`;
+  ${HospitalFieldsFragmentDoc}
+`;
 
 /**
  * __useInternalGetHospitalConnectionQuery__
@@ -1944,24 +3503,47 @@ export const InternalGetHospitalConnectionDocument = gql`
  *   },
  * });
  */
-export function useInternalGetHospitalConnectionQuery(baseOptions: Apollo.QueryHookOptions<InternalGetHospitalConnectionQuery, InternalGetHospitalConnectionQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<InternalGetHospitalConnectionQuery, InternalGetHospitalConnectionQueryVariables>(InternalGetHospitalConnectionDocument, options);
-      }
-export function useInternalGetHospitalConnectionLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InternalGetHospitalConnectionQuery, InternalGetHospitalConnectionQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<InternalGetHospitalConnectionQuery, InternalGetHospitalConnectionQueryVariables>(InternalGetHospitalConnectionDocument, options);
-        }
-export type InternalGetHospitalConnectionQueryHookResult = ReturnType<typeof useInternalGetHospitalConnectionQuery>;
-export type InternalGetHospitalConnectionLazyQueryHookResult = ReturnType<typeof useInternalGetHospitalConnectionLazyQuery>;
-export type InternalGetHospitalConnectionQueryResult = Apollo.QueryResult<InternalGetHospitalConnectionQuery, InternalGetHospitalConnectionQueryVariables>;
-export const InternalGetHospitalIdsDocument = gql`
-    query InternalGetHospitalIds {
-  hospitals {
-    id
-  }
+export function useInternalGetHospitalConnectionQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    InternalGetHospitalConnectionQuery,
+    InternalGetHospitalConnectionQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    InternalGetHospitalConnectionQuery,
+    InternalGetHospitalConnectionQueryVariables
+  >(InternalGetHospitalConnectionDocument, options);
 }
-    `;
+export function useInternalGetHospitalConnectionLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    InternalGetHospitalConnectionQuery,
+    InternalGetHospitalConnectionQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    InternalGetHospitalConnectionQuery,
+    InternalGetHospitalConnectionQueryVariables
+  >(InternalGetHospitalConnectionDocument, options);
+}
+export type InternalGetHospitalConnectionQueryHookResult = ReturnType<
+  typeof useInternalGetHospitalConnectionQuery
+>;
+export type InternalGetHospitalConnectionLazyQueryHookResult = ReturnType<
+  typeof useInternalGetHospitalConnectionLazyQuery
+>;
+export type InternalGetHospitalConnectionQueryResult = Apollo.QueryResult<
+  InternalGetHospitalConnectionQuery,
+  InternalGetHospitalConnectionQueryVariables
+>;
+export const InternalGetHospitalIdsDocument = gql`
+  query InternalGetHospitalIds {
+    hospitals {
+      id
+    }
+  }
+`;
 
 /**
  * __useInternalGetHospitalIdsQuery__
@@ -1978,24 +3560,48 @@ export const InternalGetHospitalIdsDocument = gql`
  *   },
  * });
  */
-export function useInternalGetHospitalIdsQuery(baseOptions?: Apollo.QueryHookOptions<InternalGetHospitalIdsQuery, InternalGetHospitalIdsQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<InternalGetHospitalIdsQuery, InternalGetHospitalIdsQueryVariables>(InternalGetHospitalIdsDocument, options);
-      }
-export function useInternalGetHospitalIdsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InternalGetHospitalIdsQuery, InternalGetHospitalIdsQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<InternalGetHospitalIdsQuery, InternalGetHospitalIdsQueryVariables>(InternalGetHospitalIdsDocument, options);
-        }
-export type InternalGetHospitalIdsQueryHookResult = ReturnType<typeof useInternalGetHospitalIdsQuery>;
-export type InternalGetHospitalIdsLazyQueryHookResult = ReturnType<typeof useInternalGetHospitalIdsLazyQuery>;
-export type InternalGetHospitalIdsQueryResult = Apollo.QueryResult<InternalGetHospitalIdsQuery, InternalGetHospitalIdsQueryVariables>;
-export const InternalGetInternalUserDocument = gql`
-    query InternalGetInternalUser($id: BigInt!) {
-  internalUser(id: $id) {
-    ...InternalUserFields
-  }
+export function useInternalGetHospitalIdsQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    InternalGetHospitalIdsQuery,
+    InternalGetHospitalIdsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    InternalGetHospitalIdsQuery,
+    InternalGetHospitalIdsQueryVariables
+  >(InternalGetHospitalIdsDocument, options);
 }
-    ${InternalUserFieldsFragmentDoc}`;
+export function useInternalGetHospitalIdsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    InternalGetHospitalIdsQuery,
+    InternalGetHospitalIdsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    InternalGetHospitalIdsQuery,
+    InternalGetHospitalIdsQueryVariables
+  >(InternalGetHospitalIdsDocument, options);
+}
+export type InternalGetHospitalIdsQueryHookResult = ReturnType<
+  typeof useInternalGetHospitalIdsQuery
+>;
+export type InternalGetHospitalIdsLazyQueryHookResult = ReturnType<
+  typeof useInternalGetHospitalIdsLazyQuery
+>;
+export type InternalGetHospitalIdsQueryResult = Apollo.QueryResult<
+  InternalGetHospitalIdsQuery,
+  InternalGetHospitalIdsQueryVariables
+>;
+export const InternalGetInternalUserDocument = gql`
+  query InternalGetInternalUser($id: BigInt!) {
+    internalUser(id: $id) {
+      ...InternalUserFields
+    }
+  }
+  ${InternalUserFieldsFragmentDoc}
+`;
 
 /**
  * __useInternalGetInternalUserQuery__
@@ -2013,24 +3619,48 @@ export const InternalGetInternalUserDocument = gql`
  *   },
  * });
  */
-export function useInternalGetInternalUserQuery(baseOptions: Apollo.QueryHookOptions<InternalGetInternalUserQuery, InternalGetInternalUserQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<InternalGetInternalUserQuery, InternalGetInternalUserQueryVariables>(InternalGetInternalUserDocument, options);
-      }
-export function useInternalGetInternalUserLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InternalGetInternalUserQuery, InternalGetInternalUserQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<InternalGetInternalUserQuery, InternalGetInternalUserQueryVariables>(InternalGetInternalUserDocument, options);
-        }
-export type InternalGetInternalUserQueryHookResult = ReturnType<typeof useInternalGetInternalUserQuery>;
-export type InternalGetInternalUserLazyQueryHookResult = ReturnType<typeof useInternalGetInternalUserLazyQuery>;
-export type InternalGetInternalUserQueryResult = Apollo.QueryResult<InternalGetInternalUserQuery, InternalGetInternalUserQueryVariables>;
-export const InternalGetInternalUsersDocument = gql`
-    query InternalGetInternalUsers {
-  internalUsers {
-    ...InternalUserFields
-  }
+export function useInternalGetInternalUserQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    InternalGetInternalUserQuery,
+    InternalGetInternalUserQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    InternalGetInternalUserQuery,
+    InternalGetInternalUserQueryVariables
+  >(InternalGetInternalUserDocument, options);
 }
-    ${InternalUserFieldsFragmentDoc}`;
+export function useInternalGetInternalUserLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    InternalGetInternalUserQuery,
+    InternalGetInternalUserQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    InternalGetInternalUserQuery,
+    InternalGetInternalUserQueryVariables
+  >(InternalGetInternalUserDocument, options);
+}
+export type InternalGetInternalUserQueryHookResult = ReturnType<
+  typeof useInternalGetInternalUserQuery
+>;
+export type InternalGetInternalUserLazyQueryHookResult = ReturnType<
+  typeof useInternalGetInternalUserLazyQuery
+>;
+export type InternalGetInternalUserQueryResult = Apollo.QueryResult<
+  InternalGetInternalUserQuery,
+  InternalGetInternalUserQueryVariables
+>;
+export const InternalGetInternalUsersDocument = gql`
+  query InternalGetInternalUsers {
+    internalUsers {
+      ...InternalUserFields
+    }
+  }
+  ${InternalUserFieldsFragmentDoc}
+`;
 
 /**
  * __useInternalGetInternalUsersQuery__
@@ -2047,24 +3677,48 @@ export const InternalGetInternalUsersDocument = gql`
  *   },
  * });
  */
-export function useInternalGetInternalUsersQuery(baseOptions?: Apollo.QueryHookOptions<InternalGetInternalUsersQuery, InternalGetInternalUsersQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<InternalGetInternalUsersQuery, InternalGetInternalUsersQueryVariables>(InternalGetInternalUsersDocument, options);
-      }
-export function useInternalGetInternalUsersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InternalGetInternalUsersQuery, InternalGetInternalUsersQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<InternalGetInternalUsersQuery, InternalGetInternalUsersQueryVariables>(InternalGetInternalUsersDocument, options);
-        }
-export type InternalGetInternalUsersQueryHookResult = ReturnType<typeof useInternalGetInternalUsersQuery>;
-export type InternalGetInternalUsersLazyQueryHookResult = ReturnType<typeof useInternalGetInternalUsersLazyQuery>;
-export type InternalGetInternalUsersQueryResult = Apollo.QueryResult<InternalGetInternalUsersQuery, InternalGetInternalUsersQueryVariables>;
-export const InternalGetMakerDocument = gql`
-    query InternalGetMaker($id: Int!) {
-  maker(id: $id) {
-    ...MakerFields
-  }
+export function useInternalGetInternalUsersQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    InternalGetInternalUsersQuery,
+    InternalGetInternalUsersQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    InternalGetInternalUsersQuery,
+    InternalGetInternalUsersQueryVariables
+  >(InternalGetInternalUsersDocument, options);
 }
-    ${MakerFieldsFragmentDoc}`;
+export function useInternalGetInternalUsersLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    InternalGetInternalUsersQuery,
+    InternalGetInternalUsersQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    InternalGetInternalUsersQuery,
+    InternalGetInternalUsersQueryVariables
+  >(InternalGetInternalUsersDocument, options);
+}
+export type InternalGetInternalUsersQueryHookResult = ReturnType<
+  typeof useInternalGetInternalUsersQuery
+>;
+export type InternalGetInternalUsersLazyQueryHookResult = ReturnType<
+  typeof useInternalGetInternalUsersLazyQuery
+>;
+export type InternalGetInternalUsersQueryResult = Apollo.QueryResult<
+  InternalGetInternalUsersQuery,
+  InternalGetInternalUsersQueryVariables
+>;
+export const InternalGetMakerDocument = gql`
+  query InternalGetMaker($id: Int!) {
+    maker(id: $id) {
+      ...MakerFields
+    }
+  }
+  ${MakerFieldsFragmentDoc}
+`;
 
 /**
  * __useInternalGetMakerQuery__
@@ -2082,24 +3736,48 @@ export const InternalGetMakerDocument = gql`
  *   },
  * });
  */
-export function useInternalGetMakerQuery(baseOptions: Apollo.QueryHookOptions<InternalGetMakerQuery, InternalGetMakerQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<InternalGetMakerQuery, InternalGetMakerQueryVariables>(InternalGetMakerDocument, options);
-      }
-export function useInternalGetMakerLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InternalGetMakerQuery, InternalGetMakerQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<InternalGetMakerQuery, InternalGetMakerQueryVariables>(InternalGetMakerDocument, options);
-        }
-export type InternalGetMakerQueryHookResult = ReturnType<typeof useInternalGetMakerQuery>;
-export type InternalGetMakerLazyQueryHookResult = ReturnType<typeof useInternalGetMakerLazyQuery>;
-export type InternalGetMakerQueryResult = Apollo.QueryResult<InternalGetMakerQuery, InternalGetMakerQueryVariables>;
-export const InternalGetMakersDocument = gql`
-    query InternalGetMakers {
-  makers {
-    ...MakerFields
-  }
+export function useInternalGetMakerQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    InternalGetMakerQuery,
+    InternalGetMakerQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<InternalGetMakerQuery, InternalGetMakerQueryVariables>(
+    InternalGetMakerDocument,
+    options
+  );
 }
-    ${MakerFieldsFragmentDoc}`;
+export function useInternalGetMakerLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    InternalGetMakerQuery,
+    InternalGetMakerQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    InternalGetMakerQuery,
+    InternalGetMakerQueryVariables
+  >(InternalGetMakerDocument, options);
+}
+export type InternalGetMakerQueryHookResult = ReturnType<
+  typeof useInternalGetMakerQuery
+>;
+export type InternalGetMakerLazyQueryHookResult = ReturnType<
+  typeof useInternalGetMakerLazyQuery
+>;
+export type InternalGetMakerQueryResult = Apollo.QueryResult<
+  InternalGetMakerQuery,
+  InternalGetMakerQueryVariables
+>;
+export const InternalGetMakersDocument = gql`
+  query InternalGetMakers {
+    makers {
+      ...MakerFields
+    }
+  }
+  ${MakerFieldsFragmentDoc}
+`;
 
 /**
  * __useInternalGetMakersQuery__
@@ -2116,24 +3794,48 @@ export const InternalGetMakersDocument = gql`
  *   },
  * });
  */
-export function useInternalGetMakersQuery(baseOptions?: Apollo.QueryHookOptions<InternalGetMakersQuery, InternalGetMakersQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<InternalGetMakersQuery, InternalGetMakersQueryVariables>(InternalGetMakersDocument, options);
-      }
-export function useInternalGetMakersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InternalGetMakersQuery, InternalGetMakersQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<InternalGetMakersQuery, InternalGetMakersQueryVariables>(InternalGetMakersDocument, options);
-        }
-export type InternalGetMakersQueryHookResult = ReturnType<typeof useInternalGetMakersQuery>;
-export type InternalGetMakersLazyQueryHookResult = ReturnType<typeof useInternalGetMakersLazyQuery>;
-export type InternalGetMakersQueryResult = Apollo.QueryResult<InternalGetMakersQuery, InternalGetMakersQueryVariables>;
-export const InternalGetProductDocument = gql`
-    query InternalGetProduct($id: Int!) {
-  product(id: $id) {
-    ...ProductFields
-  }
+export function useInternalGetMakersQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    InternalGetMakersQuery,
+    InternalGetMakersQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    InternalGetMakersQuery,
+    InternalGetMakersQueryVariables
+  >(InternalGetMakersDocument, options);
 }
-    ${ProductFieldsFragmentDoc}`;
+export function useInternalGetMakersLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    InternalGetMakersQuery,
+    InternalGetMakersQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    InternalGetMakersQuery,
+    InternalGetMakersQueryVariables
+  >(InternalGetMakersDocument, options);
+}
+export type InternalGetMakersQueryHookResult = ReturnType<
+  typeof useInternalGetMakersQuery
+>;
+export type InternalGetMakersLazyQueryHookResult = ReturnType<
+  typeof useInternalGetMakersLazyQuery
+>;
+export type InternalGetMakersQueryResult = Apollo.QueryResult<
+  InternalGetMakersQuery,
+  InternalGetMakersQueryVariables
+>;
+export const InternalGetProductDocument = gql`
+  query InternalGetProduct($id: Int!) {
+    product(id: $id) {
+      ...ProductFields
+    }
+  }
+  ${ProductFieldsFragmentDoc}
+`;
 
 /**
  * __useInternalGetProductQuery__
@@ -2151,43 +3853,76 @@ export const InternalGetProductDocument = gql`
  *   },
  * });
  */
-export function useInternalGetProductQuery(baseOptions: Apollo.QueryHookOptions<InternalGetProductQuery, InternalGetProductQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<InternalGetProductQuery, InternalGetProductQueryVariables>(InternalGetProductDocument, options);
-      }
-export function useInternalGetProductLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InternalGetProductQuery, InternalGetProductQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<InternalGetProductQuery, InternalGetProductQueryVariables>(InternalGetProductDocument, options);
-        }
-export type InternalGetProductQueryHookResult = ReturnType<typeof useInternalGetProductQuery>;
-export type InternalGetProductLazyQueryHookResult = ReturnType<typeof useInternalGetProductLazyQuery>;
-export type InternalGetProductQueryResult = Apollo.QueryResult<InternalGetProductQuery, InternalGetProductQueryVariables>;
+export function useInternalGetProductQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    InternalGetProductQuery,
+    InternalGetProductQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    InternalGetProductQuery,
+    InternalGetProductQueryVariables
+  >(InternalGetProductDocument, options);
+}
+export function useInternalGetProductLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    InternalGetProductQuery,
+    InternalGetProductQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    InternalGetProductQuery,
+    InternalGetProductQueryVariables
+  >(InternalGetProductDocument, options);
+}
+export type InternalGetProductQueryHookResult = ReturnType<
+  typeof useInternalGetProductQuery
+>;
+export type InternalGetProductLazyQueryHookResult = ReturnType<
+  typeof useInternalGetProductLazyQuery
+>;
+export type InternalGetProductQueryResult = Apollo.QueryResult<
+  InternalGetProductQuery,
+  InternalGetProductQueryVariables
+>;
 export const InternalGetProductConnectionDocument = gql`
-    query InternalGetProductConnection($first: Int, $after: String, $name: String, $makerId: Int, $productTagId: Int, $internalUserId: Int, $allocatedInternalUserId: Int, $hasStock: Boolean) {
-  productConnection(
-    first: $first
-    after: $after
-    name: $name
-    makerId: $makerId
-    productTagId: $productTagId
-    internalUserId: $internalUserId
-    allocatedInternalUserId: $allocatedInternalUserId
-    hasStock: $hasStock
+  query InternalGetProductConnection(
+    $first: Int
+    $after: String
+    $name: String
+    $makerId: Int
+    $productTagId: Int
+    $internalUserId: Int
+    $allocatedInternalUserId: Int
+    $hasStock: Boolean
   ) {
-    edges {
-      node {
-        ...ProductFields
+    productConnection(
+      first: $first
+      after: $after
+      name: $name
+      makerId: $makerId
+      productTagId: $productTagId
+      internalUserId: $internalUserId
+      allocatedInternalUserId: $allocatedInternalUserId
+      hasStock: $hasStock
+    ) {
+      edges {
+        node {
+          ...ProductFields
+        }
       }
-    }
-    pageInfo {
-      hasNextPage
-      hasPreviousPage
-      startCursor
-      endCursor
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+        startCursor
+        endCursor
+      }
     }
   }
-}
-    ${ProductFieldsFragmentDoc}`;
+  ${ProductFieldsFragmentDoc}
+`;
 
 /**
  * __useInternalGetProductConnectionQuery__
@@ -2212,24 +3947,47 @@ export const InternalGetProductConnectionDocument = gql`
  *   },
  * });
  */
-export function useInternalGetProductConnectionQuery(baseOptions?: Apollo.QueryHookOptions<InternalGetProductConnectionQuery, InternalGetProductConnectionQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<InternalGetProductConnectionQuery, InternalGetProductConnectionQueryVariables>(InternalGetProductConnectionDocument, options);
-      }
-export function useInternalGetProductConnectionLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InternalGetProductConnectionQuery, InternalGetProductConnectionQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<InternalGetProductConnectionQuery, InternalGetProductConnectionQueryVariables>(InternalGetProductConnectionDocument, options);
-        }
-export type InternalGetProductConnectionQueryHookResult = ReturnType<typeof useInternalGetProductConnectionQuery>;
-export type InternalGetProductConnectionLazyQueryHookResult = ReturnType<typeof useInternalGetProductConnectionLazyQuery>;
-export type InternalGetProductConnectionQueryResult = Apollo.QueryResult<InternalGetProductConnectionQuery, InternalGetProductConnectionQueryVariables>;
-export const InternalGetProductIdsDocument = gql`
-    query InternalGetProductIds {
-  products {
-    id
-  }
+export function useInternalGetProductConnectionQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    InternalGetProductConnectionQuery,
+    InternalGetProductConnectionQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    InternalGetProductConnectionQuery,
+    InternalGetProductConnectionQueryVariables
+  >(InternalGetProductConnectionDocument, options);
 }
-    `;
+export function useInternalGetProductConnectionLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    InternalGetProductConnectionQuery,
+    InternalGetProductConnectionQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    InternalGetProductConnectionQuery,
+    InternalGetProductConnectionQueryVariables
+  >(InternalGetProductConnectionDocument, options);
+}
+export type InternalGetProductConnectionQueryHookResult = ReturnType<
+  typeof useInternalGetProductConnectionQuery
+>;
+export type InternalGetProductConnectionLazyQueryHookResult = ReturnType<
+  typeof useInternalGetProductConnectionLazyQuery
+>;
+export type InternalGetProductConnectionQueryResult = Apollo.QueryResult<
+  InternalGetProductConnectionQuery,
+  InternalGetProductConnectionQueryVariables
+>;
+export const InternalGetProductIdsDocument = gql`
+  query InternalGetProductIds {
+    products {
+      id
+    }
+  }
+`;
 
 /**
  * __useInternalGetProductIdsQuery__
@@ -2246,24 +4004,48 @@ export const InternalGetProductIdsDocument = gql`
  *   },
  * });
  */
-export function useInternalGetProductIdsQuery(baseOptions?: Apollo.QueryHookOptions<InternalGetProductIdsQuery, InternalGetProductIdsQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<InternalGetProductIdsQuery, InternalGetProductIdsQueryVariables>(InternalGetProductIdsDocument, options);
-      }
-export function useInternalGetProductIdsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InternalGetProductIdsQuery, InternalGetProductIdsQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<InternalGetProductIdsQuery, InternalGetProductIdsQueryVariables>(InternalGetProductIdsDocument, options);
-        }
-export type InternalGetProductIdsQueryHookResult = ReturnType<typeof useInternalGetProductIdsQuery>;
-export type InternalGetProductIdsLazyQueryHookResult = ReturnType<typeof useInternalGetProductIdsLazyQuery>;
-export type InternalGetProductIdsQueryResult = Apollo.QueryResult<InternalGetProductIdsQuery, InternalGetProductIdsQueryVariables>;
-export const InternalGetProductTagGroupDocument = gql`
-    query InternalGetProductTagGroup($id: Int!) {
-  productTagGroup(id: $id) {
-    ...ProductTagGroupFields
-  }
+export function useInternalGetProductIdsQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    InternalGetProductIdsQuery,
+    InternalGetProductIdsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    InternalGetProductIdsQuery,
+    InternalGetProductIdsQueryVariables
+  >(InternalGetProductIdsDocument, options);
 }
-    ${ProductTagGroupFieldsFragmentDoc}`;
+export function useInternalGetProductIdsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    InternalGetProductIdsQuery,
+    InternalGetProductIdsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    InternalGetProductIdsQuery,
+    InternalGetProductIdsQueryVariables
+  >(InternalGetProductIdsDocument, options);
+}
+export type InternalGetProductIdsQueryHookResult = ReturnType<
+  typeof useInternalGetProductIdsQuery
+>;
+export type InternalGetProductIdsLazyQueryHookResult = ReturnType<
+  typeof useInternalGetProductIdsLazyQuery
+>;
+export type InternalGetProductIdsQueryResult = Apollo.QueryResult<
+  InternalGetProductIdsQuery,
+  InternalGetProductIdsQueryVariables
+>;
+export const InternalGetProductTagGroupDocument = gql`
+  query InternalGetProductTagGroup($id: Int!) {
+    productTagGroup(id: $id) {
+      ...ProductTagGroupFields
+    }
+  }
+  ${ProductTagGroupFieldsFragmentDoc}
+`;
 
 /**
  * __useInternalGetProductTagGroupQuery__
@@ -2281,24 +4063,47 @@ export const InternalGetProductTagGroupDocument = gql`
  *   },
  * });
  */
-export function useInternalGetProductTagGroupQuery(baseOptions: Apollo.QueryHookOptions<InternalGetProductTagGroupQuery, InternalGetProductTagGroupQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<InternalGetProductTagGroupQuery, InternalGetProductTagGroupQueryVariables>(InternalGetProductTagGroupDocument, options);
-      }
-export function useInternalGetProductTagGroupLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InternalGetProductTagGroupQuery, InternalGetProductTagGroupQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<InternalGetProductTagGroupQuery, InternalGetProductTagGroupQueryVariables>(InternalGetProductTagGroupDocument, options);
-        }
-export type InternalGetProductTagGroupQueryHookResult = ReturnType<typeof useInternalGetProductTagGroupQuery>;
-export type InternalGetProductTagGroupLazyQueryHookResult = ReturnType<typeof useInternalGetProductTagGroupLazyQuery>;
-export type InternalGetProductTagGroupQueryResult = Apollo.QueryResult<InternalGetProductTagGroupQuery, InternalGetProductTagGroupQueryVariables>;
-export const InternalGetProductTagGroupIdsDocument = gql`
-    query InternalGetProductTagGroupIds {
-  productTagGroups {
-    id
-  }
+export function useInternalGetProductTagGroupQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    InternalGetProductTagGroupQuery,
+    InternalGetProductTagGroupQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    InternalGetProductTagGroupQuery,
+    InternalGetProductTagGroupQueryVariables
+  >(InternalGetProductTagGroupDocument, options);
 }
-    `;
+export function useInternalGetProductTagGroupLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    InternalGetProductTagGroupQuery,
+    InternalGetProductTagGroupQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    InternalGetProductTagGroupQuery,
+    InternalGetProductTagGroupQueryVariables
+  >(InternalGetProductTagGroupDocument, options);
+}
+export type InternalGetProductTagGroupQueryHookResult = ReturnType<
+  typeof useInternalGetProductTagGroupQuery
+>;
+export type InternalGetProductTagGroupLazyQueryHookResult = ReturnType<
+  typeof useInternalGetProductTagGroupLazyQuery
+>;
+export type InternalGetProductTagGroupQueryResult = Apollo.QueryResult<
+  InternalGetProductTagGroupQuery,
+  InternalGetProductTagGroupQueryVariables
+>;
+export const InternalGetProductTagGroupIdsDocument = gql`
+  query InternalGetProductTagGroupIds {
+    productTagGroups {
+      id
+    }
+  }
+`;
 
 /**
  * __useInternalGetProductTagGroupIdsQuery__
@@ -2315,24 +4120,48 @@ export const InternalGetProductTagGroupIdsDocument = gql`
  *   },
  * });
  */
-export function useInternalGetProductTagGroupIdsQuery(baseOptions?: Apollo.QueryHookOptions<InternalGetProductTagGroupIdsQuery, InternalGetProductTagGroupIdsQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<InternalGetProductTagGroupIdsQuery, InternalGetProductTagGroupIdsQueryVariables>(InternalGetProductTagGroupIdsDocument, options);
-      }
-export function useInternalGetProductTagGroupIdsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InternalGetProductTagGroupIdsQuery, InternalGetProductTagGroupIdsQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<InternalGetProductTagGroupIdsQuery, InternalGetProductTagGroupIdsQueryVariables>(InternalGetProductTagGroupIdsDocument, options);
-        }
-export type InternalGetProductTagGroupIdsQueryHookResult = ReturnType<typeof useInternalGetProductTagGroupIdsQuery>;
-export type InternalGetProductTagGroupIdsLazyQueryHookResult = ReturnType<typeof useInternalGetProductTagGroupIdsLazyQuery>;
-export type InternalGetProductTagGroupIdsQueryResult = Apollo.QueryResult<InternalGetProductTagGroupIdsQuery, InternalGetProductTagGroupIdsQueryVariables>;
-export const InternalGetProductTagGroupsDocument = gql`
-    query InternalGetProductTagGroups {
-  productTagGroups {
-    ...ProductTagGroupFields
-  }
+export function useInternalGetProductTagGroupIdsQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    InternalGetProductTagGroupIdsQuery,
+    InternalGetProductTagGroupIdsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    InternalGetProductTagGroupIdsQuery,
+    InternalGetProductTagGroupIdsQueryVariables
+  >(InternalGetProductTagGroupIdsDocument, options);
 }
-    ${ProductTagGroupFieldsFragmentDoc}`;
+export function useInternalGetProductTagGroupIdsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    InternalGetProductTagGroupIdsQuery,
+    InternalGetProductTagGroupIdsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    InternalGetProductTagGroupIdsQuery,
+    InternalGetProductTagGroupIdsQueryVariables
+  >(InternalGetProductTagGroupIdsDocument, options);
+}
+export type InternalGetProductTagGroupIdsQueryHookResult = ReturnType<
+  typeof useInternalGetProductTagGroupIdsQuery
+>;
+export type InternalGetProductTagGroupIdsLazyQueryHookResult = ReturnType<
+  typeof useInternalGetProductTagGroupIdsLazyQuery
+>;
+export type InternalGetProductTagGroupIdsQueryResult = Apollo.QueryResult<
+  InternalGetProductTagGroupIdsQuery,
+  InternalGetProductTagGroupIdsQueryVariables
+>;
+export const InternalGetProductTagGroupsDocument = gql`
+  query InternalGetProductTagGroups {
+    productTagGroups {
+      ...ProductTagGroupFields
+    }
+  }
+  ${ProductTagGroupFieldsFragmentDoc}
+`;
 
 /**
  * __useInternalGetProductTagGroupsQuery__
@@ -2349,24 +4178,48 @@ export const InternalGetProductTagGroupsDocument = gql`
  *   },
  * });
  */
-export function useInternalGetProductTagGroupsQuery(baseOptions?: Apollo.QueryHookOptions<InternalGetProductTagGroupsQuery, InternalGetProductTagGroupsQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<InternalGetProductTagGroupsQuery, InternalGetProductTagGroupsQueryVariables>(InternalGetProductTagGroupsDocument, options);
-      }
-export function useInternalGetProductTagGroupsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InternalGetProductTagGroupsQuery, InternalGetProductTagGroupsQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<InternalGetProductTagGroupsQuery, InternalGetProductTagGroupsQueryVariables>(InternalGetProductTagGroupsDocument, options);
-        }
-export type InternalGetProductTagGroupsQueryHookResult = ReturnType<typeof useInternalGetProductTagGroupsQuery>;
-export type InternalGetProductTagGroupsLazyQueryHookResult = ReturnType<typeof useInternalGetProductTagGroupsLazyQuery>;
-export type InternalGetProductTagGroupsQueryResult = Apollo.QueryResult<InternalGetProductTagGroupsQuery, InternalGetProductTagGroupsQueryVariables>;
-export const InternalGetProductsDocument = gql`
-    query InternalGetProducts($ids: [Int!]) {
-  products(ids: $ids) {
-    ...ProductFields
-  }
+export function useInternalGetProductTagGroupsQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    InternalGetProductTagGroupsQuery,
+    InternalGetProductTagGroupsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    InternalGetProductTagGroupsQuery,
+    InternalGetProductTagGroupsQueryVariables
+  >(InternalGetProductTagGroupsDocument, options);
 }
-    ${ProductFieldsFragmentDoc}`;
+export function useInternalGetProductTagGroupsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    InternalGetProductTagGroupsQuery,
+    InternalGetProductTagGroupsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    InternalGetProductTagGroupsQuery,
+    InternalGetProductTagGroupsQueryVariables
+  >(InternalGetProductTagGroupsDocument, options);
+}
+export type InternalGetProductTagGroupsQueryHookResult = ReturnType<
+  typeof useInternalGetProductTagGroupsQuery
+>;
+export type InternalGetProductTagGroupsLazyQueryHookResult = ReturnType<
+  typeof useInternalGetProductTagGroupsLazyQuery
+>;
+export type InternalGetProductTagGroupsQueryResult = Apollo.QueryResult<
+  InternalGetProductTagGroupsQuery,
+  InternalGetProductTagGroupsQueryVariables
+>;
+export const InternalGetProductsDocument = gql`
+  query InternalGetProducts($ids: [Int!]) {
+    products(ids: $ids) {
+      ...ProductFields
+    }
+  }
+  ${ProductFieldsFragmentDoc}
+`;
 
 /**
  * __useInternalGetProductsQuery__
@@ -2384,24 +4237,48 @@ export const InternalGetProductsDocument = gql`
  *   },
  * });
  */
-export function useInternalGetProductsQuery(baseOptions?: Apollo.QueryHookOptions<InternalGetProductsQuery, InternalGetProductsQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<InternalGetProductsQuery, InternalGetProductsQueryVariables>(InternalGetProductsDocument, options);
-      }
-export function useInternalGetProductsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InternalGetProductsQuery, InternalGetProductsQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<InternalGetProductsQuery, InternalGetProductsQueryVariables>(InternalGetProductsDocument, options);
-        }
-export type InternalGetProductsQueryHookResult = ReturnType<typeof useInternalGetProductsQuery>;
-export type InternalGetProductsLazyQueryHookResult = ReturnType<typeof useInternalGetProductsLazyQuery>;
-export type InternalGetProductsQueryResult = Apollo.QueryResult<InternalGetProductsQuery, InternalGetProductsQueryVariables>;
-export const InternalGetRolesDocument = gql`
-    query InternalGetRoles {
-  roles {
-    ...RoleFields
-  }
+export function useInternalGetProductsQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    InternalGetProductsQuery,
+    InternalGetProductsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    InternalGetProductsQuery,
+    InternalGetProductsQueryVariables
+  >(InternalGetProductsDocument, options);
 }
-    ${RoleFieldsFragmentDoc}`;
+export function useInternalGetProductsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    InternalGetProductsQuery,
+    InternalGetProductsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    InternalGetProductsQuery,
+    InternalGetProductsQueryVariables
+  >(InternalGetProductsDocument, options);
+}
+export type InternalGetProductsQueryHookResult = ReturnType<
+  typeof useInternalGetProductsQuery
+>;
+export type InternalGetProductsLazyQueryHookResult = ReturnType<
+  typeof useInternalGetProductsLazyQuery
+>;
+export type InternalGetProductsQueryResult = Apollo.QueryResult<
+  InternalGetProductsQuery,
+  InternalGetProductsQueryVariables
+>;
+export const InternalGetRolesDocument = gql`
+  query InternalGetRoles {
+    roles {
+      ...RoleFields
+    }
+  }
+  ${RoleFieldsFragmentDoc}
+`;
 
 /**
  * __useInternalGetRolesQuery__
@@ -2418,27 +4295,51 @@ export const InternalGetRolesDocument = gql`
  *   },
  * });
  */
-export function useInternalGetRolesQuery(baseOptions?: Apollo.QueryHookOptions<InternalGetRolesQuery, InternalGetRolesQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<InternalGetRolesQuery, InternalGetRolesQueryVariables>(InternalGetRolesDocument, options);
-      }
-export function useInternalGetRolesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InternalGetRolesQuery, InternalGetRolesQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<InternalGetRolesQuery, InternalGetRolesQueryVariables>(InternalGetRolesDocument, options);
-        }
-export type InternalGetRolesQueryHookResult = ReturnType<typeof useInternalGetRolesQuery>;
-export type InternalGetRolesLazyQueryHookResult = ReturnType<typeof useInternalGetRolesLazyQuery>;
-export type InternalGetRolesQueryResult = Apollo.QueryResult<InternalGetRolesQuery, InternalGetRolesQueryVariables>;
+export function useInternalGetRolesQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    InternalGetRolesQuery,
+    InternalGetRolesQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<InternalGetRolesQuery, InternalGetRolesQueryVariables>(
+    InternalGetRolesDocument,
+    options
+  );
+}
+export function useInternalGetRolesLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    InternalGetRolesQuery,
+    InternalGetRolesQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    InternalGetRolesQuery,
+    InternalGetRolesQueryVariables
+  >(InternalGetRolesDocument, options);
+}
+export type InternalGetRolesQueryHookResult = ReturnType<
+  typeof useInternalGetRolesQuery
+>;
+export type InternalGetRolesLazyQueryHookResult = ReturnType<
+  typeof useInternalGetRolesLazyQuery
+>;
+export type InternalGetRolesQueryResult = Apollo.QueryResult<
+  InternalGetRolesQuery,
+  InternalGetRolesQueryVariables
+>;
 export const InternalGetSessionDocument = gql`
-    query InternalGetSession {
-  session {
-    token
-    internalUser {
-      ...InternalUserFields
+  query InternalGetSession {
+    session {
+      token
+      internalUser {
+        ...InternalUserFields
+      }
     }
   }
-}
-    ${InternalUserFieldsFragmentDoc}`;
+  ${InternalUserFieldsFragmentDoc}
+`;
 
 /**
  * __useInternalGetSessionQuery__
@@ -2455,24 +4356,48 @@ export const InternalGetSessionDocument = gql`
  *   },
  * });
  */
-export function useInternalGetSessionQuery(baseOptions?: Apollo.QueryHookOptions<InternalGetSessionQuery, InternalGetSessionQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<InternalGetSessionQuery, InternalGetSessionQueryVariables>(InternalGetSessionDocument, options);
-      }
-export function useInternalGetSessionLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InternalGetSessionQuery, InternalGetSessionQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<InternalGetSessionQuery, InternalGetSessionQueryVariables>(InternalGetSessionDocument, options);
-        }
-export type InternalGetSessionQueryHookResult = ReturnType<typeof useInternalGetSessionQuery>;
-export type InternalGetSessionLazyQueryHookResult = ReturnType<typeof useInternalGetSessionLazyQuery>;
-export type InternalGetSessionQueryResult = Apollo.QueryResult<InternalGetSessionQuery, InternalGetSessionQueryVariables>;
-export const InternalGetStockRequestDocument = gql`
-    query InternalGetStockRequest($id: Int!) {
-  stockRequest(id: $id) {
-    ...StockRequestFields
-  }
+export function useInternalGetSessionQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    InternalGetSessionQuery,
+    InternalGetSessionQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    InternalGetSessionQuery,
+    InternalGetSessionQueryVariables
+  >(InternalGetSessionDocument, options);
 }
-    ${StockRequestFieldsFragmentDoc}`;
+export function useInternalGetSessionLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    InternalGetSessionQuery,
+    InternalGetSessionQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    InternalGetSessionQuery,
+    InternalGetSessionQueryVariables
+  >(InternalGetSessionDocument, options);
+}
+export type InternalGetSessionQueryHookResult = ReturnType<
+  typeof useInternalGetSessionQuery
+>;
+export type InternalGetSessionLazyQueryHookResult = ReturnType<
+  typeof useInternalGetSessionLazyQuery
+>;
+export type InternalGetSessionQueryResult = Apollo.QueryResult<
+  InternalGetSessionQuery,
+  InternalGetSessionQueryVariables
+>;
+export const InternalGetStockRequestDocument = gql`
+  query InternalGetStockRequest($id: Int!) {
+    stockRequest(id: $id) {
+      ...StockRequestFields
+    }
+  }
+  ${StockRequestFieldsFragmentDoc}
+`;
 
 /**
  * __useInternalGetStockRequestQuery__
@@ -2490,38 +4415,66 @@ export const InternalGetStockRequestDocument = gql`
  *   },
  * });
  */
-export function useInternalGetStockRequestQuery(baseOptions: Apollo.QueryHookOptions<InternalGetStockRequestQuery, InternalGetStockRequestQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<InternalGetStockRequestQuery, InternalGetStockRequestQueryVariables>(InternalGetStockRequestDocument, options);
-      }
-export function useInternalGetStockRequestLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InternalGetStockRequestQuery, InternalGetStockRequestQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<InternalGetStockRequestQuery, InternalGetStockRequestQueryVariables>(InternalGetStockRequestDocument, options);
-        }
-export type InternalGetStockRequestQueryHookResult = ReturnType<typeof useInternalGetStockRequestQuery>;
-export type InternalGetStockRequestLazyQueryHookResult = ReturnType<typeof useInternalGetStockRequestLazyQuery>;
-export type InternalGetStockRequestQueryResult = Apollo.QueryResult<InternalGetStockRequestQuery, InternalGetStockRequestQueryVariables>;
+export function useInternalGetStockRequestQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    InternalGetStockRequestQuery,
+    InternalGetStockRequestQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    InternalGetStockRequestQuery,
+    InternalGetStockRequestQueryVariables
+  >(InternalGetStockRequestDocument, options);
+}
+export function useInternalGetStockRequestLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    InternalGetStockRequestQuery,
+    InternalGetStockRequestQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    InternalGetStockRequestQuery,
+    InternalGetStockRequestQueryVariables
+  >(InternalGetStockRequestDocument, options);
+}
+export type InternalGetStockRequestQueryHookResult = ReturnType<
+  typeof useInternalGetStockRequestQuery
+>;
+export type InternalGetStockRequestLazyQueryHookResult = ReturnType<
+  typeof useInternalGetStockRequestLazyQuery
+>;
+export type InternalGetStockRequestQueryResult = Apollo.QueryResult<
+  InternalGetStockRequestQuery,
+  InternalGetStockRequestQueryVariables
+>;
 export const InternalGetStockRequestConnectionDocument = gql`
-    query InternalGetStockRequestConnection($first: Int, $after: String, $internalUserId: BigInt) {
-  stockRequestConnection(
-    first: $first
-    after: $after
-    internalUserId: $internalUserId
+  query InternalGetStockRequestConnection(
+    $first: Int
+    $after: String
+    $internalUserId: BigInt
   ) {
-    edges {
-      node {
-        ...StockRequestFields
+    stockRequestConnection(
+      first: $first
+      after: $after
+      internalUserId: $internalUserId
+    ) {
+      edges {
+        node {
+          ...StockRequestFields
+        }
       }
-    }
-    pageInfo {
-      hasNextPage
-      hasPreviousPage
-      startCursor
-      endCursor
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+        startCursor
+        endCursor
+      }
     }
   }
-}
-    ${StockRequestFieldsFragmentDoc}`;
+  ${StockRequestFieldsFragmentDoc}
+`;
 
 /**
  * __useInternalGetStockRequestConnectionQuery__
@@ -2541,24 +4494,48 @@ export const InternalGetStockRequestConnectionDocument = gql`
  *   },
  * });
  */
-export function useInternalGetStockRequestConnectionQuery(baseOptions?: Apollo.QueryHookOptions<InternalGetStockRequestConnectionQuery, InternalGetStockRequestConnectionQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<InternalGetStockRequestConnectionQuery, InternalGetStockRequestConnectionQueryVariables>(InternalGetStockRequestConnectionDocument, options);
-      }
-export function useInternalGetStockRequestConnectionLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InternalGetStockRequestConnectionQuery, InternalGetStockRequestConnectionQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<InternalGetStockRequestConnectionQuery, InternalGetStockRequestConnectionQueryVariables>(InternalGetStockRequestConnectionDocument, options);
-        }
-export type InternalGetStockRequestConnectionQueryHookResult = ReturnType<typeof useInternalGetStockRequestConnectionQuery>;
-export type InternalGetStockRequestConnectionLazyQueryHookResult = ReturnType<typeof useInternalGetStockRequestConnectionLazyQuery>;
-export type InternalGetStockRequestConnectionQueryResult = Apollo.QueryResult<InternalGetStockRequestConnectionQuery, InternalGetStockRequestConnectionQueryVariables>;
-export const InternalGetStocksDocument = gql`
-    query InternalGetStocks($productId: Int!) {
-  stocks(productId: $productId) {
-    ...StockFields
-  }
+export function useInternalGetStockRequestConnectionQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    InternalGetStockRequestConnectionQuery,
+    InternalGetStockRequestConnectionQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    InternalGetStockRequestConnectionQuery,
+    InternalGetStockRequestConnectionQueryVariables
+  >(InternalGetStockRequestConnectionDocument, options);
 }
-    ${StockFieldsFragmentDoc}`;
+export function useInternalGetStockRequestConnectionLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    InternalGetStockRequestConnectionQuery,
+    InternalGetStockRequestConnectionQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    InternalGetStockRequestConnectionQuery,
+    InternalGetStockRequestConnectionQueryVariables
+  >(InternalGetStockRequestConnectionDocument, options);
+}
+export type InternalGetStockRequestConnectionQueryHookResult = ReturnType<
+  typeof useInternalGetStockRequestConnectionQuery
+>;
+export type InternalGetStockRequestConnectionLazyQueryHookResult = ReturnType<
+  typeof useInternalGetStockRequestConnectionLazyQuery
+>;
+export type InternalGetStockRequestConnectionQueryResult = Apollo.QueryResult<
+  InternalGetStockRequestConnectionQuery,
+  InternalGetStockRequestConnectionQueryVariables
+>;
+export const InternalGetStocksDocument = gql`
+  query InternalGetStocks($productId: Int!) {
+    stocks(productId: $productId) {
+      ...StockFields
+    }
+  }
+  ${StockFieldsFragmentDoc}
+`;
 
 /**
  * __useInternalGetStocksQuery__
@@ -2576,25 +4553,51 @@ export const InternalGetStocksDocument = gql`
  *   },
  * });
  */
-export function useInternalGetStocksQuery(baseOptions: Apollo.QueryHookOptions<InternalGetStocksQuery, InternalGetStocksQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<InternalGetStocksQuery, InternalGetStocksQueryVariables>(InternalGetStocksDocument, options);
-      }
-export function useInternalGetStocksLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InternalGetStocksQuery, InternalGetStocksQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<InternalGetStocksQuery, InternalGetStocksQueryVariables>(InternalGetStocksDocument, options);
-        }
-export type InternalGetStocksQueryHookResult = ReturnType<typeof useInternalGetStocksQuery>;
-export type InternalGetStocksLazyQueryHookResult = ReturnType<typeof useInternalGetStocksLazyQuery>;
-export type InternalGetStocksQueryResult = Apollo.QueryResult<InternalGetStocksQuery, InternalGetStocksQueryVariables>;
-export const InternalRejectStockRequestDocument = gql`
-    mutation InternalRejectStockRequest($id: Int!, $message: String!) {
-  rejectStockRequest(id: $id, message: $message) {
-    deleted
-  }
+export function useInternalGetStocksQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    InternalGetStocksQuery,
+    InternalGetStocksQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    InternalGetStocksQuery,
+    InternalGetStocksQueryVariables
+  >(InternalGetStocksDocument, options);
 }
-    `;
-export type InternalRejectStockRequestMutationFn = Apollo.MutationFunction<InternalRejectStockRequestMutation, InternalRejectStockRequestMutationVariables>;
+export function useInternalGetStocksLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    InternalGetStocksQuery,
+    InternalGetStocksQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    InternalGetStocksQuery,
+    InternalGetStocksQueryVariables
+  >(InternalGetStocksDocument, options);
+}
+export type InternalGetStocksQueryHookResult = ReturnType<
+  typeof useInternalGetStocksQuery
+>;
+export type InternalGetStocksLazyQueryHookResult = ReturnType<
+  typeof useInternalGetStocksLazyQuery
+>;
+export type InternalGetStocksQueryResult = Apollo.QueryResult<
+  InternalGetStocksQuery,
+  InternalGetStocksQueryVariables
+>;
+export const InternalRejectStockRequestDocument = gql`
+  mutation InternalRejectStockRequest($id: Int!, $message: String!) {
+    rejectStockRequest(id: $id, message: $message) {
+      deleted
+    }
+  }
+`;
+export type InternalRejectStockRequestMutationFn = Apollo.MutationFunction<
+  InternalRejectStockRequestMutation,
+  InternalRejectStockRequestMutationVariables
+>;
 
 /**
  * __useInternalRejectStockRequestMutation__
@@ -2614,21 +4617,40 @@ export type InternalRejectStockRequestMutationFn = Apollo.MutationFunction<Inter
  *   },
  * });
  */
-export function useInternalRejectStockRequestMutation(baseOptions?: Apollo.MutationHookOptions<InternalRejectStockRequestMutation, InternalRejectStockRequestMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<InternalRejectStockRequestMutation, InternalRejectStockRequestMutationVariables>(InternalRejectStockRequestDocument, options);
-      }
-export type InternalRejectStockRequestMutationHookResult = ReturnType<typeof useInternalRejectStockRequestMutation>;
-export type InternalRejectStockRequestMutationResult = Apollo.MutationResult<InternalRejectStockRequestMutation>;
-export type InternalRejectStockRequestMutationOptions = Apollo.BaseMutationOptions<InternalRejectStockRequestMutation, InternalRejectStockRequestMutationVariables>;
-export const InternalReturnStockDocument = gql`
-    mutation InternalReturnStock($id: Int!) {
-  returnStock(id: $id) {
-    ...StockFields
-  }
+export function useInternalRejectStockRequestMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    InternalRejectStockRequestMutation,
+    InternalRejectStockRequestMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    InternalRejectStockRequestMutation,
+    InternalRejectStockRequestMutationVariables
+  >(InternalRejectStockRequestDocument, options);
 }
-    ${StockFieldsFragmentDoc}`;
-export type InternalReturnStockMutationFn = Apollo.MutationFunction<InternalReturnStockMutation, InternalReturnStockMutationVariables>;
+export type InternalRejectStockRequestMutationHookResult = ReturnType<
+  typeof useInternalRejectStockRequestMutation
+>;
+export type InternalRejectStockRequestMutationResult =
+  Apollo.MutationResult<InternalRejectStockRequestMutation>;
+export type InternalRejectStockRequestMutationOptions =
+  Apollo.BaseMutationOptions<
+    InternalRejectStockRequestMutation,
+    InternalRejectStockRequestMutationVariables
+  >;
+export const InternalReturnStockDocument = gql`
+  mutation InternalReturnStock($id: Int!) {
+    returnStock(id: $id) {
+      ...StockFields
+    }
+  }
+  ${StockFieldsFragmentDoc}
+`;
+export type InternalReturnStockMutationFn = Apollo.MutationFunction<
+  InternalReturnStockMutation,
+  InternalReturnStockMutationVariables
+>;
 
 /**
  * __useInternalReturnStockMutation__
@@ -2647,34 +4669,64 @@ export type InternalReturnStockMutationFn = Apollo.MutationFunction<InternalRetu
  *   },
  * });
  */
-export function useInternalReturnStockMutation(baseOptions?: Apollo.MutationHookOptions<InternalReturnStockMutation, InternalReturnStockMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<InternalReturnStockMutation, InternalReturnStockMutationVariables>(InternalReturnStockDocument, options);
-      }
-export type InternalReturnStockMutationHookResult = ReturnType<typeof useInternalReturnStockMutation>;
-export type InternalReturnStockMutationResult = Apollo.MutationResult<InternalReturnStockMutation>;
-export type InternalReturnStockMutationOptions = Apollo.BaseMutationOptions<InternalReturnStockMutation, InternalReturnStockMutationVariables>;
-export const InternalUpdateHospitalDocument = gql`
-    mutation InternalUpdateHospital($id: BigInt!, $name: String!, $url: String!, $deleted: Boolean!, $internal_memo: String!, $hospitalAddressInput: HospitalAddressInputType!, $hospitalBusinessFormInput: HospitalBusinessFormInputType!, $hospitalCertificationOptionInput: HospitalCertificationOptionInputType!, $hospitalInternalReputationInput: HospitalInternalReputationInputType!, $hospitalNightServiceOptionInput: HospitalNightServiceOptionInputType!, $hospitalNightUrgentActionOptionInput: HospitalNightUrgentActionOptionInputType!, $hospitalReservationStatusInput: HospitalReservationStatusInputType!) {
-  updateHospital(
-    id: $id
-    name: $name
-    url: $url
-    deleted: $deleted
-    internal_memo: $internal_memo
-    hospitalAddressInput: $hospitalAddressInput
-    hospitalBusinessFormInput: $hospitalBusinessFormInput
-    hospitalCertificationOptionInput: $hospitalCertificationOptionInput
-    hospitalInternalReputationInput: $hospitalInternalReputationInput
-    hospitalNightServiceOptionInput: $hospitalNightServiceOptionInput
-    hospitalNightUrgentActionOptionInput: $hospitalNightUrgentActionOptionInput
-    hospitalReservationStatusInput: $hospitalReservationStatusInput
-  ) {
-    name
-  }
+export function useInternalReturnStockMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    InternalReturnStockMutation,
+    InternalReturnStockMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    InternalReturnStockMutation,
+    InternalReturnStockMutationVariables
+  >(InternalReturnStockDocument, options);
 }
-    `;
-export type InternalUpdateHospitalMutationFn = Apollo.MutationFunction<InternalUpdateHospitalMutation, InternalUpdateHospitalMutationVariables>;
+export type InternalReturnStockMutationHookResult = ReturnType<
+  typeof useInternalReturnStockMutation
+>;
+export type InternalReturnStockMutationResult =
+  Apollo.MutationResult<InternalReturnStockMutation>;
+export type InternalReturnStockMutationOptions = Apollo.BaseMutationOptions<
+  InternalReturnStockMutation,
+  InternalReturnStockMutationVariables
+>;
+export const InternalUpdateHospitalDocument = gql`
+  mutation InternalUpdateHospital(
+    $id: BigInt!
+    $name: String!
+    $url: String!
+    $deleted: Boolean!
+    $internal_memo: String!
+    $hospitalAddressInput: HospitalAddressInputType!
+    $hospitalBusinessFormInput: HospitalBusinessFormInputType!
+    $hospitalCertificationOptionInput: HospitalCertificationOptionInputType!
+    $hospitalInternalReputationInput: HospitalInternalReputationInputType!
+    $hospitalNightServiceOptionInput: HospitalNightServiceOptionInputType!
+    $hospitalNightUrgentActionOptionInput: HospitalNightUrgentActionOptionInputType!
+    $hospitalReservationStatusInput: HospitalReservationStatusInputType!
+  ) {
+    updateHospital(
+      id: $id
+      name: $name
+      url: $url
+      deleted: $deleted
+      internal_memo: $internal_memo
+      hospitalAddressInput: $hospitalAddressInput
+      hospitalBusinessFormInput: $hospitalBusinessFormInput
+      hospitalCertificationOptionInput: $hospitalCertificationOptionInput
+      hospitalInternalReputationInput: $hospitalInternalReputationInput
+      hospitalNightServiceOptionInput: $hospitalNightServiceOptionInput
+      hospitalNightUrgentActionOptionInput: $hospitalNightUrgentActionOptionInput
+      hospitalReservationStatusInput: $hospitalReservationStatusInput
+    ) {
+      name
+    }
+  }
+`;
+export type InternalUpdateHospitalMutationFn = Apollo.MutationFunction<
+  InternalUpdateHospitalMutation,
+  InternalUpdateHospitalMutationVariables
+>;
 
 /**
  * __useInternalUpdateHospitalMutation__
@@ -2704,28 +4756,53 @@ export type InternalUpdateHospitalMutationFn = Apollo.MutationFunction<InternalU
  *   },
  * });
  */
-export function useInternalUpdateHospitalMutation(baseOptions?: Apollo.MutationHookOptions<InternalUpdateHospitalMutation, InternalUpdateHospitalMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<InternalUpdateHospitalMutation, InternalUpdateHospitalMutationVariables>(InternalUpdateHospitalDocument, options);
-      }
-export type InternalUpdateHospitalMutationHookResult = ReturnType<typeof useInternalUpdateHospitalMutation>;
-export type InternalUpdateHospitalMutationResult = Apollo.MutationResult<InternalUpdateHospitalMutation>;
-export type InternalUpdateHospitalMutationOptions = Apollo.BaseMutationOptions<InternalUpdateHospitalMutation, InternalUpdateHospitalMutationVariables>;
-export const InternalUpdateInternalUserDocument = gql`
-    mutation InternalUpdateInternalUser($id: BigInt!, $name: String!, $email: String!, $password: String!, $discord_user_id: String!, $roleId: Int!) {
-  updateInternalUser(
-    id: $id
-    name: $name
-    email: $email
-    password: $password
-    discord_user_id: $discord_user_id
-    roleId: $roleId
-  ) {
-    ...InternalUserFields
-  }
+export function useInternalUpdateHospitalMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    InternalUpdateHospitalMutation,
+    InternalUpdateHospitalMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    InternalUpdateHospitalMutation,
+    InternalUpdateHospitalMutationVariables
+  >(InternalUpdateHospitalDocument, options);
 }
-    ${InternalUserFieldsFragmentDoc}`;
-export type InternalUpdateInternalUserMutationFn = Apollo.MutationFunction<InternalUpdateInternalUserMutation, InternalUpdateInternalUserMutationVariables>;
+export type InternalUpdateHospitalMutationHookResult = ReturnType<
+  typeof useInternalUpdateHospitalMutation
+>;
+export type InternalUpdateHospitalMutationResult =
+  Apollo.MutationResult<InternalUpdateHospitalMutation>;
+export type InternalUpdateHospitalMutationOptions = Apollo.BaseMutationOptions<
+  InternalUpdateHospitalMutation,
+  InternalUpdateHospitalMutationVariables
+>;
+export const InternalUpdateInternalUserDocument = gql`
+  mutation InternalUpdateInternalUser(
+    $id: BigInt!
+    $name: String!
+    $email: String!
+    $password: String!
+    $discord_user_id: String!
+    $roleId: Int!
+  ) {
+    updateInternalUser(
+      id: $id
+      name: $name
+      email: $email
+      password: $password
+      discord_user_id: $discord_user_id
+      roleId: $roleId
+    ) {
+      ...InternalUserFields
+    }
+  }
+  ${InternalUserFieldsFragmentDoc}
+`;
+export type InternalUpdateInternalUserMutationFn = Apollo.MutationFunction<
+  InternalUpdateInternalUserMutation,
+  InternalUpdateInternalUserMutationVariables
+>;
 
 /**
  * __useInternalUpdateInternalUserMutation__
@@ -2749,21 +4826,40 @@ export type InternalUpdateInternalUserMutationFn = Apollo.MutationFunction<Inter
  *   },
  * });
  */
-export function useInternalUpdateInternalUserMutation(baseOptions?: Apollo.MutationHookOptions<InternalUpdateInternalUserMutation, InternalUpdateInternalUserMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<InternalUpdateInternalUserMutation, InternalUpdateInternalUserMutationVariables>(InternalUpdateInternalUserDocument, options);
-      }
-export type InternalUpdateInternalUserMutationHookResult = ReturnType<typeof useInternalUpdateInternalUserMutation>;
-export type InternalUpdateInternalUserMutationResult = Apollo.MutationResult<InternalUpdateInternalUserMutation>;
-export type InternalUpdateInternalUserMutationOptions = Apollo.BaseMutationOptions<InternalUpdateInternalUserMutation, InternalUpdateInternalUserMutationVariables>;
-export const InternalUpdateMakerDocument = gql`
-    mutation InternalUpdateMaker($id: Int!, $name: String!) {
-  updateMaker(id: $id, name: $name) {
-    ...MakerFields
-  }
+export function useInternalUpdateInternalUserMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    InternalUpdateInternalUserMutation,
+    InternalUpdateInternalUserMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    InternalUpdateInternalUserMutation,
+    InternalUpdateInternalUserMutationVariables
+  >(InternalUpdateInternalUserDocument, options);
 }
-    ${MakerFieldsFragmentDoc}`;
-export type InternalUpdateMakerMutationFn = Apollo.MutationFunction<InternalUpdateMakerMutation, InternalUpdateMakerMutationVariables>;
+export type InternalUpdateInternalUserMutationHookResult = ReturnType<
+  typeof useInternalUpdateInternalUserMutation
+>;
+export type InternalUpdateInternalUserMutationResult =
+  Apollo.MutationResult<InternalUpdateInternalUserMutation>;
+export type InternalUpdateInternalUserMutationOptions =
+  Apollo.BaseMutationOptions<
+    InternalUpdateInternalUserMutation,
+    InternalUpdateInternalUserMutationVariables
+  >;
+export const InternalUpdateMakerDocument = gql`
+  mutation InternalUpdateMaker($id: Int!, $name: String!) {
+    updateMaker(id: $id, name: $name) {
+      ...MakerFields
+    }
+  }
+  ${MakerFieldsFragmentDoc}
+`;
+export type InternalUpdateMakerMutationFn = Apollo.MutationFunction<
+  InternalUpdateMakerMutation,
+  InternalUpdateMakerMutationVariables
+>;
 
 /**
  * __useInternalUpdateMakerMutation__
@@ -2783,27 +4879,51 @@ export type InternalUpdateMakerMutationFn = Apollo.MutationFunction<InternalUpda
  *   },
  * });
  */
-export function useInternalUpdateMakerMutation(baseOptions?: Apollo.MutationHookOptions<InternalUpdateMakerMutation, InternalUpdateMakerMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<InternalUpdateMakerMutation, InternalUpdateMakerMutationVariables>(InternalUpdateMakerDocument, options);
-      }
-export type InternalUpdateMakerMutationHookResult = ReturnType<typeof useInternalUpdateMakerMutation>;
-export type InternalUpdateMakerMutationResult = Apollo.MutationResult<InternalUpdateMakerMutation>;
-export type InternalUpdateMakerMutationOptions = Apollo.BaseMutationOptions<InternalUpdateMakerMutation, InternalUpdateMakerMutationVariables>;
-export const InternalUpdateProductDocument = gql`
-    mutation InternalUpdateProduct($id: Int!, $makerId: Int!, $name: String!, $remark: String!, $file: Upload) {
-  updateProduct(
-    id: $id
-    makerId: $makerId
-    name: $name
-    remark: $remark
-    file: $file
-  ) {
-    ...ProductFields
-  }
+export function useInternalUpdateMakerMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    InternalUpdateMakerMutation,
+    InternalUpdateMakerMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    InternalUpdateMakerMutation,
+    InternalUpdateMakerMutationVariables
+  >(InternalUpdateMakerDocument, options);
 }
-    ${ProductFieldsFragmentDoc}`;
-export type InternalUpdateProductMutationFn = Apollo.MutationFunction<InternalUpdateProductMutation, InternalUpdateProductMutationVariables>;
+export type InternalUpdateMakerMutationHookResult = ReturnType<
+  typeof useInternalUpdateMakerMutation
+>;
+export type InternalUpdateMakerMutationResult =
+  Apollo.MutationResult<InternalUpdateMakerMutation>;
+export type InternalUpdateMakerMutationOptions = Apollo.BaseMutationOptions<
+  InternalUpdateMakerMutation,
+  InternalUpdateMakerMutationVariables
+>;
+export const InternalUpdateProductDocument = gql`
+  mutation InternalUpdateProduct(
+    $id: Int!
+    $makerId: Int!
+    $name: String!
+    $remark: String!
+    $file: Upload
+  ) {
+    updateProduct(
+      id: $id
+      makerId: $makerId
+      name: $name
+      remark: $remark
+      file: $file
+    ) {
+      ...ProductFields
+    }
+  }
+  ${ProductFieldsFragmentDoc}
+`;
+export type InternalUpdateProductMutationFn = Apollo.MutationFunction<
+  InternalUpdateProductMutation,
+  InternalUpdateProductMutationVariables
+>;
 
 /**
  * __useInternalUpdateProductMutation__
@@ -2826,21 +4946,39 @@ export type InternalUpdateProductMutationFn = Apollo.MutationFunction<InternalUp
  *   },
  * });
  */
-export function useInternalUpdateProductMutation(baseOptions?: Apollo.MutationHookOptions<InternalUpdateProductMutation, InternalUpdateProductMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<InternalUpdateProductMutation, InternalUpdateProductMutationVariables>(InternalUpdateProductDocument, options);
-      }
-export type InternalUpdateProductMutationHookResult = ReturnType<typeof useInternalUpdateProductMutation>;
-export type InternalUpdateProductMutationResult = Apollo.MutationResult<InternalUpdateProductMutation>;
-export type InternalUpdateProductMutationOptions = Apollo.BaseMutationOptions<InternalUpdateProductMutation, InternalUpdateProductMutationVariables>;
-export const InternalUpdateProductTagDocument = gql`
-    mutation InternalUpdateProductTag($id: Int!, $name: String!) {
-  updateProductTag(id: $id, name: $name) {
-    ...ProductTagFields
-  }
+export function useInternalUpdateProductMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    InternalUpdateProductMutation,
+    InternalUpdateProductMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    InternalUpdateProductMutation,
+    InternalUpdateProductMutationVariables
+  >(InternalUpdateProductDocument, options);
 }
-    ${ProductTagFieldsFragmentDoc}`;
-export type InternalUpdateProductTagMutationFn = Apollo.MutationFunction<InternalUpdateProductTagMutation, InternalUpdateProductTagMutationVariables>;
+export type InternalUpdateProductMutationHookResult = ReturnType<
+  typeof useInternalUpdateProductMutation
+>;
+export type InternalUpdateProductMutationResult =
+  Apollo.MutationResult<InternalUpdateProductMutation>;
+export type InternalUpdateProductMutationOptions = Apollo.BaseMutationOptions<
+  InternalUpdateProductMutation,
+  InternalUpdateProductMutationVariables
+>;
+export const InternalUpdateProductTagDocument = gql`
+  mutation InternalUpdateProductTag($id: Int!, $name: String!) {
+    updateProductTag(id: $id, name: $name) {
+      ...ProductTagFields
+    }
+  }
+  ${ProductTagFieldsFragmentDoc}
+`;
+export type InternalUpdateProductTagMutationFn = Apollo.MutationFunction<
+  InternalUpdateProductTagMutation,
+  InternalUpdateProductTagMutationVariables
+>;
 
 /**
  * __useInternalUpdateProductTagMutation__
@@ -2860,21 +4998,40 @@ export type InternalUpdateProductTagMutationFn = Apollo.MutationFunction<Interna
  *   },
  * });
  */
-export function useInternalUpdateProductTagMutation(baseOptions?: Apollo.MutationHookOptions<InternalUpdateProductTagMutation, InternalUpdateProductTagMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<InternalUpdateProductTagMutation, InternalUpdateProductTagMutationVariables>(InternalUpdateProductTagDocument, options);
-      }
-export type InternalUpdateProductTagMutationHookResult = ReturnType<typeof useInternalUpdateProductTagMutation>;
-export type InternalUpdateProductTagMutationResult = Apollo.MutationResult<InternalUpdateProductTagMutation>;
-export type InternalUpdateProductTagMutationOptions = Apollo.BaseMutationOptions<InternalUpdateProductTagMutation, InternalUpdateProductTagMutationVariables>;
-export const InternalUpdateProductTagGroupDocument = gql`
-    mutation InternalUpdateProductTagGroup($id: Int!, $name: String!) {
-  updateProductTagGroup(id: $id, name: $name) {
-    ...ProductTagGroupFields
-  }
+export function useInternalUpdateProductTagMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    InternalUpdateProductTagMutation,
+    InternalUpdateProductTagMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    InternalUpdateProductTagMutation,
+    InternalUpdateProductTagMutationVariables
+  >(InternalUpdateProductTagDocument, options);
 }
-    ${ProductTagGroupFieldsFragmentDoc}`;
-export type InternalUpdateProductTagGroupMutationFn = Apollo.MutationFunction<InternalUpdateProductTagGroupMutation, InternalUpdateProductTagGroupMutationVariables>;
+export type InternalUpdateProductTagMutationHookResult = ReturnType<
+  typeof useInternalUpdateProductTagMutation
+>;
+export type InternalUpdateProductTagMutationResult =
+  Apollo.MutationResult<InternalUpdateProductTagMutation>;
+export type InternalUpdateProductTagMutationOptions =
+  Apollo.BaseMutationOptions<
+    InternalUpdateProductTagMutation,
+    InternalUpdateProductTagMutationVariables
+  >;
+export const InternalUpdateProductTagGroupDocument = gql`
+  mutation InternalUpdateProductTagGroup($id: Int!, $name: String!) {
+    updateProductTagGroup(id: $id, name: $name) {
+      ...ProductTagGroupFields
+    }
+  }
+  ${ProductTagGroupFieldsFragmentDoc}
+`;
+export type InternalUpdateProductTagGroupMutationFn = Apollo.MutationFunction<
+  InternalUpdateProductTagGroupMutation,
+  InternalUpdateProductTagGroupMutationVariables
+>;
 
 /**
  * __useInternalUpdateProductTagGroupMutation__
@@ -2894,21 +5051,43 @@ export type InternalUpdateProductTagGroupMutationFn = Apollo.MutationFunction<In
  *   },
  * });
  */
-export function useInternalUpdateProductTagGroupMutation(baseOptions?: Apollo.MutationHookOptions<InternalUpdateProductTagGroupMutation, InternalUpdateProductTagGroupMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<InternalUpdateProductTagGroupMutation, InternalUpdateProductTagGroupMutationVariables>(InternalUpdateProductTagGroupDocument, options);
-      }
-export type InternalUpdateProductTagGroupMutationHookResult = ReturnType<typeof useInternalUpdateProductTagGroupMutation>;
-export type InternalUpdateProductTagGroupMutationResult = Apollo.MutationResult<InternalUpdateProductTagGroupMutation>;
-export type InternalUpdateProductTagGroupMutationOptions = Apollo.BaseMutationOptions<InternalUpdateProductTagGroupMutation, InternalUpdateProductTagGroupMutationVariables>;
-export const InternalUpdateStockInternalUserDocument = gql`
-    mutation InternalUpdateStockInternalUser($id: Int!, $internalUserId: BigInt!) {
-  updateStockInternalUser(id: $id, internalUserId: $internalUserId) {
-    ...StockFields
-  }
+export function useInternalUpdateProductTagGroupMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    InternalUpdateProductTagGroupMutation,
+    InternalUpdateProductTagGroupMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    InternalUpdateProductTagGroupMutation,
+    InternalUpdateProductTagGroupMutationVariables
+  >(InternalUpdateProductTagGroupDocument, options);
 }
-    ${StockFieldsFragmentDoc}`;
-export type InternalUpdateStockInternalUserMutationFn = Apollo.MutationFunction<InternalUpdateStockInternalUserMutation, InternalUpdateStockInternalUserMutationVariables>;
+export type InternalUpdateProductTagGroupMutationHookResult = ReturnType<
+  typeof useInternalUpdateProductTagGroupMutation
+>;
+export type InternalUpdateProductTagGroupMutationResult =
+  Apollo.MutationResult<InternalUpdateProductTagGroupMutation>;
+export type InternalUpdateProductTagGroupMutationOptions =
+  Apollo.BaseMutationOptions<
+    InternalUpdateProductTagGroupMutation,
+    InternalUpdateProductTagGroupMutationVariables
+  >;
+export const InternalUpdateStockInternalUserDocument = gql`
+  mutation InternalUpdateStockInternalUser(
+    $id: Int!
+    $internalUserId: BigInt!
+  ) {
+    updateStockInternalUser(id: $id, internalUserId: $internalUserId) {
+      ...StockFields
+    }
+  }
+  ${StockFieldsFragmentDoc}
+`;
+export type InternalUpdateStockInternalUserMutationFn = Apollo.MutationFunction<
+  InternalUpdateStockInternalUserMutation,
+  InternalUpdateStockInternalUserMutationVariables
+>;
 
 /**
  * __useInternalUpdateStockInternalUserMutation__
@@ -2928,21 +5107,43 @@ export type InternalUpdateStockInternalUserMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useInternalUpdateStockInternalUserMutation(baseOptions?: Apollo.MutationHookOptions<InternalUpdateStockInternalUserMutation, InternalUpdateStockInternalUserMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<InternalUpdateStockInternalUserMutation, InternalUpdateStockInternalUserMutationVariables>(InternalUpdateStockInternalUserDocument, options);
-      }
-export type InternalUpdateStockInternalUserMutationHookResult = ReturnType<typeof useInternalUpdateStockInternalUserMutation>;
-export type InternalUpdateStockInternalUserMutationResult = Apollo.MutationResult<InternalUpdateStockInternalUserMutation>;
-export type InternalUpdateStockInternalUserMutationOptions = Apollo.BaseMutationOptions<InternalUpdateStockInternalUserMutation, InternalUpdateStockInternalUserMutationVariables>;
-export const InternalUpdateStockRequestDocument = gql`
-    mutation InternalUpdateStockRequest($id: Int!, $requestProducts: [CreateStockRequestRequestProductsInputType!]!) {
-  updateStockRequest(id: $id, requestProducts: $requestProducts) {
-    ...StockRequestFields
-  }
+export function useInternalUpdateStockInternalUserMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    InternalUpdateStockInternalUserMutation,
+    InternalUpdateStockInternalUserMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    InternalUpdateStockInternalUserMutation,
+    InternalUpdateStockInternalUserMutationVariables
+  >(InternalUpdateStockInternalUserDocument, options);
 }
-    ${StockRequestFieldsFragmentDoc}`;
-export type InternalUpdateStockRequestMutationFn = Apollo.MutationFunction<InternalUpdateStockRequestMutation, InternalUpdateStockRequestMutationVariables>;
+export type InternalUpdateStockInternalUserMutationHookResult = ReturnType<
+  typeof useInternalUpdateStockInternalUserMutation
+>;
+export type InternalUpdateStockInternalUserMutationResult =
+  Apollo.MutationResult<InternalUpdateStockInternalUserMutation>;
+export type InternalUpdateStockInternalUserMutationOptions =
+  Apollo.BaseMutationOptions<
+    InternalUpdateStockInternalUserMutation,
+    InternalUpdateStockInternalUserMutationVariables
+  >;
+export const InternalUpdateStockRequestDocument = gql`
+  mutation InternalUpdateStockRequest(
+    $id: Int!
+    $requestProducts: [CreateStockRequestRequestProductsInputType!]!
+  ) {
+    updateStockRequest(id: $id, requestProducts: $requestProducts) {
+      ...StockRequestFields
+    }
+  }
+  ${StockRequestFieldsFragmentDoc}
+`;
+export type InternalUpdateStockRequestMutationFn = Apollo.MutationFunction<
+  InternalUpdateStockRequestMutation,
+  InternalUpdateStockRequestMutationVariables
+>;
 
 /**
  * __useInternalUpdateStockRequestMutation__
@@ -2962,24 +5163,47 @@ export type InternalUpdateStockRequestMutationFn = Apollo.MutationFunction<Inter
  *   },
  * });
  */
-export function useInternalUpdateStockRequestMutation(baseOptions?: Apollo.MutationHookOptions<InternalUpdateStockRequestMutation, InternalUpdateStockRequestMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<InternalUpdateStockRequestMutation, InternalUpdateStockRequestMutationVariables>(InternalUpdateStockRequestDocument, options);
-      }
-export type InternalUpdateStockRequestMutationHookResult = ReturnType<typeof useInternalUpdateStockRequestMutation>;
-export type InternalUpdateStockRequestMutationResult = Apollo.MutationResult<InternalUpdateStockRequestMutation>;
-export type InternalUpdateStockRequestMutationOptions = Apollo.BaseMutationOptions<InternalUpdateStockRequestMutation, InternalUpdateStockRequestMutationVariables>;
-export const InternalUpsertHospitalAddressGeoLocationDocument = gql`
-    mutation InternalUpsertHospitalAddressGeoLocation($hospitalAddressId: BigInt!, $address: String!) {
-  upsertHospitalAddressGeoLocation(
-    hospitalAddressId: $hospitalAddressId
-    address: $address
-  ) {
-    ...HospitalAddressFields
-  }
+export function useInternalUpdateStockRequestMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    InternalUpdateStockRequestMutation,
+    InternalUpdateStockRequestMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    InternalUpdateStockRequestMutation,
+    InternalUpdateStockRequestMutationVariables
+  >(InternalUpdateStockRequestDocument, options);
 }
-    ${HospitalAddressFieldsFragmentDoc}`;
-export type InternalUpsertHospitalAddressGeoLocationMutationFn = Apollo.MutationFunction<InternalUpsertHospitalAddressGeoLocationMutation, InternalUpsertHospitalAddressGeoLocationMutationVariables>;
+export type InternalUpdateStockRequestMutationHookResult = ReturnType<
+  typeof useInternalUpdateStockRequestMutation
+>;
+export type InternalUpdateStockRequestMutationResult =
+  Apollo.MutationResult<InternalUpdateStockRequestMutation>;
+export type InternalUpdateStockRequestMutationOptions =
+  Apollo.BaseMutationOptions<
+    InternalUpdateStockRequestMutation,
+    InternalUpdateStockRequestMutationVariables
+  >;
+export const InternalUpsertHospitalAddressGeoLocationDocument = gql`
+  mutation InternalUpsertHospitalAddressGeoLocation(
+    $hospitalAddressId: BigInt!
+    $address: String!
+  ) {
+    upsertHospitalAddressGeoLocation(
+      hospitalAddressId: $hospitalAddressId
+      address: $address
+    ) {
+      ...HospitalAddressFields
+    }
+  }
+  ${HospitalAddressFieldsFragmentDoc}
+`;
+export type InternalUpsertHospitalAddressGeoLocationMutationFn =
+  Apollo.MutationFunction<
+    InternalUpsertHospitalAddressGeoLocationMutation,
+    InternalUpsertHospitalAddressGeoLocationMutationVariables
+  >;
 
 /**
  * __useInternalUpsertHospitalAddressGeoLocationMutation__
@@ -2999,10 +5223,24 @@ export type InternalUpsertHospitalAddressGeoLocationMutationFn = Apollo.Mutation
  *   },
  * });
  */
-export function useInternalUpsertHospitalAddressGeoLocationMutation(baseOptions?: Apollo.MutationHookOptions<InternalUpsertHospitalAddressGeoLocationMutation, InternalUpsertHospitalAddressGeoLocationMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<InternalUpsertHospitalAddressGeoLocationMutation, InternalUpsertHospitalAddressGeoLocationMutationVariables>(InternalUpsertHospitalAddressGeoLocationDocument, options);
-      }
-export type InternalUpsertHospitalAddressGeoLocationMutationHookResult = ReturnType<typeof useInternalUpsertHospitalAddressGeoLocationMutation>;
-export type InternalUpsertHospitalAddressGeoLocationMutationResult = Apollo.MutationResult<InternalUpsertHospitalAddressGeoLocationMutation>;
-export type InternalUpsertHospitalAddressGeoLocationMutationOptions = Apollo.BaseMutationOptions<InternalUpsertHospitalAddressGeoLocationMutation, InternalUpsertHospitalAddressGeoLocationMutationVariables>;
+export function useInternalUpsertHospitalAddressGeoLocationMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    InternalUpsertHospitalAddressGeoLocationMutation,
+    InternalUpsertHospitalAddressGeoLocationMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    InternalUpsertHospitalAddressGeoLocationMutation,
+    InternalUpsertHospitalAddressGeoLocationMutationVariables
+  >(InternalUpsertHospitalAddressGeoLocationDocument, options);
+}
+export type InternalUpsertHospitalAddressGeoLocationMutationHookResult =
+  ReturnType<typeof useInternalUpsertHospitalAddressGeoLocationMutation>;
+export type InternalUpsertHospitalAddressGeoLocationMutationResult =
+  Apollo.MutationResult<InternalUpsertHospitalAddressGeoLocationMutation>;
+export type InternalUpsertHospitalAddressGeoLocationMutationOptions =
+  Apollo.BaseMutationOptions<
+    InternalUpsertHospitalAddressGeoLocationMutation,
+    InternalUpsertHospitalAddressGeoLocationMutationVariables
+  >;
