@@ -1,4 +1,4 @@
-import type { AxiosResponse, AxiosRequestConfig } from 'axios';
+import type { AxiosResponse, InternalAxiosRequestConfig } from 'axios';
 import type {
   GeocodeResponse,
   PlacesAutocompleteResponse,
@@ -9,7 +9,7 @@ export const getPlacesAutocompleteResponseResponse: AxiosResponse<PlacesAutocomp
     status: 200,
     statusText: 'Success',
     headers: {},
-    config: {} as AxiosRequestConfig,
+    config: {} as InternalAxiosRequestConfig,
     data: {
       predictions: [
         {
@@ -51,7 +51,7 @@ export const getGeoLocationMockResponse: AxiosResponse<GeocodeResponse> = {
   status: 200,
   statusText: 'Success',
   headers: {},
-  config: {} as AxiosRequestConfig,
+  config: {} as InternalAxiosRequestConfig,
   data: {
     status: 'OK',
     results: [
