@@ -63,7 +63,7 @@
     "@types/jsonwebtoken": "^9.0.1",
     "@types/node": "^18.7.2",
     "@types/node-cron": "^3.0.7",
-    "@types/sanitize-html": "^2.8.0",
+    "@types/sanitize-html": "^2.8.1",
     "@types/uuid": "^9.0.1",
     "dotenv": "^16.0.3",
     "dotenv-cli": "^7.0.0",
