@@ -17,7 +17,7 @@ export const hospitalType = objectType({
     t.nonNull.boolean('recommended', {
       resolve: async (root, _args, ctx) => {
         const internalReputation = await ctx.prisma.hospital
-          .findUniqueOrThrow({
+          .findUnique({
             where: { id: root.id },
           })
           .hospitalInternalReputation();
