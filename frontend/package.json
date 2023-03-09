@@ -18,7 +18,7 @@
     "format:check": "yarn format --check"
   },
   "dependencies": {
-    "@apollo/client": "^3.7.9",
+    "@apollo/client": "^3.7.10",
     "@chakra-ui/icons": "^2.0.17",
     "@chakra-ui/react": "2.5.1",
     "@emotion/react": "^11.10.6",
