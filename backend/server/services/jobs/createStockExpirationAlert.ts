@@ -17,14 +17,14 @@ export const createStockExpirationAlert = cron.schedule(
     // すでに期限切れの在庫
     const expiredStocks = await client.stock.findMany({
       where: { expired_at: { lt: today } },
-      include: { product: true },
+      include: { product: true, internalUser: true },
     });
     await discordApi.postStockExpirationAlert(expiredStocks);
 
     // 一週間以内に期限が切れる在庫
     const expiringStocks = await client.stock.findMany({
       where: { expired_at: { gte: today, lte: weekAlertDate } },
-      include: { product: true },
+      include: { product: true, internalUser: true },
     });
     await discordApi.postStockExpiringInWeekAlert(expiringStocks);
 
@@ -35,7 +35,7 @@ export const createStockExpirationAlert = cron.schedule(
 
     const expiringStocksInMonthTerm = await client.stock.findMany({
       where: { expired_at: { gte: weekAlertDate, lte: monthAlertDate } },
-      include: { product: true },
+      include: { product: true, internalUser: true },
     });
     await discordApi.postStockExpiringInMonthAlert(expiringStocksInMonthTerm);
 

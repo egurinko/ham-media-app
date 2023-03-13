@@ -6,7 +6,7 @@ type Products = {
   [id: number]: {
     id: number;
     name: string;
-    stockIds: number[];
+    stocks: { id: number; internalUserName: string }[];
   };
 };
 
@@ -20,7 +20,13 @@ const getStockAlertLinesByProduct = (
         ...products,
         [product.id]: {
           ...product,
-          stockIds: [...product.stockIds, currentStock.id],
+          stocks: [
+            ...product.stocks,
+            {
+              id: currentStock.id,
+              internalUserName: currentStock.internalUser.name,
+            },
+          ],
         },
       };
     }
@@ -29,16 +35,21 @@ const getStockAlertLinesByProduct = (
       [currentStock.product_id]: {
         id: currentStock.product_id,
         name: currentStock.product.name,
-        stockIds: [currentStock.id],
+        stocks: [
+          {
+            id: currentStock.id,
+            internalUserName: currentStock.internalUser.name,
+          },
+        ],
       },
     };
   }, {} as Products);
 
   return Object.values(products).map(
     (product) =>
-      `\n${product.name}の在庫id:${product.stockIds.join(
-        ','
-      )} =>  https://ham-media-app.net/admin/products/${product.id}`
+      `\n${product.name}の在庫id: ${product.stocks
+        .map((stock) => `${stock.id}(${stock.internalUserName})`)
+        .join(',')} =>  https://ham-media-app.net/admin/products/${product.id}`
   );
 };
 
