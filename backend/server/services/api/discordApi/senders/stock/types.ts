@@ -1,5 +1,6 @@
-import type { Product, Stock } from '@prisma/client';
+import type { Product, Stock, InternalUser } from '@prisma/client';
 
 export type PostStockAlertVariables = (Stock & {
   product: Product;
+  internalUser: InternalUser;
 })[];
