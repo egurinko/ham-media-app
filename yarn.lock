@@ -11530,7 +11530,7 @@ next@^13.2.4:
     "@next/swc-win32-ia32-msvc" "13.3.0"
     "@next/swc-win32-x64-msvc" "13.3.0"
 
-nexus-prisma@^1.0.4:
+nexus-prisma@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/nexus-prisma/-/nexus-prisma-1.0.5.tgz#7e023b7010a4973c137ac9d929dc0400c9476a1c"
   integrity sha512-27Z+3MtoxAAZPbIlZeOoudXnxYYMEvH6rWAzfm4svpnlYAaBtlRKeljGPVBx/gYDx/oNn2OBjKo8+fb+Ebry5A==
