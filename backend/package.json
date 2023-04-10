@@ -47,7 +47,7 @@
     "mercurius": "^12.2.0",
     "mercurius-upload": "^6.0.1",
     "nexus": "^1.3.0",
-    "nexus-prisma": "^1.0.4",
+    "nexus-prisma": "^1.0.5",
     "node-cron": "^3.0.2",
     "pino-pretty": "^10.0.0",
     "prisma": "4.9.0",
