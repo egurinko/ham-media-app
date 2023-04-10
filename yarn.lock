@@ -205,7 +205,7 @@
   dependencies:
     tslib "^2.5.0"
 
-"@aws-sdk/client-s3@^3.295.0":
+"@aws-sdk/client-s3@^3.309.0":
   version "3.309.0"
   resolved "https://registry.yarnpkg.com/@aws-sdk/client-s3/-/client-s3-3.309.0.tgz#c573e470295100120c9cc729f1a3ed4271608083"
   integrity sha512-StSSRX4PSIaZRNOSkpuEamQLjbDyjHm4p4OqXWTBZYzkiiCntyxCkettYPwkZum2K35uFgfoRda4zmtfnW+kCw==
@@ -574,7 +574,7 @@
   dependencies:
     tslib "^2.5.0"
 
-"@aws-sdk/lib-storage@^3.295.0":
+"@aws-sdk/lib-storage@^3.309.0":
   version "3.309.0"
   resolved "https://registry.yarnpkg.com/@aws-sdk/lib-storage/-/lib-storage-3.309.0.tgz#68bcd82194948dc42f3880d87d0c0c42c65eec60"
   integrity sha512-dKAnJNmNs0yTAslGcU/bJ6zf1EuCy+p00XvgRnt4nQSLhp9jk+c3P6nhfD5EpA7wN1La30DK6oCuFX2Pb13YnA==
