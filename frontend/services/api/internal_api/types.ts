@@ -581,6 +581,7 @@ export type Session = {
 /** A stock */
 export type Stock = {
   __typename?: 'Stock';
+  created_at: Scalars['DateTime'];
   expired_at: Scalars['DateTime'];
   id: Scalars['Int'];
   internalUser: InternalUser;
@@ -638,6 +639,7 @@ export type InternalAllocateStockMutation = {
     __typename?: 'Stock';
     id: number;
     expired_at: any;
+    created_at: any;
     internalUser: {
       __typename?: 'InternalUser';
       id: bigint;
@@ -800,6 +802,7 @@ export type InternalCreateProductMutation = {
       __typename?: 'Stock';
       id: number;
       expired_at: any;
+      created_at: any;
       internalUser: {
         __typename?: 'InternalUser';
         id: bigint;
@@ -902,6 +905,7 @@ export type InternalCreateStockRequestMutation = {
           __typename?: 'Stock';
           id: number;
           expired_at: any;
+          created_at: any;
           internalUser: {
             __typename?: 'InternalUser';
             id: bigint;
@@ -940,6 +944,7 @@ export type InternalCreateStocksMutation = {
     __typename?: 'Stock';
     id: number;
     expired_at: any;
+    created_at: any;
     internalUser: {
       __typename?: 'InternalUser';
       id: bigint;
@@ -1177,6 +1182,7 @@ export type ProductFieldsFragment = {
     __typename?: 'Stock';
     id: number;
     expired_at: any;
+    created_at: any;
     internalUser: {
       __typename?: 'InternalUser';
       id: bigint;
@@ -1205,6 +1211,7 @@ export type StockFieldsFragment = {
   __typename?: 'Stock';
   id: number;
   expired_at: any;
+  created_at: any;
   internalUser: {
     __typename?: 'InternalUser';
     id: bigint;
@@ -1286,6 +1293,7 @@ export type StockRequestFieldsFragment = {
         __typename?: 'Stock';
         id: number;
         expired_at: any;
+        created_at: any;
         internalUser: {
           __typename?: 'InternalUser';
           id: bigint;
@@ -1546,6 +1554,7 @@ export type InternalGetProductQuery = {
       __typename?: 'Stock';
       id: number;
       expired_at: any;
+      created_at: any;
       internalUser: {
         __typename?: 'InternalUser';
         id: bigint;
@@ -1607,6 +1616,7 @@ export type InternalGetProductConnectionQuery = {
           __typename?: 'Stock';
           id: number;
           expired_at: any;
+          created_at: any;
           internalUser: {
             __typename?: 'InternalUser';
             id: bigint;
@@ -1712,6 +1722,7 @@ export type InternalGetProductsQuery = {
       __typename?: 'Stock';
       id: number;
       expired_at: any;
+      created_at: any;
       internalUser: {
         __typename?: 'InternalUser';
         id: bigint;
@@ -1801,6 +1812,7 @@ export type InternalGetStockRequestQuery = {
           __typename?: 'Stock';
           id: number;
           expired_at: any;
+          created_at: any;
           internalUser: {
             __typename?: 'InternalUser';
             id: bigint;
@@ -1877,6 +1889,7 @@ export type InternalGetStockRequestConnectionQuery = {
               __typename?: 'Stock';
               id: number;
               expired_at: any;
+              created_at: any;
               internalUser: {
                 __typename?: 'InternalUser';
                 id: bigint;
@@ -1923,6 +1936,7 @@ export type InternalGetStocksQuery = {
     __typename?: 'Stock';
     id: number;
     expired_at: any;
+    created_at: any;
     internalUser: {
       __typename?: 'InternalUser';
       id: bigint;
@@ -1967,6 +1981,7 @@ export type InternalReturnStockMutation = {
     __typename?: 'Stock';
     id: number;
     expired_at: any;
+    created_at: any;
     internalUser: {
       __typename?: 'InternalUser';
       id: bigint;
@@ -2071,6 +2086,7 @@ export type InternalUpdateProductMutation = {
       __typename?: 'Stock';
       id: number;
       expired_at: any;
+      created_at: any;
       internalUser: {
         __typename?: 'InternalUser';
         id: bigint;
@@ -2132,6 +2148,7 @@ export type InternalUpdateStockInternalUserMutation = {
     __typename?: 'Stock';
     id: number;
     expired_at: any;
+    created_at: any;
     internalUser: {
       __typename?: 'InternalUser';
       id: bigint;
@@ -2198,6 +2215,7 @@ export type InternalUpdateStockRequestMutation = {
           __typename?: 'Stock';
           id: number;
           expired_at: any;
+          created_at: any;
           internalUser: {
             __typename?: 'InternalUser';
             id: bigint;
@@ -2403,6 +2421,7 @@ export const StockFieldsFragmentDoc = gql`
   fragment StockFields on Stock {
     id
     expired_at
+    created_at
     internalUser {
       ...InternalUserFields
     }
