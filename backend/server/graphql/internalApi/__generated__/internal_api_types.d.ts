@@ -239,6 +239,7 @@ export interface NexusGenObjects {
     token: string; // String!
   }
   Stock: { // root type
+    created_at: NexusGenScalars['DateTime']; // DateTime!
     expired_at: NexusGenScalars['DateTime']; // DateTime!
     id: number; // Int!
   }
@@ -463,6 +464,7 @@ export interface NexusGenFieldTypes {
     token: string; // String!
   }
   Stock: { // field return type
+    created_at: NexusGenScalars['DateTime']; // DateTime!
     expired_at: NexusGenScalars['DateTime']; // DateTime!
     id: number; // Int!
     internalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
@@ -684,6 +686,7 @@ export interface NexusGenFieldTypeNames {
     token: 'String'
   }
   Stock: { // field return type name
+    created_at: 'DateTime'
     expired_at: 'DateTime'
     id: 'Int'
     internalUser: 'InternalUser'

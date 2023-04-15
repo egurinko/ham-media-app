@@ -22,6 +22,7 @@ const QUERY = gql`
       stocks {
         id
         expired_at
+        created_at
         stockAllocation {
           internalUser {
             name
@@ -48,6 +49,7 @@ const PRODUCT_NAME = 'productName';
 const PRODUCT_URL = 'https://example.com';
 const PRODUCT_REMARK = 'productRemark';
 const STOCK_EXPIRTED_AT = '2100-01-01T10:00:00.000Z';
+const STOCK_CREATED_AT = '2000-01-01T10:00:00.000Z';
 
 const ROLE_NAME = 'roleName';
 const INTERNAL_USER_ID = 100;
@@ -102,6 +104,7 @@ const init = async () => {
       product_id: product.id,
       internal_user_id: internalUser.id,
       expired_at: STOCK_EXPIRTED_AT,
+      created_at: STOCK_CREATED_AT,
       stockAllocation: {
         create: { internal_user_id: internalUser.id },
       },
@@ -139,6 +142,7 @@ describe('product', () => {
 
       expect(product.stocks.length).toEqual(1);
       expect(product.stocks[0].expired_at).toEqual(STOCK_EXPIRTED_AT);
+      expect(product.stocks[0].created_at).toEqual(STOCK_CREATED_AT);
       expect(product.stocks[0].stockAllocation.internalUser.name).toEqual(
         INTERNAL_USER_NAME
       );

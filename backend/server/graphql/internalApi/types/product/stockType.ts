@@ -7,6 +7,7 @@ export const stockType = objectType({
   definition(t) {
     t.field(Stock.id);
     t.field(Stock.expired_at);
+    t.field(Stock.created_at);
     t.field(Stock.stockAllocation);
     t.field(Stock.product);
     t.field(Stock.internalUser);

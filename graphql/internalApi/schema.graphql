@@ -388,6 +388,7 @@ type Session {
 
 """A stock"""
 type Stock {
+  created_at: DateTime!
   expired_at: DateTime!
   id: Int!
   internalUser: InternalUser!
