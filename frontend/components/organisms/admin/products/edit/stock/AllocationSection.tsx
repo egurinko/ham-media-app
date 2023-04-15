@@ -145,11 +145,8 @@ const AllocationSection: FC<Props> = ({
       <Table size="sm">
         <Thead>
           <Tr>
-            <Th w="2" p="1" fontSize="xs">
-              id
-            </Th>
             <Th p="1" fontSize="xs">
-              期限
+              サマリ
             </Th>
             <Th p="1" fontSize="xs">
               責任者
@@ -163,20 +160,22 @@ const AllocationSection: FC<Props> = ({
         <Tbody>
           {stocks.map((stock) => (
             <Tr key={stock.id}>
-              <Td w="2" px="1" py="3">
-                <Text fontSize="8">{stock.id}</Text>
-              </Td>
-              <Td px="1" py="3">
+              <Td px="1" py="3" display="flex" flexDirection="column">
+                <Text fontSize="8">id: {stock.id}</Text>
                 <Text fontSize="8">
+                  期限:{' '}
                   {dayjs(stock.expired_at).isBefore('2100-00-00')
-                    ? dayjs(stock.expired_at).format('YYYY年MM月DD日')
+                    ? dayjs(stock.expired_at).format('YYYY年M月D日')
                     : 'なし'}
+                </Text>
+                <Text fontSize="8">
+                  作成日: {dayjs(stock.created_at).format('YYYY年M月D日')}
                 </Text>
               </Td>
               <Td px="1" py="3">
                 {internalUserData ? (
                   <Select
-                    size="sm"
+                    size="xs"
                     placeholder="選択してください"
                     defaultValue={Number(stock.internalUser.id)}
                     disabled={!isAdminData?.readIsAdmin.isAdmin}
