@@ -68,7 +68,7 @@
     "dotenv": "^16.0.3",
     "dotenv-cli": "^7.2.1",
     "mercurius-integration-testing": "^8.0.0",
-    "tsc-alias": "^1.8.5",
+    "tsc-alias": "^1.8.6",
     "tsconfig-paths": "^4.2.0"
   }
 }
