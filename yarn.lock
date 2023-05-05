@@ -12974,7 +12974,7 @@ react-dom@18.2.0:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
 
-react-drag-drop-files@^2.3.9:
+react-drag-drop-files@^2.3.10:
   version "2.3.10"
   resolved "https://registry.yarnpkg.com/react-drag-drop-files/-/react-drag-drop-files-2.3.10.tgz#3f6ea316f8ad66a6f76b312cc4108c7c14065b06"
   integrity sha512-Fv614W9+OtXFB5O+gjompTxQZLYGO7wJeT4paETGiXtiADB9yPOMGYD4A3PMCTY9Be874/wcpl+2dm3MvCIRzg==
