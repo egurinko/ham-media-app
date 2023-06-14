@@ -11,54 +11,63 @@ export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
   [SubKey in K]: Maybe<T[SubKey]>;
 };
+export type MakeEmpty<
+  T extends { [key: string]: unknown },
+  K extends keyof T
+> = { [_ in K]?: never };
+export type Incremental<T> =
+  | T
+  | {
+      [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never;
+    };
 const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: string;
-  String: string;
-  Boolean: boolean;
-  Int: number;
-  Float: number;
+  ID: { input: string | number; output: string };
+  String: { input: string; output: string };
+  Boolean: { input: boolean; output: boolean };
+  Int: { input: number; output: number };
+  Float: { input: number; output: number };
   /**
    * The `BigInt` scalar type represents non-fractional signed whole numeric values.
    * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt
    */
-  BigInt: bigint;
+  BigInt: { input: bigint; output: bigint };
   /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
-  DateTime: any;
+  DateTime: { input: any; output: any };
   /** The `Upload` scalar type represents a file upload. */
-  Upload: any;
+  Upload: { input: any; output: any };
 };
 
 export type BatchPayload = {
   __typename?: 'BatchPayload';
-  count: Scalars['Int'];
+  count: Scalars['Int']['output'];
 };
 
 export type CreateProductTagsProductTagInputType = {
-  name: Scalars['String'];
+  name: Scalars['String']['input'];
 };
 
 export type CreateStockRequestRequestProductsInputType = {
-  count: Scalars['Int'];
-  productId: Scalars['Int'];
+  count: Scalars['Int']['input'];
+  productId: Scalars['Int']['input'];
 };
 
 export type CreateStocksStocksInputType = {
-  amount: Scalars['Int'];
-  expiredAt: Scalars['DateTime'];
-  internalUserId: Scalars['BigInt'];
+  amount: Scalars['Int']['input'];
+  expiredAt: Scalars['DateTime']['input'];
+  internalUserId: Scalars['BigInt']['input'];
 };
 
 export type Delete = {
   __typename?: 'Delete';
-  deleted: Scalars['Boolean'];
+  deleted: Scalars['Boolean']['output'];
 };
 
 /** A hospital */
 export type Hospital = {
   __typename?: 'Hospital';
-  deleted: Scalars['Boolean'];
+  deleted: Scalars['Boolean']['output'];
   hospitalAddress?: Maybe<HospitalAddress>;
   hospitalBusinessForm?: Maybe<HospitalBusinessForm>;
   hospitalCertificationOption?: Maybe<HospitalCertificationOption>;
@@ -66,64 +75,64 @@ export type Hospital = {
   hospitalNightServiceOption?: Maybe<HospitalNightServiceOption>;
   hospitalNightUrgentActionOption?: Maybe<HospitalNightUrgentActionOption>;
   hospitalReservationStatus?: Maybe<HospitalReservationStatus>;
-  id: Scalars['BigInt'];
-  internal_memo: Scalars['String'];
-  name: Scalars['String'];
-  url: Scalars['String'];
+  id: Scalars['BigInt']['output'];
+  internal_memo: Scalars['String']['output'];
+  name: Scalars['String']['output'];
+  url: Scalars['String']['output'];
 };
 
 /** A hospital address */
 export type HospitalAddress = {
   __typename?: 'HospitalAddress';
-  address: Scalars['String'];
+  address: Scalars['String']['output'];
   hospitalAddressGeoLocation?: Maybe<HospitalAddressGeoLocation>;
-  id: Scalars['BigInt'];
-  phone_number: Scalars['String'];
+  id: Scalars['BigInt']['output'];
+  phone_number: Scalars['String']['output'];
   prefecture: Prefecture;
 };
 
 /** A hospital address geo location */
 export type HospitalAddressGeoLocation = {
   __typename?: 'HospitalAddressGeoLocation';
-  id: Scalars['BigInt'];
-  latitude: Scalars['Float'];
-  longitude: Scalars['Float'];
+  id: Scalars['BigInt']['output'];
+  latitude: Scalars['Float']['output'];
+  longitude: Scalars['Float']['output'];
 };
 
 export type HospitalAddressInputType = {
-  address: Scalars['String'];
-  phone_number: Scalars['String'];
-  prefecture_id: Scalars['BigInt'];
+  address: Scalars['String']['input'];
+  phone_number: Scalars['String']['input'];
+  prefecture_id: Scalars['BigInt']['input'];
 };
 
 /** A hospital business form */
 export type HospitalBusinessForm = {
   __typename?: 'HospitalBusinessForm';
-  business_hour: Scalars['String'];
-  closed_day: Scalars['String'];
-  id: Scalars['BigInt'];
-  insurance_enabled: Scalars['String'];
-  remark: Scalars['String'];
+  business_hour: Scalars['String']['output'];
+  closed_day: Scalars['String']['output'];
+  id: Scalars['BigInt']['output'];
+  insurance_enabled: Scalars['String']['output'];
+  remark: Scalars['String']['output'];
 };
 
 export type HospitalBusinessFormInputType = {
-  business_hour: Scalars['String'];
-  closed_day: Scalars['String'];
-  insurance_enabled: Scalars['String'];
-  remark: Scalars['String'];
+  business_hour: Scalars['String']['input'];
+  closed_day: Scalars['String']['input'];
+  insurance_enabled: Scalars['String']['input'];
+  remark: Scalars['String']['input'];
 };
 
 /** A hospital certification option */
 export type HospitalCertificationOption = {
   __typename?: 'HospitalCertificationOption';
-  id: Scalars['BigInt'];
-  jsava_registered: Scalars['String'];
-  nichiju_registered: Scalars['String'];
+  id: Scalars['BigInt']['output'];
+  jsava_registered: Scalars['String']['output'];
+  nichiju_registered: Scalars['String']['output'];
 };
 
 export type HospitalCertificationOptionInputType = {
-  jsava_registered: Scalars['String'];
-  nichiju_registered: Scalars['String'];
+  jsava_registered: Scalars['String']['input'];
+  nichiju_registered: Scalars['String']['input'];
 };
 
 export type HospitalConnection = {
@@ -137,7 +146,7 @@ export type HospitalConnection = {
 export type HospitalEdge = {
   __typename?: 'HospitalEdge';
   /** https://facebook.github.io/relay/graphql/connections.htm#sec-Cursor */
-  cursor: Scalars['String'];
+  cursor: Scalars['String']['output'];
   /** https://facebook.github.io/relay/graphql/connections.htm#sec-Node */
   node?: Maybe<Hospital>;
 };
@@ -145,70 +154,70 @@ export type HospitalEdge = {
 /** A hospital internal reputation */
 export type HospitalInternalReputation = {
   __typename?: 'HospitalInternalReputation';
-  id: Scalars['BigInt'];
-  remark: Scalars['String'];
-  star: Scalars['Int'];
+  id: Scalars['BigInt']['output'];
+  remark: Scalars['String']['output'];
+  star: Scalars['Int']['output'];
 };
 
 export type HospitalInternalReputationInputType = {
-  remark: Scalars['String'];
-  star: Scalars['Int'];
+  remark: Scalars['String']['input'];
+  star: Scalars['Int']['input'];
 };
 
 /** A hospital night service option */
 export type HospitalNightServiceOption = {
   __typename?: 'HospitalNightServiceOption';
-  id: Scalars['BigInt'];
-  remark: Scalars['String'];
-  status: Scalars['String'];
+  id: Scalars['BigInt']['output'];
+  remark: Scalars['String']['output'];
+  status: Scalars['String']['output'];
 };
 
 export type HospitalNightServiceOptionInputType = {
-  remark: Scalars['String'];
-  status: Scalars['String'];
+  remark: Scalars['String']['input'];
+  status: Scalars['String']['input'];
 };
 
 /** A hospital night urgent action option */
 export type HospitalNightUrgentActionOption = {
   __typename?: 'HospitalNightUrgentActionOption';
-  id: Scalars['BigInt'];
-  status: Scalars['String'];
+  id: Scalars['BigInt']['output'];
+  status: Scalars['String']['output'];
 };
 
 export type HospitalNightUrgentActionOptionInputType = {
-  status: Scalars['String'];
+  status: Scalars['String']['input'];
 };
 
 /** A hospital reservation status */
 export type HospitalReservationStatus = {
   __typename?: 'HospitalReservationStatus';
-  id: Scalars['BigInt'];
-  remark: Scalars['String'];
-  required: Scalars['String'];
-  reservable: Scalars['String'];
+  id: Scalars['BigInt']['output'];
+  remark: Scalars['String']['output'];
+  required: Scalars['String']['output'];
+  reservable: Scalars['String']['output'];
 };
 
 export type HospitalReservationStatusInputType = {
-  remark: Scalars['String'];
-  required: Scalars['String'];
-  reservable: Scalars['String'];
+  remark: Scalars['String']['input'];
+  required: Scalars['String']['input'];
+  reservable: Scalars['String']['input'];
 };
 
 /** A internal user */
 export type InternalUser = {
   __typename?: 'InternalUser';
-  discord_user_id: Scalars['String'];
-  email: Scalars['String'];
-  id: Scalars['BigInt'];
-  name: Scalars['String'];
+  discord_user_id: Scalars['String']['output'];
+  email: Scalars['String']['output'];
+  id: Scalars['BigInt']['output'];
+  name: Scalars['String']['output'];
   role: Role;
 };
 
 /** A maker */
 export type Maker = {
   __typename?: 'Maker';
-  id: Scalars['Int'];
-  name: Scalars['String'];
+  id: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
 };
 
 export type Mutation = {
@@ -244,53 +253,53 @@ export type Mutation = {
 };
 
 export type MutationAllocateStockArgs = {
-  id: Scalars['Int'];
-  internalUserId: Scalars['BigInt'];
+  id: Scalars['Int']['input'];
+  internalUserId: Scalars['BigInt']['input'];
 };
 
 export type MutationApproveStockRequestArgs = {
-  id: Scalars['Int'];
-  message: Scalars['String'];
+  id: Scalars['Int']['input'];
+  message: Scalars['String']['input'];
 };
 
 export type MutationCreateHospitalArgs = {
-  deleted: Scalars['Boolean'];
-  internal_memo: Scalars['String'];
-  name: Scalars['String'];
-  url?: InputMaybe<Scalars['String']>;
+  deleted: Scalars['Boolean']['input'];
+  internal_memo: Scalars['String']['input'];
+  name: Scalars['String']['input'];
+  url?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type MutationCreateInternalUserArgs = {
-  discord_user_id: Scalars['String'];
-  email: Scalars['String'];
-  name: Scalars['String'];
-  password: Scalars['String'];
-  roleId: Scalars['Int'];
+  discord_user_id: Scalars['String']['input'];
+  email: Scalars['String']['input'];
+  name: Scalars['String']['input'];
+  password: Scalars['String']['input'];
+  roleId: Scalars['Int']['input'];
 };
 
 export type MutationCreateMakerArgs = {
-  name: Scalars['String'];
+  name: Scalars['String']['input'];
 };
 
 export type MutationCreateProductArgs = {
-  file: Scalars['Upload'];
-  makerId: Scalars['Int'];
-  name: Scalars['String'];
-  productTagIds: Array<Scalars['Int']>;
-  remark: Scalars['String'];
+  file: Scalars['Upload']['input'];
+  makerId: Scalars['Int']['input'];
+  name: Scalars['String']['input'];
+  productTagIds: Array<Scalars['Int']['input']>;
+  remark: Scalars['String']['input'];
 };
 
 export type MutationCreateProductTagGroupArgs = {
-  name: Scalars['String'];
+  name: Scalars['String']['input'];
 };
 
 export type MutationCreateProductTaggingsArgs = {
-  productId: Scalars['Int'];
-  productTagIds: Array<Scalars['Int']>;
+  productId: Scalars['Int']['input'];
+  productTagIds: Array<Scalars['Int']['input']>;
 };
 
 export type MutationCreateProductTagsArgs = {
-  productTagGroupId: Scalars['Int'];
+  productTagGroupId: Scalars['Int']['input'];
   productTags: Array<CreateProductTagsProductTagInputType>;
 };
 
@@ -299,45 +308,45 @@ export type MutationCreateStockRequestArgs = {
 };
 
 export type MutationCreateStocksArgs = {
-  productId: Scalars['Int'];
+  productId: Scalars['Int']['input'];
   stocks: Array<CreateStocksStocksInputType>;
 };
 
 export type MutationDeleteInternalUserArgs = {
-  id: Scalars['BigInt'];
+  id: Scalars['BigInt']['input'];
 };
 
 export type MutationDeleteMakerArgs = {
-  id: Scalars['Int'];
+  id: Scalars['Int']['input'];
 };
 
 export type MutationDeleteProductTagArgs = {
-  id: Scalars['Int'];
+  id: Scalars['Int']['input'];
 };
 
 export type MutationDeleteProductTaggingArgs = {
-  id: Scalars['Int'];
+  id: Scalars['Int']['input'];
 };
 
 export type MutationDeleteStockArgs = {
-  id: Scalars['Int'];
+  id: Scalars['Int']['input'];
 };
 
 export type MutationDeleteStockRequestArgs = {
-  id: Scalars['Int'];
+  id: Scalars['Int']['input'];
 };
 
 export type MutationRejectStockRequestArgs = {
-  id: Scalars['Int'];
-  message: Scalars['String'];
+  id: Scalars['Int']['input'];
+  message: Scalars['String']['input'];
 };
 
 export type MutationReturnStockArgs = {
-  id: Scalars['Int'];
+  id: Scalars['Int']['input'];
 };
 
 export type MutationUpdateHospitalArgs = {
-  deleted: Scalars['Boolean'];
+  deleted: Scalars['Boolean']['input'];
   hospitalAddressInput: HospitalAddressInputType;
   hospitalBusinessFormInput: HospitalBusinessFormInputType;
   hospitalCertificationOptionInput: HospitalCertificationOptionInputType;
@@ -345,93 +354,93 @@ export type MutationUpdateHospitalArgs = {
   hospitalNightServiceOptionInput: HospitalNightServiceOptionInputType;
   hospitalNightUrgentActionOptionInput: HospitalNightUrgentActionOptionInputType;
   hospitalReservationStatusInput: HospitalReservationStatusInputType;
-  id: Scalars['BigInt'];
-  internal_memo: Scalars['String'];
-  name: Scalars['String'];
-  url: Scalars['String'];
+  id: Scalars['BigInt']['input'];
+  internal_memo: Scalars['String']['input'];
+  name: Scalars['String']['input'];
+  url: Scalars['String']['input'];
 };
 
 export type MutationUpdateInternalUserArgs = {
-  discord_user_id: Scalars['String'];
-  email: Scalars['String'];
-  id: Scalars['BigInt'];
-  name: Scalars['String'];
-  password: Scalars['String'];
-  roleId: Scalars['Int'];
+  discord_user_id: Scalars['String']['input'];
+  email: Scalars['String']['input'];
+  id: Scalars['BigInt']['input'];
+  name: Scalars['String']['input'];
+  password: Scalars['String']['input'];
+  roleId: Scalars['Int']['input'];
 };
 
 export type MutationUpdateMakerArgs = {
-  id: Scalars['Int'];
-  name: Scalars['String'];
+  id: Scalars['Int']['input'];
+  name: Scalars['String']['input'];
 };
 
 export type MutationUpdateProductArgs = {
-  file?: InputMaybe<Scalars['Upload']>;
-  id: Scalars['Int'];
-  makerId: Scalars['Int'];
-  name: Scalars['String'];
-  remark: Scalars['String'];
+  file?: InputMaybe<Scalars['Upload']['input']>;
+  id: Scalars['Int']['input'];
+  makerId: Scalars['Int']['input'];
+  name: Scalars['String']['input'];
+  remark: Scalars['String']['input'];
 };
 
 export type MutationUpdateProductTagArgs = {
-  id: Scalars['Int'];
-  name: Scalars['String'];
+  id: Scalars['Int']['input'];
+  name: Scalars['String']['input'];
 };
 
 export type MutationUpdateProductTagGroupArgs = {
-  id: Scalars['Int'];
-  name: Scalars['String'];
+  id: Scalars['Int']['input'];
+  name: Scalars['String']['input'];
 };
 
 export type MutationUpdateStockInternalUserArgs = {
-  id: Scalars['Int'];
-  internalUserId: Scalars['BigInt'];
+  id: Scalars['Int']['input'];
+  internalUserId: Scalars['BigInt']['input'];
 };
 
 export type MutationUpdateStockRequestArgs = {
-  id: Scalars['Int'];
+  id: Scalars['Int']['input'];
   requestProducts: Array<CreateStockRequestRequestProductsInputType>;
 };
 
 export type MutationUpsertHospitalAddressGeoLocationArgs = {
-  address: Scalars['String'];
-  hospitalAddressId: Scalars['BigInt'];
+  address: Scalars['String']['input'];
+  hospitalAddressId: Scalars['BigInt']['input'];
 };
 
 /** PageInfo cursor, as defined in https://facebook.github.io/relay/graphql/connections.htm#sec-undefined.PageInfo */
 export type PageInfo = {
   __typename?: 'PageInfo';
   /** The cursor corresponding to the last nodes in edges. Null if the connection is empty. */
-  endCursor?: Maybe<Scalars['String']>;
+  endCursor?: Maybe<Scalars['String']['output']>;
   /** Used to indicate whether more edges exist following the set defined by the clients arguments. */
-  hasNextPage: Scalars['Boolean'];
+  hasNextPage: Scalars['Boolean']['output'];
   /** Used to indicate whether more edges exist prior to the set defined by the clients arguments. */
-  hasPreviousPage: Scalars['Boolean'];
+  hasPreviousPage: Scalars['Boolean']['output'];
   /** The cursor corresponding to the first nodes in edges. Null if the connection is empty. */
-  startCursor?: Maybe<Scalars['String']>;
+  startCursor?: Maybe<Scalars['String']['output']>;
 };
 
 /** A prefecture */
 export type Prefecture = {
   __typename?: 'Prefecture';
-  id: Scalars['BigInt'];
-  name: Scalars['String'];
+  id: Scalars['BigInt']['output'];
+  name: Scalars['String']['output'];
   region: Region;
 };
 
 /** A product */
 export type Product = {
   __typename?: 'Product';
-  allocatedStockAmount: Scalars['Int'];
-  id: Scalars['Int'];
+  allocatedStockAmount: Scalars['Int']['output'];
+  id: Scalars['Int']['output'];
   maker: Maker;
-  name: Scalars['String'];
+  name: Scalars['String']['output'];
   productTaggings: Array<ProductTagging>;
-  remainingStockAmount: Scalars['Int'];
-  remark: Scalars['String'];
+  remainingStockAmount: Scalars['Int']['output'];
+  remark: Scalars['String']['output'];
   stocks: Array<Stock>;
-  totalStockAmount: Scalars['Int'];
-  url: Scalars['String'];
+  totalStockAmount: Scalars['Int']['output'];
+  url: Scalars['String']['output'];
 };
 
 export type ProductConnection = {
@@ -445,7 +454,7 @@ export type ProductConnection = {
 export type ProductEdge = {
   __typename?: 'ProductEdge';
   /** https://facebook.github.io/relay/graphql/connections.htm#sec-Cursor */
-  cursor: Scalars['String'];
+  cursor: Scalars['String']['output'];
   /** https://facebook.github.io/relay/graphql/connections.htm#sec-Node */
   node?: Maybe<Product>;
 };
@@ -453,23 +462,23 @@ export type ProductEdge = {
 /** A product tag */
 export type ProductTag = {
   __typename?: 'ProductTag';
-  id: Scalars['Int'];
-  name: Scalars['String'];
+  id: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
   productTagGroup: ProductTagGroup;
 };
 
 /** A product tag group */
 export type ProductTagGroup = {
   __typename?: 'ProductTagGroup';
-  id: Scalars['Int'];
-  name: Scalars['String'];
+  id: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
   productTags: Array<ProductTag>;
 };
 
 /** A product tagging */
 export type ProductTagging = {
   __typename?: 'ProductTagging';
-  id: Scalars['Int'];
+  id: Scalars['Int']['output'];
   productTag: ProductTag;
 };
 
@@ -495,95 +504,95 @@ export type Query = {
 };
 
 export type QueryHospitalArgs = {
-  id: Scalars['BigInt'];
+  id: Scalars['BigInt']['input'];
 };
 
 export type QueryHospitalConnectionArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  deleted: Scalars['Boolean'];
-  first?: InputMaybe<Scalars['Int']>;
-  internalReputationStar?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  name?: InputMaybe<Scalars['String']>;
-  prefectureId?: InputMaybe<Scalars['BigInt']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  deleted: Scalars['Boolean']['input'];
+  first?: InputMaybe<Scalars['Int']['input']>;
+  internalReputationStar?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  prefectureId?: InputMaybe<Scalars['BigInt']['input']>;
 };
 
 export type QueryInternalUserArgs = {
-  id: Scalars['BigInt'];
+  id: Scalars['BigInt']['input'];
 };
 
 export type QueryMakerArgs = {
-  id: Scalars['Int'];
+  id: Scalars['Int']['input'];
 };
 
 export type QueryProductArgs = {
-  id: Scalars['Int'];
+  id: Scalars['Int']['input'];
 };
 
 export type QueryProductConnectionArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  allocatedInternalUserId?: InputMaybe<Scalars['Int']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  hasStock?: InputMaybe<Scalars['Boolean']>;
-  internalUserId?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  makerId?: InputMaybe<Scalars['Int']>;
-  name?: InputMaybe<Scalars['String']>;
-  productTagId?: InputMaybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  allocatedInternalUserId?: InputMaybe<Scalars['Int']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  hasStock?: InputMaybe<Scalars['Boolean']['input']>;
+  internalUserId?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  makerId?: InputMaybe<Scalars['Int']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  productTagId?: InputMaybe<Scalars['Int']['input']>;
 };
 
 export type QueryProductTagGroupArgs = {
-  id: Scalars['Int'];
+  id: Scalars['Int']['input'];
 };
 
 export type QueryProductsArgs = {
-  ids?: InputMaybe<Array<Scalars['Int']>>;
+  ids?: InputMaybe<Array<Scalars['Int']['input']>>;
 };
 
 export type QueryStockRequestArgs = {
-  id: Scalars['Int'];
+  id: Scalars['Int']['input'];
 };
 
 export type QueryStockRequestConnectionArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  internalUserId?: InputMaybe<Scalars['BigInt']>;
-  last?: InputMaybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  internalUserId?: InputMaybe<Scalars['BigInt']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
 };
 
 export type QueryStocksArgs = {
-  productId: Scalars['Int'];
+  productId: Scalars['Int']['input'];
 };
 
 /** A region */
 export type Region = {
   __typename?: 'Region';
-  id: Scalars['BigInt'];
-  name: Scalars['String'];
+  id: Scalars['BigInt']['output'];
+  name: Scalars['String']['output'];
 };
 
 /** A role */
 export type Role = {
   __typename?: 'Role';
-  id: Scalars['Int'];
-  name: Scalars['String'];
+  id: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
 };
 
 export type Session = {
   __typename?: 'Session';
   internalUser: InternalUser;
-  token: Scalars['String'];
+  token: Scalars['String']['output'];
 };
 
 /** A stock */
 export type Stock = {
   __typename?: 'Stock';
-  created_at: Scalars['DateTime'];
-  expired_at: Scalars['DateTime'];
-  id: Scalars['Int'];
+  created_at: Scalars['DateTime']['output'];
+  expired_at: Scalars['DateTime']['output'];
+  id: Scalars['Int']['output'];
   internalUser: InternalUser;
   product: Product;
   stockAllocation?: Maybe<StockAllocation>;
@@ -592,15 +601,15 @@ export type Stock = {
 /** A stock allocation */
 export type StockAllocation = {
   __typename?: 'StockAllocation';
-  created_at: Scalars['DateTime'];
-  id: Scalars['Int'];
+  created_at: Scalars['DateTime']['output'];
+  id: Scalars['Int']['output'];
   internalUser: InternalUser;
 };
 
 /** A stock request */
 export type StockRequest = {
   __typename?: 'StockRequest';
-  id: Scalars['Int'];
+  id: Scalars['Int']['output'];
   internalUser: InternalUser;
   productRegistrations: Array<StockRequestProductRegistration>;
 };
@@ -616,7 +625,7 @@ export type StockRequestConnection = {
 export type StockRequestEdge = {
   __typename?: 'StockRequestEdge';
   /** https://facebook.github.io/relay/graphql/connections.htm#sec-Cursor */
-  cursor: Scalars['String'];
+  cursor: Scalars['String']['output'];
   /** https://facebook.github.io/relay/graphql/connections.htm#sec-Node */
   node?: Maybe<StockRequest>;
 };
@@ -624,13 +633,13 @@ export type StockRequestEdge = {
 /** A stock request product registration */
 export type StockRequestProductRegistration = {
   __typename?: 'StockRequestProductRegistration';
-  id: Scalars['Int'];
+  id: Scalars['Int']['output'];
   product: Product;
 };
 
 export type InternalAllocateStockMutationVariables = Exact<{
-  id: Scalars['Int'];
-  internalUserId: Scalars['BigInt'];
+  id: Scalars['Int']['input'];
+  internalUserId: Scalars['BigInt']['input'];
 }>;
 
 export type InternalAllocateStockMutation = {
@@ -665,8 +674,8 @@ export type InternalAllocateStockMutation = {
 };
 
 export type InternalApproveStockRequestMutationVariables = Exact<{
-  id: Scalars['Int'];
-  message: Scalars['String'];
+  id: Scalars['Int']['input'];
+  message: Scalars['String']['input'];
 }>;
 
 export type InternalApproveStockRequestMutation = {
@@ -675,10 +684,10 @@ export type InternalApproveStockRequestMutation = {
 };
 
 export type InternalCreateHospitalMutationVariables = Exact<{
-  name: Scalars['String'];
-  url?: InputMaybe<Scalars['String']>;
-  deleted: Scalars['Boolean'];
-  internal_memo: Scalars['String'];
+  name: Scalars['String']['input'];
+  url?: InputMaybe<Scalars['String']['input']>;
+  deleted: Scalars['Boolean']['input'];
+  internal_memo: Scalars['String']['input'];
 }>;
 
 export type InternalCreateHospitalMutation = {
@@ -745,11 +754,11 @@ export type InternalCreateHospitalMutation = {
 };
 
 export type InternalCreateInternalUserMutationVariables = Exact<{
-  name: Scalars['String'];
-  email: Scalars['String'];
-  password: Scalars['String'];
-  discord_user_id: Scalars['String'];
-  roleId: Scalars['Int'];
+  name: Scalars['String']['input'];
+  email: Scalars['String']['input'];
+  password: Scalars['String']['input'];
+  discord_user_id: Scalars['String']['input'];
+  roleId: Scalars['Int']['input'];
 }>;
 
 export type InternalCreateInternalUserMutation = {
@@ -765,7 +774,7 @@ export type InternalCreateInternalUserMutation = {
 };
 
 export type InternalCreateMakerMutationVariables = Exact<{
-  name: Scalars['String'];
+  name: Scalars['String']['input'];
 }>;
 
 export type InternalCreateMakerMutation = {
@@ -774,11 +783,11 @@ export type InternalCreateMakerMutation = {
 };
 
 export type InternalCreateProductMutationVariables = Exact<{
-  makerId: Scalars['Int'];
-  name: Scalars['String'];
-  remark: Scalars['String'];
-  file: Scalars['Upload'];
-  productTagIds: Array<Scalars['Int']> | Scalars['Int'];
+  makerId: Scalars['Int']['input'];
+  name: Scalars['String']['input'];
+  remark: Scalars['String']['input'];
+  file: Scalars['Upload']['input'];
+  productTagIds: Array<Scalars['Int']['input']> | Scalars['Int']['input'];
 }>;
 
 export type InternalCreateProductMutation = {
@@ -829,7 +838,7 @@ export type InternalCreateProductMutation = {
 };
 
 export type InternalCreateProductTagGroupMutationVariables = Exact<{
-  name: Scalars['String'];
+  name: Scalars['String']['input'];
 }>;
 
 export type InternalCreateProductTagGroupMutation = {
@@ -843,8 +852,8 @@ export type InternalCreateProductTagGroupMutation = {
 };
 
 export type InternalCreateProductTaggingsMutationVariables = Exact<{
-  productId: Scalars['Int'];
-  productTagIds: Array<Scalars['Int']> | Scalars['Int'];
+  productId: Scalars['Int']['input'];
+  productTagIds: Array<Scalars['Int']['input']> | Scalars['Int']['input'];
 }>;
 
 export type InternalCreateProductTaggingsMutation = {
@@ -853,7 +862,7 @@ export type InternalCreateProductTaggingsMutation = {
 };
 
 export type InternalCreateProductTagsMutationVariables = Exact<{
-  productTagGroupId: Scalars['Int'];
+  productTagGroupId: Scalars['Int']['input'];
   productTags:
     | Array<CreateProductTagsProductTagInputType>
     | CreateProductTagsProductTagInputType;
@@ -934,7 +943,7 @@ export type InternalCreateStockRequestMutation = {
 };
 
 export type InternalCreateStocksMutationVariables = Exact<{
-  productId: Scalars['Int'];
+  productId: Scalars['Int']['input'];
   stocks: Array<CreateStocksStocksInputType> | CreateStocksStocksInputType;
 }>;
 
@@ -970,7 +979,7 @@ export type InternalCreateStocksMutation = {
 };
 
 export type InternalDeleteInternalUserMutationVariables = Exact<{
-  id: Scalars['BigInt'];
+  id: Scalars['BigInt']['input'];
 }>;
 
 export type InternalDeleteInternalUserMutation = {
@@ -979,7 +988,7 @@ export type InternalDeleteInternalUserMutation = {
 };
 
 export type InternalDeleteMakerMutationVariables = Exact<{
-  id: Scalars['Int'];
+  id: Scalars['Int']['input'];
 }>;
 
 export type InternalDeleteMakerMutation = {
@@ -988,7 +997,7 @@ export type InternalDeleteMakerMutation = {
 };
 
 export type InternalDeleteProductTagMutationVariables = Exact<{
-  id: Scalars['Int'];
+  id: Scalars['Int']['input'];
 }>;
 
 export type InternalDeleteProductTagMutation = {
@@ -997,7 +1006,7 @@ export type InternalDeleteProductTagMutation = {
 };
 
 export type InternalDeleteProductTaggingMutationVariables = Exact<{
-  id: Scalars['Int'];
+  id: Scalars['Int']['input'];
 }>;
 
 export type InternalDeleteProductTaggingMutation = {
@@ -1006,7 +1015,7 @@ export type InternalDeleteProductTaggingMutation = {
 };
 
 export type InternalDeleteStockMutationVariables = Exact<{
-  id: Scalars['Int'];
+  id: Scalars['Int']['input'];
 }>;
 
 export type InternalDeleteStockMutation = {
@@ -1015,7 +1024,7 @@ export type InternalDeleteStockMutation = {
 };
 
 export type InternalDeleteStockRequestMutationVariables = Exact<{
-  id: Scalars['Int'];
+  id: Scalars['Int']['input'];
 }>;
 
 export type InternalDeleteStockRequestMutation = {
@@ -1321,7 +1330,7 @@ export type StockRequestFieldsFragment = {
 };
 
 export type InternalGetHospitalQueryVariables = Exact<{
-  id: Scalars['BigInt'];
+  id: Scalars['BigInt']['input'];
 }>;
 
 export type InternalGetHospitalQuery = {
@@ -1388,12 +1397,12 @@ export type InternalGetHospitalQuery = {
 };
 
 export type InternalGetHospitalConnectionQueryVariables = Exact<{
-  first?: InputMaybe<Scalars['Int']>;
-  after?: InputMaybe<Scalars['String']>;
-  name?: InputMaybe<Scalars['String']>;
-  deleted: Scalars['Boolean'];
-  prefectureId?: InputMaybe<Scalars['BigInt']>;
-  internalReputationStar?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  deleted: Scalars['Boolean']['input'];
+  prefectureId?: InputMaybe<Scalars['BigInt']['input']>;
+  internalReputationStar?: InputMaybe<Scalars['Int']['input']>;
 }>;
 
 export type InternalGetHospitalConnectionQuery = {
@@ -1482,7 +1491,7 @@ export type InternalGetHospitalIdsQuery = {
 };
 
 export type InternalGetInternalUserQueryVariables = Exact<{
-  id: Scalars['BigInt'];
+  id: Scalars['BigInt']['input'];
 }>;
 
 export type InternalGetInternalUserQuery = {
@@ -1514,7 +1523,7 @@ export type InternalGetInternalUsersQuery = {
 };
 
 export type InternalGetMakerQueryVariables = Exact<{
-  id: Scalars['Int'];
+  id: Scalars['Int']['input'];
 }>;
 
 export type InternalGetMakerQuery = {
@@ -1530,7 +1539,7 @@ export type InternalGetMakersQuery = {
 };
 
 export type InternalGetProductQueryVariables = Exact<{
-  id: Scalars['Int'];
+  id: Scalars['Int']['input'];
 }>;
 
 export type InternalGetProductQuery = {
@@ -1581,14 +1590,14 @@ export type InternalGetProductQuery = {
 };
 
 export type InternalGetProductConnectionQueryVariables = Exact<{
-  first?: InputMaybe<Scalars['Int']>;
-  after?: InputMaybe<Scalars['String']>;
-  name?: InputMaybe<Scalars['String']>;
-  makerId?: InputMaybe<Scalars['Int']>;
-  productTagId?: InputMaybe<Scalars['Int']>;
-  internalUserId?: InputMaybe<Scalars['Int']>;
-  allocatedInternalUserId?: InputMaybe<Scalars['Int']>;
-  hasStock?: InputMaybe<Scalars['Boolean']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  makerId?: InputMaybe<Scalars['Int']['input']>;
+  productTagId?: InputMaybe<Scalars['Int']['input']>;
+  internalUserId?: InputMaybe<Scalars['Int']['input']>;
+  allocatedInternalUserId?: InputMaybe<Scalars['Int']['input']>;
+  hasStock?: InputMaybe<Scalars['Boolean']['input']>;
 }>;
 
 export type InternalGetProductConnectionQuery = {
@@ -1661,7 +1670,7 @@ export type InternalGetProductIdsQuery = {
 };
 
 export type InternalGetProductTagGroupQueryVariables = Exact<{
-  id: Scalars['Int'];
+  id: Scalars['Int']['input'];
 }>;
 
 export type InternalGetProductTagGroupQuery = {
@@ -1698,7 +1707,7 @@ export type InternalGetProductTagGroupsQuery = {
 };
 
 export type InternalGetProductsQueryVariables = Exact<{
-  ids?: InputMaybe<Array<Scalars['Int']> | Scalars['Int']>;
+  ids?: InputMaybe<Array<Scalars['Int']['input']> | Scalars['Int']['input']>;
 }>;
 
 export type InternalGetProductsQuery = {
@@ -1774,7 +1783,7 @@ export type InternalGetSessionQuery = {
 };
 
 export type InternalGetStockRequestQueryVariables = Exact<{
-  id: Scalars['Int'];
+  id: Scalars['Int']['input'];
 }>;
 
 export type InternalGetStockRequestQuery = {
@@ -1841,9 +1850,9 @@ export type InternalGetStockRequestQuery = {
 };
 
 export type InternalGetStockRequestConnectionQueryVariables = Exact<{
-  first?: InputMaybe<Scalars['Int']>;
-  after?: InputMaybe<Scalars['String']>;
-  internalUserId?: InputMaybe<Scalars['BigInt']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  internalUserId?: InputMaybe<Scalars['BigInt']['input']>;
 }>;
 
 export type InternalGetStockRequestConnectionQuery = {
@@ -1927,7 +1936,7 @@ export type InternalGetStockRequestConnectionQuery = {
 };
 
 export type InternalGetStocksQueryVariables = Exact<{
-  productId: Scalars['Int'];
+  productId: Scalars['Int']['input'];
 }>;
 
 export type InternalGetStocksQuery = {
@@ -1962,8 +1971,8 @@ export type InternalGetStocksQuery = {
 };
 
 export type InternalRejectStockRequestMutationVariables = Exact<{
-  id: Scalars['Int'];
-  message: Scalars['String'];
+  id: Scalars['Int']['input'];
+  message: Scalars['String']['input'];
 }>;
 
 export type InternalRejectStockRequestMutation = {
@@ -1972,7 +1981,7 @@ export type InternalRejectStockRequestMutation = {
 };
 
 export type InternalReturnStockMutationVariables = Exact<{
-  id: Scalars['Int'];
+  id: Scalars['Int']['input'];
 }>;
 
 export type InternalReturnStockMutation = {
@@ -2007,11 +2016,11 @@ export type InternalReturnStockMutation = {
 };
 
 export type InternalUpdateHospitalMutationVariables = Exact<{
-  id: Scalars['BigInt'];
-  name: Scalars['String'];
-  url: Scalars['String'];
-  deleted: Scalars['Boolean'];
-  internal_memo: Scalars['String'];
+  id: Scalars['BigInt']['input'];
+  name: Scalars['String']['input'];
+  url: Scalars['String']['input'];
+  deleted: Scalars['Boolean']['input'];
+  internal_memo: Scalars['String']['input'];
   hospitalAddressInput: HospitalAddressInputType;
   hospitalBusinessFormInput: HospitalBusinessFormInputType;
   hospitalCertificationOptionInput: HospitalCertificationOptionInputType;
@@ -2027,12 +2036,12 @@ export type InternalUpdateHospitalMutation = {
 };
 
 export type InternalUpdateInternalUserMutationVariables = Exact<{
-  id: Scalars['BigInt'];
-  name: Scalars['String'];
-  email: Scalars['String'];
-  password: Scalars['String'];
-  discord_user_id: Scalars['String'];
-  roleId: Scalars['Int'];
+  id: Scalars['BigInt']['input'];
+  name: Scalars['String']['input'];
+  email: Scalars['String']['input'];
+  password: Scalars['String']['input'];
+  discord_user_id: Scalars['String']['input'];
+  roleId: Scalars['Int']['input'];
 }>;
 
 export type InternalUpdateInternalUserMutation = {
@@ -2048,8 +2057,8 @@ export type InternalUpdateInternalUserMutation = {
 };
 
 export type InternalUpdateMakerMutationVariables = Exact<{
-  id: Scalars['Int'];
-  name: Scalars['String'];
+  id: Scalars['Int']['input'];
+  name: Scalars['String']['input'];
 }>;
 
 export type InternalUpdateMakerMutation = {
@@ -2058,11 +2067,11 @@ export type InternalUpdateMakerMutation = {
 };
 
 export type InternalUpdateProductMutationVariables = Exact<{
-  id: Scalars['Int'];
-  makerId: Scalars['Int'];
-  name: Scalars['String'];
-  remark: Scalars['String'];
-  file?: InputMaybe<Scalars['Upload']>;
+  id: Scalars['Int']['input'];
+  makerId: Scalars['Int']['input'];
+  name: Scalars['String']['input'];
+  remark: Scalars['String']['input'];
+  file?: InputMaybe<Scalars['Upload']['input']>;
 }>;
 
 export type InternalUpdateProductMutation = {
@@ -2113,8 +2122,8 @@ export type InternalUpdateProductMutation = {
 };
 
 export type InternalUpdateProductTagMutationVariables = Exact<{
-  id: Scalars['Int'];
-  name: Scalars['String'];
+  id: Scalars['Int']['input'];
+  name: Scalars['String']['input'];
 }>;
 
 export type InternalUpdateProductTagMutation = {
@@ -2123,8 +2132,8 @@ export type InternalUpdateProductTagMutation = {
 };
 
 export type InternalUpdateProductTagGroupMutationVariables = Exact<{
-  id: Scalars['Int'];
-  name: Scalars['String'];
+  id: Scalars['Int']['input'];
+  name: Scalars['String']['input'];
 }>;
 
 export type InternalUpdateProductTagGroupMutation = {
@@ -2138,8 +2147,8 @@ export type InternalUpdateProductTagGroupMutation = {
 };
 
 export type InternalUpdateStockInternalUserMutationVariables = Exact<{
-  id: Scalars['Int'];
-  internalUserId: Scalars['BigInt'];
+  id: Scalars['Int']['input'];
+  internalUserId: Scalars['BigInt']['input'];
 }>;
 
 export type InternalUpdateStockInternalUserMutation = {
@@ -2174,7 +2183,7 @@ export type InternalUpdateStockInternalUserMutation = {
 };
 
 export type InternalUpdateStockRequestMutationVariables = Exact<{
-  id: Scalars['Int'];
+  id: Scalars['Int']['input'];
   requestProducts:
     | Array<CreateStockRequestRequestProductsInputType>
     | CreateStockRequestRequestProductsInputType;
@@ -2244,8 +2253,8 @@ export type InternalUpdateStockRequestMutation = {
 };
 
 export type InternalUpsertHospitalAddressGeoLocationMutationVariables = Exact<{
-  hospitalAddressId: Scalars['BigInt'];
-  address: Scalars['String'];
+  hospitalAddressId: Scalars['BigInt']['input'];
+  address: Scalars['String']['input'];
 }>;
 
 export type InternalUpsertHospitalAddressGeoLocationMutation = {

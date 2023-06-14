@@ -11,28 +11,37 @@ export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
   [SubKey in K]: Maybe<T[SubKey]>;
 };
+export type MakeEmpty<
+  T extends { [key: string]: unknown },
+  K extends keyof T
+> = { [_ in K]?: never };
+export type Incremental<T> =
+  | T
+  | {
+      [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never;
+    };
 const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: string;
-  String: string;
-  Boolean: boolean;
-  Int: number;
-  Float: number;
+  ID: { input: string | number; output: string };
+  String: { input: string; output: string };
+  Boolean: { input: boolean; output: boolean };
+  Int: { input: number; output: number };
+  Float: { input: number; output: number };
   /**
    * The `BigInt` scalar type represents non-fractional signed whole numeric values.
    * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt
    */
-  BigInt: bigint;
+  BigInt: { input: bigint; output: bigint };
   /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
-  DateTime: any;
+  DateTime: { input: any; output: any };
   /** The `Upload` scalar type represents a file upload. */
-  Upload: any;
+  Upload: { input: any; output: any };
 };
 
 export type CreateSessionType = {
   __typename?: 'CreateSessionType';
-  token: Scalars['String'];
+  token: Scalars['String']['output'];
 };
 
 /** A hospital */
@@ -44,46 +53,46 @@ export type Hospital = {
   hospitalNightServiceOption?: Maybe<HospitalNightServiceOption>;
   hospitalNightUrgentActionOption?: Maybe<HospitalNightUrgentActionOption>;
   hospitalReservationStatus?: Maybe<HospitalReservationStatus>;
-  id: Scalars['BigInt'];
-  name: Scalars['String'];
-  recommended: Scalars['Boolean'];
-  url: Scalars['String'];
+  id: Scalars['BigInt']['output'];
+  name: Scalars['String']['output'];
+  recommended: Scalars['Boolean']['output'];
+  url: Scalars['String']['output'];
 };
 
 /** A hospital address */
 export type HospitalAddress = {
   __typename?: 'HospitalAddress';
-  address: Scalars['String'];
+  address: Scalars['String']['output'];
   hospitalAddressGeoLocation?: Maybe<HospitalAddressGeoLocation>;
-  id: Scalars['BigInt'];
-  phone_number: Scalars['String'];
+  id: Scalars['BigInt']['output'];
+  phone_number: Scalars['String']['output'];
   prefecture: Prefecture;
 };
 
 /** A hospital address geo location */
 export type HospitalAddressGeoLocation = {
   __typename?: 'HospitalAddressGeoLocation';
-  id: Scalars['BigInt'];
-  latitude: Scalars['Float'];
-  longitude: Scalars['Float'];
+  id: Scalars['BigInt']['output'];
+  latitude: Scalars['Float']['output'];
+  longitude: Scalars['Float']['output'];
 };
 
 /** A hospital business form */
 export type HospitalBusinessForm = {
   __typename?: 'HospitalBusinessForm';
-  business_hour: Scalars['String'];
-  closed_day: Scalars['String'];
-  id: Scalars['BigInt'];
-  insurance_enabled: Scalars['String'];
-  remark: Scalars['String'];
+  business_hour: Scalars['String']['output'];
+  closed_day: Scalars['String']['output'];
+  id: Scalars['BigInt']['output'];
+  insurance_enabled: Scalars['String']['output'];
+  remark: Scalars['String']['output'];
 };
 
 /** A hospital certification option */
 export type HospitalCertificationOption = {
   __typename?: 'HospitalCertificationOption';
-  id: Scalars['BigInt'];
-  jsava_registered: Scalars['String'];
-  nichiju_registered: Scalars['String'];
+  id: Scalars['BigInt']['output'];
+  jsava_registered: Scalars['String']['output'];
+  nichiju_registered: Scalars['String']['output'];
 };
 
 export type HospitalConnection = {
@@ -97,7 +106,7 @@ export type HospitalConnection = {
 export type HospitalEdge = {
   __typename?: 'HospitalEdge';
   /** https://facebook.github.io/relay/graphql/connections.htm#sec-Cursor */
-  cursor: Scalars['String'];
+  cursor: Scalars['String']['output'];
   /** https://facebook.github.io/relay/graphql/connections.htm#sec-Node */
   node?: Maybe<Hospital>;
 };
@@ -105,25 +114,25 @@ export type HospitalEdge = {
 /** A hospital night service option */
 export type HospitalNightServiceOption = {
   __typename?: 'HospitalNightServiceOption';
-  id: Scalars['BigInt'];
-  remark: Scalars['String'];
-  status: Scalars['String'];
+  id: Scalars['BigInt']['output'];
+  remark: Scalars['String']['output'];
+  status: Scalars['String']['output'];
 };
 
 /** A hospital night urgent action option */
 export type HospitalNightUrgentActionOption = {
   __typename?: 'HospitalNightUrgentActionOption';
-  id: Scalars['BigInt'];
-  status: Scalars['String'];
+  id: Scalars['BigInt']['output'];
+  status: Scalars['String']['output'];
 };
 
 /** A hospital reservation status */
 export type HospitalReservationStatus = {
   __typename?: 'HospitalReservationStatus';
-  id: Scalars['BigInt'];
-  remark: Scalars['String'];
-  required: Scalars['String'];
-  reservable: Scalars['String'];
+  id: Scalars['BigInt']['output'];
+  remark: Scalars['String']['output'];
+  required: Scalars['String']['output'];
+  reservable: Scalars['String']['output'];
 };
 
 export type Mutation = {
@@ -132,28 +141,28 @@ export type Mutation = {
 };
 
 export type MutationCreateSessionArgs = {
-  email: Scalars['String'];
-  password: Scalars['String'];
+  email: Scalars['String']['input'];
+  password: Scalars['String']['input'];
 };
 
 /** PageInfo cursor, as defined in https://facebook.github.io/relay/graphql/connections.htm#sec-undefined.PageInfo */
 export type PageInfo = {
   __typename?: 'PageInfo';
   /** The cursor corresponding to the last nodes in edges. Null if the connection is empty. */
-  endCursor?: Maybe<Scalars['String']>;
+  endCursor?: Maybe<Scalars['String']['output']>;
   /** Used to indicate whether more edges exist following the set defined by the clients arguments. */
-  hasNextPage: Scalars['Boolean'];
+  hasNextPage: Scalars['Boolean']['output'];
   /** Used to indicate whether more edges exist prior to the set defined by the clients arguments. */
-  hasPreviousPage: Scalars['Boolean'];
+  hasPreviousPage: Scalars['Boolean']['output'];
   /** The cursor corresponding to the first nodes in edges. Null if the connection is empty. */
-  startCursor?: Maybe<Scalars['String']>;
+  startCursor?: Maybe<Scalars['String']['output']>;
 };
 
 /** Google Place Autocomplete api response */
 export type PlaceAutocomplete = {
   __typename?: 'PlaceAutocomplete';
-  error_message?: Maybe<Scalars['String']>;
-  info_messages?: Maybe<Array<Scalars['String']>>;
+  error_message?: Maybe<Scalars['String']['output']>;
+  info_messages?: Maybe<Array<Scalars['String']['output']>>;
   predictions: Array<PlaceAutocompletePrediction>;
   status: PlaceAutocompleteStatus;
 };
@@ -161,35 +170,35 @@ export type PlaceAutocomplete = {
 /** Google Place Autocomplete api response prediction */
 export type PlaceAutocompletePrediction = {
   __typename?: 'PlaceAutocompletePrediction';
-  description: Scalars['String'];
+  description: Scalars['String']['output'];
   matched_substrings: Array<PlaceAutocompletePredictionMatchedSubstring>;
-  place_id: Scalars['String'];
-  reference: Scalars['String'];
+  place_id: Scalars['String']['output'];
+  reference: Scalars['String']['output'];
   structured_formatting: PlaceAutocompletePredictionStructuredFormatting;
   terms: Array<PlaceAutocompletePredictionTerm>;
-  types: Array<Scalars['String']>;
+  types: Array<Scalars['String']['output']>;
 };
 
 /** Google Place Autocomplete api response prediction matched substring */
 export type PlaceAutocompletePredictionMatchedSubstring = {
   __typename?: 'PlaceAutocompletePredictionMatchedSubstring';
-  length: Scalars['Int'];
-  offset: Scalars['Int'];
+  length: Scalars['Int']['output'];
+  offset: Scalars['Int']['output'];
 };
 
 /** Google Place Autocomplete api response prediction structured formatting */
 export type PlaceAutocompletePredictionStructuredFormatting = {
   __typename?: 'PlaceAutocompletePredictionStructuredFormatting';
-  main_text: Scalars['String'];
+  main_text: Scalars['String']['output'];
   main_text_matched_substrings: Array<PlaceAutocompletePredictionMatchedSubstring>;
-  secondary_text: Scalars['String'];
+  secondary_text: Scalars['String']['output'];
 };
 
 /** Google Place Autocomplete api response prediction term */
 export type PlaceAutocompletePredictionTerm = {
   __typename?: 'PlaceAutocompletePredictionTerm';
-  offset: Scalars['Int'];
-  value: Scalars['String'];
+  offset: Scalars['Int']['output'];
+  value: Scalars['String']['output'];
 };
 
 /** Google Place Autocomplete api response status */
@@ -205,8 +214,8 @@ export enum PlaceAutocompleteStatus {
 /** A prefecture */
 export type Prefecture = {
   __typename?: 'Prefecture';
-  id: Scalars['BigInt'];
-  name: Scalars['String'];
+  id: Scalars['BigInt']['output'];
+  name: Scalars['String']['output'];
   region: Region;
 };
 
@@ -220,43 +229,43 @@ export type Query = {
 };
 
 export type QueryHospitalArgs = {
-  id: Scalars['BigInt'];
+  id: Scalars['BigInt']['input'];
 };
 
 export type QueryPlaceAutocompleteArgs = {
-  searchText: Scalars['String'];
+  searchText: Scalars['String']['input'];
 };
 
 export type QueryPublicHospitalConnectionArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
   currentLocation?: InputMaybe<CurrentLocation>;
-  first?: InputMaybe<Scalars['Int']>;
-  insuranceEnabled: Scalars['Boolean'];
-  jsavaOption: Scalars['Boolean'];
-  last?: InputMaybe<Scalars['Int']>;
-  nichijuOption: Scalars['Boolean'];
-  nightServiceOption: Scalars['Boolean'];
-  recommended: Scalars['Boolean'];
-  reservable: Scalars['Boolean'];
-  searchText: Scalars['String'];
+  first?: InputMaybe<Scalars['Int']['input']>;
+  insuranceEnabled: Scalars['Boolean']['input'];
+  jsavaOption: Scalars['Boolean']['input'];
+  last?: InputMaybe<Scalars['Int']['input']>;
+  nichijuOption: Scalars['Boolean']['input'];
+  nightServiceOption: Scalars['Boolean']['input'];
+  recommended: Scalars['Boolean']['input'];
+  reservable: Scalars['Boolean']['input'];
+  searchText: Scalars['String']['input'];
 };
 
 /** A region */
 export type Region = {
   __typename?: 'Region';
-  id: Scalars['BigInt'];
-  name: Scalars['String'];
+  id: Scalars['BigInt']['output'];
+  name: Scalars['String']['output'];
 };
 
 export type CurrentLocation = {
-  latitude: Scalars['Float'];
-  longitude: Scalars['Float'];
+  latitude: Scalars['Float']['input'];
+  longitude: Scalars['Float']['input'];
 };
 
 export type PublicCreateSessionMutationVariables = Exact<{
-  email: Scalars['String'];
-  password: Scalars['String'];
+  email: Scalars['String']['input'];
+  password: Scalars['String']['input'];
 }>;
 
 export type PublicCreateSessionMutation = {
@@ -317,7 +326,7 @@ export type PublicApiHospitalFieldsFragment = {
 };
 
 export type PublicGetHospitalQueryVariables = Exact<{
-  id: Scalars['BigInt'];
+  id: Scalars['BigInt']['input'];
 }>;
 
 export type PublicGetHospitalQuery = {
@@ -376,16 +385,16 @@ export type PublicGetHospitalQuery = {
 };
 
 export type PublicGetHospitalConnectionQueryVariables = Exact<{
-  first?: InputMaybe<Scalars['Int']>;
-  after?: InputMaybe<Scalars['String']>;
-  searchText: Scalars['String'];
+  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  searchText: Scalars['String']['input'];
   currentLocation?: InputMaybe<CurrentLocation>;
-  reservable: Scalars['Boolean'];
-  nightServiceOption: Scalars['Boolean'];
-  insuranceEnabled: Scalars['Boolean'];
-  jsavaOption: Scalars['Boolean'];
-  nichijuOption: Scalars['Boolean'];
-  recommended: Scalars['Boolean'];
+  reservable: Scalars['Boolean']['input'];
+  nightServiceOption: Scalars['Boolean']['input'];
+  insuranceEnabled: Scalars['Boolean']['input'];
+  jsavaOption: Scalars['Boolean']['input'];
+  nichijuOption: Scalars['Boolean']['input'];
+  recommended: Scalars['Boolean']['input'];
 }>;
 
 export type PublicGetHospitalConnectionQuery = {
@@ -491,7 +500,7 @@ export type PublicGetHospitalLocationsQuery = {
 };
 
 export type PublicGetPlaceAutocompleteQueryVariables = Exact<{
-  searchText: Scalars['String'];
+  searchText: Scalars['String']['input'];
 }>;
 
 export type PublicGetPlaceAutocompleteQuery = {
