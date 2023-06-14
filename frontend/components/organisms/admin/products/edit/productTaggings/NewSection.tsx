@@ -87,6 +87,7 @@ const NewSection: FC<Props> = ({ productId }) => {
         }}
       >
         {data ? (
+          /* @ts-expect-error: TODO:fix me */
           <CUIAutoComplete
             label=""
             placeholder="紐付けるタグを選んでください。"
