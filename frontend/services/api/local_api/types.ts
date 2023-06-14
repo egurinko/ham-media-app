@@ -11,48 +11,57 @@ export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
   [SubKey in K]: Maybe<T[SubKey]>;
 };
+export type MakeEmpty<
+  T extends { [key: string]: unknown },
+  K extends keyof T
+> = { [_ in K]?: never };
+export type Incremental<T> =
+  | T
+  | {
+      [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never;
+    };
 const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: string;
-  String: string;
-  Boolean: boolean;
-  Int: number;
-  Float: number;
+  ID: { input: string | number; output: string };
+  String: { input: string; output: string };
+  Boolean: { input: boolean; output: boolean };
+  Int: { input: number; output: number };
+  Float: { input: number; output: number };
 };
 
 export type CurrentLocation = {
   __typename?: 'CurrentLocation';
-  latitude: Scalars['Float'];
-  longitude: Scalars['Float'];
+  latitude: Scalars['Float']['output'];
+  longitude: Scalars['Float']['output'];
 };
 
 export type HospitalSearch = {
   __typename?: 'HospitalSearch';
   currentLocation?: Maybe<CurrentLocation>;
-  insuranceEnabled: Scalars['Boolean'];
-  jsavaOption: Scalars['Boolean'];
-  nichijuOption: Scalars['Boolean'];
-  nightServiceOption: Scalars['Boolean'];
-  recommended: Scalars['Boolean'];
-  reservable: Scalars['Boolean'];
-  searchText?: Maybe<Scalars['String']>;
+  insuranceEnabled: Scalars['Boolean']['output'];
+  jsavaOption: Scalars['Boolean']['output'];
+  nichijuOption: Scalars['Boolean']['output'];
+  nightServiceOption: Scalars['Boolean']['output'];
+  recommended: Scalars['Boolean']['output'];
+  reservable: Scalars['Boolean']['output'];
+  searchText?: Maybe<Scalars['String']['output']>;
 };
 
 export type ProductCartItem = {
   __typename?: 'ProductCartItem';
-  count: Scalars['Int'];
-  productId: Scalars['Int'];
+  count: Scalars['Int']['output'];
+  productId: Scalars['Int']['output'];
 };
 
 export type ProductSearch = {
   __typename?: 'ProductSearch';
-  allocatedInternalUserId?: Maybe<Scalars['Int']>;
-  hasStock?: Maybe<Scalars['Boolean']>;
-  internalUserId?: Maybe<Scalars['Int']>;
-  makerId?: Maybe<Scalars['Int']>;
-  name: Scalars['String'];
-  productTagId?: Maybe<Scalars['Int']>;
+  allocatedInternalUserId?: Maybe<Scalars['Int']['output']>;
+  hasStock?: Maybe<Scalars['Boolean']['output']>;
+  internalUserId?: Maybe<Scalars['Int']['output']>;
+  makerId?: Maybe<Scalars['Int']['output']>;
+  name: Scalars['String']['output'];
+  productTagId?: Maybe<Scalars['Int']['output']>;
 };
 
 export type Query = {
@@ -65,7 +74,7 @@ export type Query = {
 
 export type ReadIsAdmin = {
   __typename?: 'ReadIsAdmin';
-  isAdmin: Scalars['Boolean'];
+  isAdmin: Scalars['Boolean']['output'];
 };
 
 export type LocalGetHospitalSearchQueryVariables = Exact<{
