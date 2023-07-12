@@ -44,7 +44,7 @@
     "graphql-relay": "^0.10.0",
     "json-bigint-patch": "^0.0.8",
     "jsonwebtoken": "^9.0.0",
-    "mercurius": "^13.0.0",
+    "mercurius": "^13.1.0",
     "mercurius-upload": "^6.0.1",
     "nexus": "^1.3.0",
     "nexus-prisma": "^1.0.8",
