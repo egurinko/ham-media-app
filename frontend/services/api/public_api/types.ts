@@ -13,7 +13,7 @@ export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
 };
 export type MakeEmpty<
   T extends { [key: string]: unknown },
-  K extends keyof T
+  K extends keyof T,
 > = { [_ in K]?: never };
 export type Incremental<T> =
   | T
@@ -609,7 +609,7 @@ export function usePublicCreateSessionMutation(
   baseOptions?: Apollo.MutationHookOptions<
     PublicCreateSessionMutation,
     PublicCreateSessionMutationVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<
@@ -655,7 +655,7 @@ export function usePublicGetHospitalQuery(
   baseOptions: Apollo.QueryHookOptions<
     PublicGetHospitalQuery,
     PublicGetHospitalQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
@@ -667,7 +667,7 @@ export function usePublicGetHospitalLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     PublicGetHospitalQuery,
     PublicGetHospitalQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<
@@ -755,7 +755,7 @@ export function usePublicGetHospitalConnectionQuery(
   baseOptions: Apollo.QueryHookOptions<
     PublicGetHospitalConnectionQuery,
     PublicGetHospitalConnectionQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
@@ -767,7 +767,7 @@ export function usePublicGetHospitalConnectionLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     PublicGetHospitalConnectionQuery,
     PublicGetHospitalConnectionQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<
@@ -812,7 +812,7 @@ export function usePublicGetHospitalIdsQuery(
   baseOptions?: Apollo.QueryHookOptions<
     PublicGetHospitalIdsQuery,
     PublicGetHospitalIdsQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
@@ -824,7 +824,7 @@ export function usePublicGetHospitalIdsLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     PublicGetHospitalIdsQuery,
     PublicGetHospitalIdsQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<
@@ -880,7 +880,7 @@ export function usePublicGetHospitalLocationsQuery(
   baseOptions?: Apollo.QueryHookOptions<
     PublicGetHospitalLocationsQuery,
     PublicGetHospitalLocationsQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
@@ -892,7 +892,7 @@ export function usePublicGetHospitalLocationsLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     PublicGetHospitalLocationsQuery,
     PublicGetHospitalLocationsQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<
@@ -943,7 +943,7 @@ export function usePublicGetPlaceAutocompleteQuery(
   baseOptions: Apollo.QueryHookOptions<
     PublicGetPlaceAutocompleteQuery,
     PublicGetPlaceAutocompleteQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
@@ -955,7 +955,7 @@ export function usePublicGetPlaceAutocompleteLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     PublicGetPlaceAutocompleteQuery,
     PublicGetPlaceAutocompleteQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<
@@ -1001,7 +1001,7 @@ export function usePublicGetPrefecturesQuery(
   baseOptions?: Apollo.QueryHookOptions<
     PublicGetPrefecturesQuery,
     PublicGetPrefecturesQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
@@ -1013,7 +1013,7 @@ export function usePublicGetPrefecturesLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     PublicGetPrefecturesQuery,
     PublicGetPrefecturesQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<

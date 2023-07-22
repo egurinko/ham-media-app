@@ -19,11 +19,11 @@ type Props = {
 const RecommendedHospitals: FC<Props> = ({ recommendedHospitalConnection }) => {
   const router = useRouter();
   const { setLocalStorage } = useLocalStorage<PERSISTED>(
-    LOCAL_STORAGE_HOSPITAL_SEARCH_KEY
+    LOCAL_STORAGE_HOSPITAL_SEARCH_KEY,
   );
   const edges = useMemo(
     () => recommendedHospitalConnection?.edges,
-    [recommendedHospitalConnection]
+    [recommendedHospitalConnection],
   );
 
   const copyLocal = useCallback(async () => {

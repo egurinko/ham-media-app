@@ -105,7 +105,7 @@ const Tags: FC<Props> = ({ productTagGroupId }) => {
 
   const handleAddingTagsDelete = (index: number) => {
     const newAddingTags = addingTags.filter(
-      (_, addingTagIndex) => addingTagIndex !== index
+      (_, addingTagIndex) => addingTagIndex !== index,
     );
     setAddingTags(newAddingTags);
   };
@@ -144,7 +144,7 @@ const Tags: FC<Props> = ({ productTagGroupId }) => {
       });
       setProductTags(newTagNames);
     },
-    [productTags]
+    [productTags],
   );
   const handleUpdateProductTag = useCallback(
     async (productTag: ProductTag) => {
@@ -155,7 +155,7 @@ const Tags: FC<Props> = ({ productTagGroupId }) => {
         await fetchMore({ variables: { id: productTagGroupId } });
       } catch {}
     },
-    [updateProductTag, fetchMore, productTagGroupId]
+    [updateProductTag, fetchMore, productTagGroupId],
   );
 
   return (
@@ -199,7 +199,7 @@ const Tags: FC<Props> = ({ productTagGroupId }) => {
                       onChange={(e) =>
                         handleProductTagNameChange(
                           e.target.value,
-                          productTag.id
+                          productTag.id,
                         )
                       }
                     />

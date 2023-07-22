@@ -49,7 +49,7 @@ const NewSection: FC<Props> = ({ productId, fetchStocksMore }) => {
 
   const handleInternalUserChange = (
     changingIndex: number,
-    internalUserId: number
+    internalUserId: number,
   ) => {
     const newAddingStocks = addingStocks.map((addingStock, index) => {
       if (changingIndex === index) {
@@ -62,7 +62,7 @@ const NewSection: FC<Props> = ({ productId, fetchStocksMore }) => {
 
   const handleExpiredAtChange = (
     changingIndex: number,
-    changingDate: string
+    changingDate: string,
   ) => {
     const newAddingStocks = addingStocks.map((addingStock, index) => {
       if (changingIndex === index) {
@@ -75,7 +75,7 @@ const NewSection: FC<Props> = ({ productId, fetchStocksMore }) => {
 
   const handleAmountChange = (
     changingIndex: number,
-    changingAmount: string
+    changingAmount: string,
   ) => {
     const newAddingStocks = addingStocks.map((addingStock, index) => {
       if (changingIndex === index) {
@@ -88,7 +88,7 @@ const NewSection: FC<Props> = ({ productId, fetchStocksMore }) => {
 
   const handleAddingStocksDelete = (deletingIndex: number) => {
     const newAddingStocks = addingStocks.filter(
-      (_, index) => index !== deletingIndex
+      (_, index) => index !== deletingIndex,
     );
     setAddingStocks(newAddingStocks);
   };

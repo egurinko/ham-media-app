@@ -27,7 +27,7 @@ const ProductCartItem: FC<Props> = ({ productId }) => {
   const handleAddProductCartItem = useCallback(() => {
     const productCartItems = productCartItemsVar();
     const hasProduct = productCartItems.some(
-      (item) => item.productId === productId
+      (item) => item.productId === productId,
     );
     if (hasProduct) {
       const newProductCartItems = productCartItems.map((item) => {

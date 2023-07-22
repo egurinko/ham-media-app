@@ -10,7 +10,7 @@ import type { FC } from 'react';
 
 const HospitalSearch: FC<NoProps> = () => {
   const { setLocalStorage } = useLocalStorage<PERSISTED>(
-    LOCAL_STORAGE_HOSPITAL_SEARCH_KEY
+    LOCAL_STORAGE_HOSPITAL_SEARCH_KEY,
   );
 
   useEffect(() => {

@@ -58,7 +58,7 @@ const Form: FC<NoProps> = () => {
     trigger();
 
     const productTagIds = selectedItems.map((productTag) =>
-      Number(productTag.value)
+      Number(productTag.value),
     );
 
     try {

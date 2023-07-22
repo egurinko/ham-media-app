@@ -140,7 +140,7 @@ const Review: FC<Props> = ({ stockRequestId }) => {
                           {productRegistration.product.name}
                         </Text>
                       </Box>
-                    )
+                    ),
                   )}
                 </Box>
                 <FormControl>
@@ -200,7 +200,7 @@ const Review: FC<Props> = ({ stockRequestId }) => {
                           {productRegistration.product.name}
                         </Text>
                       </Box>
-                    )
+                    ),
                   )}
                 </Box>
                 <FormControl>

@@ -46,7 +46,7 @@ const Form: FC<NoProps> = () => {
       const tmp = cartItemsData.productCartItems
         .map((item) => {
           const product = productsData.products.find(
-            (p) => p.id === item.productId
+            (p) => p.id === item.productId,
           );
           return {
             count: item.count,
@@ -55,7 +55,7 @@ const Form: FC<NoProps> = () => {
         })
         .filter(
           (requestProduct): requestProduct is RequestProduct =>
-            !!requestProduct.product
+            !!requestProduct.product,
         );
       setRequestProducts(tmp);
     }
@@ -72,13 +72,13 @@ const Form: FC<NoProps> = () => {
       });
       productCartItemsVar(changedCartItems);
     },
-    []
+    [],
   );
 
   const handleDelete = useCallback((product: ProductFieldsFragment) => {
     const prevProductCartItems = productCartItemsVar();
     const deletedCartItems = prevProductCartItems.filter(
-      (item) => item.productId !== product.id
+      (item) => item.productId !== product.id,
     );
     productCartItemsVar(deletedCartItems);
   }, []);
@@ -122,7 +122,7 @@ const Form: FC<NoProps> = () => {
                   onChange={(e) =>
                     handleChangeCount(
                       Number(e.target.value),
-                      requestProduct.product
+                      requestProduct.product,
                     )
                   }
                 >

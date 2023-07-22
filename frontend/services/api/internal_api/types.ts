@@ -13,7 +13,7 @@ export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
 };
 export type MakeEmpty<
   T extends { [key: string]: unknown },
-  K extends keyof T
+  K extends keyof T,
 > = { [_ in K]?: never };
 export type Incremental<T> =
   | T
@@ -2518,7 +2518,7 @@ export function useInternalAllocateStockMutation(
   baseOptions?: Apollo.MutationHookOptions<
     InternalAllocateStockMutation,
     InternalAllocateStockMutationVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<
@@ -2569,7 +2569,7 @@ export function useInternalApproveStockRequestMutation(
   baseOptions?: Apollo.MutationHookOptions<
     InternalApproveStockRequestMutation,
     InternalApproveStockRequestMutationVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<
@@ -2634,7 +2634,7 @@ export function useInternalCreateHospitalMutation(
   baseOptions?: Apollo.MutationHookOptions<
     InternalCreateHospitalMutation,
     InternalCreateHospitalMutationVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<
@@ -2701,7 +2701,7 @@ export function useInternalCreateInternalUserMutation(
   baseOptions?: Apollo.MutationHookOptions<
     InternalCreateInternalUserMutation,
     InternalCreateInternalUserMutationVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<
@@ -2753,7 +2753,7 @@ export function useInternalCreateMakerMutation(
   baseOptions?: Apollo.MutationHookOptions<
     InternalCreateMakerMutation,
     InternalCreateMakerMutationVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<
@@ -2820,7 +2820,7 @@ export function useInternalCreateProductMutation(
   baseOptions?: Apollo.MutationHookOptions<
     InternalCreateProductMutation,
     InternalCreateProductMutationVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<
@@ -2871,7 +2871,7 @@ export function useInternalCreateProductTagGroupMutation(
   baseOptions?: Apollo.MutationHookOptions<
     InternalCreateProductTagGroupMutation,
     InternalCreateProductTagGroupMutationVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<
@@ -2929,7 +2929,7 @@ export function useInternalCreateProductTaggingsMutation(
   baseOptions?: Apollo.MutationHookOptions<
     InternalCreateProductTaggingsMutation,
     InternalCreateProductTaggingsMutationVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<
@@ -2987,7 +2987,7 @@ export function useInternalCreateProductTagsMutation(
   baseOptions?: Apollo.MutationHookOptions<
     InternalCreateProductTagsMutation,
     InternalCreateProductTagsMutationVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<
@@ -3041,7 +3041,7 @@ export function useInternalCreateStockRequestMutation(
   baseOptions?: Apollo.MutationHookOptions<
     InternalCreateStockRequestMutation,
     InternalCreateStockRequestMutationVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<
@@ -3097,7 +3097,7 @@ export function useInternalCreateStocksMutation(
   baseOptions?: Apollo.MutationHookOptions<
     InternalCreateStocksMutation,
     InternalCreateStocksMutationVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<
@@ -3147,7 +3147,7 @@ export function useInternalDeleteInternalUserMutation(
   baseOptions?: Apollo.MutationHookOptions<
     InternalDeleteInternalUserMutation,
     InternalDeleteInternalUserMutationVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<
@@ -3198,7 +3198,7 @@ export function useInternalDeleteMakerMutation(
   baseOptions?: Apollo.MutationHookOptions<
     InternalDeleteMakerMutation,
     InternalDeleteMakerMutationVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<
@@ -3248,7 +3248,7 @@ export function useInternalDeleteProductTagMutation(
   baseOptions?: Apollo.MutationHookOptions<
     InternalDeleteProductTagMutation,
     InternalDeleteProductTagMutationVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<
@@ -3299,7 +3299,7 @@ export function useInternalDeleteProductTaggingMutation(
   baseOptions?: Apollo.MutationHookOptions<
     InternalDeleteProductTaggingMutation,
     InternalDeleteProductTaggingMutationVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<
@@ -3350,7 +3350,7 @@ export function useInternalDeleteStockMutation(
   baseOptions?: Apollo.MutationHookOptions<
     InternalDeleteStockMutation,
     InternalDeleteStockMutationVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<
@@ -3400,7 +3400,7 @@ export function useInternalDeleteStockRequestMutation(
   baseOptions?: Apollo.MutationHookOptions<
     InternalDeleteStockRequestMutation,
     InternalDeleteStockRequestMutationVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<
@@ -3447,7 +3447,7 @@ export function useInternalGetHospitalQuery(
   baseOptions: Apollo.QueryHookOptions<
     InternalGetHospitalQuery,
     InternalGetHospitalQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
@@ -3459,7 +3459,7 @@ export function useInternalGetHospitalLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     InternalGetHospitalQuery,
     InternalGetHospitalQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<
@@ -3535,7 +3535,7 @@ export function useInternalGetHospitalConnectionQuery(
   baseOptions: Apollo.QueryHookOptions<
     InternalGetHospitalConnectionQuery,
     InternalGetHospitalConnectionQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
@@ -3547,7 +3547,7 @@ export function useInternalGetHospitalConnectionLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     InternalGetHospitalConnectionQuery,
     InternalGetHospitalConnectionQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<
@@ -3592,7 +3592,7 @@ export function useInternalGetHospitalIdsQuery(
   baseOptions?: Apollo.QueryHookOptions<
     InternalGetHospitalIdsQuery,
     InternalGetHospitalIdsQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
@@ -3604,7 +3604,7 @@ export function useInternalGetHospitalIdsLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     InternalGetHospitalIdsQuery,
     InternalGetHospitalIdsQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<
@@ -3651,7 +3651,7 @@ export function useInternalGetInternalUserQuery(
   baseOptions: Apollo.QueryHookOptions<
     InternalGetInternalUserQuery,
     InternalGetInternalUserQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
@@ -3663,7 +3663,7 @@ export function useInternalGetInternalUserLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     InternalGetInternalUserQuery,
     InternalGetInternalUserQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<
@@ -3709,7 +3709,7 @@ export function useInternalGetInternalUsersQuery(
   baseOptions?: Apollo.QueryHookOptions<
     InternalGetInternalUsersQuery,
     InternalGetInternalUsersQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
@@ -3721,7 +3721,7 @@ export function useInternalGetInternalUsersLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     InternalGetInternalUsersQuery,
     InternalGetInternalUsersQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<
@@ -3768,19 +3768,19 @@ export function useInternalGetMakerQuery(
   baseOptions: Apollo.QueryHookOptions<
     InternalGetMakerQuery,
     InternalGetMakerQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<InternalGetMakerQuery, InternalGetMakerQueryVariables>(
     InternalGetMakerDocument,
-    options
+    options,
   );
 }
 export function useInternalGetMakerLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     InternalGetMakerQuery,
     InternalGetMakerQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<
@@ -3826,7 +3826,7 @@ export function useInternalGetMakersQuery(
   baseOptions?: Apollo.QueryHookOptions<
     InternalGetMakersQuery,
     InternalGetMakersQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
@@ -3838,7 +3838,7 @@ export function useInternalGetMakersLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     InternalGetMakersQuery,
     InternalGetMakersQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<
@@ -3885,7 +3885,7 @@ export function useInternalGetProductQuery(
   baseOptions: Apollo.QueryHookOptions<
     InternalGetProductQuery,
     InternalGetProductQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
@@ -3897,7 +3897,7 @@ export function useInternalGetProductLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     InternalGetProductQuery,
     InternalGetProductQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<
@@ -3979,7 +3979,7 @@ export function useInternalGetProductConnectionQuery(
   baseOptions?: Apollo.QueryHookOptions<
     InternalGetProductConnectionQuery,
     InternalGetProductConnectionQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
@@ -3991,7 +3991,7 @@ export function useInternalGetProductConnectionLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     InternalGetProductConnectionQuery,
     InternalGetProductConnectionQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<
@@ -4036,7 +4036,7 @@ export function useInternalGetProductIdsQuery(
   baseOptions?: Apollo.QueryHookOptions<
     InternalGetProductIdsQuery,
     InternalGetProductIdsQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
@@ -4048,7 +4048,7 @@ export function useInternalGetProductIdsLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     InternalGetProductIdsQuery,
     InternalGetProductIdsQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<
@@ -4095,7 +4095,7 @@ export function useInternalGetProductTagGroupQuery(
   baseOptions: Apollo.QueryHookOptions<
     InternalGetProductTagGroupQuery,
     InternalGetProductTagGroupQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
@@ -4107,7 +4107,7 @@ export function useInternalGetProductTagGroupLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     InternalGetProductTagGroupQuery,
     InternalGetProductTagGroupQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<
@@ -4152,7 +4152,7 @@ export function useInternalGetProductTagGroupIdsQuery(
   baseOptions?: Apollo.QueryHookOptions<
     InternalGetProductTagGroupIdsQuery,
     InternalGetProductTagGroupIdsQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
@@ -4164,7 +4164,7 @@ export function useInternalGetProductTagGroupIdsLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     InternalGetProductTagGroupIdsQuery,
     InternalGetProductTagGroupIdsQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<
@@ -4210,7 +4210,7 @@ export function useInternalGetProductTagGroupsQuery(
   baseOptions?: Apollo.QueryHookOptions<
     InternalGetProductTagGroupsQuery,
     InternalGetProductTagGroupsQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
@@ -4222,7 +4222,7 @@ export function useInternalGetProductTagGroupsLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     InternalGetProductTagGroupsQuery,
     InternalGetProductTagGroupsQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<
@@ -4269,7 +4269,7 @@ export function useInternalGetProductsQuery(
   baseOptions?: Apollo.QueryHookOptions<
     InternalGetProductsQuery,
     InternalGetProductsQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
@@ -4281,7 +4281,7 @@ export function useInternalGetProductsLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     InternalGetProductsQuery,
     InternalGetProductsQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<
@@ -4327,19 +4327,19 @@ export function useInternalGetRolesQuery(
   baseOptions?: Apollo.QueryHookOptions<
     InternalGetRolesQuery,
     InternalGetRolesQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<InternalGetRolesQuery, InternalGetRolesQueryVariables>(
     InternalGetRolesDocument,
-    options
+    options,
   );
 }
 export function useInternalGetRolesLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     InternalGetRolesQuery,
     InternalGetRolesQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<
@@ -4388,7 +4388,7 @@ export function useInternalGetSessionQuery(
   baseOptions?: Apollo.QueryHookOptions<
     InternalGetSessionQuery,
     InternalGetSessionQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
@@ -4400,7 +4400,7 @@ export function useInternalGetSessionLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     InternalGetSessionQuery,
     InternalGetSessionQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<
@@ -4447,7 +4447,7 @@ export function useInternalGetStockRequestQuery(
   baseOptions: Apollo.QueryHookOptions<
     InternalGetStockRequestQuery,
     InternalGetStockRequestQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
@@ -4459,7 +4459,7 @@ export function useInternalGetStockRequestLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     InternalGetStockRequestQuery,
     InternalGetStockRequestQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<
@@ -4526,7 +4526,7 @@ export function useInternalGetStockRequestConnectionQuery(
   baseOptions?: Apollo.QueryHookOptions<
     InternalGetStockRequestConnectionQuery,
     InternalGetStockRequestConnectionQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
@@ -4538,7 +4538,7 @@ export function useInternalGetStockRequestConnectionLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     InternalGetStockRequestConnectionQuery,
     InternalGetStockRequestConnectionQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<
@@ -4585,7 +4585,7 @@ export function useInternalGetStocksQuery(
   baseOptions: Apollo.QueryHookOptions<
     InternalGetStocksQuery,
     InternalGetStocksQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
@@ -4597,7 +4597,7 @@ export function useInternalGetStocksLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     InternalGetStocksQuery,
     InternalGetStocksQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<
@@ -4649,7 +4649,7 @@ export function useInternalRejectStockRequestMutation(
   baseOptions?: Apollo.MutationHookOptions<
     InternalRejectStockRequestMutation,
     InternalRejectStockRequestMutationVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<
@@ -4701,7 +4701,7 @@ export function useInternalReturnStockMutation(
   baseOptions?: Apollo.MutationHookOptions<
     InternalReturnStockMutation,
     InternalReturnStockMutationVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<
@@ -4788,7 +4788,7 @@ export function useInternalUpdateHospitalMutation(
   baseOptions?: Apollo.MutationHookOptions<
     InternalUpdateHospitalMutation,
     InternalUpdateHospitalMutationVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<
@@ -4858,7 +4858,7 @@ export function useInternalUpdateInternalUserMutation(
   baseOptions?: Apollo.MutationHookOptions<
     InternalUpdateInternalUserMutation,
     InternalUpdateInternalUserMutationVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<
@@ -4911,7 +4911,7 @@ export function useInternalUpdateMakerMutation(
   baseOptions?: Apollo.MutationHookOptions<
     InternalUpdateMakerMutation,
     InternalUpdateMakerMutationVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<
@@ -4978,7 +4978,7 @@ export function useInternalUpdateProductMutation(
   baseOptions?: Apollo.MutationHookOptions<
     InternalUpdateProductMutation,
     InternalUpdateProductMutationVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<
@@ -5030,7 +5030,7 @@ export function useInternalUpdateProductTagMutation(
   baseOptions?: Apollo.MutationHookOptions<
     InternalUpdateProductTagMutation,
     InternalUpdateProductTagMutationVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<
@@ -5083,7 +5083,7 @@ export function useInternalUpdateProductTagGroupMutation(
   baseOptions?: Apollo.MutationHookOptions<
     InternalUpdateProductTagGroupMutation,
     InternalUpdateProductTagGroupMutationVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<
@@ -5139,7 +5139,7 @@ export function useInternalUpdateStockInternalUserMutation(
   baseOptions?: Apollo.MutationHookOptions<
     InternalUpdateStockInternalUserMutation,
     InternalUpdateStockInternalUserMutationVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<
@@ -5195,7 +5195,7 @@ export function useInternalUpdateStockRequestMutation(
   baseOptions?: Apollo.MutationHookOptions<
     InternalUpdateStockRequestMutation,
     InternalUpdateStockRequestMutationVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<
@@ -5255,7 +5255,7 @@ export function useInternalUpsertHospitalAddressGeoLocationMutation(
   baseOptions?: Apollo.MutationHookOptions<
     InternalUpsertHospitalAddressGeoLocationMutation,
     InternalUpsertHospitalAddressGeoLocationMutationVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<

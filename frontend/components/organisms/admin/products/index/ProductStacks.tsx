@@ -74,25 +74,25 @@ const ProductStacks: FC<NoProps> = () => {
     const productSearch = productSearchVar();
     setName(productSearch.name);
     setSelectedMakerId(
-      productSearch.makerId ? String(productSearch.makerId) : ''
+      productSearch.makerId ? String(productSearch.makerId) : '',
     );
     setSelectedTagId(
-      productSearch.productTagId ? String(productSearch.productTagId) : ''
+      productSearch.productTagId ? String(productSearch.productTagId) : '',
     );
     setSelectedAllocatedInternalUserID(
       productSearch.allocatedInternalUserId
         ? String(productSearch.allocatedInternalUserId)
-        : ''
+        : '',
     );
     setSelectedInternalUserID(
-      productSearch.internalUserId ? String(productSearch.internalUserId) : ''
+      productSearch.internalUserId ? String(productSearch.internalUserId) : '',
     );
     setProductStock(
       productSearch.hasStock
         ? PRODUCT_STOCK.HAS
         : productSearch.hasStock === false
         ? PRODUCT_STOCK.NOT
-        : PRODUCT_STOCK.ALL
+        : PRODUCT_STOCK.ALL,
     );
   }, []);
 
@@ -222,7 +222,7 @@ const ProductStacks: FC<NoProps> = () => {
                     <option key={productTag.id} value={productTag.id}>
                       {productTag.name}
                     </option>
-                  ))
+                  )),
                 )}
               </Select>
             </FormControl>

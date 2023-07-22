@@ -48,7 +48,7 @@ const InternalUsersStack: FC<NoProps> = () => {
       setSelectedInternalUser(internalUser);
       onOpen();
     },
-    [setSelectedInternalUser, onOpen]
+    [setSelectedInternalUser, onOpen],
   );
 
   const handleDelete = useCallback(async () => {

@@ -17,7 +17,7 @@ const HospitalsStack: FC<Props> = ({ hospitals }) => (
           <HospitalSummary hospital={hospital} />
           <Divider />
         </Fragment>
-      ) : null
+      ) : null,
     )}
   </VStack>
 );

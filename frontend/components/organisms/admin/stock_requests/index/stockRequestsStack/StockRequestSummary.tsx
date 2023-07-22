@@ -10,7 +10,7 @@ type Props = {
   stockRequest: StockRequestFieldsFragment;
   handleDeleteModalOpen: (
     e: MouseEvent,
-    stockRequest: StockRequestFieldsFragment
+    stockRequest: StockRequestFieldsFragment,
   ) => void;
 };
 

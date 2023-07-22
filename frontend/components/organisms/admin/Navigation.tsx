@@ -21,27 +21,27 @@ const Navigation: FC<NoProps> = () => {
   const router = useRouter();
   const isAdminInternalUsersPath = useMemo(
     () => router.pathname.includes(ADMIN_INTERNAL_USERS_PATH),
-    [router.pathname]
+    [router.pathname],
   );
   const isAdminHospitalsPath = useMemo(
     () => router.pathname.includes(ADMIN_HOSPIALS_PATH),
-    [router.pathname]
+    [router.pathname],
   );
   const isAdminMakersPath = useMemo(
     () => router.pathname.includes(ADMIN_MAKERS_PATH),
-    [router.pathname]
+    [router.pathname],
   );
   const isAdminProductsPath = useMemo(
     () => router.pathname.includes(ADMIN_PRODUCTS_PATH),
-    [router.pathname]
+    [router.pathname],
   );
   const isAdminProductTagGroupsPath = useMemo(
     () => router.pathname.includes(ADMIN_PRODUCT_TAG_GROUPS_PATH),
-    [router.pathname]
+    [router.pathname],
   );
   const isAdminStockRequestsPath = useMemo(
     () => router.pathname.includes(ADMIN_STOCK_REQUESTS_PATH),
-    [router.pathname]
+    [router.pathname],
   );
 
   return (

@@ -78,10 +78,10 @@ const Edit = () => {
   });
   const hospital = hospitalData?.hospital;
   const [latitude, setLatitude] = useState(
-    hospital?.hospitalAddress?.hospitalAddressGeoLocation?.latitude || ''
+    hospital?.hospitalAddress?.hospitalAddressGeoLocation?.latitude || '',
   );
   const [longitude, setLongitude] = useState(
-    hospital?.hospitalAddress?.hospitalAddressGeoLocation?.longitude || ''
+    hospital?.hospitalAddress?.hospitalAddressGeoLocation?.longitude || '',
   );
 
   const [
@@ -326,7 +326,7 @@ const Edit = () => {
                     <Controller
                       name="prefectureId"
                       defaultValue={String(
-                        hospital.hospitalAddress?.prefecture.id
+                        hospital.hospitalAddress?.prefecture.id,
                       )}
                       control={control}
                       rules={{ required: '都道府県を入力してください' }}

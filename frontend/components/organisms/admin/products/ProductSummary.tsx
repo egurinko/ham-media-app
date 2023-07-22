@@ -40,7 +40,7 @@ const ProductSummary: FC<Props> = ({ product }) => (
         <Text fontSize="xs" mb="2">
           責任者：
           {Array.from(
-            new Set(product.stocks.map((s) => s.internalUser.name))
+            new Set(product.stocks.map((s) => s.internalUser.name)),
           ).join(', ')}
         </Text>
         <Text fontSize="xs" mb="2">
@@ -49,8 +49,8 @@ const ProductSummary: FC<Props> = ({ product }) => (
             new Set(
               product.stocks
                 .filter((s) => s.stockAllocation)
-                .map((s) => s.stockAllocation?.internalUser.name)
-            )
+                .map((s) => s.stockAllocation?.internalUser.name),
+            ),
           ).join(', ')}
         </Text>
       </Box>

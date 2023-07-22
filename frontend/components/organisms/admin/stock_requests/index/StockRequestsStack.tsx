@@ -102,7 +102,7 @@ const StockRequestsStack: FC<NoProps> = () => {
       onOpen();
       setSelectedStockRequest(stockRequest);
     },
-    [onOpen]
+    [onOpen],
   );
   const [
     deleteStockRequest,
@@ -220,7 +220,7 @@ const StockRequestsStack: FC<NoProps> = () => {
                       {productRegistration.product.name}
                     </Text>
                   </Box>
-                )
+                ),
               )}
             </Box>
           </ModalBody>

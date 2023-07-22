@@ -11,7 +11,7 @@ const StockRequestCartButton: FC<NoProps> = () => {
   const { data } = useLocalGetProductCartItemsQuery();
   const count = data?.productCartItems.reduce(
     (count, item) => count + item.count,
-    0
+    0,
   );
   return (
     <Box position="fixed" right="3" bottom="3">

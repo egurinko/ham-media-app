@@ -20,7 +20,7 @@ export type Recommended =
 export type GetInitialHospitalConnectionVariables =
   Partial<PublicGetHospitalConnectionQueryVariables>;
 export type GetInitialHospitalConnection = (
-  variables: GetInitialHospitalConnectionVariables
+  variables: GetInitialHospitalConnectionVariables,
 ) => void;
 
 export type PERSISTED = {

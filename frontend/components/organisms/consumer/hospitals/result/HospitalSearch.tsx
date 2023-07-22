@@ -20,7 +20,7 @@ const HospitalSearch: FC<NoProps> = () => {
   const [getHospitalConnection, { data: hospitalData, loading, fetchMore }] =
     usePublicGetHospitalConnectionLazyQuery();
   const { setLocalStorage, getLocalStorage } = useLocalStorage<PERSISTED>(
-    LOCAL_STORAGE_HOSPITAL_SEARCH_KEY
+    LOCAL_STORAGE_HOSPITAL_SEARCH_KEY,
   );
 
   const persistPage = useCallback(() => {

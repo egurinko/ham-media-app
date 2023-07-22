@@ -13,7 +13,7 @@ import type { FC } from 'react';
 
 const CurrentLocationSearch: FC<NoProps> = () => {
   const { setLocalStorage } = useLocalStorage<PERSISTED>(
-    LOCAL_STORAGE_HOSPITAL_SEARCH_KEY
+    LOCAL_STORAGE_HOSPITAL_SEARCH_KEY,
   );
   const router = useRouter();
   const [currentLocationError, setCurrentLocationError] =
@@ -63,7 +63,7 @@ const CurrentLocationSearch: FC<NoProps> = () => {
       setCurrentLocationError(null);
       goHospitalsResult(router);
     },
-    [copyLocal, router]
+    [copyLocal, router],
   );
 
   const error = useCallback((error: GeolocationPositionError) => {

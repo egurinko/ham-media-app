@@ -15,7 +15,7 @@ const getHttpLink = () =>
     }),
     createHttpLink({
       uri: `${base}/public_api/graphql`,
-    })
+    }),
   );
 
 const authLink = setContext((_, { headers }) => {

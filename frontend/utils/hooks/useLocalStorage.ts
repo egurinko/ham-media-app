@@ -5,7 +5,7 @@ export const useLocalStorage = <T = any>(key: string) => {
     (value: any) => {
       window.localStorage.setItem(key, JSON.stringify(value));
     },
-    [key]
+    [key],
   );
 
   const getLocalStorage = useCallback((): T | null => {

@@ -46,7 +46,7 @@ const Form: FC<Props> = ({ stockRequestId }) => {
         getStockRequestData.stockRequest.productRegistrations.reduce(
           (acc, productRegistration) => {
             const has = acc.find(
-              (acc) => acc.product.id === productRegistration.product.id
+              (acc) => acc.product.id === productRegistration.product.id,
             );
             if (has) {
               return acc.map((productStock) => {
@@ -64,7 +64,7 @@ const Form: FC<Props> = ({ stockRequestId }) => {
               ];
             }
           },
-          [] as UpdatingStockRequest
+          [] as UpdatingStockRequest,
         );
       setUpdatingStockRequest(newUpdatingStockRequest);
     }
@@ -81,17 +81,17 @@ const Form: FC<Props> = ({ stockRequestId }) => {
       });
       setUpdatingStockRequest(newProductStock);
     },
-    [updatingStockRequest]
+    [updatingStockRequest],
   );
 
   const handleDelete = useCallback(
     (productId: number) => {
       const newProductStock = updatingStockRequest.filter(
-        (productStock) => productStock.product.id !== productId
+        (productStock) => productStock.product.id !== productId,
       );
       setUpdatingStockRequest(newProductStock);
     },
-    [updatingStockRequest]
+    [updatingStockRequest],
   );
 
   const [update, { data, error, loading }] =
@@ -126,7 +126,7 @@ const Form: FC<Props> = ({ stockRequestId }) => {
             <Box key={updatingProductStockRequest.product.id} mb="2">
               <SummaryLink
                 url={ADMIN_PRODUCTS_DETAIL_PATH(
-                  updatingProductStockRequest.product.id
+                  updatingProductStockRequest.product.id,
                 )}
               >
                 <ProductSummary product={updatingProductStockRequest.product} />
@@ -140,12 +140,12 @@ const Form: FC<Props> = ({ stockRequestId }) => {
                   onChange={(e) =>
                     handleStockCountChange(
                       updatingProductStockRequest.product.id,
-                      e.target.value
+                      e.target.value,
                     )
                   }
                 >
                   {Array(
-                    updatingProductStockRequest.product.remainingStockAmount
+                    updatingProductStockRequest.product.remainingStockAmount,
                   )
                     .fill('')
                     .map((_, i) => (

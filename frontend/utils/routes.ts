@@ -46,7 +46,7 @@ export const goAdminInternalUserNew = (router: NextRouter) =>
   pushRouter(router, ADMIN_INTERNAL_USERS_NEW_PATH);
 export const goAdminInternalUserEdit = (
   router: NextRouter,
-  { id }: { id: bigint }
+  { id }: { id: bigint },
 ) => pushRouter(router, ADMIN_INTERNAL_USERS_EDIT_PATH(id));
 
 export const goAdminHospitals = (router: NextRouter) =>
@@ -55,7 +55,7 @@ export const goAdminHospitalsNew = (router: NextRouter) =>
   pushRouter(router, ADMIN_HOSPIALS_NEW_PATH);
 export const goAdminHospitalsEdit = (
   router: NextRouter,
-  { id }: { id: bigint }
+  { id }: { id: bigint },
 ) => pushRouter(router, ADMIN_HOSPIALS_EDIT_PATH(id));
 
 export const goAdminMakers = (router: NextRouter) =>
@@ -71,11 +71,11 @@ export const goAdminProductsNew = (router: NextRouter) =>
   pushRouter(router, ADMIN_PRODUCTS_NEW_PATH);
 export const goAdminProductsDetail = (
   router: NextRouter,
-  { id }: { id: number }
+  { id }: { id: number },
 ) => pushRouter(router, ADMIN_PRODUCTS_DETAIL_PATH(id));
 export const goAdminProductsEdit = (
   router: NextRouter,
-  { id }: { id: number }
+  { id }: { id: number },
 ) => pushRouter(router, ADMIN_PRODUCTS_EDIT_PATH(id));
 
 export const goAdminStockRequests = (router: NextRouter) =>
@@ -84,7 +84,7 @@ export const goAdminStockRequestsNew = (router: NextRouter) =>
   pushRouter(router, ADMIN_STOCK_REQUESTS_NEW_PATH);
 export const goAdminStockRequestsEdit = (
   router: NextRouter,
-  { id }: { id: number }
+  { id }: { id: number },
 ) => pushRouter(router, ADMIN_STOCK_REQUESTS_EDIT_PATH(id));
 
 export const goAdminProductTagGroups = (router: NextRouter) =>
@@ -93,7 +93,7 @@ export const goAdminProductTagGroupsNew = (router: NextRouter) =>
   pushRouter(router, ADMIN_PRODUCT_TAG_GROUPS_NEW_PATH);
 export const goAdminProductTagGroupsEdit = (
   router: NextRouter,
-  { id }: { id: number }
+  { id }: { id: number },
 ) => pushRouter(router, ADMIN_PRODUCT_TAG_GROUPS_EDIT_PATH(id));
 
 export const goHospitals = (router: NextRouter) =>

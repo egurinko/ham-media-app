@@ -46,7 +46,7 @@ const MakersStack: FC<NoProps> = () => {
       setSelectedMaker(maker);
       onOpen();
     },
-    [onOpen, setSelectedMaker]
+    [onOpen, setSelectedMaker],
   );
 
   const handleDelete = useCallback(async () => {

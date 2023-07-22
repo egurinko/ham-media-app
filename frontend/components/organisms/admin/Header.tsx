@@ -28,7 +28,7 @@ const Header: FC<Props> = ({ internalUser, handleLogout }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const handleToggle = useCallback(
     () => (isOpen ? onClose() : onOpen()),
-    [isOpen, onClose, onOpen]
+    [isOpen, onClose, onOpen],
   );
 
   return (

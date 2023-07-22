@@ -13,7 +13,7 @@ import type { FC } from 'react';
 
 const TextSearch: FC<NoProps> = () => {
   const { setLocalStorage } = useLocalStorage<PERSISTED>(
-    LOCAL_STORAGE_HOSPITAL_SEARCH_KEY
+    LOCAL_STORAGE_HOSPITAL_SEARCH_KEY,
   );
 
   const router = useRouter();
@@ -56,7 +56,7 @@ const TextSearch: FC<NoProps> = () => {
       setText(e.target.value);
       getPlaceAutocomplete({ variables: { searchText: e.target.value } });
     },
-    [getPlaceAutocomplete]
+    [getPlaceAutocomplete],
   );
 
   const handleTextFocus = useCallback((): void => {
@@ -102,7 +102,7 @@ const TextSearch: FC<NoProps> = () => {
                 m="2"
                 onMouseDown={() =>
                   handleAutocompleteClick(
-                    prediction.structured_formatting.main_text
+                    prediction.structured_formatting.main_text,
                   )
                 }
               >

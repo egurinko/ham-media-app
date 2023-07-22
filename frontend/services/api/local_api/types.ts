@@ -13,7 +13,7 @@ export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
 };
 export type MakeEmpty<
   T extends { [key: string]: unknown },
-  K extends keyof T
+  K extends keyof T,
 > = { [_ in K]?: never };
 export type Incremental<T> =
   | T
@@ -157,7 +157,7 @@ export function useLocalGetHospitalSearchQuery(
   baseOptions?: Apollo.QueryHookOptions<
     LocalGetHospitalSearchQuery,
     LocalGetHospitalSearchQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
@@ -169,7 +169,7 @@ export function useLocalGetHospitalSearchLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     LocalGetHospitalSearchQuery,
     LocalGetHospitalSearchQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<
@@ -215,7 +215,7 @@ export function useLocalGetProductCartItemsQuery(
   baseOptions?: Apollo.QueryHookOptions<
     LocalGetProductCartItemsQuery,
     LocalGetProductCartItemsQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
@@ -227,7 +227,7 @@ export function useLocalGetProductCartItemsLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     LocalGetProductCartItemsQuery,
     LocalGetProductCartItemsQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<
@@ -272,19 +272,19 @@ export function useLocalReadIsAdminQuery(
   baseOptions?: Apollo.QueryHookOptions<
     LocalReadIsAdminQuery,
     LocalReadIsAdminQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<LocalReadIsAdminQuery, LocalReadIsAdminQueryVariables>(
     LocalReadIsAdminDocument,
-    options
+    options,
   );
 }
 export function useLocalReadIsAdminLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     LocalReadIsAdminQuery,
     LocalReadIsAdminQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<

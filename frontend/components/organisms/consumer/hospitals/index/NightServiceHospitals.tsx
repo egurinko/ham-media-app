@@ -21,12 +21,12 @@ const NightServiceHospitals: FC<Props> = ({
 }) => {
   const edges = useMemo(
     () => nightServiceHospitalConnection?.edges,
-    [nightServiceHospitalConnection]
+    [nightServiceHospitalConnection],
   );
 
   const router = useRouter();
   const { setLocalStorage } = useLocalStorage<PERSISTED>(
-    LOCAL_STORAGE_HOSPITAL_SEARCH_KEY
+    LOCAL_STORAGE_HOSPITAL_SEARCH_KEY,
   );
   const copyLocal = useCallback(async () => {
     hospitalSearchVar({

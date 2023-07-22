@@ -61,7 +61,7 @@ const getCache = () =>
               const currentInternalUserRef = session?.internalUser;
               const currentInternalUserRoleRef = readField<RoleFieldsFragment>(
                 'role',
-                currentInternalUserRef
+                currentInternalUserRef,
               );
               const currentInternalUserRoleName = readField<
                 RoleFieldsFragment['name']
