@@ -1,3 +1,4 @@
+import type { AppRouterInstance } from 'next/dist/shared/lib/app-router-context';
 import type { NextRouter } from 'next/router';
 
 export const ADMIN_LOGIN_PATH = '/admin/login';
@@ -36,6 +37,8 @@ export const HOSPITALS_DETAIL_PATH = (id: bigint) => `/hospitals/${id}`;
 export const NOTFOUND_PATH = '/404';
 
 const pushRouter = (router: NextRouter, path: string) => router.push(path);
+const appPushRouter = (router: AppRouterInstance, path: string) =>
+  router.push(path);
 
 export const goAdminLogin = (router: NextRouter) =>
   pushRouter(router, ADMIN_LOGIN_PATH);
@@ -100,5 +103,7 @@ export const goHospitals = (router: NextRouter) =>
   pushRouter(router, HOSPITALS_PATH);
 export const goHospitalsResult = (router: NextRouter) =>
   pushRouter(router, HOSPITALS_RESULT_PATH);
+export const goAppHospitalsResult = (router: AppRouterInstance) =>
+  appPushRouter(router, HOSPITALS_RESULT_PATH);
 export const goHospitalDetail = (router: NextRouter, { id }: { id: bigint }) =>
   pushRouter(router, HOSPITALS_DETAIL_PATH(id));
