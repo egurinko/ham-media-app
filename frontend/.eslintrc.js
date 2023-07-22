@@ -14,6 +14,7 @@ module.exports = {
     'plugin:import/recommended',
   ],
   rules: {
+    'react/display-name': 'off',
     '@next/next/no-img-element': 'off',
     'jsx-a11y/anchor-is-valid': [
       'error',
