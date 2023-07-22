@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "engines": {
-    "node": ">=16.20.1 <17.0.0",
+    "node": ">=16.20.0 <17.0.0",
     "yarn": ">=1.22.17 <2.0.0"
   },
   "scripts": {
