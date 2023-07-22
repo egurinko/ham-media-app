@@ -12167,10 +12167,10 @@ next@^13.4.7:
     "@next/swc-win32-ia32-msvc" "13.4.7"
     "@next/swc-win32-x64-msvc" "13.4.7"
 
-nexus-prisma@^1.0.9:
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/nexus-prisma/-/nexus-prisma-1.0.9.tgz#514a67349dd310280461a7f5253ba45994758ba6"
-  integrity sha512-cO3m4dKbUrHF6cO2J9ub9nP/ngx49BG/drQKsrCDP+jBRd71+IB44DRb9olx2oKjwrqUawZ8KU5BKOvvW7nT0Q==
+nexus-prisma@^1.0.10:
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/nexus-prisma/-/nexus-prisma-1.0.10.tgz#5088a947ae1f8e4e12f256ffef8e3e57c3b2229f"
+  integrity sha512-Ch3Sqi8n+16hm2LfG/BUT4Gc9rMX1Sydv8N2yYbLuwf37rgWIIHLTVuvNpImchuMIzbUjQsAUlLqGZhFnFZPwA==
   dependencies:
     "@prisma/generator-helper" "^4.0"
     debug "^4.3.4"
@@ -12183,12 +12183,12 @@ nexus-prisma@^1.0.9:
     lodash "^4.17.21"
     ono "^7.1.3"
     pluralize "^8.0.0"
-    semver "^7.5.3"
+    semver "^7.5.4"
     setset "^0.0.9"
     ts-replace-all "^1.0.0"
     tslib "^2.6.0"
   optionalDependencies:
-    semantic-release "^21.0.6"
+    semantic-release "^21.0.7"
 
 nexus@^1.3.0:
   version "1.3.0"
@@ -14125,7 +14125,7 @@ secure-json-parse@^2.4.0, secure-json-parse@^2.5.0, secure-json-parse@^2.7.0:
   resolved "https://registry.yarnpkg.com/secure-json-parse/-/secure-json-parse-2.7.0.tgz#5a5f9cd6ae47df23dba3151edd06855d47e09862"
   integrity sha512-6aU+Rwsezw7VR8/nyvKTx8QpWH9FrcYiXXlqC4z5d5XQBDRqtbfsRjnwGyqbi3gddNtWHuEk9OANUotL26qKUw==
 
-semantic-release@^21.0.6:
+semantic-release@^21.0.7:
   version "21.0.7"
   resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-21.0.7.tgz#deac6f4908bbd3c03c9a3ba41ae402b4305bf115"
   integrity sha512-peRDSXN+hF8EFSKzze90ff/EnAmgITHQ/a3SZpRV3479ny0BIZWEJ33uX6/GlOSKdaSxo9hVRDyv2/u2MuF+Bw==
