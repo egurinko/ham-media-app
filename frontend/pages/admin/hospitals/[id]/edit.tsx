@@ -73,7 +73,7 @@ const Edit = () => {
 
   const { id: hospitalId } = router.query;
   const { data: hospitalData, fetchMore } = useInternalGetHospitalQuery({
-    variables: { id: BigInt(typeof hospitalId === 'string' ? hospitalId : 1) },
+    variables: { id: Number(typeof hospitalId === 'string' ? hospitalId : 1) },
     fetchPolicy: 'network-only',
   });
   const hospital = hospitalData?.hospital;
@@ -133,7 +133,7 @@ const Edit = () => {
       try {
         await update({
           variables: {
-            id: BigInt(hospitalId),
+            id: Number(hospitalId),
             name: formInput.name,
             url: formInput.url,
             deleted: !formInput.published,
@@ -141,7 +141,7 @@ const Edit = () => {
             hospitalAddressInput: {
               address: formInput.address,
               phone_number: formInput.phoneNumber,
-              prefecture_id: BigInt(formInput.prefectureId),
+              prefecture_id: Number(formInput.prefectureId),
             },
             hospitalBusinessFormInput: {
               business_hour: formInput.businessHour,

@@ -108,7 +108,7 @@ const NewSection: FC<Props> = ({ productId, fetchStocksMore }) => {
               stock.expired_at === ''
                 ? dayjs('2100-12-00').toISOString()
                 : dayjs(stock.expired_at).toISOString(),
-            internalUserId: BigInt(stock.internal_user_id || 1),
+            internalUserId: Number(stock.internal_user_id || 1),
           })),
         },
       });

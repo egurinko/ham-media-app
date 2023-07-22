@@ -81,7 +81,7 @@ const AllocationSection: FC<Props> = ({
     },
   ] = useInternalUpdateStockInternalUserMutation();
 
-  const handleAllocate = async (id: number, internalUserId: bigint) => {
+  const handleAllocate = async (id: number, internalUserId: number) => {
     try {
       await allocateStock({
         variables: { id, internalUserId },
@@ -183,7 +183,7 @@ const AllocationSection: FC<Props> = ({
                       await updateStockInternalUser({
                         variables: {
                           id: stock.id,
-                          internalUserId: BigInt(e.target.value),
+                          internalUserId: Number(e.target.value),
                         },
                       });
                       await fetchStocksMore({ variables: { productId } });
@@ -225,7 +225,7 @@ const AllocationSection: FC<Props> = ({
                       <Select
                         size="xs"
                         onChange={(e) => {
-                          handleAllocate(stock.id, BigInt(e.target.value));
+                          handleAllocate(stock.id, Number(e.target.value));
                         }}
                         disabled={!isAdminData?.readIsAdmin.isAdmin}
                         placeholder="スタッフを選択"

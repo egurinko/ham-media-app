@@ -4,11 +4,11 @@ import type { NextRouter } from 'next/router';
 export const ADMIN_LOGIN_PATH = '/admin/login';
 export const ADMIN_INTERNAL_USERS_PATH = '/admin/internal_users';
 export const ADMIN_INTERNAL_USERS_NEW_PATH = '/admin/internal_users/new';
-export const ADMIN_INTERNAL_USERS_EDIT_PATH = (id: bigint) =>
+export const ADMIN_INTERNAL_USERS_EDIT_PATH = (id: number) =>
   `/admin/internal_users/${id}/edit`;
 export const ADMIN_HOSPIALS_PATH = '/admin/hospitals';
 export const ADMIN_HOSPIALS_NEW_PATH = '/admin/hospitals/new';
-export const ADMIN_HOSPIALS_EDIT_PATH = (id: bigint) =>
+export const ADMIN_HOSPIALS_EDIT_PATH = (id: number) =>
   `/admin/hospitals/${id}/edit`;
 export const ADMIN_MAKERS_PATH = '/admin/makers';
 export const ADMIN_MAKERS_NEW_PATH = '/admin/makers/new';
@@ -32,7 +32,7 @@ export const ADMIN_PRODUCT_TAG_GROUPS_EDIT_PATH = (id: number) =>
 
 export const HOSPITALS_PATH = '/hospitals';
 export const HOSPITALS_RESULT_PATH = '/hospitals/result';
-export const HOSPITALS_DETAIL_PATH = (id: bigint) => `/hospitals/${id}`;
+export const HOSPITALS_DETAIL_PATH = (id: number) => `/hospitals/${id}`;
 
 export const NOTFOUND_PATH = '/404';
 
@@ -49,7 +49,7 @@ export const goAdminInternalUserNew = (router: NextRouter) =>
   pushRouter(router, ADMIN_INTERNAL_USERS_NEW_PATH);
 export const goAdminInternalUserEdit = (
   router: NextRouter,
-  { id }: { id: bigint },
+  { id }: { id: number },
 ) => pushRouter(router, ADMIN_INTERNAL_USERS_EDIT_PATH(id));
 
 export const goAdminHospitals = (router: NextRouter) =>
@@ -58,7 +58,7 @@ export const goAdminHospitalsNew = (router: NextRouter) =>
   pushRouter(router, ADMIN_HOSPIALS_NEW_PATH);
 export const goAdminHospitalsEdit = (
   router: NextRouter,
-  { id }: { id: bigint },
+  { id }: { id: number },
 ) => pushRouter(router, ADMIN_HOSPIALS_EDIT_PATH(id));
 
 export const goAdminMakers = (router: NextRouter) =>
@@ -105,5 +105,5 @@ export const goHospitalsResult = (router: NextRouter) =>
   pushRouter(router, HOSPITALS_RESULT_PATH);
 export const goAppHospitalsResult = (router: AppRouterInstance) =>
   appPushRouter(router, HOSPITALS_RESULT_PATH);
-export const goHospitalDetail = (router: NextRouter, { id }: { id: bigint }) =>
+export const goHospitalDetail = (router: NextRouter, { id }: { id: number }) =>
   pushRouter(router, HOSPITALS_DETAIL_PATH(id));

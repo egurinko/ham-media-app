@@ -52,7 +52,7 @@ const SearchSection: FC<Props> = ({
         first: 10000,
         name,
         deleted,
-        prefectureId: prefectureId !== '' ? BigInt(prefectureId) : undefined,
+        prefectureId: prefectureId !== '' ? Number(prefectureId) : undefined,
       },
     });
   };

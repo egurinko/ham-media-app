@@ -24,7 +24,7 @@ const Edit = () => {
         <Heading size="sm">ユーザ編集</Heading>
       </Box>
       {typeof internalUserId === 'string' ? (
-        <Form internalUserId={BigInt(internalUserId)} />
+        <Form internalUserId={Number(internalUserId)} />
       ) : null}
     </>
   );

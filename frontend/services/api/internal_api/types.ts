@@ -32,7 +32,7 @@ export type Scalars = {
    * The `BigInt` scalar type represents non-fractional signed whole numeric values.
    * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt
    */
-  BigInt: { input: bigint; output: bigint };
+  BigInt: { input: number; output: number };
   /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
   DateTime: { input: any; output: any };
   /** The `Upload` scalar type represents a file upload. */
@@ -651,7 +651,7 @@ export type InternalAllocateStockMutation = {
     created_at: any;
     internalUser: {
       __typename?: 'InternalUser';
-      id: bigint;
+      id: number;
       email: string;
       name: string;
       discord_user_id: string;
@@ -663,7 +663,7 @@ export type InternalAllocateStockMutation = {
       id: number;
       internalUser: {
         __typename?: 'InternalUser';
-        id: bigint;
+        id: number;
         email: string;
         name: string;
         discord_user_id: string;
@@ -694,27 +694,27 @@ export type InternalCreateHospitalMutation = {
   __typename?: 'Mutation';
   createHospital: {
     __typename?: 'Hospital';
-    id: bigint;
+    id: number;
     name: string;
     url: string;
     deleted: boolean;
     internal_memo: string;
     hospitalAddress?: {
       __typename?: 'HospitalAddress';
-      id: bigint;
+      id: number;
       address: string;
       phone_number: string;
-      prefecture: { __typename?: 'Prefecture'; name: string; id: bigint };
+      prefecture: { __typename?: 'Prefecture'; name: string; id: number };
       hospitalAddressGeoLocation?: {
         __typename?: 'HospitalAddressGeoLocation';
-        id: bigint;
+        id: number;
         latitude: number;
         longitude: number;
       } | null;
     } | null;
     hospitalBusinessForm?: {
       __typename?: 'HospitalBusinessForm';
-      id: bigint;
+      id: number;
       business_hour: string;
       closed_day: string;
       insurance_enabled: string;
@@ -722,30 +722,30 @@ export type InternalCreateHospitalMutation = {
     } | null;
     hospitalCertificationOption?: {
       __typename?: 'HospitalCertificationOption';
-      id: bigint;
+      id: number;
       nichiju_registered: string;
       jsava_registered: string;
     } | null;
     hospitalInternalReputation?: {
       __typename?: 'HospitalInternalReputation';
-      id: bigint;
+      id: number;
       star: number;
       remark: string;
     } | null;
     hospitalNightServiceOption?: {
       __typename?: 'HospitalNightServiceOption';
-      id: bigint;
+      id: number;
       status: string;
       remark: string;
     } | null;
     hospitalNightUrgentActionOption?: {
       __typename?: 'HospitalNightUrgentActionOption';
-      id: bigint;
+      id: number;
       status: string;
     } | null;
     hospitalReservationStatus?: {
       __typename?: 'HospitalReservationStatus';
-      id: bigint;
+      id: number;
       required: string;
       reservable: string;
       remark: string;
@@ -765,7 +765,7 @@ export type InternalCreateInternalUserMutation = {
   __typename?: 'Mutation';
   createInternalUser: {
     __typename?: 'InternalUser';
-    id: bigint;
+    id: number;
     email: string;
     name: string;
     discord_user_id: string;
@@ -814,7 +814,7 @@ export type InternalCreateProductMutation = {
       created_at: any;
       internalUser: {
         __typename?: 'InternalUser';
-        id: bigint;
+        id: number;
         email: string;
         name: string;
         discord_user_id: string;
@@ -826,7 +826,7 @@ export type InternalCreateProductMutation = {
         id: number;
         internalUser: {
           __typename?: 'InternalUser';
-          id: bigint;
+          id: number;
           email: string;
           name: string;
           discord_user_id: string;
@@ -886,7 +886,7 @@ export type InternalCreateStockRequestMutation = {
     id: number;
     internalUser: {
       __typename?: 'InternalUser';
-      id: bigint;
+      id: number;
       email: string;
       name: string;
       discord_user_id: string;
@@ -917,7 +917,7 @@ export type InternalCreateStockRequestMutation = {
           created_at: any;
           internalUser: {
             __typename?: 'InternalUser';
-            id: bigint;
+            id: number;
             email: string;
             name: string;
             discord_user_id: string;
@@ -929,7 +929,7 @@ export type InternalCreateStockRequestMutation = {
             id: number;
             internalUser: {
               __typename?: 'InternalUser';
-              id: bigint;
+              id: number;
               email: string;
               name: string;
               discord_user_id: string;
@@ -956,7 +956,7 @@ export type InternalCreateStocksMutation = {
     created_at: any;
     internalUser: {
       __typename?: 'InternalUser';
-      id: bigint;
+      id: number;
       email: string;
       name: string;
       discord_user_id: string;
@@ -968,7 +968,7 @@ export type InternalCreateStocksMutation = {
       id: number;
       internalUser: {
         __typename?: 'InternalUser';
-        id: bigint;
+        id: number;
         email: string;
         name: string;
         discord_user_id: string;
@@ -1034,27 +1034,27 @@ export type InternalDeleteStockRequestMutation = {
 
 export type HospitalFieldsFragment = {
   __typename?: 'Hospital';
-  id: bigint;
+  id: number;
   name: string;
   url: string;
   deleted: boolean;
   internal_memo: string;
   hospitalAddress?: {
     __typename?: 'HospitalAddress';
-    id: bigint;
+    id: number;
     address: string;
     phone_number: string;
-    prefecture: { __typename?: 'Prefecture'; name: string; id: bigint };
+    prefecture: { __typename?: 'Prefecture'; name: string; id: number };
     hospitalAddressGeoLocation?: {
       __typename?: 'HospitalAddressGeoLocation';
-      id: bigint;
+      id: number;
       latitude: number;
       longitude: number;
     } | null;
   } | null;
   hospitalBusinessForm?: {
     __typename?: 'HospitalBusinessForm';
-    id: bigint;
+    id: number;
     business_hour: string;
     closed_day: string;
     insurance_enabled: string;
@@ -1062,30 +1062,30 @@ export type HospitalFieldsFragment = {
   } | null;
   hospitalCertificationOption?: {
     __typename?: 'HospitalCertificationOption';
-    id: bigint;
+    id: number;
     nichiju_registered: string;
     jsava_registered: string;
   } | null;
   hospitalInternalReputation?: {
     __typename?: 'HospitalInternalReputation';
-    id: bigint;
+    id: number;
     star: number;
     remark: string;
   } | null;
   hospitalNightServiceOption?: {
     __typename?: 'HospitalNightServiceOption';
-    id: bigint;
+    id: number;
     status: string;
     remark: string;
   } | null;
   hospitalNightUrgentActionOption?: {
     __typename?: 'HospitalNightUrgentActionOption';
-    id: bigint;
+    id: number;
     status: string;
   } | null;
   hospitalReservationStatus?: {
     __typename?: 'HospitalReservationStatus';
-    id: bigint;
+    id: number;
     required: string;
     reservable: string;
     remark: string;
@@ -1094,13 +1094,13 @@ export type HospitalFieldsFragment = {
 
 export type HospitalAddressFieldsFragment = {
   __typename?: 'HospitalAddress';
-  id: bigint;
+  id: number;
   address: string;
   phone_number: string;
-  prefecture: { __typename?: 'Prefecture'; name: string; id: bigint };
+  prefecture: { __typename?: 'Prefecture'; name: string; id: number };
   hospitalAddressGeoLocation?: {
     __typename?: 'HospitalAddressGeoLocation';
-    id: bigint;
+    id: number;
     latitude: number;
     longitude: number;
   } | null;
@@ -1108,14 +1108,14 @@ export type HospitalAddressFieldsFragment = {
 
 export type HospitalAddressGeoLocationFieldsFragment = {
   __typename?: 'HospitalAddressGeoLocation';
-  id: bigint;
+  id: number;
   latitude: number;
   longitude: number;
 };
 
 export type HospitalBusinessFormFieldsFragment = {
   __typename?: 'HospitalBusinessForm';
-  id: bigint;
+  id: number;
   business_hour: string;
   closed_day: string;
   insurance_enabled: string;
@@ -1124,34 +1124,34 @@ export type HospitalBusinessFormFieldsFragment = {
 
 export type HospitalCertificationOptionFieldsFragment = {
   __typename?: 'HospitalCertificationOption';
-  id: bigint;
+  id: number;
   nichiju_registered: string;
   jsava_registered: string;
 };
 
 export type HospitalInternalReputationFieldsFragment = {
   __typename?: 'HospitalInternalReputation';
-  id: bigint;
+  id: number;
   star: number;
   remark: string;
 };
 
 export type HospitalNightServiceOptionFieldsFragment = {
   __typename?: 'HospitalNightServiceOption';
-  id: bigint;
+  id: number;
   status: string;
   remark: string;
 };
 
 export type HospitalNightUrgentActionOptionFieldsFragment = {
   __typename?: 'HospitalNightUrgentActionOption';
-  id: bigint;
+  id: number;
   status: string;
 };
 
 export type HospitalReservationStatusFieldsFragment = {
   __typename?: 'HospitalReservationStatus';
-  id: bigint;
+  id: number;
   required: string;
   reservable: string;
   remark: string;
@@ -1159,7 +1159,7 @@ export type HospitalReservationStatusFieldsFragment = {
 
 export type InternalUserFieldsFragment = {
   __typename?: 'InternalUser';
-  id: bigint;
+  id: number;
   email: string;
   name: string;
   discord_user_id: string;
@@ -1194,7 +1194,7 @@ export type ProductFieldsFragment = {
     created_at: any;
     internalUser: {
       __typename?: 'InternalUser';
-      id: bigint;
+      id: number;
       email: string;
       name: string;
       discord_user_id: string;
@@ -1206,7 +1206,7 @@ export type ProductFieldsFragment = {
       id: number;
       internalUser: {
         __typename?: 'InternalUser';
-        id: bigint;
+        id: number;
         email: string;
         name: string;
         discord_user_id: string;
@@ -1223,7 +1223,7 @@ export type StockFieldsFragment = {
   created_at: any;
   internalUser: {
     __typename?: 'InternalUser';
-    id: bigint;
+    id: number;
     email: string;
     name: string;
     discord_user_id: string;
@@ -1235,7 +1235,7 @@ export type StockFieldsFragment = {
     id: number;
     internalUser: {
       __typename?: 'InternalUser';
-      id: bigint;
+      id: number;
       email: string;
       name: string;
       discord_user_id: string;
@@ -1274,7 +1274,7 @@ export type StockRequestFieldsFragment = {
   id: number;
   internalUser: {
     __typename?: 'InternalUser';
-    id: bigint;
+    id: number;
     email: string;
     name: string;
     discord_user_id: string;
@@ -1305,7 +1305,7 @@ export type StockRequestFieldsFragment = {
         created_at: any;
         internalUser: {
           __typename?: 'InternalUser';
-          id: bigint;
+          id: number;
           email: string;
           name: string;
           discord_user_id: string;
@@ -1317,7 +1317,7 @@ export type StockRequestFieldsFragment = {
           id: number;
           internalUser: {
             __typename?: 'InternalUser';
-            id: bigint;
+            id: number;
             email: string;
             name: string;
             discord_user_id: string;
@@ -1337,27 +1337,27 @@ export type InternalGetHospitalQuery = {
   __typename?: 'Query';
   hospital: {
     __typename?: 'Hospital';
-    id: bigint;
+    id: number;
     name: string;
     url: string;
     deleted: boolean;
     internal_memo: string;
     hospitalAddress?: {
       __typename?: 'HospitalAddress';
-      id: bigint;
+      id: number;
       address: string;
       phone_number: string;
-      prefecture: { __typename?: 'Prefecture'; name: string; id: bigint };
+      prefecture: { __typename?: 'Prefecture'; name: string; id: number };
       hospitalAddressGeoLocation?: {
         __typename?: 'HospitalAddressGeoLocation';
-        id: bigint;
+        id: number;
         latitude: number;
         longitude: number;
       } | null;
     } | null;
     hospitalBusinessForm?: {
       __typename?: 'HospitalBusinessForm';
-      id: bigint;
+      id: number;
       business_hour: string;
       closed_day: string;
       insurance_enabled: string;
@@ -1365,30 +1365,30 @@ export type InternalGetHospitalQuery = {
     } | null;
     hospitalCertificationOption?: {
       __typename?: 'HospitalCertificationOption';
-      id: bigint;
+      id: number;
       nichiju_registered: string;
       jsava_registered: string;
     } | null;
     hospitalInternalReputation?: {
       __typename?: 'HospitalInternalReputation';
-      id: bigint;
+      id: number;
       star: number;
       remark: string;
     } | null;
     hospitalNightServiceOption?: {
       __typename?: 'HospitalNightServiceOption';
-      id: bigint;
+      id: number;
       status: string;
       remark: string;
     } | null;
     hospitalNightUrgentActionOption?: {
       __typename?: 'HospitalNightUrgentActionOption';
-      id: bigint;
+      id: number;
       status: string;
     } | null;
     hospitalReservationStatus?: {
       __typename?: 'HospitalReservationStatus';
-      id: bigint;
+      id: number;
       required: string;
       reservable: string;
       remark: string;
@@ -1413,27 +1413,27 @@ export type InternalGetHospitalConnectionQuery = {
       __typename?: 'HospitalEdge';
       node?: {
         __typename?: 'Hospital';
-        id: bigint;
+        id: number;
         name: string;
         url: string;
         deleted: boolean;
         internal_memo: string;
         hospitalAddress?: {
           __typename?: 'HospitalAddress';
-          id: bigint;
+          id: number;
           address: string;
           phone_number: string;
-          prefecture: { __typename?: 'Prefecture'; name: string; id: bigint };
+          prefecture: { __typename?: 'Prefecture'; name: string; id: number };
           hospitalAddressGeoLocation?: {
             __typename?: 'HospitalAddressGeoLocation';
-            id: bigint;
+            id: number;
             latitude: number;
             longitude: number;
           } | null;
         } | null;
         hospitalBusinessForm?: {
           __typename?: 'HospitalBusinessForm';
-          id: bigint;
+          id: number;
           business_hour: string;
           closed_day: string;
           insurance_enabled: string;
@@ -1441,30 +1441,30 @@ export type InternalGetHospitalConnectionQuery = {
         } | null;
         hospitalCertificationOption?: {
           __typename?: 'HospitalCertificationOption';
-          id: bigint;
+          id: number;
           nichiju_registered: string;
           jsava_registered: string;
         } | null;
         hospitalInternalReputation?: {
           __typename?: 'HospitalInternalReputation';
-          id: bigint;
+          id: number;
           star: number;
           remark: string;
         } | null;
         hospitalNightServiceOption?: {
           __typename?: 'HospitalNightServiceOption';
-          id: bigint;
+          id: number;
           status: string;
           remark: string;
         } | null;
         hospitalNightUrgentActionOption?: {
           __typename?: 'HospitalNightUrgentActionOption';
-          id: bigint;
+          id: number;
           status: string;
         } | null;
         hospitalReservationStatus?: {
           __typename?: 'HospitalReservationStatus';
-          id: bigint;
+          id: number;
           required: string;
           reservable: string;
           remark: string;
@@ -1487,7 +1487,7 @@ export type InternalGetHospitalIdsQueryVariables = Exact<{
 
 export type InternalGetHospitalIdsQuery = {
   __typename?: 'Query';
-  hospitals: Array<{ __typename?: 'Hospital'; id: bigint }>;
+  hospitals: Array<{ __typename?: 'Hospital'; id: number }>;
 };
 
 export type InternalGetInternalUserQueryVariables = Exact<{
@@ -1498,7 +1498,7 @@ export type InternalGetInternalUserQuery = {
   __typename?: 'Query';
   internalUser: {
     __typename?: 'InternalUser';
-    id: bigint;
+    id: number;
     email: string;
     name: string;
     discord_user_id: string;
@@ -1514,7 +1514,7 @@ export type InternalGetInternalUsersQuery = {
   __typename?: 'Query';
   internalUsers: Array<{
     __typename?: 'InternalUser';
-    id: bigint;
+    id: number;
     email: string;
     name: string;
     discord_user_id: string;
@@ -1566,7 +1566,7 @@ export type InternalGetProductQuery = {
       created_at: any;
       internalUser: {
         __typename?: 'InternalUser';
-        id: bigint;
+        id: number;
         email: string;
         name: string;
         discord_user_id: string;
@@ -1578,7 +1578,7 @@ export type InternalGetProductQuery = {
         id: number;
         internalUser: {
           __typename?: 'InternalUser';
-          id: bigint;
+          id: number;
           email: string;
           name: string;
           discord_user_id: string;
@@ -1628,7 +1628,7 @@ export type InternalGetProductConnectionQuery = {
           created_at: any;
           internalUser: {
             __typename?: 'InternalUser';
-            id: bigint;
+            id: number;
             email: string;
             name: string;
             discord_user_id: string;
@@ -1640,7 +1640,7 @@ export type InternalGetProductConnectionQuery = {
             id: number;
             internalUser: {
               __typename?: 'InternalUser';
-              id: bigint;
+              id: number;
               email: string;
               name: string;
               discord_user_id: string;
@@ -1734,7 +1734,7 @@ export type InternalGetProductsQuery = {
       created_at: any;
       internalUser: {
         __typename?: 'InternalUser';
-        id: bigint;
+        id: number;
         email: string;
         name: string;
         discord_user_id: string;
@@ -1746,7 +1746,7 @@ export type InternalGetProductsQuery = {
         id: number;
         internalUser: {
           __typename?: 'InternalUser';
-          id: bigint;
+          id: number;
           email: string;
           name: string;
           discord_user_id: string;
@@ -1773,7 +1773,7 @@ export type InternalGetSessionQuery = {
     token: string;
     internalUser: {
       __typename?: 'InternalUser';
-      id: bigint;
+      id: number;
       email: string;
       name: string;
       discord_user_id: string;
@@ -1793,7 +1793,7 @@ export type InternalGetStockRequestQuery = {
     id: number;
     internalUser: {
       __typename?: 'InternalUser';
-      id: bigint;
+      id: number;
       email: string;
       name: string;
       discord_user_id: string;
@@ -1824,7 +1824,7 @@ export type InternalGetStockRequestQuery = {
           created_at: any;
           internalUser: {
             __typename?: 'InternalUser';
-            id: bigint;
+            id: number;
             email: string;
             name: string;
             discord_user_id: string;
@@ -1836,7 +1836,7 @@ export type InternalGetStockRequestQuery = {
             id: number;
             internalUser: {
               __typename?: 'InternalUser';
-              id: bigint;
+              id: number;
               email: string;
               name: string;
               discord_user_id: string;
@@ -1866,7 +1866,7 @@ export type InternalGetStockRequestConnectionQuery = {
         id: number;
         internalUser: {
           __typename?: 'InternalUser';
-          id: bigint;
+          id: number;
           email: string;
           name: string;
           discord_user_id: string;
@@ -1901,7 +1901,7 @@ export type InternalGetStockRequestConnectionQuery = {
               created_at: any;
               internalUser: {
                 __typename?: 'InternalUser';
-                id: bigint;
+                id: number;
                 email: string;
                 name: string;
                 discord_user_id: string;
@@ -1913,7 +1913,7 @@ export type InternalGetStockRequestConnectionQuery = {
                 id: number;
                 internalUser: {
                   __typename?: 'InternalUser';
-                  id: bigint;
+                  id: number;
                   email: string;
                   name: string;
                   discord_user_id: string;
@@ -1948,7 +1948,7 @@ export type InternalGetStocksQuery = {
     created_at: any;
     internalUser: {
       __typename?: 'InternalUser';
-      id: bigint;
+      id: number;
       email: string;
       name: string;
       discord_user_id: string;
@@ -1960,7 +1960,7 @@ export type InternalGetStocksQuery = {
       id: number;
       internalUser: {
         __typename?: 'InternalUser';
-        id: bigint;
+        id: number;
         email: string;
         name: string;
         discord_user_id: string;
@@ -1993,7 +1993,7 @@ export type InternalReturnStockMutation = {
     created_at: any;
     internalUser: {
       __typename?: 'InternalUser';
-      id: bigint;
+      id: number;
       email: string;
       name: string;
       discord_user_id: string;
@@ -2005,7 +2005,7 @@ export type InternalReturnStockMutation = {
       id: number;
       internalUser: {
         __typename?: 'InternalUser';
-        id: bigint;
+        id: number;
         email: string;
         name: string;
         discord_user_id: string;
@@ -2048,7 +2048,7 @@ export type InternalUpdateInternalUserMutation = {
   __typename?: 'Mutation';
   updateInternalUser: {
     __typename?: 'InternalUser';
-    id: bigint;
+    id: number;
     email: string;
     name: string;
     discord_user_id: string;
@@ -2098,7 +2098,7 @@ export type InternalUpdateProductMutation = {
       created_at: any;
       internalUser: {
         __typename?: 'InternalUser';
-        id: bigint;
+        id: number;
         email: string;
         name: string;
         discord_user_id: string;
@@ -2110,7 +2110,7 @@ export type InternalUpdateProductMutation = {
         id: number;
         internalUser: {
           __typename?: 'InternalUser';
-          id: bigint;
+          id: number;
           email: string;
           name: string;
           discord_user_id: string;
@@ -2160,7 +2160,7 @@ export type InternalUpdateStockInternalUserMutation = {
     created_at: any;
     internalUser: {
       __typename?: 'InternalUser';
-      id: bigint;
+      id: number;
       email: string;
       name: string;
       discord_user_id: string;
@@ -2172,7 +2172,7 @@ export type InternalUpdateStockInternalUserMutation = {
       id: number;
       internalUser: {
         __typename?: 'InternalUser';
-        id: bigint;
+        id: number;
         email: string;
         name: string;
         discord_user_id: string;
@@ -2196,7 +2196,7 @@ export type InternalUpdateStockRequestMutation = {
     id: number;
     internalUser: {
       __typename?: 'InternalUser';
-      id: bigint;
+      id: number;
       email: string;
       name: string;
       discord_user_id: string;
@@ -2227,7 +2227,7 @@ export type InternalUpdateStockRequestMutation = {
           created_at: any;
           internalUser: {
             __typename?: 'InternalUser';
-            id: bigint;
+            id: number;
             email: string;
             name: string;
             discord_user_id: string;
@@ -2239,7 +2239,7 @@ export type InternalUpdateStockRequestMutation = {
             id: number;
             internalUser: {
               __typename?: 'InternalUser';
-              id: bigint;
+              id: number;
               email: string;
               name: string;
               discord_user_id: string;
@@ -2261,13 +2261,13 @@ export type InternalUpsertHospitalAddressGeoLocationMutation = {
   __typename?: 'Mutation';
   upsertHospitalAddressGeoLocation: {
     __typename?: 'HospitalAddress';
-    id: bigint;
+    id: number;
     address: string;
     phone_number: string;
-    prefecture: { __typename?: 'Prefecture'; name: string; id: bigint };
+    prefecture: { __typename?: 'Prefecture'; name: string; id: number };
     hospitalAddressGeoLocation?: {
       __typename?: 'HospitalAddressGeoLocation';
-      id: bigint;
+      id: number;
       latitude: number;
       longitude: number;
     } | null;

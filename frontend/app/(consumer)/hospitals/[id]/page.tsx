@@ -9,7 +9,7 @@ import { getPublicClient } from '@/utils/client';
 import { SERVICE_NAME, ORIGIN_URL, OG_DEFAULT_IMAGE } from '@/utils/constant';
 import { HOSPITALS_DETAIL_PATH } from '@/utils/routes';
 import Show from './show-page';
-import type { Metadata, ResolvingMetadata } from 'next';
+import type { Metadata } from 'next';
 
 type Props = {
   params: Params;
@@ -34,7 +34,7 @@ async function generateHospital(params: Params) {
     PublicGetHospitalQueryVariables
   >({
     query: getHospital,
-    variables: { id: params.id as any },
+    variables: { id: Number(params.id) },
     context: {
       fetchOptions: {
         next: { revalidate: 60 },
