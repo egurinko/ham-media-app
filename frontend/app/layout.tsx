@@ -1,3 +1,4 @@
+import { Providers } from '@/app/providers';
 import { GOOGLE_TAG_MANAGER_ID } from '@/utils/googleTagManager';
 
 const RootLayout =
@@ -17,7 +18,7 @@ const RootLayout =
             title="googleTagManagerNoScript"
           />
         </noscript>
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
