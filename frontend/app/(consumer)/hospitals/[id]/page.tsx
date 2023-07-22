@@ -6,7 +6,14 @@ import type {
   PublicGetHospitalQueryVariables,
 } from '@/services/api/public_api/types';
 import { getPublicClient } from '@/utils/client';
+import { SERVICE_NAME, ORIGIN_URL, OG_DEFAULT_IMAGE } from '@/utils/constant';
+import { HOSPITALS_DETAIL_PATH } from '@/utils/routes';
 import Show from './show-page';
+import type { Metadata, ResolvingMetadata } from 'next';
+
+type Props = {
+  params: Params;
+};
 
 type Params = {
   id: string;
@@ -38,7 +45,35 @@ async function generateHospital(params: Params) {
   return data.hospital;
 }
 
-export default async function Page({ params }: { params: Params }) {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const hospital = await generateHospital(params);
+  const title = `${hospital.name} - ${SERVICE_NAME}：ハムスター受付病院検索`;
+  const description = `【${SERVICE_NAME}公式病院検索】${hospital.name}（${hospital.hospitalAddress?.prefecture.name}${hospital.hospitalAddress?.address}）の診療時間や予約情報などを確認できます。${SERVICE_NAME}が厳選したハムスター受付病院になります。`;
+
+  return {
+    title,
+    description,
+    keywords: [
+      hospital.name,
+      hospital.hospitalAddress?.prefecture.name || '',
+      'ハムスター受付病院',
+      '動物病院',
+      'ハムスター',
+      'ハムメディア',
+      SERVICE_NAME,
+    ],
+    openGraph: {
+      type: 'website',
+      url: `${ORIGIN_URL}${HOSPITALS_DETAIL_PATH(hospital.id)}`,
+      title,
+      description,
+      siteName: SERVICE_NAME,
+      images: OG_DEFAULT_IMAGE,
+    },
+  };
+}
+
+export default async function Page({ params }: Props) {
   const hospital = await generateHospital(params);
 
   return <Show hospital={hospital} />;
