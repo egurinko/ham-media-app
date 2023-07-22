@@ -1,3 +1,5 @@
+'use client';
+
 import { Box } from '@chakra-ui/react';
 import { Footer } from '@/components/organisms/consumer/Footer';
 import { Header } from '@/components/organisms/consumer/Header';

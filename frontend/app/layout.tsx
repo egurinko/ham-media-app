@@ -1,9 +1,12 @@
 import { Providers } from '@/app/providers';
 import { GOOGLE_TAG_MANAGER_ID } from '@/utils/googleTagManager';
 
-const RootLayout =
-  () =>
-  ({ children }: { children: React.ReactNode }) => (
+type Props = {
+  children: React.ReactNode;
+};
+
+export default function RootLayout({ children }: Props) {
+  return (
     <html lang="ja">
       <body>
         <noscript>
@@ -22,5 +25,4 @@ const RootLayout =
       </body>
     </html>
   );
-
-export default RootLayout;
+}
