@@ -1,9 +1,10 @@
 import { Providers } from '@/app/providers';
-import { OG_DEFAULT_IMAGE, SERVICE_NAME } from '@/utils/constant';
+import { OG_DEFAULT_IMAGE, SERVICE_NAME, ORIGIN_URL } from '@/utils/constant';
 import { GOOGLE_TAG_MANAGER_ID } from '@/utils/googleTagManager';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
+  metadataBase: new URL(ORIGIN_URL),
   title: SERVICE_NAME,
   description:
     '１匹でも多くのハムスターのしあわせを未来につないでいきたい。様々な理由で助けが必要になったハムスターの里親を募集しています。',
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     type: 'website',
-    url: 'https://www.ham-media-app.net',
+    url: '/',
     title: SERVICE_NAME,
     description:
       '１匹でも多くのハムスターのしあわせを未来につないでいきたい。様々な理由で助けが必要になったハムスターの里親を募集しています。',

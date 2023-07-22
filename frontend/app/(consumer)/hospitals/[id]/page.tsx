@@ -6,7 +6,7 @@ import type {
   PublicGetHospitalQueryVariables,
 } from '@/services/api/public_api/types';
 import { getPublicClient } from '@/utils/client';
-import { SERVICE_NAME, ORIGIN_URL, OG_DEFAULT_IMAGE } from '@/utils/constant';
+import { SERVICE_NAME, OG_DEFAULT_IMAGE } from '@/utils/constant';
 import { HOSPITALS_DETAIL_PATH } from '@/utils/routes';
 import Show from './show-page';
 import type { Metadata } from 'next';
@@ -64,7 +64,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     ],
     openGraph: {
       type: 'website',
-      url: `${ORIGIN_URL}${HOSPITALS_DETAIL_PATH(hospital.id)}`,
+      url: `${HOSPITALS_DETAIL_PATH(hospital.id)}`,
       title,
       description,
       siteName: SERVICE_NAME,
