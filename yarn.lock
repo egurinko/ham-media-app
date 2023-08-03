@@ -4391,10 +4391,10 @@
   dependencies:
     "@prisma/engines-version" "4.16.1-1.4bc8b6e1b66cb932731fb1bdbbc550d1e010de81"
 
-"@prisma/debug@4.16.2":
-  version "4.16.2"
-  resolved "https://registry.yarnpkg.com/@prisma/debug/-/debug-4.16.2.tgz#d93724e4d7a46ed7e9c9daf1cc66dac736596c7e"
-  integrity sha512-7L7WbG0qNNZYgLpsVB8rCHCXEyHFyIycRlRDNwkVfjQmACC2OW6AWCYCbfdjQhkF/t7+S3njj8wAWAocSs+Brw==
+"@prisma/debug@5.1.1":
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/@prisma/debug/-/debug-5.1.1.tgz#c7142699107cdf2d8939f0c139142ef7651e74c7"
+  integrity sha512-R9e2Tn8f+ujVjwn6ne1YkXY35BXzUmxJbGsmD1c8RAZ/NXgbYktEFAwIkOZn5H5zRfY2VDSBvGI6TFpnOu50cg==
   dependencies:
     "@types/debug" "4.1.8"
     debug "4.3.4"
@@ -4410,12 +4410,12 @@
   resolved "https://registry.yarnpkg.com/@prisma/engines/-/engines-4.16.2.tgz#5ec8dd672c2173d597e469194916ad4826ce2e5f"
   integrity sha512-vx1nxVvN4QeT/cepQce68deh/Turxy5Mr+4L4zClFuK1GlxN3+ivxfuv+ej/gvidWn1cE1uAhW7ALLNlYbRUAw==
 
-"@prisma/generator-helper@^4.0":
-  version "4.16.2"
-  resolved "https://registry.yarnpkg.com/@prisma/generator-helper/-/generator-helper-4.16.2.tgz#a50b0d595d0a5350619e530d410ebaa815a89a25"
-  integrity sha512-bMOH7y73Ui7gpQrioFeavMQA+Tf8ksaVf8Nhs9rQNzuSg8SSV6E9baczob0L5KGZTSgYoqnrRxuo03kVJYrnIg==
+"@prisma/generator-helper@^5.0.0":
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/@prisma/generator-helper/-/generator-helper-5.1.1.tgz#aa16d63262b6b12554ea921d2885450cb6708de5"
+  integrity sha512-Qk9iiVk4JZQYZrYsc1Wx9fXFFnS1AH4T7WyLxCIFnX/end0K5tOK75Qxv6mjZAHE0XUGrzoTlZUkbSDVYz/CvQ==
   dependencies:
-    "@prisma/debug" "4.16.2"
+    "@prisma/debug" "5.1.1"
     "@types/cross-spawn" "6.0.2"
     cross-spawn "7.0.3"
     kleur "4.1.5"
@@ -11798,12 +11798,12 @@ next@^13.4.12:
     "@next/swc-win32-ia32-msvc" "13.4.12"
     "@next/swc-win32-x64-msvc" "13.4.12"
 
-nexus-prisma@^1.0.10:
-  version "1.0.17"
-  resolved "https://registry.yarnpkg.com/nexus-prisma/-/nexus-prisma-1.0.17.tgz#3170f5718946b2161dbd16f738c4e5bf0d44e415"
-  integrity sha512-E4tj+fySBsh1mXEmlQeiSSg7DHMMvXgYRo3+Ce63mSWDamaR+N5sJiV0f1BRzElocC39DQb+zeKyYduQUXk6DA==
+nexus-prisma@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/nexus-prisma/-/nexus-prisma-2.0.0.tgz#68e77ba5c03857ce79fa7b3df03561a856ef389b"
+  integrity sha512-jwjgZC5l26p0widl4Htbg10d9D8Ntsag371eN7po139/6NyswOD0+BayoOu7ERzrbUJAwj+G/VP45Yah/vvs6g==
   dependencies:
-    "@prisma/generator-helper" "^4.0"
+    "@prisma/generator-helper" "^5.0.0"
     debug "^4.3.4"
     decimal.js "^10.4.3"
     dindist "^1.0.2"
