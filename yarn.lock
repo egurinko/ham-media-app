@@ -11798,10 +11798,10 @@ next@^13.4.12:
     "@next/swc-win32-ia32-msvc" "13.4.12"
     "@next/swc-win32-x64-msvc" "13.4.12"
 
-nexus-prisma@^1.0.10:
-  version "1.0.17"
-  resolved "https://registry.yarnpkg.com/nexus-prisma/-/nexus-prisma-1.0.17.tgz#3170f5718946b2161dbd16f738c4e5bf0d44e415"
-  integrity sha512-E4tj+fySBsh1mXEmlQeiSSg7DHMMvXgYRo3+Ce63mSWDamaR+N5sJiV0f1BRzElocC39DQb+zeKyYduQUXk6DA==
+nexus-prisma@^1.0.18:
+  version "1.0.18"
+  resolved "https://registry.yarnpkg.com/nexus-prisma/-/nexus-prisma-1.0.18.tgz#65495db9dd11bdbbf9296e5267e31a36eb250352"
+  integrity sha512-PPD3n5tNl6ylTGt4LO4mtR1QMI6b34t32eeglf4dvl25YgnvmrVHZgdyE/vZxNVv2huXmoBuBXi8mwUewMcMLQ==
   dependencies:
     "@prisma/generator-helper" "^4.0"
     debug "^4.3.4"
