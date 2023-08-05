@@ -36,7 +36,7 @@
     "react-dom": "18.2.0",
     "react-drag-drop-files": "^2.3.10",
     "react-hook-form": "^7.45.2",
-    "react-medium-image-zoom": "^5.1.6"
+    "react-medium-image-zoom": "^5.1.8"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^4.0.1",
