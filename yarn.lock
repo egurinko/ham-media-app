@@ -8583,7 +8583,7 @@ fastify-plugin@^4.0.0, fastify-plugin@^4.2.0, fastify-plugin@^4.2.1, fastify-plu
   resolved "https://registry.yarnpkg.com/fastify-plugin/-/fastify-plugin-4.5.1.tgz#44dc6a3cc2cce0988bc09e13f160120bbd91dbee"
   integrity sha512-stRHYGeuqpEZTL1Ef0Ovr2ltazUT9g844X5z/zEBFLG8RYlpDiOCIG+ATvYEp+/zmc7sN29mcIMp8gvYplYPIQ==
 
-fastify@^4.0.0, fastify@^4.20.0:
+fastify@^4.0.0, fastify@^4.21.0:
   version "4.21.0"
   resolved "https://registry.yarnpkg.com/fastify/-/fastify-4.21.0.tgz#82f4272310c0fb7733a1a70605c57bdd1de938f2"
   integrity sha512-tsu4bcwE4HetxqW8prA5fbC9bKHMYDp7jGEDWyzK1l90a3uOaLoIcQbdGcWeODNLVJviQnzh1wvIjTZE3MJFEg==
