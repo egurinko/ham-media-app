@@ -8,7 +8,7 @@ import type { ApolloQueryResult } from '@apollo/client';
 import 'server-only';
 
 export const getHospital = async (
-  id: string
+  id: string,
 ): Promise<ApolloQueryResult<PublicGetHospitalQuery>> =>
   await getPublicClient().query<
     PublicGetHospitalQuery,
