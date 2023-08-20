@@ -36,7 +36,7 @@
     "@prisma/client": "5.1.1",
     "@sentry/node": "^7.64.0",
     "axios": "^1.4.0",
-    "bcrypt": "^5.1.0",
+    "bcrypt": "^5.1.1",
     "fastify": "^4.21.0",
     "fastify-cli": "^5.8.0",
     "fastify-healthcheck": "^4.4.0",
