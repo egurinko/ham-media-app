@@ -2,6 +2,7 @@ import { Providers } from '@/app/providers';
 import { OG_DEFAULT_IMAGE, SERVICE_NAME, ORIGIN_URL } from '@/utils/constant';
 import { GOOGLE_TAG_MANAGER_ID } from '@/utils/googleTagManager';
 import type { Metadata } from 'next';
+import './globals.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL(ORIGIN_URL),

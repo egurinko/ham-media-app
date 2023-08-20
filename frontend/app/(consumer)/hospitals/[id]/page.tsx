@@ -1,14 +1,12 @@
-import { getHospital } from '@/services/api/public_api/getHospital';
-import { getHospitalIds } from '@/services/api/public_api/getHospitalIds';
-import type {
-  PublicGetHospitalIdsQuery,
-  PublicGetHospitalQuery,
-  PublicGetHospitalQueryVariables,
-} from '@/services/api/public_api/types';
-import { getPublicClient } from '@/utils/client';
+import { Suspense } from 'react';
+import { getHospital } from '@/app/utils/api/publicApi/getHospital';
+import { getHospitalIds } from '@/app/utils/api/publicApi/getHospitalIds';
+import { css } from '@/styled/css';
 import { SERVICE_NAME, OG_DEFAULT_IMAGE } from '@/utils/constant';
 import { HOSPITALS_DETAIL_PATH } from '@/utils/routes';
-import Show from './show-page';
+import { Breadcrumbs } from './Breadcrumbs';
+import { DetailCard } from './DetailCard';
+import { HospitalMapCard } from './HospitalMapCard';
 import type { Metadata } from 'next';
 
 type Props = {
@@ -21,32 +19,13 @@ type Params = {
 
 export const dynamicParams = true;
 export async function generateStaticParams(): Promise<Params[]> {
-  const { data } = await getPublicClient().query<PublicGetHospitalIdsQuery>({
-    query: getHospitalIds,
-  });
+  const hospitalIds = await getHospitalIds();
 
-  return data.hospitals.map((h) => ({ id: String(h.id) }));
-}
-
-async function generateHospital(params: Params) {
-  const { data } = await getPublicClient().query<
-    PublicGetHospitalQuery,
-    PublicGetHospitalQueryVariables
-  >({
-    query: getHospital,
-    variables: { id: Number(params.id) },
-    context: {
-      fetchOptions: {
-        next: { revalidate: 60 },
-      },
-    },
-  });
-
-  return data.hospital;
+  return hospitalIds.map((id) => ({ id: String(id) }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const hospital = await generateHospital(params);
+  const hospital = await getHospital(params.id);
   const title = `${hospital.name} - ${SERVICE_NAME}：ハムスター受付病院検索`;
   const description = `【${SERVICE_NAME}公式病院検索】${hospital.name}（${hospital.hospitalAddress?.prefecture.name}${hospital.hospitalAddress?.address}）の診療時間や予約情報などを確認できます。${SERVICE_NAME}が厳選したハムスター受付病院になります。`;
 
@@ -74,7 +53,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function Page({ params }: Props) {
-  const hospital = await generateHospital(params);
-
-  return <Show hospital={hospital} />;
+  return (
+    <div className={css({ display: 'flex', flexDir: 'column', gap: '4' })}>
+      <Suspense fallback={<div>loading...</div>}>
+        <Breadcrumbs hospitalId={params.id} />
+      </Suspense>
+      <Suspense fallback={<div>loading detail...</div>}>
+        <DetailCard hospitalId={params.id} />
+      </Suspense>
+      <Suspense fallback={<div>loading map...</div>}>
+        <HospitalMapCard hospitalId={params.id} />
+      </Suspense>
+    </div>
+  );
 }

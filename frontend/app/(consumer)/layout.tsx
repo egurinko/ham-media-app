@@ -1,9 +1,24 @@
-import { Layout as ConsumerLayout } from '@/components/layouts/consumer/Layout';
+import { css } from '@/styled/css';
+import { Footer } from './footer';
+import { Header } from './header';
 
 type Props = {
   children: React.ReactNode;
 };
 
 export default function Layout({ children }: Props) {
-  return <ConsumerLayout>{children}</ConsumerLayout>;
+  return (
+    <div
+      className={css({
+        bgColor: 'background.main',
+        minH: '100vh',
+      })}
+    >
+      <Header />
+      <div className={css({ p: 2, maxW: '800px', mx: 'auto' })}>
+        <main className={css({ my: 4 })}>{children}</main>
+        <Footer />
+      </div>
+    </div>
+  );
 }
