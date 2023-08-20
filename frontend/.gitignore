@@ -31,6 +31,5 @@ tsconfig.tsbuildinfo
 .env.test.local
 .env.production.local
 
-# serverless
-.serverless
-.serverless_nextjs
+# panda
+styled-system

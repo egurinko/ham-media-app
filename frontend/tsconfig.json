@@ -22,7 +22,8 @@
       "@/utils/*": ["utils/*"],
       "@/validators/*": ["validators/*"],
       "@/assets/*": ["assets/*"],
-      "@/store/*": ["store/*"]
+      "@/store/*": ["store/*"],
+      "@/styled/*": ["styled-system/*"]
     },
     "incremental": true,
     "plugins": [

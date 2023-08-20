@@ -10,6 +10,7 @@
     "dev": "next dev -p 8080",
     "build": "next build",
     "start": "next start",
+    "prepare": "panda codegen",
     "tscheck": "yarn tsc -p ./tsconfig.json --noEmit",
     "generate": "graphql-codegen",
     "lint": "next lint --fix",
@@ -20,6 +21,7 @@
   "dependencies": {
     "@apollo/client": "^3.8.1",
     "@apollo/experimental-nextjs-app-support": "^0.4.1",
+    "@ark-ui/react": "^0.13.1",
     "@chakra-ui/icons": "^2.1.0",
     "@chakra-ui/react": "2.8.0",
     "@emotion/react": "^11.11.1",
@@ -43,6 +45,7 @@
     "@graphql-codegen/typescript": "^4.0.1",
     "@graphql-codegen/typescript-operations": "^4.0.1",
     "@graphql-codegen/typescript-react-apollo": "^3.3.7",
+    "@pandacss/dev": "^0.11.1",
     "@svgr/webpack": "^8.1.0",
     "@types/apollo-upload-client": "^17.0.2",
     "@types/js-cookie": "^3.0.3",
