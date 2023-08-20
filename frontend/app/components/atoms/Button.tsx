@@ -27,16 +27,16 @@ export const Button: React.FC<ButtonProps> = ({
   });
   const sizeStyle = css({
     width: fullWidth ? 'full' : '',
-    minWidth:
+    px:
       size === 'xs'
-        ? 'xs'
+        ? '2'
         : size === 'sm'
-        ? 'sm'
+        ? '3'
         : size === 'md'
-        ? 'md'
+        ? '4'
         : size === 'lg'
-        ? 'lg'
-        : 'full',
+        ? '5'
+        : '3',
     height:
       size === 'xs'
         ? '24px'
