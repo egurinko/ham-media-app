@@ -8,7 +8,7 @@ type Props = {
 };
 
 export const HospitalMapCard: FC<Props> = async ({ hospitalId }) => {
-  const hospital = await getHospital(hospitalId);
+  const { hospital } = (await getHospital(hospitalId)).data;
 
   return hospital.hospitalAddress?.hospitalAddressGeoLocation ? (
     <Card>

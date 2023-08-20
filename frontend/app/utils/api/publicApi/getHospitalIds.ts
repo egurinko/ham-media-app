@@ -5,14 +5,14 @@ import type {
   PublicGetHospitalIdsQuery,
 } from '@/services/api/public_api/types';
 import 'server-only';
+import type { ApolloQueryResult } from '@apollo/client';
 
-export const getHospitalIds = async (): Promise<number[]> => {
-  const { data } = await getPublicClient().query<
+export const getHospitalIds = async (): Promise<
+  ApolloQueryResult<PublicGetHospitalIdsQuery>
+> =>
+  await getPublicClient().query<
     PublicGetHospitalIdsQuery,
     PublicGetHospitalIdsQueryVariables
   >({
     query: getHospitalIdsGql,
   });
-
-  return data.hospitals.map((h) => h.id);
-};

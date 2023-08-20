@@ -10,7 +10,7 @@ type Props = {
 };
 
 export const Breadcrumbs: FC<Props> = async ({ hospitalId }) => {
-  const hospital = await getHospital(hospitalId);
+  const { hospital } = (await getHospital(hospitalId)).data;
 
   return (
     <div

@@ -1,3 +1,4 @@
+import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 import { getHospital } from '@/app/utils/api/publicApi/getHospital';
 import { getHospitalIds } from '@/app/utils/api/publicApi/getHospitalIds';
@@ -19,37 +20,43 @@ type Params = {
 
 export const dynamicParams = true;
 export async function generateStaticParams(): Promise<Params[]> {
-  const hospitalIds = await getHospitalIds();
+  const { data } = await getHospitalIds();
 
-  return hospitalIds.map((id) => ({ id: String(id) }));
+  return data.hospitals.map((hospital) => ({ id: String(hospital.id) }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const hospital = await getHospital(params.id);
-  const title = `${hospital.name} - ${SERVICE_NAME}：ハムスター受付病院検索`;
-  const description = `【${SERVICE_NAME}公式病院検索】${hospital.name}（${hospital.hospitalAddress?.prefecture.name}${hospital.hospitalAddress?.address}）の診療時間や予約情報などを確認できます。${SERVICE_NAME}が厳選したハムスター受付病院になります。`;
+  try {
+    const { data } = await getHospital(params.id);
+    const { hospital } = data;
+    const title = `${hospital.name} - ${SERVICE_NAME}：ハムスター受付病院検索`;
+    const description = `【${SERVICE_NAME}公式病院検索】${hospital.name}（${hospital.hospitalAddress?.prefecture.name}${hospital.hospitalAddress?.address}）の診療時間や予約情報などを確認できます。${SERVICE_NAME}が厳選したハムスター受付病院になります。`;
 
-  return {
-    title,
-    description,
-    keywords: [
-      hospital.name,
-      hospital.hospitalAddress?.prefecture.name || '',
-      'ハムスター受付病院',
-      '動物病院',
-      'ハムスター',
-      'ハムメディア',
-      SERVICE_NAME,
-    ],
-    openGraph: {
-      type: 'website',
-      url: `${HOSPITALS_DETAIL_PATH(hospital.id)}`,
+    return {
       title,
       description,
-      siteName: SERVICE_NAME,
-      images: OG_DEFAULT_IMAGE,
-    },
-  };
+      keywords: [
+        hospital.name,
+        hospital.hospitalAddress?.prefecture.name || '',
+        'ハムスター受付病院',
+        '動物病院',
+        'ハムスター',
+        'ハムメディア',
+        SERVICE_NAME,
+      ],
+      openGraph: {
+        type: 'website',
+        url: `${HOSPITALS_DETAIL_PATH(hospital.id)}`,
+        title,
+        description,
+        siteName: SERVICE_NAME,
+        images: OG_DEFAULT_IMAGE,
+      },
+    };
+  } catch (e) {
+    console.log({ e });
+    notFound();
+  }
 }
 
 export default async function Page({ params }: Props) {

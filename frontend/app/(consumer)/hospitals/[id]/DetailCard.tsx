@@ -16,7 +16,7 @@ type Props = {
 };
 
 export const DetailCard: FC<Props> = async ({ hospitalId }) => {
-  const hospital = await getHospital(hospitalId);
+  const { hospital } = (await getHospital(hospitalId)).data;
 
   return (
     <Card>

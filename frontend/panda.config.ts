@@ -100,7 +100,7 @@ export default defineConfig({
       subhead: { value: { fontSize: 'lg', lineHeight: '1.875rem' } },
       headlineS: { value: { fontSize: 'xl', lineHeight: '1.875rem' } },
       headlineM: { value: { fontSize: '2xl', lineHeight: '2rem' } },
-      headlineL: { value: { fontSize: '3xl', lineHeight: '2.375rem' } },
+      headlineL: { value: { fontSize: '6xl', lineHeight: '3rem' } },
     },
   },
   outdir: 'styled-system',
