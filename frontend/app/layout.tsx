@@ -1,4 +1,4 @@
-import { Providers } from '@/app/providers';
+import { Providers } from '@/app/Providers';
 import { OG_DEFAULT_IMAGE, SERVICE_NAME, ORIGIN_URL } from '@/utils/constant';
 import { GOOGLE_TAG_MANAGER_ID } from '@/utils/googleTagManager';
 import type { Metadata } from 'next';
