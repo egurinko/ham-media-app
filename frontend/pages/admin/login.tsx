@@ -31,8 +31,11 @@ const Login = () => {
         <Image
           src="/ham_media_logo.png"
           alt="ハムメディアロゴ"
-          width={250}
-          height={55}
+          width="0"
+          height="0"
+          sizes="100vw"
+          style={{ width: 150, height: 'auto' }}
+          priority={true}
         />
       </Box>
       <Form />

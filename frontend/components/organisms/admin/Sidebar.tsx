@@ -26,8 +26,11 @@ const Sidebar: FC<Props> = ({ internalUser, handleLogout }) => (
       <Image
         src="/ham_media_logo.png"
         alt="ハムメディアロゴ"
-        width={150}
-        height={35}
+        width="0"
+        height="0"
+        sizes="100vw"
+        style={{ width: 150, height: 'auto' }}
+        priority={true}
       />
     </Box>
     <Navigation />
