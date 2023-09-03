@@ -10,4 +10,5 @@ module.exports = {
   images: {
     disableStaticImages: true,
   },
+  output: 'standalone',
 };
