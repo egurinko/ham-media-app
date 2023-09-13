@@ -54,7 +54,7 @@
     "prisma-repl": "^1.4.0",
     "sanitize-html": "^2.11.0",
     "ts-node-dev": "^2.0.0",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
