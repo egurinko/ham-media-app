@@ -9,7 +9,7 @@ on:
       - yarn.lock
 
 jobs:
-  tscheck:
+  setup:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -18,15 +18,44 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18.16.1'
-          cache: yarn
-          cache-dependency-path: yarn.lock
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
+      - name: Cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            '**/node_modules'
+            ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-${{ hashFiles('./yarn.lock') }}
       - name: Install dependencies
         run: yarn install
         working-directory: ./frontend
+  tscheck:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.16.1'
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
+      - name: Restore Cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            '**/node_modules'
+            ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-${{ hashFiles('./yarn.lock') }}
       - name: Type Check
         run: yarn tscheck
         working-directory: ./frontend
   lint:
+    needs: setup
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -35,11 +64,16 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18.16.1'
-          cache: yarn
-          cache-dependency-path: yarn.lock
-      - name: Install dependencies
-        run: yarn install
-        working-directory: ./frontend
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
+      - name: Cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            '**/node_modules'
+            ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-${{ hashFiles('./yarn.lock') }}
       - name: Lint
         run: yarn lint
         working-directory: ./frontend
