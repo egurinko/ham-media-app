@@ -50,7 +50,7 @@
     "@svgr/webpack": "^8.1.0",
     "@types/apollo-upload-client": "^17.0.3",
     "@types/js-cookie": "^3.0.4",
-    "@types/react": "^18.2.23",
+    "@types/react": "^18.2.24",
     "dotenv": "^16.3.1",
     "eslint-config-next": "^13.4.19",
     "eslint-plugin-jsx-a11y": "^6.7.1",
