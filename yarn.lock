@@ -5630,13 +5630,6 @@
     "@types/connect" "*"
     "@types/node" "*"
 
-"@types/busboy@^1.5.0":
-  version "1.5.2"
-  resolved "https://registry.yarnpkg.com/@types/busboy/-/busboy-1.5.2.tgz#ba9e4f21f1687e25def6c0fe044c7ea5b47dd2ef"
-  integrity sha512-OYkRy+dkQWwoGch3oyQ9UE08PO1jSte7aBtPemLXAP9evwh7fNAfikWdB2VMeP8syY3H/XvGq+pB38dDvTe06g==
-  dependencies:
-    "@types/node" "*"
-
 "@types/connect@*":
   version "3.4.37"
   resolved "https://registry.yarnpkg.com/@types/connect/-/connect-3.4.37.tgz#c66a96689fd3127c8772eb3e9e5c6028ec1a9af5"
@@ -5853,11 +5846,6 @@
   version "2.4.3"
   resolved "https://registry.yarnpkg.com/@types/normalize-package-data/-/normalize-package-data-2.4.3.tgz#291c243e4b94dbfbc0c0ee26b7666f1d5c030e2c"
   integrity sha512-ehPtgRgaULsFG8x0NeYJvmyH1hmlfsNLujHe9dQEia/7MAJYdzMSi19JtchUHjmBA6XC/75dK55mzZH+RyieSg==
-
-"@types/object-path@^0.11.1":
-  version "0.11.3"
-  resolved "https://registry.yarnpkg.com/@types/object-path/-/object-path-0.11.3.tgz#cb41cb1da4559c5be54d6bc7e096bc04b4be23fa"
-  integrity sha512-P6V8jUKl0qA/U5ZAWW1y/BxeFf/R3yZucVGnHtD1qRXmFPndKZK4iZ49qX73R0FIwZnk0yKYixmqtYrPtManaA==
 
 "@types/parse-json@^4.0.0":
   version "4.0.1"
@@ -10555,11 +10543,6 @@ from2@^2.3.0:
     inherits "^2.0.1"
     readable-stream "^2.0.0"
 
-fs-capacitor@^6.2.0:
-  version "6.2.0"
-  resolved "https://registry.yarnpkg.com/fs-capacitor/-/fs-capacitor-6.2.0.tgz#fa79ac6576629163cb84561995602d8999afb7f5"
-  integrity sha512-nKcE1UduoSKX27NSZlg879LdQc94OtbOsEmKMN2MBNudXREvijRKx2GEBsTMTfws+BrbkJoEuynbGSVRSpauvw==
-
 fs-extra@11.1.1, fs-extra@^11.0.0:
   version "11.1.1"
   resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-11.1.1.tgz#da69f7c39f3b002378b0954bb6ae7efdc0876e2d"
@@ -10947,18 +10930,12 @@ graphql-tag@^2.11.0, graphql-tag@^2.12.6:
   dependencies:
     tslib "^2.1.0"
 
-graphql-upload@^15.0.1:
-  version "15.0.2"
-  resolved "https://registry.yarnpkg.com/graphql-upload/-/graphql-upload-15.0.2.tgz#851667589439ee617238e2d90253000a2601ac04"
-  integrity sha512-ufJAkZJBKWRDD/4wJR3VZMy9QWTwqIYIciPtCEF5fCNgWF+V1p7uIgz+bP2YYLiS4OJBhCKR8rnqE/Wg3XPUiw==
+graphql-upload-minimal@^1.5.5:
+  version "1.5.5"
+  resolved "https://registry.yarnpkg.com/graphql-upload-minimal/-/graphql-upload-minimal-1.5.5.tgz#7836ab0abe2ec9657f186ff130232a64facfa1b3"
+  integrity sha512-eNIBl850Sj2Lp14ak+9pK4KINQw2Hkk/t15yY3pPQ0jntkCODL5csTECxsqIYRJisoxNFnIrX4zAGlKGvXc17A==
   dependencies:
-    "@types/busboy" "^1.5.0"
-    "@types/node" "*"
-    "@types/object-path" "^0.11.1"
     busboy "^1.6.0"
-    fs-capacitor "^6.2.0"
-    http-errors "^2.0.0"
-    object-path "^0.11.8"
 
 graphql-ws@^5.14.0:
   version "5.14.1"
@@ -11241,7 +11218,7 @@ http-cache-semantics@^4.1.1:
   resolved "https://registry.yarnpkg.com/http-cache-semantics/-/http-cache-semantics-4.1.1.tgz#abe02fcb2985460bf0323be664436ec3476a6d5a"
   integrity sha512-er295DKPVsV82j5kw1Gjt+ADA/XYHsajl82cGNQG2eyoPkvgUhX+nDIyelzhIWbbsXP39EHcI6l5tYs2FYqYXQ==
 
-http-errors@2.0.0, http-errors@^2.0.0:
+http-errors@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/http-errors/-/http-errors-2.0.0.tgz#b7774a1486ef73cf7667ac9ae0858c012c57b9d3"
   integrity sha512-FtwrG/euBzaEjYeRqOgly7G0qviiXoJWnvEH2Z1plBdXgbyjv34pHTSb9zoeHMyDy33+DWy5Wt9Wo+TURtOYSQ==
@@ -13287,13 +13264,13 @@ mercurius-integration-testing@^8.1.1:
     cookie "^0.5.0"
     ws "^8.12.1"
 
-mercurius-upload@^6.0.1:
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/mercurius-upload/-/mercurius-upload-6.0.1.tgz#c54a46171145d73c36187342878fb7ba0fa40a45"
-  integrity sha512-vYoBDRgu7eT4tPozFJPd+g/caiIU2BOVQOiQ/wGzwVOCOSq3ITOWfa0DSj2w0k1lOLkWMldtmvpCGTGAwkjnMg==
+mercurius-upload@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/mercurius-upload/-/mercurius-upload-7.0.0.tgz#6c060569a45655e43c54d0835b249f1d15fdcbf4"
+  integrity sha512-DoSHkWmLaP1pfeJoI6NyuI6ur4SbkrLhhcG/Y5lhhzmVAJljGNubjl7H7krgcEd2VanhZ5rlh/PYg1o3AcgHNw==
   dependencies:
     fastify-plugin "^4.2.0"
-    graphql-upload "^15.0.1"
+    graphql-upload-minimal "^1.5.5"
 
 mercurius@^13.2.2:
   version "13.2.2"
