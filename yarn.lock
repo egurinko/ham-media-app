@@ -10184,10 +10184,10 @@ fastest-stable-stringify@^2.0.2:
   resolved "https://registry.yarnpkg.com/fastest-stable-stringify/-/fastest-stable-stringify-2.0.2.tgz#3757a6774f6ec8de40c4e86ec28ea02417214c76"
   integrity sha512-bijHueCGd0LqqNK9b5oCMHc0MluJAx0cwqASgbWMvkO01lCYgIhacVRLcaDz3QnyYIRNJRDwMb41VuT6pHJ91Q==
 
-fastify-cli@^5.8.0:
-  version "5.8.0"
-  resolved "https://registry.yarnpkg.com/fastify-cli/-/fastify-cli-5.8.0.tgz#42349e66e1c5ec1b6546f24167da0a00292beb7a"
-  integrity sha512-8J1nej1nnF6UsgRv787rl9VkUjBnYVGXcbFvuAZ3LHP6mN8Sb7+0OBzcRs3SMO6qkRax89TqOUJWVNQHZXfixw==
+fastify-cli@^5.9.0:
+  version "5.9.0"
+  resolved "https://registry.yarnpkg.com/fastify-cli/-/fastify-cli-5.9.0.tgz#014c7a0b578b1f4e676a2a6ed7f82880432bef80"
+  integrity sha512-CaIte5SwkLuvlzpdd1Al1VRVVwm2TQVV4bfVP4oz/Z54KVSo6pqNTgnxWOmyzdcNUbFnhJ3Z4vRjzvHoymP5cQ==
   dependencies:
     "@fastify/deepmerge" "^1.2.0"
     chalk "^4.1.2"
