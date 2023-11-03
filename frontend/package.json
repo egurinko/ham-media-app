@@ -19,8 +19,8 @@
     "format:check": "yarn format --check"
   },
   "dependencies": {
-    "@apollo/client": "^3.8.6",
-    "@apollo/experimental-nextjs-app-support": "^0.4.3",
+    "@apollo/client": "^3.8.7",
+    "@apollo/experimental-nextjs-app-support": "^0.5.1",
     "@ark-ui/react": "^0.15.0",
     "@chakra-ui/icons": "^2.1.1",
     "@chakra-ui/react": "2.8.1",
