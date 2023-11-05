@@ -1,5 +1,5 @@
 import { scalarType } from 'nexus';
-import GraphQLUpload from 'graphql-upload/GraphQLUpload.js';
+import { GraphQLUpload } from 'graphql-upload-minimal';
 import { GraphQLScalarType } from 'graphql';
 import { BigIntResolver, DateTimeResolver } from 'graphql-scalars';
 import { asNexusMethod } from 'nexus';
@@ -15,11 +15,11 @@ export const BigInt = asNexusMethod(
     description: `The \`BigInt\` scalar type represents non-fractional signed whole numeric values.
 @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt`,
   }),
-  'bigInt'
+  'bigInt',
 );
 export const DateTime = asNexusMethod(
   new GraphQLScalarType(DateTimeResolver),
-  'dateTime'
+  'dateTime',
 );
 
 export const Upload = scalarType({
