@@ -1,7 +1,8 @@
 import { createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { RetryLink } from '@apollo/client/link/retry';
-import { createUploadLink } from 'apollo-upload-client';
+//@ts-ignore
+import createUploadLink from 'apollo-upload-client/createUploadLink.mjs';
 import { getCookie } from '@/utils/cookies';
 
 const base = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
@@ -9,7 +10,6 @@ const base = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
 const getHttpLink = () =>
   new RetryLink({ attempts: { max: 0 } }).split(
     (operation) => operation.operationName.includes('Internal'),
-    //@ts-ignore
     createUploadLink({
       uri: `${base}/internal_api/graphql`,
     }),
