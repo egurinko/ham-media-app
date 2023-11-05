@@ -1,4 +1,4 @@
-import type { AppRouterInstance } from 'next/dist/shared/lib/app-router-context';
+import type { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import type { NextRouter } from 'next/router';
 
 export const ADMIN_LOGIN_PATH = '/admin/login';
