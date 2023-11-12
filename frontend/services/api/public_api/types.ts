@@ -675,11 +675,26 @@ export function usePublicGetHospitalLazyQuery(
     PublicGetHospitalQueryVariables
   >(PublicGetHospitalDocument, options);
 }
+export function usePublicGetHospitalSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    PublicGetHospitalQuery,
+    PublicGetHospitalQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    PublicGetHospitalQuery,
+    PublicGetHospitalQueryVariables
+  >(PublicGetHospitalDocument, options);
+}
 export type PublicGetHospitalQueryHookResult = ReturnType<
   typeof usePublicGetHospitalQuery
 >;
 export type PublicGetHospitalLazyQueryHookResult = ReturnType<
   typeof usePublicGetHospitalLazyQuery
+>;
+export type PublicGetHospitalSuspenseQueryHookResult = ReturnType<
+  typeof usePublicGetHospitalSuspenseQuery
 >;
 export type PublicGetHospitalQueryResult = Apollo.QueryResult<
   PublicGetHospitalQuery,
@@ -775,11 +790,26 @@ export function usePublicGetHospitalConnectionLazyQuery(
     PublicGetHospitalConnectionQueryVariables
   >(PublicGetHospitalConnectionDocument, options);
 }
+export function usePublicGetHospitalConnectionSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    PublicGetHospitalConnectionQuery,
+    PublicGetHospitalConnectionQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    PublicGetHospitalConnectionQuery,
+    PublicGetHospitalConnectionQueryVariables
+  >(PublicGetHospitalConnectionDocument, options);
+}
 export type PublicGetHospitalConnectionQueryHookResult = ReturnType<
   typeof usePublicGetHospitalConnectionQuery
 >;
 export type PublicGetHospitalConnectionLazyQueryHookResult = ReturnType<
   typeof usePublicGetHospitalConnectionLazyQuery
+>;
+export type PublicGetHospitalConnectionSuspenseQueryHookResult = ReturnType<
+  typeof usePublicGetHospitalConnectionSuspenseQuery
 >;
 export type PublicGetHospitalConnectionQueryResult = Apollo.QueryResult<
   PublicGetHospitalConnectionQuery,
@@ -832,11 +862,26 @@ export function usePublicGetHospitalIdsLazyQuery(
     PublicGetHospitalIdsQueryVariables
   >(PublicGetHospitalIdsDocument, options);
 }
+export function usePublicGetHospitalIdsSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    PublicGetHospitalIdsQuery,
+    PublicGetHospitalIdsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    PublicGetHospitalIdsQuery,
+    PublicGetHospitalIdsQueryVariables
+  >(PublicGetHospitalIdsDocument, options);
+}
 export type PublicGetHospitalIdsQueryHookResult = ReturnType<
   typeof usePublicGetHospitalIdsQuery
 >;
 export type PublicGetHospitalIdsLazyQueryHookResult = ReturnType<
   typeof usePublicGetHospitalIdsLazyQuery
+>;
+export type PublicGetHospitalIdsSuspenseQueryHookResult = ReturnType<
+  typeof usePublicGetHospitalIdsSuspenseQuery
 >;
 export type PublicGetHospitalIdsQueryResult = Apollo.QueryResult<
   PublicGetHospitalIdsQuery,
@@ -900,11 +945,26 @@ export function usePublicGetHospitalLocationsLazyQuery(
     PublicGetHospitalLocationsQueryVariables
   >(PublicGetHospitalLocationsDocument, options);
 }
+export function usePublicGetHospitalLocationsSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    PublicGetHospitalLocationsQuery,
+    PublicGetHospitalLocationsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    PublicGetHospitalLocationsQuery,
+    PublicGetHospitalLocationsQueryVariables
+  >(PublicGetHospitalLocationsDocument, options);
+}
 export type PublicGetHospitalLocationsQueryHookResult = ReturnType<
   typeof usePublicGetHospitalLocationsQuery
 >;
 export type PublicGetHospitalLocationsLazyQueryHookResult = ReturnType<
   typeof usePublicGetHospitalLocationsLazyQuery
+>;
+export type PublicGetHospitalLocationsSuspenseQueryHookResult = ReturnType<
+  typeof usePublicGetHospitalLocationsSuspenseQuery
 >;
 export type PublicGetHospitalLocationsQueryResult = Apollo.QueryResult<
   PublicGetHospitalLocationsQuery,
@@ -963,11 +1023,26 @@ export function usePublicGetPlaceAutocompleteLazyQuery(
     PublicGetPlaceAutocompleteQueryVariables
   >(PublicGetPlaceAutocompleteDocument, options);
 }
+export function usePublicGetPlaceAutocompleteSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    PublicGetPlaceAutocompleteQuery,
+    PublicGetPlaceAutocompleteQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    PublicGetPlaceAutocompleteQuery,
+    PublicGetPlaceAutocompleteQueryVariables
+  >(PublicGetPlaceAutocompleteDocument, options);
+}
 export type PublicGetPlaceAutocompleteQueryHookResult = ReturnType<
   typeof usePublicGetPlaceAutocompleteQuery
 >;
 export type PublicGetPlaceAutocompleteLazyQueryHookResult = ReturnType<
   typeof usePublicGetPlaceAutocompleteLazyQuery
+>;
+export type PublicGetPlaceAutocompleteSuspenseQueryHookResult = ReturnType<
+  typeof usePublicGetPlaceAutocompleteSuspenseQuery
 >;
 export type PublicGetPlaceAutocompleteQueryResult = Apollo.QueryResult<
   PublicGetPlaceAutocompleteQuery,
@@ -1021,11 +1096,26 @@ export function usePublicGetPrefecturesLazyQuery(
     PublicGetPrefecturesQueryVariables
   >(PublicGetPrefecturesDocument, options);
 }
+export function usePublicGetPrefecturesSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    PublicGetPrefecturesQuery,
+    PublicGetPrefecturesQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    PublicGetPrefecturesQuery,
+    PublicGetPrefecturesQueryVariables
+  >(PublicGetPrefecturesDocument, options);
+}
 export type PublicGetPrefecturesQueryHookResult = ReturnType<
   typeof usePublicGetPrefecturesQuery
 >;
 export type PublicGetPrefecturesLazyQueryHookResult = ReturnType<
   typeof usePublicGetPrefecturesLazyQuery
+>;
+export type PublicGetPrefecturesSuspenseQueryHookResult = ReturnType<
+  typeof usePublicGetPrefecturesSuspenseQuery
 >;
 export type PublicGetPrefecturesQueryResult = Apollo.QueryResult<
   PublicGetPrefecturesQuery,
