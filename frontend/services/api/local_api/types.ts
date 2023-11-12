@@ -177,11 +177,26 @@ export function useLocalGetHospitalSearchLazyQuery(
     LocalGetHospitalSearchQueryVariables
   >(LocalGetHospitalSearchDocument, options);
 }
+export function useLocalGetHospitalSearchSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    LocalGetHospitalSearchQuery,
+    LocalGetHospitalSearchQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    LocalGetHospitalSearchQuery,
+    LocalGetHospitalSearchQueryVariables
+  >(LocalGetHospitalSearchDocument, options);
+}
 export type LocalGetHospitalSearchQueryHookResult = ReturnType<
   typeof useLocalGetHospitalSearchQuery
 >;
 export type LocalGetHospitalSearchLazyQueryHookResult = ReturnType<
   typeof useLocalGetHospitalSearchLazyQuery
+>;
+export type LocalGetHospitalSearchSuspenseQueryHookResult = ReturnType<
+  typeof useLocalGetHospitalSearchSuspenseQuery
 >;
 export type LocalGetHospitalSearchQueryResult = Apollo.QueryResult<
   LocalGetHospitalSearchQuery,
@@ -235,11 +250,26 @@ export function useLocalGetProductCartItemsLazyQuery(
     LocalGetProductCartItemsQueryVariables
   >(LocalGetProductCartItemsDocument, options);
 }
+export function useLocalGetProductCartItemsSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    LocalGetProductCartItemsQuery,
+    LocalGetProductCartItemsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    LocalGetProductCartItemsQuery,
+    LocalGetProductCartItemsQueryVariables
+  >(LocalGetProductCartItemsDocument, options);
+}
 export type LocalGetProductCartItemsQueryHookResult = ReturnType<
   typeof useLocalGetProductCartItemsQuery
 >;
 export type LocalGetProductCartItemsLazyQueryHookResult = ReturnType<
   typeof useLocalGetProductCartItemsLazyQuery
+>;
+export type LocalGetProductCartItemsSuspenseQueryHookResult = ReturnType<
+  typeof useLocalGetProductCartItemsSuspenseQuery
 >;
 export type LocalGetProductCartItemsQueryResult = Apollo.QueryResult<
   LocalGetProductCartItemsQuery,
@@ -292,11 +322,26 @@ export function useLocalReadIsAdminLazyQuery(
     LocalReadIsAdminQueryVariables
   >(LocalReadIsAdminDocument, options);
 }
+export function useLocalReadIsAdminSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    LocalReadIsAdminQuery,
+    LocalReadIsAdminQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    LocalReadIsAdminQuery,
+    LocalReadIsAdminQueryVariables
+  >(LocalReadIsAdminDocument, options);
+}
 export type LocalReadIsAdminQueryHookResult = ReturnType<
   typeof useLocalReadIsAdminQuery
 >;
 export type LocalReadIsAdminLazyQueryHookResult = ReturnType<
   typeof useLocalReadIsAdminLazyQuery
+>;
+export type LocalReadIsAdminSuspenseQueryHookResult = ReturnType<
+  typeof useLocalReadIsAdminSuspenseQuery
 >;
 export type LocalReadIsAdminQueryResult = Apollo.QueryResult<
   LocalReadIsAdminQuery,

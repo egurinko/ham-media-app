@@ -3467,11 +3467,26 @@ export function useInternalGetHospitalLazyQuery(
     InternalGetHospitalQueryVariables
   >(InternalGetHospitalDocument, options);
 }
+export function useInternalGetHospitalSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    InternalGetHospitalQuery,
+    InternalGetHospitalQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    InternalGetHospitalQuery,
+    InternalGetHospitalQueryVariables
+  >(InternalGetHospitalDocument, options);
+}
 export type InternalGetHospitalQueryHookResult = ReturnType<
   typeof useInternalGetHospitalQuery
 >;
 export type InternalGetHospitalLazyQueryHookResult = ReturnType<
   typeof useInternalGetHospitalLazyQuery
+>;
+export type InternalGetHospitalSuspenseQueryHookResult = ReturnType<
+  typeof useInternalGetHospitalSuspenseQuery
 >;
 export type InternalGetHospitalQueryResult = Apollo.QueryResult<
   InternalGetHospitalQuery,
@@ -3555,11 +3570,26 @@ export function useInternalGetHospitalConnectionLazyQuery(
     InternalGetHospitalConnectionQueryVariables
   >(InternalGetHospitalConnectionDocument, options);
 }
+export function useInternalGetHospitalConnectionSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    InternalGetHospitalConnectionQuery,
+    InternalGetHospitalConnectionQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    InternalGetHospitalConnectionQuery,
+    InternalGetHospitalConnectionQueryVariables
+  >(InternalGetHospitalConnectionDocument, options);
+}
 export type InternalGetHospitalConnectionQueryHookResult = ReturnType<
   typeof useInternalGetHospitalConnectionQuery
 >;
 export type InternalGetHospitalConnectionLazyQueryHookResult = ReturnType<
   typeof useInternalGetHospitalConnectionLazyQuery
+>;
+export type InternalGetHospitalConnectionSuspenseQueryHookResult = ReturnType<
+  typeof useInternalGetHospitalConnectionSuspenseQuery
 >;
 export type InternalGetHospitalConnectionQueryResult = Apollo.QueryResult<
   InternalGetHospitalConnectionQuery,
@@ -3612,11 +3642,26 @@ export function useInternalGetHospitalIdsLazyQuery(
     InternalGetHospitalIdsQueryVariables
   >(InternalGetHospitalIdsDocument, options);
 }
+export function useInternalGetHospitalIdsSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    InternalGetHospitalIdsQuery,
+    InternalGetHospitalIdsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    InternalGetHospitalIdsQuery,
+    InternalGetHospitalIdsQueryVariables
+  >(InternalGetHospitalIdsDocument, options);
+}
 export type InternalGetHospitalIdsQueryHookResult = ReturnType<
   typeof useInternalGetHospitalIdsQuery
 >;
 export type InternalGetHospitalIdsLazyQueryHookResult = ReturnType<
   typeof useInternalGetHospitalIdsLazyQuery
+>;
+export type InternalGetHospitalIdsSuspenseQueryHookResult = ReturnType<
+  typeof useInternalGetHospitalIdsSuspenseQuery
 >;
 export type InternalGetHospitalIdsQueryResult = Apollo.QueryResult<
   InternalGetHospitalIdsQuery,
@@ -3671,11 +3716,26 @@ export function useInternalGetInternalUserLazyQuery(
     InternalGetInternalUserQueryVariables
   >(InternalGetInternalUserDocument, options);
 }
+export function useInternalGetInternalUserSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    InternalGetInternalUserQuery,
+    InternalGetInternalUserQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    InternalGetInternalUserQuery,
+    InternalGetInternalUserQueryVariables
+  >(InternalGetInternalUserDocument, options);
+}
 export type InternalGetInternalUserQueryHookResult = ReturnType<
   typeof useInternalGetInternalUserQuery
 >;
 export type InternalGetInternalUserLazyQueryHookResult = ReturnType<
   typeof useInternalGetInternalUserLazyQuery
+>;
+export type InternalGetInternalUserSuspenseQueryHookResult = ReturnType<
+  typeof useInternalGetInternalUserSuspenseQuery
 >;
 export type InternalGetInternalUserQueryResult = Apollo.QueryResult<
   InternalGetInternalUserQuery,
@@ -3729,11 +3789,26 @@ export function useInternalGetInternalUsersLazyQuery(
     InternalGetInternalUsersQueryVariables
   >(InternalGetInternalUsersDocument, options);
 }
+export function useInternalGetInternalUsersSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    InternalGetInternalUsersQuery,
+    InternalGetInternalUsersQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    InternalGetInternalUsersQuery,
+    InternalGetInternalUsersQueryVariables
+  >(InternalGetInternalUsersDocument, options);
+}
 export type InternalGetInternalUsersQueryHookResult = ReturnType<
   typeof useInternalGetInternalUsersQuery
 >;
 export type InternalGetInternalUsersLazyQueryHookResult = ReturnType<
   typeof useInternalGetInternalUsersLazyQuery
+>;
+export type InternalGetInternalUsersSuspenseQueryHookResult = ReturnType<
+  typeof useInternalGetInternalUsersSuspenseQuery
 >;
 export type InternalGetInternalUsersQueryResult = Apollo.QueryResult<
   InternalGetInternalUsersQuery,
@@ -3788,11 +3863,26 @@ export function useInternalGetMakerLazyQuery(
     InternalGetMakerQueryVariables
   >(InternalGetMakerDocument, options);
 }
+export function useInternalGetMakerSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    InternalGetMakerQuery,
+    InternalGetMakerQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    InternalGetMakerQuery,
+    InternalGetMakerQueryVariables
+  >(InternalGetMakerDocument, options);
+}
 export type InternalGetMakerQueryHookResult = ReturnType<
   typeof useInternalGetMakerQuery
 >;
 export type InternalGetMakerLazyQueryHookResult = ReturnType<
   typeof useInternalGetMakerLazyQuery
+>;
+export type InternalGetMakerSuspenseQueryHookResult = ReturnType<
+  typeof useInternalGetMakerSuspenseQuery
 >;
 export type InternalGetMakerQueryResult = Apollo.QueryResult<
   InternalGetMakerQuery,
@@ -3846,11 +3936,26 @@ export function useInternalGetMakersLazyQuery(
     InternalGetMakersQueryVariables
   >(InternalGetMakersDocument, options);
 }
+export function useInternalGetMakersSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    InternalGetMakersQuery,
+    InternalGetMakersQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    InternalGetMakersQuery,
+    InternalGetMakersQueryVariables
+  >(InternalGetMakersDocument, options);
+}
 export type InternalGetMakersQueryHookResult = ReturnType<
   typeof useInternalGetMakersQuery
 >;
 export type InternalGetMakersLazyQueryHookResult = ReturnType<
   typeof useInternalGetMakersLazyQuery
+>;
+export type InternalGetMakersSuspenseQueryHookResult = ReturnType<
+  typeof useInternalGetMakersSuspenseQuery
 >;
 export type InternalGetMakersQueryResult = Apollo.QueryResult<
   InternalGetMakersQuery,
@@ -3905,11 +4010,26 @@ export function useInternalGetProductLazyQuery(
     InternalGetProductQueryVariables
   >(InternalGetProductDocument, options);
 }
+export function useInternalGetProductSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    InternalGetProductQuery,
+    InternalGetProductQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    InternalGetProductQuery,
+    InternalGetProductQueryVariables
+  >(InternalGetProductDocument, options);
+}
 export type InternalGetProductQueryHookResult = ReturnType<
   typeof useInternalGetProductQuery
 >;
 export type InternalGetProductLazyQueryHookResult = ReturnType<
   typeof useInternalGetProductLazyQuery
+>;
+export type InternalGetProductSuspenseQueryHookResult = ReturnType<
+  typeof useInternalGetProductSuspenseQuery
 >;
 export type InternalGetProductQueryResult = Apollo.QueryResult<
   InternalGetProductQuery,
@@ -3999,11 +4119,26 @@ export function useInternalGetProductConnectionLazyQuery(
     InternalGetProductConnectionQueryVariables
   >(InternalGetProductConnectionDocument, options);
 }
+export function useInternalGetProductConnectionSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    InternalGetProductConnectionQuery,
+    InternalGetProductConnectionQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    InternalGetProductConnectionQuery,
+    InternalGetProductConnectionQueryVariables
+  >(InternalGetProductConnectionDocument, options);
+}
 export type InternalGetProductConnectionQueryHookResult = ReturnType<
   typeof useInternalGetProductConnectionQuery
 >;
 export type InternalGetProductConnectionLazyQueryHookResult = ReturnType<
   typeof useInternalGetProductConnectionLazyQuery
+>;
+export type InternalGetProductConnectionSuspenseQueryHookResult = ReturnType<
+  typeof useInternalGetProductConnectionSuspenseQuery
 >;
 export type InternalGetProductConnectionQueryResult = Apollo.QueryResult<
   InternalGetProductConnectionQuery,
@@ -4056,11 +4191,26 @@ export function useInternalGetProductIdsLazyQuery(
     InternalGetProductIdsQueryVariables
   >(InternalGetProductIdsDocument, options);
 }
+export function useInternalGetProductIdsSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    InternalGetProductIdsQuery,
+    InternalGetProductIdsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    InternalGetProductIdsQuery,
+    InternalGetProductIdsQueryVariables
+  >(InternalGetProductIdsDocument, options);
+}
 export type InternalGetProductIdsQueryHookResult = ReturnType<
   typeof useInternalGetProductIdsQuery
 >;
 export type InternalGetProductIdsLazyQueryHookResult = ReturnType<
   typeof useInternalGetProductIdsLazyQuery
+>;
+export type InternalGetProductIdsSuspenseQueryHookResult = ReturnType<
+  typeof useInternalGetProductIdsSuspenseQuery
 >;
 export type InternalGetProductIdsQueryResult = Apollo.QueryResult<
   InternalGetProductIdsQuery,
@@ -4115,11 +4265,26 @@ export function useInternalGetProductTagGroupLazyQuery(
     InternalGetProductTagGroupQueryVariables
   >(InternalGetProductTagGroupDocument, options);
 }
+export function useInternalGetProductTagGroupSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    InternalGetProductTagGroupQuery,
+    InternalGetProductTagGroupQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    InternalGetProductTagGroupQuery,
+    InternalGetProductTagGroupQueryVariables
+  >(InternalGetProductTagGroupDocument, options);
+}
 export type InternalGetProductTagGroupQueryHookResult = ReturnType<
   typeof useInternalGetProductTagGroupQuery
 >;
 export type InternalGetProductTagGroupLazyQueryHookResult = ReturnType<
   typeof useInternalGetProductTagGroupLazyQuery
+>;
+export type InternalGetProductTagGroupSuspenseQueryHookResult = ReturnType<
+  typeof useInternalGetProductTagGroupSuspenseQuery
 >;
 export type InternalGetProductTagGroupQueryResult = Apollo.QueryResult<
   InternalGetProductTagGroupQuery,
@@ -4172,11 +4337,26 @@ export function useInternalGetProductTagGroupIdsLazyQuery(
     InternalGetProductTagGroupIdsQueryVariables
   >(InternalGetProductTagGroupIdsDocument, options);
 }
+export function useInternalGetProductTagGroupIdsSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    InternalGetProductTagGroupIdsQuery,
+    InternalGetProductTagGroupIdsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    InternalGetProductTagGroupIdsQuery,
+    InternalGetProductTagGroupIdsQueryVariables
+  >(InternalGetProductTagGroupIdsDocument, options);
+}
 export type InternalGetProductTagGroupIdsQueryHookResult = ReturnType<
   typeof useInternalGetProductTagGroupIdsQuery
 >;
 export type InternalGetProductTagGroupIdsLazyQueryHookResult = ReturnType<
   typeof useInternalGetProductTagGroupIdsLazyQuery
+>;
+export type InternalGetProductTagGroupIdsSuspenseQueryHookResult = ReturnType<
+  typeof useInternalGetProductTagGroupIdsSuspenseQuery
 >;
 export type InternalGetProductTagGroupIdsQueryResult = Apollo.QueryResult<
   InternalGetProductTagGroupIdsQuery,
@@ -4230,11 +4410,26 @@ export function useInternalGetProductTagGroupsLazyQuery(
     InternalGetProductTagGroupsQueryVariables
   >(InternalGetProductTagGroupsDocument, options);
 }
+export function useInternalGetProductTagGroupsSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    InternalGetProductTagGroupsQuery,
+    InternalGetProductTagGroupsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    InternalGetProductTagGroupsQuery,
+    InternalGetProductTagGroupsQueryVariables
+  >(InternalGetProductTagGroupsDocument, options);
+}
 export type InternalGetProductTagGroupsQueryHookResult = ReturnType<
   typeof useInternalGetProductTagGroupsQuery
 >;
 export type InternalGetProductTagGroupsLazyQueryHookResult = ReturnType<
   typeof useInternalGetProductTagGroupsLazyQuery
+>;
+export type InternalGetProductTagGroupsSuspenseQueryHookResult = ReturnType<
+  typeof useInternalGetProductTagGroupsSuspenseQuery
 >;
 export type InternalGetProductTagGroupsQueryResult = Apollo.QueryResult<
   InternalGetProductTagGroupsQuery,
@@ -4289,11 +4484,26 @@ export function useInternalGetProductsLazyQuery(
     InternalGetProductsQueryVariables
   >(InternalGetProductsDocument, options);
 }
+export function useInternalGetProductsSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    InternalGetProductsQuery,
+    InternalGetProductsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    InternalGetProductsQuery,
+    InternalGetProductsQueryVariables
+  >(InternalGetProductsDocument, options);
+}
 export type InternalGetProductsQueryHookResult = ReturnType<
   typeof useInternalGetProductsQuery
 >;
 export type InternalGetProductsLazyQueryHookResult = ReturnType<
   typeof useInternalGetProductsLazyQuery
+>;
+export type InternalGetProductsSuspenseQueryHookResult = ReturnType<
+  typeof useInternalGetProductsSuspenseQuery
 >;
 export type InternalGetProductsQueryResult = Apollo.QueryResult<
   InternalGetProductsQuery,
@@ -4347,11 +4557,26 @@ export function useInternalGetRolesLazyQuery(
     InternalGetRolesQueryVariables
   >(InternalGetRolesDocument, options);
 }
+export function useInternalGetRolesSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    InternalGetRolesQuery,
+    InternalGetRolesQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    InternalGetRolesQuery,
+    InternalGetRolesQueryVariables
+  >(InternalGetRolesDocument, options);
+}
 export type InternalGetRolesQueryHookResult = ReturnType<
   typeof useInternalGetRolesQuery
 >;
 export type InternalGetRolesLazyQueryHookResult = ReturnType<
   typeof useInternalGetRolesLazyQuery
+>;
+export type InternalGetRolesSuspenseQueryHookResult = ReturnType<
+  typeof useInternalGetRolesSuspenseQuery
 >;
 export type InternalGetRolesQueryResult = Apollo.QueryResult<
   InternalGetRolesQuery,
@@ -4408,11 +4633,26 @@ export function useInternalGetSessionLazyQuery(
     InternalGetSessionQueryVariables
   >(InternalGetSessionDocument, options);
 }
+export function useInternalGetSessionSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    InternalGetSessionQuery,
+    InternalGetSessionQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    InternalGetSessionQuery,
+    InternalGetSessionQueryVariables
+  >(InternalGetSessionDocument, options);
+}
 export type InternalGetSessionQueryHookResult = ReturnType<
   typeof useInternalGetSessionQuery
 >;
 export type InternalGetSessionLazyQueryHookResult = ReturnType<
   typeof useInternalGetSessionLazyQuery
+>;
+export type InternalGetSessionSuspenseQueryHookResult = ReturnType<
+  typeof useInternalGetSessionSuspenseQuery
 >;
 export type InternalGetSessionQueryResult = Apollo.QueryResult<
   InternalGetSessionQuery,
@@ -4467,11 +4707,26 @@ export function useInternalGetStockRequestLazyQuery(
     InternalGetStockRequestQueryVariables
   >(InternalGetStockRequestDocument, options);
 }
+export function useInternalGetStockRequestSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    InternalGetStockRequestQuery,
+    InternalGetStockRequestQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    InternalGetStockRequestQuery,
+    InternalGetStockRequestQueryVariables
+  >(InternalGetStockRequestDocument, options);
+}
 export type InternalGetStockRequestQueryHookResult = ReturnType<
   typeof useInternalGetStockRequestQuery
 >;
 export type InternalGetStockRequestLazyQueryHookResult = ReturnType<
   typeof useInternalGetStockRequestLazyQuery
+>;
+export type InternalGetStockRequestSuspenseQueryHookResult = ReturnType<
+  typeof useInternalGetStockRequestSuspenseQuery
 >;
 export type InternalGetStockRequestQueryResult = Apollo.QueryResult<
   InternalGetStockRequestQuery,
@@ -4546,12 +4801,26 @@ export function useInternalGetStockRequestConnectionLazyQuery(
     InternalGetStockRequestConnectionQueryVariables
   >(InternalGetStockRequestConnectionDocument, options);
 }
+export function useInternalGetStockRequestConnectionSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    InternalGetStockRequestConnectionQuery,
+    InternalGetStockRequestConnectionQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    InternalGetStockRequestConnectionQuery,
+    InternalGetStockRequestConnectionQueryVariables
+  >(InternalGetStockRequestConnectionDocument, options);
+}
 export type InternalGetStockRequestConnectionQueryHookResult = ReturnType<
   typeof useInternalGetStockRequestConnectionQuery
 >;
 export type InternalGetStockRequestConnectionLazyQueryHookResult = ReturnType<
   typeof useInternalGetStockRequestConnectionLazyQuery
 >;
+export type InternalGetStockRequestConnectionSuspenseQueryHookResult =
+  ReturnType<typeof useInternalGetStockRequestConnectionSuspenseQuery>;
 export type InternalGetStockRequestConnectionQueryResult = Apollo.QueryResult<
   InternalGetStockRequestConnectionQuery,
   InternalGetStockRequestConnectionQueryVariables
@@ -4605,11 +4874,26 @@ export function useInternalGetStocksLazyQuery(
     InternalGetStocksQueryVariables
   >(InternalGetStocksDocument, options);
 }
+export function useInternalGetStocksSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    InternalGetStocksQuery,
+    InternalGetStocksQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    InternalGetStocksQuery,
+    InternalGetStocksQueryVariables
+  >(InternalGetStocksDocument, options);
+}
 export type InternalGetStocksQueryHookResult = ReturnType<
   typeof useInternalGetStocksQuery
 >;
 export type InternalGetStocksLazyQueryHookResult = ReturnType<
   typeof useInternalGetStocksLazyQuery
+>;
+export type InternalGetStocksSuspenseQueryHookResult = ReturnType<
+  typeof useInternalGetStocksSuspenseQuery
 >;
 export type InternalGetStocksQueryResult = Apollo.QueryResult<
   InternalGetStocksQuery,
