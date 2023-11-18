@@ -1,6 +1,7 @@
-import { Box, Badge, Button } from '@chakra-ui/react';
+import { Box, Badge } from '@chakra-ui/react';
 import Link from 'next/link';
 import { memo } from 'react';
+import { SecondaryButton } from '@/components/atoms/SecondaryButton';
 import { CartIcon } from '@/components/atoms/assets/CartIcon';
 import { useLocalGetProductCartItemsQuery } from '@/services/api/local_api/types';
 import { ADMIN_STOCK_REQUESTS_NEW_PATH } from '@/utils/routes';
@@ -14,31 +15,32 @@ const StockRequestCartButton: FC<NoProps> = () => {
   );
   return (
     <Box position="fixed" right="3" bottom="3">
-      <Button
-        w="16"
-        height="16"
-        fill="primary.main"
-        bgColor="primary.light"
-        color="primary.main"
-        borderRadius="50%"
-        boxShadow="lg"
-        as={Link}
+      <Link
         href={ADMIN_STOCK_REQUESTS_NEW_PATH}
+        passHref
+        style={{ display: 'block' }}
       >
-        <Box ml="-2">
-          <CartIcon width={45} height={45} />
-        </Box>
-        <Badge
-          ml="-8"
-          mb="1"
-          color="primary.main"
-          bg="transparent"
+        <SecondaryButton
+          w="16"
+          height="16"
+          fill="primary.main"
           borderRadius="50%"
-          fontSize="md"
+          boxShadow="lg"
         >
-          {count || 0}
-        </Badge>
-      </Button>
+          <Box ml="-2">
+            <CartIcon width={45} height={45} />
+          </Box>
+          <Badge
+            ml="-8"
+            mb="1"
+            colorScheme="unset"
+            borderRadius="50%"
+            fontSize="md"
+          >
+            {count || 0}
+          </Badge>
+        </SecondaryButton>
+      </Link>
     </Box>
   );
 };
