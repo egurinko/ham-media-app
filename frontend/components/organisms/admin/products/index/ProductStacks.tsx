@@ -91,8 +91,8 @@ const ProductStacks: FC<NoProps> = () => {
       productSearch.hasStock
         ? PRODUCT_STOCK.HAS
         : productSearch.hasStock === false
-        ? PRODUCT_STOCK.NOT
-        : PRODUCT_STOCK.ALL,
+          ? PRODUCT_STOCK.NOT
+          : PRODUCT_STOCK.ALL,
     );
   }, []);
 
@@ -129,8 +129,8 @@ const ProductStacks: FC<NoProps> = () => {
         productStock === PRODUCT_STOCK.HAS
           ? true
           : productStock === PRODUCT_STOCK.NOT
-          ? false
-          : undefined,
+            ? false
+            : undefined,
     });
     fetchMore({
       variables: {

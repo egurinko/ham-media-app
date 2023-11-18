@@ -20,41 +20,41 @@ export const Typography: FC<PropsWithChildren<Props>> = ({
     variant === 'minimal' || variant === 'caption'
       ? 'span'
       : variant === 'body1' || variant === 'body2'
-      ? 'p'
-      : variant === 'subhead'
-      ? 'h4'
-      : variant === 'headlineS'
-      ? 'h3'
-      : variant === 'headlineM'
-      ? 'h2'
-      : variant === 'headlineL'
-      ? 'h1'
-      : 'p';
+        ? 'p'
+        : variant === 'subhead'
+          ? 'h4'
+          : variant === 'headlineS'
+            ? 'h3'
+            : variant === 'headlineM'
+              ? 'h2'
+              : variant === 'headlineL'
+                ? 'h1'
+                : 'p';
 
   const variantStyle = css({
     display: display
       ? display
       : variant === 'minimal' || variant === 'caption'
-      ? 'inline'
-      : 'block',
+        ? 'inline'
+        : 'block',
     textStyle:
       variant === 'minimal'
         ? 'minimal'
         : variant === 'caption'
-        ? 'caption'
-        : variant === 'body1'
-        ? 'body1'
-        : variant === 'body2'
-        ? 'body2'
-        : variant === 'subhead'
-        ? 'subhead'
-        : variant === 'headlineS'
-        ? 'headlineS'
-        : variant === 'headlineM'
-        ? 'headlineM'
-        : variant === 'headlineL'
-        ? 'headlineL'
-        : 'headlineL',
+          ? 'caption'
+          : variant === 'body1'
+            ? 'body1'
+            : variant === 'body2'
+              ? 'body2'
+              : variant === 'subhead'
+                ? 'subhead'
+                : variant === 'headlineS'
+                  ? 'headlineS'
+                  : variant === 'headlineM'
+                    ? 'headlineM'
+                    : variant === 'headlineL'
+                      ? 'headlineL'
+                      : 'headlineL',
     fontWeight: bold ? 'bold' : 'normal',
   });
 

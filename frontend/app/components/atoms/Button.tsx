@@ -31,22 +31,22 @@ export const Button: React.FC<ButtonProps> = ({
       size === 'xs'
         ? '2'
         : size === 'sm'
-        ? '3'
-        : size === 'md'
-        ? '4'
-        : size === 'lg'
-        ? '5'
-        : '3',
+          ? '3'
+          : size === 'md'
+            ? '4'
+            : size === 'lg'
+              ? '5'
+              : '3',
     height:
       size === 'xs'
         ? '24px'
         : size === 'sm'
-        ? '32px'
-        : size === 'md'
-        ? '40px'
-        : size === 'lg'
-        ? '48px'
-        : '32px',
+          ? '32px'
+          : size === 'md'
+            ? '40px'
+            : size === 'lg'
+              ? '48px'
+              : '32px',
   });
 
   return (

@@ -139,14 +139,14 @@ export const DetailCard: FC<Props> = async ({ hospitalId }) => {
             HOSPITAL_STATUSES.YES
               ? '予約必須'
               : hospital.hospitalReservationStatus?.reservable ===
-                HOSPITAL_STATUSES.NO
-              ? '予約不可'
-              : hospital.hospitalReservationStatus?.required ===
-                  HOSPITAL_STATUSES.NO &&
-                hospital.hospitalReservationStatus?.reservable ===
-                  HOSPITAL_STATUSES.YES
-              ? '予約なしでOK'
-              : '予約については公式HPを確認'}
+                  HOSPITAL_STATUSES.NO
+                ? '予約不可'
+                : hospital.hospitalReservationStatus?.required ===
+                      HOSPITAL_STATUSES.NO &&
+                    hospital.hospitalReservationStatus?.reservable ===
+                      HOSPITAL_STATUSES.YES
+                  ? '予約なしでOK'
+                  : '予約については公式HPを確認'}
 
             <div
               className={css({
@@ -180,9 +180,9 @@ export const DetailCard: FC<Props> = async ({ hospitalId }) => {
             HOSPITAL_STATUSES.YES
               ? '夜間営業あり'
               : hospital.hospitalNightServiceOption?.status ===
-                HOSPITAL_STATUSES.NO
-              ? '夜間営業なし'
-              : '夜間営業については公式HPを確認'}
+                  HOSPITAL_STATUSES.NO
+                ? '夜間営業なし'
+                : '夜間営業については公式HPを確認'}
             <div
               className={css({
                 mt: 4,
@@ -192,9 +192,9 @@ export const DetailCard: FC<Props> = async ({ hospitalId }) => {
               HOSPITAL_STATUSES.YES
                 ? '■ 夜間救急対応あり'
                 : hospital.hospitalNightUrgentActionOption?.status ===
-                  HOSPITAL_STATUSES.NO
-                ? '■ 夜間救急対応なし'
-                : '■ 夜間救急対応については公式HPを確認'}
+                    HOSPITAL_STATUSES.NO
+                  ? '■ 夜間救急対応なし'
+                  : '■ 夜間救急対応については公式HPを確認'}
             </div>
             {hospital.hospitalBusinessForm?.closed_day}
 

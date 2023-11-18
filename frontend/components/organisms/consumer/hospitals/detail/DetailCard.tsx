@@ -99,14 +99,14 @@ const DetailCard: FC<Props> = ({ hospital }) => (
                 HOSPITAL_STATUSES.YES
                   ? '■ 予約必須'
                   : hospital.hospitalReservationStatus?.reservable ===
-                    HOSPITAL_STATUSES.NO
-                  ? '■ 予約不可'
-                  : hospital.hospitalReservationStatus?.required ===
-                      HOSPITAL_STATUSES.NO &&
-                    hospital.hospitalReservationStatus?.reservable ===
-                      HOSPITAL_STATUSES.YES
-                  ? '■ 予約なしでOK'
-                  : '■ 予約については公式HPを確認'}
+                      HOSPITAL_STATUSES.NO
+                    ? '■ 予約不可'
+                    : hospital.hospitalReservationStatus?.required ===
+                          HOSPITAL_STATUSES.NO &&
+                        hospital.hospitalReservationStatus?.reservable ===
+                          HOSPITAL_STATUSES.YES
+                      ? '■ 予約なしでOK'
+                      : '■ 予約については公式HPを確認'}
               </Box>
               <Box my="2">
                 <Text>■ 備考</Text>
@@ -134,18 +134,18 @@ const DetailCard: FC<Props> = ({ hospital }) => (
                 HOSPITAL_STATUSES.YES
                   ? '■ 夜間営業あり'
                   : hospital.hospitalNightServiceOption?.status ===
-                    HOSPITAL_STATUSES.NO
-                  ? '■ 夜間営業なし'
-                  : '■ 夜間営業については公式HPを確認'}
+                      HOSPITAL_STATUSES.NO
+                    ? '■ 夜間営業なし'
+                    : '■ 夜間営業については公式HPを確認'}
               </Box>
               <Box my="2">
                 {hospital.hospitalNightUrgentActionOption?.status ===
                 HOSPITAL_STATUSES.YES
                   ? '■ 夜間救急対応あり'
                   : hospital.hospitalNightUrgentActionOption?.status ===
-                    HOSPITAL_STATUSES.NO
-                  ? '■ 夜間救急対応なし'
-                  : '■ 夜間救急対応については公式HPを確認'}
+                      HOSPITAL_STATUSES.NO
+                    ? '■ 夜間救急対応なし'
+                    : '■ 夜間救急対応については公式HPを確認'}
               </Box>
               <Box my="2">
                 <Text>■ 備考</Text>
