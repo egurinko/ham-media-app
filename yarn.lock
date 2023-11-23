@@ -13267,7 +13267,7 @@ mercurius-upload@^7.0.0:
     fastify-plugin "^4.2.0"
     graphql-upload-minimal "^1.5.5"
 
-mercurius@^13.3.0:
+mercurius@^13.3.1:
   version "13.3.1"
   resolved "https://registry.yarnpkg.com/mercurius/-/mercurius-13.3.1.tgz#d02c1ed4fe1466222c3382d0ccc6024ef53e321c"
   integrity sha512-jUeo3pO1H/Etpipa9RB5kDbXX2NsIH3IBnAIlDYoNaOeuo3Ka9nNH0ujYTnjkpytuAdygnStU/hcm1afwTKYlA==
