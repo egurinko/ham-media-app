@@ -5,7 +5,7 @@ import type { RegionalHospitals } from '@/services/line/views';
 
 export const getLocationEventReplyMessage = async (
   message: LocationEventMessage
-): Promise<Message | Message[]> => {
+): Promise<Message[]> => {
   const hospitals = await getHospitals();
   const sorted = sortHospital(hospitals, {
     latitude: message.latitude,
@@ -13,7 +13,7 @@ export const getLocationEventReplyMessage = async (
   });
   const sliced = sorted.slice(0, 10);
 
-  return createLocationReplyMessage(sliced);
+  return [createLocationReplyMessage(sliced)];
 };
 
 const getHospitals = async (): Promise<RegionalHospitals> => {

@@ -16,12 +16,12 @@ const TEXT_TYPES = {
 
 export const getTextEventReplyMessage = async (
   message: TextEventMessage
-): Promise<Message | Message[]> => {
+): Promise<Message[]> => {
   if (message.text === TEXT_TYPES.LIST_OFFERING_HAMSTERS) {
     return getListOfferingHamstersReplyMessage();
   }
   if (message.text === TEXT_TYPES.SEARCH_HOSPITALS) {
-    return getSearchHospitalsReplyMessage;
+    return [getSearchHospitalsReplyMessage];
   }
   if (message.text === TEXT_TYPES.SEARCH_NIGHT_SERVICE_HOSPITALS) {
     return getSearchNightServiceHospitalsReplyMessage();
@@ -31,7 +31,7 @@ export const getTextEventReplyMessage = async (
     return getSearchNightServiceHospitalsRegionallyReplyMessage(message.text);
   }
 
-  return createUnprocessableReplyMessage;
+  return [createUnprocessableReplyMessage];
 };
 
 const getIsNightRegionalHospitalText = async (

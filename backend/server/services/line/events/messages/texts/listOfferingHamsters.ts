@@ -7,17 +7,17 @@ import {
 } from '@/services/line/views';
 
 export const getListOfferingHamstersReplyMessage = async (): Promise<
-  TextMessage | FlexMessage
+  (TextMessage | FlexMessage)[]
 > => {
   try {
     const response = await wordPressApi.getOfferingHamsters();
     if (response.data.length === 0) {
-      return createNoOfferingHamstersReplyMessage;
+      return [createNoOfferingHamstersReplyMessage];
     } else {
       const sliced = response.data.slice(0, 10);
-      return createOfferingHamstersReplyMessage(sliced);
+      return [createOfferingHamstersReplyMessage(sliced)];
     }
   } catch (_e) {
-    return createWordpressErrorReplyMessage;
+    return [createWordpressErrorReplyMessage];
   }
 };

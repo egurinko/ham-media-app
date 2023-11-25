@@ -20,16 +20,22 @@ export const handleMessageEvent = async (event: MessageEvent) => {
   switch (event.message.type) {
     case MESSAGE_TYPES.TEXT: {
       const reply = await getTextEventReplyMessage(event.message);
-      return client.replyMessage(event.replyToken, reply);
+      return client.replyMessage({
+        replyToken: event.replyToken,
+        messages: reply,
+      });
     }
     case MESSAGE_TYPES.LOCATION: {
       const reply = await getLocationEventReplyMessage(event.message);
-      return client.replyMessage(event.replyToken, reply);
+      return client.replyMessage({
+        replyToken: event.replyToken,
+        messages: reply,
+      });
     }
     default:
-      return client.replyMessage(
-        event.replyToken,
-        createUnprocessableReplyMessage
-      );
+      return client.replyMessage({
+        replyToken: event.replyToken,
+        messages: [createUnprocessableReplyMessage],
+      });
   }
 };

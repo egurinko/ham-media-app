@@ -7,11 +7,11 @@ import type { RegionalHospitals } from '@/services/line/views';
 
 export const getSearchNightServiceHospitalsRegionallyReplyMessage = async (
   text: string
-): Promise<FlexMessage> => {
+): Promise<[FlexMessage]> => {
   const hospitals = await getRegionalHospitals(text);
   const sliced = hospitals.slice(0, 10);
 
-  return createSearchNightServiceHospitalsRegionallyReplyMessage(sliced);
+  return [createSearchNightServiceHospitalsRegionallyReplyMessage(sliced)];
 };
 
 const getRegionalPrefectures = async (text: string): Promise<Prefecture[]> => {
