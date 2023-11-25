@@ -1,14 +1,11 @@
 import { defineConfig } from '@pandacss/dev';
 
 export default defineConfig({
-  // Whether to use css reset
   preflight: true,
-
-  // Where to look for your css declarations
+  presets: ['@pandacss/preset-base', '@pandacss/preset-panda'],
   include: ['./app/**/*.{js,jsx,ts,tsx}'],
-
-  // Files to exclude
   exclude: [],
+  jsxFramework: 'react',
   globalCss: {
     'html, body': {
       color: '#6F6F6F',
