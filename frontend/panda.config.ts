@@ -325,6 +325,101 @@ export default defineConfig({
             },
           },
         },
+        // https://github.com/material-components/material-web/blob/main/tokens/v0_192/_md-sys-motion.scss
+        easings: {
+          emphasized: {
+            value: {
+              base: 'cubic-bezier(0.2, 0, 0, 1)',
+            },
+          },
+          'emphasized-accelerate': {
+            value: {
+              base: 'cubic-bezier(0.3, 0, 0.8, 0.15)',
+            },
+          },
+          'emphasized-decelerate': {
+            value: {
+              base: 'cubic-bezier(0.05, 0.7, 0.1, 1)',
+            },
+          },
+          standard: {
+            value: {
+              base: 'cubic-bezier(0.2, 0, 0, 1)',
+            },
+          },
+          'standard-accelerate': {
+            value: {
+              base: 'cubic-bezier(0.3, 0, 1, 1)',
+            },
+          },
+          'standard-decelerate': {
+            value: {
+              base: 'cubic-bezier(0, 0, 0, 1)',
+            },
+          },
+        },
+        durations: {
+          long1: {
+            value: {
+              base: '0.45s',
+            },
+          },
+          long2: {
+            value: {
+              base: '0.5s',
+            },
+          },
+          long3: {
+            value: {
+              base: '0.55s',
+            },
+          },
+          long4: {
+            value: {
+              base: '0.6s',
+            },
+          },
+          medium1: {
+            value: {
+              base: '0.25s',
+            },
+          },
+          medium2: {
+            value: {
+              base: '0.3s',
+            },
+          },
+          medium3: {
+            value: {
+              base: '0.35s',
+            },
+          },
+          medium4: {
+            value: {
+              base: '0.4s',
+            },
+          },
+          short1: {
+            value: {
+              base: '0.05s',
+            },
+          },
+          short2: {
+            value: {
+              base: '0.1s',
+            },
+          },
+          short3: {
+            value: {
+              base: '0.15s',
+            },
+          },
+          short4: {
+            value: {
+              base: '0.2s',
+            },
+          },
+        },
       },
     },
     textStyles: {
