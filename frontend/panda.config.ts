@@ -420,6 +420,43 @@ export default defineConfig({
             },
           },
         },
+        radii: {
+          none: {
+            value: {
+              base: '0px',
+            },
+          },
+          xs: {
+            value: {
+              base: '4px',
+            },
+          },
+          sm: {
+            value: {
+              base: '8px',
+            },
+          },
+          md: {
+            value: {
+              base: '12px',
+            },
+          },
+          lg: {
+            value: {
+              base: '16px',
+            },
+          },
+          xl: {
+            value: {
+              base: '28px',
+            },
+          },
+          full: {
+            value: {
+              base: '9999px',
+            },
+          },
+        },
       },
     },
     textStyles: {
