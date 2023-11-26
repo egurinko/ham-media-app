@@ -233,7 +233,7 @@ export const DetailCard: FC<Props> = async ({ hospitalId }) => {
           </Typography>
         </div>
         <Divider />
-        <Button variant="secondary" size="md" fullWidth>
+        <Button visual="tonal" size="md" fullWidth>
           <a
             href={`tel:${hospital.hospitalAddress?.phone_number}`}
             className={css({
