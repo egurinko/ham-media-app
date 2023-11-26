@@ -12,6 +12,7 @@ export default function Layout({ children }: Props) {
       className={css({
         bgColor: 'background.main',
         minH: '100vh',
+        color: 'background.on-main',
       })}
     >
       <Header />

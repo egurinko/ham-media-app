@@ -28,7 +28,7 @@ const Footer: FC<Props> = () => (
       </Box>
     </Box>
     <Box display="flex" justifyContent="center">
-      <Text>© 2021 一般社団法人 ハムメディア</Text>
+      <Text>© 一般社団法人 ハムメディア</Text>
     </Box>
   </footer>
 );

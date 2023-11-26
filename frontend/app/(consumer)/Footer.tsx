@@ -50,9 +50,7 @@ export const Footer: FC<NoProps> = () => (
         justifyContent: 'center',
       })}
     >
-      <Typography variant="caption">
-        © 2021 一般社団法人 ハムメディア
-      </Typography>
+      <Typography variant="caption">© 一般社団法人 ハムメディア</Typography>
     </div>
   </footer>
 );

@@ -8,7 +8,6 @@ export default defineConfig({
   jsxFramework: 'react',
   globalCss: {
     'html, body': {
-      color: '#6F6F6F',
       fontSize: '16px',
     },
   },
@@ -271,6 +270,12 @@ export default defineConfig({
                 _dark: '{colors.gray.90}',
               },
             },
+            'container-highest': {
+              value: {
+                base: '#FAF0F4',
+                _dark: '#2A2220',
+              },
+            },
             variant: {
               value: {
                 base: '{colors.gray-variant.90}',
@@ -471,4 +476,8 @@ export default defineConfig({
     },
   },
   outdir: 'styled-system',
+  conditions: {
+    light: '[data-color-mode=light] &',
+    dark: '[data-color-mode=dark] &',
+  },
 });

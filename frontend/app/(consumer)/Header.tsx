@@ -13,7 +13,7 @@ export const Header: FC<NoProps> = () => (
         alignItems: 'center',
         position: 'relative',
         height: '60px',
-        bgColor: 'white',
+        bgColor: 'background.main',
       })}
     >
       <div className={css({ cursor: 'pointer', mr: '5' })}>
