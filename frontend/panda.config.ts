@@ -327,6 +327,16 @@ export default defineConfig({
           },
         },
       },
+      fontSizes: {
+        minimal: { value: '0.5rem' },
+        caption: { value: '0.733rem' },
+        body2: { value: '0.866rem' },
+        body1: { value: '1rem' },
+        subhead: { value: '1.133rem' },
+        headlineS: { value: '1.4rem' },
+        headlineM: { value: '1.6rem' },
+        headlineL: { value: '2rem' },
+      },
       shadows: {
         none: {
           value: {
