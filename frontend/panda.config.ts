@@ -6,11 +6,6 @@ export default defineConfig({
   include: ['./app/**/*.{js,jsx,ts,tsx}'],
   exclude: [],
   jsxFramework: 'react',
-  globalCss: {
-    'html, body': {
-      fontSize: '16px',
-    },
-  },
   theme: {
     extend: {
       tokens: {
@@ -465,14 +460,15 @@ export default defineConfig({
       },
     },
     textStyles: {
-      minimal: { value: { fontSize: '8px', lineHeight: '1rem' } },
-      caption: { value: { fontSize: 'xs', lineHeight: '1.125rem' } },
-      body2: { value: { fontSize: 'sm', lineHeight: '1.25rem' } },
-      body1: { value: { fontSize: 'md', lineHeight: '1.5rem' } },
-      subhead: { value: { fontSize: 'lg', lineHeight: '1.875rem' } },
-      headlineS: { value: { fontSize: 'xl', lineHeight: '1.875rem' } },
-      headlineM: { value: { fontSize: '2xl', lineHeight: '2rem' } },
-      headlineL: { value: { fontSize: '6xl', lineHeight: '3rem' } },
+      // line-height is decided by accessiblity: https://www.w3.org/TR/WCAG21/#text-spacing
+      minimal: { value: { fontSize: '0.5rem', lineHeight: '1.5' } },
+      caption: { value: { fontSize: '0.733rem', lineHeight: '1.5' } },
+      body2: { value: { fontSize: '0.866rem', lineHeight: '1.75' } },
+      body1: { value: { fontSize: '1rem', lineHeight: '1.75' } },
+      subhead: { value: { fontSize: '1.133rem', lineHeight: '1.75' } },
+      headlineS: { value: { fontSize: '1.4rem', lineHeight: '1.5' } },
+      headlineM: { value: { fontSize: '1.6rem', lineHeight: '1.5' } },
+      headlineL: { value: { fontSize: '2rem', lineHeight: '1.5' } },
     },
   },
   outdir: 'styled-system',
