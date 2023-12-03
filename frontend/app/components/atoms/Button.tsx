@@ -4,7 +4,7 @@ import { cva } from '@/styled/css';
 import { styled } from '@/styled/jsx';
 import type { ComponentPropsWithoutRef } from 'react';
 
-const buttonStyle = cva({
+export const buttonStyle = cva({
   base: {
     cursor: 'pointer',
     borderRadius: 'full',
@@ -13,6 +13,9 @@ const buttonStyle = cva({
     transitionDuration: 'short4',
     transitionTimingFunction: 'standard',
     transitionDelay: '0',
+    display: 'inline-flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     _hover: {
       boxShadow: 'xs',
     },
@@ -27,6 +30,7 @@ const buttonStyle = cva({
   defaultVariants: {
     visual: 'primary',
     fullWidth: false,
+    size: 'md',
   },
   variants: {
     visual: {
