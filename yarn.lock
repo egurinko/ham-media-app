@@ -13664,10 +13664,10 @@ react-is@^18.0.0:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.2.0.tgz#199431eeaaa2e09f86427efbb4f1473edb47609b"
   integrity sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==
 
-react-medium-image-zoom@^5.1.8:
-  version "5.1.8"
-  resolved "https://registry.yarnpkg.com/react-medium-image-zoom/-/react-medium-image-zoom-5.1.8.tgz#e4972849ce95ff9076fa6826b91fb6d9e8ea07ec"
-  integrity sha512-2X4oLlEopIWg7qalR1Qpy4gPrU9CTF0DvJ7HNu5u/NwdyQWupEsje2vuMbjBz7+np8MmQ4DKJ6zGr1ofCuzB3g==
+react-medium-image-zoom@^5.1.9:
+  version "5.1.9"
+  resolved "https://registry.yarnpkg.com/react-medium-image-zoom/-/react-medium-image-zoom-5.1.9.tgz#f98afe44c3d2b710c9d3513b3e8a6a5d57c21211"
+  integrity sha512-VOlqStMbztbHftQvl8wwD2oQvcNQjA9dUtNtIxZmwnP7BIcWfsDS5jRH7vJ/R94EtweiuCCAMnoTh7w5RkkJeg==
 
 react-remove-scroll-bar@^2.3.4:
   version "2.3.4"
