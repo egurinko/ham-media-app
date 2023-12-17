@@ -37,7 +37,7 @@
     "@sentry/node": "^7.88.0",
     "axios": "^1.6.2",
     "bcrypt": "^5.1.1",
-    "fastify": "^4.24.3",
+    "fastify": "^4.25.1",
     "fastify-cli": "^5.9.0",
     "fastify-healthcheck": "^4.4.0",
     "fastify-plugin": "^4.5.1",
