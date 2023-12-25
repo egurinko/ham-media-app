@@ -1,4 +1,4 @@
-import { ark } from '@ark-ui/react';
+import { ark } from '@ark-ui/react/factory';
 import deepmerge from 'deepmerge';
 import type { RecipeVariantProps } from '@/styled/css';
 import { cva } from '@/styled/css';

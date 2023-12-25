@@ -1,4 +1,4 @@
-import { ark } from '@ark-ui/react';
+import { ark } from '@ark-ui/react/factory';
 import type { RecipeVariantProps } from '@/styled/css';
 import { cva } from '@/styled/css';
 import { styled } from '@/styled/jsx';
@@ -60,6 +60,27 @@ export const buttonStyle = cva({
     fullWidth: {
       true: {
         width: 'full',
+      },
+    },
+    loading: {
+      true: {
+        opacity: 0.4,
+        cursor: 'progress',
+        position: 'relative',
+        _before: {
+          content: '""',
+          width: '20px',
+          height: '20px',
+          mr: 'sm',
+          borderWidth: 'medium',
+          borderStyle: 'solid',
+          borderColor: 'outline.main',
+          borderTopWidth: 'medium',
+          borderTopStyle: 'solid',
+          borderTopColor: 'background.main',
+          borderRadius: 'full',
+          animation: 'spin 0.8s linear infinite',
+        },
       },
     },
     size: {
