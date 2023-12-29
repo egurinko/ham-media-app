@@ -4,19 +4,20 @@
   "private": true,
   "engines": {
     "node": "20.x",
-    "yarn": ">=1.22.17 <2.0.0"
+    "pnpm": ">=8.12.1"
   },
+  "packageManager": "pnpm@8.12.1",
   "scripts": {
     "dev": "next dev -p 8080",
     "build": "next build",
     "start": "next start",
     "prepare": "panda codegen",
-    "tscheck": "yarn tsc -p ./tsconfig.json --noEmit",
+    "tscheck": "pnpm tsc -p ./tsconfig.json --noEmit",
     "generate": "graphql-codegen",
     "lint": "next lint --fix",
     "format": "prettier './**/*.{js,jsx,ts,tsx,json,css,scss}'",
-    "format:write": "yarn format --write",
-    "format:check": "yarn format --check"
+    "format:write": "pnpm format --write",
+    "format:check": "pnpm format --check"
   },
   "dependencies": {
     "@apollo/client": "^3.8.8",

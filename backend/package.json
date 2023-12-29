@@ -5,11 +5,12 @@
   "license": "MIT",
   "engines": {
     "node": "20.x",
-    "yarn": ">=1.22.17 <2.0.0"
+    "pnpm": ">=8.12.1"
   },
+  "packageManager": "pnpm@8.12.1",
   "scripts": {
-    "console": "yarn --cwd ../ prisma-repl",
-    "build": "yarn tsc -p tsconfig.json && tsc-alias -p tsconfig.json",
+    "console": "pnpm --cwd ../ prisma-repl",
+    "build": "pnpm tsc -p tsconfig.json && tsc-alias -p tsconfig.json",
     "start": "NO_PEER_DEPENDENCY_CHECK=true node dist/server",
     "dev": "ts-node-dev -r tsconfig-paths/register server --transpile-only",
     "db:format": "prisma format",
@@ -20,7 +21,7 @@
     "db:seed:dev": "NODE_ENV=development prisma db seed",
     "db:seed:test": "NODE_ENV=test dotenv -e .env.test prisma db seed",
     "tsc": "tsc",
-    "tscheck": "yarn tsc -p ./tsconfig.json --noEmit",
+    "tscheck": "pnpm tsc -p ./tsconfig.json --noEmit",
     "test": "NODE_ENV=test dotenv -e .env.test -- jest --runInBand",
     "test:ci": "NODE_ENV=test dotenv -e .env.test -- jest --runInBand --coverage --silent --testLocationInResults --ci --json --outputFile=\"report.json\""
   },

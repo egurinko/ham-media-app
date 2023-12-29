@@ -6,13 +6,15 @@
   ],
   "engines": {
     "node": "20.x",
-    "yarn": ">=1.22.17 <2.0.0"
+    "pnpm": ">=8.12.1"
   },
+  "packageManager": "pnpm@8.12.1",
   "scripts": {
-    "build": "yarn workspace backend db:reflect && yarn workspace backend build",
-    "start": "yarn workspace backend db:reflect && yarn workspace backend start",
-    "build:backend": "yarn workspace backend db:reflect && yarn workspace backend build",
-    "start:backend": "yarn workspace backend start"
+    "preinstall": "npx only-allow pnpm",
+    "build": "pnpm workspace backend db:reflect && pnpm workspace backend build",
+    "start": "pnpm workspace backend db:reflect && pnpm workspace backend start",
+    "build:backend": "pnpm workspace backend db:reflect && pnpm workspace backend build",
+    "start:backend": "pnpm workspace backend start"
   },
   "devDependencies": {
     "@types/graphql": "^14.5.0",
