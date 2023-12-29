@@ -170,7 +170,6 @@ const Form: FC<NoProps> = () => {
 
             {productTagGroupData ? (
               <FormControl id="productTag">
-                {/* @ts-expect-error: TODO:fix me */}
                 <CUIAutoComplete
                   label="タグ"
                   placeholder="タグを選択"
