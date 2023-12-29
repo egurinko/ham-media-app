@@ -35,7 +35,7 @@
     "framer-motion": "^10.16.16",
     "js-cookie": "^3.0.5",
     "json-bigint-patch": "^0.0.8",
-    "next": "^14.0.4-canary.37",
+    "next": "14.0.5-canary.30",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-drag-drop-files": "^2.3.10",
@@ -54,7 +54,7 @@
     "@types/js-cookie": "^3.0.6",
     "@types/react": "^18.2.46",
     "dotenv": "^16.3.1",
-    "eslint-config-next": "^14.0.3",
+    "eslint-config-next": "^14.0.4",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-react": "^7.33.2"
   }
