@@ -1,15 +1,25 @@
-import { css } from '@/styled/css';
+import { css, cx } from '@/styled/css';
 import type { FC, PropsWithChildren } from 'react';
 
-export const Card: FC<PropsWithChildren<NoProps>> = ({ children }) => (
+type CardProps = {
+  className?: string;
+};
+
+export const Card: FC<PropsWithChildren<CardProps>> = ({
+  children,
+  className,
+}) => (
   <div
-    className={css({
-      bgColor: 'surface.container-highest',
-      shadow: 'none',
-      width: 'full',
-      p: '6',
-      borderRadius: 'md',
-    })}
+    className={cx(
+      css({
+        bgColor: 'surface.container-highest',
+        shadow: 'none',
+        width: 'full',
+        p: '6',
+        borderRadius: 'md',
+      }),
+      className,
+    )}
   >
     {children}
   </div>
