@@ -93,7 +93,7 @@ describe('createProductTaggings', () => {
     expect(afterProduct?.productTaggings.length).toBe(1);
     expect(afterProduct?.productTaggings[0]?.product_id).toBe(PRODUCT_ID);
     expect(afterProduct?.productTaggings[0]?.product_tag_id).toBe(
-      PRODUCT_TAG_ID
+      PRODUCT_TAG_ID,
     );
   });
 });

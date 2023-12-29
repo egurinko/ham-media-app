@@ -134,7 +134,7 @@ describe('product', () => {
       expect(product.productTaggings.length).toEqual(1);
       expect(product.productTaggings[0].productTag.id).toEqual(PRODUCT_TAG_ID);
       expect(product.productTaggings[0].productTag.name).toEqual(
-        PRODUCT_TAG_NAME
+        PRODUCT_TAG_NAME,
       );
 
       expect(product.maker.id).toEqual(MAKER_ID);
@@ -144,7 +144,7 @@ describe('product', () => {
       expect(product.stocks[0].expired_at).toEqual(STOCK_EXPIRTED_AT);
       expect(product.stocks[0].created_at).toEqual(STOCK_CREATED_AT);
       expect(product.stocks[0].stockAllocation.internalUser.name).toEqual(
-        INTERNAL_USER_NAME
+        INTERNAL_USER_NAME,
       );
       expect(product.stocks[0].internalUser.name).toEqual(INTERNAL_USER_NAME);
 

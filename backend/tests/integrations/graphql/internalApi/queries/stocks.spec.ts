@@ -96,7 +96,7 @@ describe('stocks', () => {
     expect(stocks[0].product.name).toEqual(PRODUCT_NAME);
     expect(stocks[0].internalUser.name).toEqual(STOCK_ADMIN_INTERNAL_USER_NAME);
     expect(stocks[0].stockAllocation.internalUser.name).toEqual(
-      STOCK_ASSIGNED_INTERNAL_USER_NAME
+      STOCK_ASSIGNED_INTERNAL_USER_NAME,
     );
   });
 });

@@ -5,7 +5,7 @@ import * as discordModule from '@/services/api/discordApi';
 
 const postStockRequestRejectionAlert = jest.spyOn(
   discordModule,
-  'postStockRequestRejectionAlert'
+  'postStockRequestRejectionAlert',
 );
 
 const QUERY = gql`

@@ -2,7 +2,7 @@ import type { TextMessage } from '@line/bot-sdk';
 import type { Region } from '@prisma/client';
 
 export const createSearchNightServiceHospitalsReplyMessage = (
-  regions: Region[]
+  regions: Region[],
 ): TextMessage => ({
   type: 'text',
   text: '地域を選択してください。',

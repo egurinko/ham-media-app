@@ -90,11 +90,11 @@ describe('createStocks', () => {
     expect(afterCount).toBe(variables.stocks[0]?.amount);
     stocks.map((stock) => {
       expect(stock.expired_at.toISOString()).toBe(
-        variables.stocks[0]?.expiredAt
+        variables.stocks[0]?.expiredAt,
       );
       expect(stock.product_id).toBe(variables.productId);
       expect(Number(stock.internal_user_id)).toBe(
-        variables.stocks[0]?.internalUserId
+        variables.stocks[0]?.internalUserId,
       );
     });
   });

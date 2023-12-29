@@ -59,7 +59,7 @@ export const seedPrefecture = async () => {
         name: prefecture.name,
         region: { connect: { name: prefecture.regionName } },
       },
-    })
+    }),
   );
 
   await Promise.all(promises);

@@ -24,20 +24,20 @@ export const createWordpressErrorReplyMessage: TextMessage = {
 };
 
 export const createOfferingHamstersReplyMessage = (
-  offeringHamstersPosts: GetOfferingHamstersResponse
+  offeringHamstersPosts: GetOfferingHamstersResponse,
 ): FlexMessage => ({
   type: 'flex',
   altText: '里親募集ハムスター一覧',
   contents: {
     type: 'carousel',
     contents: offeringHamstersPosts.map((post) =>
-      createOfferingHamstersCarouselContent(post)
+      createOfferingHamstersCarouselContent(post),
     ),
   },
 });
 
 const createOfferingHamstersCarouselContent = (
-  post: GetOfferingHamsterResponse
+  post: GetOfferingHamsterResponse,
 ): FlexBubble => ({
   type: 'bubble',
   hero: createHero(post),

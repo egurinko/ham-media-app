@@ -11,7 +11,7 @@ type Products = {
 };
 
 const getStockAlertLinesByProduct = (
-  stocks: PostStockAlertVariables
+  stocks: PostStockAlertVariables,
 ): string[] => {
   const products = stocks.reduce((products, currentStock) => {
     const product = products[currentStock.product_id];
@@ -49,7 +49,7 @@ const getStockAlertLinesByProduct = (
     (product) =>
       `\n${product.name}の在庫id: ${product.stocks
         .map((stock) => `${stock.id}(${stock.internalUserName})`)
-        .join(',')} =>  https://ham-media-app.net/admin/products/${product.id}`
+        .join(',')} =>  https://ham-media-app.net/admin/products/${product.id}`,
   );
 };
 
@@ -58,34 +58,34 @@ const getStockAlertContents = (stocks: PostStockAlertVariables): string[] => {
 
   // discord の文字制限に引っかからないようにメッセージを分割する
   return sliceByNumber<string>(stockAlertLines, 10).map((lines) =>
-    lines.join()
+    lines.join(),
   );
 };
 
 export const postStockAlertContents = (
-  stocks: PostStockAlertVariables
+  stocks: PostStockAlertVariables,
 ): Promise<any> => {
   const stockAlertContents = getStockAlertContents(stocks);
   return Promise.all(
-    stockAlertContents.map((content) => postStockAlert(content))
+    stockAlertContents.map((content) => postStockAlert(content)),
   );
 };
 
 export const postStockExpiringInWeekAlert = async (
-  stocks: PostStockAlertVariables
+  stocks: PostStockAlertVariables,
 ): Promise<any> => {
   await postStockAlert(
-    `===== 今週はこの在庫の期限が切れちゃうよ <:doyouebest:844132000788643860> =====`
+    `===== 今週はこの在庫の期限が切れちゃうよ <:doyouebest:844132000788643860> =====`,
   );
 
   return postStockAlertContents(stocks);
 };
 
 export const postStockExpiringInMonthAlert = async (
-  stocks: PostStockAlertVariables
+  stocks: PostStockAlertVariables,
 ): Promise<any> => {
   await postStockAlert(
-    `===== 3ヶ月以内にこの在庫の期限が切れちゃうよ <:__:990474403185836062> =====`
+    `===== 3ヶ月以内にこの在庫の期限が切れちゃうよ <:__:990474403185836062> =====`,
   );
   return postStockAlertContents(stocks);
 };

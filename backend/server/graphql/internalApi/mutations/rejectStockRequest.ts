@@ -26,7 +26,7 @@ export const rejectStockRequestField = mutationField((t) => {
         postStockRequestRejectionAlert(
           stockRequest,
           ctx.currentInternalUser!,
-          args.message
+          args.message,
         );
         return { deleted: !!deleted };
       } catch (e) {

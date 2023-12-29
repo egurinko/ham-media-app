@@ -4,7 +4,7 @@ import { createLocationReplyMessage } from '@/services/line/views';
 import type { RegionalHospitals } from '@/services/line/views';
 
 export const getLocationEventReplyMessage = async (
-  message: LocationEventMessage
+  message: LocationEventMessage,
 ): Promise<Message[]> => {
   const hospitals = await getHospitals();
   const sorted = sortHospital(hospitals, {
@@ -37,11 +37,11 @@ const getHospitals = async (): Promise<RegionalHospitals> => {
 
 const sortHospital = (
   hospitals: RegionalHospitals,
-  currentLocation: { latitude: number; longitude: number }
+  currentLocation: { latitude: number; longitude: number },
 ): RegionalHospitals =>
   hospitals
     .filter(
-      (hospital) => !!hospital.hospitalAddress?.hospitalAddressGeoLocation
+      (hospital) => !!hospital.hospitalAddress?.hospitalAddressGeoLocation,
     )
     .sort((a, b) => {
       const aLocation = a.hospitalAddress?.hospitalAddressGeoLocation;

@@ -15,7 +15,7 @@ const TEXT_TYPES = {
 } as const;
 
 export const getTextEventReplyMessage = async (
-  message: TextEventMessage
+  message: TextEventMessage,
 ): Promise<Message[]> => {
   if (message.text === TEXT_TYPES.LIST_OFFERING_HAMSTERS) {
     return getListOfferingHamstersReplyMessage();
@@ -35,11 +35,11 @@ export const getTextEventReplyMessage = async (
 };
 
 const getIsNightRegionalHospitalText = async (
-  text: string
+  text: string,
 ): Promise<boolean> => {
   const regions = await client.region.findMany({ select: { name: true } });
   const regionsHospitalsRegex = new RegExp(
-    regions.map((region) => region.name).join('|') + 'の夜間病院を検索$'
+    regions.map((region) => region.name).join('|') + 'の夜間病院を検索$',
   );
 
   return regionsHospitalsRegex.test(text);

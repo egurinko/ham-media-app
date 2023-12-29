@@ -96,7 +96,7 @@ export const hospitalConnection = queryField((t) => {
             : Prisma.sql`ORDER BY hospital_addresses.prefecture_id`
         }
       `,
-        args
+        args,
       );
     },
   });

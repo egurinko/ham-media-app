@@ -183,16 +183,16 @@ describe('hospital', () => {
       expect(businessForm.business_hour).toEqual(BUSINESS_FORM_BUSINESS_HOUR);
       expect(businessForm.closed_day).toEqual(BUSINESS_FORM_CLOSED_DAY);
       expect(businessForm.insurance_enabled).toEqual(
-        BUSINESS_FORM_INSURANCE_ENABLED
+        BUSINESS_FORM_INSURANCE_ENABLED,
       );
       expect(businessForm.remark).toEqual(BUSINESS_FORM_REMARK);
 
       const certificationOption = hospital.hospitalCertificationOption;
       expect(certificationOption.nichiju_registered).toEqual(
-        CERTIFICATION_OPTION_NICHIJU_REGISTERED
+        CERTIFICATION_OPTION_NICHIJU_REGISTERED,
       );
       expect(certificationOption.jsava_registered).toEqual(
-        CERTIFICATION_OPTION_JSAVA_REGISTERED
+        CERTIFICATION_OPTION_JSAVA_REGISTERED,
       );
 
       const nightServiceOption = hospital.hospitalNightServiceOption;
@@ -201,14 +201,14 @@ describe('hospital', () => {
 
       const nightUrgentActionOption = hospital.hospitalNightUrgentActionOption;
       expect(nightUrgentActionOption.status).toEqual(
-        NIGHT_URGENT_ACTION_OPTION_STATUS
+        NIGHT_URGENT_ACTION_OPTION_STATUS,
       );
 
       const reservationStatus = hospital.hospitalReservationStatus;
       expect(reservationStatus.required).toEqual(RESERVATION_STATUS_REQUIRED);
       expect(reservationStatus.remark).toEqual(RESERVATION_STATUS_REMARK);
       expect(reservationStatus.reservable).toEqual(
-        RESERVATION_STATUS_RESERVABLE
+        RESERVATION_STATUS_RESERVABLE,
       );
 
       expect(hospital.recommended).toEqual(false);

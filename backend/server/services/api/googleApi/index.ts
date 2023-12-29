@@ -9,7 +9,7 @@ const instance = axios.create({
 
 // TODO: Use Seesion Key
 const getPlaceAutoComplete = (
-  searchText: string
+  searchText: string,
 ): Promise<AxiosResponse<PlacesAutocompleteResponse>> =>
   instance.get<PlacesAutocompleteResponse>(
     '/maps/api/place/autocomplete/json',
@@ -21,11 +21,11 @@ const getPlaceAutoComplete = (
         types: 'geocode',
         components: 'country:jp',
       },
-    }
+    },
   );
 
 const getGeoLocation = (
-  searchText: string
+  searchText: string,
 ): Promise<AxiosResponse<GeocodeResponse>> =>
   instance.get<GeocodeResponse>('/maps/api/geocode/json', {
     params: {

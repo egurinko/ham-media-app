@@ -33,7 +33,7 @@ const TEXT_SECONDARY = '#757575';
 const GRAY_BACKGROUND = '#F5F5F5';
 
 export const createSearchNightServiceHospitalsRegionallyReplyMessage = (
-  hospitals: RegionalHospitals
+  hospitals: RegionalHospitals,
 ): FlexMessage => ({
   type: 'flex',
   altText: '夜間病院の検索結果',
@@ -44,7 +44,7 @@ export const createSearchNightServiceHospitalsRegionallyReplyMessage = (
 });
 
 export const createCarouselContent = (
-  hospital: RegionalHospital
+  hospital: RegionalHospital,
 ): FlexBubble => ({
   type: 'bubble',
   header: createHeader(hospital),
@@ -89,7 +89,7 @@ const createHeaderHospitalName = (name: string, url: string): FlexComponent => {
 };
 
 const createHeaderHospitalAddress = (
-  hospital: RegionalHospital
+  hospital: RegionalHospital,
 ): FlexComponent => ({
   type: 'box',
   layout: 'horizontal',
@@ -119,13 +119,13 @@ const createHeaderHospitalAddress = (
     type: 'uri',
     label: 'action',
     uri: encodeURI(
-      `https://www.google.com/maps/search/?api=1&query=${hospital.name}`
+      `https://www.google.com/maps/search/?api=1&query=${hospital.name}`,
     ),
   },
 });
 
 const createHeaderHospitalPhoneNumber = (
-  phoneNumber?: string
+  phoneNumber?: string,
 ): FlexComponent => ({
   type: 'box',
   layout: 'horizontal',
@@ -207,7 +207,7 @@ const createBody = (hospital: RegionalHospital): FlexBox => ({
 });
 
 const createHospitalBusinessForm = (
-  hospitalBusinessForm?: RegionalHospital['hospitalBusinessForm']
+  hospitalBusinessForm?: RegionalHospital['hospitalBusinessForm'],
 ): FlexComponent => ({
   type: 'box',
   layout: 'vertical',
@@ -270,8 +270,8 @@ const createHospitalRemarks = (hospital: RegionalHospital): FlexComponent => ({
           ? '■ 夜間営業しています\n' +
             hospital.hospitalNightServiceOption.remark
           : hospital.hospitalNightServiceOption?.status === HOSPITAL_STATUSES.NO
-          ? '■ 夜間営業していません'
-          : '■ 夜間営業状況はわかりません',
+            ? '■ 夜間営業していません'
+            : '■ 夜間営業状況はわかりません',
       flex: 1,
       margin: 'xs',
       size: 'sm',
@@ -283,9 +283,9 @@ const createHospitalRemarks = (hospital: RegionalHospital): FlexComponent => ({
         hospital.hospitalReservationStatus?.required === HOSPITAL_STATUSES.YES
           ? '■ 予約必須です'
           : hospital.hospitalReservationStatus?.required ===
-            HOSPITAL_STATUSES.NO
-          ? '■ 予約なしで診療できます'
-          : '■ 予約が必須か分かりません',
+              HOSPITAL_STATUSES.NO
+            ? '■ 予約なしで診療できます'
+            : '■ 予約が必須か分かりません',
       flex: 1,
       margin: 'xs',
       size: 'sm',
@@ -298,9 +298,9 @@ const createHospitalRemarks = (hospital: RegionalHospital): FlexComponent => ({
         HOSPITAL_STATUSES.YES
           ? '■ 保険適用できます'
           : hospital.hospitalBusinessForm?.insurance_enabled ===
-            HOSPITAL_STATUSES.NO
-          ? '■ 保険適用できません'
-          : '■ 保険適用状況は分かりません',
+              HOSPITAL_STATUSES.NO
+            ? '■ 保険適用できません'
+            : '■ 保険適用状況は分かりません',
       flex: 1,
       margin: 'xs',
       size: 'sm',
@@ -326,7 +326,7 @@ const createHospitalRemarks = (hospital: RegionalHospital): FlexComponent => ({
   margin: 'md',
 });
 
-const createFooter = (hospitalId: BigInt): FlexBox => ({
+const createFooter = (hospitalId: bigint): FlexBox => ({
   type: 'box',
   layout: 'vertical',
   contents: [

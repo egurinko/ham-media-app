@@ -21,7 +21,7 @@ export const createSessionField = mutationField((t) => {
 
       const match = await bcrypt.compare(
         args.password,
-        internalUser.password_digest
+        internalUser.password_digest,
       );
 
       if (!match) {

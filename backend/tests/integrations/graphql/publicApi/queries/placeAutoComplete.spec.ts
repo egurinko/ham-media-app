@@ -48,13 +48,13 @@ describe('placeAutoComplete', () => {
     expect(result.errors).toBeUndefined();
     const placeAutocomplete = result.data['placeAutocomplete'];
     expect(placeAutocomplete.status).toEqual(
-      getPlacesAutocompleteResponseResponse.data.status
+      getPlacesAutocompleteResponseResponse.data.status,
     );
     expect(placeAutocomplete.error_message).toEqual(
-      getPlacesAutocompleteResponseResponse.data.error_message
+      getPlacesAutocompleteResponseResponse.data.error_message,
     );
     expect(placeAutocomplete.info_messages).toEqual(
-      getPlacesAutocompleteResponseResponse.data.info_messages
+      getPlacesAutocompleteResponseResponse.data.info_messages,
     );
 
     const prediction = placeAutocomplete.predictions[0];
@@ -64,10 +64,10 @@ describe('placeAutoComplete', () => {
     expect(prediction.place_id).toEqual(mockPrediction?.place_id);
     expect(prediction.reference).toEqual(mockPrediction?.reference);
     expect(prediction.matched_substrings[0]).toEqual(
-      mockPrediction?.matched_substrings[0]
+      mockPrediction?.matched_substrings[0],
     );
     expect(prediction.structured_formatting).toEqual(
-      mockPrediction?.structured_formatting
+      mockPrediction?.structured_formatting,
     );
     expect(prediction.terms).toEqual(mockPrediction?.terms);
     expect(prediction.types).toEqual(mockPrediction?.types);

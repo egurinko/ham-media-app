@@ -35,7 +35,7 @@ export const hospitalConnection = queryField((t) => {
             },
           },
         }),
-        args
+        args,
       );
     },
   });

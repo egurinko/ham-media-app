@@ -8,12 +8,12 @@ type StockRequestCount = {
 };
 
 export const createStockRequestCounts = (
-  stockRequest: PostStockRequestAlertVariables
+  stockRequest: PostStockRequestAlertVariables,
 ): StockRequestCounts =>
   stockRequest.productRegistrations.reduce((acc, productRegistration) => {
     const found = acc.find(
       (stockRequestCount) =>
-        stockRequestCount.product.id === productRegistration.product.id
+        stockRequestCount.product.id === productRegistration.product.id,
     );
     if (!found) {
       return [...acc, { product: productRegistration.product, count: 1 }];
@@ -21,7 +21,7 @@ export const createStockRequestCounts = (
       return [
         ...acc.filter(
           (stockRequestCount) =>
-            stockRequestCount.product.id !== productRegistration.product.id
+            stockRequestCount.product.id !== productRegistration.product.id,
         ),
         {
           product: productRegistration.product,

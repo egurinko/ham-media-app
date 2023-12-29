@@ -8,7 +8,7 @@ export interface Context {
 
 export const context = (
   _request: FastifyRequest,
-  _reply: FastifyReply
+  _reply: FastifyReply,
 ): Context => ({
   prisma: client,
 });

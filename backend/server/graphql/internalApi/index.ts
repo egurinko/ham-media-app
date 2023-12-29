@@ -15,7 +15,7 @@ const schema = makeSchema({
     schema: join(
       __dirname,
       '../../../../graphql/internalApi',
-      'schema.graphql'
+      'schema.graphql',
     ),
   },
   contextType: {

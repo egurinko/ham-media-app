@@ -3,7 +3,7 @@ import { createCarouselContent } from './index';
 import type { RegionalHospitals } from '@/services/line/views';
 
 export const createLocationReplyMessage = (
-  hospitals: RegionalHospitals
+  hospitals: RegionalHospitals,
 ): FlexMessage => ({
   type: 'flex',
   altText: '病院の検索結果',

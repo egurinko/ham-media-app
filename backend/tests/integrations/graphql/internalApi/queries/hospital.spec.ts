@@ -187,65 +187,65 @@ describe('hospital', () => {
       expect(hospital.deleted).toEqual(HOSPITAL_DELETED);
 
       expect(hospital.hospitalAddress.address).toEqual(
-        HOSPITAL_ADDRESS_ADDRESS
+        HOSPITAL_ADDRESS_ADDRESS,
       );
       expect(hospital.hospitalAddress.phone_number).toEqual(
-        HOSPITAL_ADDRESS_PHONE_NUMBER
+        HOSPITAL_ADDRESS_PHONE_NUMBER,
       );
       expect(hospital.hospitalAddress.prefecture.name).toEqual(PREFECTURE_NAME);
       expect(
-        hospital.hospitalAddress.hospitalAddressGeoLocation.latitude
+        hospital.hospitalAddress.hospitalAddressGeoLocation.latitude,
       ).toEqual(HOSPITAL_ADDRESS_GEO_LOCATION_LATITUDE);
       expect(
-        hospital.hospitalAddress.hospitalAddressGeoLocation.longitude
+        hospital.hospitalAddress.hospitalAddressGeoLocation.longitude,
       ).toEqual(HOSPITAL_ADDRESS_GEO_LOCATION_LONGITUDE);
 
       expect(hospital.hospitalBusinessForm.business_hour).toEqual(
-        HOSPITAL_BUSINESS_FORM_BUSINESS_HOUR
+        HOSPITAL_BUSINESS_FORM_BUSINESS_HOUR,
       );
       expect(hospital.hospitalBusinessForm.closed_day).toEqual(
-        HOSPITAL_BUSINESS_FORM_CLOSED_DAY
+        HOSPITAL_BUSINESS_FORM_CLOSED_DAY,
       );
       expect(hospital.hospitalBusinessForm.insurance_enabled).toEqual(
-        HOSPITAL_BUSINESS_FORM_INSURANCE_ENABLED
+        HOSPITAL_BUSINESS_FORM_INSURANCE_ENABLED,
       );
       expect(hospital.hospitalBusinessForm.remark).toEqual(
-        HOSPITAL_BUSINESS_FORM_REMARK
+        HOSPITAL_BUSINESS_FORM_REMARK,
       );
 
       expect(hospital.hospitalCertificationOption.nichiju_registered).toEqual(
-        HOSPITAL_CERTIFICATION_OPTION_NICHIJU_REGISTERED
+        HOSPITAL_CERTIFICATION_OPTION_NICHIJU_REGISTERED,
       );
       expect(hospital.hospitalCertificationOption.jsava_registered).toEqual(
-        HOSPITAL_CERTIFICATION_OPTION_JSAVA_REGISTERED
+        HOSPITAL_CERTIFICATION_OPTION_JSAVA_REGISTERED,
       );
 
       expect(hospital.hospitalInternalReputation.star).toEqual(
-        HOSPITAL_INTERNAL_REPUTION_STAR
+        HOSPITAL_INTERNAL_REPUTION_STAR,
       );
       expect(hospital.hospitalInternalReputation.remark).toEqual(
-        HOSPITAL_INTERNAL_REPUTION_REMARK
+        HOSPITAL_INTERNAL_REPUTION_REMARK,
       );
 
       expect(hospital.hospitalNightServiceOption.status).toEqual(
-        HOSPITAL_NIGHT_SERVICE_OPTION_STATUS
+        HOSPITAL_NIGHT_SERVICE_OPTION_STATUS,
       );
       expect(hospital.hospitalNightServiceOption.remark).toEqual(
-        HOSPITAL_NIGHT_SERVICE_OPTION_REMARK
+        HOSPITAL_NIGHT_SERVICE_OPTION_REMARK,
       );
 
       expect(hospital.hospitalNightUrgentActionOption.status).toEqual(
-        HOSPITAL_NIGHT_URGENT_ACTION_STATUS
+        HOSPITAL_NIGHT_URGENT_ACTION_STATUS,
       );
 
       expect(hospital.hospitalReservationStatus.required).toEqual(
-        HOSPITAL_RESERVATION_STATUS_REQUIRED
+        HOSPITAL_RESERVATION_STATUS_REQUIRED,
       );
       expect(hospital.hospitalReservationStatus.reservable).toEqual(
-        HOSPITAL_RESERVATION_STATUS_RESERVABLE
+        HOSPITAL_RESERVATION_STATUS_RESERVABLE,
       );
       expect(hospital.hospitalReservationStatus.remark).toEqual(
-        HOSPITAL_RESERVATION_STATUS_REMARK
+        HOSPITAL_RESERVATION_STATUS_REMARK,
       );
     });
   });

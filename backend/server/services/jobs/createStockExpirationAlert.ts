@@ -40,5 +40,5 @@ export const createStockExpirationAlert = cron.schedule(
     await discordApi.postStockExpiringInMonthAlert(expiringStocksInMonthTerm);
 
     console.log('在庫期限アラートが終了です。');
-  }
+  },
 );

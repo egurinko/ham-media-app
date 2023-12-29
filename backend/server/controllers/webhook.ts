@@ -14,7 +14,7 @@ const post: RouteHandlerMethod<
   { Body: WebhookRequestBody }
 > = (request, reply) => {
   Promise.all(request.body.events.map(handleEvent)).then((result) =>
-    reply.send(result)
+    reply.send(result),
   );
 };
 

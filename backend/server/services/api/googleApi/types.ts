@@ -83,7 +83,7 @@ const STATUS = {
   UNKNOWN_ERROR: 'UNKNOWN_ERROR',
 } as const;
 
-type Status = typeof STATUS[keyof typeof STATUS];
+type Status = (typeof STATUS)[keyof typeof STATUS];
 
 export { STATUS };
 export type { PlacesAutocompleteResponse, GeocodeResponse };

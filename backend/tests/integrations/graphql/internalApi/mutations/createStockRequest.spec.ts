@@ -75,7 +75,7 @@ describe('createStockRequest', () => {
     const createStockRequest = result.data['createStockRequest'];
     expect(createStockRequest.id).toBe(STOCK_REQUEST_ID);
     expect(createStockRequest.productRegistrations[0].product.id).toBe(
-      PRODUCT_ID
+      PRODUCT_ID,
     );
   });
 
@@ -109,7 +109,7 @@ describe('createStockRequest', () => {
     expect(afterStockRequest.id).toBe(STOCK_REQUEST_ID);
     expect(afterStockRequest.productRegistrations.length).toBe(1);
     expect(afterStockRequest.productRegistrations[0]?.product_id).toBe(
-      PRODUCT_ID
+      PRODUCT_ID,
     );
   });
 });

@@ -87,10 +87,10 @@ describe('allocateStock', () => {
     expect(allocateStock.id).toEqual(STOCK_ID);
     expect(allocateStock.expired_at).toEqual(STOCK_EXPIRED_AT);
     expect(allocateStock.stockAllocation.internalUser.id).toEqual(
-      UPDATED_INTERNAL_USER_ID
+      UPDATED_INTERNAL_USER_ID,
     );
     expect(allocateStock.stockAllocation.internalUser.name).toEqual(
-      UPDATED_INTERNAL_USER_NAME
+      UPDATED_INTERNAL_USER_NAME,
     );
   });
 
@@ -111,10 +111,10 @@ describe('allocateStock', () => {
       include: { stockAllocation: { include: { internalUser: true } } },
     });
     expect(updatedStock.stockAllocation?.internalUser.id).toEqual(
-      BigInt(UPDATED_INTERNAL_USER_ID)
+      BigInt(UPDATED_INTERNAL_USER_ID),
     );
     expect(updatedStock.stockAllocation?.internalUser.name).toEqual(
-      UPDATED_INTERNAL_USER_NAME
+      UPDATED_INTERNAL_USER_NAME,
     );
   });
 });

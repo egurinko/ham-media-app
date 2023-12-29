@@ -55,7 +55,7 @@ describe('internalUser', () => {
       expect(internalUser.name).toEqual(INTERNAL_USER_NAME_1);
       expect(internalUser.email).toEqual(INTERNAL_USER_EMAIL_1);
       expect(internalUser.discord_user_id).toEqual(
-        INTERNAL_USER_DISCORD_USER_ID_1
+        INTERNAL_USER_DISCORD_USER_ID_1,
       );
       expect(internalUser.role.name).toEqual(ROLE_NAME);
     });

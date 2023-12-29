@@ -110,10 +110,10 @@ describe('createHospital', () => {
     expect(hospital.hospitalBusinessForm.remark).toEqual('');
 
     expect(hospital.hospitalCertificationOption.nichiju_registered).toEqual(
-      '不明'
+      '不明',
     );
     expect(hospital.hospitalCertificationOption.jsava_registered).toEqual(
-      '不明'
+      '不明',
     );
 
     expect(hospital.hospitalInternalReputation.star).toEqual(3);
@@ -188,10 +188,10 @@ describe('createHospital', () => {
     expect(hospital.hospitalBusinessForm?.remark).toEqual('');
 
     expect(hospital.hospitalCertificationOption?.nichiju_registered).toEqual(
-      '不明'
+      '不明',
     );
     expect(hospital.hospitalCertificationOption?.jsava_registered).toEqual(
-      '不明'
+      '不明',
     );
 
     expect(hospital.hospitalInternalReputation?.star).toEqual(3);

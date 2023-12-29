@@ -17,7 +17,7 @@ export const seedRegion = async () => {
       where: { name: regionName },
       update: {},
       create: { name: regionName },
-    })
+    }),
   );
 
   await Promise.all(promises);

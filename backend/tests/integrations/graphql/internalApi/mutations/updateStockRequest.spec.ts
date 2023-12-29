@@ -101,7 +101,7 @@ describe('updateStockRequest', () => {
     const updateStockRequest = result.data['updateStockRequest'];
     expect(updateStockRequest.id).toBe(STOCK_REQUEST_ID);
     expect(updateStockRequest.productRegistrations[0].product.id).toBe(
-      UPDATING_PRODUCT_ID
+      UPDATING_PRODUCT_ID,
     );
   });
 
@@ -116,7 +116,7 @@ describe('updateStockRequest', () => {
     expect(beforeStockRequest.id).toBe(STOCK_REQUEST_ID);
     expect(beforeStockRequest.productRegistrations.length).toBe(1);
     expect(beforeStockRequest.productRegistrations[0]?.product_id).toBe(
-      PRODUCT_ID
+      PRODUCT_ID,
     );
 
     const client = await setup();
@@ -142,7 +142,7 @@ describe('updateStockRequest', () => {
     expect(afterStockRequest.id).toBe(STOCK_REQUEST_ID);
     expect(afterStockRequest.productRegistrations.length).toBe(1);
     expect(afterStockRequest.productRegistrations[0]?.product_id).toBe(
-      UPDATING_PRODUCT_ID
+      UPDATING_PRODUCT_ID,
     );
   });
 });

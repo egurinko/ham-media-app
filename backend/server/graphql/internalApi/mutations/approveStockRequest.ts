@@ -26,7 +26,7 @@ export const approveStockRequestField = mutationField((t) => {
         postStockRequestApprovalAlert(
           stockRequest,
           ctx.currentInternalUser!,
-          args.message
+          args.message,
         );
         return { deleted: !!deleted };
       } catch (e) {

@@ -52,7 +52,7 @@ export const judgeError = (e: unknown): Result => {
 };
 
 const hasSingleTarget = (
-  meta: Prisma.PrismaClientKnownRequestError['meta']
+  meta: Prisma.PrismaClientKnownRequestError['meta'],
 ): meta is { target: string } =>
   !!meta && !!(meta as any).target && typeof (meta as any).target === 'string';
 
@@ -95,7 +95,7 @@ const mapTarget = (target: string) => {
 };
 
 const hasFieldName = (
-  meta: Prisma.PrismaClientKnownRequestError['meta']
+  meta: Prisma.PrismaClientKnownRequestError['meta'],
 ): meta is { field_name: string } =>
   !!meta &&
   !!(meta as any).field_name &&

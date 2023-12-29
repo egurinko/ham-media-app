@@ -1,6 +1,6 @@
 export const sliceByNumber = <T>(
   array: Array<T>,
-  number: number
+  number: number,
 ): Array<Array<T>> => {
   const length = Math.ceil(array.length / number);
 

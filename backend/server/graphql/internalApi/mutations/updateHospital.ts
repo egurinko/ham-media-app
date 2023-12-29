@@ -21,22 +21,22 @@ export const updateHospitalField = mutationField((t) => {
       internal_memo: nonNull(stringArg()),
       hospitalAddressInput: nonNull(arg({ type: hospitalAddressInputType })),
       hospitalBusinessFormInput: nonNull(
-        arg({ type: hospitalBusinessFormInputType })
+        arg({ type: hospitalBusinessFormInputType }),
       ),
       hospitalCertificationOptionInput: nonNull(
-        arg({ type: hospitalCertificationOptionInputType })
+        arg({ type: hospitalCertificationOptionInputType }),
       ),
       hospitalInternalReputationInput: nonNull(
-        arg({ type: hospitalInternalReputationInputType })
+        arg({ type: hospitalInternalReputationInputType }),
       ),
       hospitalNightServiceOptionInput: nonNull(
-        arg({ type: hospitalNightServiceOptionInputType })
+        arg({ type: hospitalNightServiceOptionInputType }),
       ),
       hospitalNightUrgentActionOptionInput: nonNull(
-        arg({ type: hospitalNightUrgentActionOptionInputType })
+        arg({ type: hospitalNightUrgentActionOptionInputType }),
       ),
       hospitalReservationStatusInput: nonNull(
-        arg({ type: hospitalReservationStatusInputType })
+        arg({ type: hospitalReservationStatusInputType }),
       ),
     },
     resolve: async (_, args, ctx) => {

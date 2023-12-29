@@ -78,7 +78,7 @@ describe('stockRequest', () => {
     expect(stockRequest.internalUser.email).toEqual(INTERNAL_USER_EMAIL);
     expect(stockRequest.productRegistrations.length).toEqual(1);
     expect(stockRequest.productRegistrations[0].product.name).toEqual(
-      PRODUCT_NAME
+      PRODUCT_NAME,
     );
   });
 });

@@ -11,10 +11,10 @@ export interface Context {
 
 export const context = async (
   request: FastifyRequest,
-  _reply: FastifyReply
+  _reply: FastifyReply,
 ) => {
   const currentInternalUser = await getCurrentInternalUser(
-    request.headers['authorization']
+    request.headers['authorization'],
   );
 
   return {
