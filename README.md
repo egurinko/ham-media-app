@@ -53,8 +53,6 @@
   - [Prisma](prisma.io)
   - [GraphQL Nexus](https://nexusjs.org/)
   - [heroku](https://www.heroku.com/home)
-- モノレポ管理
-  - [Yarn Workspaces](https://classic.yarnpkg.com/lang/en/docs/workspaces/)
 - CI
   - [GitHub Actions](https://github.co.jp/features/actions)
 
@@ -70,7 +68,7 @@ $ git clone git@github.com:egurinko/ham-media-app.git
 
 ```
 $ cd ham-media-app
-$ yarn
+$ pnpm
 ```
 
 ### バックエンドセットアップ
@@ -86,25 +84,25 @@ $ touch .env
 2. db の migrate
 
 ```sh
-$ yarn db:push
+$ pnpm db:push
 ```
 
 3. prisma の初期セットアップ
 
 ```sh
-$ yarn db:reflect
+$ pnpm db:reflect
 ```
 
 4. seed 投入
 
 ```sh
-$ yarn db:seed:dev
+$ pnpm db:seed:dev
 ```
 
 5. dev server 起動
 
 ```sh
-$ yarn dev # port 3000 で立ち上がる
+$ pnpm dev # port 3000 で立ち上がる
 ```
 
 ### フロントエンドセットアップ
@@ -119,7 +117,7 @@ $ touch .env
 2. dev server 起動
 
 ```sh
-$ yarn dev # port 8080 で立ち上がる
+$ pnpm dev # port 8080 で立ち上がる
 ```
 
 3. localhost:8080/hospitals などで確認
@@ -135,5 +133,4 @@ $ yarn dev # port 8080 で立ち上がる
 - [Prisma](prisma.io)
 - [GraphQL Nexus](https://nexusjs.org/)
 - [heroku](https://www.heroku.com/home)
-- [Yarn Workspaces](https://classic.yarnpkg.com/lang/en/docs/workspaces/)
 - [GitHub Actions](https://github.co.jp/features/actions)
