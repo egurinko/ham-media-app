@@ -6,7 +6,7 @@ on:
       - graphql/**
       - backend/server/graphql/**
       - frontend/api/**
-      - yarn.lock
+      - pnpm-lock.yaml
 
 jobs:
   backend:
@@ -18,13 +18,18 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20.x'
-          cache: yarn
-          cache-dependency-path: yarn.lock
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8.12.1
+          run_install: false
       - name: Install dependencies
-        run: yarn install
+        run: pnpm install
         working-directory: ./backend
       - name: Generate GraphQL Schema
-        run: yarn dev &
+        run: pnpm dev &
         working-directory: ./backend
       - name: Check schema diff
         run: bash check_code_diff.sh
@@ -37,13 +42,18 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20.x'
-          cache: yarn
-          cache-dependency-path: yarn.lock
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8.12.1
+          run_install: false
       - name: Install dependencies
-        run: yarn install
+        run: pnpm install
         working-directory: ./frontend
       - name: Generate GraphQL Schema
-        run: yarn generate
+        run: pnpm generate
         working-directory: ./frontend
       - name: Check schema diff
         run: bash check_code_diff.sh

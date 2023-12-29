@@ -6,7 +6,7 @@ on:
       - frontend/**
       - .github/workflows/frontend.yml
       - package.json
-      - yarn.lock
+      - pnpm-lock.yaml
 
 jobs:
   tscheck:
@@ -18,13 +18,18 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20.x'
-          cache: yarn
-          cache-dependency-path: yarn.lock
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8.12.1
+          run_install: false
       - name: Install dependencies
-        run: yarn install
+        run: pnpm install
         working-directory: ./frontend
       - name: Type Check
-        run: yarn tscheck
+        run: pnpm tscheck
         working-directory: ./frontend
   lint:
     runs-on: ubuntu-latest
@@ -35,14 +40,19 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20.x'
-          cache: yarn
-          cache-dependency-path: yarn.lock
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8.12.1
+          run_install: false
       - name: Install dependencies
-        run: yarn install
+        run: pnpm install
         working-directory: ./frontend
       - name: Lint
-        run: yarn lint
+        run: pnpm lint
         working-directory: ./frontend
       - name: Format
-        run: yarn format:check
+        run: pnpm format:check
         working-directory: ./frontend
