@@ -3,16 +3,16 @@
 FROM node:16.18-alpine3.15 as builder
 WORKDIR /work
 
-COPY package.json yarn.lock ./
+COPY package.json pnpm-lock.yaml ./
 COPY ./backend/package.json backend/
 COPY ./backend/prisma backend/prisma
-RUN yarn install
+RUN pnpm install
 
 # TypeScript コードをコピーしてビルド
 COPY ./backend/tsconfig.json backend/
 COPY ./backend/server backend/server
 COPY ./backend/prisma backend/prisma
-RUN yarn build:backend
+RUN pnpm build:backend
 
 ##########################################################
 #### 実行用イメージの作成
@@ -25,14 +25,14 @@ ENV PORT 80
 EXPOSE 80
 
 # 本番環境用のパッケージをインストール
-COPY package.json yarn.lock ./
+COPY package.json pnpm-lock.yaml ./
 COPY ./backend/package.json backend/
 COPY ./backend/prisma backend/prisma
-RUN yarn install --production && yarn cache clean
+RUN pnpm install --production && pnpm cache clean
 
 # builder からビルド結果だけコピー
 COPY --from=builder /work/backend/dist ./dist
 
 # Node.js アプリを起動
-RUN yarn install --production && yarn cache clean
+RUN pnpm install --production && pnpm cache clean
 CMD ["node", "./dist/server"]
