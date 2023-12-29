@@ -1,9 +1,5 @@
 {
   "private": true,
-  "workspaces": [
-    "frontend",
-    "backend"
-  ],
   "engines": {
     "node": "20.x",
     "pnpm": ">=8.12.1"
@@ -11,10 +7,11 @@
   "packageManager": "pnpm@8.12.1",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "build": "pnpm workspace backend db:reflect && pnpm workspace backend build",
-    "start": "pnpm workspace backend db:reflect && pnpm workspace backend start",
-    "build:backend": "pnpm workspace backend db:reflect && pnpm workspace backend build",
-    "start:backend": "pnpm workspace backend start"
+    "backend": "pnpm -F \"backend\"",
+    "build": "pnpm backend db:reflect && pnpm backend build",
+    "start": "pnpm backend db:reflect && pnpm backend start",
+    "build:backend": "pnpm backend db:reflect && pnpm backend build",
+    "start:backend": "pnpm backend start"
   },
   "devDependencies": {
     "@types/graphql": "^14.5.0",
