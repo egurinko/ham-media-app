@@ -264,8 +264,8 @@ importers:
         specifier: ^8.1.0
         version: 8.1.0(typescript@5.3.3)
       '@types/apollo-upload-client':
-        specifier: ^17.0.5
-        version: 17.0.5(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^18.0.0
+        version: 18.0.0(react-dom@18.2.0)(react@18.2.0)
       '@types/js-cookie':
         specifier: ^3.0.6
         version: 3.0.6
@@ -6392,8 +6392,8 @@ packages:
     resolution: {integrity: sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA==}
     dev: false
 
-  /@types/apollo-upload-client@17.0.5(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-rPKHaE4QNd06LNtBgz6hfntVO+pOQMS2yTcynrzBPg9+a/nbtJ2gus5KgzRp2rqfzmnKEc/sRGjLen/9Ot0Z2A==}
+  /@types/apollo-upload-client@18.0.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-cMgITNemktxasqvp6jiPj15dv84n3FTMvMoYBP1+xonDS+0l6JygIJrj2LJh85rShRzTOOkrElrAsCXXARa3KA==}
     dependencies:
       '@apollo/client': 3.8.8(graphql@16.8.1)(react-dom@18.2.0)(react@18.2.0)
       '@types/extract-files': 13.0.1
