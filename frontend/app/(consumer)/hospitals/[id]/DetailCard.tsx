@@ -1,12 +1,13 @@
 import { HospitalTags } from '@/app/(consumer)/hospitals/HospitalTags';
-import { LinkIcon } from '@/app/components/assets/LinkIcon';
-import { MapPinIcon } from '@/app/components/assets/MapPinIcon';
-import { PhoneIcon } from '@/app/components/assets/PhoneIcon';
 import { Button } from '@/app/components/atoms/Button';
 import { Card } from '@/app/components/atoms/Card';
 import { Divider } from '@/app/components/atoms/Divider';
+import { Icon } from '@/app/components/atoms/Icon';
 import { Typography } from '@/app/components/atoms/Typography';
 import { getHospital } from '@/app/utils/api/publicApi/getHospital';
+import LinkIcon from '@/assets/link.svg';
+import MapPinIcon from '@/assets/map_pin.svg';
+import PhoneIcon from '@/assets/phone.svg';
 import { css } from '@/styled/css';
 import { HOSPITAL_STATUSES } from '@/utils/constant';
 import type { FC } from 'react';
@@ -42,7 +43,7 @@ export const DetailCard: FC<Props> = async ({ hospitalId }) => {
                 fill: 'primary.main',
               })}
             >
-              <MapPinIcon width={15} height={15} />
+              <Icon source={<MapPinIcon />} width={15} height={15} />
             </div>
             <Typography
               variant="body2"
@@ -67,7 +68,7 @@ export const DetailCard: FC<Props> = async ({ hospitalId }) => {
                 fill: 'primary.main',
               })}
             >
-              <LinkIcon width={15} height={15} />
+              <Icon source={<LinkIcon />} width={15} height={15} />
             </div>
             <Typography
               variant="caption"
@@ -247,7 +248,7 @@ export const DetailCard: FC<Props> = async ({ hospitalId }) => {
               gap: 2,
             })}
           >
-            <PhoneIcon width={20} height={20} />
+            <Icon source={<PhoneIcon />} width={20} height={20} />
             {hospital.hospitalAddress?.phone_number}
           </a>
         </Button>
