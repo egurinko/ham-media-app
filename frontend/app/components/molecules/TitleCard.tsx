@@ -11,7 +11,11 @@ export const TitleCard: FC<PropsWithChildren<Props>> = ({
   title,
   children,
 }) => (
-  <Card>
+  <Card
+    className={css({
+      p: 'lg',
+    })}
+  >
     <div
       className={css({
         textAlign: 'center',

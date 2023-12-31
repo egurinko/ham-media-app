@@ -19,7 +19,11 @@ export const DetailCard: FC<Props> = async ({ hospitalId }) => {
   const { hospital } = (await getHospital(hospitalId)).data;
 
   return (
-    <Card>
+    <Card
+      className={css({
+        p: 'lg',
+      })}
+    >
       <div className={css({ display: 'flex', flexDir: 'column', gap: '4' })}>
         <div className={css({ display: 'flex', flexDir: 'column', gap: '2' })}>
           <Typography variant="headlineM" bold={true}>

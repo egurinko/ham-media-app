@@ -317,6 +317,18 @@ export default defineConfig({
               _dark: '{colors.gray-variant.80}',
             },
           },
+          accent: {
+            value: {
+              base: '{colors.yellow.90}',
+              _dark: '{colors.yellow.30}',
+            },
+          },
+          'on-accent': {
+            value: {
+              base: '{colors.yellow.10}',
+              _dark: '{colors.yellow.90}',
+            },
+          },
         },
         outline: {
           main: {

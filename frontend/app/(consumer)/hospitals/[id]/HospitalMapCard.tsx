@@ -1,5 +1,6 @@
 import { Card } from '@/app/components/atoms/Card';
 import { getHospital } from '@/app/utils/api/publicApi/getHospital';
+import { css } from '@/styled/css';
 import { HospitalMap } from './HospitalMap';
 import type { FC } from 'react';
 
@@ -11,7 +12,11 @@ export const HospitalMapCard: FC<Props> = async ({ hospitalId }) => {
   const { hospital } = (await getHospital(hospitalId)).data;
 
   return hospital.hospitalAddress?.hospitalAddressGeoLocation ? (
-    <Card>
+    <Card
+      className={css({
+        p: 'lg',
+      })}
+    >
       <HospitalMap
         latitude={hospital.hospitalAddress.hospitalAddressGeoLocation.latitude}
         longitude={
