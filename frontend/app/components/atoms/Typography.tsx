@@ -5,7 +5,7 @@ import type { FC, PropsWithChildren } from 'react';
 type Props = {
   variant?: PropertyValue<'textStyle'>;
   className?: string | undefined;
-  display?: 'inline' | 'block';
+  display?: 'inline' | 'block' | '-webkit-box';
   bold?: boolean;
 };
 
