@@ -59,7 +59,7 @@ export const buttonStyle = cva({
     },
     fullWidth: {
       true: {
-        width: 'full',
+        width: '100%',
       },
     },
     loading: {
