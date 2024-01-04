@@ -8,7 +8,7 @@ import type {
   PublicGetHospitalConnectionQuery,
   PublicGetHospitalConnectionQueryVariables,
 } from '@/services/api/public_api/types';
-import type { FC, PropsWithChildren } from 'react';
+import type { FC } from 'react';
 
 type Props = {
   loadMoreAction: (
@@ -18,11 +18,10 @@ type Props = {
   initialHasNextPage?: boolean;
 };
 
-export const LoadMore: FC<PropsWithChildren<Props>> = ({
+export const LoadMore: FC<Props> = ({
   loadMoreAction,
   initialEndCursor,
   initialHasNextPage,
-  children,
 }) => {
   const [hospitalEdges, setHospitalEdges] = useState<
     NonNullable<
@@ -69,7 +68,6 @@ export const LoadMore: FC<PropsWithChildren<Props>> = ({
 
   return (
     <>
-      {children}
       <HospitalOutlineCards hospitalEdges={hospitalEdges} />
       {hasNextPage && (
         <Button visual="outlined" onClick={loadMore}>

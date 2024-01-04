@@ -1,10 +1,9 @@
-import { getHospitalsMore } from '@/app/(consumer)/hospitals/result/actions';
+import { Suspense } from 'react';
 import { Breadcrumbs } from '@/app/(consumer)/hospitals/result/breadcrumbs';
 import { Filter } from '@/app/(consumer)/hospitals/result/filter';
-import { HospitalOutlineCards } from '@/app/(consumer)/hospitals/result/hospital-outline-cards';
-import { LoadMore } from '@/app/(consumer)/hospitals/result/load-more';
+import { HospitalSkeletons } from '@/app/(consumer)/hospitals/result/hospital-skeletons';
+import { Hospitals } from '@/app/(consumer)/hospitals/result/hospitals';
 import { TextSearch } from '@/app/(consumer)/hospitals/result/text-search';
-import { getHospitalConnection } from '@/app/utils/api/publicApi/getHospitalConnection';
 import {
   SERVICE_NAME,
   OG_DEFAULT_IMAGE,
@@ -56,24 +55,6 @@ export default async function Page({ searchParams }: Props) {
   const nichijuOption = searchParams.nichijuOption === 'true';
   const recommended = searchParams.recommended === 'true';
 
-  const { data } = await getHospitalConnection({
-    first: 10,
-    searchText,
-    reservable,
-    nightServiceOption,
-    insuranceEnabled,
-    jsavaOption,
-    nichijuOption,
-    recommended,
-    currentLocation:
-      latitude && longitude
-        ? {
-            latitude,
-            longitude,
-          }
-        : undefined,
-  });
-
   return (
     <div
       className={css({
@@ -85,28 +66,19 @@ export default async function Page({ searchParams }: Props) {
     >
       <Breadcrumbs />
       <TextSearch />
-      <div
-        className={css({
-          display: 'flex',
-          flexDir: 'column',
-          gap: 'md',
-          width: '100%',
-        })}
-      >
-        <LoadMore
-          loadMoreAction={getHospitalsMore}
-          initialEndCursor={data.publicHospitalConnection?.pageInfo.endCursor}
-          initialHasNextPage={
-            data.publicHospitalConnection?.pageInfo.hasNextPage
-          }
-        >
-          {data.publicHospitalConnection ? (
-            <HospitalOutlineCards
-              hospitalEdges={data.publicHospitalConnection.edges}
-            />
-          ) : null}
-        </LoadMore>
-      </div>
+      <Suspense fallback={<HospitalSkeletons />}>
+        <Hospitals
+          searchText={searchText}
+          latitude={latitude}
+          longitude={longitude}
+          nightServiceOption={nightServiceOption}
+          reservable={reservable}
+          insuranceEnabled={insuranceEnabled}
+          jsavaOption={jsavaOption}
+          nichijuOption={nichijuOption}
+          recommended={recommended}
+        />
+      </Suspense>
       <Filter />
     </div>
   );
