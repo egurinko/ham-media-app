@@ -103,7 +103,13 @@ export const goHospitals = (router: NextRouter) =>
   pushRouter(router, HOSPITALS_PATH);
 export const goHospitalsResult = (router: NextRouter) =>
   pushRouter(router, HOSPITALS_RESULT_PATH);
-export const goAppHospitalsResult = (router: AppRouterInstance) =>
-  appPushRouter(router, HOSPITALS_RESULT_PATH);
+export const goAppHospitalsResult = (
+  router: AppRouterInstance,
+  queryParams?: string,
+) =>
+  appPushRouter(
+    router,
+    `${HOSPITALS_RESULT_PATH}${queryParams && `?${queryParams}`}`,
+  );
 export const goHospitalDetail = (router: NextRouter, { id }: { id: number }) =>
   pushRouter(router, HOSPITALS_DETAIL_PATH(id));
