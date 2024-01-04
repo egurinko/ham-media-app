@@ -1,6 +1,6 @@
 import { NightServiceHospitalsSection } from '@/app/(consumer)/hospitals/night-service-hospitals-section';
 import { RecommendedHospitalsSection } from '@/app/(consumer)/hospitals/recommended-hospitals-section';
-import { SearchSection } from '@/app/(consumer)/hospitals/search-section';
+import { Card } from '@/app/components/atoms/Card';
 import { Hero } from '@/app/components/organisms/consumer/hospitals/Hero';
 import {
   SERVICE_NAME,
@@ -9,6 +9,8 @@ import {
 } from '@/app/utils/constant';
 import { css } from '@/styled/css';
 import { HOSPITALS_PATH } from '@/utils/routes';
+import { LocationSearch } from './location-search';
+import { TextSearch } from './text-search';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -36,7 +38,21 @@ export default async function Page() {
       })}
     >
       <Hero />
-      <SearchSection />
+      <Card
+        className={css({
+          width: '100%',
+          p: 'lg',
+        })}
+      >
+        <TextSearch />
+        <div
+          className={css({
+            mt: 4,
+          })}
+        >
+          <LocationSearch />
+        </div>
+      </Card>
       <RecommendedHospitalsSection />
       <NightServiceHospitalsSection />
     </div>
