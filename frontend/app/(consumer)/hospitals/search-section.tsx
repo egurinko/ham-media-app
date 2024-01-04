@@ -1,7 +1,7 @@
 import { Card } from '@/app/components/atoms/Card';
 import { css } from '@/styled/css';
 import { LocationSearch } from './location-search';
-import { TextSearch } from './result/text-search';
+import { TextSearch } from './text-search';
 import type { FC } from 'react';
 
 export const SearchSection: FC<NoProps> = () => (
