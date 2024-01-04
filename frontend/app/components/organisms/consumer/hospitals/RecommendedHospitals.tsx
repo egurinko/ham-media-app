@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import { HospitalMiniCard } from '@/app/(consumer)/hospitals/hospital-mini-card';
 import { Card } from '@/app/components/atoms/Card';
 import { Icon } from '@/app/components/atoms/Icon';
 import { Typography } from '@/app/components/atoms/Typography';
+import { HospitalMiniCard } from '@/app/components/organisms/consumer/hospitals/HospitalMiniCard';
 import { getHospitalConnection } from '@/app/utils/api/publicApi/getHospitalConnection';
 import ChevronRightIcon from '@/assets/chevron_right.svg';
 import StarIcon from '@/assets/star.svg';
@@ -10,7 +10,7 @@ import { css } from '@/styled/css';
 import { HOSPITALS_RESULT_PATH } from '@/utils/routes';
 import type { FC } from 'react';
 
-export const RecommendedHospitalsSection: FC<NoProps> = async () => {
+export const RecommendedHospitals: FC<NoProps> = async () => {
   const { data } = await getHospitalConnection({
     first: 100,
     searchText: '',

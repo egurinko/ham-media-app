@@ -1,7 +1,9 @@
-import { NightServiceHospitalsSection } from '@/app/(consumer)/hospitals/night-service-hospitals-section';
-import { RecommendedHospitalsSection } from '@/app/(consumer)/hospitals/recommended-hospitals-section';
 import { Card } from '@/app/components/atoms/Card';
 import { Hero } from '@/app/components/organisms/consumer/hospitals/Hero';
+import { LocationSearch } from '@/app/components/organisms/consumer/hospitals/LocationSearch';
+import { NightServiceHospitals } from '@/app/components/organisms/consumer/hospitals/NightServiceHospitals';
+import { RecommendedHospitals } from '@/app/components/organisms/consumer/hospitals/RecommendedHospitals';
+import { TextSearch } from '@/app/components/organisms/consumer/hospitals/TextSearch';
 import {
   SERVICE_NAME,
   OG_DEFAULT_IMAGE,
@@ -9,8 +11,6 @@ import {
 } from '@/app/utils/constant';
 import { css } from '@/styled/css';
 import { HOSPITALS_PATH } from '@/utils/routes';
-import { LocationSearch } from './location-search';
-import { TextSearch } from './text-search';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -53,8 +53,8 @@ export default async function Page() {
           <LocationSearch />
         </div>
       </Card>
-      <RecommendedHospitalsSection />
-      <NightServiceHospitalsSection />
+      <RecommendedHospitals />
+      <NightServiceHospitals />
     </div>
   );
 }

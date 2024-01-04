@@ -1,9 +1,9 @@
 import Link from 'next/link';
-import { HospitalTags } from '@/app/(consumer)/hospitals/HospitalTags';
 import { Button } from '@/app/components/atoms/Button';
 import { Card } from '@/app/components/atoms/Card';
 import { Icon } from '@/app/components/atoms/Icon';
 import { Typography } from '@/app/components/atoms/Typography';
+import { HospitalTags } from '@/app/components/organisms/consumer/hospitals/HospitalTags';
 import MapPinIcon from '@/assets/map_pin.svg';
 import PhoneIcon from '@/assets/phone.svg';
 import type { PublicApiHospitalFieldsFragment } from '@/services/api/public_api/types';

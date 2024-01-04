@@ -1,9 +1,9 @@
-import { HospitalTags } from '@/app/(consumer)/hospitals/HospitalTags';
 import { Button } from '@/app/components/atoms/Button';
 import { Card } from '@/app/components/atoms/Card';
 import { Divider } from '@/app/components/atoms/Divider';
 import { Icon } from '@/app/components/atoms/Icon';
 import { Typography } from '@/app/components/atoms/Typography';
+import { HospitalTags } from '@/app/components/organisms/consumer/hospitals/HospitalTags';
 import { getHospital } from '@/app/utils/api/publicApi/getHospital';
 import LinkIcon from '@/assets/link.svg';
 import MapPinIcon from '@/assets/map_pin.svg';
