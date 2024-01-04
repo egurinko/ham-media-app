@@ -35,7 +35,7 @@
     "framer-motion": "^10.17.6",
     "js-cookie": "^3.0.5",
     "json-bigint-patch": "^0.0.8",
-    "next": "14.0.5-canary.35",
+    "next": "14.0.5-canary.38",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-drag-drop-files": "^2.3.10",
