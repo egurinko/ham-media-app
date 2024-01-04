@@ -19,7 +19,7 @@ import { Typography } from '@/app/components/atoms/Typography';
 import FilterIcon from '@/assets/filter.svg';
 import { css } from '@/styled/css';
 
-export const Filter: FC<NoProps> = () => {
+export const HospitalFilter: FC<NoProps> = () => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();

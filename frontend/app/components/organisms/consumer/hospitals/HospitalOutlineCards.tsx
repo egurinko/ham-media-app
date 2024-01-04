@@ -1,4 +1,4 @@
-import { HospitalOutlineCard } from '@/app/(consumer)/hospitals/result/hospital-outline-card';
+import { HospitalOutlineCard } from '@/app/components/organisms/consumer/hospitals/HospitalOutlineCard';
 import { getNodesFromConnectionEdges } from '@/app/utils/connection';
 import type { PublicGetHospitalConnectionQuery } from '@/services/api/public_api/types';
 import type { FC } from 'react';

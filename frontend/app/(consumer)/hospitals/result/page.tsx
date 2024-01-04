@@ -1,16 +1,17 @@
 import { Suspense } from 'react';
-import { Breadcrumbs } from '@/app/(consumer)/hospitals/result/breadcrumbs';
-import { Filter } from '@/app/(consumer)/hospitals/result/filter';
-import { HospitalSkeletons } from '@/app/(consumer)/hospitals/result/hospital-skeletons';
-import { Hospitals } from '@/app/(consumer)/hospitals/result/hospitals';
-import { TextSearch } from '@/app/(consumer)/hospitals/result/text-search';
+import { Breadcrumb } from '@/app/components/atoms/Breadcrumb';
+import { BreadcrumbIcon } from '@/app/components/atoms/BreadcrumbIcon';
+import { HospitalFilter } from '@/app/components/organisms/consumer/hospitals/HospitalFilter';
+import { HospitalSkeletons } from '@/app/components/organisms/consumer/hospitals/HospitalSkeletons';
+import { Hospitals } from '@/app/components/organisms/consumer/hospitals/Hospitals';
+import { InstantTextSearch } from '@/app/components/organisms/consumer/hospitals/InstantTextSearch';
 import {
   SERVICE_NAME,
   OG_DEFAULT_IMAGE,
   ORIGIN_URL,
 } from '@/app/utils/constant';
 import { css } from '@/styled/css';
-import { HOSPITALS_RESULT_PATH } from '@/utils/routes';
+import { HOSPITALS_RESULT_PATH, HOSPITALS_PATH } from '@/utils/routes';
 import type { Metadata } from 'next';
 
 type Props = {
@@ -64,8 +65,16 @@ export default async function Page({ searchParams }: Props) {
         gap: 'md',
       })}
     >
-      <Breadcrumbs />
-      <TextSearch />
+      <div
+        className={css({
+          display: 'flex',
+          alignItems: 'center',
+        })}
+      >
+        <Breadcrumb href={HOSPITALS_PATH} text="検索トップに戻る" />
+        <BreadcrumbIcon />
+      </div>
+      <InstantTextSearch />
       <Suspense fallback={<HospitalSkeletons />}>
         <Hospitals
           searchText={searchText}
@@ -79,7 +88,7 @@ export default async function Page({ searchParams }: Props) {
           recommended={recommended}
         />
       </Suspense>
-      <Filter />
+      <HospitalFilter />
     </div>
   );
 }

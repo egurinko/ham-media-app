@@ -1,6 +1,6 @@
 import { getHospitalsMore } from '@/app/(consumer)/hospitals/result/actions';
-import { HospitalOutlineCards } from '@/app/(consumer)/hospitals/result/hospital-outline-cards';
-import { LoadMore } from '@/app/(consumer)/hospitals/result/load-more';
+import { HospitalOutlineCards } from '@/app/components/organisms/consumer/hospitals/HospitalOutlineCards';
+import { HospitalsLoadMore } from '@/app/components/organisms/consumer/hospitals/HospitalsLoadMore';
 import { getHospitalConnection } from '@/app/utils/api/publicApi/getHospitalConnection';
 import { css } from '@/styled/css';
 import type { FC } from 'react';
@@ -60,11 +60,11 @@ export const Hospitals: FC<Props> = async ({
           hospitalEdges={data.publicHospitalConnection.edges}
         />
       ) : null}
-      <LoadMore
+      <HospitalsLoadMore
         loadMoreAction={getHospitalsMore}
         initialEndCursor={data.publicHospitalConnection?.pageInfo.endCursor}
         initialHasNextPage={data.publicHospitalConnection?.pageInfo.hasNextPage}
-      ></LoadMore>
+      />
     </div>
   );
 };

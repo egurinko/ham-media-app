@@ -2,9 +2,9 @@
 
 import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
-import { HospitalOutlineCards } from '@/app/(consumer)/hospitals/result/hospital-outline-cards';
-import { HospitalSkeletons } from '@/app/(consumer)/hospitals/result/hospital-skeletons';
 import { Button } from '@/app/components/atoms/Button';
+import { HospitalOutlineCards } from '@/app/components/organisms/consumer/hospitals/HospitalOutlineCards';
+import { HospitalSkeletons } from '@/app/components/organisms/consumer/hospitals/HospitalSkeletons';
 import type {
   PublicGetHospitalConnectionQuery,
   PublicGetHospitalConnectionQueryVariables,
@@ -19,7 +19,7 @@ type Props = {
   initialHasNextPage?: boolean;
 };
 
-export const LoadMore: FC<Props> = ({
+export const HospitalsLoadMore: FC<Props> = ({
   loadMoreAction,
   initialEndCursor,
   initialHasNextPage,

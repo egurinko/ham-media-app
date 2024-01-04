@@ -9,7 +9,7 @@ import { TextSearchInput } from '@/app/components/organisms/consumer/hospitals/T
 import { css } from '@/styled/css';
 import type { FC } from 'react';
 
-export const TextSearch: FC<NoProps> = () => {
+export const InstantTextSearch: FC<NoProps> = () => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
