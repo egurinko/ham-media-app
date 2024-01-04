@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
-import { useState, type FC, ChangeEvent } from 'react';
+import { useState, type FC } from 'react';
 import { Button } from '@/app/components/atoms/Button';
 import { Checkbox } from '@/app/components/atoms/Checkbox';
 import {
@@ -11,7 +11,6 @@ import {
   DialogBackdrop,
   DialogContent,
   DialogTitle,
-  DialogDescription,
   DialogCloseTrigger,
 } from '@/app/components/atoms/Dialog';
 import { FloatingActionButton } from '@/app/components/atoms/FloatingActionButton';
