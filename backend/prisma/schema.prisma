@@ -13,7 +13,6 @@ datasource db {
 
 /// A hospital address geo location
 model HospitalAddressGeoLocation {
-
   id                  BigInt          @id @default(autoincrement())
   hospital_address_id BigInt          @unique
   latitude            Float           @db.Real
@@ -21,12 +20,12 @@ model HospitalAddressGeoLocation {
   created_at          DateTime        @default(now()) @db.Timestamptz(0)
   updated_at          DateTime        @default(now()) @updatedAt
   hospitalAddress     HospitalAddress @relation(fields: [hospital_address_id], references: [id], onDelete: Cascade)
+
   @@map(name: "hospital_address_geo_locations")
 }
 
 /// A hospital address
 model HospitalAddress {
-
   id                         BigInt                      @id @default(autoincrement())
   hospital_id                BigInt                      @unique
   prefecture_id              BigInt
@@ -46,7 +45,6 @@ model HospitalAddress {
 
 /// A hospital business form
 model HospitalBusinessForm {
-
   id                BigInt   @id @default(autoincrement())
   hospital_id       BigInt   @unique
   business_hour     String   @db.VarChar(255)
@@ -65,7 +63,6 @@ model HospitalBusinessForm {
 
 /// A hospital certification option
 model HospitalCertificationOption {
-
   id                 BigInt   @id @default(autoincrement())
   hospital_id        BigInt   @unique
   nichiju_registered String   @db.VarChar(255)
@@ -81,7 +78,6 @@ model HospitalCertificationOption {
 
 /// A hospital internal reputation
 model HospitalInternalReputation {
-
   id          BigInt   @id @default(autoincrement())
   hospital_id BigInt   @unique
   star        Int
@@ -96,7 +92,6 @@ model HospitalInternalReputation {
 
 /// A hospital night service option
 model HospitalNightServiceOption {
-
   id          BigInt   @id @default(autoincrement())
   hospital_id BigInt   @unique
   status      String   @db.VarChar(255)
@@ -111,7 +106,6 @@ model HospitalNightServiceOption {
 
 /// A hospital night urgent action option
 model HospitalNightUrgentActionOption {
-
   id          BigInt   @id @default(autoincrement())
   hospital_id BigInt   @unique
   status      String   @db.VarChar(255)
@@ -125,7 +119,6 @@ model HospitalNightUrgentActionOption {
 
 /// A hospital reservation status
 model HospitalReservationStatus {
-
   id          BigInt   @id @default(autoincrement())
   hospital_id BigInt   @unique
   required    String   @db.VarChar(255)
@@ -142,7 +135,6 @@ model HospitalReservationStatus {
 
 /// A hospital
 model Hospital {
-
   id                              BigInt                           @id @default(autoincrement())
   name                            String                           @db.VarChar(255)
   url                             String                           @db.VarChar(255)
@@ -166,7 +158,6 @@ model Hospital {
 
 /// A role
 model Role {
-
   id            Int            @id @default(autoincrement())
   name          String         @unique @db.VarChar(100)
   internalUsers InternalUser[]
@@ -179,7 +170,6 @@ model Role {
 
 /// A internal user
 model InternalUser {
-
   id               BigInt            @id @default(autoincrement())
   name             String            @db.VarChar(255)
   email            String            @unique @db.VarChar(255)
@@ -187,6 +177,7 @@ model InternalUser {
   discord_user_id  String            @db.VarChar(255)
   role_id          Int
   role             Role              @relation(fields: [role_id], references: [id])
+  cart             Cart?
   stockAllocations StockAllocation[]
   stockRequests    StockRequest[]
   stocks           Stock[]
@@ -199,9 +190,20 @@ model InternalUser {
   @@map(name: "internal_users")
 }
 
+/// A cart
+model Cart {
+  id               Int          @id @default(autoincrement())
+  internal_user_id BigInt       @unique
+  items            Json
+  created_at       DateTime     @default(now()) @db.Timestamptz(0)
+  updated_at       DateTime     @default(now()) @updatedAt
+  internal_user    InternalUser @relation(fields: [internal_user_id], references: [id], onDelete: Cascade)
+
+  @@map(name: "carts")
+}
+
 /// A maker
 model Maker {
-
   id         Int       @id @default(autoincrement())
   name       String    @unique @db.VarChar(100)
   products   Product[]
@@ -214,7 +216,6 @@ model Maker {
 
 /// A product
 model Product {
-
   id                               Int                               @id @default(autoincrement())
   name                             String                            @unique @db.VarChar(100)
   remark                           String                            @db.Text
@@ -233,7 +234,6 @@ model Product {
 
 /// A stock
 model Stock {
-
   id               Int              @id @default(autoincrement())
   product_id       Int
   product          Product          @relation(fields: [product_id], references: [id])
@@ -249,7 +249,6 @@ model Stock {
 
 /// A stock allocation
 model StockAllocation {
-
   id               Int          @id @default(autoincrement())
   stock_id         Int          @unique
   stock            Stock        @relation(fields: [stock_id], references: [id], onDelete: Cascade)
@@ -263,7 +262,6 @@ model StockAllocation {
 
 /// A stock request
 model StockRequest {
-
   id                   Int                               @id @default(autoincrement())
   internal_user_id     BigInt
   internalUser         InternalUser                      @relation(fields: [internal_user_id], references: [id])
@@ -276,7 +274,6 @@ model StockRequest {
 
 /// A stock request product registration
 model StockRequestProductRegistration {
-
   id               Int          @id @default(autoincrement())
   stock_request_id Int
   stockRequest     StockRequest @relation(fields: [stock_request_id], references: [id], onDelete: Cascade)
@@ -290,7 +287,6 @@ model StockRequestProductRegistration {
 
 /// A product tag
 model ProductTag {
-
   id                   Int              @id @default(autoincrement())
   name                 String           @unique @db.VarChar(100)
   created_at           DateTime         @default(now()) @db.Timestamptz(0)
@@ -305,7 +301,6 @@ model ProductTag {
 
 /// A product tag group
 model ProductTagGroup {
-
   id          Int          @id @default(autoincrement())
   name        String       @unique @db.VarChar(100)
   productTags ProductTag[]
@@ -318,7 +313,6 @@ model ProductTagGroup {
 
 /// A product tagging
 model ProductTagging {
-
   id             Int        @id @default(autoincrement())
   product_id     Int
   product        Product    @relation(fields: [product_id], references: [id])
@@ -333,7 +327,6 @@ model ProductTagging {
 
 /// A prefecture
 model Prefecture {
-
   id              BigInt            @id @default(autoincrement())
   region_id       BigInt
   name            String            @unique @db.VarChar(255)
@@ -348,12 +341,12 @@ model Prefecture {
 
 /// A region
 model Region {
-
   id          BigInt       @id @default(autoincrement())
   name        String       @unique @db.VarChar(255)
   created_at  DateTime     @default(now()) @db.Timestamptz(0)
   updated_at  DateTime     @default(now()) @updatedAt
   prefectures Prefecture[]
+
   @@map(name: "regions")
 }
 
