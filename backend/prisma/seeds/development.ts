@@ -1,5 +1,6 @@
 import { executeProduction } from './production';
 import { seedInternalUser } from './development/internalUser';
+import { seedCart } from './development/cart';
 import { seedMaker } from './development/maker';
 import { seedProductTagGroup } from './development/productTagGroup';
 import { seedProductTag } from './development/productTag';
@@ -23,6 +24,7 @@ export const executeDevelopment = async () => {
     await executeProduction();
 
     await seedInternalUser();
+    await seedCart();
 
     await seedMaker();
     await seedProductTagGroup();
