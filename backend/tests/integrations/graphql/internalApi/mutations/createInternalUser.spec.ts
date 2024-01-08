@@ -84,12 +84,13 @@ describe('createInternalUser', () => {
     expect(await db.internalUser.count()).toEqual(2);
     const internalUser = await db.internalUser.findUniqueOrThrow({
       where: { email: INTERNAL_USER_EMAIL },
-      include: { role: true },
+      include: { role: true, cart: true },
     });
     expect(internalUser.id).toBeDefined();
     expect(internalUser.name).toEqual(INTERNAL_USER_NAME);
     expect(internalUser.email).toEqual(INTERNAL_USER_EMAIL);
     expect(internalUser.discord_user_id).toEqual(INTERNAL_USER_DISCORD_USER_ID);
     expect(internalUser.role.name).toEqual(ROLE_NAME);
+    expect(internalUser.cart).toBeDefined();
   });
 });

@@ -1,7 +1,11 @@
 import { scalarType } from 'nexus';
 import { GraphQLUpload } from 'graphql-upload-minimal';
 import { GraphQLScalarType } from 'graphql';
-import { BigIntResolver, DateTimeResolver } from 'graphql-scalars';
+import {
+  BigIntResolver,
+  DateTimeResolver,
+  JSONObjectResolver,
+} from 'graphql-scalars';
 import { asNexusMethod } from 'nexus';
 
 // export { BigInt, DateTime } from 'nexus-prisma/scalars';
@@ -30,3 +34,8 @@ export const Upload = scalarType({
   parseValue: GraphQLUpload.parseValue,
   parseLiteral: GraphQLUpload.parseLiteral,
 });
+
+export const Json = asNexusMethod(
+  new GraphQLScalarType(JSONObjectResolver),
+  'json',
+);

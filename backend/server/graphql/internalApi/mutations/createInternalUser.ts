@@ -24,6 +24,11 @@ export const createInternalUserField = mutationField((t) => {
             email: args.email,
             password_digest: hashedPassword,
             role_id: args.roleId,
+            cart: {
+              create: {
+                items: {},
+              },
+            },
           },
           include: { role: true },
         });

@@ -2,6 +2,7 @@ export * from './batchPayloadType';
 export * from './deleteType';
 export * from './roleType';
 export * from './internalUserType';
+export * from './cartType';
 export * from './sessionType';
 export * from './hospital/address/geoLocationType';
 export * from './hospital/addressType';

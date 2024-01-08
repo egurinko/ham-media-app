@@ -12,6 +12,12 @@ The `BigInt` scalar type represents non-fractional signed whole numeric values.
 """
 scalar BigInt
 
+"""A cart"""
+type Cart {
+  id: Int!
+  items: JSONObject!
+}
+
 input CreateProductTagsProductTagInputType {
   name: String!
 }
@@ -179,6 +185,11 @@ type InternalUser {
   role: Role!
 }
 
+"""
+The `JSONObject` scalar type represents JSON objects as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSONObject @specifiedBy(url: "http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf")
+
 """A maker"""
 type Maker {
   id: Int!
@@ -205,6 +216,7 @@ type Mutation {
   deleteStockRequest(id: Int!): Delete!
   rejectStockRequest(id: Int!, message: String!): Delete!
   returnStock(id: Int!): Stock!
+  updateCart(id: Int!, items: JSONObject!): Cart!
   updateHospital(deleted: Boolean!, hospitalAddressInput: HospitalAddressInputType!, hospitalBusinessFormInput: HospitalBusinessFormInputType!, hospitalCertificationOptionInput: HospitalCertificationOptionInputType!, hospitalInternalReputationInput: HospitalInternalReputationInputType!, hospitalNightServiceOptionInput: HospitalNightServiceOptionInputType!, hospitalNightUrgentActionOptionInput: HospitalNightUrgentActionOptionInputType!, hospitalReservationStatusInput: HospitalReservationStatusInputType!, id: BigInt!, internal_memo: String!, name: String!, url: String!): Hospital!
   updateInternalUser(discord_user_id: String!, email: String!, id: BigInt!, name: String!, password: String!, roleId: Int!): InternalUser!
   updateMaker(id: Int!, name: String!): Maker!

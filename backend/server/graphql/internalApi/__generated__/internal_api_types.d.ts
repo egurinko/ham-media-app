@@ -21,6 +21,10 @@ declare global {
      * The `Upload` scalar type represents a file upload.
      */
     upload<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "Upload";
+    /**
+     * The `JSONObject` scalar type represents JSON objects as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+     */
+    json<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "JSONObject";
   }
 }
 declare global {
@@ -38,6 +42,10 @@ declare global {
      * The `Upload` scalar type represents a file upload.
      */
     upload<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "Upload";
+    /**
+     * The `JSONObject` scalar type represents JSON objects as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+     */
+    json<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "JSONObject";
     /**
      * Adds a Relay-style connection to the type, with numerous options for configuration
      *
@@ -112,12 +120,17 @@ export interface NexusGenScalars {
   ID: string
   BigInt: any
   DateTime: any
+  JSONObject: any
   Upload: any
 }
 
 export interface NexusGenObjects {
   BatchPayload: { // root type
     count: number; // Int!
+  }
+  Cart: { // root type
+    id: number; // Int!
+    items: NexusGenScalars['JSONObject']; // JSONObject!
   }
   Delete: { // root type
     deleted: boolean; // Boolean!
@@ -277,6 +290,10 @@ export interface NexusGenFieldTypes {
   BatchPayload: { // field return type
     count: number; // Int!
   }
+  Cart: { // field return type
+    id: number; // Int!
+    items: NexusGenScalars['JSONObject']; // JSONObject!
+  }
   Delete: { // field return type
     deleted: boolean; // Boolean!
   }
@@ -377,6 +394,7 @@ export interface NexusGenFieldTypes {
     deleteStockRequest: NexusGenRootTypes['Delete']; // Delete!
     rejectStockRequest: NexusGenRootTypes['Delete']; // Delete!
     returnStock: NexusGenRootTypes['Stock']; // Stock!
+    updateCart: NexusGenRootTypes['Cart']; // Cart!
     updateHospital: NexusGenRootTypes['Hospital']; // Hospital!
     updateInternalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     updateMaker: NexusGenRootTypes['Maker']; // Maker!
@@ -499,6 +517,10 @@ export interface NexusGenFieldTypeNames {
   BatchPayload: { // field return type name
     count: 'Int'
   }
+  Cart: { // field return type name
+    id: 'Int'
+    items: 'JSONObject'
+  }
   Delete: { // field return type name
     deleted: 'Boolean'
   }
@@ -599,6 +621,7 @@ export interface NexusGenFieldTypeNames {
     deleteStockRequest: 'Delete'
     rejectStockRequest: 'Delete'
     returnStock: 'Stock'
+    updateCart: 'Cart'
     updateHospital: 'Hospital'
     updateInternalUser: 'InternalUser'
     updateMaker: 'Maker'
@@ -792,6 +815,10 @@ export interface NexusGenArgTypes {
     }
     returnStock: { // args
       id: number; // Int!
+    }
+    updateCart: { // args
+      id: number; // Int!
+      items: NexusGenScalars['JSONObject']; // JSONObject!
     }
     updateHospital: { // args
       deleted: boolean; // Boolean!
