@@ -35,6 +35,8 @@ export type Scalars = {
   BigInt: { input: number; output: number };
   /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
   DateTime: { input: any; output: any };
+  /** The `JSONObject` scalar type represents JSON objects as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
+  JSONObject: { input: any; output: any };
   /** The `Upload` scalar type represents a file upload. */
   Upload: { input: any; output: any };
 };
@@ -42,6 +44,13 @@ export type Scalars = {
 export type BatchPayload = {
   __typename?: 'BatchPayload';
   count: Scalars['Int']['output'];
+};
+
+/** A cart */
+export type Cart = {
+  __typename?: 'Cart';
+  id: Scalars['Int']['output'];
+  items: Scalars['JSONObject']['output'];
 };
 
 export type CreateProductTagsProductTagInputType = {
@@ -206,6 +215,7 @@ export type HospitalReservationStatusInputType = {
 /** A internal user */
 export type InternalUser = {
   __typename?: 'InternalUser';
+  cart: Cart;
   discord_user_id: Scalars['String']['output'];
   email: Scalars['String']['output'];
   id: Scalars['BigInt']['output'];
@@ -241,6 +251,7 @@ export type Mutation = {
   deleteStockRequest: Delete;
   rejectStockRequest: Delete;
   returnStock: Stock;
+  updateCart: Cart;
   updateHospital: Hospital;
   updateInternalUser: InternalUser;
   updateMaker: Maker;
@@ -343,6 +354,11 @@ export type MutationRejectStockRequestArgs = {
 
 export type MutationReturnStockArgs = {
   id: Scalars['Int']['input'];
+};
+
+export type MutationUpdateCartArgs = {
+  id: Scalars['Int']['input'];
+  items: Scalars['JSONObject']['input'];
 };
 
 export type MutationUpdateHospitalArgs = {
