@@ -12,9 +12,9 @@ import type { ProductFieldsFragment } from '@/services/api/internal_api/types';
 import {
   useInternalGetProductsQuery,
   useInternalCreateStockRequestMutation,
+  useInternalGetSessionQuery,
+  useInternalUpdateCartMutation,
 } from '@/services/api/internal_api/types';
-import { useLocalGetProductCartItemsQuery } from '@/services/api/local_api/types';
-import { productCartItemsVar } from '@/utils/apollo/cache';
 import { goAdminStockRequests } from '@/utils/routes';
 import { Note } from '../shared/Note';
 import { Empty } from './Empty';
@@ -27,9 +27,12 @@ type RequestProduct = {
 
 const Form: FC<NoProps> = () => {
   const router = useRouter();
-  const { data: cartItemsData } = useLocalGetProductCartItemsQuery();
-  const productIds =
-    cartItemsData?.productCartItems.map((item) => item.productId) || [];
+  const [update] = useInternalUpdateCartMutation();
+  const { data: sessionData } = useInternalGetSessionQuery();
+  const cart = sessionData?.session.internalUser.cart;
+  const productIds = cart
+    ? Object.keys(cart.items).map((key) => Number(key))
+    : [];
   const {
     data: productsData,
     loading: productsLoading,
@@ -42,8 +45,8 @@ const Form: FC<NoProps> = () => {
     useInternalCreateStockRequestMutation();
 
   useEffect(() => {
-    if (cartItemsData && productsData) {
-      const tmp = cartItemsData.productCartItems
+    if (cart && productsData) {
+      const tmp = Object.values(cart.items)
         .map((item) => {
           const product = productsData.products.find(
             (p) => p.id === item.productId,
@@ -59,36 +62,42 @@ const Form: FC<NoProps> = () => {
         );
       setRequestProducts(tmp);
     }
-  }, [cartItemsData, productsData]);
+  }, [cart, productsData]);
 
   const handleChangeCount = useCallback(
     (count: number, product: ProductFieldsFragment) => {
-      const prevProductCartItems = productCartItemsVar();
-      const changedCartItems = prevProductCartItems.map((item) => {
-        if (item.productId === product.id) {
-          return { ...item, count };
-        }
-        return item;
-      });
-      productCartItemsVar(changedCartItems);
+      if (cart) {
+        const newItems = {
+          ...cart.items,
+          [product.id]: { productId: product.id, count },
+        };
+        update({ variables: { id: cart.id, items: newItems } });
+      }
     },
-    [],
+    [update, cart],
   );
 
-  const handleDelete = useCallback((product: ProductFieldsFragment) => {
-    const prevProductCartItems = productCartItemsVar();
-    const deletedCartItems = prevProductCartItems.filter(
-      (item) => item.productId !== product.id,
-    );
-    productCartItemsVar(deletedCartItems);
-  }, []);
+  const handleDelete = useCallback(
+    (product: ProductFieldsFragment) => {
+      if (cart) {
+        const newItems = Object.values(cart.items)
+          .filter((item) => item.productId !== product.id)
+          .reduce((acc, item) => ({ ...acc, [item.productId]: item }), {});
+        update({ variables: { id: cart.id, items: newItems } });
+      }
+    },
+    [cart, update],
+  );
 
   const handleSubmit = async () => {
-    const cartItems = productCartItemsVar();
-    await create({ variables: { requestProducts: cartItems } });
-    productCartItemsVar([]);
-    await fetchMore({ variables: { productIds: [] } });
-    goAdminStockRequests(router);
+    if (cart) {
+      const cartItems = Object.values(cart.items);
+      console.log(cartItems);
+      await create({ variables: { requestProducts: cartItems } });
+      update({ variables: { id: cart.id, items: {} as JSON } });
+      await fetchMore({ variables: { productIds: [] } });
+      goAdminStockRequests(router);
+    }
   };
 
   return (

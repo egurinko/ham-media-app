@@ -3,16 +3,20 @@ import Link from 'next/link';
 import { memo } from 'react';
 import { SecondaryButton } from '@/components/atoms/SecondaryButton';
 import { CartIcon } from '@/components/atoms/assets/CartIcon';
-import { useLocalGetProductCartItemsQuery } from '@/services/api/local_api/types';
+import { useInternalGetSessionQuery } from '@/services/api/internal_api/types';
 import { ADMIN_STOCK_REQUESTS_NEW_PATH } from '@/utils/routes';
 import type { FC } from 'react';
 
 const StockRequestCartButton: FC<NoProps> = () => {
-  const { data } = useLocalGetProductCartItemsQuery();
-  const count = data?.productCartItems.reduce(
-    (count, item) => count + item.count,
-    0,
-  );
+  const { data: sessionData } = useInternalGetSessionQuery();
+  const cart = sessionData?.session.internalUser.cart;
+  const count = cart
+    ? Object.values(cart.items).reduce(
+        (accumulate, item) => item.count + accumulate,
+        0,
+      )
+    : 0;
+
   return (
     <Box position="fixed" right="3" bottom="3">
       <Link
@@ -37,7 +41,7 @@ const StockRequestCartButton: FC<NoProps> = () => {
             borderRadius="50%"
             fontSize="md"
           >
-            {count || 0}
+            {count}
           </Badge>
         </SecondaryButton>
       </Link>

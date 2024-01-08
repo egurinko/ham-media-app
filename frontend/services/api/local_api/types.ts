@@ -100,19 +100,6 @@ export type LocalGetHospitalSearchQuery = {
   };
 };
 
-export type LocalGetProductCartItemsQueryVariables = Exact<{
-  [key: string]: never;
-}>;
-
-export type LocalGetProductCartItemsQuery = {
-  __typename?: 'Query';
-  productCartItems: Array<{
-    __typename?: 'ProductCartItem';
-    count: number;
-    productId: number;
-  }>;
-};
-
 export type LocalReadIsAdminQueryVariables = Exact<{ [key: string]: never }>;
 
 export type LocalReadIsAdminQuery = {
@@ -201,79 +188,6 @@ export type LocalGetHospitalSearchSuspenseQueryHookResult = ReturnType<
 export type LocalGetHospitalSearchQueryResult = Apollo.QueryResult<
   LocalGetHospitalSearchQuery,
   LocalGetHospitalSearchQueryVariables
->;
-export const LocalGetProductCartItemsDocument = gql`
-  query LocalGetProductCartItems {
-    productCartItems {
-      count
-      productId
-    }
-  }
-`;
-
-/**
- * __useLocalGetProductCartItemsQuery__
- *
- * To run a query within a React component, call `useLocalGetProductCartItemsQuery` and pass it any options that fit your needs.
- * When your component renders, `useLocalGetProductCartItemsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useLocalGetProductCartItemsQuery({
- *   variables: {
- *   },
- * });
- */
-export function useLocalGetProductCartItemsQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    LocalGetProductCartItemsQuery,
-    LocalGetProductCartItemsQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<
-    LocalGetProductCartItemsQuery,
-    LocalGetProductCartItemsQueryVariables
-  >(LocalGetProductCartItemsDocument, options);
-}
-export function useLocalGetProductCartItemsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    LocalGetProductCartItemsQuery,
-    LocalGetProductCartItemsQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<
-    LocalGetProductCartItemsQuery,
-    LocalGetProductCartItemsQueryVariables
-  >(LocalGetProductCartItemsDocument, options);
-}
-export function useLocalGetProductCartItemsSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    LocalGetProductCartItemsQuery,
-    LocalGetProductCartItemsQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useSuspenseQuery<
-    LocalGetProductCartItemsQuery,
-    LocalGetProductCartItemsQueryVariables
-  >(LocalGetProductCartItemsDocument, options);
-}
-export type LocalGetProductCartItemsQueryHookResult = ReturnType<
-  typeof useLocalGetProductCartItemsQuery
->;
-export type LocalGetProductCartItemsLazyQueryHookResult = ReturnType<
-  typeof useLocalGetProductCartItemsLazyQuery
->;
-export type LocalGetProductCartItemsSuspenseQueryHookResult = ReturnType<
-  typeof useLocalGetProductCartItemsSuspenseQuery
->;
-export type LocalGetProductCartItemsQueryResult = Apollo.QueryResult<
-  LocalGetProductCartItemsQuery,
-  LocalGetProductCartItemsQueryVariables
 >;
 export const LocalReadIsAdminDocument = gql`
   query LocalReadIsAdmin {

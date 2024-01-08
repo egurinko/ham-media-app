@@ -28,3 +28,4 @@ generates:
 config:
   scalars:
     BigInt: number
+    JSONObject: JSON

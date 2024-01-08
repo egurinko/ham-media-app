@@ -36,7 +36,7 @@ export type Scalars = {
   /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
   DateTime: { input: any; output: any };
   /** The `JSONObject` scalar type represents JSON objects as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
-  JSONObject: { input: any; output: any };
+  JSONObject: { input: JSON; output: JSON };
   /** The `Upload` scalar type represents a file upload. */
   Upload: { input: any; output: any };
 };
@@ -672,7 +672,7 @@ export type InternalAllocateStockMutation = {
       name: string;
       discord_user_id: string;
       role: { __typename?: 'Role'; id: number; name: string };
-      cart: { __typename?: 'Cart'; id: number; items: any };
+      cart: { __typename?: 'Cart'; id: number; items: JSON };
     };
     stockAllocation?: {
       __typename?: 'StockAllocation';
@@ -685,7 +685,7 @@ export type InternalAllocateStockMutation = {
         name: string;
         discord_user_id: string;
         role: { __typename?: 'Role'; id: number; name: string };
-        cart: { __typename?: 'Cart'; id: number; items: any };
+        cart: { __typename?: 'Cart'; id: number; items: JSON };
       };
     } | null;
   };
@@ -788,7 +788,7 @@ export type InternalCreateInternalUserMutation = {
     name: string;
     discord_user_id: string;
     role: { __typename?: 'Role'; id: number; name: string };
-    cart: { __typename?: 'Cart'; id: number; items: any };
+    cart: { __typename?: 'Cart'; id: number; items: JSON };
   };
 };
 
@@ -838,7 +838,7 @@ export type InternalCreateProductMutation = {
         name: string;
         discord_user_id: string;
         role: { __typename?: 'Role'; id: number; name: string };
-        cart: { __typename?: 'Cart'; id: number; items: any };
+        cart: { __typename?: 'Cart'; id: number; items: JSON };
       };
       stockAllocation?: {
         __typename?: 'StockAllocation';
@@ -851,7 +851,7 @@ export type InternalCreateProductMutation = {
           name: string;
           discord_user_id: string;
           role: { __typename?: 'Role'; id: number; name: string };
-          cart: { __typename?: 'Cart'; id: number; items: any };
+          cart: { __typename?: 'Cart'; id: number; items: JSON };
         };
       } | null;
     }>;
@@ -912,7 +912,7 @@ export type InternalCreateStockRequestMutation = {
       name: string;
       discord_user_id: string;
       role: { __typename?: 'Role'; id: number; name: string };
-      cart: { __typename?: 'Cart'; id: number; items: any };
+      cart: { __typename?: 'Cart'; id: number; items: JSON };
     };
     productRegistrations: Array<{
       __typename?: 'StockRequestProductRegistration';
@@ -944,7 +944,7 @@ export type InternalCreateStockRequestMutation = {
             name: string;
             discord_user_id: string;
             role: { __typename?: 'Role'; id: number; name: string };
-            cart: { __typename?: 'Cart'; id: number; items: any };
+            cart: { __typename?: 'Cart'; id: number; items: JSON };
           };
           stockAllocation?: {
             __typename?: 'StockAllocation';
@@ -957,7 +957,7 @@ export type InternalCreateStockRequestMutation = {
               name: string;
               discord_user_id: string;
               role: { __typename?: 'Role'; id: number; name: string };
-              cart: { __typename?: 'Cart'; id: number; items: any };
+              cart: { __typename?: 'Cart'; id: number; items: JSON };
             };
           } | null;
         }>;
@@ -985,7 +985,7 @@ export type InternalCreateStocksMutation = {
       name: string;
       discord_user_id: string;
       role: { __typename?: 'Role'; id: number; name: string };
-      cart: { __typename?: 'Cart'; id: number; items: any };
+      cart: { __typename?: 'Cart'; id: number; items: JSON };
     };
     stockAllocation?: {
       __typename?: 'StockAllocation';
@@ -998,7 +998,7 @@ export type InternalCreateStocksMutation = {
         name: string;
         discord_user_id: string;
         role: { __typename?: 'Role'; id: number; name: string };
-        cart: { __typename?: 'Cart'; id: number; items: any };
+        cart: { __typename?: 'Cart'; id: number; items: JSON };
       };
     } | null;
   }>;
@@ -1061,7 +1061,7 @@ export type InternalDeleteStockRequestMutation = {
 export type CartFieldsFragment = {
   __typename?: 'Cart';
   id: number;
-  items: any;
+  items: JSON;
 };
 
 export type HospitalFieldsFragment = {
@@ -1196,7 +1196,7 @@ export type InternalUserFieldsFragment = {
   name: string;
   discord_user_id: string;
   role: { __typename?: 'Role'; id: number; name: string };
-  cart: { __typename?: 'Cart'; id: number; items: any };
+  cart: { __typename?: 'Cart'; id: number; items: JSON };
 };
 
 export type MakerFieldsFragment = {
@@ -1232,7 +1232,7 @@ export type ProductFieldsFragment = {
       name: string;
       discord_user_id: string;
       role: { __typename?: 'Role'; id: number; name: string };
-      cart: { __typename?: 'Cart'; id: number; items: any };
+      cart: { __typename?: 'Cart'; id: number; items: JSON };
     };
     stockAllocation?: {
       __typename?: 'StockAllocation';
@@ -1245,7 +1245,7 @@ export type ProductFieldsFragment = {
         name: string;
         discord_user_id: string;
         role: { __typename?: 'Role'; id: number; name: string };
-        cart: { __typename?: 'Cart'; id: number; items: any };
+        cart: { __typename?: 'Cart'; id: number; items: JSON };
       };
     } | null;
   }>;
@@ -1263,7 +1263,7 @@ export type StockFieldsFragment = {
     name: string;
     discord_user_id: string;
     role: { __typename?: 'Role'; id: number; name: string };
-    cart: { __typename?: 'Cart'; id: number; items: any };
+    cart: { __typename?: 'Cart'; id: number; items: JSON };
   };
   stockAllocation?: {
     __typename?: 'StockAllocation';
@@ -1276,7 +1276,7 @@ export type StockFieldsFragment = {
       name: string;
       discord_user_id: string;
       role: { __typename?: 'Role'; id: number; name: string };
-      cart: { __typename?: 'Cart'; id: number; items: any };
+      cart: { __typename?: 'Cart'; id: number; items: JSON };
     };
   } | null;
 };
@@ -1316,7 +1316,7 @@ export type StockRequestFieldsFragment = {
     name: string;
     discord_user_id: string;
     role: { __typename?: 'Role'; id: number; name: string };
-    cart: { __typename?: 'Cart'; id: number; items: any };
+    cart: { __typename?: 'Cart'; id: number; items: JSON };
   };
   productRegistrations: Array<{
     __typename?: 'StockRequestProductRegistration';
@@ -1348,7 +1348,7 @@ export type StockRequestFieldsFragment = {
           name: string;
           discord_user_id: string;
           role: { __typename?: 'Role'; id: number; name: string };
-          cart: { __typename?: 'Cart'; id: number; items: any };
+          cart: { __typename?: 'Cart'; id: number; items: JSON };
         };
         stockAllocation?: {
           __typename?: 'StockAllocation';
@@ -1361,7 +1361,7 @@ export type StockRequestFieldsFragment = {
             name: string;
             discord_user_id: string;
             role: { __typename?: 'Role'; id: number; name: string };
-            cart: { __typename?: 'Cart'; id: number; items: any };
+            cart: { __typename?: 'Cart'; id: number; items: JSON };
           };
         } | null;
       }>;
@@ -1543,7 +1543,7 @@ export type InternalGetInternalUserQuery = {
     name: string;
     discord_user_id: string;
     role: { __typename?: 'Role'; id: number; name: string };
-    cart: { __typename?: 'Cart'; id: number; items: any };
+    cart: { __typename?: 'Cart'; id: number; items: JSON };
   };
 };
 
@@ -1560,7 +1560,7 @@ export type InternalGetInternalUsersQuery = {
     name: string;
     discord_user_id: string;
     role: { __typename?: 'Role'; id: number; name: string };
-    cart: { __typename?: 'Cart'; id: number; items: any };
+    cart: { __typename?: 'Cart'; id: number; items: JSON };
   }>;
 };
 
@@ -1613,7 +1613,7 @@ export type InternalGetProductQuery = {
         name: string;
         discord_user_id: string;
         role: { __typename?: 'Role'; id: number; name: string };
-        cart: { __typename?: 'Cart'; id: number; items: any };
+        cart: { __typename?: 'Cart'; id: number; items: JSON };
       };
       stockAllocation?: {
         __typename?: 'StockAllocation';
@@ -1626,7 +1626,7 @@ export type InternalGetProductQuery = {
           name: string;
           discord_user_id: string;
           role: { __typename?: 'Role'; id: number; name: string };
-          cart: { __typename?: 'Cart'; id: number; items: any };
+          cart: { __typename?: 'Cart'; id: number; items: JSON };
         };
       } | null;
     }>;
@@ -1677,7 +1677,7 @@ export type InternalGetProductConnectionQuery = {
             name: string;
             discord_user_id: string;
             role: { __typename?: 'Role'; id: number; name: string };
-            cart: { __typename?: 'Cart'; id: number; items: any };
+            cart: { __typename?: 'Cart'; id: number; items: JSON };
           };
           stockAllocation?: {
             __typename?: 'StockAllocation';
@@ -1690,7 +1690,7 @@ export type InternalGetProductConnectionQuery = {
               name: string;
               discord_user_id: string;
               role: { __typename?: 'Role'; id: number; name: string };
-              cart: { __typename?: 'Cart'; id: number; items: any };
+              cart: { __typename?: 'Cart'; id: number; items: JSON };
             };
           } | null;
         }>;
@@ -1785,7 +1785,7 @@ export type InternalGetProductsQuery = {
         name: string;
         discord_user_id: string;
         role: { __typename?: 'Role'; id: number; name: string };
-        cart: { __typename?: 'Cart'; id: number; items: any };
+        cart: { __typename?: 'Cart'; id: number; items: JSON };
       };
       stockAllocation?: {
         __typename?: 'StockAllocation';
@@ -1798,7 +1798,7 @@ export type InternalGetProductsQuery = {
           name: string;
           discord_user_id: string;
           role: { __typename?: 'Role'; id: number; name: string };
-          cart: { __typename?: 'Cart'; id: number; items: any };
+          cart: { __typename?: 'Cart'; id: number; items: JSON };
         };
       } | null;
     }>;
@@ -1826,7 +1826,7 @@ export type InternalGetSessionQuery = {
       name: string;
       discord_user_id: string;
       role: { __typename?: 'Role'; id: number; name: string };
-      cart: { __typename?: 'Cart'; id: number; items: any };
+      cart: { __typename?: 'Cart'; id: number; items: JSON };
     };
   };
 };
@@ -1847,7 +1847,7 @@ export type InternalGetStockRequestQuery = {
       name: string;
       discord_user_id: string;
       role: { __typename?: 'Role'; id: number; name: string };
-      cart: { __typename?: 'Cart'; id: number; items: any };
+      cart: { __typename?: 'Cart'; id: number; items: JSON };
     };
     productRegistrations: Array<{
       __typename?: 'StockRequestProductRegistration';
@@ -1879,7 +1879,7 @@ export type InternalGetStockRequestQuery = {
             name: string;
             discord_user_id: string;
             role: { __typename?: 'Role'; id: number; name: string };
-            cart: { __typename?: 'Cart'; id: number; items: any };
+            cart: { __typename?: 'Cart'; id: number; items: JSON };
           };
           stockAllocation?: {
             __typename?: 'StockAllocation';
@@ -1892,7 +1892,7 @@ export type InternalGetStockRequestQuery = {
               name: string;
               discord_user_id: string;
               role: { __typename?: 'Role'; id: number; name: string };
-              cart: { __typename?: 'Cart'; id: number; items: any };
+              cart: { __typename?: 'Cart'; id: number; items: JSON };
             };
           } | null;
         }>;
@@ -1923,7 +1923,7 @@ export type InternalGetStockRequestConnectionQuery = {
           name: string;
           discord_user_id: string;
           role: { __typename?: 'Role'; id: number; name: string };
-          cart: { __typename?: 'Cart'; id: number; items: any };
+          cart: { __typename?: 'Cart'; id: number; items: JSON };
         };
         productRegistrations: Array<{
           __typename?: 'StockRequestProductRegistration';
@@ -1959,7 +1959,7 @@ export type InternalGetStockRequestConnectionQuery = {
                 name: string;
                 discord_user_id: string;
                 role: { __typename?: 'Role'; id: number; name: string };
-                cart: { __typename?: 'Cart'; id: number; items: any };
+                cart: { __typename?: 'Cart'; id: number; items: JSON };
               };
               stockAllocation?: {
                 __typename?: 'StockAllocation';
@@ -1972,7 +1972,7 @@ export type InternalGetStockRequestConnectionQuery = {
                   name: string;
                   discord_user_id: string;
                   role: { __typename?: 'Role'; id: number; name: string };
-                  cart: { __typename?: 'Cart'; id: number; items: any };
+                  cart: { __typename?: 'Cart'; id: number; items: JSON };
                 };
               } | null;
             }>;
@@ -2008,7 +2008,7 @@ export type InternalGetStocksQuery = {
       name: string;
       discord_user_id: string;
       role: { __typename?: 'Role'; id: number; name: string };
-      cart: { __typename?: 'Cart'; id: number; items: any };
+      cart: { __typename?: 'Cart'; id: number; items: JSON };
     };
     stockAllocation?: {
       __typename?: 'StockAllocation';
@@ -2021,7 +2021,7 @@ export type InternalGetStocksQuery = {
         name: string;
         discord_user_id: string;
         role: { __typename?: 'Role'; id: number; name: string };
-        cart: { __typename?: 'Cart'; id: number; items: any };
+        cart: { __typename?: 'Cart'; id: number; items: JSON };
       };
     } | null;
   }>;
@@ -2055,7 +2055,7 @@ export type InternalReturnStockMutation = {
       name: string;
       discord_user_id: string;
       role: { __typename?: 'Role'; id: number; name: string };
-      cart: { __typename?: 'Cart'; id: number; items: any };
+      cart: { __typename?: 'Cart'; id: number; items: JSON };
     };
     stockAllocation?: {
       __typename?: 'StockAllocation';
@@ -2068,10 +2068,20 @@ export type InternalReturnStockMutation = {
         name: string;
         discord_user_id: string;
         role: { __typename?: 'Role'; id: number; name: string };
-        cart: { __typename?: 'Cart'; id: number; items: any };
+        cart: { __typename?: 'Cart'; id: number; items: JSON };
       };
     } | null;
   };
+};
+
+export type InternalUpdateCartMutationVariables = Exact<{
+  id: Scalars['Int']['input'];
+  items: Scalars['JSONObject']['input'];
+}>;
+
+export type InternalUpdateCartMutation = {
+  __typename?: 'Mutation';
+  updateCart: { __typename?: 'Cart'; id: number; items: JSON };
 };
 
 export type InternalUpdateHospitalMutationVariables = Exact<{
@@ -2112,7 +2122,7 @@ export type InternalUpdateInternalUserMutation = {
     name: string;
     discord_user_id: string;
     role: { __typename?: 'Role'; id: number; name: string };
-    cart: { __typename?: 'Cart'; id: number; items: any };
+    cart: { __typename?: 'Cart'; id: number; items: JSON };
   };
 };
 
@@ -2163,7 +2173,7 @@ export type InternalUpdateProductMutation = {
         name: string;
         discord_user_id: string;
         role: { __typename?: 'Role'; id: number; name: string };
-        cart: { __typename?: 'Cart'; id: number; items: any };
+        cart: { __typename?: 'Cart'; id: number; items: JSON };
       };
       stockAllocation?: {
         __typename?: 'StockAllocation';
@@ -2176,7 +2186,7 @@ export type InternalUpdateProductMutation = {
           name: string;
           discord_user_id: string;
           role: { __typename?: 'Role'; id: number; name: string };
-          cart: { __typename?: 'Cart'; id: number; items: any };
+          cart: { __typename?: 'Cart'; id: number; items: JSON };
         };
       } | null;
     }>;
@@ -2227,7 +2237,7 @@ export type InternalUpdateStockInternalUserMutation = {
       name: string;
       discord_user_id: string;
       role: { __typename?: 'Role'; id: number; name: string };
-      cart: { __typename?: 'Cart'; id: number; items: any };
+      cart: { __typename?: 'Cart'; id: number; items: JSON };
     };
     stockAllocation?: {
       __typename?: 'StockAllocation';
@@ -2240,7 +2250,7 @@ export type InternalUpdateStockInternalUserMutation = {
         name: string;
         discord_user_id: string;
         role: { __typename?: 'Role'; id: number; name: string };
-        cart: { __typename?: 'Cart'; id: number; items: any };
+        cart: { __typename?: 'Cart'; id: number; items: JSON };
       };
     } | null;
   };
@@ -2265,7 +2275,7 @@ export type InternalUpdateStockRequestMutation = {
       name: string;
       discord_user_id: string;
       role: { __typename?: 'Role'; id: number; name: string };
-      cart: { __typename?: 'Cart'; id: number; items: any };
+      cart: { __typename?: 'Cart'; id: number; items: JSON };
     };
     productRegistrations: Array<{
       __typename?: 'StockRequestProductRegistration';
@@ -2297,7 +2307,7 @@ export type InternalUpdateStockRequestMutation = {
             name: string;
             discord_user_id: string;
             role: { __typename?: 'Role'; id: number; name: string };
-            cart: { __typename?: 'Cart'; id: number; items: any };
+            cart: { __typename?: 'Cart'; id: number; items: JSON };
           };
           stockAllocation?: {
             __typename?: 'StockAllocation';
@@ -2310,7 +2320,7 @@ export type InternalUpdateStockRequestMutation = {
               name: string;
               discord_user_id: string;
               role: { __typename?: 'Role'; id: number; name: string };
-              cart: { __typename?: 'Cart'; id: number; items: any };
+              cart: { __typename?: 'Cart'; id: number; items: JSON };
             };
           } | null;
         }>;
@@ -5078,6 +5088,58 @@ export type InternalReturnStockMutationResult =
 export type InternalReturnStockMutationOptions = Apollo.BaseMutationOptions<
   InternalReturnStockMutation,
   InternalReturnStockMutationVariables
+>;
+export const InternalUpdateCartDocument = gql`
+  mutation InternalUpdateCart($id: Int!, $items: JSONObject!) {
+    updateCart(id: $id, items: $items) {
+      ...CartFields
+    }
+  }
+  ${CartFieldsFragmentDoc}
+`;
+export type InternalUpdateCartMutationFn = Apollo.MutationFunction<
+  InternalUpdateCartMutation,
+  InternalUpdateCartMutationVariables
+>;
+
+/**
+ * __useInternalUpdateCartMutation__
+ *
+ * To run a mutation, you first call `useInternalUpdateCartMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInternalUpdateCartMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [internalUpdateCartMutation, { data, loading, error }] = useInternalUpdateCartMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      items: // value for 'items'
+ *   },
+ * });
+ */
+export function useInternalUpdateCartMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    InternalUpdateCartMutation,
+    InternalUpdateCartMutationVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    InternalUpdateCartMutation,
+    InternalUpdateCartMutationVariables
+  >(InternalUpdateCartDocument, options);
+}
+export type InternalUpdateCartMutationHookResult = ReturnType<
+  typeof useInternalUpdateCartMutation
+>;
+export type InternalUpdateCartMutationResult =
+  Apollo.MutationResult<InternalUpdateCartMutation>;
+export type InternalUpdateCartMutationOptions = Apollo.BaseMutationOptions<
+  InternalUpdateCartMutation,
+  InternalUpdateCartMutationVariables
 >;
 export const InternalUpdateHospitalDocument = gql`
   mutation InternalUpdateHospital(

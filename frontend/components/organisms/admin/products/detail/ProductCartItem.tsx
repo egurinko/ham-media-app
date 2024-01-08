@@ -8,8 +8,11 @@ import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
 import { ProductSummary } from '@/components/organisms/admin/products/ProductSummary';
 import type { Product } from '@/services/api/internal_api/types';
-import { useInternalGetProductQuery } from '@/services/api/internal_api/types';
-import { productCartItemsVar } from '@/utils/apollo/cache';
+import {
+  useInternalGetProductQuery,
+  useInternalGetSessionQuery,
+  useInternalUpdateCartMutation,
+} from '@/services/api/internal_api/types';
 import type { FC } from 'react';
 
 type Props = {
@@ -17,6 +20,10 @@ type Props = {
 };
 
 const ProductCartItem: FC<Props> = ({ productId }) => {
+  const { data: sessionData } = useInternalGetSessionQuery();
+  const cart = sessionData?.session.internalUser.cart;
+  const [update] = useInternalUpdateCartMutation();
+
   const { data, error } = useInternalGetProductQuery({
     variables: { id: productId },
     fetchPolicy: 'network-only',
@@ -25,23 +32,12 @@ const ProductCartItem: FC<Props> = ({ productId }) => {
   const [message, setMessage] = useState('');
 
   const handleAddProductCartItem = useCallback(() => {
-    const productCartItems = productCartItemsVar();
-    const hasProduct = productCartItems.some(
-      (item) => item.productId === productId,
-    );
-    if (hasProduct) {
-      const newProductCartItems = productCartItems.map((item) => {
-        if (item.productId === productId) {
-          return { count: item.count + count, productId: item.productId };
-        }
-        return item;
-      });
-      productCartItemsVar(newProductCartItems);
-    } else {
-      productCartItemsVar([...productCartItemsVar(), { count, productId }]);
+    if (cart) {
+      const newItems = { ...cart.items, [productId]: { productId, count } };
+      update({ variables: { id: cart.id, items: newItems } });
+      setMessage('カートに追加しました');
     }
-    setMessage('カートに追加しました');
-  }, [productId, count]);
+  }, [productId, cart, update, count]);
 
   return (
     <Card>
