@@ -672,6 +672,7 @@ export type InternalAllocateStockMutation = {
       name: string;
       discord_user_id: string;
       role: { __typename?: 'Role'; id: number; name: string };
+      cart: { __typename?: 'Cart'; id: number; items: any };
     };
     stockAllocation?: {
       __typename?: 'StockAllocation';
@@ -684,6 +685,7 @@ export type InternalAllocateStockMutation = {
         name: string;
         discord_user_id: string;
         role: { __typename?: 'Role'; id: number; name: string };
+        cart: { __typename?: 'Cart'; id: number; items: any };
       };
     } | null;
   };
@@ -786,6 +788,7 @@ export type InternalCreateInternalUserMutation = {
     name: string;
     discord_user_id: string;
     role: { __typename?: 'Role'; id: number; name: string };
+    cart: { __typename?: 'Cart'; id: number; items: any };
   };
 };
 
@@ -835,6 +838,7 @@ export type InternalCreateProductMutation = {
         name: string;
         discord_user_id: string;
         role: { __typename?: 'Role'; id: number; name: string };
+        cart: { __typename?: 'Cart'; id: number; items: any };
       };
       stockAllocation?: {
         __typename?: 'StockAllocation';
@@ -847,6 +851,7 @@ export type InternalCreateProductMutation = {
           name: string;
           discord_user_id: string;
           role: { __typename?: 'Role'; id: number; name: string };
+          cart: { __typename?: 'Cart'; id: number; items: any };
         };
       } | null;
     }>;
@@ -907,6 +912,7 @@ export type InternalCreateStockRequestMutation = {
       name: string;
       discord_user_id: string;
       role: { __typename?: 'Role'; id: number; name: string };
+      cart: { __typename?: 'Cart'; id: number; items: any };
     };
     productRegistrations: Array<{
       __typename?: 'StockRequestProductRegistration';
@@ -938,6 +944,7 @@ export type InternalCreateStockRequestMutation = {
             name: string;
             discord_user_id: string;
             role: { __typename?: 'Role'; id: number; name: string };
+            cart: { __typename?: 'Cart'; id: number; items: any };
           };
           stockAllocation?: {
             __typename?: 'StockAllocation';
@@ -950,6 +957,7 @@ export type InternalCreateStockRequestMutation = {
               name: string;
               discord_user_id: string;
               role: { __typename?: 'Role'; id: number; name: string };
+              cart: { __typename?: 'Cart'; id: number; items: any };
             };
           } | null;
         }>;
@@ -977,6 +985,7 @@ export type InternalCreateStocksMutation = {
       name: string;
       discord_user_id: string;
       role: { __typename?: 'Role'; id: number; name: string };
+      cart: { __typename?: 'Cart'; id: number; items: any };
     };
     stockAllocation?: {
       __typename?: 'StockAllocation';
@@ -989,6 +998,7 @@ export type InternalCreateStocksMutation = {
         name: string;
         discord_user_id: string;
         role: { __typename?: 'Role'; id: number; name: string };
+        cart: { __typename?: 'Cart'; id: number; items: any };
       };
     } | null;
   }>;
@@ -1046,6 +1056,12 @@ export type InternalDeleteStockRequestMutationVariables = Exact<{
 export type InternalDeleteStockRequestMutation = {
   __typename?: 'Mutation';
   deleteStockRequest: { __typename?: 'Delete'; deleted: boolean };
+};
+
+export type CartFieldsFragment = {
+  __typename?: 'Cart';
+  id: number;
+  items: any;
 };
 
 export type HospitalFieldsFragment = {
@@ -1180,6 +1196,7 @@ export type InternalUserFieldsFragment = {
   name: string;
   discord_user_id: string;
   role: { __typename?: 'Role'; id: number; name: string };
+  cart: { __typename?: 'Cart'; id: number; items: any };
 };
 
 export type MakerFieldsFragment = {
@@ -1215,6 +1232,7 @@ export type ProductFieldsFragment = {
       name: string;
       discord_user_id: string;
       role: { __typename?: 'Role'; id: number; name: string };
+      cart: { __typename?: 'Cart'; id: number; items: any };
     };
     stockAllocation?: {
       __typename?: 'StockAllocation';
@@ -1227,6 +1245,7 @@ export type ProductFieldsFragment = {
         name: string;
         discord_user_id: string;
         role: { __typename?: 'Role'; id: number; name: string };
+        cart: { __typename?: 'Cart'; id: number; items: any };
       };
     } | null;
   }>;
@@ -1244,6 +1263,7 @@ export type StockFieldsFragment = {
     name: string;
     discord_user_id: string;
     role: { __typename?: 'Role'; id: number; name: string };
+    cart: { __typename?: 'Cart'; id: number; items: any };
   };
   stockAllocation?: {
     __typename?: 'StockAllocation';
@@ -1256,6 +1276,7 @@ export type StockFieldsFragment = {
       name: string;
       discord_user_id: string;
       role: { __typename?: 'Role'; id: number; name: string };
+      cart: { __typename?: 'Cart'; id: number; items: any };
     };
   } | null;
 };
@@ -1295,6 +1316,7 @@ export type StockRequestFieldsFragment = {
     name: string;
     discord_user_id: string;
     role: { __typename?: 'Role'; id: number; name: string };
+    cart: { __typename?: 'Cart'; id: number; items: any };
   };
   productRegistrations: Array<{
     __typename?: 'StockRequestProductRegistration';
@@ -1326,6 +1348,7 @@ export type StockRequestFieldsFragment = {
           name: string;
           discord_user_id: string;
           role: { __typename?: 'Role'; id: number; name: string };
+          cart: { __typename?: 'Cart'; id: number; items: any };
         };
         stockAllocation?: {
           __typename?: 'StockAllocation';
@@ -1338,6 +1361,7 @@ export type StockRequestFieldsFragment = {
             name: string;
             discord_user_id: string;
             role: { __typename?: 'Role'; id: number; name: string };
+            cart: { __typename?: 'Cart'; id: number; items: any };
           };
         } | null;
       }>;
@@ -1519,6 +1543,7 @@ export type InternalGetInternalUserQuery = {
     name: string;
     discord_user_id: string;
     role: { __typename?: 'Role'; id: number; name: string };
+    cart: { __typename?: 'Cart'; id: number; items: any };
   };
 };
 
@@ -1535,6 +1560,7 @@ export type InternalGetInternalUsersQuery = {
     name: string;
     discord_user_id: string;
     role: { __typename?: 'Role'; id: number; name: string };
+    cart: { __typename?: 'Cart'; id: number; items: any };
   }>;
 };
 
@@ -1587,6 +1613,7 @@ export type InternalGetProductQuery = {
         name: string;
         discord_user_id: string;
         role: { __typename?: 'Role'; id: number; name: string };
+        cart: { __typename?: 'Cart'; id: number; items: any };
       };
       stockAllocation?: {
         __typename?: 'StockAllocation';
@@ -1599,6 +1626,7 @@ export type InternalGetProductQuery = {
           name: string;
           discord_user_id: string;
           role: { __typename?: 'Role'; id: number; name: string };
+          cart: { __typename?: 'Cart'; id: number; items: any };
         };
       } | null;
     }>;
@@ -1649,6 +1677,7 @@ export type InternalGetProductConnectionQuery = {
             name: string;
             discord_user_id: string;
             role: { __typename?: 'Role'; id: number; name: string };
+            cart: { __typename?: 'Cart'; id: number; items: any };
           };
           stockAllocation?: {
             __typename?: 'StockAllocation';
@@ -1661,6 +1690,7 @@ export type InternalGetProductConnectionQuery = {
               name: string;
               discord_user_id: string;
               role: { __typename?: 'Role'; id: number; name: string };
+              cart: { __typename?: 'Cart'; id: number; items: any };
             };
           } | null;
         }>;
@@ -1755,6 +1785,7 @@ export type InternalGetProductsQuery = {
         name: string;
         discord_user_id: string;
         role: { __typename?: 'Role'; id: number; name: string };
+        cart: { __typename?: 'Cart'; id: number; items: any };
       };
       stockAllocation?: {
         __typename?: 'StockAllocation';
@@ -1767,6 +1798,7 @@ export type InternalGetProductsQuery = {
           name: string;
           discord_user_id: string;
           role: { __typename?: 'Role'; id: number; name: string };
+          cart: { __typename?: 'Cart'; id: number; items: any };
         };
       } | null;
     }>;
@@ -1794,6 +1826,7 @@ export type InternalGetSessionQuery = {
       name: string;
       discord_user_id: string;
       role: { __typename?: 'Role'; id: number; name: string };
+      cart: { __typename?: 'Cart'; id: number; items: any };
     };
   };
 };
@@ -1814,6 +1847,7 @@ export type InternalGetStockRequestQuery = {
       name: string;
       discord_user_id: string;
       role: { __typename?: 'Role'; id: number; name: string };
+      cart: { __typename?: 'Cart'; id: number; items: any };
     };
     productRegistrations: Array<{
       __typename?: 'StockRequestProductRegistration';
@@ -1845,6 +1879,7 @@ export type InternalGetStockRequestQuery = {
             name: string;
             discord_user_id: string;
             role: { __typename?: 'Role'; id: number; name: string };
+            cart: { __typename?: 'Cart'; id: number; items: any };
           };
           stockAllocation?: {
             __typename?: 'StockAllocation';
@@ -1857,6 +1892,7 @@ export type InternalGetStockRequestQuery = {
               name: string;
               discord_user_id: string;
               role: { __typename?: 'Role'; id: number; name: string };
+              cart: { __typename?: 'Cart'; id: number; items: any };
             };
           } | null;
         }>;
@@ -1887,6 +1923,7 @@ export type InternalGetStockRequestConnectionQuery = {
           name: string;
           discord_user_id: string;
           role: { __typename?: 'Role'; id: number; name: string };
+          cart: { __typename?: 'Cart'; id: number; items: any };
         };
         productRegistrations: Array<{
           __typename?: 'StockRequestProductRegistration';
@@ -1922,6 +1959,7 @@ export type InternalGetStockRequestConnectionQuery = {
                 name: string;
                 discord_user_id: string;
                 role: { __typename?: 'Role'; id: number; name: string };
+                cart: { __typename?: 'Cart'; id: number; items: any };
               };
               stockAllocation?: {
                 __typename?: 'StockAllocation';
@@ -1934,6 +1972,7 @@ export type InternalGetStockRequestConnectionQuery = {
                   name: string;
                   discord_user_id: string;
                   role: { __typename?: 'Role'; id: number; name: string };
+                  cart: { __typename?: 'Cart'; id: number; items: any };
                 };
               } | null;
             }>;
@@ -1969,6 +2008,7 @@ export type InternalGetStocksQuery = {
       name: string;
       discord_user_id: string;
       role: { __typename?: 'Role'; id: number; name: string };
+      cart: { __typename?: 'Cart'; id: number; items: any };
     };
     stockAllocation?: {
       __typename?: 'StockAllocation';
@@ -1981,6 +2021,7 @@ export type InternalGetStocksQuery = {
         name: string;
         discord_user_id: string;
         role: { __typename?: 'Role'; id: number; name: string };
+        cart: { __typename?: 'Cart'; id: number; items: any };
       };
     } | null;
   }>;
@@ -2014,6 +2055,7 @@ export type InternalReturnStockMutation = {
       name: string;
       discord_user_id: string;
       role: { __typename?: 'Role'; id: number; name: string };
+      cart: { __typename?: 'Cart'; id: number; items: any };
     };
     stockAllocation?: {
       __typename?: 'StockAllocation';
@@ -2026,6 +2068,7 @@ export type InternalReturnStockMutation = {
         name: string;
         discord_user_id: string;
         role: { __typename?: 'Role'; id: number; name: string };
+        cart: { __typename?: 'Cart'; id: number; items: any };
       };
     } | null;
   };
@@ -2069,6 +2112,7 @@ export type InternalUpdateInternalUserMutation = {
     name: string;
     discord_user_id: string;
     role: { __typename?: 'Role'; id: number; name: string };
+    cart: { __typename?: 'Cart'; id: number; items: any };
   };
 };
 
@@ -2119,6 +2163,7 @@ export type InternalUpdateProductMutation = {
         name: string;
         discord_user_id: string;
         role: { __typename?: 'Role'; id: number; name: string };
+        cart: { __typename?: 'Cart'; id: number; items: any };
       };
       stockAllocation?: {
         __typename?: 'StockAllocation';
@@ -2131,6 +2176,7 @@ export type InternalUpdateProductMutation = {
           name: string;
           discord_user_id: string;
           role: { __typename?: 'Role'; id: number; name: string };
+          cart: { __typename?: 'Cart'; id: number; items: any };
         };
       } | null;
     }>;
@@ -2181,6 +2227,7 @@ export type InternalUpdateStockInternalUserMutation = {
       name: string;
       discord_user_id: string;
       role: { __typename?: 'Role'; id: number; name: string };
+      cart: { __typename?: 'Cart'; id: number; items: any };
     };
     stockAllocation?: {
       __typename?: 'StockAllocation';
@@ -2193,6 +2240,7 @@ export type InternalUpdateStockInternalUserMutation = {
         name: string;
         discord_user_id: string;
         role: { __typename?: 'Role'; id: number; name: string };
+        cart: { __typename?: 'Cart'; id: number; items: any };
       };
     } | null;
   };
@@ -2217,6 +2265,7 @@ export type InternalUpdateStockRequestMutation = {
       name: string;
       discord_user_id: string;
       role: { __typename?: 'Role'; id: number; name: string };
+      cart: { __typename?: 'Cart'; id: number; items: any };
     };
     productRegistrations: Array<{
       __typename?: 'StockRequestProductRegistration';
@@ -2248,6 +2297,7 @@ export type InternalUpdateStockRequestMutation = {
             name: string;
             discord_user_id: string;
             role: { __typename?: 'Role'; id: number; name: string };
+            cart: { __typename?: 'Cart'; id: number; items: any };
           };
           stockAllocation?: {
             __typename?: 'StockAllocation';
@@ -2260,6 +2310,7 @@ export type InternalUpdateStockRequestMutation = {
               name: string;
               discord_user_id: string;
               role: { __typename?: 'Role'; id: number; name: string };
+              cart: { __typename?: 'Cart'; id: number; items: any };
             };
           } | null;
         }>;
@@ -2415,6 +2466,12 @@ export const RoleFieldsFragmentDoc = gql`
     name
   }
 `;
+export const CartFieldsFragmentDoc = gql`
+  fragment CartFields on Cart {
+    id
+    items
+  }
+`;
 export const InternalUserFieldsFragmentDoc = gql`
   fragment InternalUserFields on InternalUser {
     id
@@ -2424,8 +2481,12 @@ export const InternalUserFieldsFragmentDoc = gql`
     role {
       ...RoleFields
     }
+    cart {
+      ...CartFields
+    }
   }
   ${RoleFieldsFragmentDoc}
+  ${CartFieldsFragmentDoc}
 `;
 export const ProductTaggingFieldsFragmentDoc = gql`
   fragment ProductTaggingFields on ProductTagging {
