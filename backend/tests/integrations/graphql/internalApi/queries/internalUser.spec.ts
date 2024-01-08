@@ -12,6 +12,10 @@ const QUERY = gql`
       role {
         name
       }
+      cart {
+        id
+        items
+      }
     }
   }
 `;
@@ -24,7 +28,7 @@ const INTERNAL_USER_DISCORD_USER_ID_1 = 'internalUserDiscordUserId1';
 
 const init = async () => {
   const role = await db.role.create({ data: { name: ROLE_NAME } });
-  await db.internalUser.create({
+  const internalUser = await db.internalUser.create({
     data: {
       id: INTERNAL_USER_ID_1,
       name: INTERNAL_USER_NAME_1,
@@ -32,6 +36,16 @@ const init = async () => {
       discord_user_id: INTERNAL_USER_DISCORD_USER_ID_1,
       password_digest: '',
       role_id: role.id,
+    },
+  });
+  await db.cart.create({
+    data: {
+      internal_user_id: internalUser.id,
+      items: {
+        productId1: {
+          stockIds: [1],
+        },
+      },
     },
   });
 };
@@ -48,7 +62,6 @@ describe('internalUser', () => {
       const result = await client.query(QUERY, {
         variables: { id: INTERNAL_USER_ID_1 },
       });
-
       const internalUser = result.data['internalUser'];
 
       expect(internalUser.id).toEqual(INTERNAL_USER_ID_1);
@@ -58,6 +71,7 @@ describe('internalUser', () => {
         INTERNAL_USER_DISCORD_USER_ID_1,
       );
       expect(internalUser.role.name).toEqual(ROLE_NAME);
+      expect(internalUser.cart).toBeDefined();
     });
   });
 

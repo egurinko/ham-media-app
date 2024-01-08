@@ -10,7 +10,7 @@ export const internalUser = queryField((t) => {
     resolve: async (_root, args, ctx) => {
       return await ctx.prisma.internalUser.findUniqueOrThrow({
         where: { id: args.id },
-        include: { role: true },
+        include: { role: true, cart: true },
       });
     },
   });

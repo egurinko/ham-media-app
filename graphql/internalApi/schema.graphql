@@ -178,6 +178,7 @@ input HospitalReservationStatusInputType {
 
 """A internal user"""
 type InternalUser {
+  cart: Cart!
   discord_user_id: String!
   email: String!
   id: BigInt!

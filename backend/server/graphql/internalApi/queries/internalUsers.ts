@@ -5,7 +5,9 @@ export const internalUsers = queryField((t) => {
   t.nonNull.list.nonNull.field('internalUsers', {
     type: internalUserType,
     resolve(_root, _args, ctx) {
-      return ctx.prisma.internalUser.findMany({ include: { role: true } });
+      return ctx.prisma.internalUser.findMany({
+        include: { role: true, cart: true },
+      });
     },
   });
 });

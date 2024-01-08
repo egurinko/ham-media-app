@@ -30,7 +30,7 @@ export const createInternalUserField = mutationField((t) => {
               },
             },
           },
-          include: { role: true },
+          include: { role: true, cart: true },
         });
       } catch (e) {
         const { key, message, statusCode } = judgeError(e);

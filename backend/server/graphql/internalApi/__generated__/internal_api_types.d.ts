@@ -364,6 +364,7 @@ export interface NexusGenFieldTypes {
     reservable: string; // String!
   }
   InternalUser: { // field return type
+    cart: NexusGenRootTypes['Cart']; // Cart!
     discord_user_id: string; // String!
     email: string; // String!
     id: NexusGenScalars['BigInt']; // BigInt!
@@ -591,6 +592,7 @@ export interface NexusGenFieldTypeNames {
     reservable: 'String'
   }
   InternalUser: { // field return type name
+    cart: 'Cart'
     discord_user_id: 'String'
     email: 'String'
     id: 'BigInt'
