@@ -33,6 +33,7 @@ const getCurrentInternalUser = async (authorizationHeader?: string) => {
       const decoded = await verify(token);
       return await client.internalUser.findUniqueOrThrow({
         where: { email: decoded.email },
+        include: { role: true, cart: true },
       });
     } catch (error) {
       throw new Error('Authentication Error');

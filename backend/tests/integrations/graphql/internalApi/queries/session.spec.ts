@@ -9,6 +9,13 @@ const QUERY = gql`
         id
         name
         email
+        role {
+          name
+        }
+        cart {
+          id
+          items
+        }
       }
     }
   }
@@ -24,5 +31,7 @@ describe('session', () => {
     expect(session.token).toBeDefined();
     expect(session.internalUser.name).toEqual('admin');
     expect(session.internalUser.email).toEqual('test@example.com');
+    expect(session.internalUser.role.name).toBeDefined();
+    expect(session.internalUser.cart.items).toBeDefined();
   });
 });

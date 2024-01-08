@@ -7,7 +7,7 @@ export const seedInternalUser = async () => {
     update: {},
   });
 
-  await client.internalUser.upsert({
+  const internalUser = await client.internalUser.upsert({
     where: { email: 'test@example.com' },
     update: {},
     create: {
@@ -17,6 +17,15 @@ export const seedInternalUser = async () => {
       discord_user_id: '',
       password_digest:
         '$2b$08$nOByk5csZtvw62zGlLZLne63t/jDGqGEoofMWyZ8egaNkcdC1HDra', // password
+    },
+  });
+
+  await client.cart.upsert({
+    where: { internal_user_id: internalUser.id },
+    update: {},
+    create: {
+      internal_user_id: internalUser.id,
+      items: {},
     },
   });
 };
