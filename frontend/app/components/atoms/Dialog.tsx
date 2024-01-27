@@ -1,3 +1,4 @@
+import { dialogAnatomy } from '@ark-ui/anatomy';
 import { Dialog as ArkDialog } from '@ark-ui/react/dialog';
 import { createStyleContext } from '@/app/utils/createStyleContext';
 import { sva } from '@/styled/css';
@@ -5,16 +6,7 @@ import type { HTMLStyledProps } from '@/styled/jsx';
 import { styled } from '@/styled/jsx';
 
 export const dialog = sva({
-  slots: [
-    'root',
-    'backdrop',
-    'positioner',
-    'content',
-    'title',
-    'description',
-    'trigger',
-    'closeTrigger',
-  ],
+  slots: dialogAnatomy.keys(),
   base: {
     backdrop: {
       backdropFilter: 'blur(1px)',
