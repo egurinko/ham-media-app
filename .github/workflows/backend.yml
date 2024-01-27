@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DATABASE_URL: postgresql://postgres:postgres@localhost/ham_media_app_test
+      DIRECT_URL: postgresql://postgres:postgres@localhost/ham_media_app_test
       JWT_TOKEN: test
       PORT: 3000
       GOOGLE_API_KEY: test
@@ -65,6 +66,7 @@ jobs:
           --health-retries 5
     env:
       DATABASE_URL: postgresql://postgres:postgres@localhost/ham_media_app_test
+      DIRECT_URL: postgresql://postgres:postgres@localhost/ham_media_app_test
       JWT_TOKEN: test
       PORT: 3000
       GOOGLE_API_KEY: test
