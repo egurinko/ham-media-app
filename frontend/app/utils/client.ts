@@ -5,6 +5,7 @@ import {
   NextSSRInMemoryCache,
   NextSSRApolloClient,
 } from '@apollo/experimental-nextjs-app-support/ssr';
+import { cookies } from 'next/headers';
 import { getSessionToken } from '@/app/utils/cookies';
 
 const base = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
@@ -17,7 +18,7 @@ const internalHttpLink = new HttpLink({
   uri: `${base}/internal_api/graphql`,
 });
 const internalAuthLink = setContext((_, { headers }) => {
-  const sessionToken = getSessionToken();
+  const sessionToken = getSessionToken(cookies());
 
   return {
     headers: {
