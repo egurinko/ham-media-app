@@ -15,6 +15,8 @@ export const OG_DEFAULT_IMAGE =
 export const LOCAL_STORAGE_HOSPITAL_SEARCH_KEY = 'hospitalsPage';
 
 export const HAMEDIA_SESSION = 'hamediaSession';
+export const FLASH_SESSION = 'hamedia-flash';
+export const FLASH_DISCARD_SESSION = 'hamedia-discard';
 
 export const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
