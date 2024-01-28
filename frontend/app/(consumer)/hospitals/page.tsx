@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { Card } from '@/app/components/atoms/Card';
 import { Hero } from '@/app/components/organisms/consumer/hospitals/Hero';
 import { LocationSearch } from '@/app/components/organisms/consumer/hospitals/LocationSearch';
@@ -44,13 +45,17 @@ export default async function Page() {
           p: 'lg',
         })}
       >
-        <TextSearch />
+        <Suspense>
+          <TextSearch />
+        </Suspense>
         <div
           className={css({
             mt: 4,
           })}
         >
-          <LocationSearch />
+          <Suspense>
+            <LocationSearch />
+          </Suspense>
         </div>
       </Card>
       <RecommendedHospitals />
