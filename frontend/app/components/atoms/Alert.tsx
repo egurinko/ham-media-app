@@ -19,11 +19,11 @@ export const alertStyle = cva({
   variants: {
     visual: {
       success: {
-        borderColor: 'surface.variant',
+        borderColor: 'tertiary.container',
         borderWidth: 'thin',
-        bgColor: 'surface.variant',
-        color: 'surface.on-variant',
-        fill: 'surface.on-variant',
+        bgColor: 'tertiary.container',
+        color: 'tertiary.on-container',
+        fill: 'tertiary.on-container',
       },
       error: {
         borderColor: 'error.container',
