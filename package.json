@@ -4,7 +4,7 @@
     "node": "20.x",
     "pnpm": ">=8.15.0"
   },
-  "packageManager": "pnpm@8.15.0",
+  "packageManager": "pnpm@8.15.1",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "backend": "pnpm -F \"backend\"",
