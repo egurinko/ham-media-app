@@ -73,8 +73,8 @@ importers:
         specifier: ^5.1.1
         version: 5.1.1
       fastify:
-        specifier: ^4.25.2
-        version: 4.25.2
+        specifier: ^4.26.0
+        version: 4.26.0
       fastify-cli:
         specifier: ^6.0.1
         version: 6.0.1
@@ -168,7 +168,7 @@ importers:
         version: 2.12.6(graphql@16.8.1)
       mercurius-integration-testing:
         specifier: ^8.1.1
-        version: 8.1.1(fastify@4.25.2)(graphql@16.8.1)(mercurius@13.3.3)
+        version: 8.1.1(fastify@4.26.0)(graphql@16.8.1)(mercurius@13.3.3)
       tsc-alias:
         specifier: ^1.8.8
         version: 1.8.8
@@ -10173,7 +10173,7 @@ packages:
       close-with-grace: 1.2.0
       commist: 3.2.0
       dotenv: 16.4.1
-      fastify: 4.25.2
+      fastify: 4.26.0
       fastify-plugin: 4.5.1
       generify: 4.2.0
       help-me: 4.2.0
@@ -10198,8 +10198,8 @@ packages:
   /fastify-plugin@4.5.1:
     resolution: {integrity: sha512-stRHYGeuqpEZTL1Ef0Ovr2ltazUT9g844X5z/zEBFLG8RYlpDiOCIG+ATvYEp+/zmc7sN29mcIMp8gvYplYPIQ==}
 
-  /fastify@4.25.2:
-    resolution: {integrity: sha512-SywRouGleDHvRh054onj+lEZnbC1sBCLkR0UY3oyJwjD4BdZJUrxBqfkfCaqn74pVCwBaRHGuL3nEWeHbHzAfw==}
+  /fastify@4.26.0:
+    resolution: {integrity: sha512-Fq/7ziWKc6pYLYLIlCRaqJqEVTIZ5tZYfcW/mDK2AQ9v/sqjGFpj0On0/7hU50kbPVjLO4de+larPA1WwPZSfw==}
     dependencies:
       '@fastify/ajv-compiler': 3.5.0
       '@fastify/error': 3.4.1
@@ -10208,7 +10208,7 @@ packages:
       avvio: 8.2.1
       fast-content-type-parse: 1.1.0
       fast-json-stringify: 5.10.0
-      find-my-way: 7.7.0
+      find-my-way: 8.1.0
       light-my-request: 5.11.0
       pino: 8.17.2
       process-warning: 3.0.0
@@ -10312,8 +10312,8 @@ packages:
     dependencies:
       to-regex-range: 5.0.1
 
-  /find-my-way@7.7.0:
-    resolution: {integrity: sha512-+SrHpvQ52Q6W9f3wJoJBbAQULJuNEEQwBvlvYwACDhBTLOTMiQ0HYWh4+vC3OivGP2ENcTI1oKlFA2OepJNjhQ==}
+  /find-my-way@8.1.0:
+    resolution: {integrity: sha512-41QwjCGcVTODUmLLqTMeoHeiozbMXYMAE1CKFiDyi9zVZ2Vjh0yz3MF0WQZoIb+cmzP/XlbFjlF2NtJmvZHznA==}
     engines: {node: '>=14'}
     dependencies:
       fast-deep-equal: 3.1.3
@@ -12816,7 +12816,7 @@ packages:
     dev: false
     optional: true
 
-  /mercurius-integration-testing@8.1.1(fastify@4.25.2)(graphql@16.8.1)(mercurius@13.3.3):
+  /mercurius-integration-testing@8.1.1(fastify@4.26.0)(graphql@16.8.1)(mercurius@13.3.3):
     resolution: {integrity: sha512-JyyKGw4pXe+Hy8huDIMjIO1B0DIJkQDXuWX9+gtAQXKlwICQrTzUAfQGtqVMFypsvV8W15TUCxZraIqt01mFGg==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -12833,7 +12833,7 @@ packages:
     dependencies:
       '@graphql-typed-document-node/core': 3.2.0(graphql@16.8.1)
       cookie: 0.5.0
-      fastify: 4.25.2
+      fastify: 4.26.0
       graphql: 16.8.1
       mercurius: 13.3.3(graphql@16.8.1)
       ws: 8.16.0
