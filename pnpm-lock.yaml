@@ -261,8 +261,8 @@ importers:
         specifier: ^4.0.1
         version: 4.0.1(graphql@16.8.1)
       '@graphql-codegen/typescript-react-apollo':
-        specifier: ^4.1.0
-        version: 4.1.0(graphql-tag@2.12.6)(graphql@16.8.1)
+        specifier: ^4.2.0
+        version: 4.2.0(graphql-tag@2.12.6)(graphql@16.8.1)
       '@pandacss/dev':
         specifier: ^0.29.1
         version: 0.29.1(typescript@5.3.3)
@@ -4272,8 +4272,8 @@ packages:
       - supports-color
     dev: true
 
-  /@graphql-codegen/typescript-react-apollo@4.1.0(graphql-tag@2.12.6)(graphql@16.8.1):
-    resolution: {integrity: sha512-G7l4ECoilGnW1zJeqgsFQEVup9ME3w3811ZxHP5yvTra3ZNsbZO4WbYBOPKyS5uc4swsTAxj70a28hNF7kdVcw==}
+  /@graphql-codegen/typescript-react-apollo@4.2.0(graphql-tag@2.12.6)(graphql@16.8.1):
+    resolution: {integrity: sha512-rHIDYkW3aQj5fdyXjNtKODr9P8BT+vN2zc1BpVmRixvcleN7pPEuvMw6oDaNpE26wKKDPZ4OC5RxullpUXCMEQ==}
     engines: {node: '>= 16.0.0'}
     peerDependencies:
       graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
