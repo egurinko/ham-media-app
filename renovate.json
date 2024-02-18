@@ -30,7 +30,11 @@
         "tsconfig-paths",
         "dotenv",
         "dotenv-cli",
-        "mercurius-integration-testing"
+        "mercurius-integration-testing",
+        "@aws-sdk",
+        "@sentry",
+        "@react-google-maps/api",
+        "pnpm"
       ],
       "automerge": true
     }
