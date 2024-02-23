@@ -91,8 +91,8 @@ importers:
         specifier: ^1.22.4
         version: 1.22.4(graphql@16.8.1)
       graphql-upload-minimal:
-        specifier: ^1.5.5
-        version: 1.5.5(graphql@16.8.1)
+        specifier: ^1.6.0
+        version: 1.6.0(graphql@16.8.1)
       json-bigint-patch:
         specifier: ^0.0.8
         version: 0.0.8
@@ -11511,8 +11511,8 @@ packages:
       graphql: 16.8.1
       tslib: 2.6.2
 
-  /graphql-upload-minimal@1.5.5(graphql@16.8.1):
-    resolution: {integrity: sha512-eNIBl850Sj2Lp14ak+9pK4KINQw2Hkk/t15yY3pPQ0jntkCODL5csTECxsqIYRJisoxNFnIrX4zAGlKGvXc17A==}
+  /graphql-upload-minimal@1.6.0(graphql@16.8.1):
+    resolution: {integrity: sha512-4rk05fjpA7D3kdkBqDQpmIzHiCxbE4u4ZZvJzasqtJr0rsiYkUqB+IdsstYRtybj5RW5bBl/zBh81y6/GSpHmQ==}
     engines: {node: '>=12'}
     peerDependencies:
       graphql: 0.13.1 - 16
@@ -13368,7 +13368,7 @@ packages:
     dependencies:
       fastify-plugin: 4.5.1
       graphql: 16.8.1
-      graphql-upload-minimal: 1.5.5(graphql@16.8.1)
+      graphql-upload-minimal: 1.6.0(graphql@16.8.1)
     dev: false
 
   /mercurius@13.3.3(graphql@16.8.1):
