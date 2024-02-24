@@ -88,8 +88,8 @@ importers:
         specifier: ^0.10.0
         version: 0.10.0(graphql@16.8.1)
       graphql-scalars:
-        specifier: ^1.22.4
-        version: 1.22.4(graphql@16.8.1)
+        specifier: ^1.22.5
+        version: 1.22.5(graphql@16.8.1)
       graphql-upload-minimal:
         specifier: ^1.6.0
         version: 1.6.0(graphql@16.8.1)
@@ -11475,8 +11475,8 @@ packages:
       - encoding
     dev: true
 
-  /graphql-scalars@1.22.4(graphql@16.8.1):
-    resolution: {integrity: sha512-ILnv7jq5VKHLUyoaTFX7lgYrjCd6vTee9i8/B+D4zJKJT5TguOl0KkpPEbXHjmeor8AZYrVsrYUHdqRBMX1pjA==}
+  /graphql-scalars@1.22.5(graphql@16.8.1):
+    resolution: {integrity: sha512-Mw7uaqRscjdaXmxlHbt3sYGLU8o1hfFvTvN2VRrYEJyEPy6zGIbaFyJ4PPyt9H6GRHp01MQwS6HqXroRYHyGOg==}
     engines: {node: '>=10'}
     peerDependencies:
       graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
@@ -13664,7 +13664,7 @@ packages:
       expand-tilde: 2.0.2
       fs-jetpack: 5.1.0
       graphql: 16.8.1
-      graphql-scalars: 1.22.4(graphql@16.8.1)
+      graphql-scalars: 1.22.5(graphql@16.8.1)
       kleur: 4.1.5
       lodash: 4.17.21
       nexus: 1.3.0(graphql@16.8.1)
