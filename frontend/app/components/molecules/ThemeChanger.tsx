@@ -1,8 +1,8 @@
 'use client';
 
 import { useTheme } from 'next-themes';
-import { IconButton } from '@/app/components/atoms/IconButton';
 import { Icon } from '@/app/components/atoms/Icon';
+import { IconButton } from '@/app/components/atoms/IconButton';
 import MoonIcon from '@/assets/moon.svg';
 import SunIcon from '@/assets/sun.svg';
 

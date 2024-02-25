@@ -6,6 +6,7 @@ import { Icon } from '@/app/components/atoms/Icon';
 import { IconButton } from '@/app/components/atoms/IconButton';
 import { NavigationLink } from '@/app/components/atoms/NavigationLink';
 import { Typography } from '@/app/components/atoms/Typography';
+import { ThemeChanger } from '@/app/components/molecules/ThemeChanger';
 import BarsIcon from '@/assets/bars.svg';
 import HospitalIcon from '@/assets/hospital.svg';
 import UserProfileIcon from '@/assets/user_profile.svg';
@@ -20,7 +21,6 @@ import {
   ADMIN_STOCK_REQUESTS_PATH,
 } from '@/utils/routes';
 import type { FC } from 'react';
-import { ThemeChanger } from '@/app/components/molecules/ThemeChanger';
 
 type Props = {
   internalUserName: string;

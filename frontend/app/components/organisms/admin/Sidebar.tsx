@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import { Button } from '@/app/components/atoms/Button';
 import { Typography } from '@/app/components/atoms/Typography';
+import { ThemeChanger } from '@/app/components/molecules/ThemeChanger';
 import { Navigation } from '@/app/components/organisms/admin/Navigation';
 import { css } from '@/styled/css';
 import type { FC } from 'react';
-import { ThemeChanger } from '@/app/components/molecules/ThemeChanger';
 
 type Props = {
   internalUserName: string;
