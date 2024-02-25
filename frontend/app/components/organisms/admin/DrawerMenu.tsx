@@ -20,6 +20,7 @@ import {
   ADMIN_STOCK_REQUESTS_PATH,
 } from '@/utils/routes';
 import type { FC } from 'react';
+import { ThemeChanger } from '@/app/components/molecules/ThemeChanger';
 
 type Props = {
   internalUserName: string;
@@ -196,19 +197,31 @@ export const DrawerMenu: FC<Props> = ({ internalUserName }) => (
               borderTopWidth: 'thin',
               borderColor: 'outline.main',
               mt: '2xl',
-              width: '100%',
               textAlign: 'center',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 'md',
+              width: '100%',
+              alignItems: 'center',
             })}
           >
             <Typography
               variant="body1"
               className={css({
-                my: 'md',
+                mt: 'md',
               })}
             >
               {internalUserName}
             </Typography>
-            <Button visual="outlined">ログアウト</Button>
+            <Button
+              visual="outlined"
+              className={css({
+                width: '120px',
+              })}
+            >
+              ログアウト
+            </Button>
+            <ThemeChanger />
           </div>
         </Drawer.Body>
       </Drawer.Content>

@@ -4,6 +4,7 @@ import { Typography } from '@/app/components/atoms/Typography';
 import { Navigation } from '@/app/components/organisms/admin/Navigation';
 import { css } from '@/styled/css';
 import type { FC } from 'react';
+import { ThemeChanger } from '@/app/components/molecules/ThemeChanger';
 
 type Props = {
   internalUserName: string;
@@ -41,19 +42,31 @@ export const Sidebar: FC<Props> = ({ internalUserName }) => (
         borderTopWidth: 'thin',
         borderColor: 'outline.main',
         mt: '2xl',
-        width: '100%',
         textAlign: 'center',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 'md',
+        width: '100%',
+        alignItems: 'center',
       })}
     >
       <Typography
         variant="body1"
         className={css({
-          my: 'md',
+          mt: 'md',
         })}
       >
         {internalUserName}
       </Typography>
-      <Button visual="outlined">ログアウト</Button>
+      <Button
+        visual="outlined"
+        className={css({
+          width: '120px',
+        })}
+      >
+        ログアウト
+      </Button>
+      <ThemeChanger />
     </div>
   </aside>
 );
