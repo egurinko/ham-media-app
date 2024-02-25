@@ -99,7 +99,7 @@ const createBody = (post: GetOfferingHamsterResponse): FlexBox => {
               },
               {
                 type: 'text',
-                text: content.split('仮名')[1]?.split('\n')[1] || '',
+                text: content.split('仮名')[1]?.split('\n')[0] || '',
                 wrap: true,
                 color: '#666666',
                 size: 'md',
@@ -122,7 +122,7 @@ const createBody = (post: GetOfferingHamsterResponse): FlexBox => {
               },
               {
                 type: 'text',
-                text: content.split('性別')[1]?.split('\n')[1] || '',
+                text: content.split('性別')[1]?.split('\n')[0] || '',
                 wrap: true,
                 color: '#666666',
                 size: 'md',
@@ -145,7 +145,7 @@ const createBody = (post: GetOfferingHamsterResponse): FlexBox => {
               },
               {
                 type: 'text',
-                text: content.split('生年月日')[1]?.split('\n')[1] || '',
+                text: content.split('生年月日')[1]?.split('\n')[0] || '',
                 wrap: true,
                 color: '#666666',
                 size: 'md',
