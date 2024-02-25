@@ -11,7 +11,6 @@ const inputStyle = cva({
     borderRadius: 'xs',
     borderWidth: 'thin',
     outline: 0,
-    position: 'relative',
     transitionProperty: 'border',
     transitionDuration: 'short4',
     transitionTimingFunction: 'standard',

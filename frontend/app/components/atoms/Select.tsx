@@ -82,7 +82,6 @@ export const select = sva({
       borderRadius: 'xs',
       borderWidth: 'thin',
       outline: 0,
-      position: 'relative',
       transitionProperty: 'border',
       transitionDuration: 'short4',
       transitionTimingFunction: 'standard',
