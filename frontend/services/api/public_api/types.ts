@@ -657,7 +657,11 @@ export function usePublicGetHospitalQuery(
   baseOptions: Apollo.QueryHookOptions<
     PublicGetHospitalQuery,
     PublicGetHospitalQueryVariables
-  >,
+  > &
+    (
+      | { variables: PublicGetHospitalQueryVariables; skip?: boolean }
+      | { skip: boolean }
+    ),
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
@@ -772,7 +776,11 @@ export function usePublicGetHospitalConnectionQuery(
   baseOptions: Apollo.QueryHookOptions<
     PublicGetHospitalConnectionQuery,
     PublicGetHospitalConnectionQueryVariables
-  >,
+  > &
+    (
+      | { variables: PublicGetHospitalConnectionQueryVariables; skip?: boolean }
+      | { skip: boolean }
+    ),
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
@@ -1005,7 +1013,11 @@ export function usePublicGetPlaceAutocompleteQuery(
   baseOptions: Apollo.QueryHookOptions<
     PublicGetPlaceAutocompleteQuery,
     PublicGetPlaceAutocompleteQueryVariables
-  >,
+  > &
+    (
+      | { variables: PublicGetPlaceAutocompleteQueryVariables; skip?: boolean }
+      | { skip: boolean }
+    ),
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
