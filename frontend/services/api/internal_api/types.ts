@@ -3534,7 +3534,11 @@ export function useInternalGetHospitalQuery(
   baseOptions: Apollo.QueryHookOptions<
     InternalGetHospitalQuery,
     InternalGetHospitalQueryVariables
-  >,
+  > &
+    (
+      | { variables: InternalGetHospitalQueryVariables; skip?: boolean }
+      | { skip: boolean }
+    ),
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
@@ -3637,7 +3641,14 @@ export function useInternalGetHospitalConnectionQuery(
   baseOptions: Apollo.QueryHookOptions<
     InternalGetHospitalConnectionQuery,
     InternalGetHospitalConnectionQueryVariables
-  >,
+  > &
+    (
+      | {
+          variables: InternalGetHospitalConnectionQueryVariables;
+          skip?: boolean;
+        }
+      | { skip: boolean }
+    ),
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
@@ -3783,7 +3794,11 @@ export function useInternalGetInternalUserQuery(
   baseOptions: Apollo.QueryHookOptions<
     InternalGetInternalUserQuery,
     InternalGetInternalUserQueryVariables
-  >,
+  > &
+    (
+      | { variables: InternalGetInternalUserQueryVariables; skip?: boolean }
+      | { skip: boolean }
+    ),
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
@@ -3930,7 +3945,11 @@ export function useInternalGetMakerQuery(
   baseOptions: Apollo.QueryHookOptions<
     InternalGetMakerQuery,
     InternalGetMakerQueryVariables
-  >,
+  > &
+    (
+      | { variables: InternalGetMakerQueryVariables; skip?: boolean }
+      | { skip: boolean }
+    ),
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<InternalGetMakerQuery, InternalGetMakerQueryVariables>(
@@ -4077,7 +4096,11 @@ export function useInternalGetProductQuery(
   baseOptions: Apollo.QueryHookOptions<
     InternalGetProductQuery,
     InternalGetProductQueryVariables
-  >,
+  > &
+    (
+      | { variables: InternalGetProductQueryVariables; skip?: boolean }
+      | { skip: boolean }
+    ),
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
@@ -4332,7 +4355,11 @@ export function useInternalGetProductTagGroupQuery(
   baseOptions: Apollo.QueryHookOptions<
     InternalGetProductTagGroupQuery,
     InternalGetProductTagGroupQueryVariables
-  >,
+  > &
+    (
+      | { variables: InternalGetProductTagGroupQueryVariables; skip?: boolean }
+      | { skip: boolean }
+    ),
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
@@ -4774,7 +4801,11 @@ export function useInternalGetStockRequestQuery(
   baseOptions: Apollo.QueryHookOptions<
     InternalGetStockRequestQuery,
     InternalGetStockRequestQueryVariables
-  >,
+  > &
+    (
+      | { variables: InternalGetStockRequestQueryVariables; skip?: boolean }
+      | { skip: boolean }
+    ),
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
@@ -4941,7 +4972,11 @@ export function useInternalGetStocksQuery(
   baseOptions: Apollo.QueryHookOptions<
     InternalGetStocksQuery,
     InternalGetStocksQueryVariables
-  >,
+  > &
+    (
+      | { variables: InternalGetStocksQueryVariables; skip?: boolean }
+      | { skip: boolean }
+    ),
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
