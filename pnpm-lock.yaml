@@ -4187,7 +4187,7 @@ packages:
       string-env-interpolation: 1.0.1
       ts-log: 2.2.5
       tslib: 2.6.2
-      yaml: 2.3.4
+      yaml: 2.4.0
       yargs: 17.7.2
     transitivePeerDependencies:
       - '@types/node'
@@ -16830,9 +16830,10 @@ packages:
     engines: {node: '>= 6'}
     dev: false
 
-  /yaml@2.3.4:
-    resolution: {integrity: sha512-8aAvwVUSHpfEqTQ4w/KMlf3HcRdt50E5ODIQJBw1fQ5RL34xabzxtUlzTXVqc4rkZsPbvrXKWnABCD7kWSmocA==}
+  /yaml@2.4.0:
+    resolution: {integrity: sha512-j9iR8g+/t0lArF4V6NE/QCfT+CO7iLqrXAHZbJdo+LfjqP1vR8Fg5bSiaq6Q2lOD1AUEVrEVIgABvBFYojJVYQ==}
     engines: {node: '>= 14'}
+    hasBin: true
     dev: true
 
   /yargs-parser@18.1.3:
