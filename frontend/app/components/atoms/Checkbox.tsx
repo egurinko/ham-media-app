@@ -1,6 +1,6 @@
 import {
   Checkbox as ArkCheckbox,
-  type CheckboxProps as ArkCheckboxProps,
+  type CheckboxRootProps,
 } from '@ark-ui/react/checkbox';
 import { forwardRef, type ReactNode } from 'react';
 import type { RecipeVariantProps } from '@/styled/css';
@@ -115,7 +115,7 @@ export const checkbox = sva({
 
 type CheckboxVariantProps = RecipeVariantProps<typeof checkbox>;
 
-type CheckboxProps = ArkCheckboxProps &
+type CheckboxProps = CheckboxRootProps &
   CheckboxVariantProps & {
     children?: ReactNode;
   };

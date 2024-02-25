@@ -49,9 +49,6 @@ export const drawer = sva({
       `,
       height: 'inherit',
       width: '100%',
-      _hidden: {
-        display: 'none',
-      },
     },
     header: {
       display: 'flex',
