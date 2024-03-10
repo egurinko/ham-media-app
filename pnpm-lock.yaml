@@ -179,7 +179,7 @@ importers:
   frontend:
     dependencies:
       '@apollo/client':
-        specifier: ^3.9.5
+        specifier: ^3.9.6
         version: 3.9.6(@types/react@18.2.64)(graphql@16.8.1)(react-dom@18.2.0)(react@18.2.0)
       '@apollo/experimental-nextjs-app-support':
         specifier: ^0.8.0
