@@ -218,7 +218,7 @@ importers:
         specifier: ^4.3.1
         version: 4.3.1
       framer-motion:
-        specifier: ^11.0.6
+        specifier: ^11.0.8
         version: 11.0.8(react-dom@18.2.0)(react@18.2.0)
       js-cookie:
         specifier: ^3.0.5
