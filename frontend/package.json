@@ -22,7 +22,7 @@
   "dependencies": {
     "@apollo/client": "^3.9.5",
     "@apollo/experimental-nextjs-app-support": "^0.8.0",
-    "@ark-ui/anatomy": "^2.2.0",
+    "@ark-ui/anatomy": "^2.3.1",
     "@ark-ui/react": "^2.1.1",
     "@chakra-ui/icons": "^2.1.1",
     "@chakra-ui/react": "2.8.2",
