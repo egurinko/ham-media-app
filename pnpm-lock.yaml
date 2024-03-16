@@ -67,8 +67,8 @@ importers:
         specifier: ^7.107.0
         version: 7.107.0
       axios:
-        specifier: ^1.6.7
-        version: 1.6.7
+        specifier: ^1.6.8
+        version: 1.6.8
       bcrypt:
         specifier: ^5.1.1
         version: 5.1.1
@@ -5179,7 +5179,7 @@ packages:
       '@types/node': 20.11.28
       body-parser: 1.20.2
     optionalDependencies:
-      axios: 1.6.7
+      axios: 1.6.8
       file-type: 16.5.4
     transitivePeerDependencies:
       - debug
@@ -6630,7 +6630,7 @@ packages:
     resolution: {integrity: sha512-KqQnQbdYE54D7oa/UmYVMZKq7CO4l8DEENzOKc4aBRwxCXSlJXGz83flFx5L7AWrOQnmuN3kVsRdt+GZPPjiVQ==}
     deprecated: This is a stub types definition for axios (https://github.com/mzabriskie/axios). axios provides its own type definitions, so you don't need @types/axios installed!
     dependencies:
-      axios: 1.6.7
+      axios: 1.6.8
     transitivePeerDependencies:
       - debug
     dev: true
@@ -8216,10 +8216,10 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /axios@1.6.7:
-    resolution: {integrity: sha512-/hDJGff6/c7u0hDkvkGxR/oy6CbCs8ziCsC7SqmhjfozqiJGc8Z11wrv9z9lYfY4K8l+H9TpjcMDX0xOZmx+RA==}
+  /axios@1.6.8:
+    resolution: {integrity: sha512-v/ZHtJDU39mDpyBoFVkETcd/uNdxrWRrg3bKpOKzXFA6Bvqopts6ALSMU3y6ijYxbw2B+wPrIv46egTzJXCLGQ==}
     dependencies:
-      follow-redirects: 1.15.5
+      follow-redirects: 1.15.6
       form-data: 4.0.0
       proxy-from-env: 1.1.0
     transitivePeerDependencies:
@@ -10537,8 +10537,8 @@ packages:
       tabbable: 6.2.0
     dev: false
 
-  /follow-redirects@1.15.5:
-    resolution: {integrity: sha512-vSFWUON1B+yAw1VN4xMfxgn5fTUiaOzAJCKBwIIgT/+7CuGy9+r+5gITvP62j3RmaD5Ph65UaERdOSRGUzZtgw==}
+  /follow-redirects@1.15.6:
+    resolution: {integrity: sha512-wWN62YITEaOpSK584EZXJafH1AGpO8RVgElfkuXbTOrPX4fIfOyEpW/CsiNd8JdYrAoOvafRTOEnvsO++qCqFA==}
     engines: {node: '>=4.0'}
     peerDependencies:
       debug: '*'

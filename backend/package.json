@@ -40,7 +40,7 @@
     "@line/bot-sdk": "^9.0.1",
     "@prisma/client": "5.10.2",
     "@sentry/node": "^7.107.0",
-    "axios": "^1.6.7",
+    "axios": "^1.6.8",
     "bcrypt": "^5.1.1",
     "fastify": "^4.26.2",
     "fastify-cli": "^6.1.1",
