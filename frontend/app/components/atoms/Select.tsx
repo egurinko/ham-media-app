@@ -11,7 +11,7 @@ export const select = sva({
     root: {
       display: 'flex',
       flexDirection: 'column',
-      gap: 'xs',
+      gap: 'sm',
       width: '100%',
     },
     content: {
