@@ -8,6 +8,8 @@ export const ADMIN_INTERNAL_USERS_EDIT_PATH = (id: number) =>
   `/admin/internal_users/${id}/edit`;
 export const ADMIN_HOSPIALS_PATH = '/admin/hospitals';
 export const ADMIN_HOSPIALS_NEW_PATH = '/admin/hospitals/new';
+export const ADMIN_HOSPIALS_DETAIL_PATH = (id: number) =>
+  `/admin/hospitals/${id}`;
 export const ADMIN_HOSPIALS_EDIT_PATH = (id: number) =>
   `/admin/hospitals/${id}/edit`;
 export const ADMIN_MAKERS_PATH = '/admin/makers';
@@ -56,6 +58,10 @@ export const goAdminHospitals = (router: NextRouter) =>
   pushRouter(router, ADMIN_HOSPIALS_PATH);
 export const goAdminHospitalsNew = (router: NextRouter) =>
   pushRouter(router, ADMIN_HOSPIALS_NEW_PATH);
+export const goAdminHospitalsDetail = (
+  router: NextRouter,
+  { id }: { id: number },
+) => pushRouter(router, ADMIN_HOSPIALS_DETAIL_PATH(id));
 export const goAdminHospitalsEdit = (
   router: NextRouter,
   { id }: { id: number },

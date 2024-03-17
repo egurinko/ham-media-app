@@ -253,6 +253,8 @@ export type Mutation = {
   returnStock: Stock;
   updateCart: Cart;
   updateHospital: Hospital;
+  updateHospitalAddress: HospitalAddress;
+  updateHospitalBase: Hospital;
   updateInternalUser: InternalUser;
   updateMaker: Maker;
   updateProduct: Product;
@@ -370,6 +372,21 @@ export type MutationUpdateHospitalArgs = {
   hospitalNightServiceOptionInput: HospitalNightServiceOptionInputType;
   hospitalNightUrgentActionOptionInput: HospitalNightUrgentActionOptionInputType;
   hospitalReservationStatusInput: HospitalReservationStatusInputType;
+  id: Scalars['BigInt']['input'];
+  internal_memo: Scalars['String']['input'];
+  name: Scalars['String']['input'];
+  url: Scalars['String']['input'];
+};
+
+export type MutationUpdateHospitalAddressArgs = {
+  address: Scalars['String']['input'];
+  hospital_id: Scalars['BigInt']['input'];
+  phone_number: Scalars['String']['input'];
+  prefecture_id: Scalars['BigInt']['input'];
+};
+
+export type MutationUpdateHospitalBaseArgs = {
+  deleted: Scalars['Boolean']['input'];
   id: Scalars['BigInt']['input'];
   internal_memo: Scalars['String']['input'];
   name: Scalars['String']['input'];
@@ -2102,6 +2119,37 @@ export type InternalUpdateHospitalMutationVariables = Exact<{
 export type InternalUpdateHospitalMutation = {
   __typename?: 'Mutation';
   updateHospital: { __typename?: 'Hospital'; name: string };
+};
+
+export type InternalUpdateHospitalAddressMutationVariables = Exact<{
+  hospitalId: Scalars['BigInt']['input'];
+  address: Scalars['String']['input'];
+  phoneNumber: Scalars['String']['input'];
+  prefectureId: Scalars['BigInt']['input'];
+}>;
+
+export type InternalUpdateHospitalAddressMutation = {
+  __typename?: 'Mutation';
+  updateHospitalAddress: { __typename?: 'HospitalAddress'; address: string };
+};
+
+export type InternalUpdateHospitalBaseMutationVariables = Exact<{
+  id: Scalars['BigInt']['input'];
+  name: Scalars['String']['input'];
+  url: Scalars['String']['input'];
+  deleted: Scalars['Boolean']['input'];
+  internalMemo: Scalars['String']['input'];
+}>;
+
+export type InternalUpdateHospitalBaseMutation = {
+  __typename?: 'Mutation';
+  updateHospitalBase: {
+    __typename?: 'Hospital';
+    name: string;
+    url: string;
+    deleted: boolean;
+    internal_memo: string;
+  };
 };
 
 export type InternalUpdateInternalUserMutationVariables = Exact<{
@@ -5263,6 +5311,140 @@ export type InternalUpdateHospitalMutationOptions = Apollo.BaseMutationOptions<
   InternalUpdateHospitalMutation,
   InternalUpdateHospitalMutationVariables
 >;
+export const InternalUpdateHospitalAddressDocument = gql`
+  mutation InternalUpdateHospitalAddress(
+    $hospitalId: BigInt!
+    $address: String!
+    $phoneNumber: String!
+    $prefectureId: BigInt!
+  ) {
+    updateHospitalAddress(
+      hospital_id: $hospitalId
+      address: $address
+      phone_number: $phoneNumber
+      prefecture_id: $prefectureId
+    ) {
+      address
+    }
+  }
+`;
+export type InternalUpdateHospitalAddressMutationFn = Apollo.MutationFunction<
+  InternalUpdateHospitalAddressMutation,
+  InternalUpdateHospitalAddressMutationVariables
+>;
+
+/**
+ * __useInternalUpdateHospitalAddressMutation__
+ *
+ * To run a mutation, you first call `useInternalUpdateHospitalAddressMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInternalUpdateHospitalAddressMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [internalUpdateHospitalAddressMutation, { data, loading, error }] = useInternalUpdateHospitalAddressMutation({
+ *   variables: {
+ *      hospitalId: // value for 'hospitalId'
+ *      address: // value for 'address'
+ *      phoneNumber: // value for 'phoneNumber'
+ *      prefectureId: // value for 'prefectureId'
+ *   },
+ * });
+ */
+export function useInternalUpdateHospitalAddressMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    InternalUpdateHospitalAddressMutation,
+    InternalUpdateHospitalAddressMutationVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    InternalUpdateHospitalAddressMutation,
+    InternalUpdateHospitalAddressMutationVariables
+  >(InternalUpdateHospitalAddressDocument, options);
+}
+export type InternalUpdateHospitalAddressMutationHookResult = ReturnType<
+  typeof useInternalUpdateHospitalAddressMutation
+>;
+export type InternalUpdateHospitalAddressMutationResult =
+  Apollo.MutationResult<InternalUpdateHospitalAddressMutation>;
+export type InternalUpdateHospitalAddressMutationOptions =
+  Apollo.BaseMutationOptions<
+    InternalUpdateHospitalAddressMutation,
+    InternalUpdateHospitalAddressMutationVariables
+  >;
+export const InternalUpdateHospitalBaseDocument = gql`
+  mutation InternalUpdateHospitalBase(
+    $id: BigInt!
+    $name: String!
+    $url: String!
+    $deleted: Boolean!
+    $internalMemo: String!
+  ) {
+    updateHospitalBase(
+      id: $id
+      name: $name
+      url: $url
+      deleted: $deleted
+      internal_memo: $internalMemo
+    ) {
+      name
+      url
+      deleted
+      internal_memo
+    }
+  }
+`;
+export type InternalUpdateHospitalBaseMutationFn = Apollo.MutationFunction<
+  InternalUpdateHospitalBaseMutation,
+  InternalUpdateHospitalBaseMutationVariables
+>;
+
+/**
+ * __useInternalUpdateHospitalBaseMutation__
+ *
+ * To run a mutation, you first call `useInternalUpdateHospitalBaseMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInternalUpdateHospitalBaseMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [internalUpdateHospitalBaseMutation, { data, loading, error }] = useInternalUpdateHospitalBaseMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      name: // value for 'name'
+ *      url: // value for 'url'
+ *      deleted: // value for 'deleted'
+ *      internalMemo: // value for 'internalMemo'
+ *   },
+ * });
+ */
+export function useInternalUpdateHospitalBaseMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    InternalUpdateHospitalBaseMutation,
+    InternalUpdateHospitalBaseMutationVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    InternalUpdateHospitalBaseMutation,
+    InternalUpdateHospitalBaseMutationVariables
+  >(InternalUpdateHospitalBaseDocument, options);
+}
+export type InternalUpdateHospitalBaseMutationHookResult = ReturnType<
+  typeof useInternalUpdateHospitalBaseMutation
+>;
+export type InternalUpdateHospitalBaseMutationResult =
+  Apollo.MutationResult<InternalUpdateHospitalBaseMutation>;
+export type InternalUpdateHospitalBaseMutationOptions =
+  Apollo.BaseMutationOptions<
+    InternalUpdateHospitalBaseMutation,
+    InternalUpdateHospitalBaseMutationVariables
+  >;
 export const InternalUpdateInternalUserDocument = gql`
   mutation InternalUpdateInternalUser(
     $id: BigInt!
