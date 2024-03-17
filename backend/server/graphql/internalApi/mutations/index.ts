@@ -4,6 +4,8 @@ export * from './deleteInternalUser';
 export * from './updateCart';
 export * from './createHospital';
 export * from './updateHospital';
+export * from './updateHospitalBase';
+export * from './updateHospitalAddress';
 export * from './createMaker';
 export * from './updateMaker';
 export * from './deleteMaker';

@@ -397,6 +397,8 @@ export interface NexusGenFieldTypes {
     returnStock: NexusGenRootTypes['Stock']; // Stock!
     updateCart: NexusGenRootTypes['Cart']; // Cart!
     updateHospital: NexusGenRootTypes['Hospital']; // Hospital!
+    updateHospitalAddress: NexusGenRootTypes['HospitalAddress']; // HospitalAddress!
+    updateHospitalBase: NexusGenRootTypes['Hospital']; // Hospital!
     updateInternalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     updateMaker: NexusGenRootTypes['Maker']; // Maker!
     updateProduct: NexusGenRootTypes['Product']; // Product!
@@ -625,6 +627,8 @@ export interface NexusGenFieldTypeNames {
     returnStock: 'Stock'
     updateCart: 'Cart'
     updateHospital: 'Hospital'
+    updateHospitalAddress: 'HospitalAddress'
+    updateHospitalBase: 'Hospital'
     updateInternalUser: 'InternalUser'
     updateMaker: 'Maker'
     updateProduct: 'Product'
@@ -831,6 +835,19 @@ export interface NexusGenArgTypes {
       hospitalNightServiceOptionInput: NexusGenInputs['HospitalNightServiceOptionInputType']; // HospitalNightServiceOptionInputType!
       hospitalNightUrgentActionOptionInput: NexusGenInputs['HospitalNightUrgentActionOptionInputType']; // HospitalNightUrgentActionOptionInputType!
       hospitalReservationStatusInput: NexusGenInputs['HospitalReservationStatusInputType']; // HospitalReservationStatusInputType!
+      id: NexusGenScalars['BigInt']; // BigInt!
+      internal_memo: string; // String!
+      name: string; // String!
+      url: string; // String!
+    }
+    updateHospitalAddress: { // args
+      address: string; // String!
+      hospital_id: NexusGenScalars['BigInt']; // BigInt!
+      phone_number: string; // String!
+      prefecture_id: NexusGenScalars['BigInt']; // BigInt!
+    }
+    updateHospitalBase: { // args
+      deleted: boolean; // Boolean!
       id: NexusGenScalars['BigInt']; // BigInt!
       internal_memo: string; // String!
       name: string; // String!
