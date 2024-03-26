@@ -124,7 +124,7 @@ importers:
         specifier: ^1.4.0
         version: 1.4.0
       sanitize-html:
-        specifier: ^2.12.1
+        specifier: ^2.13.0
         version: 2.13.0
       ts-node-dev:
         specifier: ^2.0.0
@@ -7047,7 +7047,7 @@ packages:
       '@vue/shared': 3.4.19
       estree-walker: 2.0.2
       magic-string: 0.30.7
-      postcss: 8.4.35
+      postcss: 8.4.38
       source-map-js: 1.2.0
     dev: true
 
@@ -13921,7 +13921,6 @@ packages:
       nanoid: 3.3.7
       picocolors: 1.0.0
       source-map-js: 1.2.0
-    dev: false
 
   /preferred-pm@3.1.2:
     resolution: {integrity: sha512-nk7dKrcW8hfCZ4H6klWcdRknBOXWzNQByJ0oJyX97BOupsYD+FzLS4hflgEu/uPUEHZCuRfMxzCBsuWd7OzT8Q==}
