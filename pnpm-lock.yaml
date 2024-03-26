@@ -88,7 +88,7 @@ importers:
         specifier: ^0.10.0
         version: 0.10.0(graphql@16.8.1)
       graphql-scalars:
-        specifier: ^1.22.5
+        specifier: ^1.23.0
         version: 1.23.0(graphql@16.8.1)
       graphql-upload-minimal:
         specifier: ^1.6.0
