@@ -58,7 +58,7 @@ importers:
         specifier: ^11.1.1
         version: 11.1.1
       '@line/bot-sdk':
-        specifier: ^9.0.1
+        specifier: ^9.0.3
         version: 9.0.3
       '@prisma/client':
         specifier: 5.11.0
