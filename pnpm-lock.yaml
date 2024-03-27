@@ -179,11 +179,11 @@ importers:
   frontend:
     dependencies:
       '@apollo/client':
-        specifier: ^3.9.6
+        specifier: ^3.9.9
         version: 3.9.9(@types/react@18.2.73)(graphql@16.8.1)(react-dom@18.2.0)(react@18.2.0)
       '@apollo/experimental-nextjs-app-support':
-        specifier: ^0.8.0
-        version: 0.8.0(@apollo/client@3.9.9)(next@14.1.1-canary.71)(react@18.2.0)
+        specifier: ^0.9.1
+        version: 0.9.1(@apollo/client@3.9.9)(next@14.1.1-canary.71)(react@18.2.0)
       '@ark-ui/anatomy':
         specifier: ^2.3.1
         version: 2.3.1(@internationalized/date@3.5.2)
@@ -311,6 +311,18 @@ packages:
       '@jridgewell/gen-mapping': 0.3.5
       '@jridgewell/trace-mapping': 0.3.25
 
+  /@apollo/client-react-streaming@0.9.1(@apollo/client@3.9.9)(react@18.2.0):
+    resolution: {integrity: sha512-Drzx/4/nGmJ+gjJe3DEQ/9ib3Uc2WoZ4V1SiuHRLXNjUFX65RGa88XgOLZmTNbivD43uF7BvbiaMi/1Vd8DNYA==}
+    peerDependencies:
+      '@apollo/client': ^3.9.6
+      react: ^18
+    dependencies:
+      '@apollo/client': 3.9.9(@types/react@18.2.73)(graphql@16.8.1)(react-dom@18.2.0)(react@18.2.0)
+      react: 18.2.0
+      superjson: 2.2.1
+      ts-invariant: 0.10.3
+    dev: false
+
   /@apollo/client@3.9.9(@types/react@18.2.73)(graphql@16.8.1)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-/sMecU/M0WK9knrguts1lSLV8xFKzIgOMVb4mi6MOxgJXjliDB8PvOtmXhTqh2cVMMR4TzXgOnb+af/690zlQw==}
     peerDependencies:
@@ -349,19 +361,17 @@ packages:
     transitivePeerDependencies:
       - '@types/react'
 
-  /@apollo/experimental-nextjs-app-support@0.8.0(@apollo/client@3.9.9)(next@14.1.1-canary.71)(react@18.2.0):
-    resolution: {integrity: sha512-uyNIkOkew0T6ukC8ycbWBeTu8gtDSD5i+NVGEHU0DIEQaToFHObYcvIxaQ/8hvWzgvnpNU/KMsApfGXA9Xkpyw==}
+  /@apollo/experimental-nextjs-app-support@0.9.1(@apollo/client@3.9.9)(next@14.1.1-canary.71)(react@18.2.0):
+    resolution: {integrity: sha512-a7cqLbszqSjyR3RqEhOIG+zBO8wjN1oc9oswcRHQB4PSb+W0lKSN1zALCuaV7zCAEPlsxLotj/qLLVUyFyuwLQ==}
     peerDependencies:
-      '@apollo/client': ^3.9.0
+      '@apollo/client': ^3.9.6
       next: ^13.4.1 || ^14.0.0
       react: ^18
     dependencies:
       '@apollo/client': 3.9.9(@types/react@18.2.73)(graphql@16.8.1)(react-dom@18.2.0)(react@18.2.0)
+      '@apollo/client-react-streaming': 0.9.1(@apollo/client@3.9.9)(react@18.2.0)
       next: 14.1.1-canary.71(@babel/core@7.24.3)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
-      server-only: 0.0.1
-      superjson: 2.2.1
-      ts-invariant: 0.10.3
     dev: false
 
   /@ardatan/relay-compiler@12.0.0(graphql@16.8.1):
