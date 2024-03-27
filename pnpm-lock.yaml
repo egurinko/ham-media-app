@@ -100,8 +100,8 @@ importers:
         specifier: ^9.0.2
         version: 9.0.2
       mercurius:
-        specifier: ^13.4.0
-        version: 13.4.1(graphql@16.8.1)
+        specifier: ^14.0.0
+        version: 14.0.0(graphql@16.8.1)
       mercurius-upload:
         specifier: ^7.0.0
         version: 7.0.0(graphql@16.8.1)
@@ -168,7 +168,7 @@ importers:
         version: 2.12.6(graphql@16.8.1)
       mercurius-integration-testing:
         specifier: ^8.1.1
-        version: 8.1.1(fastify@4.26.2)(graphql@16.8.1)(mercurius@13.4.1)
+        version: 8.1.1(fastify@4.26.2)(graphql@16.8.1)(mercurius@14.0.0)
       tsc-alias:
         specifier: ^1.8.8
         version: 1.8.8
@@ -4080,9 +4080,10 @@ packages:
       fastify-plugin: 4.5.1
     dev: false
 
-  /@fastify/websocket@8.3.1:
-    resolution: {integrity: sha512-hsQYHHJme/kvP3ZS4v/WMUznPBVeeQHHwAoMy1LiN6m/HuPfbdXq1MBJ4Nt8qX1YI+eVbog4MnOsU7MTozkwYA==}
+  /@fastify/websocket@10.0.1:
+    resolution: {integrity: sha512-8/pQIxTPRD8U94aILTeJ+2O3el/r19+Ej5z1O1mXlqplsUH7KzCjAI0sgd5DM/NoPjAi5qLFNIjgM5+9/rGSNw==}
     dependencies:
+      duplexify: 4.1.3
       fastify-plugin: 4.5.1
       ws: 8.16.0
     transitivePeerDependencies:
@@ -9448,6 +9449,14 @@ packages:
     dev: false
     optional: true
 
+  /duplexify@4.1.3:
+    resolution: {integrity: sha512-M3BmBhwJRZsSx38lZyhE53Csddgzl5R7xGJNk7CVddZD6CcmwMCH8J+7AprIrQKH7TonKxaCjcv27Qmf+sQ+oA==}
+    dependencies:
+      end-of-stream: 1.4.4
+      inherits: 2.0.4
+      readable-stream: 3.6.2
+      stream-shift: 1.0.3
+
   /dynamic-dedupe@0.3.0:
     resolution: {integrity: sha512-ssuANeD+z97meYOqd50e04Ze5qp4bPqo8cCkI4TRjZkzAUgIDTrXV1R8QCdINpiI+hw14+rYazvTRdQrz0/rFQ==}
     dependencies:
@@ -9487,7 +9496,6 @@ packages:
     resolution: {integrity: sha512-+uw1inIHVPQoaVuHzRyXd21icM+cnt4CzD5rW+NC1wjOUSTOs+Te7FOv7AhN7vS9x/oIyhLP5PR1H+phQAHu5Q==}
     dependencies:
       once: 1.4.0
-    dev: false
 
   /enhanced-resolve@5.16.0:
     resolution: {integrity: sha512-O+QWCviPNSSLAD9Ucn8Awv+poAkqn3T1XY5/N7kR7rQO9yfSGWkYZDwpJ+iKF7B8rxaQKWngSqACpgzeapSyoA==}
@@ -12689,7 +12697,7 @@ packages:
     dev: false
     optional: true
 
-  /mercurius-integration-testing@8.1.1(fastify@4.26.2)(graphql@16.8.1)(mercurius@13.4.1):
+  /mercurius-integration-testing@8.1.1(fastify@4.26.2)(graphql@16.8.1)(mercurius@14.0.0):
     resolution: {integrity: sha512-JyyKGw4pXe+Hy8huDIMjIO1B0DIJkQDXuWX9+gtAQXKlwICQrTzUAfQGtqVMFypsvV8W15TUCxZraIqt01mFGg==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -12708,7 +12716,7 @@ packages:
       cookie: 0.5.0
       fastify: 4.26.2
       graphql: 16.8.1
-      mercurius: 13.4.1(graphql@16.8.1)
+      mercurius: 14.0.0(graphql@16.8.1)
       ws: 8.16.0
     transitivePeerDependencies:
       - bufferutil
@@ -12725,15 +12733,15 @@ packages:
       graphql-upload-minimal: 1.6.0(graphql@16.8.1)
     dev: false
 
-  /mercurius@13.4.1(graphql@16.8.1):
-    resolution: {integrity: sha512-fN7nfkuq1iB/S5J4PxG9F4nKeEsdbIUCT2CPdKDEPQUzJ9voXIxM5Zwm086MHEsiBa80mE+pvxgodiVLRgaOGQ==}
+  /mercurius@14.0.0(graphql@16.8.1):
+    resolution: {integrity: sha512-eGqBuc8ZfnBbJDnnedZWx0mPJ2ZQZz2HLmPCxRdMa5RZnRP9Uxn4Ew1x1OQ49MvNbut9xfvHCXKlr8uI6GOyZg==}
     engines: {node: '>=14.19.3'}
     peerDependencies:
       graphql: ^16.0.0
     dependencies:
       '@fastify/error': 3.4.1
       '@fastify/static': 7.0.1
-      '@fastify/websocket': 8.3.1
+      '@fastify/websocket': 10.0.1
       fastify-plugin: 4.5.1
       graphql: 16.8.1
       graphql-jit: 0.8.4(graphql@16.8.1)
@@ -15040,6 +15048,9 @@ packages:
       readable-stream: 2.3.8
     dev: false
     optional: true
+
+  /stream-shift@1.0.3:
+    resolution: {integrity: sha512-76ORR0DO1o1hlKwTbi/DM3EXWGf3ZJYO8cXX5RJwnul2DEg2oyoZyjLNoQM8WsvZiFKCRfC1O0J7iCvie3RZmQ==}
 
   /streamsearch@1.1.0:
     resolution: {integrity: sha512-Mcc5wHehp9aXz1ax6bZUyY5afg9u2rv5cqQI3mRrYkGC8rW2hM02jWuwjtL++LS5qinSyhj2QfLyNsuc+VsExg==}
