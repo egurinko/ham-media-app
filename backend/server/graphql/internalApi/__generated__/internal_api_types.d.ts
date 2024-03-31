@@ -399,6 +399,8 @@ export interface NexusGenFieldTypes {
     updateHospital: NexusGenRootTypes['Hospital']; // Hospital!
     updateHospitalAddress: NexusGenRootTypes['HospitalAddress']; // HospitalAddress!
     updateHospitalBase: NexusGenRootTypes['Hospital']; // Hospital!
+    updateHospitalBusinessForm: NexusGenRootTypes['HospitalBusinessForm']; // HospitalBusinessForm!
+    updateHospitalInternalReputation: NexusGenRootTypes['HospitalInternalReputation']; // HospitalInternalReputation!
     updateInternalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     updateMaker: NexusGenRootTypes['Maker']; // Maker!
     updateProduct: NexusGenRootTypes['Product']; // Product!
@@ -629,6 +631,8 @@ export interface NexusGenFieldTypeNames {
     updateHospital: 'Hospital'
     updateHospitalAddress: 'HospitalAddress'
     updateHospitalBase: 'Hospital'
+    updateHospitalBusinessForm: 'HospitalBusinessForm'
+    updateHospitalInternalReputation: 'HospitalInternalReputation'
     updateInternalUser: 'InternalUser'
     updateMaker: 'Maker'
     updateProduct: 'Product'
@@ -852,6 +856,18 @@ export interface NexusGenArgTypes {
       internal_memo: string; // String!
       name: string; // String!
       url: string; // String!
+    }
+    updateHospitalBusinessForm: { // args
+      business_hour: string; // String!
+      closed_day: string; // String!
+      hospital_id: NexusGenScalars['BigInt']; // BigInt!
+      insurance_enabled: string; // String!
+      remark: string; // String!
+    }
+    updateHospitalInternalReputation: { // args
+      hospital_id: NexusGenScalars['BigInt']; // BigInt!
+      remark: string; // String!
+      star: number; // Int!
     }
     updateInternalUser: { // args
       discord_user_id: string; // String!

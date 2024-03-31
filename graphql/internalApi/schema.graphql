@@ -221,6 +221,8 @@ type Mutation {
   updateHospital(deleted: Boolean!, hospitalAddressInput: HospitalAddressInputType!, hospitalBusinessFormInput: HospitalBusinessFormInputType!, hospitalCertificationOptionInput: HospitalCertificationOptionInputType!, hospitalInternalReputationInput: HospitalInternalReputationInputType!, hospitalNightServiceOptionInput: HospitalNightServiceOptionInputType!, hospitalNightUrgentActionOptionInput: HospitalNightUrgentActionOptionInputType!, hospitalReservationStatusInput: HospitalReservationStatusInputType!, id: BigInt!, internal_memo: String!, name: String!, url: String!): Hospital!
   updateHospitalAddress(address: String!, hospital_id: BigInt!, phone_number: String!, prefecture_id: BigInt!): HospitalAddress!
   updateHospitalBase(deleted: Boolean!, id: BigInt!, internal_memo: String!, name: String!, url: String!): Hospital!
+  updateHospitalBusinessForm(business_hour: String!, closed_day: String!, hospital_id: BigInt!, insurance_enabled: String!, remark: String!): HospitalBusinessForm!
+  updateHospitalInternalReputation(hospital_id: BigInt!, remark: String!, star: Int!): HospitalInternalReputation!
   updateInternalUser(discord_user_id: String!, email: String!, id: BigInt!, name: String!, password: String!, roleId: Int!): InternalUser!
   updateMaker(id: Int!, name: String!): Maker!
   updateProduct(file: Upload, id: Int!, makerId: Int!, name: String!, remark: String!): Product!
