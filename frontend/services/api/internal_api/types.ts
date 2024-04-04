@@ -255,6 +255,8 @@ export type Mutation = {
   updateHospital: Hospital;
   updateHospitalAddress: HospitalAddress;
   updateHospitalBase: Hospital;
+  updateHospitalBusinessForm: HospitalBusinessForm;
+  updateHospitalInternalReputation: HospitalInternalReputation;
   updateInternalUser: InternalUser;
   updateMaker: Maker;
   updateProduct: Product;
@@ -391,6 +393,20 @@ export type MutationUpdateHospitalBaseArgs = {
   internal_memo: Scalars['String']['input'];
   name: Scalars['String']['input'];
   url: Scalars['String']['input'];
+};
+
+export type MutationUpdateHospitalBusinessFormArgs = {
+  business_hour: Scalars['String']['input'];
+  closed_day: Scalars['String']['input'];
+  hospital_id: Scalars['BigInt']['input'];
+  insurance_enabled: Scalars['String']['input'];
+  remark: Scalars['String']['input'];
+};
+
+export type MutationUpdateHospitalInternalReputationArgs = {
+  hospital_id: Scalars['BigInt']['input'];
+  remark: Scalars['String']['input'];
+  star: Scalars['Int']['input'];
 };
 
 export type MutationUpdateInternalUserArgs = {
