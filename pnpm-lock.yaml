@@ -212,7 +212,7 @@ importers:
         specifier: ^1.4.5
         version: 1.4.5(@chakra-ui/react@2.8.2)(@chakra-ui/system@2.6.2)(framer-motion@11.1.7)(react-dom@18.2.0)(react@18.2.0)
       dayjs:
-        specifier: ^1.11.10
+        specifier: ^1.11.11
         version: 1.11.11
       deepmerge:
         specifier: ^4.3.1
