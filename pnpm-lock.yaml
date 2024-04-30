@@ -91,7 +91,7 @@ importers:
         specifier: ^1.23.0
         version: 1.23.0(graphql@16.8.1)
       graphql-upload-minimal:
-        specifier: ^1.6.0
+        specifier: ^1.6.1
         version: 1.6.1(graphql@16.8.1)
       json-bigint-patch:
         specifier: ^0.0.8
