@@ -115,8 +115,8 @@ importers:
         specifier: ^3.0.3
         version: 3.0.3
       pino-pretty:
-        specifier: ^11.0.0
-        version: 11.0.0
+        specifier: ^11.2.2
+        version: 11.2.2
       prisma:
         specifier: 5.11.0
         version: 5.11.0
@@ -14625,8 +14625,8 @@ packages:
       strip-json-comments: 3.1.1
     dev: false
 
-  /pino-pretty@11.0.0:
-    resolution: {integrity: sha512-YFJZqw59mHIY72wBnBs7XhLGG6qpJMa4pEQTRgEPEbjIYbng2LXEZZF1DoyDg9CfejEy8uZCyzpcBXXG0oOCwQ==}
+  /pino-pretty@11.2.2:
+    resolution: {integrity: sha512-2FnyGir8nAJAqD3srROdrF1J5BIcMT4nwj7hHSc60El6Uxlym00UbCCd8pYIterstVBFlMyF1yFV8XdGIPbj4A==}
     hasBin: true
     dependencies:
       colorette: 2.0.20
@@ -14641,7 +14641,7 @@ packages:
       pump: 3.0.0
       readable-stream: 4.5.2
       secure-json-parse: 2.7.0
-      sonic-boom: 3.8.1
+      sonic-boom: 4.0.1
       strip-json-comments: 3.1.1
     dev: false
 
@@ -15833,6 +15833,12 @@ packages:
     resolution: {integrity: sha512-y4Z8LCDBuum+PBP3lSV7RHrXscqksve/bi0as7mhwVnBW+/wUqKT/2Kb7um8yqcFy0duYbbPxzt89Zy2nOCaxg==}
     dependencies:
       atomic-sleep: 1.0.0
+
+  /sonic-boom@4.0.1:
+    resolution: {integrity: sha512-hTSD/6JMLyT4r9zeof6UtuBDpjJ9sO08/nmS5djaA9eozT9oOlNdpXSnzcgj4FTqpk3nkLrs61l4gip9r1HCrQ==}
+    dependencies:
+      atomic-sleep: 1.0.0
+    dev: false
 
   /source-map-js@1.2.0:
     resolution: {integrity: sha512-itJW8lvSA0TXEphiRoawsCksnlf8SyvmFzIhltqAHluXd88pkCd+cXJVHTDwdCr0IzwptSm035IHQktUu1QUMg==}
