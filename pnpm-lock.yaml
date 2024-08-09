@@ -58,8 +58,8 @@ importers:
         specifier: ^11.1.1
         version: 11.1.1
       '@line/bot-sdk':
-        specifier: ^9.2.0
-        version: 9.2.0
+        specifier: ^9.2.2
+        version: 9.2.2
       '@prisma/client':
         specifier: 5.11.0
         version: 5.11.0(prisma@5.11.0)
@@ -5163,8 +5163,8 @@ packages:
     resolution: {integrity: sha512-gbkePEBupNydxCelHCESvFSFM8XPh1Zs/OAVRW/rKpEqPAl5PbOM90Si8mv9bvnR53uPD2s/FiRxdvSejpRJew==}
     dev: true
 
-  /@line/bot-sdk@9.2.0:
-    resolution: {integrity: sha512-Xi124psxMheVziRwHLJ/T8w3V+yoUJ/b57k5UkGW2iKuxtfIizfrnROHj1Me9Yep/ypMAfjGyzQ9gmCHfVCh5w==}
+  /@line/bot-sdk@9.2.2:
+    resolution: {integrity: sha512-s2lzDpKZJ1Xjn3aL6wD2bGO/J9ZK19bUu6mSlplaQi17fYNKZTu7nMv99lsaY37XOYq7nyvfS5UUjKJk58m/vQ==}
     engines: {node: '>=18'}
     dependencies:
       '@types/node': 20.12.7
