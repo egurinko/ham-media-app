@@ -22,6 +22,7 @@ export const handleMessageEvent = async (event: MessageEvent) => {
       const reply = await getTextEventReplyMessage(event.message);
       return client.replyMessage({
         replyToken: event.replyToken,
+        // @ts-ignore
         messages: reply,
       });
     }
@@ -29,6 +30,7 @@ export const handleMessageEvent = async (event: MessageEvent) => {
       const reply = await getLocationEventReplyMessage(event.message);
       return client.replyMessage({
         replyToken: event.replyToken,
+        // @ts-ignore
         messages: reply,
       });
     }
