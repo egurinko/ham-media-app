@@ -36,7 +36,7 @@
     "framer-motion": "^11.3.24",
     "js-cookie": "^3.0.5",
     "json-bigint-patch": "^0.0.8",
-    "next": "14.2.0-canary.50",
+    "next": "14.2.5",
     "next-themes": "^0.3.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
@@ -58,7 +58,7 @@
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "dotenv": "^16.4.5",
-    "eslint-config-next": "^14.1.4",
+    "eslint-config-next": "^14.2.5",
     "eslint-plugin-jsx-a11y": "^6.9.0",
     "eslint-plugin-react": "^7.35.0"
   }
