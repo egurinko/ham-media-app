@@ -25,6 +25,25 @@ generates:
       - typescript
       - typescript-operations
       - typescript-react-apollo
+  app/utils/api/types.ts:
+    schema: ../graphql/**/schema.graphql
+    documents: app/**/*.api.ts
+    plugins:
+      - add:
+          content: '/* eslint-disable @typescript-eslint/no-explicit-any */'
+      - typescript
+      - typescript-operations
+  app/:
+    schema: ../graphql/**/schema.graphql
+    documents: app/**/*.api.ts
+    preset: near-operation-file
+    presetConfig:
+      baseTypesPath: '~@/app/utils/api/types'
+    plugins:
+      - add:
+          content: '/* eslint-disable @typescript-eslint/no-explicit-any */'
+      - typescript-operations
+
 config:
   scalars:
     BigInt: number
