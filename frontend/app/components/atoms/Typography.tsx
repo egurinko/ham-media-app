@@ -1,9 +1,9 @@
 import { css, cx } from '@/styled/css';
-import type { PropertyValue } from '@/styled/types/prop-type.d.ts';
+import type { SystemProperties } from '@/styled/types/style-props';
 import type { FC, PropsWithChildren } from 'react';
 
 type Props = {
-  variant?: PropertyValue<'textStyle'>;
+  variant?: SystemProperties['textStyle'];
   className?: string | undefined;
   display?: 'inline' | 'block' | '-webkit-box';
   bold?: boolean;

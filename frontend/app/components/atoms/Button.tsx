@@ -1,4 +1,4 @@
-import { ark } from '@ark-ui/react/factory';
+import { ark } from '@ark-ui/react';
 import type { RecipeVariantProps } from '@/styled/css';
 import { cva } from '@/styled/css';
 import { styled } from '@/styled/jsx';

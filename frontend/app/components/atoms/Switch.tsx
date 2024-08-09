@@ -1,8 +1,5 @@
 import { switchAnatomy } from '@ark-ui/anatomy';
-import {
-  Switch as ArkSwitch,
-  type SwitchRootProps,
-} from '@ark-ui/react/switch';
+import { Switch as ArkSwitch, type SwitchRootProps } from '@ark-ui/react';
 import { forwardRef, type ReactNode } from 'react';
 import type { RecipeVariantProps } from '@/styled/css';
 import { css, cx, sva } from '@/styled/css';

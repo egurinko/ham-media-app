@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { css } from '@/styled/css';
-import type { PropertyValue } from '@/styled/types/prop-type';
+import type { SystemProperties } from '@/styled/types/style-props';
 import type { FC } from 'react';
 
 type Props = {
   source: React.ReactElement;
-  width?: PropertyValue<'width'>;
-  height?: PropertyValue<'height'>;
+  width?: SystemProperties['width'];
+  height?: SystemProperties['height'];
 };
 
 export const Icon: FC<Props> = ({ source, width, height }) => {

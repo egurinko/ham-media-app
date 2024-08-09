@@ -1,6 +1,5 @@
 import { dialogAnatomy } from '@ark-ui/anatomy';
-import { Dialog as ArkDrawer } from '@ark-ui/react/dialog';
-import { ark } from '@ark-ui/react/factory';
+import { Dialog as ArkDrawer, ark } from '@ark-ui/react';
 import { createStyleContext } from '@/app/utils/createStyleContext';
 import { sva } from '@/styled/css';
 import { styled } from '@/styled/jsx';

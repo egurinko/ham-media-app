@@ -1,7 +1,4 @@
-import {
-  Checkbox as ArkCheckbox,
-  type CheckboxRootProps,
-} from '@ark-ui/react/checkbox';
+import { Checkbox as ArkCheckbox, type CheckboxRootProps } from '@ark-ui/react';
 import { forwardRef, type ReactNode } from 'react';
 import type { RecipeVariantProps } from '@/styled/css';
 import { sva } from '@/styled/css';
@@ -128,19 +125,21 @@ export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>(
 
     return (
       <ArkCheckbox.Root ref={ref} className={styles.root} {...rootProps}>
-        {(state) => (
-          <>
-            <ArkCheckbox.Control className={styles.control}>
-              {state.isChecked && <CheckIcon />}
-              {state.isIndeterminate && <MinusIcon />}
-            </ArkCheckbox.Control>
-            {children && (
-              <ArkCheckbox.Label className={styles.label}>
-                {children}
-              </ArkCheckbox.Label>
-            )}
-          </>
-        )}
+        <ArkCheckbox.Context>
+          {(checkbox) => (
+            <>
+              <ArkCheckbox.Control className={styles.control}>
+                {checkbox.checked && <CheckIcon />}
+                {checkbox.indeterminate && <MinusIcon />}
+              </ArkCheckbox.Control>
+              {children && (
+                <ArkCheckbox.Label className={styles.label}>
+                  {children}
+                </ArkCheckbox.Label>
+              )}
+            </>
+          )}
+        </ArkCheckbox.Context>
       </ArkCheckbox.Root>
     );
   },

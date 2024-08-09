@@ -1,5 +1,5 @@
 import { selectAnatomy } from '@ark-ui/anatomy';
-import { Select as ArkSelect } from '@ark-ui/react/select';
+import { Select as ArkSelect } from '@ark-ui/react';
 import { createStyleContext } from '@/app/utils/createStyleContext';
 import { sva } from '@/styled/css';
 import { styled } from '@/styled/jsx';

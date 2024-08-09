@@ -1,6 +1,6 @@
 import { sva, cx } from '@/styled/css';
 import type { RecipeVariantProps } from '@/styled/css';
-import type { ark } from '@ark-ui/react/factory';
+import type { ark } from '@ark-ui/react';
 import type { FC, PropsWithChildren, ComponentPropsWithoutRef } from 'react';
 
 export const card = sva({

@@ -1,10 +1,10 @@
 import { css } from '@/styled/css';
-import type { PropertyValue } from '@/styled/types/prop-type.d.ts';
+import type { SystemProperties } from '@/styled/types/style-props';
 import type { FC } from 'react';
 
 type Props = {
   noOfLines?: number;
-  spacing?: PropertyValue<'padding'>;
+  spacing?: SystemProperties['padding'];
   skeletonHeight?: string;
 };
 

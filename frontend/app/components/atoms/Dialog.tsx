@@ -1,5 +1,5 @@
 import { dialogAnatomy } from '@ark-ui/anatomy';
-import { Dialog as ArkDialog } from '@ark-ui/react/dialog';
+import { Dialog as ArkDialog } from '@ark-ui/react';
 import { createStyleContext } from '@/app/utils/createStyleContext';
 import { sva } from '@/styled/css';
 import type { HTMLStyledProps } from '@/styled/jsx';
