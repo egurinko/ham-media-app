@@ -1,7 +1,7 @@
 import { Header } from '@/app/components/organisms/admin/Header';
 import { Sidebar } from '@/app/components/organisms/admin/Sidebar';
-import { getSession } from '@/app/utils/api/internalApi/session';
 import { css } from '@/styled/css';
+import { getInternalUserProfile } from './layout.api';
 
 type Props = {
   children: React.ReactNode;
@@ -9,7 +9,7 @@ type Props = {
 
 export const dynamic = 'force-dynamic';
 export default async function Layout({ children }: Props) {
-  const { data } = await getSession({});
+  const { data } = await getInternalUserProfile({});
 
   return (
     <div
