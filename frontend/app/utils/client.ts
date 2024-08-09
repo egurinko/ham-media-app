@@ -1,7 +1,7 @@
 import { HttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import { registerApolloClient } from '@apollo/experimental-nextjs-app-support';
 import {
+  registerApolloClient,
   InMemoryCache,
   ApolloClient,
 } from '@apollo/experimental-nextjs-app-support';
