@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { Card } from '@/app/components/atoms/Card';
-import { LoginForm } from '@/app/components/organisms/admin/LoginForm';
+import { LoginForm } from '@/app/components/organisms/admin/loginForm/Index';
 import { css } from '@/styled/css';
 
 export default async function Page() {

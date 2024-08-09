@@ -1,14 +1,14 @@
 'use client';
 
-import { useFormState } from 'react-dom';
+import { useActionState } from 'react';
 import { Icon } from '@/app/components/atoms/Icon';
 import { Input } from '@/app/components/atoms/Input';
 import { InputLabel } from '@/app/components/atoms/InputLabel';
 import { SubmitButton } from '@/app/components/atoms/SubmitButton';
 import { Typography } from '@/app/components/atoms/Typography';
-import { createSession } from '@/app/utils/actions/session';
 import AlertIcon from '@/assets/alert.svg';
 import { css } from '@/styled/css';
+import { createSessionAction } from './index.actions';
 import type { FC } from 'react';
 
 export type State = {
@@ -21,7 +21,7 @@ export type State = {
 
 export const LoginForm: FC<NoProps> = () => {
   const initialState: State = { message: null, errors: {} };
-  const [state, dispatch] = useFormState(createSession, initialState);
+  const [state, dispatch] = useActionState(createSessionAction, initialState);
   return (
     <form
       action={dispatch}

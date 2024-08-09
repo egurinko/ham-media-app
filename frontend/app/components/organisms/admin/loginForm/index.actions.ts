@@ -3,9 +3,9 @@
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
-import { createSession as createSessionGraphQL } from '@/app/utils/api/publicApi/createSession';
 import { HAMEDIA_SESSION } from '@/app/utils/constant';
 import { ADMIN_PRODUCTS_PATH } from '@/utils/routes';
+import { createSession as createSessionGraphQL } from './index.api';
 
 const FormSchema = z.object({
   email: z
@@ -24,7 +24,10 @@ export type State = {
   message?: string | null;
 };
 
-export async function createSession(_prevState: State, formData: FormData) {
+export async function createSessionAction(
+  _prevState: State,
+  formData: FormData,
+) {
   const validatedFields = FormSchema.safeParse({
     email: formData.get('email'),
     password: formData.get('password'),
