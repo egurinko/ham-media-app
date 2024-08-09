@@ -179,11 +179,11 @@ importers:
   frontend:
     dependencies:
       '@apollo/client':
-        specifier: ^3.9.6
-        version: 3.10.1(@types/react@18.3.3)(graphql@16.8.1)(react-dom@18.3.1)(react@18.3.1)
+        specifier: ^3.11.4
+        version: 3.11.4(@types/react@18.3.3)(graphql@16.8.1)(react-dom@18.3.1)(react@18.3.1)
       '@apollo/experimental-nextjs-app-support':
-        specifier: ^0.8.0
-        version: 0.8.0(@apollo/client@3.10.1)(next@14.2.0-canary.50)(react@18.3.1)
+        specifier: ^0.11.2
+        version: 0.11.2(@apollo/client@3.11.4)(next@14.2.0-canary.50)(react@18.3.1)
       '@ark-ui/anatomy':
         specifier: ^2.3.1
         version: 2.3.1(@internationalized/date@3.5.2)
@@ -207,7 +207,7 @@ importers:
         version: 2.19.3(react-dom@18.3.1)(react@18.3.1)
       apollo-upload-client:
         specifier: ^18.0.1
-        version: 18.0.1(@apollo/client@3.10.1)(graphql@16.8.1)
+        version: 18.0.1(@apollo/client@3.11.4)(graphql@16.8.1)
       chakra-ui-autocomplete:
         specifier: ^1.4.5
         version: 1.4.5(@chakra-ui/react@2.8.2)(@chakra-ui/system@2.6.2)(framer-motion@11.1.7)(react-dom@18.3.1)(react@18.3.1)
@@ -310,13 +310,24 @@ packages:
       '@jridgewell/gen-mapping': 0.3.5
       '@jridgewell/trace-mapping': 0.3.25
 
-  /@apollo/client@3.10.1(@types/react@18.3.3)(graphql@16.8.1)(react-dom@18.3.1)(react@18.3.1):
-    resolution: {integrity: sha512-QNacQBZzJla5UQ/LLBXJWM7/1v1C5cfpMQPAFjW4hg4T54wHWbg4Dr+Dp6N+hy/ygu8tepdM+/y/5VFLZhovlQ==}
+  /@apollo/client-react-streaming@0.11.2(@apollo/client@3.11.4)(react@18.3.1):
+    resolution: {integrity: sha512-rRA/dIA09/Y6+jtGGBnXHQfPOv6BYYVZwQP8OzQtWrWbSgDEI6uAhqULssU5f0ZhQJVzKDuslqGE9QAX0gdfRQ==}
+    peerDependencies:
+      '@apollo/client': ^3.10.4
+      react: ^18
+    dependencies:
+      '@apollo/client': 3.11.4(@types/react@18.3.3)(graphql@16.8.1)(react-dom@18.3.1)(react@18.3.1)
+      react: 18.3.1
+      ts-invariant: 0.10.3
+    dev: false
+
+  /@apollo/client@3.11.4(@types/react@18.3.3)(graphql@16.8.1)(react-dom@18.3.1)(react@18.3.1):
+    resolution: {integrity: sha512-bmgYKkULpym8wt8aXlAZ1heaYo0skLJ5ru0qJ+JCRoo03Pe+yIDbBCnqlDw6Mjj76hFkDw3HwFMgZC2Hxp30Mg==}
     peerDependencies:
       graphql: ^15.0.0 || ^16.0.0
       graphql-ws: ^5.5.5
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || >=19.0.0-rc <19.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || >=19.0.0-rc <19.0.0
       subscriptions-transport-ws: ^0.9.0 || ^0.11.0
     peerDependenciesMeta:
       graphql-ws:
@@ -348,19 +359,17 @@ packages:
     transitivePeerDependencies:
       - '@types/react'
 
-  /@apollo/experimental-nextjs-app-support@0.8.0(@apollo/client@3.10.1)(next@14.2.0-canary.50)(react@18.3.1):
-    resolution: {integrity: sha512-uyNIkOkew0T6ukC8ycbWBeTu8gtDSD5i+NVGEHU0DIEQaToFHObYcvIxaQ/8hvWzgvnpNU/KMsApfGXA9Xkpyw==}
+  /@apollo/experimental-nextjs-app-support@0.11.2(@apollo/client@3.11.4)(next@14.2.0-canary.50)(react@18.3.1):
+    resolution: {integrity: sha512-HRQ8/Ux/tM2pezrhZeoHsJs55+nJvJZRV1B21QwEVtWhslQXjT5gqs5nKw86KURF0xR7gX18Nyy659NzJ09Pmw==}
     peerDependencies:
-      '@apollo/client': ^3.9.0
-      next: ^13.4.1 || ^14.0.0
+      '@apollo/client': ^3.10.4
+      next: ^13.4.1 || ^14.0.0 || 15.0.0-rc.0
       react: ^18
     dependencies:
-      '@apollo/client': 3.10.1(@types/react@18.3.3)(graphql@16.8.1)(react-dom@18.3.1)(react@18.3.1)
+      '@apollo/client': 3.11.4(@types/react@18.3.3)(graphql@16.8.1)(react-dom@18.3.1)(react@18.3.1)
+      '@apollo/client-react-streaming': 0.11.2(@apollo/client@3.11.4)(react@18.3.1)
       next: 14.2.0-canary.50(@babel/core@7.24.4)(react-dom@18.3.1)(react@18.3.1)
       react: 18.3.1
-      server-only: 0.0.1
-      superjson: 2.2.1
-      ts-invariant: 0.10.3
     dev: false
 
   /@ardatan/relay-compiler@12.0.0(graphql@16.8.1):
@@ -7173,7 +7182,7 @@ packages:
   /@types/apollo-upload-client@18.0.0(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1):
     resolution: {integrity: sha512-cMgITNemktxasqvp6jiPj15dv84n3FTMvMoYBP1+xonDS+0l6JygIJrj2LJh85rShRzTOOkrElrAsCXXARa3KA==}
     dependencies:
-      '@apollo/client': 3.10.1(@types/react@18.3.3)(graphql@16.8.1)(react-dom@18.3.1)(react@18.3.1)
+      '@apollo/client': 3.11.4(@types/react@18.3.3)(graphql@16.8.1)(react-dom@18.3.1)(react@18.3.1)
       '@types/extract-files': 13.0.1
       graphql: 16.8.1
     transitivePeerDependencies:
@@ -8642,14 +8651,14 @@ packages:
       normalize-path: 3.0.0
       picomatch: 2.3.1
 
-  /apollo-upload-client@18.0.1(@apollo/client@3.10.1)(graphql@16.8.1):
+  /apollo-upload-client@18.0.1(@apollo/client@3.11.4)(graphql@16.8.1):
     resolution: {integrity: sha512-OQvZg1rK05VNI79D658FUmMdoI2oB/KJKb6QGMa2Si25QXOaAvLMBFUEwJct7wf+19U8vk9ILhidBOU1ZWv6QA==}
     engines: {node: ^18.15.0 || >=20.4.0}
     peerDependencies:
       '@apollo/client': ^3.8.0
       graphql: 14 - 16
     dependencies:
-      '@apollo/client': 3.10.1(@types/react@18.3.3)(graphql@16.8.1)(react-dom@18.3.1)(react@18.3.1)
+      '@apollo/client': 3.11.4(@types/react@18.3.3)(graphql@16.8.1)(react-dom@18.3.1)(react@18.3.1)
       extract-files: 13.0.0
       graphql: 16.8.1
     dev: false
@@ -9683,13 +9692,6 @@ packages:
   /cookie@0.6.0:
     resolution: {integrity: sha512-U71cyTamuh1CRNCfpGY6to28lxvNwPG4Guz/EVjgf3Jmzv0vlDp1atT9eS5dDjMYHucpHbWns6Lwf3BKz6svdw==}
     engines: {node: '>= 0.6'}
-
-  /copy-anything@3.0.5:
-    resolution: {integrity: sha512-yCEafptTtb4bk7GLEQoM8KVJpxAfdBJYaXyzQEgQQQgYrZiDp8SJmGKlYza6CYjEDNstAdNdKA3UuoULlEbS6w==}
-    engines: {node: '>=12.13'}
-    dependencies:
-      is-what: 4.1.16
-    dev: false
 
   /copy-to-clipboard@3.3.3:
     resolution: {integrity: sha512-2KV8NhB5JqC3ky0r9PMCAZKbUHSwtEo4CwCs0KXgruG43gX5PMqDEBbVU4OUzw2MuAWUfsuFmWvEKG5QRfSnJA==}
@@ -12354,6 +12356,7 @@ packages:
   /is-what@4.1.16:
     resolution: {integrity: sha512-ZhMwEosbFJkA0YhFnNDgTM4ZxDRsS6HqTo7qsZM08fehyRYIYa0yHu5R6mgo1n/8MgaPBXiPimPD77baVFYg+A==}
     engines: {node: '>=12.13'}
+    dev: true
 
   /is-windows@1.0.2:
     resolution: {integrity: sha512-eXK1UInq2bPmjyX6e3VHIzMLobc4J94i4AWn+Hpq3OU5KkrRC96OAcR3PRJ/pGu6m8TRnBHP9dkXQVsT/COVIA==}
@@ -16195,13 +16198,6 @@ packages:
     resolution: {integrity: sha512-IiOea5kJ9iqzD2t7QJq/cREyLHTtSmUT6gQsweojg9WH2sYJqZK9SswTu6jrscO6D1G5v5vYZ9ru/eq85lXeZQ==}
     dependencies:
       kdbush: 4.0.2
-    dev: false
-
-  /superjson@2.2.1:
-    resolution: {integrity: sha512-8iGv75BYOa0xRJHK5vRLEjE2H/i4lulTjzpUXic3Eg8akftYjkmQDa8JARQ42rlczXyFR3IeRoeFCc7RxHsYZA==}
-    engines: {node: '>=16'}
-    dependencies:
-      copy-anything: 3.0.5
     dev: false
 
   /supports-color@5.5.0:
