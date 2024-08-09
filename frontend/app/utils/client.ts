@@ -1,10 +1,10 @@
 import { HttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import { registerApolloClient } from '@apollo/experimental-nextjs-app-support/rsc';
+import { registerApolloClient } from '@apollo/experimental-nextjs-app-support';
 import {
-  NextSSRInMemoryCache,
-  NextSSRApolloClient,
-} from '@apollo/experimental-nextjs-app-support/ssr';
+  InMemoryCache,
+  ApolloClient,
+} from '@apollo/experimental-nextjs-app-support';
 import { cookies } from 'next/headers';
 import { getSessionToken } from '@/app/utils/cookies';
 
@@ -31,16 +31,16 @@ const internalLink = internalAuthLink.concat(internalHttpLink);
 
 export const { getClient: getPublicClient } = registerApolloClient(
   () =>
-    new NextSSRApolloClient({
-      cache: new NextSSRInMemoryCache(),
+    new ApolloClient({
+      cache: new InMemoryCache(),
       link: publicLink,
     }),
 );
 
 export const { getClient: getInternalClient } = registerApolloClient(
   () =>
-    new NextSSRApolloClient({
-      cache: new NextSSRInMemoryCache(),
+    new ApolloClient({
+      cache: new InMemoryCache(),
       link: internalLink,
     }),
 );
