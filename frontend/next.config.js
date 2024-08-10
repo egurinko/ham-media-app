@@ -14,5 +14,13 @@ module.exports = {
   output: 'standalone',
   experimental: {
     ppr: true,
+    turbo: {
+      rules: {
+        '*.svg': {
+          loaders: ['@svgr/webpack'],
+          as: '*.js',
+        },
+      },
+    },
   },
 };
