@@ -3,8 +3,8 @@ import { Suspense } from 'react';
 import { Button } from '@/app/components/atoms/Button';
 import { Typography } from '@/app/components/atoms/Typography';
 import { ErrorMessages } from '@/app/components/molecules/FlashMessage';
-import { InternalUserList } from '@/app/components/organisms/admin/InternalUserList';
 import { InternalUserListSkeleton } from '@/app/components/organisms/admin/InternalUserListSkeleton';
+import { InternalUserList } from '@/app/components/organisms/admin/internalUserList/Index';
 import { css } from '@/styled/css';
 import { ADMIN_INTERNAL_USERS_NEW_PATH } from '@/utils/routes';
 

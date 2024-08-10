@@ -788,6 +788,36 @@ export type GetInternalUserProfileQuery = {
   };
 };
 
+export type GetInternalUsersQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetInternalUsersQuery = {
+  __typename?: 'Query';
+  internalUsers: Array<{
+    __typename?: 'InternalUser';
+    id: number;
+    email: string;
+    name: string;
+    role: { __typename?: 'Role'; name: string };
+  }>;
+};
+
+export type InternalUserListItemFieldsFragment = {
+  __typename?: 'InternalUser';
+  id: number;
+  email: string;
+  name: string;
+  role: { __typename?: 'Role'; name: string };
+};
+
+export type DeleteInternalUserMutationVariables = Exact<{
+  id: Scalars['BigInt']['input'];
+}>;
+
+export type DeleteInternalUserMutation = {
+  __typename?: 'Mutation';
+  deleteInternalUser: { __typename?: 'Delete'; deleted: boolean };
+};
+
 export type CreateSessionMutationVariables = Exact<{
   email: Scalars['String']['input'];
   password: Scalars['String']['input'];
