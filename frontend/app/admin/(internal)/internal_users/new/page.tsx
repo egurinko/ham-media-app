@@ -1,9 +1,9 @@
 import { Breadcrumbs } from '@/app/components/molecules/Breadcrumbs';
 import { InternalUserForm } from '@/app/components/organisms/admin/InternalUserForm';
-import { createInternalUser } from '@/app/utils/actions/internalUser';
-import { getRoles } from '@/app/utils/api/internalApi/role';
 import { css } from '@/styled/css';
 import { ADMIN_INTERNAL_USERS_PATH } from '@/utils/routes';
+import { createInternalUserAction } from './page.action';
+import { getRoles } from './page.api';
 
 export default async function Page() {
   const { data } = await getRoles({});
@@ -34,7 +34,7 @@ export default async function Page() {
 
       <InternalUserForm
         roles={data.roles}
-        handleSubmit={createInternalUser}
+        handleSubmit={createInternalUserAction}
         initialInternalUser={{
           name: '',
           email: '',
@@ -42,6 +42,7 @@ export default async function Page() {
           discordUserId: '',
           roleId: [],
         }}
+        submitLabel="登録する"
       />
     </div>
   );

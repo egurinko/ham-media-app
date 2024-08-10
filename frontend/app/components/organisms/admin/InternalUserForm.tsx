@@ -1,7 +1,6 @@
 'use client';
 
-import { useState } from 'react';
-import { useFormState } from 'react-dom';
+import { useState, useActionState } from 'react';
 import { Icon } from '@/app/components/atoms/Icon';
 import { Input } from '@/app/components/atoms/Input';
 import { InputLabel } from '@/app/components/atoms/InputLabel';
@@ -9,7 +8,7 @@ import * as Select from '@/app/components/atoms/Select';
 import { SubmitButton } from '@/app/components/atoms/SubmitButton';
 import { Tag } from '@/app/components/atoms/Tag';
 import { ErrorMessages } from '@/app/components/molecules/ErrorMessages';
-import type { State } from '@/app/utils/actions/internalUser';
+import type { State } from '@/app/utils/formSchema/internalUser';
 import AnglesUpDownIcon from '@/assets/angles-up-down.svg';
 import CheckIcon from '@/assets/check.svg';
 import { css } from '@/styled/css';
@@ -32,19 +31,21 @@ type Props = {
     discordUserId: string;
     roleId: string[];
   };
+  submitLabel: string;
 };
 
 export const InternalUserForm: FC<Props> = ({
   roles,
   handleSubmit,
   initialInternalUser,
+  submitLabel,
 }) => {
   const initialState: State = { message: '', errors: {} };
   const items = roles.map((role) => ({
     value: String(role.id),
     label: role.name,
   }));
-  const [state, dispatch] = useFormState(handleSubmit, initialState);
+  const [state, dispatch] = useActionState(handleSubmit, initialState);
   const [name, setName] = useState(initialInternalUser.name);
   const [email, setEmail] = useState(initialInternalUser.email);
   const [password, setPassword] = useState(initialInternalUser.password);
@@ -140,13 +141,13 @@ export const InternalUserForm: FC<Props> = ({
           )}
         </div>
       </div>
+      <input type="hidden" name="roleId" value={roleIds[0]} />
       <Select.Select
         positioning={{ sameWidth: true }}
         width="100%"
         items={items}
         onValueChange={(e) => setRoleIds(e.value)}
         value={roleIds}
-        name="roleId"
         aria-describedby="role-error"
       >
         <Select.Label>
@@ -176,7 +177,7 @@ export const InternalUserForm: FC<Props> = ({
           <ErrorMessages messages={state.errors.roleId} />
         )}
       </div>
-      <SubmitButton text="登録する" />
+      <SubmitButton text={submitLabel} />
     </form>
   );
 };

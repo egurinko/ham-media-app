@@ -1,10 +1,9 @@
 import { Breadcrumbs } from '@/app/components/molecules/Breadcrumbs';
 import { InternalUserForm } from '@/app/components/organisms/admin/InternalUserForm';
-import { updateInternalUser } from '@/app/utils/actions/internalUser';
-import { getInternalUser } from '@/app/utils/api/internalApi/internalUser';
-import { getRoles } from '@/app/utils/api/internalApi/role';
 import { css } from '@/styled/css';
 import { ADMIN_INTERNAL_USERS_PATH } from '@/utils/routes';
+import { updateInternalUserAction } from './page.action';
+import { getRoles, getInternalUser } from './page.api';
 
 type Props = {
   params: Params;
@@ -51,7 +50,7 @@ export default async function Page({ params }: Props) {
 
       <InternalUserForm
         roles={roleData.roles}
-        handleSubmit={updateInternalUser}
+        handleSubmit={updateInternalUserAction}
         initialInternalUser={{
           id: String(internalUserData.internalUser.id),
           name: internalUserData.internalUser.name,
@@ -60,6 +59,7 @@ export default async function Page({ params }: Props) {
           discordUserId: internalUserData.internalUser.discord_user_id,
           roleId: [String(internalUserData.internalUser.role.id)],
         }}
+        submitLabel="更新する"
       />
     </div>
   );

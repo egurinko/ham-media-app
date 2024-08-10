@@ -776,6 +776,56 @@ export type CurrentLocation = {
   longitude: Scalars['Float']['input'];
 };
 
+export type GetRolesQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetRolesQuery = {
+  __typename?: 'Query';
+  roles: Array<{ __typename?: 'Role'; id: number; name: string }>;
+};
+
+export type GetInternalUserQueryVariables = Exact<{
+  id: Scalars['BigInt']['input'];
+}>;
+
+export type GetInternalUserQuery = {
+  __typename?: 'Query';
+  internalUser: {
+    __typename?: 'InternalUser';
+    id: number;
+    name: string;
+    email: string;
+    discord_user_id: string;
+    role: { __typename?: 'Role'; id: number };
+  };
+};
+
+export type UpdateInternalUserMutationVariables = Exact<{
+  id: Scalars['BigInt']['input'];
+  name: Scalars['String']['input'];
+  email: Scalars['String']['input'];
+  password: Scalars['String']['input'];
+  discord_user_id: Scalars['String']['input'];
+  roleId: Scalars['Int']['input'];
+}>;
+
+export type UpdateInternalUserMutation = {
+  __typename?: 'Mutation';
+  updateInternalUser: { __typename?: 'InternalUser'; id: number };
+};
+
+export type CreateInternalUserMutationVariables = Exact<{
+  name: Scalars['String']['input'];
+  email: Scalars['String']['input'];
+  password: Scalars['String']['input'];
+  discord_user_id: Scalars['String']['input'];
+  roleId: Scalars['Int']['input'];
+}>;
+
+export type CreateInternalUserMutation = {
+  __typename?: 'Mutation';
+  createInternalUser: { __typename?: 'InternalUser'; id: number };
+};
+
 export type GetInternalUserProfileQueryVariables = Exact<{
   [key: string]: never;
 }>;
