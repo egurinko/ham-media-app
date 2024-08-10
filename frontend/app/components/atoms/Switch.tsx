@@ -102,6 +102,7 @@ export const Switch = forwardRef<HTMLLabelElement, SwitchProps>(
         {children && (
           <ArkSwitch.Label className={styles.label}>{children}</ArkSwitch.Label>
         )}
+        <ArkSwitch.HiddenInput />
       </ArkSwitch.Root>
     );
   },
