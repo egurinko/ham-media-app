@@ -36,7 +36,7 @@
     "framer-motion": "^11.3.24",
     "js-cookie": "^3.0.5",
     "json-bigint-patch": "^0.0.8",
-    "next": "15.0.0-canary.110",
+    "next": "15.0.0-rc.0",
     "next-themes": "^0.3.0",
     "react": "19.0.0-rc-2d2cc042-20240809",
     "react-dom": "19.0.0-rc-2d2cc042-20240809",
