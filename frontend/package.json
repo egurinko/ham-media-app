@@ -60,7 +60,7 @@
     "@types/react-dom": "npm:types-react-dom@rc",
     "dotenv": "^16.4.5",
     "eslint-config-next": "^14.2.7",
-    "eslint-plugin-jsx-a11y": "^6.9.0",
+    "eslint-plugin-jsx-a11y": "^6.10.0",
     "eslint-plugin-react": "^7.35.2"
   },
   "overrides": {
