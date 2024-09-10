@@ -59,7 +59,7 @@
     "@types/react": "npm:types-react@rc",
     "@types/react-dom": "npm:types-react-dom@rc",
     "dotenv": "^16.4.5",
-    "eslint-config-next": "^14.2.8",
+    "eslint-config-next": "^14.2.9",
     "eslint-plugin-jsx-a11y": "^6.10.0",
     "eslint-plugin-react": "^7.35.2"
   },
