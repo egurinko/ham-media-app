@@ -212,7 +212,7 @@ importers:
         specifier: ^1.4.5
         version: 1.4.5(5adtnczwrqukvrigq3zr4veca4)
       dayjs:
-        specifier: ^1.11.12
+        specifier: ^1.11.13
         version: 1.11.13
       deepmerge:
         specifier: ^4.3.1
