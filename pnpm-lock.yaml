@@ -197,7 +197,7 @@ importers:
         specifier: 2.8.2
         version: 2.8.2(@emotion/react@11.13.3(react@19.0.0-rc-fb9a90fa48-20240614)(types-react@19.0.0-rc.1))(@emotion/styled@11.13.0(@emotion/react@11.13.3(react@19.0.0-rc-fb9a90fa48-20240614)(types-react@19.0.0-rc.1))(react@19.0.0-rc-fb9a90fa48-20240614)(types-react@19.0.0-rc.1))(framer-motion@11.5.4(@emotion/is-prop-valid@1.3.0)(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614))(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)(types-react@19.0.0-rc.1)
       '@emotion/react':
-        specifier: ^11.13.0
+        specifier: ^11.13.3
         version: 11.13.3(react@19.0.0-rc-fb9a90fa48-20240614)(types-react@19.0.0-rc.1)
       '@emotion/styled':
         specifier: ^11.13.0
