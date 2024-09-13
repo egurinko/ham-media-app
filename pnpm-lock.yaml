@@ -242,7 +242,7 @@ importers:
         specifier: ^2.3.10
         version: 2.3.10(@babel/core@7.25.2)(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react-is@18.3.1)(react@19.0.0-rc-fb9a90fa48-20240614)
       react-hook-form:
-        specifier: ^7.52.2
+        specifier: ^7.53.0
         version: 7.53.0(react@19.0.0-rc-fb9a90fa48-20240614)
       react-medium-image-zoom:
         specifier: ^5.2.8
