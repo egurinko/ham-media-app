@@ -36,7 +36,7 @@
     "framer-motion": "^11.3.24",
     "js-cookie": "^3.0.5",
     "json-bigint-patch": "^0.0.8",
-    "next": "15.0.0-rc.0",
+    "next": "15.0.0-rc.1",
     "next-themes": "^0.3.0",
     "react": "19.0.0-rc-fb9a90fa48-20240614",
     "react-dom": "19.0.0-rc-fb9a90fa48-20240614",
@@ -59,7 +59,7 @@
     "@types/react": "npm:types-react@rc",
     "@types/react-dom": "npm:types-react-dom@rc",
     "dotenv": "^16.4.5",
-    "eslint-config-next": "^14.2.11",
+    "eslint-config-next": "^14.2.15",
     "eslint-plugin-jsx-a11y": "^6.10.0",
     "eslint-plugin-react": "^7.36.1"
   },
