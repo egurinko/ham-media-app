@@ -29,6 +29,7 @@ const shouldForwardProp = (
 export const createStyleContext = <R extends Recipe>(recipe: R) => {
   const StyleContext = createContext<Record<Slot<R>, string> | null>(null);
 
+  // eslint-disable-next-line @typescript-eslint/ban-types
   const withRootProvider = <P extends {}>(Component: ElementType) => {
     const StyledComponent = (props: P) => {
       const [variantProps, otherProps] = recipe.splitVariantProps(props);
@@ -70,7 +71,7 @@ export const createStyleContext = <R extends Recipe>(recipe: R) => {
         </StyleContext.Provider>
       );
     });
-    // @ts-expect-error
+    // @ts-expect-error ElementType に displayName がない
     StyledSlotProvider.displayName = Component.displayName || Component.name;
 
     return StyledSlotProvider;
@@ -91,7 +92,7 @@ export const createStyleContext = <R extends Recipe>(recipe: R) => {
         />
       );
     });
-    // @ts-expect-error
+    // @ts-expect-error ElementType に displayName がない
     StyledSlotComponent.displayName = Component.displayName || Component.name;
 
     return StyledSlotComponent;
