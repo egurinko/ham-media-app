@@ -1,10 +1,10 @@
 'use client';
 
 import { useState, useActionState } from 'react';
+import { Select } from '@/app/components/atoms';
 import { Icon } from '@/app/components/atoms/Icon';
 import { Input } from '@/app/components/atoms/Input';
 import { InputLabel } from '@/app/components/atoms/InputLabel';
-import * as Select from '@/app/components/atoms/Select';
 import { SubmitButton } from '@/app/components/atoms/SubmitButton';
 import { Tag } from '@/app/components/atoms/Tag';
 import { ErrorMessages } from '@/app/components/molecules/ErrorMessages';
@@ -142,7 +142,7 @@ export const InternalUserForm: FC<Props> = ({
         </div>
       </div>
       <input type="hidden" name="roleId" value={roleIds[0]} />
-      <Select.Select
+      <Select.Root
         positioning={{ sameWidth: true }}
         width="100%"
         items={items}
@@ -171,7 +171,7 @@ export const InternalUserForm: FC<Props> = ({
             ))}
           </Select.Content>
         </Select.Positioner>
-      </Select.Select>
+      </Select.Root>
       <div id="role-error" aria-live="polite" aria-atomic="true">
         {state.errors?.roleId && (
           <ErrorMessages messages={state.errors.roleId} />

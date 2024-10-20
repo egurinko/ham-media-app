@@ -1,12 +1,16 @@
 import { dialogAnatomy } from '@ark-ui/anatomy';
-import { Dialog as ArkDrawer, ark } from '@ark-ui/react';
+import { Dialog, ark } from '@ark-ui/react';
 import { createStyleContext } from '@/app/utils/createStyleContext';
+import type { RecipeVariantProps } from '@/styled/css';
 import { sva } from '@/styled/css';
 import { styled } from '@/styled/jsx';
+import type { HTMLStyledProps } from '@/styled/jsx';
+import type { Assign, PolymorphicProps } from '@ark-ui/react';
 import type { ComponentProps } from 'react';
 
 const anatomy = dialogAnatomy.extendWith('header', 'body', 'footer');
 
+export type DrawerVariants = RecipeVariantProps<typeof drawer>;
 export const drawer = sva({
   slots: [...anatomy.keys()],
   base: {
@@ -117,38 +121,56 @@ export const drawer = sva({
   },
 });
 
-const { withProvider, withContext } = createStyleContext(drawer);
+const { withRootProvider, withContext } = createStyleContext(drawer);
 
-export const Root = withProvider(ArkDrawer.Root);
-export const Backdrop = withContext(styled(ArkDrawer.Backdrop), 'backdrop');
-export const Body = withContext(styled(ark.div), 'body');
-export const CloseTrigger = withContext(
-  styled(ArkDrawer.CloseTrigger),
-  'closeTrigger',
-);
-export const Content = withContext(styled(ArkDrawer.Content), 'content');
-export const Description = withContext(
-  styled(ArkDrawer.Description),
-  'description',
-);
-export const Footer = withContext(styled(ark.div), 'footer');
-export const Header = withContext(styled(ark.div), 'header');
-export const Positioner = withContext(
-  styled(ArkDrawer.Positioner),
-  'positioner',
-);
-export const Title = withContext(styled(ArkDrawer.Title), 'title');
-export const Trigger = withContext(styled(ArkDrawer.Trigger), 'trigger');
+export type RootProviderProps = ComponentProps<typeof RootProvider>;
+export const RootProvider = withRootProvider<
+  Assign<Dialog.RootProviderProps, DrawerVariants>
+>(Dialog.RootProvider);
 
-export interface RootProps extends ComponentProps<typeof Root> {}
-export interface BackdropProps extends ComponentProps<typeof Backdrop> {}
-export interface BodyProps extends ComponentProps<typeof Body> {}
-export interface CloseTriggerProps
-  extends ComponentProps<typeof CloseTrigger> {}
-export interface ContentProps extends ComponentProps<typeof Content> {}
-export interface DescriptionProps extends ComponentProps<typeof Description> {}
-export interface FooterProps extends ComponentProps<typeof Footer> {}
-export interface HeaderProps extends ComponentProps<typeof Header> {}
-export interface PositionerProps extends ComponentProps<typeof Positioner> {}
-export interface TitleProps extends ComponentProps<typeof Title> {}
-export interface TriggerProps extends ComponentProps<typeof Trigger> {}
+export type RootProps = ComponentProps<typeof Root>;
+export const Root = withRootProvider<Assign<Dialog.RootProps, DrawerVariants>>(
+  Dialog.Root,
+);
+export const Backdrop = withContext<
+  HTMLDivElement,
+  Assign<HTMLStyledProps<'div'>, Dialog.BackdropBaseProps>
+>(styled(Dialog.Backdrop), 'backdrop');
+export const CloseTrigger = withContext<
+  HTMLButtonElement,
+  Assign<HTMLStyledProps<'button'>, Dialog.CloseTriggerBaseProps>
+>(styled(Dialog.CloseTrigger), 'closeTrigger');
+export const Content = withContext<
+  HTMLDivElement,
+  Assign<HTMLStyledProps<'div'>, Dialog.ContentBaseProps>
+>(styled(Dialog.Content), 'content');
+export const Description = withContext<
+  HTMLDivElement,
+  Assign<HTMLStyledProps<'div'>, Dialog.DescriptionBaseProps>
+>(styled(Dialog.Description), 'description');
+export const Positioner = withContext<
+  HTMLDivElement,
+  Assign<HTMLStyledProps<'div'>, Dialog.PositionerBaseProps>
+>(styled(Dialog.Positioner), 'positioner');
+export const Title = withContext<
+  HTMLHeadingElement,
+  Assign<HTMLStyledProps<'h2'>, Dialog.TitleBaseProps>
+>(styled(Dialog.Title), 'title');
+export const Trigger = withContext<
+  HTMLButtonElement,
+  Assign<HTMLStyledProps<'button'>, Dialog.TriggerBaseProps>
+>(styled(Dialog.Trigger), 'trigger');
+export const Header = withContext<
+  HTMLDivElement,
+  Assign<HTMLStyledProps<'div'>, PolymorphicProps>
+>(styled(ark.div), 'header');
+export const Body = withContext<
+  HTMLDivElement,
+  Assign<HTMLStyledProps<'div'>, PolymorphicProps>
+>(styled(ark.div), 'body');
+export const Footer = withContext<
+  HTMLDivElement,
+  Assign<HTMLStyledProps<'div'>, PolymorphicProps>
+>(styled(ark.div), 'footer');
+
+export { DialogContext as Context } from '@ark-ui/react';

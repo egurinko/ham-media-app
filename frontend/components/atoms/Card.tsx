@@ -1,10 +1,10 @@
 import { Box } from '@chakra-ui/react';
 import { memo } from 'react';
-import type { CSSObject } from '@chakra-ui/react';
+import type { SystemStyleObject } from '@chakra-ui/react';
 import type { FC, PropsWithChildren } from 'react';
 
 type Props = {
-  _hover?: CSSObject;
+  _hover?: SystemStyleObject;
 };
 
 const Card: FC<PropsWithChildren<Props>> = ({ children, _hover }) => (

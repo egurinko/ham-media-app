@@ -2,17 +2,9 @@
 
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { useState, type FC } from 'react';
+import { Dialog } from '@/app/components/atoms';
 import { Button } from '@/app/components/atoms/Button';
 import { Checkbox } from '@/app/components/atoms/Checkbox';
-import {
-  Dialog,
-  DialogTrigger,
-  DialogPositioner,
-  DialogBackdrop,
-  DialogContent,
-  DialogTitle,
-  DialogCloseTrigger,
-} from '@/app/components/atoms/Dialog';
 import { FloatingActionButton } from '@/app/components/atoms/FloatingActionButton';
 import { Icon } from '@/app/components/atoms/Icon';
 import { Typography } from '@/app/components/atoms/Typography';
@@ -62,8 +54,8 @@ export const HospitalFilter: FC<NoProps> = () => {
   };
 
   return (
-    <Dialog>
-      <DialogTrigger asChild>
+    <Dialog.Root>
+      <Dialog.Trigger asChild>
         <FloatingActionButton
           visual="tonal"
           size="lg"
@@ -71,11 +63,11 @@ export const HospitalFilter: FC<NoProps> = () => {
         >
           <Icon source={<FilterIcon />} width={18} height={18} />
         </FloatingActionButton>
-      </DialogTrigger>
-      <DialogBackdrop />
-      <DialogPositioner>
-        <DialogContent width="100%" height="100vh" p="lg">
-          <DialogTitle>絞り込み検索</DialogTitle>
+      </Dialog.Trigger>
+      <Dialog.Backdrop />
+      <Dialog.Positioner>
+        <Dialog.Content width="100%" height="100vh" p="lg">
+          <Dialog.Title>絞り込み検索</Dialog.Title>
           <div
             className={css({
               mt: 'md',
@@ -167,17 +159,17 @@ export const HospitalFilter: FC<NoProps> = () => {
             </div>
           </div>
           <div className={css({ mt: 'lg', textAlign: 'right' })}>
-            <DialogCloseTrigger asChild>
+            <Dialog.CloseTrigger asChild>
               <Button visual="text">キャンセル</Button>
-            </DialogCloseTrigger>
-            <DialogCloseTrigger asChild>
+            </Dialog.CloseTrigger>
+            <Dialog.CloseTrigger asChild>
               <Button visual="primary" onClick={handleSearch}>
                 絞り込む
               </Button>
-            </DialogCloseTrigger>
+            </Dialog.CloseTrigger>
           </div>
-        </DialogContent>
-      </DialogPositioner>
-    </Dialog>
+        </Dialog.Content>
+      </Dialog.Positioner>
+    </Dialog.Root>
   );
 };

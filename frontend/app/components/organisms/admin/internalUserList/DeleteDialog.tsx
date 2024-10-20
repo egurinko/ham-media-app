@@ -1,16 +1,8 @@
 'use client';
 
 import { useTransition } from 'react';
+import { Dialog } from '@/app/components/atoms';
 import { Button } from '@/app/components/atoms/Button';
-import {
-  Dialog,
-  DialogTrigger,
-  DialogPositioner,
-  DialogBackdrop,
-  DialogContent,
-  DialogTitle,
-  DialogCloseTrigger,
-} from '@/app/components/atoms/Dialog';
 import { Icon } from '@/app/components/atoms/Icon';
 import { IconButton } from '@/app/components/atoms/IconButton';
 import TrashIcon from '@/assets/trash.svg';
@@ -24,16 +16,16 @@ type Props = {
 export const DeleteDialog: FC<Props> = ({ handleDelete }) => {
   const [isPending, startTransition] = useTransition();
   return (
-    <Dialog>
-      <DialogTrigger asChild>
+    <Dialog.Root>
+      <Dialog.Trigger asChild>
         <IconButton visual="tonal" size="md" loading={isPending}>
           <Icon source={<TrashIcon />} width="20px" height="20px" />
         </IconButton>
-      </DialogTrigger>
-      <DialogBackdrop />
-      <DialogPositioner>
-        <DialogContent p="lg">
-          <DialogTitle>ユーザの削除</DialogTitle>
+      </Dialog.Trigger>
+      <Dialog.Backdrop />
+      <Dialog.Positioner>
+        <Dialog.Content p="lg">
+          <Dialog.Title>ユーザの削除</Dialog.Title>
           <div
             className={css({
               mt: 'md',
@@ -45,10 +37,10 @@ export const DeleteDialog: FC<Props> = ({ handleDelete }) => {
             ユーザを削除してもよろしいですか？
           </div>
           <div className={css({ mt: 'lg', textAlign: 'right' })}>
-            <DialogCloseTrigger asChild>
+            <Dialog.CloseTrigger asChild>
               <Button visual="text">キャンセル</Button>
-            </DialogCloseTrigger>
-            <DialogCloseTrigger asChild>
+            </Dialog.CloseTrigger>
+            <Dialog.CloseTrigger asChild>
               <Button
                 visual="primary"
                 onClick={() =>
@@ -57,10 +49,10 @@ export const DeleteDialog: FC<Props> = ({ handleDelete }) => {
               >
                 削除する
               </Button>
-            </DialogCloseTrigger>
+            </Dialog.CloseTrigger>
           </div>
-        </DialogContent>
-      </DialogPositioner>
-    </Dialog>
+        </Dialog.Content>
+      </Dialog.Positioner>
+    </Dialog.Root>
   );
 };

@@ -1,10 +1,14 @@
 import { selectAnatomy } from '@ark-ui/anatomy';
-import { Select as ArkSelect } from '@ark-ui/react';
+import { Select } from '@ark-ui/react';
 import { createStyleContext } from '@/app/utils/createStyleContext';
+import type { RecipeVariantProps } from '@/styled/css';
 import { sva } from '@/styled/css';
 import { styled } from '@/styled/jsx';
+import type { HTMLStyledProps } from '@/styled/jsx';
+import type { Assign } from '@ark-ui/react';
 import type { ComponentProps } from 'react';
 
+export type SelectVariants = RecipeVariantProps<typeof select>;
 export const select = sva({
   slots: selectAnatomy.keys(),
   base: {
@@ -111,61 +115,86 @@ export const select = sva({
 });
 
 const { withProvider, withContext } = createStyleContext(select);
-const Select = withProvider(styled(ArkSelect.Root), 'root');
-const ClearTrigger = withContext(
-  styled(ArkSelect.ClearTrigger),
-  'clearTrigger',
-);
-const Content = withContext(styled(ArkSelect.Content), 'content');
-const Control = withContext(styled(ArkSelect.Control), 'control');
-const Indicator = withContext(styled(ArkSelect.Indicator), 'indicator');
-const Item = withContext(styled(ArkSelect.Item), 'item');
-const ItemGroup = withContext(styled(ArkSelect.ItemGroup), 'itemGroup');
-const ItemGroupLabel = withContext(
-  styled(ArkSelect.ItemGroupLabel),
-  'itemGroupLabel',
-);
-const ItemIndicator = withContext(
-  styled(ArkSelect.ItemIndicator),
-  'itemIndicator',
-);
-const ItemText = withContext(styled(ArkSelect.ItemText), 'itemText');
-const Label = withContext(styled(ArkSelect.Label), 'label');
-const Positioner = withContext(styled(ArkSelect.Positioner), 'positioner');
-const Trigger = withContext(styled(ArkSelect.Trigger), 'trigger');
-const ValueText = withContext(styled(ArkSelect.ValueText), 'valueText');
 
-export {
-  Select,
-  ClearTrigger,
-  Content,
-  Control,
-  Indicator,
-  Item,
-  ItemGroup,
-  ItemGroupLabel,
-  ItemIndicator,
-  ItemText,
-  Label,
-  Positioner,
-  Trigger,
-  ValueText,
-};
+export type RootProviderProps = ComponentProps<typeof RootProvider>;
+export const RootProvider = withProvider<
+  HTMLDivElement,
+  Assign<
+    Assign<
+      HTMLStyledProps<'div'>,
+      Select.RootProviderBaseProps<Select.CollectionItem>
+    >,
+    SelectVariants
+  >
+>(Select.RootProvider, 'root');
 
-export interface SelectProps extends ComponentProps<typeof Select> {}
-export interface ClearTriggerProps
-  extends ComponentProps<typeof ClearTrigger> {}
-export interface ContentProps extends ComponentProps<typeof Content> {}
-export interface ControlProps extends ComponentProps<typeof Control> {}
-export interface IndicatorProps extends ComponentProps<typeof Indicator> {}
-export interface ItemProps extends ComponentProps<typeof Item> {}
-export interface ItemGroupProps extends ComponentProps<typeof ItemGroup> {}
-export interface ItemGroupLabelProps
-  extends ComponentProps<typeof ItemGroupLabel> {}
-export interface ItemIndicatorProps
-  extends ComponentProps<typeof ItemIndicator> {}
-export interface ItemTextProps extends ComponentProps<typeof ItemText> {}
-export interface LabelProps extends ComponentProps<typeof Label> {}
-export interface PositionerProps extends ComponentProps<typeof Positioner> {}
-export interface TriggerProps extends ComponentProps<typeof Trigger> {}
-export interface ValueTextProps extends ComponentProps<typeof ValueText> {}
+export type RootProps = ComponentProps<typeof Root>;
+export const Root = withProvider<
+  HTMLDivElement,
+  Assign<
+    Assign<HTMLStyledProps<'div'>, Select.RootBaseProps<Select.CollectionItem>>,
+    SelectVariants
+  >
+>(styled(Select.Root), 'root');
+
+export const ClearTrigger = withContext<
+  HTMLButtonElement,
+  Assign<HTMLStyledProps<'button'>, Select.ClearTriggerBaseProps>
+>(styled(Select.ClearTrigger), 'clearTrigger');
+export const Content = withContext<
+  HTMLDivElement,
+  Assign<HTMLStyledProps<'div'>, Select.ContentBaseProps>
+>(styled(Select.Content), 'content');
+export const Control = withContext<
+  HTMLDivElement,
+  Assign<HTMLStyledProps<'div'>, Select.ControlBaseProps>
+>(styled(Select.Control), 'control');
+export const Indicator = withContext<
+  HTMLDivElement,
+  Assign<HTMLStyledProps<'div'>, Select.IndicatorBaseProps>
+>(styled(Select.Indicator), 'indicator');
+export const ItemGroupLabel = withContext<
+  HTMLDivElement,
+  Assign<HTMLStyledProps<'div'>, Select.ItemGroupLabelBaseProps>
+>(styled(Select.ItemGroupLabel), 'itemGroupLabel');
+export const ItemGroup = withContext<
+  HTMLDivElement,
+  Assign<HTMLStyledProps<'div'>, Select.ItemGroupBaseProps>
+>(styled(Select.ItemGroup), 'itemGroup');
+export const ItemIndicator = withContext<
+  HTMLDivElement,
+  Assign<HTMLStyledProps<'div'>, Select.ItemIndicatorBaseProps>
+>(styled(Select.ItemIndicator), 'itemIndicator');
+export const Item = withContext<
+  HTMLDivElement,
+  Assign<HTMLStyledProps<'div'>, Select.ItemBaseProps>
+>(styled(Select.Item), 'item');
+export const ItemText = withContext<
+  HTMLDivElement,
+  Assign<HTMLStyledProps<'span'>, Select.ItemTextBaseProps>
+>(styled(Select.ItemText), 'itemText');
+export const Label = withContext<
+  HTMLLabelElement,
+  Assign<HTMLStyledProps<'label'>, Select.LabelBaseProps>
+>(styled(Select.Label), 'label');
+
+export const List = withContext<
+  HTMLDivElement,
+  Assign<HTMLStyledProps<'div'>, Select.ListBaseProps>
+>(styled(Select.List), 'list');
+
+export const Positioner = withContext<
+  HTMLDivElement,
+  Assign<HTMLStyledProps<'div'>, Select.PositionerBaseProps>
+>(styled(Select.Positioner), 'positioner');
+
+export const Trigger = withContext<
+  HTMLButtonElement,
+  Assign<HTMLStyledProps<'button'>, Select.TriggerBaseProps>
+>(styled(Select.Trigger), 'trigger');
+export const ValueText = withContext<
+  HTMLSpanElement,
+  Assign<HTMLStyledProps<'span'>, Select.ValueTextBaseProps>
+>(styled(Select.ValueText), 'valueText');
+
+export { SelectContext as Context } from '@ark-ui/react';
