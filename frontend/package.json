@@ -8,7 +8,7 @@
   },
   "packageManager": "pnpm@9.10.0",
   "scripts": {
-    "dev": "next dev -p 8080 --turbo",
+    "dev": "next dev -p 8080",
     "build": "next build",
     "start": "next start",
     "prepare": "panda codegen",
@@ -36,10 +36,10 @@
     "framer-motion": "^11.11.9",
     "js-cookie": "^3.0.5",
     "json-bigint-patch": "^0.0.8",
-    "next": "15.0.0-rc.0",
+    "next": "^14.2.15",
     "next-themes": "^0.3.0",
-    "react": "19.0.0-rc-fb9a90fa48-20240614",
-    "react-dom": "19.0.0-rc-fb9a90fa48-20240614",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-drag-drop-files": "^2.3.10",
     "react-hook-form": "^7.53.1",
     "react-medium-image-zoom": "^5.2.8",
@@ -56,15 +56,11 @@
     "@svgr/webpack": "^8.1.0",
     "@types/apollo-upload-client": "^18.0.0",
     "@types/js-cookie": "^3.0.6",
-    "@types/react": "npm:types-react@rc",
-    "@types/react-dom": "npm:types-react-dom@rc",
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.1",
     "dotenv": "^16.4.5",
     "eslint-config-next": "^14.2.11",
     "eslint-plugin-jsx-a11y": "^6.10.0",
     "eslint-plugin-react": "^7.36.1"
-  },
-  "overrides": {
-    "@types/react": "npm:types-react@rc",
-    "@types/react-dom": "npm:types-react-dom@rc"
   }
 }
