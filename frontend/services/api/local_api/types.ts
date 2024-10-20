@@ -165,12 +165,17 @@ export function useLocalGetHospitalSearchLazyQuery(
   >(LocalGetHospitalSearchDocument, options);
 }
 export function useLocalGetHospitalSearchSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    LocalGetHospitalSearchQuery,
-    LocalGetHospitalSearchQueryVariables
-  >,
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        LocalGetHospitalSearchQuery,
+        LocalGetHospitalSearchQueryVariables
+      >,
 ) {
-  const options = { ...defaultOptions, ...baseOptions };
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
   return Apollo.useSuspenseQuery<
     LocalGetHospitalSearchQuery,
     LocalGetHospitalSearchQueryVariables
@@ -237,12 +242,17 @@ export function useLocalReadIsAdminLazyQuery(
   >(LocalReadIsAdminDocument, options);
 }
 export function useLocalReadIsAdminSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    LocalReadIsAdminQuery,
-    LocalReadIsAdminQueryVariables
-  >,
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        LocalReadIsAdminQuery,
+        LocalReadIsAdminQueryVariables
+      >,
 ) {
-  const options = { ...defaultOptions, ...baseOptions };
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
   return Apollo.useSuspenseQuery<
     LocalReadIsAdminQuery,
     LocalReadIsAdminQueryVariables

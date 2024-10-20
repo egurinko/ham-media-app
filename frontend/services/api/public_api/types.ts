@@ -682,12 +682,17 @@ export function usePublicGetHospitalLazyQuery(
   >(PublicGetHospitalDocument, options);
 }
 export function usePublicGetHospitalSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    PublicGetHospitalQuery,
-    PublicGetHospitalQueryVariables
-  >,
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        PublicGetHospitalQuery,
+        PublicGetHospitalQueryVariables
+      >,
 ) {
-  const options = { ...defaultOptions, ...baseOptions };
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
   return Apollo.useSuspenseQuery<
     PublicGetHospitalQuery,
     PublicGetHospitalQueryVariables
@@ -801,12 +806,17 @@ export function usePublicGetHospitalConnectionLazyQuery(
   >(PublicGetHospitalConnectionDocument, options);
 }
 export function usePublicGetHospitalConnectionSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    PublicGetHospitalConnectionQuery,
-    PublicGetHospitalConnectionQueryVariables
-  >,
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        PublicGetHospitalConnectionQuery,
+        PublicGetHospitalConnectionQueryVariables
+      >,
 ) {
-  const options = { ...defaultOptions, ...baseOptions };
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
   return Apollo.useSuspenseQuery<
     PublicGetHospitalConnectionQuery,
     PublicGetHospitalConnectionQueryVariables
@@ -873,12 +883,17 @@ export function usePublicGetHospitalIdsLazyQuery(
   >(PublicGetHospitalIdsDocument, options);
 }
 export function usePublicGetHospitalIdsSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    PublicGetHospitalIdsQuery,
-    PublicGetHospitalIdsQueryVariables
-  >,
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        PublicGetHospitalIdsQuery,
+        PublicGetHospitalIdsQueryVariables
+      >,
 ) {
-  const options = { ...defaultOptions, ...baseOptions };
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
   return Apollo.useSuspenseQuery<
     PublicGetHospitalIdsQuery,
     PublicGetHospitalIdsQueryVariables
@@ -956,12 +971,17 @@ export function usePublicGetHospitalLocationsLazyQuery(
   >(PublicGetHospitalLocationsDocument, options);
 }
 export function usePublicGetHospitalLocationsSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    PublicGetHospitalLocationsQuery,
-    PublicGetHospitalLocationsQueryVariables
-  >,
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        PublicGetHospitalLocationsQuery,
+        PublicGetHospitalLocationsQueryVariables
+      >,
 ) {
-  const options = { ...defaultOptions, ...baseOptions };
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
   return Apollo.useSuspenseQuery<
     PublicGetHospitalLocationsQuery,
     PublicGetHospitalLocationsQueryVariables
@@ -1038,12 +1058,17 @@ export function usePublicGetPlaceAutocompleteLazyQuery(
   >(PublicGetPlaceAutocompleteDocument, options);
 }
 export function usePublicGetPlaceAutocompleteSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    PublicGetPlaceAutocompleteQuery,
-    PublicGetPlaceAutocompleteQueryVariables
-  >,
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        PublicGetPlaceAutocompleteQuery,
+        PublicGetPlaceAutocompleteQueryVariables
+      >,
 ) {
-  const options = { ...defaultOptions, ...baseOptions };
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
   return Apollo.useSuspenseQuery<
     PublicGetPlaceAutocompleteQuery,
     PublicGetPlaceAutocompleteQueryVariables
@@ -1111,12 +1136,17 @@ export function usePublicGetPrefecturesLazyQuery(
   >(PublicGetPrefecturesDocument, options);
 }
 export function usePublicGetPrefecturesSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    PublicGetPrefecturesQuery,
-    PublicGetPrefecturesQueryVariables
-  >,
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        PublicGetPrefecturesQuery,
+        PublicGetPrefecturesQueryVariables
+      >,
 ) {
-  const options = { ...defaultOptions, ...baseOptions };
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
   return Apollo.useSuspenseQuery<
     PublicGetPrefecturesQuery,
     PublicGetPrefecturesQueryVariables

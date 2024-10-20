@@ -3623,12 +3623,17 @@ export function useInternalGetHospitalLazyQuery(
   >(InternalGetHospitalDocument, options);
 }
 export function useInternalGetHospitalSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    InternalGetHospitalQuery,
-    InternalGetHospitalQueryVariables
-  >,
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        InternalGetHospitalQuery,
+        InternalGetHospitalQueryVariables
+      >,
 ) {
-  const options = { ...defaultOptions, ...baseOptions };
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
   return Apollo.useSuspenseQuery<
     InternalGetHospitalQuery,
     InternalGetHospitalQueryVariables
@@ -3733,12 +3738,17 @@ export function useInternalGetHospitalConnectionLazyQuery(
   >(InternalGetHospitalConnectionDocument, options);
 }
 export function useInternalGetHospitalConnectionSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    InternalGetHospitalConnectionQuery,
-    InternalGetHospitalConnectionQueryVariables
-  >,
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        InternalGetHospitalConnectionQuery,
+        InternalGetHospitalConnectionQueryVariables
+      >,
 ) {
-  const options = { ...defaultOptions, ...baseOptions };
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
   return Apollo.useSuspenseQuery<
     InternalGetHospitalConnectionQuery,
     InternalGetHospitalConnectionQueryVariables
@@ -3805,12 +3815,17 @@ export function useInternalGetHospitalIdsLazyQuery(
   >(InternalGetHospitalIdsDocument, options);
 }
 export function useInternalGetHospitalIdsSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    InternalGetHospitalIdsQuery,
-    InternalGetHospitalIdsQueryVariables
-  >,
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        InternalGetHospitalIdsQuery,
+        InternalGetHospitalIdsQueryVariables
+      >,
 ) {
-  const options = { ...defaultOptions, ...baseOptions };
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
   return Apollo.useSuspenseQuery<
     InternalGetHospitalIdsQuery,
     InternalGetHospitalIdsQueryVariables
@@ -3883,12 +3898,17 @@ export function useInternalGetInternalUserLazyQuery(
   >(InternalGetInternalUserDocument, options);
 }
 export function useInternalGetInternalUserSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    InternalGetInternalUserQuery,
-    InternalGetInternalUserQueryVariables
-  >,
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        InternalGetInternalUserQuery,
+        InternalGetInternalUserQueryVariables
+      >,
 ) {
-  const options = { ...defaultOptions, ...baseOptions };
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
   return Apollo.useSuspenseQuery<
     InternalGetInternalUserQuery,
     InternalGetInternalUserQueryVariables
@@ -3956,12 +3976,17 @@ export function useInternalGetInternalUsersLazyQuery(
   >(InternalGetInternalUsersDocument, options);
 }
 export function useInternalGetInternalUsersSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    InternalGetInternalUsersQuery,
-    InternalGetInternalUsersQueryVariables
-  >,
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        InternalGetInternalUsersQuery,
+        InternalGetInternalUsersQueryVariables
+      >,
 ) {
-  const options = { ...defaultOptions, ...baseOptions };
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
   return Apollo.useSuspenseQuery<
     InternalGetInternalUsersQuery,
     InternalGetInternalUsersQueryVariables
@@ -4034,12 +4059,17 @@ export function useInternalGetMakerLazyQuery(
   >(InternalGetMakerDocument, options);
 }
 export function useInternalGetMakerSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    InternalGetMakerQuery,
-    InternalGetMakerQueryVariables
-  >,
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        InternalGetMakerQuery,
+        InternalGetMakerQueryVariables
+      >,
 ) {
-  const options = { ...defaultOptions, ...baseOptions };
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
   return Apollo.useSuspenseQuery<
     InternalGetMakerQuery,
     InternalGetMakerQueryVariables
@@ -4107,12 +4137,17 @@ export function useInternalGetMakersLazyQuery(
   >(InternalGetMakersDocument, options);
 }
 export function useInternalGetMakersSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    InternalGetMakersQuery,
-    InternalGetMakersQueryVariables
-  >,
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        InternalGetMakersQuery,
+        InternalGetMakersQueryVariables
+      >,
 ) {
-  const options = { ...defaultOptions, ...baseOptions };
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
   return Apollo.useSuspenseQuery<
     InternalGetMakersQuery,
     InternalGetMakersQueryVariables
@@ -4185,12 +4220,17 @@ export function useInternalGetProductLazyQuery(
   >(InternalGetProductDocument, options);
 }
 export function useInternalGetProductSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    InternalGetProductQuery,
-    InternalGetProductQueryVariables
-  >,
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        InternalGetProductQuery,
+        InternalGetProductQueryVariables
+      >,
 ) {
-  const options = { ...defaultOptions, ...baseOptions };
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
   return Apollo.useSuspenseQuery<
     InternalGetProductQuery,
     InternalGetProductQueryVariables
@@ -4294,12 +4334,17 @@ export function useInternalGetProductConnectionLazyQuery(
   >(InternalGetProductConnectionDocument, options);
 }
 export function useInternalGetProductConnectionSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    InternalGetProductConnectionQuery,
-    InternalGetProductConnectionQueryVariables
-  >,
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        InternalGetProductConnectionQuery,
+        InternalGetProductConnectionQueryVariables
+      >,
 ) {
-  const options = { ...defaultOptions, ...baseOptions };
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
   return Apollo.useSuspenseQuery<
     InternalGetProductConnectionQuery,
     InternalGetProductConnectionQueryVariables
@@ -4366,12 +4411,17 @@ export function useInternalGetProductIdsLazyQuery(
   >(InternalGetProductIdsDocument, options);
 }
 export function useInternalGetProductIdsSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    InternalGetProductIdsQuery,
-    InternalGetProductIdsQueryVariables
-  >,
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        InternalGetProductIdsQuery,
+        InternalGetProductIdsQueryVariables
+      >,
 ) {
-  const options = { ...defaultOptions, ...baseOptions };
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
   return Apollo.useSuspenseQuery<
     InternalGetProductIdsQuery,
     InternalGetProductIdsQueryVariables
@@ -4444,12 +4494,17 @@ export function useInternalGetProductTagGroupLazyQuery(
   >(InternalGetProductTagGroupDocument, options);
 }
 export function useInternalGetProductTagGroupSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    InternalGetProductTagGroupQuery,
-    InternalGetProductTagGroupQueryVariables
-  >,
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        InternalGetProductTagGroupQuery,
+        InternalGetProductTagGroupQueryVariables
+      >,
 ) {
-  const options = { ...defaultOptions, ...baseOptions };
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
   return Apollo.useSuspenseQuery<
     InternalGetProductTagGroupQuery,
     InternalGetProductTagGroupQueryVariables
@@ -4516,12 +4571,17 @@ export function useInternalGetProductTagGroupIdsLazyQuery(
   >(InternalGetProductTagGroupIdsDocument, options);
 }
 export function useInternalGetProductTagGroupIdsSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    InternalGetProductTagGroupIdsQuery,
-    InternalGetProductTagGroupIdsQueryVariables
-  >,
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        InternalGetProductTagGroupIdsQuery,
+        InternalGetProductTagGroupIdsQueryVariables
+      >,
 ) {
-  const options = { ...defaultOptions, ...baseOptions };
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
   return Apollo.useSuspenseQuery<
     InternalGetProductTagGroupIdsQuery,
     InternalGetProductTagGroupIdsQueryVariables
@@ -4589,12 +4649,17 @@ export function useInternalGetProductTagGroupsLazyQuery(
   >(InternalGetProductTagGroupsDocument, options);
 }
 export function useInternalGetProductTagGroupsSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    InternalGetProductTagGroupsQuery,
-    InternalGetProductTagGroupsQueryVariables
-  >,
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        InternalGetProductTagGroupsQuery,
+        InternalGetProductTagGroupsQueryVariables
+      >,
 ) {
-  const options = { ...defaultOptions, ...baseOptions };
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
   return Apollo.useSuspenseQuery<
     InternalGetProductTagGroupsQuery,
     InternalGetProductTagGroupsQueryVariables
@@ -4663,12 +4728,17 @@ export function useInternalGetProductsLazyQuery(
   >(InternalGetProductsDocument, options);
 }
 export function useInternalGetProductsSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    InternalGetProductsQuery,
-    InternalGetProductsQueryVariables
-  >,
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        InternalGetProductsQuery,
+        InternalGetProductsQueryVariables
+      >,
 ) {
-  const options = { ...defaultOptions, ...baseOptions };
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
   return Apollo.useSuspenseQuery<
     InternalGetProductsQuery,
     InternalGetProductsQueryVariables
@@ -4736,12 +4806,17 @@ export function useInternalGetRolesLazyQuery(
   >(InternalGetRolesDocument, options);
 }
 export function useInternalGetRolesSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    InternalGetRolesQuery,
-    InternalGetRolesQueryVariables
-  >,
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        InternalGetRolesQuery,
+        InternalGetRolesQueryVariables
+      >,
 ) {
-  const options = { ...defaultOptions, ...baseOptions };
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
   return Apollo.useSuspenseQuery<
     InternalGetRolesQuery,
     InternalGetRolesQueryVariables
@@ -4812,12 +4887,17 @@ export function useInternalGetSessionLazyQuery(
   >(InternalGetSessionDocument, options);
 }
 export function useInternalGetSessionSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    InternalGetSessionQuery,
-    InternalGetSessionQueryVariables
-  >,
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        InternalGetSessionQuery,
+        InternalGetSessionQueryVariables
+      >,
 ) {
-  const options = { ...defaultOptions, ...baseOptions };
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
   return Apollo.useSuspenseQuery<
     InternalGetSessionQuery,
     InternalGetSessionQueryVariables
@@ -4890,12 +4970,17 @@ export function useInternalGetStockRequestLazyQuery(
   >(InternalGetStockRequestDocument, options);
 }
 export function useInternalGetStockRequestSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    InternalGetStockRequestQuery,
-    InternalGetStockRequestQueryVariables
-  >,
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        InternalGetStockRequestQuery,
+        InternalGetStockRequestQueryVariables
+      >,
 ) {
-  const options = { ...defaultOptions, ...baseOptions };
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
   return Apollo.useSuspenseQuery<
     InternalGetStockRequestQuery,
     InternalGetStockRequestQueryVariables
@@ -4984,12 +5069,17 @@ export function useInternalGetStockRequestConnectionLazyQuery(
   >(InternalGetStockRequestConnectionDocument, options);
 }
 export function useInternalGetStockRequestConnectionSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    InternalGetStockRequestConnectionQuery,
-    InternalGetStockRequestConnectionQueryVariables
-  >,
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        InternalGetStockRequestConnectionQuery,
+        InternalGetStockRequestConnectionQueryVariables
+      >,
 ) {
-  const options = { ...defaultOptions, ...baseOptions };
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
   return Apollo.useSuspenseQuery<
     InternalGetStockRequestConnectionQuery,
     InternalGetStockRequestConnectionQueryVariables
@@ -5061,12 +5151,17 @@ export function useInternalGetStocksLazyQuery(
   >(InternalGetStocksDocument, options);
 }
 export function useInternalGetStocksSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    InternalGetStocksQuery,
-    InternalGetStocksQueryVariables
-  >,
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        InternalGetStocksQuery,
+        InternalGetStocksQueryVariables
+      >,
 ) {
-  const options = { ...defaultOptions, ...baseOptions };
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
   return Apollo.useSuspenseQuery<
     InternalGetStocksQuery,
     InternalGetStocksQueryVariables
