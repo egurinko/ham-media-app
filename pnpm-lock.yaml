@@ -248,8 +248,8 @@ importers:
         specifier: ^7.53.1
         version: 7.53.1(react@18.3.1)
       react-medium-image-zoom:
-        specifier: ^5.2.8
-        version: 5.2.9(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^5.2.10
+        version: 5.2.10(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       server-only:
         specifier: ^0.0.1
         version: 0.0.1
@@ -7003,8 +7003,8 @@ packages:
   react-is@18.3.1:
     resolution: {integrity: sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==}
 
-  react-medium-image-zoom@5.2.9:
-    resolution: {integrity: sha512-NtjuwWdvjyjIo+IBv2Ka/oQwYMDlPM0M1nHYM3Ga1QBnr/YwpjyrEWKQB2FlGCmgiBmgIMsb6Dij2RTWxKkY+w==}
+  react-medium-image-zoom@5.2.10:
+    resolution: {integrity: sha512-JBYf4u0zsocezIDtrjwStD+8sX+c8XuLsdz+HxPbojRj0sCicua0XOQKysuPetoFyX+YgStfj+vEtZ+699O/pg==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
@@ -17612,7 +17612,7 @@ snapshots:
 
   react-is@18.3.1: {}
 
-  react-medium-image-zoom@5.2.9(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  react-medium-image-zoom@5.2.10(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
