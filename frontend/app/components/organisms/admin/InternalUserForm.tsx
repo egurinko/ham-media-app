@@ -1,6 +1,8 @@
 'use client';
 
-import { useState, useActionState } from 'react';
+import { createListCollection } from '@ark-ui/react';
+import { useState } from 'react';
+import { useFormState } from 'react-dom';
 import { Select } from '@/app/components/atoms';
 import { Icon } from '@/app/components/atoms/Icon';
 import { Input } from '@/app/components/atoms/Input';
@@ -45,7 +47,7 @@ export const InternalUserForm: FC<Props> = ({
     value: String(role.id),
     label: role.name,
   }));
-  const [state, dispatch] = useActionState(handleSubmit, initialState);
+  const [state, dispatch] = useFormState(handleSubmit, initialState);
   const [name, setName] = useState(initialInternalUser.name);
   const [email, setEmail] = useState(initialInternalUser.email);
   const [password, setPassword] = useState(initialInternalUser.password);
@@ -145,7 +147,9 @@ export const InternalUserForm: FC<Props> = ({
       <Select.Root
         positioning={{ sameWidth: true }}
         width="100%"
-        items={items}
+        collection={createListCollection({
+          items,
+        })}
         onValueChange={(e) => setRoleIds(e.value)}
         value={roleIds}
         aria-describedby="role-error"
