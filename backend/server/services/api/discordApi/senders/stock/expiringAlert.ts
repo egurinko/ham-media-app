@@ -1,6 +1,7 @@
 import { postStockAlert } from '@/services/api/discordApi/notifiers/stock';
 import type { PostStockAlertVariables } from './types';
 import { sliceByNumber } from '@/services/functions';
+import { PostStockAlertResponse } from '@/services/api/discordApi/senders/stock/types';
 
 type Products = {
   [id: number]: {
@@ -64,7 +65,7 @@ const getStockAlertContents = (stocks: PostStockAlertVariables): string[] => {
 
 export const postStockAlertContents = (
   stocks: PostStockAlertVariables,
-): Promise<any> => {
+): Promise<PostStockAlertResponse> => {
   const stockAlertContents = getStockAlertContents(stocks);
   return Promise.all(
     stockAlertContents.map((content) => postStockAlert(content)),
@@ -73,7 +74,7 @@ export const postStockAlertContents = (
 
 export const postStockExpiringInWeekAlert = async (
   stocks: PostStockAlertVariables,
-): Promise<any> => {
+): Promise<PostStockAlertResponse> => {
   await postStockAlert(
     `===== 今週はこの在庫の期限が切れちゃうよ <:doyouebest:844132000788643860> =====`,
   );
@@ -83,7 +84,7 @@ export const postStockExpiringInWeekAlert = async (
 
 export const postStockExpiringInMonthAlert = async (
   stocks: PostStockAlertVariables,
-): Promise<any> => {
+): Promise<PostStockAlertResponse> => {
   await postStockAlert(
     `===== 3ヶ月以内にこの在庫の期限が切れちゃうよ <:__:990474403185836062> =====`,
   );

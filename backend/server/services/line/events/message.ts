@@ -22,7 +22,7 @@ export const handleMessageEvent = async (event: MessageEvent) => {
       const reply = await getTextEventReplyMessage(event.message);
       return client.replyMessage({
         replyToken: event.replyToken,
-        // @ts-ignore
+        // @ts-expect-error LINE SDK types are not up-to-date
         messages: reply,
       });
     }
@@ -30,7 +30,7 @@ export const handleMessageEvent = async (event: MessageEvent) => {
       const reply = await getLocationEventReplyMessage(event.message);
       return client.replyMessage({
         replyToken: event.replyToken,
-        // @ts-ignore
+        // @ts-expect-error LINE SDK types are not up-to-date
         messages: reply,
       });
     }

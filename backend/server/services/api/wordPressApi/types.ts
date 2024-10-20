@@ -33,7 +33,7 @@ type GetOfferingHamsterResponse = {
     caption: string;
     description: string;
     media_type: string;
-    media_details: Object[];
+    media_details: object[];
     post: number;
     source_url: string;
   };
@@ -57,25 +57,25 @@ type GetOfferingHamsterResponse = {
     article_publisher: 'https://www.facebook.com/pg/hamwmedia/';
     article_published_time: '2021-09-19T02:52:26+00:00';
     article_modified_time: '2021-10-16T18:25:02+00:00';
-    og_image: Object[];
+    og_image: object[];
     twitter_card: 'summary_large_image';
     twitter_creator: '@ham_edia';
     twitter_site: '@ham_edia';
     twitter_misc: { 執筆者: string; 推定読み取り時間: string };
-    schema: { '@context': string; '@graph': Object[] };
+    schema: { '@context': string; '@graph': object[] };
   };
   _links: {
-    self: Object[];
-    collection: Object[];
-    about: Object[];
-    author: Object[];
-    replies: Object[];
-    'version-history': Object[];
-    'predecessor-version': Object[];
-    'wp:featuredmedia': Object[];
-    'wp:attachment': Object[];
-    'wp:term': Object[];
-    curies: Object[];
+    self: object[];
+    collection: object[];
+    about: object[];
+    author: object[];
+    replies: object[];
+    'version-history': object[];
+    'predecessor-version': object[];
+    'wp:featuredmedia': object[];
+    'wp:attachment': object[];
+    'wp:term': object[];
+    curies: object[];
   };
 };
 

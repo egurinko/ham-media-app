@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Prisma } from '@prisma/client';
 import * as Sentry from '@sentry/node';
 import { errorMessage } from './message';
@@ -16,11 +17,6 @@ const STATUS_CODES = {
 
 export const judgeError = (e: unknown): Result => {
   if (e instanceof Prisma.PrismaClientKnownRequestError) {
-    // console.log('CODE: ', e.code);
-    // console.log('MESSAGE: ', e.message);
-    // console.log('META: ', e.meta);
-    // console.log('NAME: ', e.name);
-    // console.log('STACK: ', e.stack);
     if (e.code === 'P2002') {
       // unique 制約エラー
       if (hasSingleTarget(e.meta)) {
