@@ -23,7 +23,7 @@
     "@apollo/client": "^3.11.4",
     "@apollo/experimental-nextjs-app-support": "^0.11.2",
     "@ark-ui/anatomy": "^3.5.0",
-    "@ark-ui/react": "^3.6.2",
+    "@ark-ui/react": "^3.13.0",
     "@chakra-ui/icons": "^2.1.1",
     "@chakra-ui/react": "2.8.2",
     "@emotion/react": "^11.13.0",
