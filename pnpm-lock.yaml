@@ -182,8 +182,8 @@ importers:
         specifier: ^3.11.8
         version: 3.11.8(@types/react@18.3.11)(graphql-ws@5.16.0(graphql@16.9.0))(graphql@16.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@apollo/experimental-nextjs-app-support':
-        specifier: ^0.11.3
-        version: 0.11.3(@apollo/client@3.11.8(@types/react@18.3.11)(graphql-ws@5.16.0(graphql@16.9.0))(graphql@16.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(next@14.2.15(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
+        specifier: ^0.11.4
+        version: 0.11.4(@apollo/client@3.11.8(@types/react@18.3.11)(graphql-ws@5.16.0(graphql@16.9.0))(graphql@16.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(next@14.2.15(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
       '@ark-ui/anatomy':
         specifier: ^3.5.0
         version: 3.5.0(@internationalized/date@3.5.6)
@@ -309,8 +309,8 @@ packages:
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
     engines: {node: '>=6.0.0'}
 
-  '@apollo/client-react-streaming@0.11.3':
-    resolution: {integrity: sha512-bAyyD7iZQ8UIvYZv2ZY3i5FTNdCgM0kfWW/0St3sqJLAs4Ji6QB9uzGUTc5434vQo6Ddb17N+Q+Ikr7fj2yTxw==}
+  '@apollo/client-react-streaming@0.11.4':
+    resolution: {integrity: sha512-kv/5MC+RkvE9K9kzdAo3JxxnXtvHkwuXKrzVRN3OZK5Wk382Sl57ll+lqDwFddnBXnsHhmb0qvGGgRfZTFP1oQ==}
     peerDependencies:
       '@apollo/client': ^3.10.4
       react: ^18
@@ -333,8 +333,8 @@ packages:
       subscriptions-transport-ws:
         optional: true
 
-  '@apollo/experimental-nextjs-app-support@0.11.3':
-    resolution: {integrity: sha512-eMfbEtHyQE9EceBn0sTBWcHVvjhd+dkMO5dBhoEglEm0ga2n87KKiTeaNNb/XZnvOX81/6y0iyc0U7cgITpvKw==}
+  '@apollo/experimental-nextjs-app-support@0.11.4':
+    resolution: {integrity: sha512-sBy9CvAn/v+6xLBjdRp5ILh9hkZ9nvgiP9V7vxGkYEOVr4weTVxOuqxLq+b3g0CMRYnfhH1TnqwPI8+g2DxhoA==}
     peerDependencies:
       '@apollo/client': ^3.10.4
       next: ^13.4.1 || ^14.0.0 || 15.0.0-rc.0
@@ -8165,7 +8165,7 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.5
       '@jridgewell/trace-mapping': 0.3.25
 
-  '@apollo/client-react-streaming@0.11.3(@apollo/client@3.11.8(@types/react@18.3.11)(graphql-ws@5.16.0(graphql@16.9.0))(graphql@16.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)':
+  '@apollo/client-react-streaming@0.11.4(@apollo/client@3.11.8(@types/react@18.3.11)(graphql-ws@5.16.0(graphql@16.9.0))(graphql@16.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@apollo/client': 3.11.8(@types/react@18.3.11)(graphql-ws@5.16.0(graphql@16.9.0))(graphql@16.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
@@ -8195,10 +8195,10 @@ snapshots:
     transitivePeerDependencies:
       - '@types/react'
 
-  '@apollo/experimental-nextjs-app-support@0.11.3(@apollo/client@3.11.8(@types/react@18.3.11)(graphql-ws@5.16.0(graphql@16.9.0))(graphql@16.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(next@14.2.15(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)':
+  '@apollo/experimental-nextjs-app-support@0.11.4(@apollo/client@3.11.8(@types/react@18.3.11)(graphql-ws@5.16.0(graphql@16.9.0))(graphql@16.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(next@14.2.15(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@apollo/client': 3.11.8(@types/react@18.3.11)(graphql-ws@5.16.0(graphql@16.9.0))(graphql@16.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@apollo/client-react-streaming': 0.11.3(@apollo/client@3.11.8(@types/react@18.3.11)(graphql-ws@5.16.0(graphql@16.9.0))(graphql@16.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
+      '@apollo/client-react-streaming': 0.11.4(@apollo/client@3.11.8(@types/react@18.3.11)(graphql-ws@5.16.0(graphql@16.9.0))(graphql@16.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
       next: 14.2.15(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
 
