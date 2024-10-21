@@ -75,7 +75,7 @@
     "dotenv": "^16.4.5",
     "dotenv-cli": "^7.4.2",
     "graphql-tag": "^2.12.6",
-    "mercurius-integration-testing": "^8.2.0",
+    "mercurius-integration-testing": "^9.0.0",
     "tsc-alias": "^1.8.10",
     "tsconfig-paths": "^4.2.0"
   }
