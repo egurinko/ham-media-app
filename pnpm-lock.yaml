@@ -91,8 +91,8 @@ importers:
         specifier: ^7.0.1
         version: 7.0.1
       fastify-healthcheck:
-        specifier: ^4.4.0
-        version: 4.4.0
+        specifier: ^5.0.0
+        version: 5.0.0
       fastify-plugin:
         specifier: 4.5.1
         version: 4.5.1
@@ -2016,8 +2016,8 @@ packages:
   '@fastify/static@7.0.4':
     resolution: {integrity: sha512-p2uKtaf8BMOZWLs6wu+Ihg7bWNBdjNgCwDza4MJtTqg+5ovKmcbgbR9Xs5/smZ1YISfzKOCNYmZV8LaCj+eJ1Q==}
 
-  '@fastify/under-pressure@8.5.2':
-    resolution: {integrity: sha512-aFLFN2Vt1UPlt4b1m1wEr8eOzwcPUKNhda6g9OFbQ+pHLE6aStm2nGrd7DujqHFJBYEf1j6mPh0ZpsZIqQQz2Q==}
+  '@fastify/under-pressure@9.0.1':
+    resolution: {integrity: sha512-aafxmJYJBgbYad4eoKwaWXtyBwoLoUCpVDahjzsvRcCjR8esm0F6s3jACWWtZqgcE498gV7fG1X4vzGt9lWw9A==}
 
   '@fastify/websocket@10.0.1':
     resolution: {integrity: sha512-8/pQIxTPRD8U94aILTeJ+2O3el/r19+Ej5z1O1mXlqplsUH7KzCjAI0sgd5DM/NoPjAi5qLFNIjgM5+9/rGSNw==}
@@ -5380,9 +5380,9 @@ packages:
     resolution: {integrity: sha512-2+ghTcw78K0LAoYoOl3l8ZyOunALjumuy9g2Kz0RdnqEnIDaHfEKOJvyo7Q707lh130RRzWSUmdtpO0dCAfp3A==}
     hasBin: true
 
-  fastify-healthcheck@4.4.0:
-    resolution: {integrity: sha512-goP2YYBp+inqrEFixZDxsoxFN8h219ZOzCFv1sMpleaxwbo5CmoLrVzrja6vCMa1LNx6aEvOcGaqLX5Oev1q/A==}
-    engines: {node: '>=14.15.0'}
+  fastify-healthcheck@5.0.0:
+    resolution: {integrity: sha512-aFZi3VaZjfIg2kogN5uz0pYIrslkV8Fq0OICZVG2h+xy8mdWOLJlBGxyAQXlF8LwDZ+gFqeukPjqkyI61K9/Tw==}
+    engines: {node: '>=20.9.0'}
 
   fastify-plugin@4.5.1:
     resolution: {integrity: sha512-stRHYGeuqpEZTL1Ef0Ovr2ltazUT9g844X5z/zEBFLG8RYlpDiOCIG+ATvYEp+/zmc7sN29mcIMp8gvYplYPIQ==}
@@ -11371,10 +11371,10 @@ snapshots:
       fastq: 1.17.1
       glob: 10.4.5
 
-  '@fastify/under-pressure@8.5.2':
+  '@fastify/under-pressure@9.0.1':
     dependencies:
-      '@fastify/error': 3.4.1
-      fastify-plugin: 4.5.1
+      '@fastify/error': 4.0.0
+      fastify-plugin: 5.0.1
 
   '@fastify/websocket@10.0.1':
     dependencies:
@@ -16490,9 +16490,9 @@ snapshots:
       semver: 7.6.3
       yargs-parser: 21.1.1
 
-  fastify-healthcheck@4.4.0:
+  fastify-healthcheck@5.0.0:
     dependencies:
-      '@fastify/under-pressure': 8.5.2
+      '@fastify/under-pressure': 9.0.1
 
   fastify-plugin@4.5.1: {}
 
