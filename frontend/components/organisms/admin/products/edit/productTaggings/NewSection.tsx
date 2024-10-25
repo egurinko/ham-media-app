@@ -1,5 +1,4 @@
 import { AddIcon } from '@chakra-ui/icons';
-import { Box } from '@chakra-ui/react';
 import { CUIAutoComplete } from 'chakra-ui-autocomplete';
 import { useEffect, useState, memo } from 'react';
 import { PrimaryButton } from '@/components/atoms/PrimaryButton';
@@ -98,7 +97,7 @@ const NewSection: FC<Props> = ({ productId }) => {
             disableCreateItem={true}
           />
         ) : null}
-        <Box textAlign="center" mt="8">
+        <div style={{ textAlign: 'center' }}>
           <PrimaryButton
             type="submit"
             aria-label="add"
@@ -107,7 +106,7 @@ const NewSection: FC<Props> = ({ productId }) => {
           >
             タグ紐付け
           </PrimaryButton>
-        </Box>
+        </div>
       </form>
     </>
   );

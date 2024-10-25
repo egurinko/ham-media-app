@@ -1,14 +1,13 @@
 'use client';
 
-import { Box } from '@chakra-ui/react';
 import {
   GoogleMap as ReactGoogleMap,
   useJsApiLoader,
 } from '@react-google-maps/api';
 import { memo } from 'react';
+import { SkeletonText } from '@/app/components/atoms/SkeletonText';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
 import type { FC, PropsWithChildren } from 'react';
-import { SkeletonText } from '@/app/components/atoms/SkeletonText';
 
 type Props = {
   width?: number;
