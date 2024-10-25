@@ -6,9 +6,9 @@ import {
   useJsApiLoader,
 } from '@react-google-maps/api';
 import { memo } from 'react';
-import { Spinner } from '@/components/atoms/Spinner';
 import { FlashMessage } from '@/components/molecules/FlashMessage';
 import type { FC, PropsWithChildren } from 'react';
+import { SkeletonText } from '@/app/components/atoms/SkeletonText';
 
 type Props = {
   width?: number;
@@ -48,9 +48,9 @@ const GoogleMap: FC<PropsWithChildren<Props>> = ({
       {children}
     </Map>
   ) : (
-    <Box textAlign="center">
-      <Spinner loading={true} size="lg" />
-    </Box>
+    <div>
+      <SkeletonText noOfLines={4} />
+    </div>
   );
 };
 
