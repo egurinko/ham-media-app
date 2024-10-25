@@ -17,7 +17,7 @@ export const getListOfferingHamstersReplyMessage = async (): Promise<
       const sliced = response.data.slice(0, 10);
       return [createOfferingHamstersReplyMessage(sliced)];
     }
-  } catch (_e) {
+  } catch {
     return [createWordpressErrorReplyMessage];
   }
 };

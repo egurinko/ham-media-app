@@ -35,7 +35,7 @@ const getCurrentInternalUser = async (authorizationHeader?: string) => {
         where: { email: decoded.email },
         include: { role: true, cart: true },
       });
-    } catch (error) {
+    } catch {
       throw new Error('Authentication Error');
     }
   }
