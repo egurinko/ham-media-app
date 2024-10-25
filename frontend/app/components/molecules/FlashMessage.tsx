@@ -5,7 +5,9 @@ import { css } from '@/styled/css';
 import type { FC } from 'react';
 
 export const ErrorMessages: FC<NoProps> = () => {
-  const flashMessages = getFlashMessages((cookies() as unknown as UnsafeUnwrappedCookies));
+  const flashMessages = getFlashMessages(
+    cookies() as unknown as UnsafeUnwrappedCookies,
+  );
 
   return flashMessages?.alert || flashMessages?.notice ? (
     <div

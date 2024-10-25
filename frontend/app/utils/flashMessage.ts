@@ -18,7 +18,10 @@ export const setFlashMessage = ({
   message: string;
   type: FlashMessageTypes;
 }) => {
-  (cookies() as unknown as UnsafeUnwrappedCookies).set(FLASH_SESSION, JSON.stringify({ [type]: message }));
+  (cookies() as unknown as UnsafeUnwrappedCookies).set(
+    FLASH_SESSION,
+    JSON.stringify({ [type]: message }),
+  );
 };
 
 export type FlashMessages = {
