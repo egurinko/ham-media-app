@@ -12,5 +12,14 @@ module.exports = {
     disableStaticImages: true,
   },
   output: 'standalone',
-  experimental: {},
+  experimental: {
+    turbo: {
+      rules: {
+        '*.svg': {
+          loaders: ['@svgr/webpack'],
+          as: '*.js',
+        },
+      },
+    },
+  },
 };
