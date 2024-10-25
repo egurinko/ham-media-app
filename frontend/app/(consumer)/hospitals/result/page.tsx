@@ -19,9 +19,9 @@ type Props = {
   searchParams: SearchParams;
 };
 
-type Params = NoProps;
+type Params = Promise<NoProps>;
 
-type SearchParams = {
+type SearchParams = Promise<{
   searchText?: string;
   latitude?: string;
   longitude?: string;
@@ -31,7 +31,7 @@ type SearchParams = {
   insuranceEnabled?: string;
   jsavaOption?: string;
   nichijuOption?: string;
-};
+}>;
 export const metadata: Metadata = {
   title: `ハムスター受付病院検索 | ${SERVICE_NAME}`,
   description: `${SERVICE_NAME}が厳選したハムスター受付病院の検索結果。詳細な検索を利用し予約形態/夜間営業可否/保険適用可否/各種資格取得状態などを指定して病院を絞り込めます。`,
@@ -45,7 +45,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function Page({ searchParams }: Props) {
+export default async function Page(props: Props) {
+  const searchParams = await props.searchParams;
   const searchText = searchParams.searchText || '';
   const latitude = Number(searchParams.latitude);
   const longitude = Number(searchParams.longitude);

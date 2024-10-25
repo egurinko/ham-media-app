@@ -5,7 +5,7 @@ import {
   InMemoryCache,
   ApolloClient,
 } from '@apollo/experimental-nextjs-app-support';
-import { cookies } from 'next/headers';
+import { cookies, type UnsafeUnwrappedCookies } from 'next/headers';
 import { getSessionToken } from '@/app/utils/cookies';
 
 const base = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
@@ -18,7 +18,8 @@ const internalHttpLink = new HttpLink({
   uri: `${base}/internal_api/graphql`,
 });
 const internalAuthLink = setContext((_, { headers }) => {
-  const sessionToken = getSessionToken(cookies());
+  const cookieStore = cookies() as unknown as UnsafeUnwrappedCookies;
+  const sessionToken = getSessionToken(cookieStore);
 
   return {
     headers: {

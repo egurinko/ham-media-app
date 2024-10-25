@@ -9,16 +9,17 @@ type Props = {
   params: Params;
 };
 
-type Params = {
+type Params = Promise<{
   id: string;
-};
+}>;
 
 export const dynamicParams = true;
 export async function generateStaticParams(): Promise<Params[]> {
   return [];
 }
 
-export default async function Page({ params }: Props) {
+export default async function Page(props: Props) {
+  const params = await props.params;
   const { data: roleData } = await getRoles({});
   const { data: internalUserData } = await getInternalUser({
     id: Number(params.id),

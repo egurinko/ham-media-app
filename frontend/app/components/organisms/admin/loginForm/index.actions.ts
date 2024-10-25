@@ -46,7 +46,7 @@ export async function createSessionAction(
     const { data } = await createSessionGraphQL({ email, password });
     if (data) {
       const oneMonth = 30 * 24 * 60 * 60 * 1000;
-      cookies().set(HAMEDIA_SESSION, data.createSession.token, {
+      (await cookies()).set(HAMEDIA_SESSION, data.createSession.token, {
         expires: Date.now() + oneMonth,
       });
     }

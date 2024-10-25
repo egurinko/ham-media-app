@@ -14,18 +14,19 @@ type Props = {
   params: Params;
 };
 
-type Params = {
+type Params = Promise<{
   id: string;
-};
+}>;
 
 export const dynamicParams = true;
-export async function generateStaticParams(): Promise<Params[]> {
+export async function generateStaticParams() {
   const { data } = await getHospitalIds();
 
   return data.hospitals.map((hospital) => ({ id: String(hospital.id) }));
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata(props: Props): Promise<Metadata> {
+  const params = await props.params;
   try {
     const { data } = await getHospital(params.id);
     const { hospital } = data;
@@ -59,7 +60,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default async function Page({ params }: Props) {
+export default async function Page(props: Props) {
+  const params = await props.params;
   return (
     <div className={css({ display: 'flex', flexDir: 'column', gap: '4' })}>
       <Suspense fallback={<div>loading...</div>}>
