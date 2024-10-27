@@ -78,6 +78,7 @@
   "exclude": [
     "server/graphql/internalApi/__generated__/**",
     "server/graphql/publicApi/__generated__/**",
-    "dist/**/*"
+    "dist/**/*",
+    "tests/**/*"
   ]
 }
