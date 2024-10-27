@@ -1,4 +1,4 @@
-import { nonNull, mutationField, arg, stringArg } from 'nexus';
+import { nonNull, mutationField, arg } from 'nexus';
 import { addressType } from '../types';
 import Mercurius from 'mercurius';
 import { judgeError } from '@/services/error/judge';
@@ -9,12 +9,21 @@ export const upsertHospitalAddressGeoLocationField = mutationField((t) => {
     type: addressType,
     args: {
       hospitalAddressId: nonNull(arg({ type: 'BigInt' })),
-      address: nonNull(stringArg()),
     },
     resolve: async (_, args, ctx) => {
       try {
-        const address = await googleApi.getGeoLocation(args.address);
-        const geoLocation = address.data.results[0]?.geometry.location;
+        const hospitalAddress =
+          await ctx.prisma.hospitalAddress.findUniqueOrThrow({
+            where: { id: args.hospitalAddressId },
+          });
+        const prefecture = await ctx.prisma.hospitalAddress
+          .findUniqueOrThrow({
+            where: { id: hospitalAddress.id },
+          })
+          .prefecture();
+        const fullAddress = `${prefecture.name}${hospitalAddress.address}`;
+        const result = await googleApi.getGeoLocation(fullAddress);
+        const geoLocation = result.data.results[0]?.geometry.location;
         if (geoLocation) {
           return await ctx.prisma.hospitalAddress.update({
             where: { id: args.hospitalAddressId },
