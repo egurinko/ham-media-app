@@ -6,8 +6,7 @@
   "rangeStrategy": "bump",
   "packageRules": [
     {
-      "matchPackageNames": ["jest", "ts-jest"],
-      "matchPackagePrefixes": ["jest-"],
+      "matchPackageNames": ["@vitest/coverage-v8", "vitest"],
       "automerge": true
     },
     {
