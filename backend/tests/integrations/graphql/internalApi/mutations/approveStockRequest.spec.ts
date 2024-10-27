@@ -2,8 +2,9 @@ import { setup } from '@tests/utils/setupInternalApi';
 import gql from 'graphql-tag';
 import { client as db } from '@/services/prisma';
 import * as discordModule from '@/services/api/discordApi';
+import { vi } from 'vitest';
 
-const postStockRequestApprovalAlert = jest.spyOn(
+const postStockRequestApprovalAlert = vi.spyOn(
   discordModule,
   'postStockRequestApprovalAlert',
 );

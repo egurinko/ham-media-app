@@ -4,10 +4,11 @@ import { setup } from '@tests/utils/setupPublicApi';
 import { getGeoLocationMockResponse } from '@tests/fixtures/googleApi';
 import * as googleApiModule from '@/services/api/googleApi';
 import { HOSPITAL_STATUSES } from '@/services/constant';
+import { vi } from 'vitest';
 
-jest
-  .spyOn(googleApiModule, 'getGeoLocation')
-  .mockResolvedValue(getGeoLocationMockResponse);
+vi.spyOn(googleApiModule, 'getGeoLocation').mockResolvedValue(
+  getGeoLocationMockResponse,
+);
 
 const QUERY = gql`
   query (

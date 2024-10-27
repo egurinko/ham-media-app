@@ -1,30 +1,21 @@
 import { scalarType } from 'nexus';
 import { GraphQLUpload } from 'graphql-upload-minimal';
-import { GraphQLScalarType } from 'graphql';
 import {
   BigIntResolver,
   DateTimeResolver,
   JSONObjectResolver,
 } from 'graphql-scalars';
-import { asNexusMethod } from 'nexus';
 
-// export { BigInt, DateTime } from 'nexus-prisma/scalars';
-// 本当は直接 import したいが、module 形式の違いなのか import できない
-// ref: https://github.com/prisma/nexus-prisma/issues/137
-// よって、元の実装をそのままコピーして使用
-// ref https://github.com/prisma/nexus-prisma/tree/main/src/scalars
-export const BigInt = asNexusMethod(
-  new GraphQLScalarType({
-    ...BigIntResolver,
-    description: `The \`BigInt\` scalar type represents non-fractional signed whole numeric values.
+export const BigInt = scalarType({
+  ...BigIntResolver,
+  asNexusMethod: 'bigInt',
+  description: `The \`BigInt\` scalar type represents non-fractional signed whole numeric values.
 @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt`,
-  }),
-  'bigInt',
-);
-export const DateTime = asNexusMethod(
-  new GraphQLScalarType(DateTimeResolver),
-  'dateTime',
-);
+});
+export const DateTime = scalarType({
+  ...DateTimeResolver,
+  asNexusMethod: 'dateTime',
+});
 
 export const Upload = scalarType({
   name: GraphQLUpload.name,
@@ -35,7 +26,7 @@ export const Upload = scalarType({
   parseLiteral: GraphQLUpload.parseLiteral,
 });
 
-export const Json = asNexusMethod(
-  new GraphQLScalarType(JSONObjectResolver),
-  'json',
-);
+export const Json = scalarType({
+  ...JSONObjectResolver,
+  asNexusMethod: 'json',
+});

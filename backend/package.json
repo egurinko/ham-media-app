@@ -26,8 +26,8 @@
     "format:check": "pnpm format --check",
     "tsc": "tsc",
     "tscheck": "pnpm tsc -p ./tsconfig.json --noEmit",
-    "test": "NODE_ENV=test dotenv -e .env.test -- jest --runInBand",
-    "test:ci": "NODE_ENV=test dotenv -e .env.test -- jest --runInBand --coverage --silent --testLocationInResults --ci --json --outputFile=\"report.json\""
+    "test": "NODE_ENV=test dotenv -e .env.test -- vitest",
+    "test:ci": "NODE_ENV=test dotenv -e .env.test -- vitest"
   },
   "prisma": {
     "seed": "ts-node-dev prisma/seed.ts"
@@ -77,6 +77,7 @@
     "graphql-tag": "^2.12.6",
     "mercurius-integration-testing": "^9.0.0",
     "tsc-alias": "^1.8.10",
-    "tsconfig-paths": "^4.2.0"
+    "tsconfig-paths": "^4.2.0",
+    "vitest": "^2.1.3"
   }
 }

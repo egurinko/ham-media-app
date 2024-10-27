@@ -2,10 +2,11 @@ import { setup } from '@tests/utils/setupPublicApi';
 import gql from 'graphql-tag';
 import { getPlacesAutocompleteResponseResponse } from '@tests/fixtures/googleApi';
 import * as googleApiModule from '@/services/api/googleApi';
+import { vi } from 'vitest';
 
-jest
-  .spyOn(googleApiModule, 'getPlaceAutoComplete')
-  .mockResolvedValue(getPlacesAutocompleteResponseResponse);
+vi.spyOn(googleApiModule, 'getPlaceAutoComplete').mockResolvedValue(
+  getPlacesAutocompleteResponseResponse,
+);
 
 const QUERY = gql`
   query ($searchText: String!) {
