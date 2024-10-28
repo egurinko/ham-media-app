@@ -462,7 +462,6 @@ export type MutationUpdateStockRequestArgs = {
 };
 
 export type MutationUpsertHospitalAddressGeoLocationArgs = {
-  address: Scalars['String']['input'];
   hospitalAddressId: Scalars['BigInt']['input'];
 };
 

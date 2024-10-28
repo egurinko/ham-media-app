@@ -452,7 +452,6 @@ export type MutationUpdateStockRequestArgs = {
 };
 
 export type MutationUpsertHospitalAddressGeoLocationArgs = {
-  address: Scalars['String']['input'];
   hospitalAddressId: Scalars['BigInt']['input'];
 };
 
@@ -2395,7 +2394,6 @@ export type InternalUpdateStockRequestMutation = {
 
 export type InternalUpsertHospitalAddressGeoLocationMutationVariables = Exact<{
   hospitalAddressId: Scalars['BigInt']['input'];
-  address: Scalars['String']['input'];
 }>;
 
 export type InternalUpsertHospitalAddressGeoLocationMutation = {
@@ -5967,12 +5965,8 @@ export type InternalUpdateStockRequestMutationOptions =
 export const InternalUpsertHospitalAddressGeoLocationDocument = gql`
   mutation InternalUpsertHospitalAddressGeoLocation(
     $hospitalAddressId: BigInt!
-    $address: String!
   ) {
-    upsertHospitalAddressGeoLocation(
-      hospitalAddressId: $hospitalAddressId
-      address: $address
-    ) {
+    upsertHospitalAddressGeoLocation(hospitalAddressId: $hospitalAddressId) {
       ...HospitalAddressFields
     }
   }
@@ -5998,7 +5992,6 @@ export type InternalUpsertHospitalAddressGeoLocationMutationFn =
  * const [internalUpsertHospitalAddressGeoLocationMutation, { data, loading, error }] = useInternalUpsertHospitalAddressGeoLocationMutation({
  *   variables: {
  *      hospitalAddressId: // value for 'hospitalAddressId'
- *      address: // value for 'address'
  *   },
  * });
  */
