@@ -905,7 +905,6 @@ export interface NexusGenArgTypes {
       requestProducts: NexusGenInputs['CreateStockRequestRequestProductsInputType'][]; // [CreateStockRequestRequestProductsInputType!]!
     }
     upsertHospitalAddressGeoLocation: { // args
-      address: string; // String!
       hospitalAddressId: NexusGenScalars['BigInt']; // BigInt!
     }
   }

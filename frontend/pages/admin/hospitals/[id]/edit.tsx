@@ -99,7 +99,6 @@ const Edit = () => {
         await upsertGeoLocation({
           variables: {
             hospitalAddressId: hospitalAddress.id,
-            address: hospitalAddress.prefecture.name + hospitalAddress.address,
           },
         });
         await fetchMore({ variables: { id: hospital.id } });
