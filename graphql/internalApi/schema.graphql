@@ -222,7 +222,10 @@ type Mutation {
   updateHospitalAddress(address: String!, hospital_id: BigInt!, phone_number: String!, prefecture_id: BigInt!): HospitalAddress!
   updateHospitalBase(deleted: Boolean!, id: BigInt!, internal_memo: String!, name: String!, url: String!): Hospital!
   updateHospitalBusinessForm(business_hour: String!, closed_day: String!, hospital_id: BigInt!, insurance_enabled: String!, remark: String!): HospitalBusinessForm!
+  updateHospitalCertificationOption(hospital_id: BigInt!, jsava_registered: String!, nichiju_registered: String!): HospitalCertificationOption!
   updateHospitalInternalReputation(hospital_id: BigInt!, remark: String!, star: Int!): HospitalInternalReputation!
+  updateHospitalNightServiceOption(hospital_id: BigInt!, remark: String!, status: String!): HospitalNightServiceOption!
+  updateHospitalNightUrgentActionOption(hospital_id: BigInt!, status: String!): HospitalNightUrgentActionOption!
   updateHospitalReservationStatus(hospital_id: BigInt!, remark: String!, required: String!, reservable: String!): HospitalReservationStatus!
   updateInternalUser(discord_user_id: String!, email: String!, id: BigInt!, name: String!, password: String!, roleId: Int!): InternalUser!
   updateMaker(id: Int!, name: String!): Maker!

@@ -400,7 +400,10 @@ export interface NexusGenFieldTypes {
     updateHospitalAddress: NexusGenRootTypes['HospitalAddress']; // HospitalAddress!
     updateHospitalBase: NexusGenRootTypes['Hospital']; // Hospital!
     updateHospitalBusinessForm: NexusGenRootTypes['HospitalBusinessForm']; // HospitalBusinessForm!
+    updateHospitalCertificationOption: NexusGenRootTypes['HospitalCertificationOption']; // HospitalCertificationOption!
     updateHospitalInternalReputation: NexusGenRootTypes['HospitalInternalReputation']; // HospitalInternalReputation!
+    updateHospitalNightServiceOption: NexusGenRootTypes['HospitalNightServiceOption']; // HospitalNightServiceOption!
+    updateHospitalNightUrgentActionOption: NexusGenRootTypes['HospitalNightUrgentActionOption']; // HospitalNightUrgentActionOption!
     updateHospitalReservationStatus: NexusGenRootTypes['HospitalReservationStatus']; // HospitalReservationStatus!
     updateInternalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     updateMaker: NexusGenRootTypes['Maker']; // Maker!
@@ -633,7 +636,10 @@ export interface NexusGenFieldTypeNames {
     updateHospitalAddress: 'HospitalAddress'
     updateHospitalBase: 'Hospital'
     updateHospitalBusinessForm: 'HospitalBusinessForm'
+    updateHospitalCertificationOption: 'HospitalCertificationOption'
     updateHospitalInternalReputation: 'HospitalInternalReputation'
+    updateHospitalNightServiceOption: 'HospitalNightServiceOption'
+    updateHospitalNightUrgentActionOption: 'HospitalNightUrgentActionOption'
     updateHospitalReservationStatus: 'HospitalReservationStatus'
     updateInternalUser: 'InternalUser'
     updateMaker: 'Maker'
@@ -866,10 +872,24 @@ export interface NexusGenArgTypes {
       insurance_enabled: string; // String!
       remark: string; // String!
     }
+    updateHospitalCertificationOption: { // args
+      hospital_id: NexusGenScalars['BigInt']; // BigInt!
+      jsava_registered: string; // String!
+      nichiju_registered: string; // String!
+    }
     updateHospitalInternalReputation: { // args
       hospital_id: NexusGenScalars['BigInt']; // BigInt!
       remark: string; // String!
       star: number; // Int!
+    }
+    updateHospitalNightServiceOption: { // args
+      hospital_id: NexusGenScalars['BigInt']; // BigInt!
+      remark: string; // String!
+      status: string; // String!
+    }
+    updateHospitalNightUrgentActionOption: { // args
+      hospital_id: NexusGenScalars['BigInt']; // BigInt!
+      status: string; // String!
     }
     updateHospitalReservationStatus: { // args
       hospital_id: NexusGenScalars['BigInt']; // BigInt!
