@@ -87,7 +87,7 @@ const AllocationSection: FC<Props> = ({
         variables: { id, internalUserId },
       });
       await fetchStocksMore({ variables: { productId } });
-    } catch (error) {}
+    } catch {}
   };
 
   const handleReturnStock = async (id: number) => {
@@ -96,14 +96,14 @@ const AllocationSection: FC<Props> = ({
         variables: { id },
       });
       await fetchStocksMore({ variables: { productId } });
-    } catch (error) {}
+    } catch {}
   };
 
   const handleDeleteStock = async (id: number) => {
     try {
       await deleteStock({ variables: { id } });
       await fetchStocksMore({ variables: { productId } });
-    } catch (_) {}
+    } catch {}
   };
 
   return (

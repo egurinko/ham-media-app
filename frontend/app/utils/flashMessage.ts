@@ -25,8 +25,8 @@ export const setFlashMessage = ({
 };
 
 export type FlashMessages = {
-  notice?: string;
-  alert?: string;
+  [FLASH_MESSAGE_TYPE.NOTICE]?: string;
+  [FLASH_MESSAGE_TYPE.ALERT]?: string;
 };
 
 export const getFlashMessages = (

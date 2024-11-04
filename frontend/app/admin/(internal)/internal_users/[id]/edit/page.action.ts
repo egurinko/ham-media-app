@@ -42,7 +42,7 @@ export async function updateInternalUserAction(
       roleId,
       discord_user_id,
     });
-  } catch (e) {
+  } catch {
     return {
       message:
         'ユーザの更新に失敗しました。エラーメッセージを確認してください。',

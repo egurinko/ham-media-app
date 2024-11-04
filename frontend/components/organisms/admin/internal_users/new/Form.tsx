@@ -67,7 +67,7 @@ const Form: FC<NoProps> = () => {
       setTimeout(() => {
         goAdminInternalUsers(router);
       }, 2000);
-    } catch (e) {}
+    } catch {}
   };
 
   return (

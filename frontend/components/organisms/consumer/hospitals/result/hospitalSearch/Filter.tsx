@@ -71,7 +71,7 @@ const Filter: FC<NoProps> = () => {
   ]);
 
   useEffect(() => {
-    copyApplied;
+    copyApplied();
   }, [copyApplied]);
 
   const handleSearchClick = useCallback((): void => {

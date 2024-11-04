@@ -41,7 +41,7 @@ const Form: FC<NoProps> = () => {
 
     try {
       await login({ variables: { email, password } });
-    } catch (e) {}
+    } catch {}
   };
 
   useEffect(() => {

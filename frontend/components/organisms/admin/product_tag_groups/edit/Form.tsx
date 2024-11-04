@@ -60,7 +60,7 @@ const Form: FC<Props> = ({ productTagGroupId }) => {
       setTimeout(() => {
         goAdminProductTagGroups(router);
       }, 2000);
-    } catch (e) {}
+    } catch {}
   };
 
   return productTagGroupData ? (

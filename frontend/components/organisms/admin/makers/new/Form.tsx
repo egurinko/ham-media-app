@@ -43,7 +43,7 @@ const Form: FC<NoProps> = () => {
       setTimeout(() => {
         goAdminMakers(router);
       }, 2000);
-    } catch (e) {}
+    } catch {}
   };
 
   return (
