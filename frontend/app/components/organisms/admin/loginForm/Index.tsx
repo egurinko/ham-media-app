@@ -1,6 +1,6 @@
 'use client';
 
-import { useFormState } from 'react-dom';
+import { useActionState } from 'react';
 import { Icon } from '@/app/components/atoms/Icon';
 import { Input } from '@/app/components/atoms/Input';
 import { InputLabel } from '@/app/components/atoms/InputLabel';
@@ -21,7 +21,7 @@ export type State = {
 
 export const LoginForm: FC<NoProps> = () => {
   const initialState: State = { message: null, errors: {} };
-  const [state, dispatch] = useFormState(createSessionAction, initialState);
+  const [state, dispatch] = useActionState(createSessionAction, initialState);
   return (
     <form
       action={dispatch}
