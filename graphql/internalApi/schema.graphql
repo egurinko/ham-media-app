@@ -223,6 +223,7 @@ type Mutation {
   updateHospitalBase(deleted: Boolean!, id: BigInt!, internal_memo: String!, name: String!, url: String!): Hospital!
   updateHospitalBusinessForm(business_hour: String!, closed_day: String!, hospital_id: BigInt!, insurance_enabled: String!, remark: String!): HospitalBusinessForm!
   updateHospitalInternalReputation(hospital_id: BigInt!, remark: String!, star: Int!): HospitalInternalReputation!
+  updateHospitalReservationStatus(hospital_id: BigInt!, remark: String!, required: String!, reservable: String!): HospitalReservationStatus!
   updateInternalUser(discord_user_id: String!, email: String!, id: BigInt!, name: String!, password: String!, roleId: Int!): InternalUser!
   updateMaker(id: Int!, name: String!): Maker!
   updateProduct(file: Upload, id: Int!, makerId: Int!, name: String!, remark: String!): Product!

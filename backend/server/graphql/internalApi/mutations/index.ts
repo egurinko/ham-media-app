@@ -8,6 +8,7 @@ export * from './updateHospitalBase';
 export * from './updateHospitalAddress';
 export * from './updateHospitalInternalReputation';
 export * from './updateHospitalBusinessForm';
+export * from './updateHospitalReservationStatus';
 export * from './createMaker';
 export * from './updateMaker';
 export * from './deleteMaker';

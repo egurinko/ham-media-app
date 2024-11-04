@@ -401,6 +401,7 @@ export interface NexusGenFieldTypes {
     updateHospitalBase: NexusGenRootTypes['Hospital']; // Hospital!
     updateHospitalBusinessForm: NexusGenRootTypes['HospitalBusinessForm']; // HospitalBusinessForm!
     updateHospitalInternalReputation: NexusGenRootTypes['HospitalInternalReputation']; // HospitalInternalReputation!
+    updateHospitalReservationStatus: NexusGenRootTypes['HospitalReservationStatus']; // HospitalReservationStatus!
     updateInternalUser: NexusGenRootTypes['InternalUser']; // InternalUser!
     updateMaker: NexusGenRootTypes['Maker']; // Maker!
     updateProduct: NexusGenRootTypes['Product']; // Product!
@@ -633,6 +634,7 @@ export interface NexusGenFieldTypeNames {
     updateHospitalBase: 'Hospital'
     updateHospitalBusinessForm: 'HospitalBusinessForm'
     updateHospitalInternalReputation: 'HospitalInternalReputation'
+    updateHospitalReservationStatus: 'HospitalReservationStatus'
     updateInternalUser: 'InternalUser'
     updateMaker: 'Maker'
     updateProduct: 'Product'
@@ -868,6 +870,12 @@ export interface NexusGenArgTypes {
       hospital_id: NexusGenScalars['BigInt']; // BigInt!
       remark: string; // String!
       star: number; // Int!
+    }
+    updateHospitalReservationStatus: { // args
+      hospital_id: NexusGenScalars['BigInt']; // BigInt!
+      remark: string; // String!
+      required: string; // String!
+      reservable: string; // String!
     }
     updateInternalUser: { // args
       discord_user_id: string; // String!
