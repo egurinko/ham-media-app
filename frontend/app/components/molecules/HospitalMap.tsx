@@ -2,7 +2,7 @@
 
 import { InfoWindowF, MarkerF } from '@react-google-maps/api';
 import { Typography } from '@/app/components/atoms/Typography';
-import { GoogleMap } from '@/components/organisms/GoogleMap';
+import { GoogleMap } from '@/app/components/molecules/GoogleMap';
 import { css } from '@/styled/css';
 import type { FC } from 'react';
 

@@ -5,8 +5,8 @@ import {
   useJsApiLoader,
 } from '@react-google-maps/api';
 import { memo } from 'react';
+import { Alert } from '@/app/components/atoms/Alert';
 import { SkeletonText } from '@/app/components/atoms/SkeletonText';
-import { FlashMessage } from '@/components/molecules/FlashMessage';
 import type { FC, PropsWithChildren } from 'react';
 
 type Props = {
@@ -30,10 +30,10 @@ const GoogleMap: FC<PropsWithChildren<Props>> = ({
 
   if (loadError) {
     return (
-      <FlashMessage
-        status="error"
-        message="Google Map の読み込みに失敗しました。お手数ですがしばらく時間を置いてから再度お試しください。"
-      />
+      <Alert visual="error">
+        Google Map
+        の読み込みに失敗しました。お手数ですがしばらく時間を置いてから再度お試しください。
+      </Alert>
     );
   }
 
