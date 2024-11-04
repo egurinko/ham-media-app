@@ -1,4 +1,3 @@
-import { cookies, type UnsafeUnwrappedCookies } from 'next/headers';
 import { FLASH_SESSION, FLASH_DISCARD_SESSION } from '@/app/utils/constant';
 import type { ReadonlyRequestCookies } from 'next/dist/server/web/spec-extension/adapters/request-cookies';
 import type { RequestCookies } from 'next/dist/server/web/spec-extension/cookies';
@@ -11,17 +10,17 @@ const FLASH_MESSAGE_TYPE = {
 export type FlashMessageTypes =
   (typeof FLASH_MESSAGE_TYPE)[keyof typeof FLASH_MESSAGE_TYPE];
 
-export const setFlashMessage = ({
-  message,
-  type,
-}: {
-  message: string;
-  type: FlashMessageTypes;
-}) => {
-  (cookies() as unknown as UnsafeUnwrappedCookies).set(
-    FLASH_SESSION,
-    JSON.stringify({ [type]: message }),
-  );
+export const setFlashMessage = (
+  cookies: ReadonlyRequestCookies,
+  {
+    message,
+    type,
+  }: {
+    message: string;
+    type: FlashMessageTypes;
+  },
+) => {
+  cookies.set(FLASH_SESSION, JSON.stringify({ [type]: message }));
 };
 
 export type FlashMessages = {

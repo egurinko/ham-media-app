@@ -1,5 +1,6 @@
 'use server';
 
+import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { setFlashMessage } from '@/app/utils/flashMessage';
 import type { FormState } from '@/app/utils/formSchema/hospital/nightUrgentActionOption';
@@ -40,7 +41,8 @@ export async function updateHospitalNightUrgentActionOptionAction(
     };
   }
 
-  setFlashMessage({
+  const cookieStore = await cookies();
+  setFlashMessage(cookieStore, {
     message: `緊急夜間営業を更新しました。`,
     type: 'notice',
   });

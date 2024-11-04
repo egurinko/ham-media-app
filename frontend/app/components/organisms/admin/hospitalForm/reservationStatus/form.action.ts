@@ -1,5 +1,6 @@
 'use server';
 
+import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { setFlashMessage } from '@/app/utils/flashMessage';
 import type { FormState } from '@/app/utils/formSchema/hospital/reservationStatus';
@@ -44,7 +45,8 @@ export async function updateHospitalReservationStatusAction(
     };
   }
 
-  setFlashMessage({
+  const cookieStore = await cookies();
+  setFlashMessage(cookieStore, {
     message: `予約形態を更新しました。`,
     type: 'notice',
   });

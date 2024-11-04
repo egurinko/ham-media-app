@@ -1,5 +1,6 @@
 'use server';
 
+import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { setFlashMessage } from '@/app/utils/flashMessage';
 import type { FormState } from '@/app/utils/formSchema/hospital/businessForm';
@@ -47,7 +48,8 @@ export async function updateHospitalBusinessFormAction(
     };
   }
 
-  setFlashMessage({
+  const cookieStore = await cookies();
+  setFlashMessage(cookieStore, {
     message: `営業形態を更新しました。`,
     type: 'notice',
   });

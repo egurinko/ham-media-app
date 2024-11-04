@@ -1,5 +1,6 @@
 'use server';
 
+import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { setFlashMessage } from '@/app/utils/flashMessage';
 import type { FormState } from '@/app/utils/formSchema/hospital/internalReputation';
@@ -42,7 +43,8 @@ export async function updateHospitalInternalReputationAction(
     };
   }
 
-  setFlashMessage({
+  const cookieStore = await cookies();
+  setFlashMessage(cookieStore, {
     message: `内部評価を更新しました。`,
     type: 'notice',
   });

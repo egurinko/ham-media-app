@@ -1,5 +1,6 @@
 'use server';
 
+import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { setFlashMessage } from '@/app/utils/flashMessage';
 import { FormSchema } from '@/app/utils/formSchema/internalUser';
@@ -49,7 +50,8 @@ export async function updateInternalUserAction(
     };
   }
 
-  setFlashMessage({
+  const cookieStore = await cookies();
+  setFlashMessage(cookieStore, {
     message: `ユーザ: ${name}を更新しました。`,
     type: 'notice',
   });
