@@ -2195,6 +2195,22 @@ export type InternalUpdateHospitalBaseMutation = {
   };
 };
 
+export type InternalUpdateHospitalBusinessFormMutationVariables = Exact<{
+  hospitalId: Scalars['BigInt']['input'];
+  businessHour: Scalars['String']['input'];
+  closedDay: Scalars['String']['input'];
+  insuranceEnabled: Scalars['String']['input'];
+  remark: Scalars['String']['input'];
+}>;
+
+export type InternalUpdateHospitalBusinessFormMutation = {
+  __typename?: 'Mutation';
+  updateHospitalBusinessForm: {
+    __typename?: 'HospitalBusinessForm';
+    business_hour: string;
+  };
+};
+
 export type InternalUpdateInternalUserMutationVariables = Exact<{
   id: Scalars['BigInt']['input'];
   name: Scalars['String']['input'];
@@ -5581,6 +5597,74 @@ export type InternalUpdateHospitalBaseMutationOptions =
   Apollo.BaseMutationOptions<
     InternalUpdateHospitalBaseMutation,
     InternalUpdateHospitalBaseMutationVariables
+  >;
+export const InternalUpdateHospitalBusinessFormDocument = gql`
+  mutation InternalUpdateHospitalBusinessForm(
+    $hospitalId: BigInt!
+    $businessHour: String!
+    $closedDay: String!
+    $insuranceEnabled: String!
+    $remark: String!
+  ) {
+    updateHospitalBusinessForm(
+      hospital_id: $hospitalId
+      business_hour: $businessHour
+      closed_day: $closedDay
+      insurance_enabled: $insuranceEnabled
+      remark: $remark
+    ) {
+      business_hour
+    }
+  }
+`;
+export type InternalUpdateHospitalBusinessFormMutationFn =
+  Apollo.MutationFunction<
+    InternalUpdateHospitalBusinessFormMutation,
+    InternalUpdateHospitalBusinessFormMutationVariables
+  >;
+
+/**
+ * __useInternalUpdateHospitalBusinessFormMutation__
+ *
+ * To run a mutation, you first call `useInternalUpdateHospitalBusinessFormMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInternalUpdateHospitalBusinessFormMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [internalUpdateHospitalBusinessFormMutation, { data, loading, error }] = useInternalUpdateHospitalBusinessFormMutation({
+ *   variables: {
+ *      hospitalId: // value for 'hospitalId'
+ *      businessHour: // value for 'businessHour'
+ *      closedDay: // value for 'closedDay'
+ *      insuranceEnabled: // value for 'insuranceEnabled'
+ *      remark: // value for 'remark'
+ *   },
+ * });
+ */
+export function useInternalUpdateHospitalBusinessFormMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    InternalUpdateHospitalBusinessFormMutation,
+    InternalUpdateHospitalBusinessFormMutationVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    InternalUpdateHospitalBusinessFormMutation,
+    InternalUpdateHospitalBusinessFormMutationVariables
+  >(InternalUpdateHospitalBusinessFormDocument, options);
+}
+export type InternalUpdateHospitalBusinessFormMutationHookResult = ReturnType<
+  typeof useInternalUpdateHospitalBusinessFormMutation
+>;
+export type InternalUpdateHospitalBusinessFormMutationResult =
+  Apollo.MutationResult<InternalUpdateHospitalBusinessFormMutation>;
+export type InternalUpdateHospitalBusinessFormMutationOptions =
+  Apollo.BaseMutationOptions<
+    InternalUpdateHospitalBusinessFormMutation,
+    InternalUpdateHospitalBusinessFormMutationVariables
   >;
 export const InternalUpdateInternalUserDocument = gql`
   mutation InternalUpdateInternalUser(

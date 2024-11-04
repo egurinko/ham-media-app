@@ -865,6 +865,411 @@ export type GetInternalUserProfileQuery = {
   };
 };
 
+export type GetBreadcrumbsHospitalQueryVariables = Exact<{
+  id: Scalars['BigInt']['input'];
+}>;
+
+export type GetBreadcrumbsHospitalQuery = {
+  __typename?: 'Query';
+  hospital: { __typename?: 'Hospital'; id: number; name: string };
+};
+
+export type UpsertHospitalAddressGeoLocationMutationVariables = Exact<{
+  hospitalAddressId: Scalars['BigInt']['input'];
+}>;
+
+export type UpsertHospitalAddressGeoLocationMutation = {
+  __typename?: 'Mutation';
+  upsertHospitalAddressGeoLocation: {
+    __typename?: 'HospitalAddress';
+    id: number;
+  };
+};
+
+export type GetHospitalDetailQueryVariables = Exact<{
+  id: Scalars['BigInt']['input'];
+}>;
+
+export type GetHospitalDetailQuery = {
+  __typename?: 'Query';
+  hospital: {
+    __typename?: 'Hospital';
+    id: number;
+    name: string;
+    url: string;
+    deleted: boolean;
+    internal_memo: string;
+    hospitalAddress?: {
+      __typename?: 'HospitalAddress';
+      id: number;
+      address: string;
+      phone_number: string;
+      prefecture: { __typename?: 'Prefecture'; name: string };
+      hospitalAddressGeoLocation?: {
+        __typename?: 'HospitalAddressGeoLocation';
+        latitude: number;
+        longitude: number;
+      } | null;
+    } | null;
+    hospitalBusinessForm?: {
+      __typename?: 'HospitalBusinessForm';
+      business_hour: string;
+      closed_day: string;
+      insurance_enabled: string;
+      remark: string;
+    } | null;
+    hospitalCertificationOption?: {
+      __typename?: 'HospitalCertificationOption';
+      nichiju_registered: string;
+      jsava_registered: string;
+    } | null;
+    hospitalInternalReputation?: {
+      __typename?: 'HospitalInternalReputation';
+      star: number;
+      remark: string;
+    } | null;
+    hospitalNightServiceOption?: {
+      __typename?: 'HospitalNightServiceOption';
+      status: string;
+      remark: string;
+    } | null;
+    hospitalNightUrgentActionOption?: {
+      __typename?: 'HospitalNightUrgentActionOption';
+      status: string;
+    } | null;
+    hospitalReservationStatus?: {
+      __typename?: 'HospitalReservationStatus';
+      required: string;
+      reservable: string;
+      remark: string;
+    } | null;
+  };
+};
+
+export type UpdateHospitalAddressMutationVariables = Exact<{
+  hospitalId: Scalars['BigInt']['input'];
+  address: Scalars['String']['input'];
+  phoneNumber: Scalars['String']['input'];
+  prefectureId: Scalars['BigInt']['input'];
+}>;
+
+export type UpdateHospitalAddressMutation = {
+  __typename?: 'Mutation';
+  updateHospitalAddress: { __typename?: 'HospitalAddress'; address: string };
+};
+
+export type GetEditableHospitalAddressQueryVariables = Exact<{
+  id: Scalars['BigInt']['input'];
+}>;
+
+export type GetEditableHospitalAddressQuery = {
+  __typename?: 'Query';
+  hospital: {
+    __typename?: 'Hospital';
+    id: number;
+    hospitalAddress?: {
+      __typename?: 'HospitalAddress';
+      address: string;
+      phone_number: string;
+      prefecture: { __typename?: 'Prefecture'; id: number; name: string };
+    } | null;
+  };
+};
+
+export type GetPrefecturesQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetPrefecturesQuery = {
+  __typename?: 'Query';
+  prefectures: Array<{ __typename?: 'Prefecture'; id: number; name: string }>;
+};
+
+export type UpdateHospitalBusinessFormMutationVariables = Exact<{
+  hospitalId: Scalars['BigInt']['input'];
+  businessHour: Scalars['String']['input'];
+  closedDay: Scalars['String']['input'];
+  insuranceEnabled: Scalars['String']['input'];
+  remark: Scalars['String']['input'];
+}>;
+
+export type UpdateHospitalBusinessFormMutation = {
+  __typename?: 'Mutation';
+  updateHospitalBusinessForm: {
+    __typename?: 'HospitalBusinessForm';
+    business_hour: string;
+  };
+};
+
+export type GetEditableHospitalBusinessFormQueryVariables = Exact<{
+  id: Scalars['BigInt']['input'];
+}>;
+
+export type GetEditableHospitalBusinessFormQuery = {
+  __typename?: 'Query';
+  hospital: {
+    __typename?: 'Hospital';
+    id: number;
+    hospitalBusinessForm?: {
+      __typename?: 'HospitalBusinessForm';
+      id: number;
+      business_hour: string;
+      closed_day: string;
+      insurance_enabled: string;
+      remark: string;
+    } | null;
+  };
+};
+
+export type UpdateHospitalCertificationOptionMutationVariables = Exact<{
+  hospitalId: Scalars['BigInt']['input'];
+  nichijuRegistered: Scalars['String']['input'];
+  jsavaRegistered: Scalars['String']['input'];
+}>;
+
+export type UpdateHospitalCertificationOptionMutation = {
+  __typename?: 'Mutation';
+  updateHospitalCertificationOption: {
+    __typename?: 'HospitalCertificationOption';
+    nichiju_registered: string;
+    jsava_registered: string;
+  };
+};
+
+export type GetEditableHospitalCertificationOptionQueryVariables = Exact<{
+  id: Scalars['BigInt']['input'];
+}>;
+
+export type GetEditableHospitalCertificationOptionQuery = {
+  __typename?: 'Query';
+  hospital: {
+    __typename?: 'Hospital';
+    id: number;
+    hospitalCertificationOption?: {
+      __typename?: 'HospitalCertificationOption';
+      nichiju_registered: string;
+      jsava_registered: string;
+    } | null;
+  };
+};
+
+export type UpdateHospitalMutationVariables = Exact<{
+  id: Scalars['BigInt']['input'];
+  name: Scalars['String']['input'];
+  url: Scalars['String']['input'];
+  deleted: Scalars['Boolean']['input'];
+  internalMemo: Scalars['String']['input'];
+}>;
+
+export type UpdateHospitalMutation = {
+  __typename?: 'Mutation';
+  updateHospitalBase: { __typename?: 'Hospital'; id: number };
+};
+
+export type GetEditableHospitalQueryVariables = Exact<{
+  id: Scalars['BigInt']['input'];
+}>;
+
+export type GetEditableHospitalQuery = {
+  __typename?: 'Query';
+  hospital: {
+    __typename?: 'Hospital';
+    id: number;
+    name: string;
+    url: string;
+    deleted: boolean;
+    internal_memo: string;
+  };
+};
+
+export type CreateHospitalMutationVariables = Exact<{
+  name: Scalars['String']['input'];
+  url?: InputMaybe<Scalars['String']['input']>;
+  deleted: Scalars['Boolean']['input'];
+  internal_memo: Scalars['String']['input'];
+}>;
+
+export type CreateHospitalMutation = {
+  __typename?: 'Mutation';
+  createHospital: { __typename?: 'Hospital'; id: number };
+};
+
+export type UpdateHospitalInternalReputationMutationVariables = Exact<{
+  hospitalId: Scalars['BigInt']['input'];
+  star: Scalars['Int']['input'];
+  remark: Scalars['String']['input'];
+}>;
+
+export type UpdateHospitalInternalReputationMutation = {
+  __typename?: 'Mutation';
+  updateHospitalInternalReputation: {
+    __typename?: 'HospitalInternalReputation';
+    star: number;
+  };
+};
+
+export type GetEditableHospitalInternalReputationQueryVariables = Exact<{
+  id: Scalars['BigInt']['input'];
+}>;
+
+export type GetEditableHospitalInternalReputationQuery = {
+  __typename?: 'Query';
+  hospital: {
+    __typename?: 'Hospital';
+    id: number;
+    hospitalInternalReputation?: {
+      __typename?: 'HospitalInternalReputation';
+      star: number;
+      remark: string;
+    } | null;
+  };
+};
+
+export type UpdateHospitalNightServiceOptionMutationVariables = Exact<{
+  hospitalId: Scalars['BigInt']['input'];
+  status: Scalars['String']['input'];
+  remark: Scalars['String']['input'];
+}>;
+
+export type UpdateHospitalNightServiceOptionMutation = {
+  __typename?: 'Mutation';
+  updateHospitalNightServiceOption: {
+    __typename?: 'HospitalNightServiceOption';
+    status: string;
+    remark: string;
+  };
+};
+
+export type GetEditableHospitalNightServiceOptionQueryVariables = Exact<{
+  id: Scalars['BigInt']['input'];
+}>;
+
+export type GetEditableHospitalNightServiceOptionQuery = {
+  __typename?: 'Query';
+  hospital: {
+    __typename?: 'Hospital';
+    id: number;
+    hospitalNightServiceOption?: {
+      __typename?: 'HospitalNightServiceOption';
+      status: string;
+      remark: string;
+    } | null;
+  };
+};
+
+export type UpdateHospitalNightUrgentActionOptionMutationVariables = Exact<{
+  hospitalId: Scalars['BigInt']['input'];
+  status: Scalars['String']['input'];
+}>;
+
+export type UpdateHospitalNightUrgentActionOptionMutation = {
+  __typename?: 'Mutation';
+  updateHospitalNightUrgentActionOption: {
+    __typename?: 'HospitalNightUrgentActionOption';
+    status: string;
+  };
+};
+
+export type GetEditableHospitalNightUrgentActionOptionQueryVariables = Exact<{
+  id: Scalars['BigInt']['input'];
+}>;
+
+export type GetEditableHospitalNightUrgentActionOptionQuery = {
+  __typename?: 'Query';
+  hospital: {
+    __typename?: 'Hospital';
+    id: number;
+    hospitalNightUrgentActionOption?: {
+      __typename?: 'HospitalNightUrgentActionOption';
+      status: string;
+    } | null;
+  };
+};
+
+export type UpdateHospitalReservationStatusMutationVariables = Exact<{
+  hospitalId: Scalars['BigInt']['input'];
+  required: Scalars['String']['input'];
+  reservable: Scalars['String']['input'];
+  remark: Scalars['String']['input'];
+}>;
+
+export type UpdateHospitalReservationStatusMutation = {
+  __typename?: 'Mutation';
+  updateHospitalReservationStatus: {
+    __typename?: 'HospitalReservationStatus';
+    required: string;
+    reservable: string;
+    remark: string;
+  };
+};
+
+export type GetEditableHospitalReservationStatusQueryVariables = Exact<{
+  id: Scalars['BigInt']['input'];
+}>;
+
+export type GetEditableHospitalReservationStatusQuery = {
+  __typename?: 'Query';
+  hospital: {
+    __typename?: 'Hospital';
+    id: number;
+    hospitalReservationStatus?: {
+      __typename?: 'HospitalReservationStatus';
+      required: string;
+      reservable: string;
+      remark: string;
+    } | null;
+  };
+};
+
+export type GetHospitalConnectionQueryVariables = Exact<{
+  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  deleted: Scalars['Boolean']['input'];
+  prefectureId?: InputMaybe<Scalars['BigInt']['input']>;
+  internalReputationStar?: InputMaybe<Scalars['Int']['input']>;
+}>;
+
+export type GetHospitalConnectionQuery = {
+  __typename?: 'Query';
+  hospitalConnection?: {
+    __typename?: 'HospitalConnection';
+    edges?: Array<{
+      __typename?: 'HospitalEdge';
+      node?: {
+        __typename?: 'Hospital';
+        id: number;
+        name: string;
+        deleted: boolean;
+        hospitalAddress?: {
+          __typename?: 'HospitalAddress';
+          address: string;
+          phone_number: string;
+          prefecture: { __typename?: 'Prefecture'; name: string };
+        } | null;
+      } | null;
+    } | null> | null;
+    pageInfo: {
+      __typename?: 'PageInfo';
+      hasNextPage: boolean;
+      hasPreviousPage: boolean;
+      startCursor?: string | null;
+      endCursor?: string | null;
+    };
+  } | null;
+};
+
+export type HospitalListItemFieldsFragment = {
+  __typename?: 'Hospital';
+  id: number;
+  name: string;
+  deleted: boolean;
+  hospitalAddress?: {
+    __typename?: 'HospitalAddress';
+    address: string;
+    phone_number: string;
+    prefecture: { __typename?: 'Prefecture'; name: string };
+  } | null;
+};
+
 export type GetInternalUsersQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetInternalUsersQuery = {
