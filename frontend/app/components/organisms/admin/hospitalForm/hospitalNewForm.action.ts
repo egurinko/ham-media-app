@@ -5,7 +5,10 @@ import { redirect } from 'next/navigation';
 import { setFlashMessage } from '@/app/utils/flashMessage';
 import type { FormState } from '@/app/utils/formSchema/hospital';
 import { FormSchema } from '@/app/utils/formSchema/hospital';
-import { ADMIN_HOSPIALS_DETAIL_PATH } from '@/utils/routes';
+import {
+  ADMIN_HOSPIALS_DETAIL_PATH,
+  ADMIN_HOSPIALS_PATH,
+} from '@/utils/routes';
 import { createHospital } from './hospitalNewForm.api';
 
 const CreateHospital = FormSchema.omit({ id: true });
@@ -52,5 +55,7 @@ export async function createHospitalAction(
   });
   if (id) {
     redirect(ADMIN_HOSPIALS_DETAIL_PATH(id));
+  } else {
+    redirect(ADMIN_HOSPIALS_PATH);
   }
 }
