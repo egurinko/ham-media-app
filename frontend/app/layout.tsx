@@ -34,7 +34,7 @@ type Props = {
 
 export default function RootLayout({ children }: Props) {
   return (
-    <html lang="ja">
+    <html lang="ja" suppressHydrationWarning>
       <body>
         <noscript>
           <iframe
