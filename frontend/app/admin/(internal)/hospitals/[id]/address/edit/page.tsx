@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import { ErrorMessages } from '@/app/components/molecules/FlashMessage';
+import { FlashMessage } from '@/app/components/molecules/FlashMessage';
 import {
   HospitalBreadcrumbs,
   HOSPITAL_ROUTES,
@@ -33,7 +33,7 @@ export default async function Page(props: Props) {
         gap: 'lg',
       })}
     >
-      <ErrorMessages />
+      <FlashMessage />
       <div
         className={css({
           display: 'flex',

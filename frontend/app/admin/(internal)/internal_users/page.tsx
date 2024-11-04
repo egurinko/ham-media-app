@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Suspense } from 'react';
 import { Button } from '@/app/components/atoms/Button';
 import { Typography } from '@/app/components/atoms/Typography';
-import { ErrorMessages } from '@/app/components/molecules/FlashMessage';
+import { FlashMessage } from '@/app/components/molecules/FlashMessage';
 import { InternalUserListSkeleton } from '@/app/components/organisms/admin/InternalUserListSkeleton';
 import { InternalUserList } from '@/app/components/organisms/admin/internalUserList/Index';
 import { css } from '@/styled/css';
@@ -18,7 +18,7 @@ export default async function Page() {
         gap: 'lg',
       })}
     >
-      <ErrorMessages />
+      <FlashMessage />
       <div
         className={css({
           display: 'flex',

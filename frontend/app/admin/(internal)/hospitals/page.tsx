@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Suspense } from 'react';
 import { Button } from '@/app/components/atoms/Button';
-import { ErrorMessages } from '@/app/components/molecules/FlashMessage';
+import { FlashMessage } from '@/app/components/molecules/FlashMessage';
 import { HospitalListSkeleton } from '@/app/components/organisms/admin/HospitalListSkeleton';
 import {
   HospitalBreadcrumbs,
@@ -41,7 +41,7 @@ export default async function Page(props: Props) {
         gap: 'lg',
       })}
     >
-      <ErrorMessages />
+      <FlashMessage />
       <div
         className={css({
           display: 'flex',
