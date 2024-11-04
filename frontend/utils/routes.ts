@@ -12,6 +12,21 @@ export const ADMIN_HOSPIALS_DETAIL_PATH = (id: number) =>
   `/admin/hospitals/${id}`;
 export const ADMIN_HOSPIALS_EDIT_PATH = (id: number) =>
   `/admin/hospitals/${id}/edit`;
+export const ADMIN_HOSPIALS_ADDRESS_EDIT_PATH = (id: number) =>
+  `/admin/hospitals/${id}/address/edit`;
+export const ADMIN_HOSPIALS_INTERNAL_REPUTATION_FORM_EDIT_PATH = (id: number) =>
+  `/admin/hospitals/${id}/internal_reputation/edit`;
+export const ADMIN_HOSPIALS_BUSINESS_FORM_EDIT_PATH = (id: number) =>
+  `/admin/hospitals/${id}/business_form/edit`;
+export const ADMIN_HOSPIALS_RESERVATION_STATUS_EDIT_PATH = (id: number) =>
+  `/admin/hospitals/${id}/reservation_status/edit`;
+export const ADMIN_HOSPIALS_NIGHT_SERVICE_OPTION_EDIT_PATH = (id: number) =>
+  `/admin/hospitals/${id}/night_service_option/edit`;
+export const ADMIN_HOSPIALS_NIGHT_URGENT_ACTION_OPTION_EDIT_PATH = (
+  id: number,
+) => `/admin/hospitals/${id}/night_urgent_action_option/edit`;
+export const ADMIN_HOSPIALS_CERTIFICATION_OPTION_EDIT_PATH = (id: number) =>
+  `/admin/hospitals/${id}/certification_option/edit`;
 export const ADMIN_MAKERS_PATH = '/admin/makers';
 export const ADMIN_MAKERS_NEW_PATH = '/admin/makers/new';
 export const ADMIN_MAKERS_EDIT_PATH = (id: number) =>
