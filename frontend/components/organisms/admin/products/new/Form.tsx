@@ -74,7 +74,7 @@ const Form: FC<NoProps> = () => {
       setTimeout(() => {
         goAdminProducts(router);
       }, 2000);
-    } catch (e) {}
+    } catch {}
   };
 
   const handleFileChange = useCallback((file: File) => {

@@ -50,7 +50,7 @@ export async function createSessionAction(
         expires: Date.now() + oneMonth,
       });
     }
-  } catch (e) {
+  } catch {
     return {
       message: 'メールアドレスまたはパスワードが違います。',
     };

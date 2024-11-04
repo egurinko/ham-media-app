@@ -61,7 +61,7 @@ const Form: FC<Props> = ({ makerId }) => {
         setTimeout(() => {
           goAdminMakers(router);
         }, 2000);
-      } catch (e) {}
+      } catch {}
     }
   };
 

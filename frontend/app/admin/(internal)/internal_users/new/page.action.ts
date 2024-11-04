@@ -40,7 +40,7 @@ export async function createInternalUserAction(
       roleId,
       discord_user_id,
     });
-  } catch (e) {
+  } catch {
     return {
       message:
         'ユーザの登録に失敗しました。エラーメッセージを確認してください。',

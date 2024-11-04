@@ -71,7 +71,7 @@ const Form: FC<Props> = ({ productId }) => {
       setTimeout(() => {
         goAdminProducts(router);
       }, 2000);
-    } catch (e) {}
+    } catch {}
   };
 
   const [image, setImage] = useState<File | null>(null);

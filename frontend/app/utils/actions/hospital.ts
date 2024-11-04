@@ -60,7 +60,7 @@ export async function createHospital(_prevState: State, formData: FormData) {
       deleted: deleted === 'true',
       internal_memo: internalMemo,
     });
-  } catch (e) {
+  } catch {
     return {
       message: '病院の登録に失敗しました。エラーメッセージを確認してください。',
     };
@@ -101,7 +101,7 @@ export async function updateHospital(_prevState: State, formData: FormData) {
       deleted: deleted === 'true',
       internalMemo: internalMemo,
     });
-  } catch (e) {
+  } catch {
     return {
       message: '病院の更新に失敗しました。エラーメッセージを確認してください。',
     };

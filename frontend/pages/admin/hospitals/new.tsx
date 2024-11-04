@@ -64,7 +64,7 @@ const New = () => {
           goAdminHospitalsEdit(router, { id: result.data.createHospital.id });
         }
       }, 2000);
-    } catch (e) {}
+    } catch {}
   };
 
   return (

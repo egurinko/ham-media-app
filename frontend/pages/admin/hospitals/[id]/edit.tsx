@@ -173,7 +173,7 @@ const Edit = () => {
         setTimeout(() => {
           goAdminHospitals(router);
         }, 2000);
-      } catch (e) {}
+      } catch {}
       scrollTo();
     }
   };
