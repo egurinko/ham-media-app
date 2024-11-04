@@ -1,7 +1,7 @@
 import { Card } from '@/app/components/atoms/Card';
+import { HospitalMap } from '@/app/components/molecules/HospitalMap';
 import { getHospital } from '@/app/utils/api/publicApi/getHospital';
 import { css } from '@/styled/css';
-import { HospitalMap } from './HospitalMap';
 import type { FC } from 'react';
 
 type Props = {
