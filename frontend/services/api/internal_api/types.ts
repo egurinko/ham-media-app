@@ -256,7 +256,10 @@ export type Mutation = {
   updateHospitalAddress: HospitalAddress;
   updateHospitalBase: Hospital;
   updateHospitalBusinessForm: HospitalBusinessForm;
+  updateHospitalCertificationOption: HospitalCertificationOption;
   updateHospitalInternalReputation: HospitalInternalReputation;
+  updateHospitalNightServiceOption: HospitalNightServiceOption;
+  updateHospitalNightUrgentActionOption: HospitalNightUrgentActionOption;
   updateHospitalReservationStatus: HospitalReservationStatus;
   updateInternalUser: InternalUser;
   updateMaker: Maker;
@@ -404,10 +407,27 @@ export type MutationUpdateHospitalBusinessFormArgs = {
   remark: Scalars['String']['input'];
 };
 
+export type MutationUpdateHospitalCertificationOptionArgs = {
+  hospital_id: Scalars['BigInt']['input'];
+  jsava_registered: Scalars['String']['input'];
+  nichiju_registered: Scalars['String']['input'];
+};
+
 export type MutationUpdateHospitalInternalReputationArgs = {
   hospital_id: Scalars['BigInt']['input'];
   remark: Scalars['String']['input'];
   star: Scalars['Int']['input'];
+};
+
+export type MutationUpdateHospitalNightServiceOptionArgs = {
+  hospital_id: Scalars['BigInt']['input'];
+  remark: Scalars['String']['input'];
+  status: Scalars['String']['input'];
+};
+
+export type MutationUpdateHospitalNightUrgentActionOptionArgs = {
+  hospital_id: Scalars['BigInt']['input'];
+  status: Scalars['String']['input'];
 };
 
 export type MutationUpdateHospitalReservationStatusArgs = {
