@@ -262,6 +262,7 @@ export type Mutation = {
   updateHospitalBase: Hospital;
   updateHospitalBusinessForm: HospitalBusinessForm;
   updateHospitalInternalReputation: HospitalInternalReputation;
+  updateHospitalReservationStatus: HospitalReservationStatus;
   updateInternalUser: InternalUser;
   updateMaker: Maker;
   updateProduct: Product;
@@ -417,6 +418,13 @@ export type MutationUpdateHospitalInternalReputationArgs = {
   hospital_id: Scalars['BigInt']['input'];
   remark: Scalars['String']['input'];
   star: Scalars['Int']['input'];
+};
+
+export type MutationUpdateHospitalReservationStatusArgs = {
+  hospital_id: Scalars['BigInt']['input'];
+  remark: Scalars['String']['input'];
+  required: Scalars['String']['input'];
+  reservable: Scalars['String']['input'];
 };
 
 export type MutationUpdateInternalUserArgs = {
