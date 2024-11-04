@@ -5,7 +5,7 @@ import { redirect } from 'next/navigation';
 import { setFlashMessage } from '@/app/utils/flashMessage';
 import type { FormState } from '@/app/utils/formSchema/hospital';
 import { FormSchema } from '@/app/utils/formSchema/hospital';
-import { ADMIN_HOSPIALS_PATH } from '@/utils/routes';
+import { ADMIN_HOSPIALS_DETAIL_PATH } from '@/utils/routes';
 import { createHospital } from './hospitalNewForm.api';
 
 const CreateHospital = FormSchema.omit({ id: true });
@@ -30,13 +30,15 @@ export async function createHospitalAction(
 
   const { name, url, deleted, internalMemo } = validatedFields.data;
 
+  let id: number | undefined = undefined;
   try {
-    await createHospital({
+    const result = await createHospital({
       name,
       url,
       deleted: deleted === 'true',
       internal_memo: internalMemo,
     });
+    id = result.data?.createHospital.id;
   } catch {
     return {
       message: '病院の登録に失敗しました。エラーメッセージを確認してください。',
@@ -45,8 +47,10 @@ export async function createHospitalAction(
 
   const cookieStore = await cookies();
   setFlashMessage(cookieStore, {
-    message: `病院: ${name}を作成しました。`,
+    message: `病院: ${name}を作成しました。詳細情報を設定してから公開してください。`,
     type: 'notice',
   });
-  redirect(ADMIN_HOSPIALS_PATH);
+  if (id) {
+    redirect(ADMIN_HOSPIALS_DETAIL_PATH(id));
+  }
 }
