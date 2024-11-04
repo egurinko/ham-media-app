@@ -43,7 +43,7 @@ export async function updateHospitalAction(
       id,
       name,
       url: url || '',
-      deleted: Boolean(deleted),
+      deleted: deleted === 'true',
       internalMemo: internalMemo,
     });
   } catch {

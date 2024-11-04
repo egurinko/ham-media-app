@@ -21,8 +21,6 @@ export async function createHospitalAction(
     internalMemo: formData.get('internalMemo'),
   });
 
-  console.log('DELETED: ', formData.get('deleted'));
-
   if (!validatedFields.success) {
     return {
       errors: validatedFields.error.flatten().fieldErrors,
@@ -36,7 +34,7 @@ export async function createHospitalAction(
     await createHospital({
       name,
       url,
-      deleted: Boolean(deleted),
+      deleted: deleted === 'true',
       internal_memo: internalMemo,
     });
   } catch {
