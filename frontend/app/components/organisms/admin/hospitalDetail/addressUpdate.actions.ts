@@ -15,10 +15,8 @@ export async function upsertHospitalAddressGeoLocationAction(
   variables: UpsertHospitalAddressGeoLocationMutationVariables,
 ) {
   try {
-    console.log({ variables });
     await upsertHospitalAddressGeoLocation(variables);
-  } catch (e) {
-    console.log({ e });
+  } catch {
     return {
       message: 'メールアドレスまたはパスワードが違います。',
     };

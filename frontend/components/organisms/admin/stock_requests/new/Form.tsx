@@ -92,7 +92,6 @@ const Form: FC<NoProps> = () => {
   const handleSubmit = async () => {
     if (cart) {
       const cartItems = Object.values(cart.items);
-      console.log(cartItems);
       await create({ variables: { requestProducts: cartItems } });
       update({ variables: { id: cart.id, items: {} as JSON } });
       await fetchMore({ variables: { productIds: [] } });

@@ -54,8 +54,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
         images: OG_DEFAULT_IMAGE,
       },
     };
-  } catch (e) {
-    console.log({ e });
+  } catch {
     notFound();
   }
 }
