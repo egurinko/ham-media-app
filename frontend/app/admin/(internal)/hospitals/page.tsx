@@ -2,13 +2,13 @@ import Link from 'next/link';
 import { Suspense } from 'react';
 import { Button } from '@/app/components/atoms/Button';
 import { FlashMessage } from '@/app/components/molecules/FlashMessage';
-import { HospitalListSkeleton } from '@/app/components/organisms/admin/HospitalListSkeleton';
 import {
   HospitalBreadcrumbs,
   HOSPITAL_ROUTES,
 } from '@/app/components/organisms/admin/hospitalBreadcrumbs/Index';
 import { HospitalList } from '@/app/components/organisms/admin/hospitalList/Index';
 import { HopistalSearchSection } from '@/app/components/organisms/admin/hospitalSearchSection/Index';
+import { ListSkeleton } from '@/app/components/organisms/admin/skeletons/ListSkeleton';
 import { css } from '@/styled/css';
 import { ADMIN_HOSPIALS_NEW_PATH } from '@/utils/routes';
 
@@ -55,7 +55,7 @@ export default async function Page(props: Props) {
         </Link>
       </div>
       <HopistalSearchSection />
-      <Suspense fallback={<HospitalListSkeleton />}>
+      <Suspense fallback={<ListSkeleton />}>
         <HospitalList
           name={name}
           prefectureId={prefectureId}

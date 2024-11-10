@@ -1,9 +1,9 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { HospitalListSkeleton } from '@/app/components/organisms/admin/HospitalListSkeleton';
 import type { GetHospitalsMoreActionResponse } from '@/app/components/organisms/admin/hospitalList/index.action';
 import type { GetHospitalConnectionQueryVariables } from '@/app/components/organisms/admin/hospitalList/index.api.generated';
+import { ListSkeleton } from '@/app/components/organisms/admin/skeletons/ListSkeleton';
 import { useIntersectionObserver } from '@/app/utils/hooks/useIntersectionObserver';
 import { css } from '@/styled/css';
 import { ListItem } from './ListItem';
@@ -88,7 +88,7 @@ export const LoadMore: FC<Props> = ({
       >
         {hasNextPage && <div ref={infiniteScrollTarget} />}
       </div>
-      {isPending && <HospitalListSkeleton />}
+      {isPending && <ListSkeleton />}
     </>
   );
 };

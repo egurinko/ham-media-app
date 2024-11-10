@@ -3,7 +3,7 @@ import { SkeletonText } from '@/app/components/atoms/SkeletonText';
 import { css } from '@/styled/css';
 import type { FC } from 'react';
 
-export const InternalUserListSkeleton: FC<NoProps> = () => (
+export const ListSkeleton: FC<NoProps> = () => (
   <>
     {[...Array(5)].map((_, i) => (
       <div key={i} className={css({ width: '100%' })}>

@@ -3,8 +3,8 @@ import { Suspense } from 'react';
 import { Button } from '@/app/components/atoms/Button';
 import { Typography } from '@/app/components/atoms/Typography';
 import { FlashMessage } from '@/app/components/molecules/FlashMessage';
-import { InternalUserListSkeleton } from '@/app/components/organisms/admin/InternalUserListSkeleton';
 import { InternalUserList } from '@/app/components/organisms/admin/internalUserList/Index';
+import { ListSkeleton } from '@/app/components/organisms/admin/skeletons/ListSkeleton';
 import { css } from '@/styled/css';
 import { ADMIN_INTERNAL_USERS_NEW_PATH } from '@/utils/routes';
 
@@ -33,7 +33,7 @@ export default async function Page() {
           <Button visual="tonal">新規登録する</Button>
         </Link>
       </div>
-      <Suspense fallback={<InternalUserListSkeleton />}>
+      <Suspense fallback={<ListSkeleton />}>
         <InternalUserList />
       </Suspense>
     </div>
