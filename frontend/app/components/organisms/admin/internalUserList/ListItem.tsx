@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import { Icon } from '@/app/components/atoms/Icon';
 import { Typography } from '@/app/components/atoms/Typography';
+import { ActionDialog } from '@/app/components/organisms/admin/ActionDialog';
 import StarIcon from '@/assets/star.svg';
 import UserIcon from '@/assets/user_profile.svg';
 import { css } from '@/styled/css';
 import { ADMIN_INTERNAL_USERS_EDIT_PATH } from '@/utils/routes';
-import { DeleteDialog } from './DeleteDialog';
 import { deleteInternalUserAction } from './listItem.action';
 import type { InternalUserListItemFieldsFragment } from './listItem.api.generated';
 import type { FC } from 'react';
@@ -70,11 +70,15 @@ export const ListItem: FC<Props> = ({ internalUser }) => (
         <Typography variant="body2">{internalUser.email}</Typography>
       </div>
     </div>
-    <DeleteDialog
-      handleDelete={async () => {
+
+    <ActionDialog
+      handleClick={async () => {
         'use server';
         return await deleteInternalUserAction(internalUser.id);
       }}
+      title="ユーザの削除"
+      description={`${internalUser.name}を削除してもよろしいですか？`}
+      submitLabel="削除する"
     />
   </li>
 );

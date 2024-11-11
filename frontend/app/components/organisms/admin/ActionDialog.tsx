@@ -10,10 +10,18 @@ import { css } from '@/styled/css';
 import type { FC } from 'react';
 
 type Props = {
-  handleDelete: () => Promise<void>;
+  handleClick: () => Promise<void>;
+  title: string;
+  description: string;
+  submitLabel: string;
 };
 
-export const DeleteDialog: FC<Props> = ({ handleDelete }) => {
+export const ActionDialog: FC<Props> = ({
+  handleClick,
+  title,
+  description,
+  submitLabel,
+}) => {
   const [isPending, startTransition] = useTransition();
   return (
     <Dialog.Root>
@@ -25,7 +33,7 @@ export const DeleteDialog: FC<Props> = ({ handleDelete }) => {
       <Dialog.Backdrop />
       <Dialog.Positioner>
         <Dialog.Content p="lg">
-          <Dialog.Title>ユーザの削除</Dialog.Title>
+          <Dialog.Title>{title}</Dialog.Title>
           <div
             className={css({
               mt: 'md',
@@ -34,7 +42,7 @@ export const DeleteDialog: FC<Props> = ({ handleDelete }) => {
               gap: 'lg',
             })}
           >
-            ユーザを削除してもよろしいですか？
+            {description}
           </div>
           <div className={css({ mt: 'lg', textAlign: 'right' })}>
             <Dialog.CloseTrigger asChild>
@@ -43,11 +51,9 @@ export const DeleteDialog: FC<Props> = ({ handleDelete }) => {
             <Dialog.CloseTrigger asChild>
               <Button
                 visual="primary"
-                onClick={() =>
-                  startTransition(async () => await handleDelete())
-                }
+                onClick={() => startTransition(async () => await handleClick())}
               >
-                削除する
+                {submitLabel}
               </Button>
             </Dialog.CloseTrigger>
           </div>
