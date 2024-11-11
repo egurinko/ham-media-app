@@ -865,6 +865,47 @@ export type GetInternalUserProfileQuery = {
   };
 };
 
+export type GetMakerQueryVariables = Exact<{
+  id: Scalars['Int']['input'];
+}>;
+
+export type GetMakerQuery = {
+  __typename?: 'Query';
+  maker: { __typename?: 'Maker'; id: number; name: string };
+};
+
+export type UpdateMakerMutationVariables = Exact<{
+  id: Scalars['Int']['input'];
+  name: Scalars['String']['input'];
+}>;
+
+export type UpdateMakerMutation = {
+  __typename?: 'Mutation';
+  updateMaker: { __typename?: 'Maker'; id: number };
+};
+
+export type CreateMakerMutationVariables = Exact<{
+  name: Scalars['String']['input'];
+}>;
+
+export type CreateMakerMutation = {
+  __typename?: 'Mutation';
+  createMaker: { __typename?: 'Maker'; id: number };
+};
+
+export type GetSessonQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetSessonQuery = {
+  __typename?: 'Query';
+  session: {
+    __typename?: 'Session';
+    internalUser: {
+      __typename?: 'InternalUser';
+      role: { __typename?: 'Role'; name: string };
+    };
+  };
+};
+
 export type GetBreadcrumbsHospitalQueryVariables = Exact<{
   id: Scalars['BigInt']['input'];
 }>;
@@ -1308,4 +1349,26 @@ export type CreateSessionMutationVariables = Exact<{
 export type CreateSessionMutation = {
   __typename?: 'Mutation';
   createSession: { __typename?: 'CreateSessionType'; token: string };
+};
+
+export type GetMakersQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetMakersQuery = {
+  __typename?: 'Query';
+  makers: Array<{ __typename?: 'Maker'; id: number; name: string }>;
+};
+
+export type MakerListItemFieldsFragment = {
+  __typename?: 'Maker';
+  id: number;
+  name: string;
+};
+
+export type DeleteMakerMutationVariables = Exact<{
+  id: Scalars['Int']['input'];
+}>;
+
+export type DeleteMakerMutation = {
+  __typename?: 'Mutation';
+  deleteMaker: { __typename?: 'Delete'; deleted: boolean };
 };
