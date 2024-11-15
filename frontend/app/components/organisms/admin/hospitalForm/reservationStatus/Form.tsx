@@ -5,10 +5,10 @@ import { useState, useActionState } from 'react';
 import { Select } from '@/app/components/atoms/';
 import { Alert } from '@/app/components/atoms/Alert';
 import { Icon } from '@/app/components/atoms/Icon';
-import { Input } from '@/app/components/atoms/Input';
 import { InputLabel } from '@/app/components/atoms/InputLabel';
 import { SubmitButton } from '@/app/components/atoms/SubmitButton';
 import { Tag } from '@/app/components/atoms/Tag';
+import { Textarea } from '@/app/components/atoms/Textarea';
 import { ErrorMessages } from '@/app/components/molecules/ErrorMessages';
 import type {
   FormState,
@@ -141,11 +141,10 @@ export const Form: FC<Props> = ({ initialHospitalReservationStatus }) => {
       </Select.Root>
       <div className={stack()}>
         <InputLabel htmlFor="remark">備考</InputLabel>
-        <Input
+        <Textarea
           id="remark"
           name="remark"
           required={false}
-          fullWidth
           value={remark}
           onChange={(e) => setRemark(e.target.value)}
           aria-describedby="remark-error"

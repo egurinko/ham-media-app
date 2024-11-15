@@ -7,6 +7,7 @@ import { InputLabel } from '@/app/components/atoms/InputLabel';
 import { SubmitButton } from '@/app/components/atoms/SubmitButton';
 import { Switch } from '@/app/components/atoms/Switch';
 import { Tag } from '@/app/components/atoms/Tag';
+import { Textarea } from '@/app/components/atoms/Textarea';
 import { Typography } from '@/app/components/atoms/Typography';
 import { ErrorMessages } from '@/app/components/molecules/ErrorMessages';
 import type { FormState, FormSchema } from '@/app/utils/formSchema/hospital';
@@ -96,12 +97,10 @@ export const HospitalForm: FC<Props> = ({ handleSubmit, initialHospital }) => {
       </div>
       <div className={stack()}>
         <InputLabel htmlFor="internalMemo">内部メモ</InputLabel>
-        <Input
+        <Textarea
           id="internalMemo"
           name="internalMemo"
-          type="text"
           required={false}
-          fullWidth
           value={internalMemo}
           onChange={(e) => setInternalMemo(e.target.value)}
           aria-describedby="internalMemo-error"
