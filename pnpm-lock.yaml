@@ -61,8 +61,8 @@ importers:
         specifier: ^12.0.1
         version: 12.0.1
       '@line/bot-sdk':
-        specifier: ^9.4.4
-        version: 9.4.4
+        specifier: ^9.5.0
+        version: 9.5.0
       '@prisma/client':
         specifier: 5.22.0
         version: 5.22.0(prisma@5.22.0)
@@ -2541,8 +2541,8 @@ packages:
   '@kamilkisiela/fast-url-parser@1.1.4':
     resolution: {integrity: sha512-gbkePEBupNydxCelHCESvFSFM8XPh1Zs/OAVRW/rKpEqPAl5PbOM90Si8mv9bvnR53uPD2s/FiRxdvSejpRJew==}
 
-  '@line/bot-sdk@9.4.4':
-    resolution: {integrity: sha512-iTiuK/ocTPOsk5+EGge3KIW3OVRNYPeBtCCp0WdsTuqty2v+9ObtKiReU35cUvf24AQjwFSccqs8D3x+HvYegQ==}
+  '@line/bot-sdk@9.5.0':
+    resolution: {integrity: sha512-PPtul1vzoyZ5HkNqh643YD0TCFqOHI6ld4x69c/prwAxornBxPaeXoHbHcFeK8gaD2W4/666mPQe5K3CmUMepw==}
     engines: {node: '>=18'}
 
   '@lukeed/ms@2.0.2':
@@ -11952,7 +11952,7 @@ snapshots:
 
   '@kamilkisiela/fast-url-parser@1.1.4': {}
 
-  '@line/bot-sdk@9.4.4':
+  '@line/bot-sdk@9.5.0':
     dependencies:
       '@types/node': 22.9.0
     optionalDependencies:
