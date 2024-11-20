@@ -5,9 +5,9 @@
   "license": "MIT",
   "engines": {
     "node": "20.18.0",
-    "pnpm": ">=9.13.2"
+    "pnpm": ">=9.14.2"
   },
-  "packageManager": "pnpm@9.13.2",
+  "packageManager": "pnpm@9.14.2",
   "scripts": {
     "console": "prisma-repl",
     "build": "pnpm tsc -p tsconfig.json && tsc-alias -p tsconfig.json",
