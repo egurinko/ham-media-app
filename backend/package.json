@@ -39,7 +39,7 @@
     "@fastify/helmet": "^13.0.0",
     "@line/bot-sdk": "^9.5.0",
     "@prisma/client": "5.22.0",
-    "@sentry/node": "^8.41.0",
+    "@sentry/node": "^8.42.0",
     "axios": "^1.7.8",
     "bcrypt": "^5.1.1",
     "fastify": "^5.1.0",
