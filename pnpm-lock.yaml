@@ -164,8 +164,8 @@ importers:
         specifier: ^2.1.8
         version: 2.1.8(vitest@2.1.8(@types/node@20.17.9)(lightningcss@1.25.1))
       dotenv:
-        specifier: ^16.4.5
-        version: 16.4.5
+        specifier: ^16.4.7
+        version: 16.4.7
       dotenv-cli:
         specifier: ^7.4.4
         version: 7.4.4
@@ -300,8 +300,8 @@ importers:
         specifier: 18.3.1
         version: 18.3.1
       dotenv:
-        specifier: ^16.4.5
-        version: 16.4.5
+        specifier: ^16.4.7
+        version: 16.4.7
       eslint-config-next:
         specifier: 15.0.3
         version: 15.0.3(eslint@9.16.0(jiti@2.4.1))(typescript@5.7.2)
@@ -5056,8 +5056,8 @@ packages:
     resolution: {integrity: sha512-GopVGCpVS1UKH75VKHGuQFqS1Gusej0z4FyQkPdwjil2gNIv+LNsqBlboOzpJFZKVT95GkCyWJbBSdFEFUWI2A==}
     engines: {node: '>=12'}
 
-  dotenv@16.4.5:
-    resolution: {integrity: sha512-ZmdL2rui+eB2YwhsWzjInR8LldtZHGDoQ1ugH85ppHKwpUHL7j7rN0Ti9NCnGiQbhaZ11FpR+7ao1dNsmduNUg==}
+  dotenv@16.4.7:
+    resolution: {integrity: sha512-47qPchRCykZC03FhkYAhrvwU4xDBFIj1QPqaarj6mdM/hgUzfPHcpkHJOn3mJAufFeeAxAzeGsr5X0M4k6fLZQ==}
     engines: {node: '>=12'}
 
   downshift@6.1.12:
@@ -11711,7 +11711,7 @@ snapshots:
       '@whatwg-node/fetch': 0.10.1
       chalk: 4.1.2
       debug: 4.3.7
-      dotenv: 16.4.5
+      dotenv: 16.4.7
       graphql: 16.9.0
       graphql-request: 6.1.0(graphql@16.9.0)
       http-proxy-agent: 7.0.2
@@ -15626,13 +15626,13 @@ snapshots:
   dotenv-cli@7.4.4:
     dependencies:
       cross-spawn: 7.0.6
-      dotenv: 16.4.5
+      dotenv: 16.4.7
       dotenv-expand: 10.0.0
       minimist: 1.2.8
 
   dotenv-expand@10.0.0: {}
 
-  dotenv@16.4.5: {}
+  dotenv@16.4.7: {}
 
   downshift@6.1.12(react@18.3.1):
     dependencies:
@@ -16203,7 +16203,7 @@ snapshots:
       chokidar: 4.0.1
       close-with-grace: 2.1.0
       commist: 3.2.0
-      dotenv: 16.4.5
+      dotenv: 16.4.7
       fastify: 5.1.0
       fastify-plugin: 5.0.1
       generify: 4.2.0
