@@ -49,11 +49,11 @@ importers:
   backend:
     dependencies:
       '@aws-sdk/client-s3':
-        specifier: ^3.703.0
-        version: 3.703.0
+        specifier: ^3.705.0
+        version: 3.705.0
       '@aws-sdk/lib-storage':
-        specifier: ^3.703.0
-        version: 3.703.0(@aws-sdk/client-s3@3.703.0)
+        specifier: ^3.705.0
+        version: 3.705.0(@aws-sdk/client-s3@3.705.0)
       '@fastify/cors':
         specifier: ^10.0.1
         version: 10.0.1
@@ -391,8 +391,8 @@ packages:
   '@aws-crypto/util@5.2.0':
     resolution: {integrity: sha512-4RkU9EsI6ZpBve5fseQlGNUWKMa1RLPQ1dnjnQoe07ldfIzcsGb5hC5W0Dm7u423KWzawlrpbjXBrXCEv9zazQ==}
 
-  '@aws-sdk/client-s3@3.703.0':
-    resolution: {integrity: sha512-4TSrIamzASTeRPKXrTLcEwo+viPTuOSGcbXh4HC1R0m/rXwK0BHJ4btJ0Q34nZNF+WzvM+FiemXVjNc8qTAxog==}
+  '@aws-sdk/client-s3@3.705.0':
+    resolution: {integrity: sha512-Fm0Cbc4zr0yG0DnNycz7ywlL5tQFdLSb7xCIPfzrxJb3YQiTXWxH5eu61SSsP/Z6RBNRolmRPvst/iNgX0fWvA==}
     engines: {node: '>=16.0.0'}
 
   '@aws-sdk/client-sso-oidc@3.699.0':
@@ -445,11 +445,11 @@ packages:
     peerDependencies:
       '@aws-sdk/client-sts': ^3.696.0
 
-  '@aws-sdk/lib-storage@3.703.0':
-    resolution: {integrity: sha512-0ejct/fmx/gF7aTcH5RUWiP9IodGWZY0tAfU8tYct0V41hPd9i9t55NbSk/jnzZcRN31NdSHfVxqGdISGAe0qg==}
+  '@aws-sdk/lib-storage@3.705.0':
+    resolution: {integrity: sha512-jucPgdO5RCQAki8+CcEi3ZQxBUpq6iVcurtMkLS1xGbe/VOhxzNOt44V/4WqjUu7ra3on8DD0DOqd9523BqOzA==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
-      '@aws-sdk/client-s3': ^3.703.0
+      '@aws-sdk/client-s3': ^3.705.0
 
   '@aws-sdk/middleware-bucket-endpoint@3.696.0':
     resolution: {integrity: sha512-V07jishKHUS5heRNGFpCWCSTjRJyQLynS/ncUeE8ZYtG66StOOQWftTwDfFOSoXlIqrXgb4oT9atryzXq7Z4LQ==}
@@ -8914,7 +8914,7 @@ snapshots:
       '@smithy/util-utf8': 2.3.0
       tslib: 2.8.1
 
-  '@aws-sdk/client-s3@3.703.0':
+  '@aws-sdk/client-s3@3.705.0':
     dependencies:
       '@aws-crypto/sha1-browser': 5.2.0
       '@aws-crypto/sha256-browser': 5.2.0
@@ -9215,9 +9215,9 @@ snapshots:
       '@smithy/types': 3.7.1
       tslib: 2.8.1
 
-  '@aws-sdk/lib-storage@3.703.0(@aws-sdk/client-s3@3.703.0)':
+  '@aws-sdk/lib-storage@3.705.0(@aws-sdk/client-s3@3.705.0)':
     dependencies:
-      '@aws-sdk/client-s3': 3.703.0
+      '@aws-sdk/client-s3': 3.705.0
       '@smithy/abort-controller': 3.1.8
       '@smithy/middleware-endpoint': 3.2.4
       '@smithy/smithy-client': 3.4.5
