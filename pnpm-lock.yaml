@@ -282,7 +282,7 @@ importers:
         specifier: ^4.3.2
         version: 4.3.2(graphql@16.9.0)
       '@pandacss/dev':
-        specifier: ^0.48.0
+        specifier: ^0.48.1
         version: 0.48.1(typescript@5.7.2)
       '@svgr/webpack':
         specifier: ^8.1.0
@@ -13902,7 +13902,7 @@ snapshots:
 
   caniuse-api@3.0.0:
     dependencies:
-      browserslist: 4.23.3
+      browserslist: 4.24.2
       caniuse-lite: 1.0.30001687
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
@@ -16422,7 +16422,7 @@ snapshots:
 
   postcss-merge-rules@7.0.4(postcss@8.4.49):
     dependencies:
-      browserslist: 4.23.3
+      browserslist: 4.24.2
       caniuse-api: 3.0.0
       cssnano-utils: 5.0.0(postcss@8.4.49)
       postcss: 8.4.49
