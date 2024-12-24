@@ -79,8 +79,8 @@ importers:
         specifier: ^5.1.0
         version: 5.2.0
       fastify-cli:
-        specifier: ^7.0.1
-        version: 7.2.0
+        specifier: ^7.3.0
+        version: 7.3.0
       fastify-healthcheck:
         specifier: ^5.1.0
         version: 5.1.0
@@ -5144,8 +5144,8 @@ packages:
   fastest-stable-stringify@2.0.2:
     resolution: {integrity: sha512-bijHueCGd0LqqNK9b5oCMHc0MluJAx0cwqASgbWMvkO01lCYgIhacVRLcaDz3QnyYIRNJRDwMb41VuT6pHJ91Q==}
 
-  fastify-cli@7.2.0:
-    resolution: {integrity: sha512-P9hIYYDifBO1dTraAfyrJo6zS0Dkou5TWXFM0AOwg0AQ+PCICzzj5wkJVJExaUUUYZIdhGSyxlZkMKiJUsqAkQ==}
+  fastify-cli@7.3.0:
+    resolution: {integrity: sha512-4QMW3VeCxysR0E/Hc1MA69G61LENeKdlaLymOUH5uFWPczKMC3Ngzr9A/zWfrzeSF47SOp/SZOLgdauRkGh8xg==}
     hasBin: true
 
   fastify-healthcheck@5.1.0:
@@ -15011,7 +15011,7 @@ snapshots:
 
   fastest-stable-stringify@2.0.2: {}
 
-  fastify-cli@7.2.0:
+  fastify-cli@7.3.0:
     dependencies:
       '@fastify/deepmerge': 2.0.0
       chalk: 4.1.2
