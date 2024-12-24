@@ -215,8 +215,8 @@ importers:
         specifier: ^11.13.5
         version: 11.14.0(@emotion/react@11.14.0(@types/react@18.3.18)(react@18.3.1))(@types/react@18.3.18)(react@18.3.1)
       '@react-google-maps/api':
-        specifier: ^2.20.3
-        version: 2.20.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^2.20.5
+        version: 2.20.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       apollo-upload-client:
         specifier: ^18.0.1
         version: 18.0.1(@apollo/client@3.12.4(@types/react@18.3.18)(graphql-ws@5.16.0(graphql@16.10.0))(graphql@16.10.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(graphql@16.10.0)
@@ -2914,11 +2914,11 @@ packages:
   '@prisma/instrumentation@5.22.0':
     resolution: {integrity: sha512-LxccF392NN37ISGxIurUljZSh1YWnphO34V5a0+T7FVQG2u9bhAXRTJpgmQ3483woVhkraQZFF7cbRrpbw/F4Q==}
 
-  '@react-google-maps/api@2.20.3':
-    resolution: {integrity: sha512-ndXC8nZDPT78nCceZnftGSvA/iVhwx2XhlfEYaoUy2biGelhrE2vDzjyTuZhb4RV+bVYpd4LkIf3hzyxAFd+Qg==}
+  '@react-google-maps/api@2.20.5':
+    resolution: {integrity: sha512-Dx3faV4d7JXFSD7SB8ePIt5LOB72mNGHKFp/hIQVaPEsLJlEi4ID+XL6HM3Xw10AzGbr4KS/eQSi3OAaN7YttQ==}
     peerDependencies:
-      react: ^16.8 || ^17 || ^18
-      react-dom: ^16.8 || ^17 || ^18
+      react: ^16.8 || ^17 || ^18 || ^19
+      react-dom: ^16.8 || ^17 || ^18 || ^19
 
   '@react-google-maps/infobox@2.20.0':
     resolution: {integrity: sha512-03PJHjohhaVLkX6+NHhlr8CIlvUxWaXhryqDjyaZ8iIqqix/nV8GFdz9O3m5OsjtxtNho09F/15j14yV0nuyLQ==}
@@ -11693,7 +11693,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@react-google-maps/api@2.20.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@react-google-maps/api@2.20.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@googlemaps/js-api-loader': 1.16.8
       '@googlemaps/markerclusterer': 2.5.3
