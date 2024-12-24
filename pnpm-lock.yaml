@@ -127,7 +127,7 @@ importers:
         specifier: ^1.4.0
         version: 1.4.0
       sanitize-html:
-        specifier: ^2.13.1
+        specifier: ^2.14.0
         version: 2.14.0
       ts-node-dev:
         specifier: ^2.0.0
