@@ -79,7 +79,7 @@ importers:
         specifier: ^5.2.0
         version: 5.2.0
       fastify-cli:
-        specifier: ^7.0.1
+        specifier: ^7.3.0
         version: 7.3.0
       fastify-healthcheck:
         specifier: ^5.1.0
