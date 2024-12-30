@@ -59,7 +59,7 @@
     "pino-pretty": "^13.0.0",
     "prisma": "5.22.0",
     "prisma-repl": "^1.4.0",
-    "sanitize-html": "^2.13.1",
+    "sanitize-html": "^2.14.0",
     "ts-node-dev": "^2.0.0",
     "uuid": "^11.0.3"
   },
