@@ -893,6 +893,39 @@ export type CreateMakerMutation = {
   createMaker: { __typename?: 'Maker'; id: number };
 };
 
+export type GetProductTagGroupQueryVariables = Exact<{
+  id: Scalars['Int']['input'];
+}>;
+
+export type GetProductTagGroupQuery = {
+  __typename?: 'Query';
+  productTagGroup: {
+    __typename?: 'ProductTagGroup';
+    id: number;
+    name: string;
+    productTags: Array<{ __typename?: 'ProductTag'; id: number; name: string }>;
+  };
+};
+
+export type UpdateProductTagGroupMutationVariables = Exact<{
+  id: Scalars['Int']['input'];
+  name: Scalars['String']['input'];
+}>;
+
+export type UpdateProductTagGroupMutation = {
+  __typename?: 'Mutation';
+  updateProductTagGroup: { __typename?: 'ProductTagGroup'; id: number };
+};
+
+export type CreateProductTagGroupMutationVariables = Exact<{
+  name: Scalars['String']['input'];
+}>;
+
+export type CreateProductTagGroupMutation = {
+  __typename?: 'Mutation';
+  createProductTagGroup: { __typename?: 'ProductTagGroup'; id: number };
+};
+
 export type GetSessonQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetSessonQuery = {
@@ -1371,4 +1404,72 @@ export type DeleteMakerMutationVariables = Exact<{
 export type DeleteMakerMutation = {
   __typename?: 'Mutation';
   deleteMaker: { __typename?: 'Delete'; deleted: boolean };
+};
+
+export type GetProductTagGroupsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetProductTagGroupsQuery = {
+  __typename?: 'Query';
+  productTagGroups: Array<{
+    __typename?: 'ProductTagGroup';
+    id: number;
+    name: string;
+    productTags: Array<{ __typename?: 'ProductTag'; id: number; name: string }>;
+  }>;
+};
+
+export type ProductTagGroupListItemFieldsFragment = {
+  __typename?: 'ProductTagGroup';
+  id: number;
+  name: string;
+  productTags: Array<{ __typename?: 'ProductTag'; id: number; name: string }>;
+};
+
+export type GetProductTagsQueryVariables = Exact<{
+  productTagGroupId: Scalars['Int']['input'];
+}>;
+
+export type GetProductTagsQuery = {
+  __typename?: 'Query';
+  productTagGroup: {
+    __typename?: 'ProductTagGroup';
+    productTags: Array<{ __typename?: 'ProductTag'; id: number; name: string }>;
+  };
+};
+
+export type ProductTagListItemFieldsFragment = {
+  __typename?: 'ProductTag';
+  id: number;
+  name: string;
+};
+
+export type DeleteProductTagMutationVariables = Exact<{
+  id: Scalars['Int']['input'];
+}>;
+
+export type DeleteProductTagMutation = {
+  __typename?: 'Mutation';
+  deleteProductTag: { __typename?: 'Delete'; deleted: boolean };
+};
+
+export type UpdateProductTagMutationVariables = Exact<{
+  id: Scalars['Int']['input'];
+  name: Scalars['String']['input'];
+}>;
+
+export type UpdateProductTagMutation = {
+  __typename?: 'Mutation';
+  updateProductTag: { __typename?: 'ProductTag'; id: number; name: string };
+};
+
+export type CreateProductTagsMutationVariables = Exact<{
+  productTagGroupId: Scalars['Int']['input'];
+  productTags:
+    | Array<CreateProductTagsProductTagInputType>
+    | CreateProductTagsProductTagInputType;
+}>;
+
+export type CreateProductTagsMutation = {
+  __typename?: 'Mutation';
+  createProductTags: { __typename?: 'BatchPayload'; count: number };
 };
