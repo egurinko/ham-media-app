@@ -3,6 +3,7 @@
 import { createListCollection } from '@ark-ui/react';
 import { useState, useActionState } from 'react';
 import { Select } from '@/app/components/atoms';
+import { Alert } from '@/app/components/atoms/Alert';
 import { Icon } from '@/app/components/atoms/Icon';
 import { Input } from '@/app/components/atoms/Input';
 import { InputLabel } from '@/app/components/atoms/InputLabel';
@@ -65,6 +66,7 @@ export const InternalUserForm: FC<Props> = ({
       })}
       action={dispatch}
     >
+      {state.message && <Alert visual="error">{state.message}</Alert>}
       <input type="hidden" name="id" value={initialInternalUser.id} />
       <div className={stack()}>
         <InputLabel htmlFor="name">

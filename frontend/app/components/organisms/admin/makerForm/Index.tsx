@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useActionState } from 'react';
+import { Alert } from '@/app/components/atoms/Alert';
 import { Input } from '@/app/components/atoms/Input';
 import { InputLabel } from '@/app/components/atoms/InputLabel';
 import { SubmitButton } from '@/app/components/atoms/SubmitButton';
@@ -39,6 +40,7 @@ export const MakerForm: FC<Props> = ({
       })}
       action={dispatch}
     >
+      {state.message && <Alert visual="error">{state.message}</Alert>}
       <input type="hidden" name="id" value={initialMaker.id} />
       <div className={stack()}>
         <InputLabel htmlFor="name">
