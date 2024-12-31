@@ -7,16 +7,21 @@ import type { FC } from 'react';
 
 type Props = {
   text: string;
+  className?: string;
 };
 
-export const SubmitButton: FC<Props> = ({ text }) => {
+export const SubmitButton: FC<Props> = ({ text, className }) => {
   const { pending } = useFormStatus();
   return (
     <Button
       type="submit"
-      className={css({
-        mt: 'lg',
-      })}
+      className={
+        !!className
+          ? className
+          : css({
+              mt: 'lg',
+            })
+      }
       disabled={pending}
       loading={pending}
     >
