@@ -1,5 +1,7 @@
 import { queryField, nonNull, arg } from 'nexus';
 import { hospitalType } from '../types';
+import Mercurius from 'mercurius';
+import { judgeError } from '@/services/error/judge';
 
 export const hospital = queryField((t) => {
   t.nonNull.field('hospital', {
@@ -8,12 +10,21 @@ export const hospital = queryField((t) => {
       id: nonNull(arg({ type: 'BigInt' })),
     },
     resolve: async (_root, args, ctx) => {
-      return await ctx.prisma.hospital.findFirstOrThrow({
-        where: {
-          id: args.id,
-          deleted: false,
-        },
-      });
+      try {
+        return await ctx.prisma.hospital.findFirstOrThrow({
+          where: {
+            id: args.id,
+            deleted: false,
+          },
+        });
+      } catch (e) {
+        const { key, message, statusCode } = judgeError(e);
+        throw new Mercurius.ErrorWithProps(message, {
+          key,
+          message,
+          statusCode,
+        });
+      }
     },
   });
 });

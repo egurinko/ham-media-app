@@ -263,7 +263,9 @@ describe('hospital', () => {
       const result = await client.query(QUERY, { variables: { id: 100 } });
 
       expect(result.data).toBeNull();
-      expect(result.errors![0]?.message).toEqual('No Hospital found');
+      expect(result.errors![0]?.message).toEqual(
+        'お探しの病院は見つかりません。',
+      );
     });
   });
 });

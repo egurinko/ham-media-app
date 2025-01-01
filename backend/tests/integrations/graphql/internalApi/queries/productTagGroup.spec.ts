@@ -57,7 +57,9 @@ describe('productTagGroup', () => {
         variables: { id: 100 },
       });
 
-      expect(result.errors![0]?.message).toEqual('No ProductTagGroup found');
+      expect(result.errors![0]?.message).toEqual(
+        'お探しのタググループは見つかりません。',
+      );
     });
   });
 });

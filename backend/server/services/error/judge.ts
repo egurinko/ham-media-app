@@ -12,6 +12,7 @@ type Result = {
 
 const STATUS_CODES = {
   INTERNAL_SERVER_ERROR: 500,
+  NOT_FOUND: 404,
   BAD_REQUEST: 400,
 } as const;
 
@@ -35,6 +36,16 @@ export const judgeError = (e: unknown): Result => {
           key,
           message: errorMessage.foreignKey(jaKey),
           statusCode: STATUS_CODES.BAD_REQUEST,
+        };
+      }
+    } else if (e.code === 'P2025') {
+      // Record Not Found
+      if (hasModelName(e.meta)) {
+        const { key, jaKey } = mapModelName(e.meta.modelName);
+        return {
+          key,
+          message: errorMessage.notFound(jaKey),
+          statusCode: STATUS_CODES.NOT_FOUND,
         };
       }
     }
@@ -110,4 +121,34 @@ const mapFieldName = (fieldName: string) => {
 
   Sentry.captureException(fieldName);
   return { key: fieldName, jaKey: '不明なキー' };
+};
+
+const hasModelName = (
+  meta: Prisma.PrismaClientKnownRequestError['meta'],
+): meta is { modelName: string } =>
+  !!meta &&
+  !!(meta as any).modelName &&
+  typeof (meta as any).modelName === 'string';
+
+const mapModelName = (modelName: string) => {
+  const key = modelName;
+
+  if (modelName === 'Hospital') {
+    return { key, jaKey: MODELS.HOSPITAL.TABLE_NAME };
+  } else if (modelName === 'InternalUser') {
+    return { key, jaKey: MODELS.INTERNAL_USER.TABLE_NAME };
+  } else if (modelName === 'Product') {
+    return { key, jaKey: MODELS.PRODUCT.TABLE_NAME };
+  } else if (modelName === 'Maker') {
+    return { key, jaKey: MODELS.MAKER.TABLE_NAME };
+  } else if (modelName === 'ProductTag') {
+    return { key, jaKey: MODELS.PRODUCT_TAGS.TABLE_NAME };
+  } else if (modelName === 'ProductTagGroup') {
+    return { key, jaKey: MODELS.PRODUCT_TAG_GROUPS.TABLE_NAME };
+  } else if (modelName === 'Stock') {
+    return { key, jaKey: MODELS.STOCK.TABLE_NAME };
+  }
+
+  Sentry.captureException(modelName);
+  return { key: modelName, jaKey: '不明なキー' };
 };
