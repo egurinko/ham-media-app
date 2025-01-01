@@ -27,6 +27,10 @@ export const MODELS = {
     TABLE_NAME: '在庫',
     expired_at: '有効期限',
   },
+  HOSPITAL: {
+    TABLE_NAME: '病院',
+    name: '病院名',
+  },
 } as const;
 
 export const HOSPITAL_STATUSES = {

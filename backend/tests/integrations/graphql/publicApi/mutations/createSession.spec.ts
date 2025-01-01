@@ -70,7 +70,7 @@ describe('createSession', () => {
 
         expect(result.data).toBeNull();
         const error = result.errors![0];
-        expect(error?.message).toEqual('No InternalUser found');
+        expect(error?.message).toEqual('お探しのユーザは見つかりません。');
         expect(error?.path).toEqual(['createSession']);
       });
     });

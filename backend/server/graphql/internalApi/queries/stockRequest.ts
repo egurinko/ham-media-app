@@ -4,6 +4,8 @@
 
 import { nonNull, intArg, queryField } from 'nexus';
 import { stockRequestType } from '../types';
+import Mercurius from 'mercurius';
+import { judgeError } from '@/services/error/judge';
 
 export const stockRequest = queryField((t) => {
   t.nonNull.field('stockRequest', {
@@ -12,9 +14,18 @@ export const stockRequest = queryField((t) => {
       id: nonNull(intArg()),
     },
     resolve: async (_root, args, ctx) => {
-      return await ctx.prisma.stockRequest.findUniqueOrThrow({
-        where: { id: args.id },
-      });
+      try {
+        return await ctx.prisma.stockRequest.findUniqueOrThrow({
+          where: { id: args.id },
+        });
+      } catch (e) {
+        const { key, message, statusCode } = judgeError(e);
+        throw new Mercurius.ErrorWithProps(message, {
+          key,
+          message,
+          statusCode,
+        });
+      }
     },
   });
 });

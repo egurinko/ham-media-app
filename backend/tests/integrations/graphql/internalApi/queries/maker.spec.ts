@@ -47,7 +47,9 @@ describe('maker', () => {
         variables: { id: 2000 },
       });
 
-      expect(result.errors![0]?.message).toEqual('No Maker found');
+      expect(result.errors![0]?.message).toEqual(
+        'お探しのメーカーは見つかりません。',
+      );
     });
   });
 });

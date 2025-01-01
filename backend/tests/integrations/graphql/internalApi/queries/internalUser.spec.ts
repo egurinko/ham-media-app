@@ -83,7 +83,9 @@ describe('internalUser', () => {
         variables: { id: 2000 },
       });
 
-      expect(result.errors![0]?.message).toEqual('No InternalUser found');
+      expect(result.errors![0]?.message).toEqual(
+        'お探しのユーザは見つかりません。',
+      );
     });
   });
 });
