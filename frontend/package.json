@@ -63,7 +63,7 @@
     "dotenv": "^16.4.7",
     "eslint-config-next": "^15.1.3",
     "eslint-plugin-jsx-a11y": "^6.10.2",
-    "eslint-plugin-react": "^7.37.3"
+    "eslint-plugin-react": "^7.37.4"
   },
   "pnpm": {
     "overrides": {
