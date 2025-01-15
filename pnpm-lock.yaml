@@ -76,7 +76,7 @@ importers:
         specifier: ^5.1.1
         version: 5.1.1
       fastify:
-        specifier: ^5.2.0
+        specifier: ^5.2.1
         version: 5.2.1
       fastify-cli:
         specifier: ^7.3.0
