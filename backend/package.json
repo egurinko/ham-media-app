@@ -5,9 +5,9 @@
   "license": "MIT",
   "engines": {
     "node": "22.14.0",
-    "pnpm": ">=9.15.5"
+    "pnpm": ">=9.15.6"
   },
-  "packageManager": "pnpm@9.15.5",
+  "packageManager": "pnpm@9.15.6",
   "scripts": {
     "console": "prisma-repl",
     "build": "pnpm tsc -p tsconfig.json && tsc-alias -p tsconfig.json",
@@ -33,14 +33,14 @@
     "seed": "ts-node-dev prisma/seed.ts"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.749.0",
-    "@aws-sdk/lib-storage": "^3.749.0",
+    "@aws-sdk/client-s3": "^3.758.0",
+    "@aws-sdk/lib-storage": "^3.758.0",
     "@fastify/cors": "^10.0.2",
     "@fastify/helmet": "^13.0.1",
     "@line/bot-sdk": "^9.7.1",
-    "@prisma/client": "6.3.0",
-    "@sentry/node": "^9.1.0",
-    "axios": "^1.7.9",
+    "@prisma/client": "6.3.1",
+    "@sentry/node": "^9.5.0",
+    "axios": "^1.8.2",
     "bcrypt": "^5.1.1",
     "fastify": "^5.2.1",
     "fastify-cli": "^7.3.0",
@@ -57,7 +57,7 @@
     "nexus-prisma": "^2.0.8",
     "node-cron": "^3.0.3",
     "pino-pretty": "^13.0.0",
-    "prisma": "6.3.0",
+    "prisma": "6.3.1",
     "prisma-repl": "^1.4.0",
     "sanitize-html": "^2.14.0",
     "ts-node-dev": "^2.0.0",
@@ -68,17 +68,17 @@
     "@types/bcrypt": "^5.0.2",
     "@types/graphql-relay": "^0.7.0",
     "@types/jsonwebtoken": "^9.0.7",
-    "@types/node": "^22.13.4",
+    "@types/node": "^22.13.9",
     "@types/node-cron": "^3.0.11",
     "@types/sanitize-html": "^2.13.0",
     "@types/uuid": "^10.0.0",
-    "@vitest/coverage-v8": "^3.0.5",
+    "@vitest/coverage-v8": "^3.0.8",
     "dotenv": "^16.4.7",
     "dotenv-cli": "^8.0.0",
     "graphql-tag": "^2.12.6",
     "mercurius-integration-testing": "^9.0.1",
-    "tsc-alias": "^1.8.10",
+    "tsc-alias": "^1.8.11",
     "tsconfig-paths": "^4.2.0",
-    "vitest": "^3.0.5"
+    "vitest": "^3.0.8"
   }
 }

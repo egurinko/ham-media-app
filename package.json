@@ -2,9 +2,9 @@
   "private": true,
   "engines": {
     "node": "22.14.0",
-    "pnpm": ">=9.15.5"
+    "pnpm": ">=9.15.6"
   },
-  "packageManager": "pnpm@9.15.5",
+  "packageManager": "pnpm@9.15.6",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "backend": "pnpm -F \"backend\"",
@@ -14,17 +14,17 @@
     "start:backend": "pnpm backend start"
   },
   "devDependencies": {
-    "@eslint/compat": "^1.2.6",
-    "@eslint/eslintrc": "^3.2.0",
-    "@eslint/js": "^9.20.0",
+    "@eslint/compat": "^1.2.7",
+    "@eslint/eslintrc": "^3.3.0",
+    "@eslint/js": "^9.21.0",
     "@types/graphql": "^14.5.0",
-    "@typescript-eslint/eslint-plugin": "^8.24.0",
-    "@typescript-eslint/parser": "^8.24.0",
-    "eslint": "^9.20.1",
-    "eslint-config-prettier": "^10.0.1",
+    "@typescript-eslint/eslint-plugin": "^8.26.0",
+    "@typescript-eslint/parser": "^8.26.0",
+    "eslint": "^9.21.0",
+    "eslint-config-prettier": "^10.0.2",
     "globals": "^15.15.0",
-    "prettier": "^3.5.1",
-    "typescript": "^5.7.3"
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.2"
   },
   "dependencies": {
     "graphql": "^16.10.0"
