@@ -9,7 +9,7 @@
     "preinstall": "npx only-allow pnpm",
     "backend": "pnpm -F \"backend\"",
     "build": "pnpm backend db:reflect && pnpm backend build",
-    "start": "pnpm backend db:reflect && pnpm backend start",
+    "start": "npm start --prefix ./backend",
     "build:backend": "pnpm backend db:reflect && pnpm backend build",
     "start:backend": "pnpm backend start"
   },
