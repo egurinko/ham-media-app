@@ -133,8 +133,8 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0(@types/node@22.13.4)(typescript@5.7.3)
       uuid:
-        specifier: ^11.0.5
-        version: 11.0.5
+        specifier: ^11.1.0
+        version: 11.1.0
     devDependencies:
       '@types/axios':
         specifier: ^0.14.4
@@ -7717,8 +7717,8 @@ packages:
   util@0.12.5:
     resolution: {integrity: sha512-kZf/K6hEIrWHI6XqOFUiiMa+79wE/D8Q+NCNAWclkyg3b4d2k7s0QGepNjiABc+aR3N1PAyHL7p6UcLY6LmrnA==}
 
-  uuid@11.0.5:
-    resolution: {integrity: sha512-508e6IcKLrhxKdBbcA2b4KQZlLVp2+J5UwQ6F7Drckkc5N9ZJwFa4TgWtsww9UG8fGHbm6gbV19TdM5pQ4GaIA==}
+  uuid@11.1.0:
+    resolution: {integrity: sha512-0/A9rDy9P7cJ+8w1c9WD9V//9Wj15Ce2MPz8Ri6032usz+NfePxx5AcN3bN+r6ZL6jEo066/yNYB3tn4pQEx+A==}
     hasBin: true
 
   uuid@8.3.2:
@@ -17727,7 +17727,7 @@ snapshots:
       is-typed-array: 1.1.15
       which-typed-array: 1.1.18
 
-  uuid@11.0.5: {}
+  uuid@11.1.0: {}
 
   uuid@8.3.2: {}
 
