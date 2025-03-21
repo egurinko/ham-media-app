@@ -54,7 +54,7 @@
     "@graphql-codegen/typescript": "^4.1.5",
     "@graphql-codegen/typescript-operations": "^4.5.1",
     "@graphql-codegen/typescript-react-apollo": "^4.3.2",
-    "@pandacss/dev": "^0.53.1",
+    "@pandacss/dev": "^0.53.2",
     "@svgr/webpack": "^8.1.0",
     "@types/apollo-upload-client": "^18.0.0",
     "@types/js-cookie": "^3.0.6",
