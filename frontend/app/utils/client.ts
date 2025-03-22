@@ -5,6 +5,7 @@ import {
   InMemoryCache,
   ApolloClient,
 } from '@apollo/experimental-nextjs-app-support';
+import createUploadLink from 'apollo-upload-client/createUploadLink.mjs';
 import { cookies } from 'next/headers';
 import { getSessionToken } from '@/app/utils/cookies';
 
@@ -14,7 +15,7 @@ const publicLink = new HttpLink({
   uri: `${base}/public_api/graphql`,
 });
 
-const internalHttpLink = new HttpLink({
+const internalHttpLink = createUploadLink({
   uri: `${base}/internal_api/graphql`,
 });
 const internalAuthLink = setContext(async (_, { headers }) => {
