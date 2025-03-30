@@ -9,6 +9,7 @@ export const updateProduct = gql`
     $name: String!
     $remark: String!
     $file: Upload
+    $productTagIds: [Int!]!
   ) {
     updateProduct(
       id: $id
@@ -16,6 +17,7 @@ export const updateProduct = gql`
       name: $name
       remark: $remark
       file: $file
+      productTagIds: $productTagIds
     ) {
       ...ProductFields
     }

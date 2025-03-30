@@ -456,6 +456,7 @@ export type MutationUpdateProductArgs = {
   id: Scalars['Int']['input'];
   makerId: Scalars['Int']['input'];
   name: Scalars['String']['input'];
+  productTagIds: Array<Scalars['Int']['input']>;
   remark: Scalars['String']['input'];
 };
 
@@ -2249,6 +2250,7 @@ export type InternalUpdateProductMutationVariables = Exact<{
   name: Scalars['String']['input'];
   remark: Scalars['String']['input'];
   file?: InputMaybe<Scalars['Upload']['input']>;
+  productTagIds: Array<Scalars['Int']['input']> | Scalars['Int']['input'];
 }>;
 
 export type InternalUpdateProductMutation = {
@@ -5796,6 +5798,7 @@ export const InternalUpdateProductDocument = gql`
     $name: String!
     $remark: String!
     $file: Upload
+    $productTagIds: [Int!]!
   ) {
     updateProduct(
       id: $id
@@ -5803,6 +5806,7 @@ export const InternalUpdateProductDocument = gql`
       name: $name
       remark: $remark
       file: $file
+      productTagIds: $productTagIds
     ) {
       ...ProductFields
     }
@@ -5832,6 +5836,7 @@ export type InternalUpdateProductMutationFn = Apollo.MutationFunction<
  *      name: // value for 'name'
  *      remark: // value for 'remark'
  *      file: // value for 'file'
+ *      productTagIds: // value for 'productTagIds'
  *   },
  * });
  */

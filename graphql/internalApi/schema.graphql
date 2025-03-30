@@ -229,7 +229,7 @@ type Mutation {
   updateHospitalReservationStatus(hospital_id: BigInt!, remark: String!, required: String!, reservable: String!): HospitalReservationStatus!
   updateInternalUser(discord_user_id: String!, email: String!, id: BigInt!, name: String!, password: String!, roleId: Int!): InternalUser!
   updateMaker(id: Int!, name: String!): Maker!
-  updateProduct(file: Upload, id: Int!, makerId: Int!, name: String!, remark: String!): Product!
+  updateProduct(file: Upload, id: Int!, makerId: Int!, name: String!, productTagIds: [Int!]!, remark: String!): Product!
   updateProductTag(id: Int!, name: String!): ProductTag!
   updateProductTagGroup(id: Int!, name: String!): ProductTagGroup!
   updateStockInternalUser(id: Int!, internalUserId: BigInt!): Stock!

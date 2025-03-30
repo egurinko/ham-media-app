@@ -914,6 +914,7 @@ export interface NexusGenArgTypes {
       id: number; // Int!
       makerId: number; // Int!
       name: string; // String!
+      productTagIds: number[]; // [Int!]!
       remark: string; // String!
     }
     updateProductTag: { // args
