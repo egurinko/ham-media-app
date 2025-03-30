@@ -466,6 +466,7 @@ export type MutationUpdateProductArgs = {
   id: Scalars['Int']['input'];
   makerId: Scalars['Int']['input'];
   name: Scalars['String']['input'];
+  productTagIds: Array<Scalars['Int']['input']>;
   remark: Scalars['String']['input'];
 };
 
@@ -924,6 +925,115 @@ export type CreateProductTagGroupMutationVariables = Exact<{
 export type CreateProductTagGroupMutation = {
   __typename?: 'Mutation';
   createProductTagGroup: { __typename?: 'ProductTagGroup'; id: number };
+};
+
+export type GetProductEditMasterQueryVariables = Exact<{
+  productId: Scalars['Int']['input'];
+}>;
+
+export type GetProductEditMasterQuery = {
+  __typename?: 'Query';
+  product: {
+    __typename?: 'Product';
+    id: number;
+    name: string;
+    remark: string;
+    url: string;
+    totalStockAmount: number;
+    allocatedStockAmount: number;
+    remainingStockAmount: number;
+    maker: { __typename?: 'Maker'; id: number; name: string };
+    productTaggings: Array<{
+      __typename?: 'ProductTagging';
+      id: number;
+      productTag: { __typename?: 'ProductTag'; id: number; name: string };
+    }>;
+  };
+  makers: Array<{ __typename?: 'Maker'; id: number; name: string }>;
+  productTagGroups: Array<{
+    __typename?: 'ProductTagGroup';
+    productTags: Array<{ __typename?: 'ProductTag'; id: number; name: string }>;
+  }>;
+};
+
+export type UpdateProductMutationVariables = Exact<{
+  id: Scalars['Int']['input'];
+  makerId: Scalars['Int']['input'];
+  name: Scalars['String']['input'];
+  remark: Scalars['String']['input'];
+  file?: InputMaybe<Scalars['Upload']['input']>;
+  productTagIds: Array<Scalars['Int']['input']> | Scalars['Int']['input'];
+}>;
+
+export type UpdateProductMutation = {
+  __typename?: 'Mutation';
+  updateProduct: { __typename?: 'Product'; id: number };
+};
+
+export type GetProductNewMasterQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetProductNewMasterQuery = {
+  __typename?: 'Query';
+  makers: Array<{ __typename?: 'Maker'; id: number; name: string }>;
+  productTagGroups: Array<{
+    __typename?: 'ProductTagGroup';
+    productTags: Array<{ __typename?: 'ProductTag'; id: number; name: string }>;
+  }>;
+};
+
+export type CreateProductMutationVariables = Exact<{
+  name: Scalars['String']['input'];
+  remark: Scalars['String']['input'];
+  makerId: Scalars['Int']['input'];
+  file: Scalars['Upload']['input'];
+  productTagIds: Array<Scalars['Int']['input']> | Scalars['Int']['input'];
+}>;
+
+export type CreateProductMutation = {
+  __typename?: 'Mutation';
+  createProduct: { __typename?: 'Product'; id: number };
+};
+
+export type GetStockRequestQueryVariables = Exact<{
+  id: Scalars['Int']['input'];
+}>;
+
+export type GetStockRequestQuery = {
+  __typename?: 'Query';
+  stockRequest: {
+    __typename?: 'StockRequest';
+    id: number;
+    internalUser: { __typename?: 'InternalUser'; name: string; id: number };
+    productRegistrations: Array<{
+      __typename?: 'StockRequestProductRegistration';
+      id: number;
+      product: {
+        __typename?: 'Product';
+        id: number;
+        name: string;
+        url: string;
+        remark: string;
+        totalStockAmount: number;
+        allocatedStockAmount: number;
+        remainingStockAmount: number;
+        productTaggings: Array<{
+          __typename?: 'ProductTagging';
+          id: number;
+          productTag: { __typename?: 'ProductTag'; id: number; name: string };
+        }>;
+        maker: { __typename?: 'Maker'; name: string };
+        stocks: Array<{
+          __typename?: 'Stock';
+          id: number;
+          internalUser: { __typename?: 'InternalUser'; name: string };
+          stockAllocation?: {
+            __typename?: 'StockAllocation';
+            internalUser: { __typename?: 'InternalUser'; name: string };
+          } | null;
+        }>;
+      };
+    }>;
+  };
 };
 
 export type GetSessonQueryVariables = Exact<{ [key: string]: never }>;
@@ -1406,6 +1516,238 @@ export type DeleteMakerMutation = {
   deleteMaker: { __typename?: 'Delete'; deleted: boolean };
 };
 
+export type GetProductQueryVariables = Exact<{
+  id: Scalars['Int']['input'];
+}>;
+
+export type GetProductQuery = {
+  __typename?: 'Query';
+  product: {
+    __typename?: 'Product';
+    id: number;
+    name: string;
+    url: string;
+    remark: string;
+    totalStockAmount: number;
+    allocatedStockAmount: number;
+    remainingStockAmount: number;
+    productTaggings: Array<{
+      __typename?: 'ProductTagging';
+      id: number;
+      productTag: { __typename?: 'ProductTag'; id: number; name: string };
+    }>;
+    maker: { __typename?: 'Maker'; name: string };
+    stocks: Array<{
+      __typename?: 'Stock';
+      id: number;
+      internalUser: { __typename?: 'InternalUser'; name: string };
+      stockAllocation?: {
+        __typename?: 'StockAllocation';
+        internalUser: { __typename?: 'InternalUser'; name: string };
+      } | null;
+    }>;
+  };
+};
+
+export type GetProductConnectionQueryVariables = Exact<{
+  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  makerId?: InputMaybe<Scalars['Int']['input']>;
+  productTagId?: InputMaybe<Scalars['Int']['input']>;
+  allocatedInternalUserId?: InputMaybe<Scalars['Int']['input']>;
+  internalUserId?: InputMaybe<Scalars['Int']['input']>;
+  hasStock?: InputMaybe<Scalars['Boolean']['input']>;
+}>;
+
+export type GetProductConnectionQuery = {
+  __typename?: 'Query';
+  productConnection?: {
+    __typename?: 'ProductConnection';
+    edges?: Array<{
+      __typename?: 'ProductEdge';
+      node?: {
+        __typename?: 'Product';
+        id: number;
+        name: string;
+        url: string;
+        remark: string;
+        totalStockAmount: number;
+        allocatedStockAmount: number;
+        remainingStockAmount: number;
+        productTaggings: Array<{
+          __typename?: 'ProductTagging';
+          id: number;
+          productTag: { __typename?: 'ProductTag'; id: number; name: string };
+        }>;
+        maker: { __typename?: 'Maker'; name: string };
+        stocks: Array<{
+          __typename?: 'Stock';
+          id: number;
+          internalUser: { __typename?: 'InternalUser'; name: string };
+          stockAllocation?: {
+            __typename?: 'StockAllocation';
+            internalUser: { __typename?: 'InternalUser'; name: string };
+          } | null;
+        }>;
+      } | null;
+    } | null> | null;
+    pageInfo: {
+      __typename?: 'PageInfo';
+      hasNextPage: boolean;
+      hasPreviousPage: boolean;
+      startCursor?: string | null;
+      endCursor?: string | null;
+    };
+  } | null;
+};
+
+export type ProductListItemFieldsFragment = {
+  __typename?: 'Product';
+  id: number;
+  name: string;
+  url: string;
+  remark: string;
+  totalStockAmount: number;
+  allocatedStockAmount: number;
+  remainingStockAmount: number;
+  productTaggings: Array<{
+    __typename?: 'ProductTagging';
+    id: number;
+    productTag: { __typename?: 'ProductTag'; id: number; name: string };
+  }>;
+  maker: { __typename?: 'Maker'; name: string };
+  stocks: Array<{
+    __typename?: 'Stock';
+    id: number;
+    internalUser: { __typename?: 'InternalUser'; name: string };
+    stockAllocation?: {
+      __typename?: 'StockAllocation';
+      internalUser: { __typename?: 'InternalUser'; name: string };
+    } | null;
+  }>;
+};
+
+export type GetSearchMasterQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetSearchMasterQuery = {
+  __typename?: 'Query';
+  makers: Array<{ __typename?: 'Maker'; id: number; name: string }>;
+  productTagGroups: Array<{
+    __typename?: 'ProductTagGroup';
+    id: number;
+    name: string;
+    productTags: Array<{ __typename?: 'ProductTag'; id: number; name: string }>;
+  }>;
+  internalUsers: Array<{
+    __typename?: 'InternalUser';
+    id: number;
+    name: string;
+  }>;
+};
+
+export type GetStocksQueryVariables = Exact<{
+  productId: Scalars['Int']['input'];
+}>;
+
+export type GetStocksQuery = {
+  __typename?: 'Query';
+  stocks: Array<{
+    __typename?: 'Stock';
+    id: number;
+    expired_at: any;
+    created_at: any;
+    internalUser: {
+      __typename?: 'InternalUser';
+      id: number;
+      email: string;
+      name: string;
+    };
+    stockAllocation?: {
+      __typename?: 'StockAllocation';
+      created_at: any;
+      id: number;
+      internalUser: {
+        __typename?: 'InternalUser';
+        id: number;
+        email: string;
+        name: string;
+      };
+    } | null;
+  }>;
+};
+
+export type GetInternalUsersForAllocationQueryVariables = Exact<{
+  [key: string]: never;
+}>;
+
+export type GetInternalUsersForAllocationQuery = {
+  __typename?: 'Query';
+  internalUsers: Array<{
+    __typename?: 'InternalUser';
+    id: number;
+    name: string;
+    role: { __typename?: 'Role'; id: number; name: string };
+  }>;
+};
+
+export type CreateStocksMutationVariables = Exact<{
+  productId: Scalars['Int']['input'];
+  stocks: Array<CreateStocksStocksInputType> | CreateStocksStocksInputType;
+}>;
+
+export type CreateStocksMutation = {
+  __typename?: 'Mutation';
+  createStocks: Array<{ __typename?: 'Stock'; id: number }>;
+};
+
+export type AllocateStockMutationVariables = Exact<{
+  id: Scalars['Int']['input'];
+  internalUserId: Scalars['BigInt']['input'];
+}>;
+
+export type AllocateStockMutation = {
+  __typename?: 'Mutation';
+  allocateStock: {
+    __typename?: 'Stock';
+    id: number;
+    stockAllocation?: {
+      __typename?: 'StockAllocation';
+      created_at: any;
+      id: number;
+      internalUser: { __typename?: 'InternalUser'; id: number; name: string };
+    } | null;
+  };
+};
+
+export type ReturnStockMutationVariables = Exact<{
+  id: Scalars['Int']['input'];
+}>;
+
+export type ReturnStockMutation = {
+  __typename?: 'Mutation';
+  returnStock: { __typename?: 'Stock'; id: number };
+};
+
+export type UpdateStockInternalUserMutationVariables = Exact<{
+  id: Scalars['Int']['input'];
+  internalUserId: Scalars['BigInt']['input'];
+}>;
+
+export type UpdateStockInternalUserMutation = {
+  __typename?: 'Mutation';
+  updateStockInternalUser: { __typename?: 'Stock'; id: number };
+};
+
+export type DeleteStockMutationVariables = Exact<{
+  id: Scalars['Int']['input'];
+}>;
+
+export type DeleteStockMutation = {
+  __typename?: 'Mutation';
+  deleteStock: { __typename?: 'Delete'; deleted: boolean };
+};
+
 export type GetProductTagGroupsQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetProductTagGroupsQuery = {
@@ -1472,4 +1814,151 @@ export type CreateProductTagsMutationVariables = Exact<{
 export type CreateProductTagsMutation = {
   __typename?: 'Mutation';
   createProductTags: { __typename?: 'BatchPayload'; count: number };
+};
+
+export type UpdateStockRequestMutationVariables = Exact<{
+  id: Scalars['Int']['input'];
+  requestProducts:
+    | Array<CreateStockRequestRequestProductsInputType>
+    | CreateStockRequestRequestProductsInputType;
+}>;
+
+export type UpdateStockRequestMutation = {
+  __typename?: 'Mutation';
+  updateStockRequest: { __typename?: 'StockRequest'; id: number };
+};
+
+export type GetStockRequestConnectionQueryVariables = Exact<{
+  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  internalUserId?: InputMaybe<Scalars['BigInt']['input']>;
+}>;
+
+export type GetStockRequestConnectionQuery = {
+  __typename?: 'Query';
+  stockRequestConnection?: {
+    __typename?: 'StockRequestConnection';
+    edges?: Array<{
+      __typename?: 'StockRequestEdge';
+      node?: {
+        __typename?: 'StockRequest';
+        id: number;
+        internalUser: { __typename?: 'InternalUser'; id: number; name: string };
+        productRegistrations: Array<{
+          __typename?: 'StockRequestProductRegistration';
+          id: number;
+          product: {
+            __typename?: 'Product';
+            id: number;
+            name: string;
+            url: string;
+          };
+        }>;
+      } | null;
+    } | null> | null;
+    pageInfo: {
+      __typename?: 'PageInfo';
+      hasNextPage: boolean;
+      hasPreviousPage: boolean;
+      startCursor?: string | null;
+      endCursor?: string | null;
+    };
+  } | null;
+};
+
+export type StockRequestListItemFieldsFragment = {
+  __typename?: 'StockRequest';
+  id: number;
+  internalUser: { __typename?: 'InternalUser'; id: number; name: string };
+  productRegistrations: Array<{
+    __typename?: 'StockRequestProductRegistration';
+    id: number;
+    product: { __typename?: 'Product'; id: number; name: string; url: string };
+  }>;
+};
+
+export type DeleteStockRequestMutationVariables = Exact<{
+  id: Scalars['Int']['input'];
+}>;
+
+export type DeleteStockRequestMutation = {
+  __typename?: 'Mutation';
+  deleteStockRequest: { __typename?: 'Delete'; deleted: boolean };
+};
+
+export type GetProductsByIdsQueryVariables = Exact<{
+  ids?: InputMaybe<Array<Scalars['Int']['input']> | Scalars['Int']['input']>;
+}>;
+
+export type GetProductsByIdsQuery = {
+  __typename?: 'Query';
+  products: Array<{
+    __typename?: 'Product';
+    id: number;
+    name: string;
+    url: string;
+    remark: string;
+    totalStockAmount: number;
+    allocatedStockAmount: number;
+    remainingStockAmount: number;
+    productTaggings: Array<{
+      __typename?: 'ProductTagging';
+      id: number;
+      productTag: { __typename?: 'ProductTag'; id: number; name: string };
+    }>;
+    maker: { __typename?: 'Maker'; name: string };
+    stocks: Array<{
+      __typename?: 'Stock';
+      id: number;
+      internalUser: { __typename?: 'InternalUser'; name: string };
+      stockAllocation?: {
+        __typename?: 'StockAllocation';
+        internalUser: { __typename?: 'InternalUser'; name: string };
+      } | null;
+    }>;
+  }>;
+};
+
+export type CreateStockRequestMutationVariables = Exact<{
+  requestProducts:
+    | Array<CreateStockRequestRequestProductsInputType>
+    | CreateStockRequestRequestProductsInputType;
+}>;
+
+export type CreateStockRequestMutation = {
+  __typename?: 'Mutation';
+  createStockRequest: { __typename?: 'StockRequest'; id: number };
+};
+
+export type ApproveStockRequestMutationVariables = Exact<{
+  id: Scalars['Int']['input'];
+  message: Scalars['String']['input'];
+}>;
+
+export type ApproveStockRequestMutation = {
+  __typename?: 'Mutation';
+  approveStockRequest: { __typename?: 'Delete'; deleted: boolean };
+};
+
+export type RejectStockRequestMutationVariables = Exact<{
+  id: Scalars['Int']['input'];
+  message: Scalars['String']['input'];
+}>;
+
+export type RejectStockRequestMutation = {
+  __typename?: 'Mutation';
+  rejectStockRequest: { __typename?: 'Delete'; deleted: boolean };
+};
+
+export type GetStockRequestInternalUsersQueryVariables = Exact<{
+  [key: string]: never;
+}>;
+
+export type GetStockRequestInternalUsersQuery = {
+  __typename?: 'Query';
+  internalUsers: Array<{
+    __typename?: 'InternalUser';
+    value: number;
+    label: string;
+  }>;
 };

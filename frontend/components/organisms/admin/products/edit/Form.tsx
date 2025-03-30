@@ -66,6 +66,7 @@ const Form: FC<Props> = ({ productId }) => {
           name,
           remark,
           file: image,
+          productTagIds: [],
         },
       });
       setTimeout(() => {
