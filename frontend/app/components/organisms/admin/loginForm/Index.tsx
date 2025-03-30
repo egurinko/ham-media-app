@@ -43,7 +43,7 @@ export const LoginForm: FC<NoProps> = () => {
           alignItems: 'center',
         })}
       >
-        {state.message && (
+        {state?.message && (
           <>
             <Icon source={<AlertIcon />} width={15} height={15} />
             <Typography variant="body2">{state.message}</Typography>
