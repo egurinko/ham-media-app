@@ -9,7 +9,7 @@ interface SignPayload {
 interface Decoded extends jwt.JwtPayload, SignPayload {}
 
 export const sign = (payload: SignPayload): string => {
-  const option = {
+  const option: jwt.SignOptions = {
     expiresIn: '30d',
   };
   return jwt.sign(payload, SECRET, option);
