@@ -59,8 +59,8 @@
     "@svgr/webpack": "^8.1.0",
     "@types/apollo-upload-client": "^18.0.0",
     "@types/js-cookie": "^3.0.6",
-    "@types/react": "19.0.12",
-    "@types/react-dom": "19.0.4",
+    "@types/react": "19.1.0",
+    "@types/react-dom": "19.1.1",
     "dotenv": "^16.4.7",
     "eslint-config-next": "^15.2.4",
     "eslint-plugin-jsx-a11y": "^6.10.2",
@@ -68,8 +68,8 @@
   },
   "pnpm": {
     "overrides": {
-      "@types/react": "19.0.12",
-      "@types/react-dom": "19.0.4"
+      "@types/react": "19.1.0",
+      "@types/react-dom": "19.1.1"
     }
   }
 }
