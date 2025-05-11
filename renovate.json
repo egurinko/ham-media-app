@@ -33,7 +33,13 @@
         "@aws-sdk",
         "@sentry",
         "@react-google-maps/api",
-        "pnpm"
+        "pnpm",
+        "zod",
+        "sanitize-html",
+        "axios",
+        "graphql",
+        "globals",
+        "framer-motion"
       ],
       "automerge": true
     }
