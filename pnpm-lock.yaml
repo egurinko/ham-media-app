@@ -61,8 +61,8 @@ importers:
         specifier: ^13.0.1
         version: 13.0.1
       '@line/bot-sdk':
-        specifier: ^9.8.0
-        version: 9.8.0
+        specifier: ^9.9.0
+        version: 9.9.0
       '@prisma/client':
         specifier: 6.6.0
         version: 6.6.0(prisma@6.6.0(typescript@5.8.3))(typescript@5.8.3)
@@ -2629,8 +2629,8 @@ packages:
   '@jsdevtools/ono@7.1.3':
     resolution: {integrity: sha512-4JQNk+3mVzK3xh2rqd6RB4J46qUR19azEHBneZyTZM+c456qOrbbM/5xcR8huNCCcbVt7+UmizG6GuUvPvKUYg==}
 
-  '@line/bot-sdk@9.8.0':
-    resolution: {integrity: sha512-vw4TTtkw5zwKu/FhATnm5n2sCcoKjcHEgN16Oq5NyXwGEzIcyh6RwGrYnX4SisiPO1lklAIba1DuDf9hEYZ4mg==}
+  '@line/bot-sdk@9.9.0':
+    resolution: {integrity: sha512-/jVjH7k2uMWY1O0F/zkwYD3dqDH/pWbawvDtR6DV/scruH86w9zZrMwknZLt1unUWdK+V9eX4UVP/gLAzqUocg==}
     engines: {node: '>=18'}
 
   '@lukeed/ms@2.0.2':
@@ -11565,7 +11565,7 @@ snapshots:
 
   '@jsdevtools/ono@7.1.3': {}
 
-  '@line/bot-sdk@9.8.0':
+  '@line/bot-sdk@9.9.0':
     dependencies:
       '@types/node': 22.14.1
     optionalDependencies:
