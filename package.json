@@ -28,5 +28,10 @@
   },
   "dependencies": {
     "graphql": "^16.11.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "bcrypt"
+    ]
   }
 }
