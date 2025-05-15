@@ -4,9 +4,9 @@
   "private": true,
   "engines": {
     "node": "22.15.0",
-    "pnpm": ">=10.10.0"
+    "pnpm": ">=10.11.0"
   },
-  "packageManager": "pnpm@10.10.0",
+  "packageManager": "pnpm@10.11.0",
   "scripts": {
     "dev": "next dev -p 8080 --turbo",
     "build": "next build",
