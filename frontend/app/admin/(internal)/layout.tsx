@@ -24,7 +24,14 @@ export default async function Layout({ children }: Props) {
       <Sidebar internalUserName={data.session.internalUser.name} />
       <main
         className={css({
-          p: 'xl',
+          px: {
+            base: 'md',
+            sm: 'xl',
+          },
+          pt: {
+            base: '80px',
+            sm: 'xl',
+          },
           flexGrow: 1,
         })}
       >
