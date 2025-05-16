@@ -13,6 +13,7 @@ export const radioGroup = sva({
   slots: radioGroupAnatomy.keys(),
   base: {
     root: {
+      position: 'static !important',
       display: 'flex',
       flexDirection: {
         _vertical: 'column',
