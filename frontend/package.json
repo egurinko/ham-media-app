@@ -31,7 +31,6 @@
     "@emotion/styled": "^11.14.0",
     "@react-google-maps/api": "^2.20.6",
     "apollo-upload-client": "^18.0.1",
-    "chakra-ui-autocomplete": "^1.4.5",
     "copy-to-clipboard": "^3.3.3",
     "dayjs": "^1.11.13",
     "deepmerge": "^4.3.1",
