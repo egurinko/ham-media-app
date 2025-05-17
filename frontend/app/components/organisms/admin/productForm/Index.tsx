@@ -16,7 +16,7 @@ import { FileUploader } from '@/app/components/molecules/FileUploader';
 import type { State } from '@/app/utils/formSchema/product';
 import AnglesUpDownIcon from '@/assets/angles-up-down.svg';
 import CheckIcon from '@/assets/check.svg';
-import { Zoom } from '@/components/atoms/Zoom';
+import { Zoom } from '@/app/components/atoms/Zoom';
 import { css } from '@/styled/css';
 import { stack } from '@/styled/patterns';
 import type { FC } from 'react';

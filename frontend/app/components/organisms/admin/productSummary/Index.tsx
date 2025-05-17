@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Tag } from '@/app/components/atoms/Tag';
 import { Typography } from '@/app/components/atoms/Typography';
 import type { ProductListItemFieldsFragment } from '@/app/components/organisms/admin/productListItem/index.api.generated';
-import { Zoom } from '@/components/atoms/Zoom';
+import { Zoom } from '@/app/components/atoms/Zoom';
 import { css } from '@/styled/css';
 import { flex } from '@/styled/patterns';
 import { ADMIN_PRODUCTS_DETAIL_PATH } from '@/utils/routes';
