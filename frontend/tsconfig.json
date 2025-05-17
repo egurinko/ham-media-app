@@ -16,13 +16,10 @@
     "baseUrl": ".",
     "paths": {
       "@/services/*": ["services/*"],
-      "@/components/*": ["components/*"],
       "@/app/*": ["app/*"],
-      "@/pages/*": ["pages/*"],
       "@/utils/*": ["utils/*"],
       "@/validators/*": ["validators/*"],
       "@/assets/*": ["assets/*"],
-      "@/store/*": ["store/*"],
       "@/styled/*": ["styled-system/*"]
     },
     "incremental": true,

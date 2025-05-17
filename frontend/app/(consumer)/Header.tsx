@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { RedirectIcon } from '@/components/atoms/assets/RedirectIcon';
+import RedirectSvg from '@/assets/redirect.svg';
+import { Icon } from '@/app/components/atoms/Icon';
 import { css } from '@/styled/css';
 import type { FC } from 'react';
 
@@ -41,7 +42,11 @@ export const Header: FC<NoProps> = () => (
               alignItems: 'center',
             })}
           >
-            <RedirectIcon width={20} height={20} />
+            <Icon
+              source={<RedirectSvg width="20" height="20" />}
+              width="20px"
+              height="20px"
+            />
             <span className={css({ fontSize: 'sm' })}>HPへ</span>
           </div>
         </Link>

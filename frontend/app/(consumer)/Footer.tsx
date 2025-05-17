@@ -1,7 +1,8 @@
 import { Typography } from '@/app/components/atoms/Typography';
 import { AbountInformationProvide } from '@/app/components/organisms/consumer/AboutInformationProvide';
 import { AboutOfficialSNS } from '@/app/components/organisms/consumer/AboutOfficialSNS';
-import { RedirectIcon } from '@/components/atoms/assets/RedirectIcon';
+import RedirectSvg from '@/assets/redirect.svg';
+import { Icon } from '@/app/components/atoms/Icon';
 import { css } from '@/styled/css';
 import type { FC } from 'react';
 
@@ -38,7 +39,11 @@ export const Footer: FC<NoProps> = () => (
               mr: '2',
             })}
           >
-            <RedirectIcon width={20} height={20} />
+            <Icon
+              source={<RedirectSvg width="20" height="20" />}
+              width="20px"
+              height="20px"
+            />
           </div>
           ホームページに戻る
         </div>

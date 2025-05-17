@@ -1,7 +1,8 @@
 import { memo } from 'react';
 import { FileUploader as ReactDragDropFileUploader } from 'react-drag-drop-files';
 import { Typography } from '@/app/components/atoms/Typography';
-import { ImageIcon } from '@/components/atoms/assets/ImageIcon';
+import ImageSvg from '@/assets/image.svg';
+import { Icon } from '@/app/components/atoms/Icon';
 import type { FC } from 'react';
 import { flex } from '@/styled/patterns';
 
@@ -34,7 +35,11 @@ const FileUploader: FC<Props> = ({ image, required, handleFileChange }) => (
           },
         })}
       >
-        <ImageIcon width={90} height={70} />
+        <Icon
+          source={<ImageSvg width="90" height="70" />}
+          width="90px"
+          height="70px"
+        />
         <Typography variant="body1">
           ファイルを選択するかドロップしてください
         </Typography>
