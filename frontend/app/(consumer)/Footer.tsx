@@ -1,8 +1,8 @@
+import { Icon } from '@/app/components/atoms/Icon';
 import { Typography } from '@/app/components/atoms/Typography';
 import { AbountInformationProvide } from '@/app/components/organisms/consumer/AboutInformationProvide';
 import { AboutOfficialSNS } from '@/app/components/organisms/consumer/AboutOfficialSNS';
 import RedirectSvg from '@/assets/redirect.svg';
-import { Icon } from '@/app/components/atoms/Icon';
 import { css } from '@/styled/css';
 import type { FC } from 'react';
 

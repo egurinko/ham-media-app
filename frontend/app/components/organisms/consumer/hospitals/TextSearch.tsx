@@ -1,14 +1,14 @@
 'use client';
 
-import SearchIcon from '@/assets/search.svg';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { useState } from 'react';
+import { Icon } from '@/app/components/atoms/Icon';
 import { IconButton } from '@/app/components/atoms/IconButton';
 import { TextSearchInput } from '@/app/components/organisms/consumer/hospitals/TextSearchInput';
+import SearchIcon from '@/assets/search.svg';
 import { css } from '@/styled/css';
 import { goAppHospitalsResult } from '@/utils/routes';
 import type { FC } from 'react';
-import { Icon } from '@/app/components/atoms/Icon';
 
 export const TextSearch: FC<NoProps> = () => {
   const router = useRouter();

@@ -10,9 +10,9 @@ import { Typography } from '@/app/components/atoms/Typography';
 import { useCart } from '@/app/utils/hooks/useCart';
 import AnglesUpDownIcon from '@/assets/angles-up-down.svg';
 import CheckIcon from '@/assets/check.svg';
+import PlusIcon from '@/assets/plus.svg';
 import { flex } from '@/styled/patterns';
 import type { FC } from 'react';
-import PlusIcon from '@/assets/plus.svg';
 
 type Props = {
   productId: number;

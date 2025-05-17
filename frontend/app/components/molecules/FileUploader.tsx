@@ -1,10 +1,10 @@
 import { memo } from 'react';
 import { FileUploader as ReactDragDropFileUploader } from 'react-drag-drop-files';
+import { Icon } from '@/app/components/atoms/Icon';
 import { Typography } from '@/app/components/atoms/Typography';
 import ImageSvg from '@/assets/image.svg';
-import { Icon } from '@/app/components/atoms/Icon';
-import type { FC } from 'react';
 import { flex } from '@/styled/patterns';
+import type { FC } from 'react';
 
 type Props = {
   image: File | null;

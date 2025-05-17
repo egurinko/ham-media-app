@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import RedirectSvg from '@/assets/redirect.svg';
 import { Icon } from '@/app/components/atoms/Icon';
+import RedirectSvg from '@/assets/redirect.svg';
 import { css } from '@/styled/css';
 import type { FC } from 'react';
 

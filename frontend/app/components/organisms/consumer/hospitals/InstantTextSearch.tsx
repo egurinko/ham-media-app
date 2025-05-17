@@ -3,12 +3,12 @@
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { Card } from '@/app/components/atoms/Card';
+import { Icon } from '@/app/components/atoms/Icon';
 import { IconButton } from '@/app/components/atoms/IconButton';
 import { TextSearchInput } from '@/app/components/organisms/consumer/hospitals/TextSearchInput';
+import SearchIcon from '@/assets/search.svg';
 import { css } from '@/styled/css';
 import type { FC } from 'react';
-import SearchIcon from '@/assets/search.svg';
-import { Icon } from '@/app/components/atoms/Icon';
 
 export const InstantTextSearch: FC<NoProps> = () => {
   const router = useRouter();
