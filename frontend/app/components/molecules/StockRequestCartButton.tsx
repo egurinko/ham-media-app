@@ -30,7 +30,11 @@ export const StockRequestCartButton: FC<NoProps> = () => {
           boxShadow: 'xs',
         })}
       >
-        <Icon source={<CartIcon />} width={35} height={35} />
+        <Icon
+          source={<CartIcon width="35" height="35" />}
+          width={35}
+          height={35}
+        />
         <Typography
           variant="body2"
           bold

@@ -30,7 +30,11 @@ export const DrawerMenu: FC<Props> = ({ internalUserName }) => (
   <Drawer.Root>
     <Drawer.Trigger asChild>
       <IconButton visual="text" size="md">
-        <Icon source={<BarsIcon />} width="20px" height="20px" />
+        <Icon
+          source={<BarsIcon width="20" height="20" />}
+          width="20px"
+          height="20px"
+        />
       </IconButton>
     </Drawer.Trigger>
     <Drawer.Backdrop />
