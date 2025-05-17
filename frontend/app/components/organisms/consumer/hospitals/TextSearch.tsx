@@ -1,6 +1,6 @@
 'use client';
 
-import { SearchIcon } from '@chakra-ui/icons';
+import SearchIcon from '@/assets/search.svg';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { IconButton } from '@/app/components/atoms/IconButton';
@@ -8,6 +8,7 @@ import { TextSearchInput } from '@/app/components/organisms/consumer/hospitals/T
 import { css } from '@/styled/css';
 import { goAppHospitalsResult } from '@/utils/routes';
 import type { FC } from 'react';
+import { Icon } from '@/app/components/atoms/Icon';
 
 export const TextSearch: FC<NoProps> = () => {
   const router = useRouter();
@@ -43,7 +44,11 @@ export const TextSearch: FC<NoProps> = () => {
         disabled={searchText ? searchText.length === 0 : true}
         className={css({ width: 40 })}
       >
-        <SearchIcon />
+        <Icon
+          source={<SearchIcon width={22} height={22} />}
+          width={22}
+          height={22}
+        />
       </IconButton>
     </div>
   );

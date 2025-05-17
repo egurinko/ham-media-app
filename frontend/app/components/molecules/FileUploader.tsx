@@ -1,8 +1,9 @@
-import { Box, Text } from '@chakra-ui/react';
 import { memo } from 'react';
 import { FileUploader as ReactDragDropFileUploader } from 'react-drag-drop-files';
+import { Typography } from '@/app/components/atoms/Typography';
 import { ImageIcon } from '@/components/atoms/assets/ImageIcon';
 import type { FC } from 'react';
+import { flex } from '@/styled/patterns';
 
 type Props = {
   image: File | null;
@@ -19,37 +20,28 @@ const FileUploader: FC<Props> = ({ image, required, handleFileChange }) => (
       types={['JPG', 'JPEG', 'PNG', 'GIF']}
       name="file"
     >
-      <Box
-        sx={{
-          borderColor: 'border.gray',
-          borderStyle: 'solid',
-          borderWidth: 1,
-          borderRadius: 4,
-          p: 4,
-        }}
-        _hover={{
-          opacity: 0.7,
-          cursor: 'pointer',
-        }}
+      <div
+        className={flex({
+          flexDirection: 'column',
+          alignItems: 'center',
+          borderColor: 'outline.main',
+          borderWidth: 'thin',
+          p: 'md',
+          borderRadius: 'sm',
+          _hover: {
+            cursor: 'pointer',
+            opacity: 0.8,
+          },
+        })}
       >
-        <Box
-          sx={{
-            backgroundColor: 'background.gray',
-            p: 4,
-            borderRadius: 4,
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <ImageIcon width={90} height={70} />
-          <Text fontSize="xl">ファイルを選択するかドロップしてください</Text>
-          <Text fontSize="md">フォーマットはJPG/JPEG/PNG/GIF</Text>
-        </Box>
-      </Box>
+        <ImageIcon width={90} height={70} />
+        <Typography variant="body1">
+          ファイルを選択するかドロップしてください
+        </Typography>
+        <Typography variant="body2">フォーマットはJPG/JPEG/PNG/GIF</Typography>
+      </div>
     </ReactDragDropFileUploader>
-    <Text mt={2}>
+    <Typography variant="body1">
       {image ? (
         <>
           ファイル名: {image.name}
@@ -61,7 +53,7 @@ const FileUploader: FC<Props> = ({ image, required, handleFileChange }) => (
       ) : (
         'ファイルは選択されていません'
       )}
-    </Text>
+    </Typography>
   </>
 );
 

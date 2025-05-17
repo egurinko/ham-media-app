@@ -1,7 +1,6 @@
 'use client';
 
 import { createListCollection } from '@ark-ui/react';
-import { AddIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
 import { Select } from '@/app/components/atoms';
 import { Alert } from '@/app/components/atoms/Alert';
@@ -13,6 +12,7 @@ import AnglesUpDownIcon from '@/assets/angles-up-down.svg';
 import CheckIcon from '@/assets/check.svg';
 import { flex } from '@/styled/patterns';
 import type { FC } from 'react';
+import PlusIcon from '@/assets/plus.svg';
 
 type Props = {
   productId: number;
@@ -93,7 +93,11 @@ export const Form: FC<Props> = ({ productId, remainingStockAmount }) => {
           })}
         >
           <Button fullWidth type="submit" disabled={remainingStockAmount === 0}>
-            <AddIcon />
+            <Icon
+              source={<PlusIcon width="16" height="16" />}
+              width="16px"
+              height="16px"
+            />
             在庫リクエストに入れる
           </Button>
           <Typography variant="caption">
