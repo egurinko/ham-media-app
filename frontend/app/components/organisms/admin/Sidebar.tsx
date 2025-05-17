@@ -8,9 +8,13 @@ import type { FC } from 'react';
 
 type Props = {
   internalUserName: string;
+  internalUserRoleName: string;
 };
 
-export const Sidebar: FC<Props> = ({ internalUserName }) => (
+export const Sidebar: FC<Props> = ({
+  internalUserName,
+  internalUserRoleName,
+}) => (
   <aside
     className={css({
       display: {
@@ -36,7 +40,7 @@ export const Sidebar: FC<Props> = ({ internalUserName }) => (
         priority={true}
       />
     </div>
-    <Navigation />
+    <Navigation internalUserRoleName={internalUserRoleName} />
     <div
       className={css({
         borderTopWidth: 'thin',

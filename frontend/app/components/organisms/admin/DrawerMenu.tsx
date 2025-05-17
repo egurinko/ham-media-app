@@ -24,9 +24,13 @@ import type { FC } from 'react';
 
 type Props = {
   internalUserName: string;
+  internalUserRoleName: string;
 };
 
-export const DrawerMenu: FC<Props> = ({ internalUserName }) => (
+export const DrawerMenu: FC<Props> = ({
+  internalUserName,
+  internalUserRoleName,
+}) => (
   <Drawer.Root>
     <Drawer.Trigger asChild>
       <IconButton visual="text" size="md">
@@ -78,40 +82,45 @@ export const DrawerMenu: FC<Props> = ({ internalUserName }) => (
                 gap: 'md',
               })}
             >
-              <li
-                className={css({
-                  width: '100%',
-                })}
-              >
-                <Drawer.CloseTrigger
-                  className={css({
-                    width: '100%',
-                  })}
-                >
-                  <NavigationLink
-                    href={ADMIN_INTERNAL_USERS_PATH}
-                    text="ユーザ"
-                    icon={<UserProfileIcon />}
-                  />
-                </Drawer.CloseTrigger>
-              </li>
-              <li
-                className={css({
-                  width: '100%',
-                })}
-              >
-                <Drawer.CloseTrigger
-                  className={css({
-                    width: '100%',
-                  })}
-                >
-                  <NavigationLink
-                    href={ADMIN_HOSPIALS_PATH}
-                    text="病院"
-                    icon={<HospitalIcon />}
-                  />
-                </Drawer.CloseTrigger>
-              </li>
+              {internalUserRoleName === 'admin' && (
+                <>
+                  <li
+                    className={css({
+                      width: '100%',
+                    })}
+                  >
+                    <Drawer.CloseTrigger
+                      className={css({
+                        width: '100%',
+                      })}
+                    >
+                      <NavigationLink
+                        href={ADMIN_INTERNAL_USERS_PATH}
+                        text="ユーザ"
+                        icon={<UserProfileIcon />}
+                      />
+                    </Drawer.CloseTrigger>
+                  </li>
+                  <li
+                    className={css({
+                      width: '100%',
+                    })}
+                  >
+                    <Drawer.CloseTrigger
+                      className={css({
+                        width: '100%',
+                      })}
+                    >
+                      <NavigationLink
+                        href={ADMIN_HOSPIALS_PATH}
+                        text="病院"
+                        icon={<HospitalIcon />}
+                      />
+                    </Drawer.CloseTrigger>
+                  </li>
+                </>
+              )}
+
               <li
                 className={css({
                   width: '100%',

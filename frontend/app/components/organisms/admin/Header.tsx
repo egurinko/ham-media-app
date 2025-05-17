@@ -5,9 +5,13 @@ import type { FC } from 'react';
 
 type Props = {
   internalUserName: string;
+  internalUserRoleName: string;
 };
 
-export const Header: FC<Props> = ({ internalUserName }) => (
+export const Header: FC<Props> = ({
+  internalUserName,
+  internalUserRoleName,
+}) => (
   <div
     className={css({
       display: {
@@ -28,6 +32,9 @@ export const Header: FC<Props> = ({ internalUserName }) => (
       height="150"
       priority={true}
     />
-    <DrawerMenu internalUserName={internalUserName} />
+    <DrawerMenu
+      internalUserName={internalUserName}
+      internalUserRoleName={internalUserRoleName}
+    />
   </div>
 );

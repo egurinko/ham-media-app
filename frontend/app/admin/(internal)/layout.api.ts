@@ -12,6 +12,9 @@ export const getInternalUserProfileGql = gql`
     session {
       internalUser {
         name
+        role {
+          name
+        }
       }
     }
   }

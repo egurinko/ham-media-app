@@ -20,8 +20,14 @@ export default async function Layout({ children }: Props) {
         display: 'flex',
       })}
     >
-      <Header internalUserName={data.session.internalUser.name} />
-      <Sidebar internalUserName={data.session.internalUser.name} />
+      <Header
+        internalUserName={data.session.internalUser.name}
+        internalUserRoleName={data.session.internalUser.role.name}
+      />
+      <Sidebar
+        internalUserName={data.session.internalUser.name}
+        internalUserRoleName={data.session.internalUser.role.name}
+      />
       <main
         className={css({
           px: {

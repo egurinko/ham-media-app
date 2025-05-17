@@ -8,6 +8,10 @@ export type GetInternalUserProfileQuery = {
   __typename?: 'Query';
   session: {
     __typename?: 'Session';
-    internalUser: { __typename?: 'InternalUser'; name: string };
+    internalUser: {
+      __typename?: 'InternalUser';
+      name: string;
+      role: { __typename?: 'Role'; name: string };
+    };
   };
 };

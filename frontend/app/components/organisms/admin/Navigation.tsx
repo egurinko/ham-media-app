@@ -13,7 +13,11 @@ import {
 } from '@/utils/routes';
 import type { FC } from 'react';
 
-export const Navigation: FC<NoProps> = () => (
+type Props = {
+  internalUserRoleName: string;
+};
+
+export const Navigation: FC<Props> = ({ internalUserRoleName }) => (
   <nav
     className={css({
       width: '100%',
@@ -28,28 +32,33 @@ export const Navigation: FC<NoProps> = () => (
         gap: 'md',
       })}
     >
-      <li
-        className={css({
-          width: '100%',
-        })}
-      >
-        <NavigationLink
-          href={ADMIN_INTERNAL_USERS_PATH}
-          text="ユーザ"
-          icon={<UserProfileIcon />}
-        />
-      </li>
-      <li
-        className={css({
-          width: '100%',
-        })}
-      >
-        <NavigationLink
-          href={ADMIN_HOSPIALS_PATH}
-          text="病院"
-          icon={<HospitalIcon />}
-        />
-      </li>
+      {internalUserRoleName === 'admin' && (
+        <>
+          <li
+            className={css({
+              width: '100%',
+            })}
+          >
+            <NavigationLink
+              href={ADMIN_INTERNAL_USERS_PATH}
+              text="ユーザ"
+              icon={<UserProfileIcon />}
+            />
+          </li>
+          <li
+            className={css({
+              width: '100%',
+            })}
+          >
+            <NavigationLink
+              href={ADMIN_HOSPIALS_PATH}
+              text="病院"
+              icon={<HospitalIcon />}
+            />
+          </li>
+        </>
+      )}
+
       <li
         className={css({
           width: '100%',
