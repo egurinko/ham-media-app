@@ -27,7 +27,11 @@ export const ActionDialog: FC<Props> = ({
     <Dialog.Root>
       <Dialog.Trigger asChild>
         <IconButton visual="tonal" size="md" loading={isPending}>
-          <Icon source={<TrashIcon />} width="20px" height="20px" />
+          <Icon
+            source={<TrashIcon width="20" height="20" />}
+            width="20px"
+            height="20px"
+          />
         </IconButton>
       </Dialog.Trigger>
       <Dialog.Backdrop />
