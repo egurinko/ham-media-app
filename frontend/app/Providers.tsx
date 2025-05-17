@@ -2,7 +2,7 @@
 
 import { ApolloProvider } from '@apollo/client';
 import { ThemeProvider } from 'next-themes';
-import { GoogleTagManager } from '@/components/atoms/GoogleTagManager';
+import { GoogleTagManager } from '@/app/components/atoms/GoogleTagManager';
 import { apiClient } from '@/utils/apollo';
 import { GOOGLE_TAG_MANAGER_ID } from '@/utils/googleTagManager';
 import type { FC, PropsWithChildren } from 'react';
