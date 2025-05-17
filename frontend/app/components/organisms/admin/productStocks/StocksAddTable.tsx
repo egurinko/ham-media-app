@@ -194,6 +194,7 @@ export const StocksAddTable: FC<Props> = ({
                   value={addingStock.amount}
                   onChange={(e) => handleAmountChange(index, e.target.value)}
                   required
+                  className={css({ w: { base: '40px', sm: '100px' } })}
                 />
               </Table.Cell>
               <Table.Cell>
