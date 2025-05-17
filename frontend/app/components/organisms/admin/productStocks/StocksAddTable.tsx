@@ -135,6 +135,7 @@ export const StocksAddTable: FC<Props> = ({
                   min={dayjs().add(1, 'day').format('YYYY-MM-DD')}
                   value={addingStock.expired_at}
                   onChange={(e) => handleExpiredAtChange(index, e.target.value)}
+                  className={css({ w: { base: '100px', sm: '100px' } })}
                 />
               </Table.Cell>
               <Table.Cell>
@@ -151,7 +152,7 @@ export const StocksAddTable: FC<Props> = ({
                       : undefined
                   }
                   name="adminInternalUserId"
-                  className={css({ w: { base: '45%', sm: '200px' } })}
+                  className={css({ w: { base: '100%', sm: '200px' } })}
                 >
                   <Select.Control>
                     <Select.Trigger>
@@ -194,7 +195,7 @@ export const StocksAddTable: FC<Props> = ({
                   value={addingStock.amount}
                   onChange={(e) => handleAmountChange(index, e.target.value)}
                   required
-                  className={css({ w: { base: '40px', sm: '100px' } })}
+                  className={css({ w: { base: '60px', sm: '100px' } })}
                 />
               </Table.Cell>
               <Table.Cell>
@@ -203,6 +204,7 @@ export const StocksAddTable: FC<Props> = ({
                   visual="text"
                   onClick={() => handleAddingStocksDelete(index)}
                   disabled={addingStocks.length <= 1}
+                  className={css({ p: 0 })}
                 >
                   <Icon source={<XmarkIcon />} width="20px" height="20px" />
                 </IconButton>

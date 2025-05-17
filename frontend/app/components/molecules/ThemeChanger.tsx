@@ -13,11 +13,19 @@ export const ThemeChanger = () => {
     <div>
       {theme === 'dark' ? (
         <IconButton visual="outlined" onClick={() => setTheme('light')}>
-          <Icon source={<SunIcon />} width="20px" height="20px" />
+          <Icon
+            source={<SunIcon width="20" height="20" />}
+            width="20px"
+            height="20px"
+          />
         </IconButton>
       ) : (
         <IconButton visual="outlined" onClick={() => setTheme('dark')}>
-          <Icon source={<MoonIcon />} width="20px" height="20px" />
+          <Icon
+            source={<MoonIcon width="20" height="20" />}
+            width="20px"
+            height="20px"
+          />
         </IconButton>
       )}
     </div>

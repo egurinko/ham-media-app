@@ -49,7 +49,11 @@ export const DrawerMenu: FC<Props> = ({ internalUserName }) => (
                 color: 'primary.main',
               })}
             >
-              <Icon source={<XMarkIcon />} width="16px" height="16px" />
+              <Icon
+                source={<XMarkIcon width="16" height="16" />}
+                width="16px"
+                height="16px"
+              />
             </IconButton>
           </Drawer.CloseTrigger>
         </Drawer.Header>

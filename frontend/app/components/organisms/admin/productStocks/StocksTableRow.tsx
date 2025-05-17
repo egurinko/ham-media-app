@@ -109,7 +109,7 @@ export const StocksTableRow: FC<Props> = ({
           }}
           value={adminInternalUserIds}
           name="adminInternalUserId"
-          className={css({ w: { base: '45%', sm: '200px' } })}
+          className={css({ w: { base: '100%', sm: '200px' } })}
           disabled={isAdminPending}
         >
           <Select.Control>
@@ -157,7 +157,7 @@ export const StocksTableRow: FC<Props> = ({
             }}
             value={internalUsersInternalUserIds}
             name="allocatedInternalUserId"
-            className={css({ w: { base: '45%', sm: '200px' } })}
+            className={css({ w: { base: '100%', sm: '200px' } })}
             disabled={isAllocatePending}
           >
             <Select.Control>
@@ -211,6 +211,9 @@ export const StocksTableRow: FC<Props> = ({
             });
           }}
           disabled={isDeletePending}
+          className={css({
+            p: 0,
+          })}
         >
           <Icon source={<TranshIcon />} width="20px" height="20px" />
         </IconButton>
