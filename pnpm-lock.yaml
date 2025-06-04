@@ -248,8 +248,8 @@ importers:
         specifier: ^0.0.1
         version: 0.0.1
       zod:
-        specifier: ^3.25.48
-        version: 3.25.49
+        specifier: ^3.25.50
+        version: 3.25.50
     devDependencies:
       '@graphql-codegen/cli':
         specifier: ^5.0.6
@@ -6997,8 +6997,8 @@ packages:
   zen-observable@0.8.15:
     resolution: {integrity: sha512-PQ2PC7R9rslx84ndNBZB/Dkv8V8fZEpk83RLgXtYd0fwUgEjseMn1Dgajh2x6S8QbZAFa9p2qVCEuYZNgve0dQ==}
 
-  zod@3.25.49:
-    resolution: {integrity: sha512-JMMPMy9ZBk3XFEdbM3iL1brx4NUSejd6xr3ELrrGEfGb355gjhiAWtG3K5o+AViV/3ZfkIrCzXsZn6SbLwTR8Q==}
+  zod@3.25.50:
+    resolution: {integrity: sha512-VstOnRxf4tlSq0raIwbn0n+LA34SxVoZ8r3pkwSUM0jqNiA/HCMQEVjTuS5FZmHsge+9MDGTiAuHyml5T0um6A==}
 
 snapshots:
 
@@ -15817,4 +15817,4 @@ snapshots:
 
   zen-observable@0.8.15: {}
 
-  zod@3.25.49: {}
+  zod@3.25.50: {}
