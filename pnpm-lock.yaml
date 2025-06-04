@@ -282,8 +282,8 @@ importers:
         specifier: 19.1.6
         version: 19.1.6
       '@types/react-dom':
-        specifier: 19.1.5
-        version: 19.1.5(@types/react@19.1.6)
+        specifier: 19.1.6
+        version: 19.1.6(@types/react@19.1.6)
       babel-plugin-react-compiler:
         specifier: 19.1.0-rc.2
         version: 19.1.0-rc.2
@@ -2786,8 +2786,8 @@ packages:
   '@types/pg@8.6.1':
     resolution: {integrity: sha512-1Kc4oAGzAl7uqUStZCDvaLFqZrW9qWSjXOmBfdgyBP5La7Us6Mg4GBvRlSoaZMhQF/zSj1C8CtKMBkoiT8eL8w==}
 
-  '@types/react-dom@19.1.5':
-    resolution: {integrity: sha512-CMCjrWucUBZvohgZxkjd6S9h0nZxXjzus6yDfUb+xLxYM7VvjKNH1tQrE9GWLql1XoOP4/Ds3bwFqShHUYraGg==}
+  '@types/react-dom@19.1.6':
+    resolution: {integrity: sha512-4hOiT/dwO8Ko0gV1m/TJZYk3y0KBnY9vzDh7W+DH17b2HFSOGgdj33dhihPeuy3l0q23+4e+hoXHV6hCC4dCXw==}
     peerDependencies:
       '@types/react': ^19.0.0
 
@@ -7021,7 +7021,7 @@ snapshots:
   '@apollo/client-react-streaming@0.12.2(@apollo/client@3.13.8(@types/react@19.1.6)(graphql-ws@6.0.5(@fastify/websocket@11.1.0)(graphql@16.11.0)(ws@8.18.2))(graphql@16.11.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@types/react@19.1.6)(graphql@16.11.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:
       '@apollo/client': 3.13.8(@types/react@19.1.6)(graphql-ws@6.0.5(@fastify/websocket@11.1.0)(graphql@16.11.0)(ws@8.18.2))(graphql@16.11.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      '@types/react-dom': 19.1.5(@types/react@19.1.6)
+      '@types/react-dom': 19.1.6(@types/react@19.1.6)
       '@wry/equality': 0.5.7
       graphql: 16.11.0
       react: 19.1.0
@@ -10592,7 +10592,7 @@ snapshots:
       pg-protocol: 1.10.0
       pg-types: 2.2.0
 
-  '@types/react-dom@19.1.5(@types/react@19.1.6)':
+  '@types/react-dom@19.1.6(@types/react@19.1.6)':
     dependencies:
       '@types/react': 19.1.6
 
