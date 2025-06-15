@@ -1,8 +1,8 @@
+import { checkboxAnatomy } from '@ark-ui/anatomy';
 import { Checkbox as ArkCheckbox, type CheckboxRootProps } from '@ark-ui/react';
 import { forwardRef, type ReactNode } from 'react';
 import type { RecipeVariantProps } from '@/styled/css';
 import { sva } from '@/styled/css';
-import { checkboxAnatomy } from '@ark-ui/anatomy';
 
 export const checkbox = sva({
   slots: checkboxAnatomy.keys(),
