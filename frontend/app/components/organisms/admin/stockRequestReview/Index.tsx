@@ -64,7 +64,9 @@ export const StockRequestReview: FC<Props> = ({ id, submitType }) => {
               </div>
               <div className={css({ mt: 'lg', textAlign: 'right' })}>
                 <Dialog.CloseTrigger asChild>
-                  <Button visual="text">キャンセル</Button>
+                  <Button type="button" visual="text">
+                    キャンセル
+                  </Button>
                 </Dialog.CloseTrigger>
                 <Dialog.CloseTrigger asChild>
                   <Button visual="primary" type="submit" disabled={isPending}>

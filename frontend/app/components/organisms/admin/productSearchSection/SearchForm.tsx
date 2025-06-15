@@ -268,6 +268,7 @@ export const SearchForm: FC<Props> = ({
       </div>
       <div>
         <Button
+          type="button"
           visual="outlined"
           onClick={handleClear}
           className={flex({

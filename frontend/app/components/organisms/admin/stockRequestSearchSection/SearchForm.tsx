@@ -94,6 +94,7 @@ export const SearchForm: FC<Props> = ({ internalUsers }) => {
       </div>
       <div>
         <Button
+          type="button"
           visual="outlined"
           onClick={handleClear}
           className={flex({

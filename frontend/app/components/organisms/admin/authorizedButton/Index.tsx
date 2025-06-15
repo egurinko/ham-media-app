@@ -14,7 +14,7 @@ export const AuthorizedButton: FC<Props> = async ({ href, label }) => {
 
   return (
     <Link href={href}>
-      <Button visual="tonal" disabled={!isAdmin}>
+      <Button type="button" visual="tonal" disabled={!isAdmin}>
         {label}
       </Button>
     </Link>

@@ -206,6 +206,7 @@ export const StockRequestNewForm: FC<NoProps> = ({}) => {
                   </Select.Positioner>
                 </Select.Root>
                 <Button
+                  type="button"
                   visual="outlined"
                   onClick={() => handleRemoveItem(cartProduct.productId)}
                   className={css({

@@ -23,7 +23,7 @@ export const CopyURL: FC<NoProps> = () => {
   };
 
   return (
-    <Button visual="outlined" size="sm" onClick={handleCopy}>
+    <Button type="button" visual="outlined" size="sm" onClick={handleCopy}>
       <Icon source={<LinkIcon />} width="18px" height="18px" />
 
       {isCopied ? 'コピー完了' : 'URLをコピー'}

@@ -167,6 +167,7 @@ export const StockRequestEditForm: FC<Props> = ({ stockRequest }) => {
                   </Select.Positioner>
                 </Select.Root>
                 <Button
+                  type="button"
                   visual="outlined"
                   onClick={() => handleRemoveItem(cartProduct.productId)}
                   className={css({
