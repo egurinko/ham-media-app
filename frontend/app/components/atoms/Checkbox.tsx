@@ -2,9 +2,10 @@ import { Checkbox as ArkCheckbox, type CheckboxRootProps } from '@ark-ui/react';
 import { forwardRef, type ReactNode } from 'react';
 import type { RecipeVariantProps } from '@/styled/css';
 import { sva } from '@/styled/css';
+import { checkboxAnatomy } from '@ark-ui/anatomy';
 
 export const checkbox = sva({
-  slots: ['root', 'label', 'control'],
+  slots: checkboxAnatomy.keys(),
   base: {
     root: {
       alignItems: 'center',
@@ -125,21 +126,20 @@ export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>(
 
     return (
       <ArkCheckbox.Root ref={ref} className={styles.root} {...rootProps}>
-        <ArkCheckbox.Context>
-          {(checkbox) => (
-            <>
-              <ArkCheckbox.Control className={styles.control}>
-                {checkbox.checked && <CheckIcon />}
-                {checkbox.indeterminate && <MinusIcon />}
-              </ArkCheckbox.Control>
-              {children && (
-                <ArkCheckbox.Label className={styles.label}>
-                  {children}
-                </ArkCheckbox.Label>
-              )}
-            </>
-          )}
-        </ArkCheckbox.Context>
+        <ArkCheckbox.Control className={styles.control}>
+          <ArkCheckbox.Indicator>
+            <CheckIcon />
+          </ArkCheckbox.Indicator>
+          <ArkCheckbox.Indicator indeterminate>
+            <MinusIcon />
+          </ArkCheckbox.Indicator>
+        </ArkCheckbox.Control>
+        {children && (
+          <ArkCheckbox.Label className={styles.label}>
+            {children}
+          </ArkCheckbox.Label>
+        )}
+        <ArkCheckbox.HiddenInput />
       </ArkCheckbox.Root>
     );
   },
