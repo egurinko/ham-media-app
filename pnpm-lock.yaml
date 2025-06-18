@@ -49,10 +49,10 @@ importers:
   backend:
     dependencies:
       '@aws-sdk/client-s3':
-        specifier: ^3.828.0
+        specifier: ^3.830.0
         version: 3.830.0
       '@aws-sdk/lib-storage':
-        specifier: ^3.828.0
+        specifier: ^3.830.0
         version: 3.830.0(@aws-sdk/client-s3@3.830.0)
       '@fastify/cors':
         specifier: ^11.0.1
@@ -9170,7 +9170,7 @@ snapshots:
   '@graphql-tools/optimize@2.0.0(graphql@16.11.0)':
     dependencies:
       graphql: 16.11.0
-      tslib: 2.6.3
+      tslib: 2.8.1
 
   '@graphql-tools/prisma-loader@8.0.17(@fastify/websocket@11.1.0)(@types/node@22.15.32)(graphql@16.11.0)':
     dependencies:
@@ -9216,7 +9216,7 @@ snapshots:
       '@ardatan/relay-compiler': 12.0.3(graphql@16.11.0)
       '@graphql-tools/utils': 10.8.6(graphql@16.11.0)
       graphql: 16.11.0
-      tslib: 2.6.3
+      tslib: 2.8.1
     transitivePeerDependencies:
       - encoding
 
