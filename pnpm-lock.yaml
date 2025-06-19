@@ -200,8 +200,8 @@ importers:
         specifier: ^5.14.0
         version: 5.14.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@react-google-maps/api':
-        specifier: ^2.20.6
-        version: 2.20.6(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        specifier: ^2.20.7
+        version: 2.20.7(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       apollo-upload-client:
         specifier: ^18.0.1
         version: 18.0.1(@apollo/client@3.13.8(@types/react@19.1.8)(graphql-ws@6.0.5(@fastify/websocket@11.1.0)(graphql@16.11.0)(ws@8.18.2))(graphql@16.11.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(graphql@16.11.0)
@@ -2256,8 +2256,8 @@ packages:
     peerDependencies:
       '@opentelemetry/api': ^1.8
 
-  '@react-google-maps/api@2.20.6':
-    resolution: {integrity: sha512-frxkSHWbd36ayyxrEVopSCDSgJUT1tVKXvQld2IyzU3UnDuqqNA3AZE4/fCdqQb2/zBQx3nrWnZB1wBXDcrjcw==}
+  '@react-google-maps/api@2.20.7':
+    resolution: {integrity: sha512-ys7uri3V6gjhYZUI43srHzSKDC6/jiKTwHNlwXFTvjeaJE3M3OaYBt9FZKvJs8qnOhL6i6nD1BKJoi1KrnkCkg==}
     peerDependencies:
       react: ^16.8 || ^17 || ^18 || ^19
       react-dom: ^16.8 || ^17 || ^18 || ^19
@@ -9947,7 +9947,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@react-google-maps/api@2.20.6(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
+  '@react-google-maps/api@2.20.7(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:
       '@googlemaps/js-api-loader': 1.16.8
       '@googlemaps/markerclusterer': 2.5.3
