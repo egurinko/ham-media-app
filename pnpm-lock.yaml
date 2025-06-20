@@ -103,8 +103,8 @@ importers:
         specifier: ^9.0.2
         version: 9.0.2
       mercurius:
-        specifier: ^16.1.0
-        version: 16.1.0(graphql@16.11.0)
+        specifier: ^16.2.0
+        version: 16.2.0(graphql@16.11.0)
       mercurius-upload:
         specifier: ^8.0.0
         version: 8.0.0(graphql@16.11.0)
@@ -174,7 +174,7 @@ importers:
         version: 2.12.6(graphql@16.11.0)
       mercurius-integration-testing:
         specifier: ^9.0.1
-        version: 9.0.1(fastify@5.4.0)(graphql@16.11.0)(mercurius@16.1.0(graphql@16.11.0))
+        version: 9.0.1(fastify@5.4.0)(graphql@16.11.0)(mercurius@16.2.0(graphql@16.11.0))
       tsc-alias:
         specifier: ^1.8.16
         version: 1.8.16
@@ -5403,8 +5403,8 @@ packages:
     peerDependencies:
       graphql: ^16.3.0
 
-  mercurius@16.1.0:
-    resolution: {integrity: sha512-foMnqtFn3Wf/3zh0IJEz30Dq0alZIlIMCoQpxpS3/GkDB12h/LfmcoZ6ASCZ8xBJIvStEIKYxOyjfDeEcYhjLQ==}
+  mercurius@16.2.0:
+    resolution: {integrity: sha512-I2+KRkC6MVbf44FN7hopWXj+OzS1nKLwN7brAkpd3MLTz9mQgWMYdnrk2ETVaG6yD3x9zIIzuRrCQcuWHyFL1w==}
     engines: {node: ^20.9.0 || >=22.0.0}
     peerDependencies:
       graphql: ^16.0.0
@@ -5483,9 +5483,9 @@ packages:
   module-details-from-path@1.0.4:
     resolution: {integrity: sha512-EGWKgxALGMgzvxYF1UyGTy0HXX/2vHLkw6+NvDKW2jypWbHpjQuj4UMcqQWXHERJhVGKikolT06G3bcKe4fi7w==}
 
-  mqemitter@6.0.2:
-    resolution: {integrity: sha512-8RGlznQx/Nb1xC3xKUFXHWov7pn7JdH++YVwlr6SLT6k3ft1h+ImGqZdVudbdKruFckIq9wheq9s4hgCivJDow==}
-    engines: {node: '>=16'}
+  mqemitter@7.0.0:
+    resolution: {integrity: sha512-tyn+3Ob93QZRVOqttct3C6oHamvieBC4RA+pyyoMA/pBCphSPFMgItXIKa6g10jtBzyyupBdLelsS5+P75v1/w==}
+    engines: {node: '>=20'}
 
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
@@ -6333,8 +6333,8 @@ packages:
   simple-swizzle@0.2.2:
     resolution: {integrity: sha512-JA//kQgZtbuY83m+xT+tXJkmJncGMTFT+C+g2h2R9uxkYIrE2yy9sgmcLhCnw57/WSD+Eh3J97FPEDFnbXnDUg==}
 
-  single-user-cache@1.0.1:
-    resolution: {integrity: sha512-xFW/TuZUKoMZl47xqfC2jb7dO1XtJ5VgZxQliOKQWTueIH96CX6USaPiZcyDN0HFb4Ow+tsXpJZViRyIkl/rDA==}
+  single-user-cache@2.0.0:
+    resolution: {integrity: sha512-AGsTqnYmJH59HtK/5RhCfWh0cz3/Y2bxJf4w+0chSdkg1WmS8vYMnFGZc+C/m0gDZFl4iQ9sSLv7oURP6aKJwQ==}
 
   sisteransi@1.0.5:
     resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
@@ -14116,13 +14116,13 @@ snapshots:
 
   mdn-data@2.0.30: {}
 
-  mercurius-integration-testing@9.0.1(fastify@5.4.0)(graphql@16.11.0)(mercurius@16.1.0(graphql@16.11.0)):
+  mercurius-integration-testing@9.0.1(fastify@5.4.0)(graphql@16.11.0)(mercurius@16.2.0(graphql@16.11.0)):
     dependencies:
       '@graphql-typed-document-node/core': 3.2.0(graphql@16.11.0)
       cookie: 1.0.2
       fastify: 5.4.0
       graphql: 16.11.0
-      mercurius: 16.1.0(graphql@16.11.0)
+      mercurius: 16.2.0(graphql@16.11.0)
       ws: 8.18.2
     transitivePeerDependencies:
       - bufferutil
@@ -14134,7 +14134,7 @@ snapshots:
       graphql: 16.11.0
       graphql-upload-minimal: 1.6.1(graphql@16.11.0)
 
-  mercurius@16.1.0(graphql@16.11.0):
+  mercurius@16.2.0(graphql@16.11.0):
     dependencies:
       '@fastify/error': 4.2.0
       '@fastify/static': 8.2.0
@@ -14142,13 +14142,13 @@ snapshots:
       fastify-plugin: 5.0.1
       graphql: 16.11.0
       graphql-jit: 0.8.7(graphql@16.11.0)
-      mqemitter: 6.0.2
+      mqemitter: 7.0.0
       p-map: 4.0.0
       quick-lru: 7.0.1
       readable-stream: 4.7.0
       safe-stable-stringify: 2.5.0
       secure-json-parse: 3.0.2
-      single-user-cache: 1.0.1
+      single-user-cache: 2.0.0
       tiny-lru: 11.3.2
       ws: 8.18.2
     transitivePeerDependencies:
@@ -14213,7 +14213,7 @@ snapshots:
 
   module-details-from-path@1.0.4: {}
 
-  mqemitter@6.0.2:
+  mqemitter@7.0.0:
     dependencies:
       fastparallel: 2.4.1
       qlobber: 8.0.1
@@ -15117,7 +15117,7 @@ snapshots:
       is-arrayish: 0.3.2
     optional: true
 
-  single-user-cache@1.0.1:
+  single-user-cache@2.0.0:
     dependencies:
       safe-stable-stringify: 2.5.0
 
