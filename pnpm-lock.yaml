@@ -255,7 +255,7 @@ importers:
         specifier: ^5.0.7
         version: 5.0.7(@fastify/websocket@11.1.0)(@types/node@22.15.32)(graphql@16.11.0)(typescript@5.8.3)
       '@graphql-codegen/near-operation-file-preset':
-        specifier: ^3.0.1
+        specifier: ^3.1.0
         version: 3.1.0(graphql@16.11.0)
       '@graphql-codegen/typescript':
         specifier: ^4.1.6
@@ -9172,7 +9172,7 @@ snapshots:
   '@graphql-tools/optimize@2.0.0(graphql@16.11.0)':
     dependencies:
       graphql: 16.11.0
-      tslib: 2.6.3
+      tslib: 2.8.1
 
   '@graphql-tools/prisma-loader@8.0.17(@fastify/websocket@11.1.0)(@types/node@22.15.32)(graphql@16.11.0)':
     dependencies:
@@ -9218,7 +9218,7 @@ snapshots:
       '@ardatan/relay-compiler': 12.0.3(graphql@16.11.0)
       '@graphql-tools/utils': 10.8.6(graphql@16.11.0)
       graphql: 16.11.0
-      tslib: 2.6.3
+      tslib: 2.8.1
     transitivePeerDependencies:
       - encoding
 
