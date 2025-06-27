@@ -164,8 +164,8 @@ importers:
         specifier: ^3.2.4
         version: 3.2.4(vitest@3.2.4(@types/node@22.15.33)(jiti@2.4.2)(lightningcss@1.25.1)(yaml@2.8.0))
       dotenv:
-        specifier: ^16.5.0
-        version: 16.5.0
+        specifier: ^16.6.1
+        version: 16.6.1
       dotenv-cli:
         specifier: ^8.0.0
         version: 8.0.0
@@ -288,8 +288,8 @@ importers:
         specifier: 19.1.0-rc.2
         version: 19.1.0-rc.2
       dotenv:
-        specifier: ^16.5.0
-        version: 16.5.0
+        specifier: ^16.6.1
+        version: 16.6.1
       eslint-config-next:
         specifier: ^15.3.3
         version: 15.3.4(eslint@9.29.0(jiti@2.4.2))(typescript@5.8.3)
@@ -360,6 +360,7 @@ packages:
 
   '@ark-ui/anatomy@3.5.0':
     resolution: {integrity: sha512-KoROLVVT23BvFHcye/GYhG8NJ2CH0C+CaoJhXrkEjvk8pbEx80Xk5NIUy5gL7xmX+LDD7kY5t3NotBqCu+2L2w==}
+    deprecated: This package is deprecated. Please import directly from @ark-ui/<framework>
 
   '@ark-ui/react@5.14.2':
     resolution: {integrity: sha512-8/gMH6FmKir+08xUvgDz8bre5/wr0zhikyYfsfshONj+LYL5og7/SJFMONGxKtkSYTXN9EdnW6NwQsq8YWyyvA==}
@@ -4132,8 +4133,8 @@ packages:
     resolution: {integrity: sha512-GopVGCpVS1UKH75VKHGuQFqS1Gusej0z4FyQkPdwjil2gNIv+LNsqBlboOzpJFZKVT95GkCyWJbBSdFEFUWI2A==}
     engines: {node: '>=12'}
 
-  dotenv@16.5.0:
-    resolution: {integrity: sha512-m/C+AwOAr9/W1UOIZUo232ejMNnJAJtYQjUbHoNTBNTJSvqzzDh7vnrei3o3r3m9blf6ZoDkvcw0VmozNRFJxg==}
+  dotenv@16.6.1:
+    resolution: {integrity: sha512-uBq4egWHTcTt33a72vpSG0z3HnPuIl6NqYcTrKEg2azoEyl2hpW0zqlxysq2pK9HlDIHyHyakeYaYnSAwd8bow==}
     engines: {node: '>=12'}
 
   dset@3.1.4:
@@ -9182,7 +9183,7 @@ snapshots:
       '@whatwg-node/fetch': 0.10.8
       chalk: 4.1.2
       debug: 4.4.1
-      dotenv: 16.5.0
+      dotenv: 16.6.1
       graphql: 16.11.0
       graphql-request: 6.1.0(graphql@16.11.0)
       http-proxy-agent: 7.0.2
@@ -12639,13 +12640,13 @@ snapshots:
   dotenv-cli@8.0.0:
     dependencies:
       cross-spawn: 7.0.6
-      dotenv: 16.5.0
+      dotenv: 16.6.1
       dotenv-expand: 10.0.0
       minimist: 1.2.8
 
   dotenv-expand@10.0.0: {}
 
-  dotenv@16.5.0: {}
+  dotenv@16.6.1: {}
 
   dset@3.1.4: {}
 
@@ -13126,7 +13127,7 @@ snapshots:
       chokidar: 4.0.3
       close-with-grace: 2.2.0
       commist: 3.2.0
-      dotenv: 16.5.0
+      dotenv: 16.6.1
       fastify: 5.4.0
       fastify-plugin: 5.0.1
       generify: 4.2.0
