@@ -221,7 +221,7 @@ importers:
         specifier: ^0.0.8
         version: 0.0.8
       next:
-        specifier: ^15.3.3
+        specifier: ^15.3.4
         version: 15.3.4(@babel/core@7.27.7)(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@19.1.0-rc.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       next-themes:
         specifier: ^0.4.6
@@ -291,7 +291,7 @@ importers:
         specifier: ^17.0.0
         version: 17.0.0
       eslint-config-next:
-        specifier: ^15.3.3
+        specifier: ^15.3.4
         version: 15.3.4(eslint@9.30.0(jiti@2.4.2))(typescript@5.8.3)
       eslint-plugin-jsx-a11y:
         specifier: ^6.10.2
@@ -10547,7 +10547,7 @@ snapshots:
     dependencies:
       minimatch: 9.0.5
       path-browserify: 1.0.1
-      tinyglobby: 0.2.12
+      tinyglobby: 0.2.14
 
   '@tsconfig/node10@1.0.11': {}
 
@@ -10913,7 +10913,7 @@ snapshots:
       '@vue/shared': 3.4.19
       estree-walker: 2.0.2
       magic-string: 0.30.17
-      postcss: 8.4.49
+      postcss: 8.5.6
       source-map-js: 1.2.1
 
   '@vue/compiler-ssr@3.4.19':
