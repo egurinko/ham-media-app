@@ -149,7 +149,7 @@ importers:
         specifier: ^9.0.10
         version: 9.0.10
       '@types/node':
-        specifier: ^22.15.33
+        specifier: ^22.15.34
         version: 22.15.34
       '@types/node-cron':
         specifier: ^3.0.11
