@@ -197,7 +197,7 @@ importers:
         specifier: ^3.5.0
         version: 3.5.0(@internationalized/date@3.8.2)
       '@ark-ui/react':
-        specifier: ^5.14.0
+        specifier: ^5.16.1
         version: 5.16.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@react-google-maps/api':
         specifier: ^2.20.7
