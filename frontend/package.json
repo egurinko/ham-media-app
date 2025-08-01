@@ -23,7 +23,7 @@
     "@apollo/client": "^3.13.8",
     "@apollo/experimental-nextjs-app-support": "^0.12.2",
     "@ark-ui/anatomy": "^3.5.0",
-    "@ark-ui/react": "^5.14.0",
+    "@ark-ui/react": "^5.18.3",
     "@react-google-maps/api": "^2.20.7",
     "apollo-upload-client": "^18.0.1",
     "copy-to-clipboard": "^3.3.3",
