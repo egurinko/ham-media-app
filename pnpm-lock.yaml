@@ -251,7 +251,7 @@ importers:
         specifier: ^0.0.1
         version: 0.0.1
       zod:
-        specifier: ^3.25.74
+        specifier: ^3.25.76
         version: 3.25.76
     devDependencies:
       '@graphql-codegen/cli':
