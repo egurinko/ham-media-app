@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "engines": {
-    "node": "22.16.0",
+    "node": ">=22.16.0 <23.0.0",
     "pnpm": ">=10.14.0"
   },
   "packageManager": "pnpm@10.14.0",

@@ -31,3 +31,6 @@ tsconfig.tsbuildinfo
 
 # panda
 styled-system
+
+# Sentry Config File
+.env.sentry-build-plugin
