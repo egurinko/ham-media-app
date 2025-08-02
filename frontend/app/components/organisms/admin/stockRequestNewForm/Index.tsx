@@ -172,9 +172,10 @@ export const StockRequestNewForm: FC<NoProps> = ({}) => {
                   positioning={{ sameWidth: true }}
                   width="100%"
                   collection={collection}
-                  onValueChange={(e) =>
-                    handleCountChange(cartProduct.productId, Number(e.items[0]))
-                  }
+                  onValueChange={(e) => {
+                    const count = Number(e.items[0]) || 1;
+                    handleCountChange(cartProduct.productId, count);
+                  }}
                   value={[String(cartProduct.count)]}
                 >
                   <Select.Label>数量</Select.Label>
