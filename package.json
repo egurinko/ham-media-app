@@ -11,20 +11,32 @@
     "build": "pnpm backend db:reflect && pnpm backend build",
     "start": "npm start --prefix ./backend",
     "build:backend": "pnpm backend db:reflect && pnpm backend build",
-    "start:backend": "pnpm backend start"
+    "start:backend": "pnpm backend start",
+    "e2e": "playwright test --config=e2e/playwright.config.ts",
+    "e2e:ui": "playwright test --config=e2e/playwright.config.ts --ui",
+    "e2e:headed": "playwright test --config=e2e/playwright.config.ts --headed",
+    "e2e:debug": "playwright test --config=e2e/playwright.config.ts --debug",
+    "e2e:setup": "pnpm e2e:db:setup && pnpm e2e:db:seed",
+    "e2e:db:setup": "DATABASE_URL=postgresql://postgres:postgres@localhost/ham_media_app_e2e pnpm backend db:push",
+    "e2e:db:seed": "NODE_ENV=development DATABASE_URL=postgresql://postgres:postgres@localhost/ham_media_app_e2e pnpm backend db:seed:dev",
+    "e2e:install": "playwright install"
   },
   "devDependencies": {
     "@eslint/compat": "^1.3.1",
     "@eslint/eslintrc": "^3.3.1",
     "@eslint/js": "^9.32.0",
+    "@playwright/test": "^1.54.2",
     "@types/graphql": "^14.5.0",
+    "@types/node": "^22.16.5",
     "@typescript-eslint/eslint-plugin": "^8.38.0",
     "@typescript-eslint/parser": "^8.38.0",
+    "concurrently": "^9.2.0",
     "eslint": "^9.32.0",
     "eslint-config-prettier": "^10.1.8",
     "globals": "^16.3.0",
     "prettier": "^3.6.2",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "wait-on": "^8.0.4"
   },
   "dependencies": {
     "graphql": "^16.11.0"
