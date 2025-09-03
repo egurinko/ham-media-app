@@ -2,9 +2,9 @@
   "private": true,
   "engines": {
     "node": ">=22.16.0 <23.0.0",
-    "pnpm": ">=10.15.0"
+    "pnpm": ">=10.15.1"
   },
-  "packageManager": "pnpm@10.15.0",
+  "packageManager": "pnpm@10.15.1",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "backend": "pnpm -F \"backend\"",
