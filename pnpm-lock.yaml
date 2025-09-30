@@ -276,8 +276,8 @@ importers:
         specifier: ^8.1.0
         version: 8.1.0(typescript@5.9.2)
       '@types/apollo-upload-client':
-        specifier: ^18.0.0
-        version: 18.0.0(@types/react@19.1.12)(graphql-ws@6.0.6(@fastify/websocket@11.2.0)(graphql@16.11.0)(ws@8.18.3))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+        specifier: ^18.0.1
+        version: 18.0.1(@types/react@19.1.12)(graphql-ws@6.0.6(@fastify/websocket@11.2.0)(graphql@16.11.0)(ws@8.18.3))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@types/js-cookie':
         specifier: ^3.0.6
         version: 3.0.6
@@ -3044,8 +3044,8 @@ packages:
   '@tybys/wasm-util@0.10.0':
     resolution: {integrity: sha512-VyyPYFlOMNylG45GoAe0xDoLwWuowvf92F9kySqzYh8vmYm7D2u4iUJKa1tOUpS70Ku13ASrOkS4ScXFsTaCNQ==}
 
-  '@types/apollo-upload-client@18.0.0':
-    resolution: {integrity: sha512-cMgITNemktxasqvp6jiPj15dv84n3FTMvMoYBP1+xonDS+0l6JygIJrj2LJh85rShRzTOOkrElrAsCXXARa3KA==}
+  '@types/apollo-upload-client@18.0.1':
+    resolution: {integrity: sha512-qumgUkhs9pqJAxlDtzmn3WTrJ9oAHBb6i9A7aR1HQyjLpX9+LRL5V84aErv5ZwcCSR2zEgG8cFsuBVYfZHFSRA==}
 
   '@types/axios@0.14.4':
     resolution: {integrity: sha512-9JgOaunvQdsQ/qW2OPmE5+hCeUB52lQSolecrFrthct55QekhmXEwT203s20RL+UHtCQc15y3VXpby9E7Kkh/g==}
@@ -11554,7 +11554,7 @@ snapshots:
       tslib: 2.8.1
     optional: true
 
-  '@types/apollo-upload-client@18.0.0(@types/react@19.1.12)(graphql-ws@6.0.6(@fastify/websocket@11.2.0)(graphql@16.11.0)(ws@8.18.3))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
+  '@types/apollo-upload-client@18.0.1(@types/react@19.1.12)(graphql-ws@6.0.6(@fastify/websocket@11.2.0)(graphql@16.11.0)(ws@8.18.3))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
     dependencies:
       '@apollo/client': 3.13.9(@types/react@19.1.12)(graphql-ws@6.0.6(@fastify/websocket@11.2.0)(graphql@16.11.0)(ws@8.18.3))(graphql@16.11.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@types/extract-files': 13.0.1
