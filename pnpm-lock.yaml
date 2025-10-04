@@ -52,8 +52,8 @@ importers:
         specifier: ^3.901.0
         version: 3.901.0
       '@aws-sdk/lib-storage':
-        specifier: ^3.901.0
-        version: 3.901.0(@aws-sdk/client-s3@3.901.0)
+        specifier: ^3.903.0
+        version: 3.903.0(@aws-sdk/client-s3@3.901.0)
       '@fastify/cors':
         specifier: ^11.1.0
         version: 11.1.0
@@ -434,8 +434,8 @@ packages:
     resolution: {integrity: sha512-NYjy/6NLxH9m01+pfpB4ql8QgAorJcu8tw69kzHwUd/ql6wUDTbC7HcXqtKlIwWjzjgj2BKL7j6SyFapgCuafA==}
     engines: {node: '>=18.0.0'}
 
-  '@aws-sdk/lib-storage@3.901.0':
-    resolution: {integrity: sha512-wbsDLyqP6eWuipME0klToroZVMY+8xKiFILyZDQ1ZKy5kNa0dEOokE78mlat+GsP2ygW+Zv5il7LDPskRpaEOQ==}
+  '@aws-sdk/lib-storage@3.903.0':
+    resolution: {integrity: sha512-/CFhz/QtPSI9CVAdlW6JrfMyPjnE38a8pzTi8CMCWXu51c1NqzcGXo80LZUwzWkcWk5ZqPWRYzrw43TQ8ia78w==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       '@aws-sdk/client-s3': ^3.901.0
@@ -8128,7 +8128,7 @@ snapshots:
     transitivePeerDependencies:
       - aws-crt
 
-  '@aws-sdk/lib-storage@3.901.0(@aws-sdk/client-s3@3.901.0)':
+  '@aws-sdk/lib-storage@3.903.0(@aws-sdk/client-s3@3.901.0)':
     dependencies:
       '@aws-sdk/client-s3': 3.901.0
       '@smithy/abort-controller': 4.2.0
