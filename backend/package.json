@@ -48,7 +48,7 @@
     "fastify-plugin": "^5.0.1",
     "graphql-relay": "^0.10.2",
     "graphql-scalars": "^1.25.0",
-    "graphql-upload-minimal": "^1.6.1",
+    "graphql-upload-minimal": "^1.6.3",
     "json-bigint-patch": "^0.0.8",
     "jsonwebtoken": "^9.0.2",
     "mercurius": "^16.2.0",
