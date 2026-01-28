@@ -32,7 +32,7 @@ jobs:
       - name: Set up node
         uses: actions/setup-node@v4
         with:
-          node-version: '22.16.0'
+          node-version: '24.13.0'
           cache: pnpm
           cache-dependency-path: pnpm-lock.yaml
       - name: Install dependencies
@@ -85,7 +85,7 @@ jobs:
       - name: Set up node
         uses: actions/setup-node@v4
         with:
-          node-version: '22.16.0'
+          node-version: '24.13.0'
           cache: pnpm
           cache-dependency-path: pnpm-lock.yaml
       - name: Install dependencies
