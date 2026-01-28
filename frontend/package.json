@@ -20,7 +20,7 @@
     "format:check": "pnpm format --check"
   },
   "dependencies": {
-    "@apollo/client": "^3.13.9",
+    "@apollo/client": "^4.1.3",
     "@apollo/experimental-nextjs-app-support": "^0.12.3",
     "@ark-ui/anatomy": "^3.5.0",
     "@ark-ui/react": "^5.18.3",
