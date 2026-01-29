@@ -57,7 +57,7 @@
     "@types/react-dom": "19.1.8",
     "babel-plugin-react-compiler": "19.1.0-rc.2",
     "dotenv": "^17.2.3",
-    "eslint-config-next": "^15.4.5",
+    "eslint-config-next": "^15.5.11",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.5"
   },
