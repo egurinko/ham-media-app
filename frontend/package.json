@@ -25,7 +25,7 @@
     "@ark-ui/anatomy": "^3.5.0",
     "@ark-ui/react": "^5.18.3",
     "@react-google-maps/api": "^2.20.7",
-    "@sentry/nextjs": "^10.20.0",
+    "@sentry/nextjs": "^10.38.0",
     "apollo-upload-client": "^18.0.1",
     "copy-to-clipboard": "^3.3.3",
     "dayjs": "^1.11.13",
