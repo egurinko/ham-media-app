@@ -37,7 +37,7 @@
     "parse-nested-form-data": "^1.0.0",
     "react": "19.1.1",
     "react-dom": "19.1.1",
-    "react-drag-drop-files": "^3.0.1",
+    "react-drag-drop-files": "^3.1.0",
     "react-hook-form": "^7.62.0",
     "react-medium-image-zoom": "^5.3.0",
     "server-only": "^0.0.1",
