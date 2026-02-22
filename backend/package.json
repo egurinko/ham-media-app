@@ -49,7 +49,7 @@
     "graphql-relay": "^0.10.2",
     "graphql-scalars": "^1.25.0",
     "graphql-upload-minimal": "^1.6.4",
-    "json-bigint-patch": "^0.0.8",
+    "json-bigint-patch": "^0.0.9",
     "jsonwebtoken": "^9.0.2",
     "mercurius": "^16.2.0",
     "mercurius-upload": "^8.0.0",
