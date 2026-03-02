@@ -113,7 +113,7 @@ importers:
         version: 1.3.0(graphql@16.12.0)
       nexus-prisma:
         specifier: ^2.0.8
-        version: 2.0.8(@prisma/client@6.13.0(prisma@6.13.0(magicast@0.3.5)(typescript@5.9.3))(typescript@5.9.3))(graphql@16.12.0)(nexus@1.3.0(graphql@16.12.0))(ts-node@10.9.2(@types/node@22.16.5)(typescript@5.9.3))
+        version: 2.0.8(@prisma/client@6.13.0(prisma@6.13.0(magicast@0.3.5)(typescript@5.9.3))(typescript@5.9.3))(graphql@16.12.0)(nexus@1.3.0(graphql@16.12.0))(ts-node@10.9.2(@types/node@22.19.13)(typescript@5.9.3))
       node-cron:
         specifier: ^4.1.0
         version: 4.2.1
@@ -131,7 +131,7 @@ importers:
         version: 2.17.1
       ts-node-dev:
         specifier: ^2.0.0
-        version: 2.0.0(@types/node@22.16.5)(typescript@5.9.3)
+        version: 2.0.0(@types/node@22.19.13)(typescript@5.9.3)
       uuid:
         specifier: ^11.1.0
         version: 11.1.0
@@ -149,8 +149,8 @@ importers:
         specifier: ^9.0.10
         version: 9.0.10
       '@types/node':
-        specifier: ^22.15.33
-        version: 22.16.5
+        specifier: ^22.19.13
+        version: 22.19.13
       '@types/node-cron':
         specifier: ^3.0.11
         version: 3.0.11
@@ -162,7 +162,7 @@ importers:
         version: 11.0.0
       '@vitest/coverage-v8':
         specifier: ^3.2.4
-        version: 3.2.4(vitest@3.2.4(@types/node@22.16.5)(jiti@2.4.2)(lightningcss@1.25.1)(terser@5.44.1)(yaml@2.8.0))
+        version: 3.2.4(vitest@3.2.4(@types/node@22.19.13)(jiti@2.4.2)(lightningcss@1.25.1)(terser@5.44.1)(yaml@2.8.0))
       dotenv:
         specifier: ^17.2.3
         version: 17.2.3
@@ -183,7 +183,7 @@ importers:
         version: 4.2.0
       vitest:
         specifier: ^3.2.4
-        version: 3.2.4(@types/node@22.16.5)(jiti@2.4.2)(lightningcss@1.25.1)(terser@5.44.1)(yaml@2.8.0)
+        version: 3.2.4(@types/node@22.19.13)(jiti@2.4.2)(lightningcss@1.25.1)(terser@5.44.1)(yaml@2.8.0)
 
   frontend:
     dependencies:
@@ -3261,8 +3261,8 @@ packages:
   '@types/node@17.0.45':
     resolution: {integrity: sha512-w+tIMs3rq2afQdsPJlODhoUEKzFP1ayaoyl1CcnwtIlsVe7K7bA1NGm4s3PraqTLlXnbIN84zuBlxBWo1u9BLw==}
 
-  '@types/node@22.16.5':
-    resolution: {integrity: sha512-bJFoMATwIGaxxx8VJPeM8TonI8t579oRvgAuT8zFugJsJZgzqv0Fu8Mhp68iecjzG7cnN3mO2dJQ5uUM2EFrgQ==}
+  '@types/node@22.19.13':
+    resolution: {integrity: sha512-akNQMv0wW5uyRpD2v2IEyRSZiR+BeGuoB6L310EgGObO44HSMNT8z1xzio28V8qOrgYaopIDNA18YgdXd+qTiw==}
 
   '@types/node@24.10.1':
     resolution: {integrity: sha512-GNWcUTRBgIRJD5zj+Tq0fKOJ5XZajIiBroOF0yvj2bSU1WvNdYS/dn9UxwsujGW4JX06dnHyjV2y9rRaybH0iQ==}
@@ -10703,7 +10703,7 @@ snapshots:
 
   '@line/bot-sdk@10.0.0':
     dependencies:
-      '@types/node': 22.16.5
+      '@types/node': 22.19.13
     optionalDependencies:
       axios: 1.13.5
     transitivePeerDependencies:
@@ -12087,7 +12087,7 @@ snapshots:
 
   '@types/bcrypt@6.0.0':
     dependencies:
-      '@types/node': 22.16.5
+      '@types/node': 22.19.13
 
   '@types/chai@5.2.2':
     dependencies:
@@ -12095,7 +12095,7 @@ snapshots:
 
   '@types/connect@3.4.38':
     dependencies:
-      '@types/node': 22.16.5
+      '@types/node': 22.19.13
 
   '@types/deep-eql@4.0.2': {}
 
@@ -12134,19 +12134,19 @@ snapshots:
   '@types/jsonwebtoken@9.0.10':
     dependencies:
       '@types/ms': 2.1.0
-      '@types/node': 22.16.5
+      '@types/node': 22.19.13
 
   '@types/ms@2.1.0': {}
 
   '@types/mysql@2.15.27':
     dependencies:
-      '@types/node': 22.16.5
+      '@types/node': 22.19.13
 
   '@types/node-cron@3.0.11': {}
 
   '@types/node@17.0.45': {}
 
-  '@types/node@22.16.5':
+  '@types/node@22.19.13':
     dependencies:
       undici-types: 6.21.0
 
@@ -12163,7 +12163,7 @@ snapshots:
 
   '@types/pg@8.15.6':
     dependencies:
-      '@types/node': 22.16.5
+      '@types/node': 22.19.13
       pg-protocol: 1.10.3
       pg-types: 2.2.0
 
@@ -12187,7 +12187,7 @@ snapshots:
 
   '@types/tedious@4.0.14':
     dependencies:
-      '@types/node': 22.16.5
+      '@types/node': 22.19.13
 
   '@types/uuid@11.0.0':
     dependencies:
@@ -12195,7 +12195,7 @@ snapshots:
 
   '@types/ws@8.18.1':
     dependencies:
-      '@types/node': 22.16.5
+      '@types/node': 22.19.13
 
   '@typescript-eslint/eslint-plugin@8.56.0(@typescript-eslint/parser@8.56.0(eslint@9.39.3(jiti@2.4.2))(typescript@5.9.3))(eslint@9.39.3(jiti@2.4.2))(typescript@5.9.3)':
     dependencies:
@@ -12347,7 +12347,7 @@ snapshots:
   '@unrs/resolver-binding-win32-x64-msvc@1.11.1':
     optional: true
 
-  '@vitest/coverage-v8@3.2.4(vitest@3.2.4(@types/node@22.16.5)(jiti@2.4.2)(lightningcss@1.25.1)(terser@5.44.1)(yaml@2.8.0))':
+  '@vitest/coverage-v8@3.2.4(vitest@3.2.4(@types/node@22.19.13)(jiti@2.4.2)(lightningcss@1.25.1)(terser@5.44.1)(yaml@2.8.0))':
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@bcoe/v8-coverage': 1.0.2
@@ -12362,7 +12362,7 @@ snapshots:
       std-env: 3.9.0
       test-exclude: 7.0.1
       tinyrainbow: 2.0.0
-      vitest: 3.2.4(@types/node@22.16.5)(jiti@2.4.2)(lightningcss@1.25.1)(terser@5.44.1)(yaml@2.8.0)
+      vitest: 3.2.4(@types/node@22.19.13)(jiti@2.4.2)(lightningcss@1.25.1)(terser@5.44.1)(yaml@2.8.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -12374,13 +12374,13 @@ snapshots:
       chai: 5.2.1
       tinyrainbow: 2.0.0
 
-  '@vitest/mocker@3.2.4(vite@7.0.5(@types/node@22.16.5)(jiti@2.4.2)(lightningcss@1.25.1)(terser@5.44.1)(yaml@2.8.0))':
+  '@vitest/mocker@3.2.4(vite@7.0.5(@types/node@22.19.13)(jiti@2.4.2)(lightningcss@1.25.1)(terser@5.44.1)(yaml@2.8.0))':
     dependencies:
       '@vitest/spy': 3.2.4
       estree-walker: 3.0.3
       magic-string: 0.30.17
     optionalDependencies:
-      vite: 7.0.5(@types/node@22.16.5)(jiti@2.4.2)(lightningcss@1.25.1)(terser@5.44.1)(yaml@2.8.0)
+      vite: 7.0.5(@types/node@22.19.13)(jiti@2.4.2)(lightningcss@1.25.1)(terser@5.44.1)(yaml@2.8.0)
 
   '@vitest/pretty-format@3.2.4':
     dependencies:
@@ -15549,7 +15549,7 @@ snapshots:
 
   jest-worker@27.5.1:
     dependencies:
-      '@types/node': 22.16.5
+      '@types/node': 22.19.13
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
@@ -15990,7 +15990,7 @@ snapshots:
       - '@babel/core'
       - babel-plugin-macros
 
-  nexus-prisma@2.0.8(@prisma/client@6.13.0(prisma@6.13.0(magicast@0.3.5)(typescript@5.9.3))(typescript@5.9.3))(graphql@16.12.0)(nexus@1.3.0(graphql@16.12.0))(ts-node@10.9.2(@types/node@22.16.5)(typescript@5.9.3)):
+  nexus-prisma@2.0.8(@prisma/client@6.13.0(prisma@6.13.0(magicast@0.3.5)(typescript@5.9.3))(typescript@5.9.3))(graphql@16.12.0)(nexus@1.3.0(graphql@16.12.0))(ts-node@10.9.2(@types/node@22.19.13)(typescript@5.9.3)):
     dependencies:
       '@prisma/client': 6.13.0(prisma@6.13.0(magicast@0.3.5)(typescript@5.9.3))(typescript@5.9.3)
       '@prisma/generator-helper': 5.22.0
@@ -16010,7 +16010,7 @@ snapshots:
       setset: 0.0.9
       tslib: 2.8.1
     optionalDependencies:
-      ts-node: 10.9.2(@types/node@22.16.5)(typescript@5.9.3)
+      ts-node: 10.9.2(@types/node@22.19.13)(typescript@5.9.3)
     transitivePeerDependencies:
       - supports-color
 
@@ -17291,7 +17291,7 @@ snapshots:
       '@ts-morph/common': 0.25.0
       code-block-writer: 13.0.3
 
-  ts-node-dev@2.0.0(@types/node@22.16.5)(typescript@5.9.3):
+  ts-node-dev@2.0.0(@types/node@22.19.13)(typescript@5.9.3):
     dependencies:
       chokidar: 3.6.0
       dynamic-dedupe: 0.3.0
@@ -17301,7 +17301,7 @@ snapshots:
       rimraf: 2.7.1
       source-map-support: 0.5.21
       tree-kill: 1.2.2
-      ts-node: 10.9.2(@types/node@22.16.5)(typescript@5.9.3)
+      ts-node: 10.9.2(@types/node@22.19.13)(typescript@5.9.3)
       tsconfig: 7.0.0
       typescript: 5.9.3
     transitivePeerDependencies:
@@ -17309,14 +17309,14 @@ snapshots:
       - '@swc/wasm'
       - '@types/node'
 
-  ts-node@10.9.2(@types/node@22.16.5)(typescript@5.9.3):
+  ts-node@10.9.2(@types/node@22.19.13)(typescript@5.9.3):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.11
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 22.16.5
+      '@types/node': 22.19.13
       acorn: 8.15.0
       acorn-walk: 8.3.4
       arg: 4.1.3
@@ -17537,13 +17537,13 @@ snapshots:
       spdx-correct: 3.2.0
       spdx-expression-parse: 3.0.1
 
-  vite-node@3.2.4(@types/node@22.16.5)(jiti@2.4.2)(lightningcss@1.25.1)(terser@5.44.1)(yaml@2.8.0):
+  vite-node@3.2.4(@types/node@22.19.13)(jiti@2.4.2)(lightningcss@1.25.1)(terser@5.44.1)(yaml@2.8.0):
     dependencies:
       cac: 6.7.14
       debug: 4.4.3
       es-module-lexer: 1.7.0
       pathe: 2.0.3
-      vite: 7.0.5(@types/node@22.16.5)(jiti@2.4.2)(lightningcss@1.25.1)(terser@5.44.1)(yaml@2.8.0)
+      vite: 7.0.5(@types/node@22.19.13)(jiti@2.4.2)(lightningcss@1.25.1)(terser@5.44.1)(yaml@2.8.0)
     transitivePeerDependencies:
       - '@types/node'
       - jiti
@@ -17558,7 +17558,7 @@ snapshots:
       - tsx
       - yaml
 
-  vite@7.0.5(@types/node@22.16.5)(jiti@2.4.2)(lightningcss@1.25.1)(terser@5.44.1)(yaml@2.8.0):
+  vite@7.0.5(@types/node@22.19.13)(jiti@2.4.2)(lightningcss@1.25.1)(terser@5.44.1)(yaml@2.8.0):
     dependencies:
       esbuild: 0.25.8
       fdir: 6.4.6(picomatch@4.0.3)
@@ -17567,18 +17567,18 @@ snapshots:
       rollup: 4.45.1
       tinyglobby: 0.2.14
     optionalDependencies:
-      '@types/node': 22.16.5
+      '@types/node': 22.19.13
       fsevents: 2.3.3
       jiti: 2.4.2
       lightningcss: 1.25.1
       terser: 5.44.1
       yaml: 2.8.0
 
-  vitest@3.2.4(@types/node@22.16.5)(jiti@2.4.2)(lightningcss@1.25.1)(terser@5.44.1)(yaml@2.8.0):
+  vitest@3.2.4(@types/node@22.19.13)(jiti@2.4.2)(lightningcss@1.25.1)(terser@5.44.1)(yaml@2.8.0):
     dependencies:
       '@types/chai': 5.2.2
       '@vitest/expect': 3.2.4
-      '@vitest/mocker': 3.2.4(vite@7.0.5(@types/node@22.16.5)(jiti@2.4.2)(lightningcss@1.25.1)(terser@5.44.1)(yaml@2.8.0))
+      '@vitest/mocker': 3.2.4(vite@7.0.5(@types/node@22.19.13)(jiti@2.4.2)(lightningcss@1.25.1)(terser@5.44.1)(yaml@2.8.0))
       '@vitest/pretty-format': 3.2.4
       '@vitest/runner': 3.2.4
       '@vitest/snapshot': 3.2.4
@@ -17596,11 +17596,11 @@ snapshots:
       tinyglobby: 0.2.14
       tinypool: 1.1.1
       tinyrainbow: 2.0.0
-      vite: 7.0.5(@types/node@22.16.5)(jiti@2.4.2)(lightningcss@1.25.1)(terser@5.44.1)(yaml@2.8.0)
-      vite-node: 3.2.4(@types/node@22.16.5)(jiti@2.4.2)(lightningcss@1.25.1)(terser@5.44.1)(yaml@2.8.0)
+      vite: 7.0.5(@types/node@22.19.13)(jiti@2.4.2)(lightningcss@1.25.1)(terser@5.44.1)(yaml@2.8.0)
+      vite-node: 3.2.4(@types/node@22.19.13)(jiti@2.4.2)(lightningcss@1.25.1)(terser@5.44.1)(yaml@2.8.0)
       why-is-node-running: 2.3.0
     optionalDependencies:
-      '@types/node': 22.16.5
+      '@types/node': 22.19.13
     transitivePeerDependencies:
       - jiti
       - less
