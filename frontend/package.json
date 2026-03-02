@@ -20,8 +20,8 @@
     "format:check": "pnpm format --check"
   },
   "dependencies": {
-    "@apollo/client": "^3.13.9",
-    "@apollo/experimental-nextjs-app-support": "^0.12.3",
+    "@apollo/client": "^3.14.0",
+    "@apollo/experimental-nextjs-app-support": "^0.14.4",
     "@ark-ui/anatomy": "^3.5.0",
     "@ark-ui/react": "^5.18.3",
     "@react-google-maps/api": "^2.20.7",
