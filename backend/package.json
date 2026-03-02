@@ -37,7 +37,7 @@
     "@aws-sdk/lib-storage": "^3.995.0",
     "@fastify/cors": "^11.1.0",
     "@fastify/helmet": "^13.0.1",
-    "@line/bot-sdk": "^10.0.0",
+    "@line/bot-sdk": "^10.6.0",
     "@prisma/client": "6.13.0",
     "@sentry/node": "^10.20.0",
     "axios": "^1.13.5",
