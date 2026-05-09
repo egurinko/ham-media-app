@@ -230,8 +230,8 @@ importers:
         specifier: ^0.4.6
         version: 0.4.6(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       parse-nested-form-data:
-        specifier: ^1.0.0
-        version: 1.0.0(@remix-run/web-file@3.1.0)
+        specifier: ^1.0.1
+        version: 1.0.1(@remix-run/web-file@3.1.0)
       react:
         specifier: 19.1.1
         version: 19.1.1
@@ -6415,8 +6415,8 @@ packages:
     resolution: {integrity: sha512-ybiGyvspI+fAoRQbIPRddCcSTV9/LsJbf0e/S85VLowVGzRmokfneg2kwVW/KU5rOXrPSbF1qAKPMgNTqqROQQ==}
     engines: {node: '>=18'}
 
-  parse-nested-form-data@1.0.0:
-    resolution: {integrity: sha512-lIeGMds1l6h6YXxhmcD4aD72xwFAqfDjuzh9dUMyS4h5WhimOfhmfeDiT3KZhqpj+XgaEyen+X9Ks9Y3+Rp5+g==}
+  parse-nested-form-data@1.0.1:
+    resolution: {integrity: sha512-BuMXaUOncsciUsL3N69cMvEHCeLAG6sRoFa7NPbw30Jn+klD47hlx/+Rq1MWrxsdQWu8157d2TnReea/NWTuFA==}
     peerDependencies:
       '@remix-run/web-file': '>=3.0.0'
       '@remix-run/web-form-data': '*'
@@ -7605,6 +7605,7 @@ packages:
 
   uuid@9.0.1:
     resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
+    deprecated: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
     hasBin: true
 
   v8-compile-cache-lib@3.0.1:
@@ -16179,7 +16180,7 @@ snapshots:
       index-to-position: 1.1.0
       type-fest: 4.41.0
 
-  parse-nested-form-data@1.0.0(@remix-run/web-file@3.1.0):
+  parse-nested-form-data@1.0.1(@remix-run/web-file@3.1.0):
     dependencies:
       '@babel/runtime': 7.27.6
       '@remix-run/web-file': 3.1.0
