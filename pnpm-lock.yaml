@@ -97,8 +97,8 @@ importers:
         specifier: ^1.6.4
         version: 1.6.4(graphql@16.13.1)
       json-bigint-patch:
-        specifier: ^0.0.8
-        version: 0.0.8
+        specifier: ^0.0.9
+        version: 0.0.9
       jsonwebtoken:
         specifier: ^9.0.2
         version: 9.0.2
@@ -221,8 +221,8 @@ importers:
         specifier: ^3.0.5
         version: 3.0.5
       json-bigint-patch:
-        specifier: ^0.0.8
-        version: 0.0.8
+        specifier: ^0.0.9
+        version: 0.0.9
       next:
         specifier: ^15.4.5
         version: 15.4.5(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@19.1.0-rc.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
@@ -5759,8 +5759,8 @@ packages:
     engines: {node: '>=6'}
     hasBin: true
 
-  json-bigint-patch@0.0.8:
-    resolution: {integrity: sha512-xa0LTQsyaq8awYyZyuUsporWisZFiyqzxGW8CKM3t7oouf0GFAKYJnqAm6e9NLNBQOCtOLvy614DEiRX/rPbnA==}
+  json-bigint-patch@0.0.9:
+    resolution: {integrity: sha512-MEFOCz8t2akr/0UfKYlQUuZpufqWA+ZAbtBh7iRXztpRoyvDozejCJm6PNqO2Br4zgXrUJ+pdTG/jCXFf4ZTnQ==}
 
   json-buffer@3.0.1:
     resolution: {integrity: sha512-4bV5BfR2mqfQTJm+V5tPPdf+ZpuhiIvTuAB5g8kcrXOZpTT/QwwVRWBywX1ozr6lEuPdbHxwaJlm9G6mI2sfSQ==}
@@ -7442,6 +7442,7 @@ packages:
   tsconfck@3.0.2:
     resolution: {integrity: sha512-6lWtFjwuhS3XI4HsX4Zg0izOI3FU/AI9EGVlPEUMDIhvLPMD4wkiof0WCoDgW7qY+Dy198g4d9miAqUHWHFH6Q==}
     engines: {node: ^18 || >=20}
+    deprecated: unmaintained
     hasBin: true
     peerDependencies:
       typescript: ^5.0.0
@@ -7605,6 +7606,7 @@ packages:
 
   uuid@9.0.1:
     resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
+    deprecated: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
     hasBin: true
 
   v8-compile-cache-lib@3.0.1:
@@ -15527,7 +15529,7 @@ snapshots:
 
   jsesc@3.1.0: {}
 
-  json-bigint-patch@0.0.8: {}
+  json-bigint-patch@0.0.9: {}
 
   json-buffer@3.0.1: {}
 
