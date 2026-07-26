@@ -59,7 +59,7 @@
     "pino-pretty": "^13.1.1",
     "prisma": "6.13.0",
     "prisma-repl": "^1.4.0",
-    "sanitize-html": "^2.17.1",
+    "sanitize-html": "^2.17.6",
     "ts-node-dev": "^2.0.0",
     "uuid": "^11.1.0"
   },
@@ -70,7 +70,7 @@
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^22.15.33",
     "@types/node-cron": "^3.0.11",
-    "@types/sanitize-html": "^2.16.0",
+    "@types/sanitize-html": "^2.16.1",
     "@types/uuid": "^11.0.0",
     "@vitest/coverage-v8": "^3.2.4",
     "dotenv": "^17.2.3",
