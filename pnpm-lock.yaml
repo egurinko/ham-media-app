@@ -88,8 +88,8 @@ importers:
         specifier: ^5.0.1
         version: 5.0.1
       graphql-relay:
-        specifier: ^0.10.2
-        version: 0.10.2(graphql@16.13.1)
+        specifier: ^0.11.0
+        version: 0.11.0(graphql@16.13.1)
       graphql-scalars:
         specifier: ^1.25.0
         version: 1.25.0(graphql@16.13.1)
@@ -2359,6 +2359,7 @@ packages:
   '@opentelemetry/sdk-trace-base@2.2.0':
     resolution: {integrity: sha512-xWQgL0Bmctsalg6PaXExmzdedSp3gyKV8mQBwK/j9VGdCDu2fmXIb2gAehBKbkXCpJ4HPkgv3QfoJWRT4dHWbw==}
     engines: {node: ^18.19.0 || >=20.6.0}
+    deprecated: Use @opentelemetry/sdk-trace package
     peerDependencies:
       '@opentelemetry/api': '>=1.3.0 <1.10.0'
 
@@ -4944,6 +4945,7 @@ packages:
   eslint@9.39.3:
     resolution: {integrity: sha512-VmQ+sifHUbI/IcSopBCF/HO3YiHQx/AVd3UVyYL6weuwW+HvON9VYn5l6Zl1WZzPWXPNZrSQpxwkkZ/VuvJZzg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
     peerDependencies:
       jiti: '*'
@@ -5321,11 +5323,11 @@ packages:
     peerDependencies:
       graphql: '>=15'
 
-  graphql-relay@0.10.2:
-    resolution: {integrity: sha512-abybva1hmlNt7Y9pMpAzHuFnM2Mme/a2Usd8S4X27fNteLGRAECMYfhmsrpZFvGn3BhmBZugMXYW/Mesv3P1Kw==}
+  graphql-relay@0.11.0:
+    resolution: {integrity: sha512-IDwmMimLx7jITDkH6aL28lpVDiNiGV3QoYJtvkUipLtSuWr1LlyGZI5r40DOKIK6L3Ku9CpGZOMKIQ0UeecBEQ==}
     engines: {node: ^12.20.0 || ^14.15.0 || >= 15.9.0}
     peerDependencies:
-      graphql: ^16.2.0
+      graphql: ^16.2.0 || ^17.0.0
 
   graphql-scalars@1.25.0:
     resolution: {integrity: sha512-b0xyXZeRFkne4Eq7NAnL400gStGqG/Sx9VqX0A05nHyEbv57UJnWKsjNnrpVqv5e/8N1MUxkt0wwcRXbiyKcFg==}
@@ -7442,6 +7444,7 @@ packages:
   tsconfck@3.0.2:
     resolution: {integrity: sha512-6lWtFjwuhS3XI4HsX4Zg0izOI3FU/AI9EGVlPEUMDIhvLPMD4wkiof0WCoDgW7qY+Dy198g4d9miAqUHWHFH6Q==}
     engines: {node: ^18 || >=20}
+    deprecated: unmaintained
     hasBin: true
     peerDependencies:
       typescript: ^5.0.0
@@ -7605,6 +7608,7 @@ packages:
 
   uuid@9.0.1:
     resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
+    deprecated: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
     hasBin: true
 
   v8-compile-cache-lib@3.0.1:
@@ -12068,7 +12072,7 @@ snapshots:
 
   '@types/graphql-relay@0.7.0(graphql@16.13.1)':
     dependencies:
-      graphql-relay: 0.10.2(graphql@16.13.1)
+      graphql-relay: 0.11.0(graphql@16.13.1)
     transitivePeerDependencies:
       - graphql
 
@@ -15121,7 +15125,7 @@ snapshots:
       lodash.merge: 4.6.2
       lodash.mergewith: 4.6.2
 
-  graphql-relay@0.10.2(graphql@16.13.1):
+  graphql-relay@0.11.0(graphql@16.13.1):
     dependencies:
       graphql: 16.13.1
 
