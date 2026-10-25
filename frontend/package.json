@@ -27,7 +27,7 @@
     "@react-google-maps/api": "^2.20.7",
     "@sentry/nextjs": "^10.20.0",
     "apollo-upload-client": "^18.0.1",
-    "copy-to-clipboard": "^3.3.3",
+    "copy-to-clipboard": "^4.0.2",
     "dayjs": "^1.11.13",
     "deepmerge": "^4.3.1",
     "js-cookie": "^3.0.5",
