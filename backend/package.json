@@ -38,7 +38,7 @@
     "@fastify/cors": "^11.1.0",
     "@fastify/helmet": "^13.0.1",
     "@line/bot-sdk": "^10.0.0",
-    "@prisma/client": "6.13.0",
+    "@prisma/client": "6.19.3",
     "@sentry/node": "^10.20.0",
     "axios": "^1.13.6",
     "bcrypt": "^6.0.0",
