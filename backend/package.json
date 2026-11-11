@@ -79,6 +79,6 @@
     "mercurius-integration-testing": "^9.0.1",
     "tsc-alias": "^1.8.16",
     "tsconfig-paths": "^4.2.0",
-    "vitest": "^3.2.4"
+    "vitest": "^4.0.0"
   }
 }
